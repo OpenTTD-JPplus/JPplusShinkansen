@@ -1,0 +1,40 @@
+// Begin grfintegration
+
+//set depot vehicle width to 32px to avoid overlap
+train_width_32_px = 1;
+//align train properly in depot window
+traininfo_y_offset = 2;
+
+// TTD check //
+if (ttd_platform != PLATFORM_OPENTTD || openttd_version < version_openttd(1, 2, 0, 22723)) {
+	error(FATAL, REQUIRES_OPENTTD, string(GRF_OTTDVER));
+}
+
+// 8bpp //
+if (ttd_platform != PLATFORM_OPENTTD || openttd_version < version_openttd(1, 2, 0, 22723)) {
+	error(FATAL, string(GRF_OTTDVER));
+}
+
+// Warn if "JapanSet3: Trains isn't optimal" //
+/*
+if (((grf_current_status("SZ\0D\00") == 0) && (grf_current_status("DP\30\00") == 0)) || ((grf_future_status("SZ\0D\00") == 0) && (grf_future_status("DP\30\00") == 0)) || ((grf_order_behind("SZ\0D\00") == 0) && (grf_order_behind("DP\30\00") == 0))) {
+	error( WARNING, string(GRF_JAPANSET));
+}
+*/
+if (grf_order_behind("BS\42\13") == 0) {
+	error(FATAL, string(GRF_JPPLUSSET));
+}
+/*
+if (((grf_order_behind("EN\21\01") == 0) && (grf_order_behind("BS\07\20") != 0)) || ((grf_future_status("EN\21\01") == 0) && (grf_future_status("BS\07\20") == 0)) || ((grf_current_status("EN\21\01") != 0) && (grf_current_status("BS\07\20") == 0))) {
+	error(WARNING, string(GRF_NATSSET));
+}*/
+
+if (grf_order_behind("SZ\0D\00") == 0) {
+	error(WARNING, string(GRF_JAPANSETTRAINS));
+}
+
+if (grf_order_behind("JD\A1\E1") == 0) {
+	error(WARNING, string(GRF_JAPANSECRETORDER));
+}
+
+// End grfintegration

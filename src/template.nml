@@ -1,0 +1,131 @@
+// Begin template
+
+/*Purchase Template*/
+
+template template_purchase (x, y) {
+		[]
+	 	[]
+	 	[]
+	 	[]
+	 	[]
+	 	[]
+    	[x, y, 75, 15, -28, -10]
+		[]
+}
+
+/*EMU Templates*/
+
+template template_8_standard(x, y) {
+    //left_x, upper_y, width, height, offset_x, offset_y
+	//							more negative to shift left
+	//											more negative to shift up
+    [ x,		y,		8,		28,		-3,			-14]
+    [ x+16,		y,		22,		23,		-15,		-13]
+    [ x+46,		y,		32,		14,		-16,		-10]
+    [ x+86,		y,		22,		23,		-5,			-13]
+    [ x+116,	y,		8,		28,		-3,			-14]
+    [ x+132,	y,		22,		23,		-15,		-13]
+    [ x+162,	y,		32,		14,		-16,		-10]
+    [ x+202,	y,		22,		23,		-5,			-13]
+}
+
+template template_8_reversed(x, y) {
+    //left_x, upper_y, width, height, offset_x, offset_y
+	//							more negative to shift left
+	//											more negative to shift up
+    [ x+116,	y,		8,		28,		-3,			-14]
+    [ x+132,	y,		22,		23,		-15,		-13]
+    [ x+162,	y,		32,		14,		-16,		-10]
+    [ x+202,	y,		22,		23,		-5,			-13]
+	[ x,		y,		8,		28,		-3,			-14]
+    [ x+16,		y,		22,		23,		-15,		-13]
+    [ x+46,		y,		32,		14,		-16,		-10]
+    [ x+86,		y,		22,		23,		-5,			-13]
+}
+
+template template_6_standard(x, y) {
+    //left_x, upper_y, width, height, offset_x, offset_y
+	//							more negative to shift left
+	//											more negative to shift up
+    [ x,		y,		8,		24,		-3,			-14]
+    [ x+16,		y,		18,		21,		-11,		-13]
+    [ x+42,		y,		24,		14,		-16,		-10]
+    [ x+74,		y,		18,		21,		-5,			-13]
+    [ x+100,	y,		8,		24,		-3,			-14]
+    [ x+116,	y,		18,		21,		-11,		-13]
+    [ x+142,	y,		24,		14,		-16,		-10]
+    [ x+174,	y,		18,		21,		-5,			-13]
+}
+
+template template_6_reversed(x, y) {
+    //left_x, upper_y, width, height, offset_x, offset_y
+	//							more negative to shift left
+	//											more negative to shift up
+    [ x+100,	y,		8,		24,		-3,			-14]
+    [ x+116,	y,		18,		21,		-11,		-13]
+    [ x+142,	y,		24,		14,		-16,		-10]
+    [ x+174,	y,		18,		21,		-5,			-13]
+	[ x,		y,		8,		24,		-3,			-14]
+    [ x+16,		y,		18,		21,		-11,		-13]
+    [ x+42,		y,		24,		14,		-16,		-10]
+    [ x+74,		y,		18,		21,		-5,			-13]
+}
+
+template template_2x_6_standard(x, y) {
+    //left_x, upper_y, width, height, offset_x, offset_y
+	//							more negative to shift left
+	//											more negative to shift up
+    [ x,		y,		16,		48,		-6,			-28]
+    [ x+32,		y,		36,		42,		-22,		-26]
+    [ x+84,		y,		48,		28,		-32,		-20]
+    [ x+148,	y,		36,		42,		-10,		-26]
+    [ x+200,	y,		16,		48,		-6,			-28]
+    [ x+232,	y,		36,		42,		-22,		-26]
+    [ x+284,	y,		48,		28,		-32,		-20]
+    [ x+348,	y,		36,		42,		-10,		-26]
+}
+
+template template_2x_6_reversed(x, y) {
+    //left_x, upper_y, width, height, offset_x, offset_y
+	//							more negative to shift left
+	//											more negative to shift up
+    [ x+200,	y,		16,		48,		-6,			-28]
+    [ x+232,	y,		36,		42,		-22,		-26]
+    [ x+284,	y,		48,		28,		-32,		-20]
+    [ x+348,	y,		36,		42,		-10,		-26]
+    [ x,		y,		16,		48,		-6,			-28]
+    [ x+32,		y,		36,		42,		-22,		-26]
+    [ x+84,		y,		48,		28,		-32,		-20]
+    [ x+148,	y,		36,		42,		-10,		-26]
+}
+
+
+template template_4_standard(x, y) {
+    //left_x, upper_y, width, height, offset_x, offset_y
+	//							more negative to shift left
+	//											more negative to shift up
+    [ x,		y,		8,		20,		-3,			-14]
+    [ x+16,		y,		14,		19,		-8,			-12]
+    [ x+38,		y,		16,		14,		0,			-10]
+    [ x+62,		y,		14,		19,		2,			-9]
+    [ x+84,		y,		8,		20,		-3,			-5]
+    [ x+100,	y,		14,		19,		-14,		-9]
+    [ x+122,	y,		16,		14,		-16,		-10]
+    [ x+146,	y,		14,		19,		-5,			-13]
+}
+
+template template_4_reversed(x, y) {
+    //left_x, upper_y, width, height, offset_x, offset_y
+	//							more negative to shift left
+	//											more negative to shift up
+    [ x+84,		y,		8,		20,		-3,			-14] //x
+    [ x+100,	y,		14,		19,		-8,			-12]
+    [ x+122,	y,		16,		14,		0,			-10] //x
+    [ x+146,	y,		14,		19,		2,			-9]
+	[ x,		y,		8,		20,		-3,			-5] //x
+    [ x+16,		y,		14,		19,		-14,		-9] //x
+    [ x+38,		y,		16,		14,		-16,		-10] //x
+    [ x+62,		y,		14,		19,		-5,			-13] //x
+}
+
+// End template

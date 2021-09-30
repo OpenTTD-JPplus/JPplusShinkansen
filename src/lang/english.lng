@@ -1,0 +1,71 @@
+##grflangid 0x01
+# This is the English language file
+
+# GRF name and description definitions
+STR_GRF_NAME        :JP+ Shinkansen
+STR_GRF_DESC		:{WHITE}JP{RED}+{WHITE}Shinkansen{BLACK}{}{}{WHITE}JP{RED}+{WHITE}Shinkansen{BLACK} adds more {WHITE}Ja{RED}p{WHITE}an{BLACK} to your Japanese scene.{}This JP+Shinakansen focuses on Shinkansen. Trains require high speed rail tracks.{}{COPYRIGHT}JP+Shinkansen Team{}Licence: GPLv3{}{BLACK}{}Coded By{}{LTBLUE}KeepinItRailBLACK}{}{}{BLACK}Sprites By{}{GREEN}KeepinItRail{}{TINYFONT}{BLACK}Thanks To{}{ORANGE}Romazoon{}Emperor Jake{}Doorslammer{}Toni Babelony{}Gwyd{}JapanSet3 Team{}{}{}{BLACK}{}
+
+# Parameters
+STR_NO                              :No
+STR_YES                             :Yes
+STR_PARAM_NORMAL                    :Normal
+STR_PARAM_VLOW                      :Very low
+STR_PARAM_LOW                       :Low
+STR_PARAM_HIGH                      :High
+STR_PARAM_VHIGH                     :Very high
+STR_PARAM_REAL                      :Realistic
+STR_PARAM_NAME_DISABLETRAINS        :Disable trains
+STR_PARAM_DESC_DISABLETRAINS        :I don't know why you'd use this, but the option is here!{} Maybe you just want the road vehicles provided by this set?
+STR_PARAM_NAME_DISABLERV            :Disable Road vehicles & trams
+STR_PARAM_DESC_DISABLERV            :I don't know why you'd use this, but the choice is yours, not mine.{} Maybe you just want the trains provided by this set?
+STR_PARAM_NAME_BASECOSTMODBUY       :Purchase costs
+STR_PARAM_DESC_BASECOSTMODBUY       :Increase/Decrease the purchase costs of vehicles, inline with JapanSet3.
+STR_PARAM_NAME_BASECOSTMODRUN       :Running costs
+STR_PARAM_DESC_BASECOSTMODRUN       :Increase/Decrease the running costs of vehicles, inline with JapanSet3.
+STR_PARAM_NAME_BASECAPACITY         :Passenger capacities
+STR_PARAM_DESC_BASECAPACITY         :Adjusts passenger capacities inline with JapanSet3. Realistic option is based on real-world data for seating/standing capacity and is not balanced against other sets or gameplay.
+STR_PARAM_NAME_BOOSTCAPACITY        :Boost capacities
+STR_PARAM_DESC_BOOSTCAPACITY        :Boosts the capacities of commuter trains. TIAS and NATS offer higher per-car capacities than JapanSet3 for commuter trains, enabling this boosts the capacities of JP+Set commuter trains by 15 passengers to better match TIAS and NATS.
+STR_PARAM_NAME_JAPANSETDISABLE      :JapanSet3 removal 
+STR_PARAM_DESC_JAPANSETDISABLE      :Removes duplicate trains found in JapanSet3.
+STR_PARAM_NAME_DECAY                :Cargo decay rate
+STR_PARAM_DESC_DECAY                :Set the rate of cargo decay. In "normal" mode all trains have the same decay rate. In "low" and "very low" cargo decay rates depend on the type of train used. Using a commuter train over long distances would earn less than using an express train.
+
+
+STR_PARAM_NAME_LIVERY_SELECT		:Livery Selection
+STR_PARAM_DESC_LIVERY_SELECT		:Select if trains update their livery automatically when serviced, or if all liveries are available in the cargo refit menu.
+PARAM_LIVERY_AUTOMATIC				:Automatic by date
+PARAM_LIVERY_REFIT					:Manual by cargo refit
+
+STR_PARAM_NAME_CCOLOUR				:Colour
+STR_PARAM_DESC_CCOLOUR				:Select whether trains use their real-world colours or the OpenTTD company colours.
+PARAM_CCOLOUR_REALISTIC				:Realistic
+PARAM_CCOLOUR_CC					:2CC
+
+# Parameter - Graphics Resolution
+STR_PARAM_NAME_ZOOM                 :Graphics resolution
+STR_PARAM_DESC_ZOOM                 :Choose the zoom level of the vehicles. Default TTD scale is 1x zoom.
+STR_PARAM_ZOOM_1X                   :1x regular zoom
+STR_PARAM_ZOOM_2X                   :2x extrazoom
+
+
+GRF_OTTDVER       : You are below the required OpenTTD version to run this NewGRF. Please update your version of OpenTTD.
+GRF_JAPANSET      : {WHITE}Please load...{}{YELLOW}JapanSet3 Trains{WHITE}{}and/or{}{YELLOW}JapanSet3 Tracks{WHITE}{}before {GREEN}JP+Set.
+GRF_JPPLUSSET     : JP+ Set must be loaded AFTER the JP+ Legacy version.
+GRF_NATSSET       : JP+ Set NATS Duplicate Trains Disabler should be loaded together with Nagoya Area Train Set (NATS) to avoid train duplication. 
+GRF_JAPANSETTRAINS: JP+ Set should be loaded AFTER Japan Set3: Trains to avoid train duplication.
+GRF_JAPANSECRETORDER:  JP+ Set should be loaded AFTER Japan Set Secret Engines for compatibility.
+
+
+# Vehicle Name
+STR_NAME_0_SERIES           :0 Series Shinkansen
+STR_NAME_E5_SERIES          :E5 Series Shinkansen
+STR_NAME_E6_SERIES          :E6 Series Shinkansen
+STR_NAME_E5E6_SERIES        :E5 & E6 Series Shinkansen
+
+# Role
+STR_ROLE_EXPRESS_PASS		:Role: {GOLD}Express Passenger
+
+# Livery
+LV_0_SERIES_ORIGINAL        :12-Car Original Set
+LV_0_SERIES_16HIKARI        :16-Car Hikari Set

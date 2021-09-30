@@ -1,0 +1,11 @@
+/* Begin Functions */
+
+switch (FEAT_TRAINS, SELF, func_running_costs, cost, current_speed) {
+	0: return cost / 10; // Stopped
+	1..15: return cost / 4; // Moving below ~33.5 mph
+	return cost; // Track speed
+}
+
+switch (FEAT_TRAINS, PARENT, func_is_reversed, vehicle_is_reversed) {return;}
+
+/* End Functions */ 
