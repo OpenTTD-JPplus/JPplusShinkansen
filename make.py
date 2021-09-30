@@ -13,7 +13,7 @@ header_stuff = [
     "cargotable", 
     "parameters", 
     "template",
-    "functions",    # Danish
+    "functions", 
     "vehicleid", 
     "sorting",
     "grfintegration",
@@ -43,6 +43,13 @@ import codecs
 import subprocess
 import shutil
 
+# Get the version number from the custom tags file to use in the filename
+with open("src/custom_tags.txt") as v:
+    lines = v.read() 
+    first = lines.split('\n', 1)[0]
+version = first.split(":")[1]
+
+
 # Create an empty list where all the NML code will be placed
 sections = []
 
@@ -71,8 +78,8 @@ trains.sort()
 for i in trains:
     append_trains(i)
 
-merged_nml_path = "src/merged/" + newgrf_name + ".nml"
-grf_name = newgrf_name + ".grf"
+merged_nml_path = "src/merged/" + newgrf_name +".nml"
+grf_name = newgrf_name + version + ".grf"
 
 # Write the content of 'sections' into a file and save it
 processed_nml_file = codecs.open(merged_nml_path,'w','utf8')
