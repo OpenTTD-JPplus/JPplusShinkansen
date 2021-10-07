@@ -3,71 +3,87 @@
 /* SPRITES */
 
 /* Lights */
-spriteset(spriteset_0_series_head_headlights,  			"src/gfx/0_series/cab/long/headlights.png")     {template_12_standard(0,0)}
-spriteset(spriteset_0_series_head_rearlights,			"src/gfx/0_series/cab/long/rearlights.png")    	{template_12_reversed(0,0)}
-spriteset(spriteset_0_series_tail_headlights,   		"src/gfx/0_series/cab/long/headlights.png")     {template_12_standard(0,0)}
-spriteset(spriteset_0_series_tail_rearlights,   		"src/gfx/0_series/cab/long/rearlights.png")     {template_12_reversed(0,0)}
+spriteset(spriteset_0_series_head_headlights,  			"src/gfx/0_series/cab/headlights.png")     		{template_12_standard(0,0)}
+spriteset(spriteset_0_series_head_rearlights,			"src/gfx/0_series/cab/rearlights.png")    		{template_12_reversed(0,0)}
+spriteset(spriteset_0_series_tail_headlights,   		"src/gfx/0_series/cab/headlights.png")     		{template_12_standard(0,0)}
+spriteset(spriteset_0_series_tail_rearlights,   		"src/gfx/0_series/cab/rearlights.png")     		{template_12_reversed(0,0)}
 
 /* EMU Parts */
 
 // Cab "Head"
-spriteset(spriteset_0_series_head_1,             		"src/gfx/0_series/cab/long/1x.png")     		{template_12_standard(0,0)}
-spriteset(spriteset_0_series_head_reversed_1,    		"src/gfx/0_series/cab/long/1x.png")        		{template_12_reversed(0,0)}
+spriteset(spriteset_0_series_head_1,             		"src/gfx/dummy/empty.png")     					{template_dummy(0,0)}
+spriteset(spriteset_0_series_head_reversed_1,    		"src/gfx/dummy/empty.png")        				{template_dummy(0,0)}
 
-spriteset(spriteset_0_series_head_2,             		"src/gfx/0_series/cab/long/1x.png")     		{template_12_standard(0,0)}
-spriteset(spriteset_0_series_head_reversed_2,    		"src/gfx/0_series/cab/long/1x.png")        		{template_12_reversed(0,0)}
+spriteset(spriteset_0_series_head_2,             		"src/gfx/dummy/empty.png")     					{template_dummy(0,0)}
+spriteset(spriteset_0_series_head_reversed_2,    		"src/gfx/dummy/empty.png")        				{template_dummy(0,0)}
 
-	// 1x for now
+	// 1x only for now
+alternative_sprites(spriteset_0_series_head_1,     		
+	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,     			"src/gfx/0_series/cab/1x.png")     	 			{template_12_standard(0,0)}
+alternative_sprites(spriteset_0_series_head_reversed_1,  
+	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,     			"src/gfx/0_series/cab/1x.png")      			{template_12_reversed(0,0)}		
 alternative_sprites(spriteset_0_series_head_2,     		
-	ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP,     				"src/gfx/0_series/cab/long/1x.png")     	 	{template_2x_12_standard(0,0)}
+	ZOOM_LEVEL_IN_2X, BIT_DEPTH_32BPP,     				"src/gfx/0_series/cab/1x.png")     	 			{template_2x_12_standard(0,0)}
 alternative_sprites(spriteset_0_series_head_reversed_2,  
-	ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP,     				"src/gfx/0_series/cab/long/1x.png")      		{template_2x_12_reversed(0,0)}
+	ZOOM_LEVEL_IN_2X, BIT_DEPTH_32BPP,     				"src/gfx/0_series/cab/1x.png")      			{template_2x_12_reversed(0,0)}
 
 // Coach
-spriteset(spriteset_0_series_coach_1,             		"src/gfx/0_series/coach/long/1x.png")    		{template_12_standard(0,0)}
-spriteset(spriteset_0_series_coach_reversed_1,    		"src/gfx/0_series/coach/long/1x.png")    		{template_12_reversed(0,0)}
+spriteset(spriteset_0_series_coach_1,             		"src/gfx/dummy/empty.png")     					{template_dummy(0,0)}
+spriteset(spriteset_0_series_coach_reversed_1,    		"src/gfx/dummy/empty.png")     					{template_dummy(0,0)}
 
-spriteset(spriteset_0_series_coach_2,             		"src/gfx/0_series/coach/long/1x.png")    		{template_12_standard(0,0)}
-spriteset(spriteset_0_series_coach_reversed_2,    		"src/gfx/0_series/coach/long/1x.png")    		{template_12_reversed(0,0)}
+spriteset(spriteset_0_series_coach_2,             		"src/gfx/dummy/empty.png")     					{template_dummy(0,0)}
+spriteset(spriteset_0_series_coach_reversed_2,    		"src/gfx/dummy/empty.png")     					{template_dummy(0,0)}
 
-	// 1x for now
+	// 1x only for now
+alternative_sprites(spriteset_0_series_coach_1,     		
+	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,     			"src/gfx/0_series/coach/1x.png")     	 		{template_12_standard(0,0)}
+alternative_sprites(spriteset_0_series_coach_reversed_1,  
+	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,     			"src/gfx/0_series/coach/1x.png")      			{template_12_reversed(0,0)}	
 alternative_sprites(spriteset_0_series_coach_2,     		
-	ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP,     				"src/gfx/0_series/coach/long/1x.png")   		{template_2x_12_standard(0,0)}
-
+	ZOOM_LEVEL_IN_2X, BIT_DEPTH_32BPP,     				"src/gfx/0_series/coach/1x.png")   				{template_2x_12_standard(0,0)}
 alternative_sprites(spriteset_0_series_coach_reversed_2,  
-	ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP,     				"src/gfx/0_series/coach/long/1x.png")  			{template_2x_12_reversed(0,0)}
+	ZOOM_LEVEL_IN_2X, BIT_DEPTH_32BPP,     				"src/gfx/0_series/coach/1x.png")  				{template_2x_12_reversed(0,0)}
 
 
 // Coach Panto
-spriteset(spriteset_0_series_panto_1,          			"src/gfx/0_series/coach/long/1xP.png")			{template_12_standard(0,0)}
-spriteset(spriteset_0_series_panto_reversed_1, 			"src/gfx/0_series/coach/long/1xP.png")			{template_12_reversed(0,0)}
+spriteset(spriteset_0_series_panto_1,          			"src/gfx/dummy/empty.png")     					{template_dummy(0,0)}
+spriteset(spriteset_0_series_panto_reversed_1, 			"src/gfx/dummy/empty.png")     					{template_dummy(0,0)}
 
-spriteset(spriteset_0_series_panto_2,          			"src/gfx/0_series/coach/long/1xP.png")			{template_12_standard(0,0)}
-spriteset(spriteset_0_series_panto_reversed_2, 			"src/gfx/0_series/coach/long/1xP.png")			{template_12_reversed(0,0)}
+spriteset(spriteset_0_series_panto_2,          			"src/gfx/dummy/empty.png")     					{template_dummy(0,0)}
+spriteset(spriteset_0_series_panto_reversed_2, 			"src/gfx/dummy/empty.png")     					{template_dummy(0,0)}
 
-	// 1x for now
+	// 1x only for now
+alternative_sprites(spriteset_0_series_panto_1,     		
+	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,     			"src/gfx/0_series/coach/1xP.png")     	 		{template_12_standard(0,0)}
+alternative_sprites(spriteset_0_series_panto_reversed_1,  
+	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,     			"src/gfx/0_series/coach/1xP.png")      			{template_12_reversed(0,0)}		
 alternative_sprites(spriteset_0_series_panto_2,     		
-	ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP,     				"src/gfx/0_series/coach/long/1xP.png")			{template_2x_12_standard(0,0)}
-
+	ZOOM_LEVEL_IN_2X, BIT_DEPTH_32BPP,     				"src/gfx/0_series/coach/1xP.png")				{template_2x_12_standard(0,0)}
 alternative_sprites(spriteset_0_series_panto_reversed_2,  
-	ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP,     				"src/gfx/0_series/coach/long/1xP.png")			{template_2x_12_reversed(0,0)}
+	ZOOM_LEVEL_IN_2X, BIT_DEPTH_32BPP,     				"src/gfx/0_series/coach/1xP.png")				{template_2x_12_reversed(0,0)}
 
 // Cab "Tail"
-spriteset(spriteset_0_series_tail_1,             		"src/gfx/0_series/cab/long/1x.png")     		{template_12_reversed(0,0)}
-spriteset(spriteset_0_series_tail_reversed_1,    		"src/gfx/0_series/cab/long/1x.png")        		{template_12_standard(0,0)}
+spriteset(spriteset_0_series_tail_1,             		"src/gfx/dummy/empty.png")     					{template_dummy(0,0)}
+spriteset(spriteset_0_series_tail_reversed_1,    		"src/gfx/dummy/empty.png")        				{template_dummy(0,0)}
 
-spriteset(spriteset_0_series_tail_2,             		"src/gfx/0_series/cab/long/1x.png")     		{template_12_reversed(0,0)}
-spriteset(spriteset_0_series_tail_reversed_2,    		"src/gfx/0_series/cab/long/1x.png")        		{template_12_standard(0,0)}
+spriteset(spriteset_0_series_tail_2,             		"src/gfx/dummy/empty.png")     					{template_dummy(0,0)}
+spriteset(spriteset_0_series_tail_reversed_2,    		"src/gfx/dummy/empty.png")        				{template_dummy(0,0)}
 
 	// 1x for now
+alternative_sprites(spriteset_0_series_tail_1,     		
+	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,     			"src/gfx/0_series/cab/1x.png")     	 			{template_12_reversed(0,0)}
+alternative_sprites(spriteset_0_series_tail_reversed_1,  
+	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,     			"src/gfx/0_series/cab/1x.png")      			{template_12_standard(0,0)}		
 alternative_sprites(spriteset_0_series_tail_2,     		
-	ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP,     				"src/gfx/0_series/cab/long/1x.png")     	 	{template_2x_12_reversed(0,0)}
+	ZOOM_LEVEL_IN_2X, BIT_DEPTH_32BPP,     				"src/gfx/0_series/cab/1x.png")     	 	{template_2x_12_reversed(0,0)}
 alternative_sprites(spriteset_0_series_tail_reversed_2,  
-	ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP,     				"src/gfx/0_series/cab/long/1x.png")      		{template_2x_12_standard(0,0)}
+	ZOOM_LEVEL_IN_2X, BIT_DEPTH_32BPP,     				"src/gfx/0_series/cab/1x.png")      		{template_2x_12_standard(0,0)}
 
 
 /* Purchase Menu */
-spriteset (spriteset_0_series_purchase,	        		"src/gfx/0_series/purchase.png")               	{template_purchase(0, 0)}
+spriteset (spriteset_0_series_purchase,	        		"src/gfx/dummy/purchase.png")               	{template_purchase(0, 0)}
+alternative_sprites(spriteset_0_series_purchase,     		
+	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,     			"src/gfx/0_series/purchase.png")     	 		{template_purchase(0, 0)}
 
 /* PICK THE ZOOM LEVEL*/
 
