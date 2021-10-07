@@ -22,7 +22,7 @@ header_stuff = [
 
 # Files to place in alphabetical order below
 trains = [
-    "0_series_long",
+    "0_series",
     "e6_series",
     "e5_series",
     "e5e6_series"
