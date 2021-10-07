@@ -13,6 +13,7 @@ header_stuff = [
     "cargotable", 
     "parameters", 
     "template",
+    "dummy",            # dummy / empty sprites for 'invisible' sprites
     "functions", 
     "vehicleid", 
     "sorting",
@@ -21,7 +22,7 @@ header_stuff = [
 
 # Files to place in alphabetical order below
 trains = [
-    "0_series",
+    "0_series_long",
     "e6_series",
     "e5_series",
     "e5e6_series"
@@ -78,7 +79,7 @@ trains.sort()
 for i in trains:
     append_trains(i)
 
-merged_nml_path = "src/merged/" + newgrf_name +".nml"
+merged_nml_path = "src/merged/" + newgrf_name + "_v" + version +".nml"
 grf_name = newgrf_name + version + ".grf"
 
 # Write the content of 'sections' into a file and save it

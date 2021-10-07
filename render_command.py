@@ -3,11 +3,11 @@
 #################################
 
 # Vehicle Name - this will also be the name of the folder the sprites will appear in the NewGRF's folder
-vehicle_name = "e5_series"
+vehicle_name = "0_series"
 vehicle_part = "cab"
 
 # Manifests to use - I use several to get the size I want
-vehicle_manifest = "6_standard"
+vehicle_manifest = "12_standard_long"
 
 # select zoom levels desired, options are 1,2,4
 zoom_levels = "1,2"

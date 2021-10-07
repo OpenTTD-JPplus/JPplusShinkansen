@@ -938,7 +938,7 @@ switch (FEAT_TRAINS, SELF, sw_0_series_head_with_headlights, [
 
 /* POSITION - First car of vehicle is an 0_series_head. If it is the first car of the train, display headlights.  */
 switch (FEAT_TRAINS, SELF, sw_0_series_front_position, position_in_consist) {
-	0: return sw_0_series_head_with_headlights;
+	1: return sw_0_series_head_with_headlights;
 	return spriteset_0_series_head;
 }
 
@@ -953,7 +953,7 @@ switch (FEAT_TRAINS, SELF, sw_0_series_head_with_rear_lights, [
 
 /* POSITION - Last car of vehicle is an 0_series_head. If it is the last car of the train, display rear lights.  */
 switch (FEAT_TRAINS, SELF, sw_0_series_front_reversed_position, position_in_consist_from_end) {
-	0: return sw_0_series_head_with_rear_lights;
+	1: return sw_0_series_head_with_rear_lights;
 	return spriteset_0_series_head_reversed;
 }
 
@@ -968,7 +968,7 @@ switch (FEAT_TRAINS, SELF, sw_0_series_tail_with_headlights, [
 
 /* First car of vehicle is an  0_series_tail. If it is the first car of the train, display headlights.  */
 switch (FEAT_TRAINS, SELF, sw_0_series_back_reversed_position, position_in_consist) {
-	0: return sw_0_series_tail_with_headlights;
+	1: return sw_0_series_tail_with_headlights;
 	return spriteset_0_series_tail_reversed;
 }
 
@@ -977,13 +977,13 @@ switch (FEAT_TRAINS, SELF, sw_0_series_tail_with_rear_lights, [
     STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
     getbits(extra_callback_info1, 8, 8)
     ]) {
-    0: return spriteset_0_series_tail_reversed;    		// Return the base sprite
+    0: return spriteset_0_series_tail;    				// Return the base sprite
     1: return spriteset_0_series_tail_rearlights;    	// Return the overlay
 }
 
 /* Last car of vehicle is an 0_series_back. If it is the last car of the train, display rear lights.  */
 switch (FEAT_TRAINS, SELF, sw_0_series_back_position, position_in_consist_from_end) {
-	0: return sw_0_series_tail_with_rear_lights;
+	1: return sw_0_series_tail_with_rear_lights;
 	return spriteset_0_series_tail_reversed;
 }
 
@@ -1003,42 +1003,43 @@ switch (FEAT_TRAINS, PARENT, sw_0_series_reverser_back, vehicle_is_reversed) {
 
 /* COACHES 
   Repeating 4 switches to create a;
-- Coach Car going forwards and a Panto Car going backwards
-- Coach Car going forwards and a Coach Car going backwards
-- Panto Car going forwards and a Coach Car going backwards
-- Panto Car going forwards and a Panto Car going backwards
+1) Coach Car going forwards and a Panto Car going backwards
+2) Coach Car going forwards and a Coach Car going backwards
+3) Panto Car going forwards and a Coach Car going backwards
+4) Panto Car going forwards and a Panto Car going backwards
 
-   Coach 1 check reversed */ 
+   1) check reversed */ 
 switch (FEAT_TRAINS, PARENT, sw_0_series_reverser_C_P, vehicle_is_reversed) {
 	0: spriteset_0_series_coach;
 	spriteset_0_series_panto_reversed;
 }
 
-/* Coach 2 check reversed */ 
+/* 2) check reversed */ 
+/*
 switch (FEAT_TRAINS, PARENT, sw_0_series_reverser_C_C, vehicle_is_reversed) {
 	0: spriteset_0_series_coach;
 	spriteset_0_series_coach_reversed;
 }
+*/
 
-/* Coach 3 check reversed */ 
+/* 3) check reversed */ 
 switch (FEAT_TRAINS, PARENT, sw_0_series_reverser_P_C, vehicle_is_reversed) {
 	0: spriteset_0_series_panto;
 	spriteset_0_series_coach_reversed;
 }
 
-/* Coach 4 check reversed */ 
+/* 4) check reversed */ 
+/*
 switch (FEAT_TRAINS, PARENT, sw_0_series_reverser_P_P, vehicle_is_reversed) {
 	0: spriteset_0_series_panto;
 	spriteset_0_series_panto_reversed;
 }
-
+*/
 /* LENGTH*/
 
-switch (FEAT_TRAINS, SELF, switch_length_0_series, position_in_consist) {
+/* Make the Middle long sprite length 8 and the dummy sprites length 2*/
+switch (FEAT_TRAINS, SELF, switch_length_0_series, position_in_consist%3) {
     1: return 8;
-	4: return 8;
-	7: return 8;
-	10:	return 8;
     return 2;
 }
 
