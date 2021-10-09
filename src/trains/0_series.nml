@@ -3,10 +3,19 @@
 /* SPRITES */
 
 /* Lights */
-spriteset(spriteset_0_series_head_headlights,  			"src/gfx/0_series/cab/headlights.png")     		{template_12_standard(0,0)}
-spriteset(spriteset_0_series_head_rearlights,			"src/gfx/0_series/cab/rearlights.png")    		{template_12_reversed(0,0)}
-spriteset(spriteset_0_series_tail_headlights,   		"src/gfx/0_series/cab/headlights.png")     		{template_12_standard(0,0)}
-spriteset(spriteset_0_series_tail_rearlights,   		"src/gfx/0_series/cab/rearlights.png")     		{template_12_reversed(0,0)}
+spriteset(spriteset_0_series_head_headlights,  			"src/gfx/dummy/empty.png")     					{template_dummy(0,0)}
+spriteset(spriteset_0_series_head_rearlights,			"src/gfx/dummy/empty.png")     					{template_dummy(0,0)}
+spriteset(spriteset_0_series_tail_headlights,   		"src/gfx/dummy/empty.png")     					{template_dummy(0,0)}
+spriteset(spriteset_0_series_tail_rearlights,   		"src/gfx/dummy/empty.png")     					{template_dummy(0,0)}
+
+alternative_sprites(spriteset_0_series_head_headlights,     		
+	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,     			"src/gfx/0_series/cab/headlights.png")     	 	{template_12_standard(0,0)}
+alternative_sprites(spriteset_0_series_head_rearlights,  
+	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,     			"src/gfx/0_series/cab/rearlights.png")      	{template_12_reversed(0,0)}	
+alternative_sprites(spriteset_0_series_tail_headlights,     		
+	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,     			"src/gfx/0_series/cab/headlights.png")     	 	{template_12_standard(0,0)}
+alternative_sprites(spriteset_0_series_tail_rearlights,  
+	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,     			"src/gfx/0_series/cab/rearlights.png")      	{template_12_reversed(0,0)}	
 
 /* EMU Parts */
 
@@ -75,9 +84,9 @@ alternative_sprites(spriteset_0_series_tail_1,
 alternative_sprites(spriteset_0_series_tail_reversed_1,  
 	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,     			"src/gfx/0_series/cab/1x.png")      			{template_12_standard(0,0)}		
 alternative_sprites(spriteset_0_series_tail_2,     		
-	ZOOM_LEVEL_IN_2X, BIT_DEPTH_32BPP,     				"src/gfx/0_series/cab/1x.png")     	 	{template_2x_12_reversed(0,0)}
+	ZOOM_LEVEL_IN_2X, BIT_DEPTH_32BPP,     				"src/gfx/0_series/cab/1x.png")     	 			{template_2x_12_reversed(0,0)}
 alternative_sprites(spriteset_0_series_tail_reversed_2,  
-	ZOOM_LEVEL_IN_2X, BIT_DEPTH_32BPP,     				"src/gfx/0_series/cab/1x.png")      		{template_2x_12_standard(0,0)}
+	ZOOM_LEVEL_IN_2X, BIT_DEPTH_32BPP,     				"src/gfx/0_series/cab/1x.png")      			{template_2x_12_standard(0,0)}
 
 
 /* Purchase Menu */

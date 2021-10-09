@@ -5,13 +5,18 @@
 railtypetable {
 	RAIL,
 	ELRL,
-	NARROW_NOEL: [NAAN, RAIL],
-	NARROW_3RDR: [NAA3, RAIL],
-	NARROW_OHLE: [NABE, NAAE, ELRL],
-	STANDARD_NOEL: [SAAN, RAIL],
-	STANDARD_3RDR: [SAB3, SAA3, RAIL],
-	STANDARD_OHLE: [SAAE, ELRL],
-	HIGH_SPEED: [RHIG, EHIG, HSTR, SDAE, SAEE, SBEE, SEAE ,SFAE ,ELRL],
+	HIGH_SPEED: [
+		RHIG, 		
+		EHIG, 
+		HSTR, 
+		SADE, 		// JapanSet Tracks - International Mode - Highspeed line
+		SDAE, 		// U&ReRMM 2 - High-Speed Line
+		SAEE, 		// JapanSet Tracks - Japanese Mode - Shinkansen highspeed
+		SBEE, 		// JapanSet Tracks - Japanese Mode - Modern Shinkansen highspeed
+		SEAE,		// U&ReRMM 2 - Modern High-Speed Line
+		SFAE,		// U&ReRMM 2 - Very High-Speed Line
+		SHAE,		// SUKTS - Very High Speed
+		ELRL],
 }
 
 // End railtypetable
