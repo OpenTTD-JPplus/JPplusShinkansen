@@ -3,7 +3,7 @@
 #################################
 
 # Vehicle Name - this will also be the name of the folder the sprites will appear in the NewGRF's folder
-vehicle_name = "e6_series"
+vehicle_name = "e5_series"
 vehicle_part = "cab"
 
 # Manifests to use - I use several to get the size I want
