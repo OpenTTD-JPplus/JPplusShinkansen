@@ -1,7 +1,18 @@
  /* Begin stats */
 
-// E5 Series Shinkansen
+// Speed
 
-e5_speed = 321 km/h;
+
+// 0 Series
+switch (FEAT_TRAINS, SELF, sw_0_series_speed, current_date) {
+	0..date(1986, 1, 1): return 210;        // Until 1986, Speed = 210 km/h
+	return 220;                             // After 1986, Speed = 220 km/h
+}
+
+// E5 Series
+e5_series_speed = 321;
+
+// E6 Series
+e6_series_speed = 321;
 
  /* End stats */

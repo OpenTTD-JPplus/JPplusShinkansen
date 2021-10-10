@@ -17,6 +17,7 @@ header_stuff = [
     "functions", 
     "vehicleid", 
     "sorting",
+    "stats",
     "grfintegration",
     "grfoverrides"]
 

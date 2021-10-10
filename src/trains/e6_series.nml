@@ -302,7 +302,7 @@ item(FEAT_TRAINS, series_e6, 1) {
 		loading_speed:                  50;							
 		cargo_age_period:               278; 						// 1.5 times normal for this expensive long-distance train
 		sprite_id:                      SPRITE_ID_NEW_TRAIN; 		// required to enable new graphics
-		speed:                          321 km/h;					// Operational Top Speed
+		speed:                          e6_series_speed km/h;					// Operational Top Speed
 		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
 		track_type:                     HIGH_SPEED;
 		ai_special_flag:                AI_FLAG_PASSENGER;

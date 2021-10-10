@@ -253,7 +253,7 @@ switch (FEAT_TRAINS, PARENT, sw_0_series_reverser_P_P, vehicle_is_reversed) {
 /* LENGTH*/
 
 /* Make the Middle long sprite length 8 and the dummy sprites length 2*/
-switch (FEAT_TRAINS, SELF, switch_length_0_series, position_in_consist%3) {
+switch (FEAT_TRAINS, SELF, sw_length_0_series, position_in_consist%3) {
     1: return 8;
     return 2;
 }
@@ -302,7 +302,7 @@ item(FEAT_TRAINS, series_0, 0) {
 		loading_speed:                  50;							
 		cargo_age_period:               278; 						// 1.5 times normal for this expensive long-distance train
 		sprite_id:                      SPRITE_ID_NEW_TRAIN; 		// required to enable new graphics
-		speed:                          211 km/h;					// Operational Top Speed
+		// speed:                          sw_0_series_speed km/h;					// Operational Top Speed
 		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
 		track_type:                     HIGH_SPEED;
 		ai_special_flag:                AI_FLAG_PASSENGER;
@@ -317,7 +317,8 @@ item(FEAT_TRAINS, series_0, 0) {
 		default:                        sw_0_series_graphics;
 		purchase:                       spriteset_0_series_purchase;
 		articulated_part:               sw_0_series_articulated_part;
-		length:                         switch_length_0_series;
+		length:                         sw_length_0_series;
+		speed:							sw_0_series_speed;
 		//colour_mapping:                 sw_cc_blue_white;
 		//cargo_subtype_text:             sw_0_series_cargo_subtype;
 		cost_factor:                    257;
