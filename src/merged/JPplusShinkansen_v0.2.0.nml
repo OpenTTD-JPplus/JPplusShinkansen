@@ -269,11 +269,11 @@ template template_12_standard(x, y) {
 	//							more negative to shift left
 	//											more negative to shift up
     [ x,		y,		8,		36,		-3,			-14]
-    [ x+16,		y,		28,		24,		-15,		-13]
+    [ x+16,		y,		28,		24,		-16,		-13]
     [ x+52,		y,		48,		14,		-16,		-10]
     [ x+108,	y,		28,		24,		-9,		    -13]
     [ x+144,	y,		8,		36,		-3,			-14]
-    [ x+160,	y,		28,		24,		-15,		-13]
+    [ x+160,	y,		28,		24,		-16,		-13]
     [ x+196,	y,		48,		14,		-16,		-10]
     [ x+252,	y,		28,		24,		-9,			-13]
 }
@@ -283,11 +283,11 @@ template template_12_reversed(x, y) {
 	//							more negative to shift left
 	//											more negative to shift up
     [ x+144,	y,		8,		36,		-3,			-14]
-    [ x+160,	y,		28,		24,		-15,		-13]
+    [ x+160,	y,		28,		24,		-16,		-13]
     [ x+196,	y,		48,		14,		-16,		-10]
     [ x+252,	y,		28,		24,		-9,			-13]
     [ x,		y,		8,		36,		-3,			-14]
-    [ x+16,		y,		28,		24,		-15,		-13]
+    [ x+16,		y,		28,		24,		-16,		-13]
     [ x+52,		y,		48,		14,		-16,		-10]
     [ x+108,	y,		28,		24,		-9,		    -13]
 }
@@ -459,97 +459,6 @@ switch (FEAT_TRAINS, PARENT, func_is_reversed, vehicle_is_reversed) {return;}
 
 /* End Functions */ 
 
-
-item(FEAT_TRAINS, mu_car, 1000) {} //mucar 				0x3E8
-item(FEAT_TRAINS, mu_cardd, 1001) {} //mucardd 		0x3E9
-item(FEAT_TRAINS, mu_cab, 1002) {} //mucab 				0x3EA
-
-item(FEAT_TRAINS, dmu_kiha40, 1500) {} //kiha40    0x5DC
-item(FEAT_TRAINS, dmu_kiha201, 1501) {} //kiha201  0x5DD
-item(FEAT_TRAINS, dmu_kiha261, 1502) {} //kiha261  0x5DE
-item(FEAT_TRAINS, dmu_kiha281, 1503) {} //kiha281  0x5DF
-item(FEAT_TRAINS, dmu_kiha48, 1504) {} //kiha281 	 0x5E0
-item(FEAT_TRAINS, dmu_kiha54, 1505) {} //kiha281	 0x5E1
-item(FEAT_TRAINS, dmu_kiha58, 1506) {} //kiha281	 0x5E2
-item(FEAT_TRAINS, dmu_kiha141, 1507) {} //kiha281	 0x5E3
-item(FEAT_TRAINS, dmu_kiha150, 1508) {} //kiha281  0x5E4
-item(FEAT_TRAINS, dmu_KH110, 1509) {} //kiha281  0x5E5
-item(FEAT_TRAINS, dmu_KH111, 1510) {} //kiha281  0x5E6
-item(FEAT_TRAINS, dmu_KHE120, 1511) {} //kiha281  0x5E6
-item(FEAT_TRAINS, dmu_KHE130, 1512) {} //kiha281  0x5E6
-item(FEAT_TRAINS, dmu_KHE131, 1513) {} //kiha281  0x5E6
-item(FEAT_TRAINS, dmu_kiha30, 1514) {} //kiha40    0x5DC
-item(FEAT_TRAINS, dmu_kiha80, 1515) {} //kiha80    0x5DC
-item(FEAT_TRAINS, dmu_KH33, 1516) {} //kiha80    0x5DC
-
-
-item(FEAT_TRAINS, emu_107, 2018) {} //107emu 0x7E2
-item(FEAT_TRAINS, emu_205, 2019) {} //205emu 0x7E2
-item(FEAT_TRAINS, emu_209, 2021) {} //107emu 0x7E3
-item(FEAT_TRAINS, emu_211, 2000) {} //211emu 0x7D0
-item(FEAT_TRAINS, emu_E217, 2001) {} //E217emu 0x7D1
-item(FEAT_TRAINS, emu_711, 2002) {} //711emu 0x7D2
-item(FEAT_TRAINS, emu_721, 2003) {} //721emu 0x7D3
-item(FEAT_TRAINS, emu_731, 2004) {} //731emu 0x7D4
-item(FEAT_TRAINS, emu_733, 2005) {} //733emu 0x7D5
-item(FEAT_TRAINS, emu_735, 2006) {} //735emu 0x7D6
-item(FEAT_TRAINS, emu_781, 2007) {} //781emu 0x7D7
-item(FEAT_TRAINS, emu_785, 2008) {} //785emu 0x7D8
-item(FEAT_TRAINS, emu_789, 2009) {} //789emu 0x7D9
-item(FEAT_TRAINS, emu_213, 2010) {} //213emu 0x7DA
-item(FEAT_TRAINS, emu_6000, 2011) {} //213emu 0x7DB
-item(FEAT_TRAINS, emu_719, 2012) {} //213emu 0x7DC
-item(FEAT_TRAINS, emu_E231, 2020) {} //107emu 0x7E4
-item(FEAT_TRAINS, emu_E235, 2013) {} //213emu 0x7DD
-item(FEAT_TRAINS, emu_7195000, 2014) {} //213emu 0x7DE
-item(FEAT_TRAINS, emu_21156, 2015) {} //211emu 0x7DF
-item(FEAT_TRAINS, emu_E233, 2016) {} //211emu 0x7E0
-item(FEAT_TRAINS, emu_jrw207, 2017) {} //211emu 0x7E1
-item(FEAT_TRAINS, emu_E331, 2022) {} //211emu 0x7E1
-item(FEAT_TRAINS, emu_311, 2023) {} //211emu 0x7E1
-item(FEAT_TRAINS, emu_313, 2024) {} //211emu 0x7E1
-item(FEAT_TRAINS, emu_115, 2025) {} //107emu 0x7E2
-item(FEAT_TRAINS, emu_113, 2026) {} //107emu 0x7E2
-item(FEAT_TRAINS, emu_6340, 2027) {} //107emu 0x7E2
-item(FEAT_TRAINS, emu_70, 2028) {} //107emu 0x7E2
-item(FEAT_TRAINS, emu_103, 2029) {} //107emu 0x7E2
-item(FEAT_TRAINS, emu_201, 2030) {} //107emu 0x7E2
-item(FEAT_TRAINS, emu_151, 2031) {} //107emu 0x7E2
-item(FEAT_TRAINS, emu_80, 2032) {} //107emu 0x7E2
-item(FEAT_TRAINS, emu_165, 2033) {} //107emu 0x7E2
-item(FEAT_TRAINS, emu_223_0, 2034) {} //107emu 0x7E2
-item(FEAT_TRAINS, emu_223_1000, 2035) {} //107emu 0x7E2
-item(FEAT_TRAINS, emu_221, 2036) {} //107emu 0x7E2
-item(FEAT_TRAINS, emu_811, 2037) {} //107emu 0x7E2
-item(FEAT_TRAINS, emu_813, 2038) {} //107emu 0x7E2
-item(FEAT_TRAINS, emu_303, 2039) {} //107emu 0x7E2
-item(FEAT_TRAINS, emu_E127, 2040) {} //107emu 0x7E2
-item(FEAT_TRAINS, emu_415, 2041) {} //107emu 0x7E2
-item(FEAT_TRAINS, emu_401, 2042) {} //107emu 0x7E2
-item(FEAT_TRAINS, emu_403, 2043) {} //107emu 0x7E2
-item(FEAT_TRAINS, emu_4151500, 2044) {} //107emu 0x7E2
-item(FEAT_TRAINS, emu_1153000, 2045) {} //107emu 0x7E2
-item(FEAT_TRAINS, emu_121, 2046) {} //107emu 0x7E2
-item(FEAT_TRAINS, emu_7200, 2047) {} //107emu 0x7E2
-item(FEAT_TRAINS, emu_485, 2048) {} //107emu 0x7E2
-item(FEAT_TRAINS, emu_207900, 2049) {} //107emu 0x7E2
-item(FEAT_TRAINS, emu_651, 2050) {} //107emu 0x7E2
-item(FEAT_TRAINS, emu_E353, 2051) {} //107emu 0x7E2
-item(FEAT_TRAINS, emu_E531, 2052) {} //107emu 0x7E2
-item(FEAT_TRAINS, emu_225_0, 2053) {} //107emu 0x7E2
-item(FEAT_TRAINS, emu_225_5000, 2054) {} //107emu 0x7E2
-item(FEAT_TRAINS, emu_227, 2055) {} //107emu 0x7E2
-item(FEAT_TRAINS, emu_321, 2056) {} //107emu 0x7E2
-item(FEAT_TRAINS, emu_323, 2057) {} //107emu 0x7E2
-item(FEAT_TRAINS, emu_383, 2058) {} //107emu 0x7E2
-item(FEAT_TRAINS, emu_373, 2059) {} //107emu 0x7E2
-
-
-
-item(FEAT_TRAINS, DH_E851, 4000) {} //E851
-item(FEAT_TRAINS, DH_EF210, 4001) {} //EF210
-item(FEAT_TRAINS, DH_ED75, 4002) {} //ED75
-
 // Begin sorting
 
 sort(FEAT_TRAINS, [
@@ -567,20 +476,36 @@ series_e6,
 
  /* Begin stats */
 
+/* #########################################################
+0 Series  https://en.wikipedia.org/wiki/0_Series_Shinkansen 
+######################################################### */ 
+
+// Introduction Date
+
+intro_date_0_series = date(1964,10,01);     // Launched 1st October 1964
+
+// Model Life
+model_life_0_series = 1986-1964;            // Constructed until 1986
+
 // Speed
-
-
-// 0 Series
 switch (FEAT_TRAINS, SELF, sw_0_series_speed, current_date) {
 	0..date(1986, 1, 1): return 210;        // Until 1986, Speed = 210 km/h
 	return 220;                             // After 1986, Speed = 220 km/h
 }
 
-// E5 Series
-e5_series_speed = 321;
+/* #########################################################
+E5 Series https://en.wikipedia.org/wiki/E5_Series_Shinkansen
+######################################################### */
 
-// E6 Series
-e6_series_speed = 321;
+// Speed
+speed_e5_series = 320;                      // Operational Top Speed                    
+
+/* #########################################################
+E6 Series https://en.wikipedia.org/wiki/E6_Series_Shinkansen
+######################################################### */
+
+// Speed
+speed_e6_series = 320;                      // Operational Top Speed  
 
  /* End stats */
 
@@ -1138,8 +1063,8 @@ item(FEAT_TRAINS, series_0, 0) {
 	property {
 		name: 							string(STR_NAME_0_SERIES);
 		climates_available:             ALL_CLIMATES;
-		introduction_date:              date(1964,10,01);
-		model_life:                     22;							// Until 1986
+		introduction_date:              intro_date_0_series;
+		model_life:                     model_life_0_series;							
 		vehicle_life:                   30;							// Match JapanSet
 		reliability_decay:              5;
 		refittable_cargo_classes:       bitmask(CC_PASSENGERS);
@@ -1149,7 +1074,7 @@ item(FEAT_TRAINS, series_0, 0) {
 		loading_speed:                  50;							
 		cargo_age_period:               278; 						// 1.5 times normal for this expensive long-distance train
 		sprite_id:                      SPRITE_ID_NEW_TRAIN; 		// required to enable new graphics
-		// speed:                          sw_0_series_speed km/h;					// Operational Top Speed
+		// speed:                       210 km/h;					
 		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
 		track_type:                     HIGH_SPEED;
 		ai_special_flag:                AI_FLAG_PASSENGER;
@@ -1433,7 +1358,7 @@ switch (FEAT_TRAINS, PARENT, sw_e5_series_reverser_P_P, vehicle_is_reversed) {
 /* LENGTH*/
 
 /* Make the Middle long sprite length 8 and the dummy sprites length 2*/
-switch (FEAT_TRAINS, SELF, switch_length_e5_series, position_in_consist%3) {
+switch (FEAT_TRAINS, SELF, sw_length_e5_series, position_in_consist%3) {
     1: return 8;
     return 2;
 }
@@ -1482,7 +1407,7 @@ item(FEAT_TRAINS, series_e5, 2) {
 		loading_speed:                  50;							
 		cargo_age_period:               278; 						// 1.5 times normal for this expensive long-distance train
 		sprite_id:                      SPRITE_ID_NEW_TRAIN; 		// required to enable new graphics
-		speed:                          e5_series_speed km/h;				// Operational Top Speed
+		speed:                          speed_e5_series km/h;				// Operational Top Speed
 		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
 		track_type:                     HIGH_SPEED;
 		ai_special_flag:                AI_FLAG_PASSENGER;
@@ -1497,7 +1422,7 @@ item(FEAT_TRAINS, series_e5, 2) {
 		default:                        sw_e5_series_graphics;
 		purchase:                       spriteset_e5_series_purchase;
 		articulated_part:               sw_e5_series_articulated_part;
-		length:                         switch_length_e5_series;
+		length:                         sw_length_e5_series;
 		//colour_mapping:                 sw_cc_blue_white;
 		//cargo_subtype_text:             sw_x2000_cargo_subtype;
 		cost_factor:                    257;
@@ -1765,7 +1690,7 @@ switch (FEAT_TRAINS, PARENT, sw_e6_series_reverser_P_P, vehicle_is_reversed) {
 /* LENGTH*/
 
 /* Make the Middle long sprite length 8 and the dummy sprites length 2*/
-switch (FEAT_TRAINS, SELF, switch_length_e6_series, position_in_consist%3) {
+switch (FEAT_TRAINS, SELF, sw_length_e6_series, position_in_consist%3) {
     1: return 8;
     return 2;
 }
@@ -1814,7 +1739,7 @@ item(FEAT_TRAINS, series_e6, 1) {
 		loading_speed:                  50;							
 		cargo_age_period:               278; 						// 1.5 times normal for this expensive long-distance train
 		sprite_id:                      SPRITE_ID_NEW_TRAIN; 		// required to enable new graphics
-		speed:                          e6_series_speed km/h;					// Operational Top Speed
+		speed:                          speed_e6_series km/h;					// Operational Top Speed
 		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
 		track_type:                     HIGH_SPEED;
 		ai_special_flag:                AI_FLAG_PASSENGER;
@@ -1829,7 +1754,7 @@ item(FEAT_TRAINS, series_e6, 1) {
 		default:                        sw_e6_series_graphics;
 		purchase:                       spriteset_e6_series_purchase;
 		articulated_part:               sw_e6_series_articulated_part;
-		length:                         switch_length_e6_series;
+		length:                         sw_length_e6_series;
 		//colour_mapping:                 sw_cc_blue_white;
 		//cargo_subtype_text:             sw_x2000_cargo_subtype;
 		cost_factor:                    257;

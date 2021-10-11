@@ -15,7 +15,7 @@ header_stuff = [
     "template",
     "dummy",            # dummy / empty sprites for 'invisible' sprites
     "functions", 
-    "vehicleid", 
+    # "vehicleid", 
     "sorting",
     "stats",
     "grfintegration",

@@ -1,18 +1,34 @@
  /* Begin stats */
 
+/* #########################################################
+0 Series  https://en.wikipedia.org/wiki/0_Series_Shinkansen 
+######################################################### */ 
+
+// Introduction Date
+
+intro_date_0_series = date(1964,10,01);     // Launched 1st October 1964
+
+// Model Life
+model_life_0_series = 1986-1964;            // Constructed until 1986
+
 // Speed
-
-
-// 0 Series
 switch (FEAT_TRAINS, SELF, sw_0_series_speed, current_date) {
 	0..date(1986, 1, 1): return 210;        // Until 1986, Speed = 210 km/h
 	return 220;                             // After 1986, Speed = 220 km/h
 }
 
-// E5 Series
-e5_series_speed = 321;
+/* #########################################################
+E5 Series https://en.wikipedia.org/wiki/E5_Series_Shinkansen
+######################################################### */
 
-// E6 Series
-e6_series_speed = 321;
+// Speed
+speed_e5_series = 320;                      // Operational Top Speed                    
+
+/* #########################################################
+E6 Series https://en.wikipedia.org/wiki/E6_Series_Shinkansen
+######################################################### */
+
+// Speed
+speed_e6_series = 320;                      // Operational Top Speed  
 
  /* End stats */
