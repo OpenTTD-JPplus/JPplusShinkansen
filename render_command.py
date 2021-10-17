@@ -7,7 +7,7 @@ vehicle_name = "e5_series"
 vehicle_part = "cab"
 
 # Manifests to use - I use several to get the size I want
-vehicle_manifest = "12_standard_long"
+vehicle_manifest = "12_standard_manifest_4"
 
 # select zoom levels desired, options are 1,2,4
 zoom_levels = "1,2"
