@@ -25,9 +25,7 @@ header_stuff = [
 trains = [
     "0_series",
     "e6_series",
-    "e5_series",
-    # "e5e6_series"
-    "template_01"
+    "e5_series"
     ]
 
 # Do you want to copy the completed NewGRF to your OpenTTD folder? (True/False)
@@ -82,7 +80,7 @@ for i in trains:
     append_trains(i)
 
 merged_nml_path = "src/merged/" + newgrf_name + "_v" + version +".nml"
-grf_name = newgrf_name + version + ".grf"
+grf_name = newgrf_name + "_v" + version + ".grf"
 
 # Write the content of 'sections' into a file and save it
 processed_nml_file = codecs.open(merged_nml_path,'w','utf8')
