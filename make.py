@@ -13,9 +13,11 @@ header_stuff = [
     "cargotable", 
     "parameters", 
     "template",
+    "vehicleid",
+    #"wagon_attach",
     "dummy",            # dummy / empty sprites for 'invisible' sprites
-    "functions", 
-    # "vehicleid", 
+    "mucar",
+    "functions",  
     "sorting",
     "stats",
     "grfintegration",
@@ -24,7 +26,8 @@ header_stuff = [
 # Files to place in alphabetical order below
 trains = [
     "0_series",
-    "e6_series",
+    #"e6_series",
+    "e6_series_v2",
     "e5_series"
     ]
 

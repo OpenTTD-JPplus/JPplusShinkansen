@@ -86,6 +86,35 @@ template template_12m4_reversed(x, y) {
     [ x+110,	y,		30,		29,		-10,		-19]
 }
 
+template template_8t3_standard(x, y) {
+    //left_x, upper_y, width, height, offset_x, offset_y
+	//							more negative to shift left
+	//											more negative to shift up
+    [ x,		y,		8,		36,		-3,			-18]
+    [ x+20,		y,		22,		27,		-18,		-19]
+    [ x+62,		y,		32,		14,		-16,		-10]
+    [ x+114,	y,		22,		27,		-08,		-20]
+    [ x+148,	y,		8,		36,		-3,			-18]
+    [ x+168,	y,		22,		27,		-18,		-19]
+    [ x+210,	y,		32,		14,		-16,		-10]
+    [ x+262,	y,		22,		27,		-08,		-20]
+}
+
+template template_8t3_reversed(x, y) {
+    //left_x, upper_y, width, height, offset_x, offset_y
+	//							more negative to shift left
+	//											more negative to shift up
+    [ x+148,	y,		8,		36,		-3,			-18]
+    [ x+168,	y,		22,		27,		-18,		-19]
+    [ x+210,	y,		32,		14,		-16,		-10]
+    [ x+262,	y,		22,		27,		-08,		-20]
+    [ x,		y,		8,		36,		-3,			-18]
+    [ x+20,		y,		22,		27,		-18,		-19]
+    [ x+62,		y,		32,		14,		-16,		-20]
+    [ x+114,	y,		22,		27,		-08,		-20]
+}
+
+
 template template_8_standard(x, y) {
     //left_x, upper_y, width, height, offset_x, offset_y
 	//							more negative to shift left
@@ -226,6 +255,30 @@ template template_2x_6_reversed(x, y) {
     [ x+32,		y,		36,		42,		-22,		-26]
     [ x+84,		y,		48,		28,		-32,		-20]
     [ x+148,	y,		36,		42,		-10,		-26]
+}
+
+/* JP+ MU Templates */
+
+template tmpl_std(x,y){
+[x, 	 y,	8, 	24,		-3, 	-16] //short
+[x +9, 	 y,	22,	20,		-13,	-13] //dia1
+[x +32,  y,	32,	17,		-14,	-13] //long
+[x +65,  y,	22,	20,		-5, 	-12] //dia2
+[x +88,  y,	8, 	24,		-3, 	-16] //short
+[x +97,  y,	22,	20,		-13,	-13] //dia1
+[x +120, y,	32,	17,		-14,	-13] //long
+[x+153,  y,	22,	20,		-5, 	-12] //dia2
+}
+
+template tmpl_std_rev(x,y){
+[x +88,  y,	8, 	24,		-3, 	-16] //short
+[x +97,  y,	22,	20,		-13,	-13] //dia1
+[x +120, y,	32,	17,		-14,	-13] //long
+[x+153,  y,	22,	20,		-5, 	-12] //dia2
+[x, 	 y,	8, 	24,		-3, 	-16] //short
+[x +9, 	 y,	22,	20,		-13,	-13] //dia1
+[x +32,  y,	32,	17,		-14,	-13] //long
+[x +65,  y,	22,	20,		-5, 	-12] //dia2
 }
 
 // End template
