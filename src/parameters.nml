@@ -1,41 +1,27 @@
-/*	CAPCITY BOOST	*/
-if (param_boostcapacity == 1)
-{
-boostlocal = 15;
-}
-else
-{
-boostlocal = 0;
-}
-
 /*	PAX CAPACITIES	*/
+
+// Low
 if (param_basecapacity == 0) {
-	param_capacity_local = 60 + boostlocal;
-	param_capacity_rapid = 50;
-	param_capacity_express = 40;
+	param_capacity_fifty = 40;
+	param_capacity_hundred = 80;
 }
 
+//Normal
 if (param_basecapacity == 1) {
-param_capacity_local = 75 + boostlocal;
-param_capacity_rapid = 65;
-param_capacity_express = 50;
+param_capacity_fifty = 50;
+param_capacity_hundred = 100;
 }
 
+// High
 if (param_basecapacity == 2) {
-param_capacity_local = 90 + boostlocal;
-param_capacity_rapid = 75;
-param_capacity_express = 60;
+param_capacity_fifty = 60;
+param_capacity_hundred = 120;
 }
 
+// Very High
 if (param_basecapacity == 3) {
-param_capacity_local = 105 + boostlocal;
-param_capacity_rapid = 90;
-param_capacity_express = 70;
-}
-if (param_basecapacity == 4) {
-param_capacity_local = 1;
-param_capacity_rapid = 1;
-param_capacity_express = 1;
+param_capacity_fifty = 70;
+param_capacity_hundred = 140;
 }
 
 /*	LOADING SPEEDS	*/

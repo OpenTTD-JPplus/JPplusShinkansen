@@ -63,20 +63,31 @@ SAME_UNIQUE                 : You can only attach other EMUs of the same design.
 MUCAR                       :JP+ Shinkansen Car {WHITE}(MU){BLACK}
 MUCAR_DESC                  :{BLUE}Used to represent  {GREEN}motor and trailer cars{BLUE} within an EMU formation. {}{RED}Cannot be the rear of an EMU consist.
 
+# 0 Series Shinkansen
 STR_NAME_0_SERIES           :0 Series Shinkansen
+STR_DESC_0_SERIES          :{BLACK}Gauge:{GOLD} Standard (1,435mm/4 ft 8+1⁄2 in){}{BLACK}Usage: {SILVER}Express Passengers{}{}{BLACK}Operators: {WHITE}JR {GREEN}East{}
+
+# ########################
+# JR East
+# ########################
+
+# E4 Series Shinkansen (MAX)
+STR_NAME_E4_SERIES          :E4 Series Shinkansen (MAX)
+STR_DESC_E4_SERIES          :{BLACK}Gauge:{GOLD} Standard (1,435mm/4 ft 8+1⁄2 in){}{BLACK}Usage: {SILVER}Express Passengers{}{}{BLACK}Operators: {WHITE}JR {GREEN}East{}
+LV_E4_SERIES_YELLOW         : E4 Series MAX (Yellow stripe)
+LV_E4_SERIES_PINK           : E4 Series MAX (Pink stripe)
+
+
+# E5 Series Shinkansen
 STR_NAME_E5_SERIES          :E5 Series Shinkansen
-STR_NAME_E6_SERIES          :E6 Series Shinkansen
-STR_NAME_E5E6_SERIES        :E5 & E6 Series Shinkansen
-STR_DESC_E6_SERIES          :{BLACK}Gauge:{GOLD} Standard (1,435mm){}{BLACK}Usage: {SILVER}Express Passengers{}{}{BLACK}Operators: {WHITE}JR {GREEN}East{}
-
-STR_NAME_template_01        :Template Test 01
-
-# Role
-STR_ROLE_EXPRESS_PASS		:Role: {GOLD}Express Passenger
-
-# Livery
-LV_0_SERIES_ORIGINAL        :12-Car Original Set
-LV_0_SERIES_16HIKARI        :16-Car Hikari Set
+STR_DESC_E5_SERIES          :{BLACK}Gauge:{GOLD} Standard (1,435mm/4 ft 8+1⁄2 in){}{BLACK}Usage: {SILVER}Express Passengers{}{}{BLACK}Operators: {WHITE}JR {GREEN}East{}
 LV_E5_SERIES_E5             : E5 Series
 LV_E5_SERIES_H5             : H5 Series
+
+# E6 Series Shinkansen
+STR_NAME_E6_SERIES          :E6 Series Shinkansen
+STR_DESC_E6_SERIES          :{BLACK}Gauge:{GOLD} Standard (1,435mm/4 ft 8+1⁄2 in){}{BLACK}Usage: {SILVER}Express Passengers{}{}{BLACK}Operators: {WHITE}JR {GREEN}East{}
+
+
+# Livery
 LV_YEAR_DEP_LIVERY          : Year Dependent Livery

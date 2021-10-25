@@ -97,9 +97,9 @@ spriteset (spriteset_e5_series_purchase_e5_livery,	        	"src/gfx/dummy/purch
 spriteset (spriteset_e5_series_purchase_h5_livery,	        	"src/gfx/dummy/purchase.png")               		{template_purchase(0, 0)}
 
 alternative_sprites(spriteset_e5_series_purchase_e5_livery,     		
-	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,     			"src/gfx/e5_series/purchase_32bpp.png")     	 			{{tmpl_purchase_dh(0, 0)}
+	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,     			"src/gfx/e5_series/purchase_32bpp.png")     	 			{template_purchase(0, 0)}
 alternative_sprites(spriteset_e5_series_purchase_h5_livery,     		
-	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,     			"src/gfx/e5_series/purchase_32bpp.png")     	 			{tmpl_purchase_dh_32bpp(0, 0)}
+	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,     			"src/gfx/e5_series/purchase_32bpp.png")     	 			{template_purchase(0, 0)}
 
 /* PICK THE LIVERY */
 
@@ -475,7 +475,7 @@ switch (FEAT_TRAINS, SELF, sw_e5_series_visual_effect_and_powered, ((position_in
 	return visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
 }
 
-item(FEAT_TRAINS, series_e5, 2) {
+item(FEAT_TRAINS, series_e5, 2005) {
 	property {
 		name: 							string(STR_NAME_E5_SERIES);
 		climates_available:             ALL_CLIMATES;
@@ -513,7 +513,7 @@ item(FEAT_TRAINS, series_e5, 2) {
 		running_cost_factor:            func_running_costs(300);
 		purchase_running_cost_factor:   300;
 		visual_effect_and_powered:      sw_e5_series_visual_effect_and_powered;
-		additional_text:                string(STR_ROLE_EXPRESS_PASS);
+		additional_text:                string(STR_DESC_E4_SERIES);
 	}
 }
 
