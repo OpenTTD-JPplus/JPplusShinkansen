@@ -17,12 +17,25 @@ switch (FEAT_TRAINS, SELF, sw_0_series_speed, current_year) {
 }
 
 /* #########################################################
+E3 Series https://en.wikipedia.org/wiki/E3_Series_Shinkansen
+######################################################### */
+
+// Introduction Date
+intro_date_e3_series = date(1997,03,22);        // Entered service
+
+// Model Life
+model_life_e3_series = VEHICLE_NEVER_EXPIRES;   // Forever available
+
+// Speed
+speed_e3_series = 275;                          // Operational Top Speed   
+
+
+/* #########################################################
 E4 Series https://en.wikipedia.org/wiki/E4_Series_Shinkansen
 ######################################################### */
 
 // Introduction Date
 intro_date_e4_series = date(1997,12,20);        // Entered service
-//intro_date_h5_series = date(2016,03,26);        // Entered service
 
 // Model Life
 model_life_e4_series = VEHICLE_NEVER_EXPIRES;   // Forever available

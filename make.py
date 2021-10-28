@@ -27,9 +27,10 @@ header_stuff = [
 trains = [
     "0_series",
     #"e6_series",
-    "e6_series_v2",
+    "e6_series",
     "e5_series",
-    "e4_series"
+    "e4_series",
+    "e3_series"
     ]
 
 # Do you want to copy the completed NewGRF to your OpenTTD folder? (True/False)
