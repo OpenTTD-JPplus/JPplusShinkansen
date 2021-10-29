@@ -28,7 +28,7 @@ trains = [
     "0_series",
     #"e6_series",
     "e6_series",
-    "e5_series",
+    "e5_series_v3",
     "e4_series",
     "e3_series"
     ]
