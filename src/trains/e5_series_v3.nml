@@ -462,7 +462,7 @@ item(FEAT_TRAINS, series_e5) {
       graphics {
         default:                      sw_e5_series_gfx_main;
 		    purchase:                 spriteset_e5_series_purchase;
-		    additional_text:	      return string(STR_DESC_E6_SERIES);
+		    additional_text:	      return string(STR_DESC_E5_SERIES);
         cargo_subtype_text:           sw_e5_series_subtypetext_main;
         can_attach_wagon:			  sw_e5_series_attach_vehid;
         length:                       sw_e5_series_length;
@@ -476,6 +476,7 @@ item(FEAT_TRAINS, series_e5) {
         cargo_subtype_text:           sw_e5_series_subtypetext_mucar;
         power: 400/2;
         weight: 30;
+        length:                       sw_e5_series_length;
       }
 
 }
