@@ -2049,6 +2049,7 @@ alternative_sprites(spriteset_e5_series_revflip_back_panto_h5,    // Front Panto
 /*---GFX: Pantograph Positions---*/
 // E5 Series
 switch(FEAT_TRAINS,SELF, sw_e5_series_gfx_pantograph_pos_e5_default, position_in_vehid_chain%12){
+  0: spriteset_e5_series_mid_e5;
   1..2: spriteset_e5_series_dummy_e5;
   3: spriteset_e5_series_rev_mid_panto_e5;
   4..5: spriteset_e5_series_dummy_e5;
@@ -2069,6 +2070,7 @@ switch(FEAT_TRAINS,SELF, sw_e5_series_gfx_pantograph_pos_e5, num_vehs_in_vehid_c
 
 // H5_series
 switch(FEAT_TRAINS,SELF, sw_e5_series_gfx_pantograph_pos_h5_default, position_in_vehid_chain%12){
+  0: spriteset_e5_series_mid_h5;
   1..2: spriteset_e5_series_dummy_h5;
   3: spriteset_e5_series_rev_mid_panto_h5;
   4..5: spriteset_e5_series_dummy_h5;
@@ -2179,6 +2181,7 @@ switch(FEAT_TRAINS, SELF, sw_e5_series_gfx_rev_pantograph_pos_e5_sw1, [STORE_TEM
  default : sw_e5_series_gfx_rev_mid_flippedcheck;
 }
 switch(FEAT_TRAINS, SELF, sw_e5_series_gfx_rev_pantograph_pos_e5_sw2, [STORE_TEMP(position_in_consist_from_end-position_in_consist, 0x10F), var[0x61, 0, 0x000000FF, 0x41]%12]){
+  0: sw_e5_series_gfx_rev_mid_flippedcheck;
   1..2: sw_e5_series_gfx_rev_dummy_flippedcheck;
   3: sw_e5_series_gfx_rev_mid_panto_flippedcheck;
   4..5: sw_e5_series_gfx_rev_dummy_flippedcheck;
