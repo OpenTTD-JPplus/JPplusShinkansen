@@ -5,18 +5,32 @@
 railtypetable {
 	RAIL,
 	ELRL,
-	HIGH_SPEED: [
+	SHINKANSEN: [
 		RHIG, 		
 		EHIG, 
 		HSTR, 
 		SADE, 		// JapanSet Tracks - International Mode - Highspeed line
-		SDAE, 		// U&ReRMM 2 - High-Speed Line
 		SAEE, 		// JapanSet Tracks - Japanese Mode - Shinkansen highspeed
 		SBEE, 		// JapanSet Tracks - Japanese Mode - Modern Shinkansen highspeed
+		SUBE,		// JapanSet Tracks - Japanese Mode - Urban Standard Guage (Electrified)
+		SDAE, 		// U&ReRMM 2 - High-Speed Line
 		SEAE,		// U&ReRMM 2 - Modern High-Speed Line
 		SFAE,		// U&ReRMM 2 - Very High-Speed Line
-		SHAE,		// SUKTS - Very High Speed
-		ELRL],
+		SHAE]		// SUKTS - Very High Speed
+		,
+	MINI_SHINKANSEN: [
+		RHIG, 		
+		EHIG, 
+		HSTR, 
+		SACE,		// JapanSet Tracks - Modern Standard Guage (Electrified)
+		SADE, 		// JapanSet Tracks - International Mode - Highspeed line
+		SAEE, 		// JapanSet Tracks - Japanese Mode - Shinkansen highspeed
+		SBEE, 		// JapanSet Tracks - Japanese Mode - Modern Shinkansen highspeed
+		SUBE,		// JapanSet Tracks - Japanese Mode - Urban Standard Guage (Electrified)
+		SDAE, 		// U&ReRMM 2 - High-Speed Line
+		SEAE,		// U&ReRMM 2 - Modern High-Speed Line
+		SFAE,		// U&ReRMM 2 - Very High-Speed Line
+		SHAE],		// SUKTS - Very High Speed
 }
 
 // End railtypetable

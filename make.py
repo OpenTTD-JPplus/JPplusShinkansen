@@ -19,17 +19,15 @@ header_stuff = [
     "mucar",
     "functions",  
     "sorting",
-    "stats",
     "grfintegration",
     "grfoverrides"]
 
 # Files to place in alphabetical order below
 trains = [
-    "0_series",
-    #"e6_series",
+    "0_series_fixed",
     "e6_series",
-    "e5_series_v3",
-    "e4_series",
+    "e4_series_fixed",
+    "e5_series_fixed",
     "e3_series"
     ]
 
