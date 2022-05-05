@@ -1030,7 +1030,7 @@ switch (FEAT_TRAINS, SELF, sw_0_series_length, position_in_consist%3) {
 /* PUT TOGETHER THE EMU*/
 
 /* Select the correct part of the train */
-switch (FEAT_TRAINS, SELF, sw_0_series_graphics_8car, position_in_articulated_veh) {
+switch (FEAT_TRAINS, SELF, sw_0_series_graphics, position_in_articulated_veh) {
 	// Car 1
     0:  dummy_sprites; 					
 	1:  ss_0_series_head; 					
@@ -1065,49 +1065,10 @@ switch (FEAT_TRAINS, SELF, sw_0_series_graphics_8car, position_in_articulated_ve
 	23: dummy_sprites;
 }
 
-switch (FEAT_TRAINS, SELF, sw_0_series_graphics_4car, position_in_articulated_veh) {
-	// Car 1
-    0:  dummy_sprites; 					
-	1:  ss_0_series_head; 					
-	2:  dummy_sprites;
-    // Car 2					
-	3:  dummy_sprites; 					
-	4:  sw_0_series_reverser_C_C;					
-	5:  dummy_sprites;
-    // Car 3					
-	6:  dummy_sprites;					
-	7:  sw_0_series_reverser_C_P;
-	8:  dummy_sprites;
-    // Car 4
-    9: dummy_sprites;
-	10: ss_0_series_tail;
-	11: dummy_sprites;
-}
-
-switch (FEAT_TRAINS, SELF, sw_0_series_graphics, cargo_subtype) {
-    0: sw_0_series_graphics_8car;
-    1: sw_0_series_graphics_8car;
-    2: sw_0_series_graphics_4car;
-    3: sw_0_series_graphics_8car;
-}
-
-
 /* Assemble an 8-car articulated vehicle. */
-switch (FEAT_TRAINS, SELF, sw_0_series_articulated_part_8car, extra_callback_info1) {
+switch (FEAT_TRAINS, SELF, sw_0_series_articulated_part, extra_callback_info1) {
 	1 .. 23: return series_0;										// Should be same as range above
 	return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
-}
-
-switch (FEAT_TRAINS, SELF, sw_0_series_articulated_part_4car, extra_callback_info1) {
-	1 .. 11: return series_0;										// Should be same as range above
-	return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
-}
-
-switch (FEAT_TRAINS, SELF, sw_0_series_articulated_part, cargo_subtype) {
-    0: sw_0_series_articulated_part_8car;
-    1: sw_0_series_articulated_part_8car;
-    2: sw_0_series_articulated_part_4car;
-    3: sw_0_series_articulated_part_8car;
 }
 
 switch (FEAT_TRAINS, SELF, sw_0_series_visual_effect_and_powered, ((position_in_articulated_veh == 0) && !func_is_reversed()) || ((position_in_articulated_veh_from_end == 0) && func_is_reversed()) ) {
