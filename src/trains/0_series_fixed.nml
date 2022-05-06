@@ -91,6 +91,25 @@ alternative_sprites(ss_0_series_tail_reversed_kodama_livery,    ZOOM_LEVEL_NORMA
 alternative_sprites(ss_0_series_tail_nose_livery,     		    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/0_series/nose.png") {template_12_reversed(1,41)}
 alternative_sprites(ss_0_series_tail_reversed_nose_livery,      ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/0_series/nose.png") {template_12_standard(1,41)}
 
+/* CARGO SUBTYPE MENU */
+
+// Pre 2002 subtype text
+switch(FEAT_TRAINS, SELF, sw_0_series_old_livery_subtype_text, cargo_subtype) {
+    0: return string(LV_YEAR_DEP_LIVERY);
+	1: return string(LV_0_SERIES_ORIGINAL);
+    2: return string(LV_0_SERIES_NOSE); 
+       return CB_RESULT_NO_TEXT;
+    }
+
+// Post 2002 subtype text
+switch(FEAT_TRAINS, SELF, sw_0_series_new_livery_subtype_text, cargo_subtype) {
+    0: return string(LV_YEAR_DEP_LIVERY);
+	1: return string(LV_0_SERIES_ORIGINAL);
+    2: return string(LV_0_SERIES_NOSE);
+    3: return string(LV_0_SERIES_KODAMA);
+       return CB_RESULT_NO_TEXT;
+    }
+
 /* PICK THE LIVERY */
 
 // HEAD
@@ -249,23 +268,6 @@ switch(FEAT_TRAINS, SELF, ss_0_series_tail, current_year) {
     sw_0_series_tail_new_livery;
 }
 
-// Pre 2002 subtype text
-switch(FEAT_TRAINS, SELF, sw_0_series_old_livery_subtype_text, cargo_subtype) {
-    0: return string(LV_YEAR_DEP_LIVERY);
-	1: return string(LV_0_SERIES_ORIGINAL);
-    2: return string(LV_0_SERIES_NOSE); 
-       return CB_RESULT_NO_TEXT;
-    }
-
-// Post 2002 subtype text
-switch(FEAT_TRAINS, SELF, sw_0_series_new_livery_subtype_text, cargo_subtype) {
-    0: return string(LV_YEAR_DEP_LIVERY);
-	1: return string(LV_0_SERIES_ORIGINAL);
-    2: return string(LV_0_SERIES_NOSE);
-    3: return string(LV_0_SERIES_KODAMA);
-       return CB_RESULT_NO_TEXT;
-    }
-
 switch(FEAT_TRAINS, SELF, sw_0_series_year_dep_purchase, current_year) {
     0..2002: ss_0_series_buy_original_livery;
     ss_0_series_buy_kodama_livery;
@@ -284,18 +286,19 @@ switch(FEAT_TRAINS, SELF, sw_0_series_year_dep_subtype_text, current_year) {
 4) Panto Car going forwards and a Panto Car going backwards
 
    1) check reversed */ 
+
 switch (FEAT_TRAINS, PARENT, sw_0_series_reverser_C_P, vehicle_is_reversed) {
 	0: ss_0_series_coach;
 	ss_0_series_panto_reversed;
 }
 
 /* 2) check reversed */ 
-
+/*
 switch (FEAT_TRAINS, PARENT, sw_0_series_reverser_C_C, vehicle_is_reversed) {
 	0: ss_0_series_coach;
 	ss_0_series_coach_reversed;
 }
-
+*/
 
 /* 3) check reversed */ 
 switch (FEAT_TRAINS, PARENT, sw_0_series_reverser_P_C, vehicle_is_reversed) {
@@ -312,54 +315,98 @@ switch (FEAT_TRAINS, PARENT, sw_0_series_reverser_P_P, vehicle_is_reversed) {
 */
 /* LENGTH*/
 
-/* Make the Middle long sprite length 8 and the dummy sprites length 2*/
+/* Make the Middle long sprite length 6 and the dummy sprites length 3*/
 switch (FEAT_TRAINS, SELF, sw_0_series_length, position_in_consist%3) {
-    1: return 8;
-    return 2;
+    1: return 6;
+    return 3;
+}
+
+// Car 3
+
+switch (FEAT_TRAINS, PARENT, sw_0_series_reverser_car3, (cargo_subtype == 2) ) {
+	1: sw_0_series_reverser_P_C;
+	sw_0_series_reverser_C_P;
+}
+
+// Car 7
+
+switch (FEAT_TRAINS, PARENT, sw_0_series_reverser_car7, (cargo_subtype == 2) ) {
+	1: sw_0_series_reverser_P_C;
+	sw_0_series_reverser_C_P;
 }
 
 /* PUT TOGETHER THE EMU*/
 
 /* Select the correct part of the train */
 switch (FEAT_TRAINS, SELF, sw_0_series_graphics, position_in_articulated_veh) {
-	// Car 1
-    0:  dummy_sprites; 					
-	1:  ss_0_series_head; 					
-	2:  dummy_sprites;
-    // Car 2					
-	3:  dummy_sprites; 					
-	4:  sw_0_series_reverser_C_C;					
-	5:  dummy_sprites;
-    // Car 3					
-	6:  dummy_sprites;					
-	7:  sw_0_series_reverser_C_P;
-	8:  dummy_sprites;
-    // Car 4
-	9:  dummy_sprites;
-	10: sw_0_series_reverser_P_C;
-	11: dummy_sprites;
-    // Car 5
-    12: dummy_sprites;
-    13: sw_0_series_reverser_C_P;
-    14: dummy_sprites;
-    // Car 6
-    15: dummy_sprites;
-    16: sw_0_series_reverser_P_C;
-    17: dummy_sprites;
-    // Car 7
-    18: dummy_sprites;
-    19: sw_0_series_reverser_C_C;
-    20: dummy_sprites;
-    // Car 8
-    21: dummy_sprites;
-	22: ss_0_series_tail;
-	23: dummy_sprites;
+                                    // 16-car   12-car
+    1:  ss_0_series_head; 	        // Car 1    Car 1		
+	4:  sw_0_series_reverser_P_C;	// Car 2	16 car only
+	7:  sw_0_series_reverser_car3;  // Car 3    Car 2 (Panto)
+	10: sw_0_series_reverser_P_C;   // Car 4    16 car only
+    13: sw_0_series_reverser_C_P;   // Car 5    Car 3
+    16: sw_0_series_reverser_P_C;   // Car 6    16 car only
+    19: sw_0_series_reverser_car7;  // Car 7    Car 4 (Panto)
+	22: sw_0_series_reverser_P_C;   // Car 8    16 car only
+    25: sw_0_series_reverser_C_P;   // Car 9    Car 5
+    28: sw_0_series_reverser_P_C;   // Car 10   Car 6
+    31: sw_0_series_reverser_C_P;   // Car 11   Car 7
+    34: sw_0_series_reverser_P_C;   // Car 12   Car 8
+    37: sw_0_series_reverser_C_P;   // Car 13   Car 9
+    40: sw_0_series_reverser_P_C;   // Car 14   Car 10
+    43: sw_0_series_reverser_C_P;   // Car 15   Car 11
+    46: ss_0_series_tail;           // Car 16   Car 12
+	dummy_sprites;
+}
+
+switch(FEAT_TRAINS, SELF, sw_0_series_graphics_adj, ((position_in_consist == 4) || (position_in_consist == 10)  || (position_in_consist == 16)|| (position_in_consist == 22) )&& (cargo_subtype == 2))  {
+    1: dummy_sprites;
+    sw_0_series_graphics;
 }
 
 /* Assemble an 8-car articulated vehicle. */
 switch (FEAT_TRAINS, SELF, sw_0_series_articulated_part, extra_callback_info1) {
-	1 .. 23: return series_0;										// Should be same as range above
+	1 .. 47: return series_0;										// Should be same as range above
 	return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+
+/* --- Shorten vehicle callback  --- */
+
+switch(FEAT_TRAINS, SELF, sw_0_series_shorten_12_part_vehicle, position_in_consist) {
+    0: return 3;
+    1: return 6;
+    2: return 1;
+    3: return 1;
+    4: return 2;
+    5: return 1;
+    6: return 1;
+    7: return 6;
+    8: return 1;
+    9: return 1;
+    10: return 2;
+    11: return 1;
+    12: return 1;
+    13: return 6;
+    14: return 1;
+    15: return 1;
+    16: return 2;
+    17: return 1;
+    18: return 1;
+    19: return 6;
+    20: return 1;
+    21: return 1;
+    22: return 2;
+    23: return 1;
+    24: return 1;
+    25: return 6;
+    26: return 3;
+    27..47: sw_0_series_length;
+}
+
+
+switch(FEAT_TRAINS, SELF, sw_0_series_shorten, cargo_subtype) {
+    2: sw_0_series_shorten_12_part_vehicle;
+    sw_0_series_length;
 }
 
 switch (FEAT_TRAINS, SELF, sw_0_series_visual_effect_and_powered, ((position_in_articulated_veh == 0) && !func_is_reversed()) || ((position_in_articulated_veh_from_end == 0) && func_is_reversed()) ) {
@@ -400,10 +447,10 @@ item(FEAT_TRAINS, series_0, 0) {
 
 	}
 	graphics {
-		default:                        sw_0_series_graphics;
+		default:                        sw_0_series_graphics_adj;
 		purchase:                       sw_0_series_year_dep_purchase;
 		articulated_part:               sw_0_series_articulated_part;
-		length:                         sw_0_series_length;
+		length:                         sw_0_series_shorten;
         speed:							sw_0_series_speed;
 		cargo_capacity:                 50;
 		//colour_mapping:                 sw_cc_blue_white;s
