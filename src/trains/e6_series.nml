@@ -222,6 +222,27 @@ switch(FEAT_TRAINS, SELF, sw_e6_series_attach_vehid, [vehicle_type_id == series_
 }
 /*---END OF SECTION---*/
 
+// Cargo Capacity
+
+// Passenger Capacities for each parameter level
+switch(FEAT_TRAINS, SELF, sw_e6_series_param_cargo_capacity, param_basecapacity) {
+    // Assuming 50 capacity per car (same as JapanSet)
+    0: return 40;       // Low Capacity
+    2: return 60;       // High Capacity
+    3: return 70;       // Very High Capacity
+    return 50;          // Normal Capacity 
+}
+
+// Loading Speed
+
+// Loading Speeds for each parameter level
+switch(FEAT_TRAINS, SELF, sw_e6_series_param_loading_speed, param_basecapacity) {
+    // Loading Capacity for a 2 door
+    0: return 10;       // Low Capacity
+    2: return 30;       // High Capacity
+    3: return 40;       // Very High Capacity
+    return 20;          // Normal Capacity 
+}
 
 item(FEAT_TRAINS, series_e6, 2006) {
     property {
@@ -231,8 +252,8 @@ item(FEAT_TRAINS, series_e6, 2006) {
         vehicle_life:                   24;
         reliability_decay:              23;
 
-        cargo_capacity:                 param_capacity_fifty;
-        loading_speed:                  param_loading_4D;
+        cargo_capacity:                 50;
+        loading_speed:                  20;
         cost_factor:                    17;
         running_cost_factor:            51;
 
@@ -272,8 +293,8 @@ item(FEAT_TRAINS, series_e6, 2006) {
     /*Multiple Unit Car*/
       livery_override(mu_car){
         default:                        sw_e6_series_gfx_mucar;
-        cargo_capacity:                 param_capacity_fifty;
-        loading_speed:                  param_loading_4D;
+        cargo_capacity:                 sw_e6_series_param_cargo_capacity;
+        loading_speed:                  sw_e6_series_param_loading_speed;
         //cargo_subtype_text:           sw_e6_series_subtypetext_mucar;
         power:                          1140;
         weight:                         42;

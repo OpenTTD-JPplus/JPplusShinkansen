@@ -335,59 +335,81 @@ switch(FEAT_TRAINS, SELF, sw_e3_series_attach_vehid, [vehicle_type_id == series_
 }
 /*---END OF SECTION---*/
 
+// Cargo Capacity
+
+// Passenger Capacities for each parameter level
+switch(FEAT_TRAINS, SELF, sw_e3_series_param_cargo_capacity, param_basecapacity) {
+    // Assuming 50 capacity per car (same as JapanSet)
+    0: return 40;       // Low Capacity
+    2: return 60;       // High Capacity
+    3: return 70;       // Very High Capacity
+    return 50;          // Normal Capacity 
+}
+
+// Loading Speed
+
+// Loading Speeds for each parameter level
+switch(FEAT_TRAINS, SELF, sw_e3_series_param_loading_speed, param_basecapacity) {
+    // Loading Capacity for a 2 door
+    0: return 10;       // Low Capacity
+    2: return 30;       // High Capacity
+    3: return 40;       // Very High Capacity
+    return 20;          // Normal Capacity 
+}
+
 item(FEAT_TRAINS, series_e3) {
     property {
-        name:                         string(STR_NAME_E3_SERIES );
-        introduction_date:            date(1997,03,22);
-        model_life:                   VEHICLE_NEVER_EXPIRES;
-        vehicle_life:                 38;
-        reliability_decay:            21;
+        name:                           string(STR_NAME_E3_SERIES );
+        introduction_date:              date(1997,03,22);
+        model_life:                     VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                   38;
+        reliability_decay:              21;
 
-        cargo_capacity:               param_capacity_fifty;
-        loading_speed:                param_loading_2D;
-        cost_factor:                  18;
-        running_cost_factor:          48;
+        cargo_capacity:                 50;
+        loading_speed:                  20;
+        cost_factor:                    18;
+        running_cost_factor:            48;
 
-        speed:                        275 km/h;
-        track_type:                   MINI_SHINKANSEN;
-        power:                        2000 kW;
-        weight:                       42 ton;
+        speed:                          275 km/h;
+        track_type:                     MINI_SHINKANSEN;
+        power:                          2000 kW;
+        weight:                         42 ton;
 
-        climates_available:           ALL_CLIMATES;
-        ai_special_flag:              AI_FLAG_PASSENGER;
-        sprite_id:                    SPRITE_ID_NEW_TRAIN;
-        misc_flags:                   bitmask(TRAIN_FLAG_MU);
-        refittable_cargo_classes:     bitmask(CC_PASSENGERS);
-        non_refittable_cargo_classes: bitmask();
-        refit_cost:                   0;
-        dual_headed:                  1;
-        ai_engine_rank:               0;
+        climates_available:             ALL_CLIMATES;
+        ai_special_flag:                AI_FLAG_PASSENGER;
+        sprite_id:                      SPRITE_ID_NEW_TRAIN;
+        misc_flags:                     bitmask(TRAIN_FLAG_MU);
+        refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes:   bitmask();
+        refit_cost:                     0;
+        dual_headed:                    1;
+        ai_engine_rank:                 0;
 
-        running_cost_base:            RUNNING_COST_ELECTRIC;
-        engine_class:                 ENGINE_CLASS_ELECTRIC;
-        visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_ELECTRIC, 4, ENABLE_WAGON_POWER);
+        running_cost_base:              RUNNING_COST_ELECTRIC;
+        engine_class:                   ENGINE_CLASS_ELECTRIC;
+        visual_effect_and_powered:      visual_effect_and_powered(VISUAL_EFFECT_ELECTRIC, 4, ENABLE_WAGON_POWER);
 
-        tractive_effort_coefficient:  0.2;
-        air_drag_coefficient:         0.07;
-        bitmask_vehicle_info:         0;
+        tractive_effort_coefficient:    0.2;
+        air_drag_coefficient:            0.07;
+        bitmask_vehicle_info:           0;
         length: 8;
     }
     /*Graphics and Callbacks*/
       graphics {
-        default:                      sw_e3_series_gfx_main;
-		    purchase:                 spriteset_e3_series_purchase;
-		    additional_text:	      return string(STR_DESC_E6_SERIES);
-        cargo_subtype_text:           sw_e3_series_subtypetext_main;
-        can_attach_wagon:			  sw_e3_series_attach_vehid;
+        default:                        sw_e3_series_gfx_main;
+		    purchase:                   spriteset_e3_series_purchase;
+		    additional_text:	        return string(STR_DESC_E6_SERIES);
+        cargo_subtype_text:             sw_e3_series_subtypetext_main;
+        can_attach_wagon:			    sw_e3_series_attach_vehid;
         //start_stop:                   ;
     }
     /*Multiple Unit Car*/
       livery_override(mu_car){
-        default:                      sw_e3_series_gfx_mucar;
-        cargo_capacity:               param_capacity_fifty;
-        loading_speed:                param_loading_2D;
-        cargo_subtype_text:           sw_e3_series_subtypetext_mucar;
-        power: 400/2;
+        default:                        sw_e3_series_gfx_mucar;
+        cargo_capacity:                 sw_e3_series_param_cargo_capacity;
+        loading_speed:                  sw_e3_series_param_loading_speed;
+        cargo_subtype_text:             sw_e3_series_subtypetext_mucar;
+        power:                          400/2;
         weight: 30;
       }
 

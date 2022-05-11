@@ -1,8 +1,8 @@
  grf {
-	grfid:	"KR03";
-	name:	string(STR_GRF_NAME);
-	desc:	string(STR_GRF_DESC);
-	version:	1;
+	grfid:					"KR03";
+	name:					string(STR_GRF_NAME);
+	desc:					string(STR_GRF_DESC);
+	version:				1;
 	min_compatible_version: 1;
 		//japanset3 removal
 		param 4 {
@@ -88,22 +88,11 @@
 												0: string(STR_PARAM_NORMAL);
 												1: string(STR_PARAM_LOW);
 												2: string(STR_PARAM_VLOW);
-						};
-			 }
+				};
+			 
 		}
-		// resolution zoom
-		param 6 {
-		param_resolution {
-				name: string(STR_PARAM_NAME_ZOOM);
-				desc: string(STR_PARAM_DESC_ZOOM);
-				min_value: 0;
-				max_value: 1;
-				def_value: 0;
-				names: {
-					0: string(STR_PARAM_ZOOM_1X); 
-					1: string(STR_PARAM_ZOOM_2X); 
-			};
-		}
+		
+		
 	}
 }
 
