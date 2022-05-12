@@ -26,6 +26,7 @@ header_stuff = [
 trains = [
     "0_series_fixed",
     "200_series_fixed",
+    "100_series_fixed",
     "e6_series",
     "e4_series_fixed",
     "e5_series_fixed",

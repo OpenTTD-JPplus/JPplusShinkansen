@@ -440,47 +440,20 @@ switch (FEAT_TRAINS, PARENT, sw_0_series_reverser_P_P, vehicle_is_reversed) {
 
 // Make the Middle long sprite length 6 and the dummy sprites length 3
 switch (FEAT_TRAINS, SELF, sw_0_series_length_standard, position_in_consist%3) {
-    1: return 6;
-    return 3;
+    1: return 8;
+    return 2;
 }
 
 // Make a 12 car set by adjusting sprite sizes
-switch(FEAT_TRAINS, SELF, sw_0_series_shorten_12_car_vehicle, position_in_consist) {
-    0: return 3;
-    1: return 6;
-    2: return 1;
-    3: return 1;
-    4: return 2;
-    5: return 1;
-    6: return 1;
-    7: return 6;
-    8: return 1;
-    9: return 1;
-    10: return 2;
-    11: return 1;
-    12: return 1;
-    13: return 6;
-    14: return 1;
-    15: return 1;
-    16: return 2;
-    17: return 1;
-    18: return 1;
-    19: return 6;
-    20: return 1;
-    21: return 1;
-    22: return 2;
-    23: return 1;
-    24: return 1;
-    25: return 6;
-    26: return 3;
-    27..47: sw_0_series_length_standard;
+switch(FEAT_TRAINS, SELF, sw_0_series_shorten_12_car_vehicle, position_in_consist%4) {
+    2: return 8;
+    3: return 2;
+    return 1;
 }
 
 // Make a 6 car set by adjusting sprite sizes
-switch(FEAT_TRAINS, SELF, sw_0_series_shorten_6_car_vehicle, position_in_consist) {
-    39: return 6;
-    41: return 2;
-    42..47: sw_0_series_length_standard;
+switch(FEAT_TRAINS, SELF, sw_0_series_shorten_6_car_vehicle, position_in_consist%8) {
+    2: return 5;
     return 1;
 }
 
@@ -518,18 +491,18 @@ switch (FEAT_TRAINS, SELF, sw_0_series_graphics_16car, position_in_articulated_v
 // For 12-car set
 switch (FEAT_TRAINS, SELF, sw_0_series_graphics_12car, position_in_articulated_veh) {
                                     // 12-car
-    1:  ss_0_series_cab; 	        // Car 1	
-	7:  sw_0_series_reverser_P_C;   // Car 2
-    13: sw_0_series_reverser_C_P;   // Car 3
-    19: sw_0_series_reverser_P_C;   // Car 4 
-    25: sw_0_series_reverser_C_P;   // Car 5
-    28: sw_0_series_reverser_P_C;   // Car 6
-    31: sw_0_series_reverser_C_P;   // Car 7
-    34: sw_0_series_reverser_P_C;   // Car 8
-    37: sw_0_series_reverser_C_P;   // Car 9
-    40: sw_0_series_reverser_P_C;   // Car 10
-    43: sw_0_series_reverser_C_P;   // Car 11
-    46: ss_0_series_cab_rev;           // Car 12
+    2:  ss_0_series_cab; 	        // Car 1	
+	6:  sw_0_series_reverser_P_C;   // Car 2
+    10: sw_0_series_reverser_C_P;   // Car 3
+    14: sw_0_series_reverser_P_C;   // Car 4 
+    18: sw_0_series_reverser_C_P;   // Car 5
+    22: sw_0_series_reverser_P_C;   // Car 6
+    26: sw_0_series_reverser_C_P;   // Car 7
+    30: sw_0_series_reverser_P_C;   // Car 8
+    34: sw_0_series_reverser_C_P;   // Car 9
+    38: sw_0_series_reverser_P_C;   // Car 10
+    42: sw_0_series_reverser_C_P;   // Car 11
+    46: ss_0_series_cab_rev;        // Car 12
 	dummy_sprites;
 }
 
@@ -543,15 +516,15 @@ switch (FEAT_TRAINS, SELF, sw_0_series_graphics_4car, position_in_articulated_ve
 	dummy_sprites;
 }
 
-// For 4-car set
+// For 6-car set
 switch (FEAT_TRAINS, SELF, sw_0_series_graphics_6car, position_in_articulated_veh) {
                                     // 6-car
-    3:  ss_0_series_cab; 	        // Car 1	
-	15: sw_0_series_reverser_P_C;   // Car 2
-    27: sw_0_series_reverser_C_P;   // Car 3
-    39: sw_0_series_reverser_P_C;   // Car 4
-    43: sw_0_series_reverser_C_P;   // Car 5
-    46: ss_0_series_cab_rev;           // Car 6
+    2:  ss_0_series_cab; 	        // Car 1	
+	10: sw_0_series_reverser_P_C;   // Car 2
+    18: sw_0_series_reverser_C_P;   // Car 3
+    26: sw_0_series_reverser_P_C;   // Car 4
+    34: sw_0_series_reverser_C_P;   // Car 5
+    42: ss_0_series_cab_rev;        // Car 6
 	dummy_sprites;
 }
 
@@ -622,7 +595,6 @@ switch(FEAT_TRAINS, SELF, sw_0_series_power, cargo_subtype) {
     4: return 6084;      
     return 24336;        
 }
-
 
 // Speed
 
