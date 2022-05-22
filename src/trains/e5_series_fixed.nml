@@ -11,19 +11,19 @@ alternative_sprites(ss_e5_series_purchase_purple_livery,    ZOOM_LEVEL_NORMAL, B
 
 /* EMU Parts */
 
-/* Cab "Head" */
-spriteset(ss_e5_series_head_pink_livery,             		"src/gfx/dummy/empty.png") {template_dummy(0,0)}
-spriteset(ss_e5_series_head_reversed_pink_livery,    		"src/gfx/dummy/empty.png") {template_dummy(0,0)}
-spriteset(ss_e5_series_head_purple_livery,             		"src/gfx/dummy/empty.png") {template_dummy(0,0)}
-spriteset(ss_e5_series_head_reversed_purple_livery,    		"src/gfx/dummy/empty.png") {template_dummy(0,0)}
+/* Cab  */
+spriteset(ss_e5_series_cab_pink_livery,             		"src/gfx/dummy/empty.png") {template_dummy(0,0)}
+spriteset(ss_e5_series_cab_reversed_pink_livery,    		"src/gfx/dummy/empty.png") {template_dummy(0,0)}
+spriteset(ss_e5_series_cab_purple_livery,             		"src/gfx/dummy/empty.png") {template_dummy(0,0)}
+spriteset(ss_e5_series_cab_reversed_purple_livery,    		"src/gfx/dummy/empty.png") {template_dummy(0,0)}
 
 // E5 Series Pink Strip Livery
-alternative_sprites(ss_e5_series_head_pink_livery,     		ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/e5_series/e5pink.png")  {template_12_standard(1,1)}
-alternative_sprites(ss_e5_series_head_reversed_pink_livery, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/e5_series/e5pink.png")  {template_12_reversed(1,1)}		
+alternative_sprites(ss_e5_series_cab_pink_livery,     		ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/e5_series/e5pink.png")  {template_12_standard(1,1)}
+alternative_sprites(ss_e5_series_cab_reversed_pink_livery, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/e5_series/e5pink.png")  {template_12_reversed(1,1)}		
 
 // E5 Series Purple Strip Livery
-alternative_sprites(ss_e5_series_head_purple_livery,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,  "src/gfx/e5_series/h5purple.png") {template_12_standard(1,1)}
-alternative_sprites(ss_e5_series_head_reversed_purple_livery,  ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/e5_series/h5purple.png") {template_12_reversed(1,1)}	
+alternative_sprites(ss_e5_series_cab_purple_livery,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,  "src/gfx/e5_series/h5purple.png") {template_12_standard(1,1)}
+alternative_sprites(ss_e5_series_cab_reversed_purple_livery,  ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/e5_series/h5purple.png") {template_12_reversed(1,1)}	
 
 // Coach
 spriteset(ss_e5_series_coach_pink_livery,             		"src/gfx/dummy/empty.png") {template_dummy(0,0)}
@@ -59,36 +59,36 @@ alternative_sprites(ss_e5_series_panto_purple_livery,
 alternative_sprites(ss_e5_series_panto_reversed_purple_livery,  
 	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,     			            "src/gfx/e5_series/h5purple.png")      			        {template_12_reversed(1,81)}	
 
-// Cab "Tail"
-spriteset(ss_e5_series_tail_pink_livery,             		"src/gfx/dummy/empty.png")     						{template_dummy(0,0)}
-spriteset(ss_e5_series_tail_reversed_pink_livery,    		"src/gfx/dummy/empty.png")        					{template_dummy(0,0)}
-spriteset(ss_e5_series_tail_purple_livery,             		"src/gfx/dummy/empty.png")     						{template_dummy(0,0)}
-spriteset(ss_e5_series_tail_reversed_purple_livery,    		"src/gfx/dummy/empty.png")        					{template_dummy(0,0)}
+// Cab Reversed
+spriteset(ss_e5_series_cab_rev_pink_livery,             		"src/gfx/dummy/empty.png")     						{template_dummy(0,0)}
+spriteset(ss_e5_series_cab_rev_reversed_pink_livery,    		"src/gfx/dummy/empty.png")        					{template_dummy(0,0)}
+spriteset(ss_e5_series_cab_rev_purple_livery,             		"src/gfx/dummy/empty.png")     						{template_dummy(0,0)}
+spriteset(ss_e5_series_cab_rev_reversed_purple_livery,    		"src/gfx/dummy/empty.png")        					{template_dummy(0,0)}
 
 // E4 Series pink Strip Livery
-alternative_sprites(ss_e5_series_tail_pink_livery,     		
+alternative_sprites(ss_e5_series_cab_rev_pink_livery,     		
 	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,     			            "src/gfx/e5_series/e5pink.png")     	 			    {template_12_reversed(1,41)}
-alternative_sprites(ss_e5_series_tail_reversed_pink_livery,  
+alternative_sprites(ss_e5_series_cab_rev_reversed_pink_livery,  
 	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,     			            "src/gfx/e5_series/e5pink.png")      				    {template_12_standard(1,41)}		
 
 // E4 Series purple Strip Livery
-alternative_sprites(ss_e5_series_tail_purple_livery,     		
+alternative_sprites(ss_e5_series_cab_rev_purple_livery,     		
 	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,     			            "src/gfx/e5_series/h5purple.png")     	 			    {template_12_reversed(1,41)}
-alternative_sprites(ss_e5_series_tail_reversed_purple_livery,  
+alternative_sprites(ss_e5_series_cab_rev_reversed_purple_livery,  
 	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,     			            "src/gfx/e5_series/h5purple.png")      				    {template_12_standard(1,41)}
 
 /* PICK THE LIVERY */
 
-// HEAD
+// CAB
 
-switch(FEAT_TRAINS, SELF, sw_e5_series_head_new_livery, cargo_subtype) {
-    1: ss_e5_series_head_purple_livery;
-    ss_e5_series_head_pink_livery;
+switch(FEAT_TRAINS, SELF, sw_e5_series_cab_new_livery, cargo_subtype) {
+    1: ss_e5_series_cab_purple_livery;
+    ss_e5_series_cab_pink_livery;
 }
 
-switch(FEAT_TRAINS, SELF, ss_e5_series_head, current_year) {
-    0..2016: ss_e5_series_head_pink_livery;
-    sw_e5_series_head_new_livery;
+switch(FEAT_TRAINS, SELF, ss_e5_series_cab, current_year) {
+    0..2016: ss_e5_series_cab_pink_livery;
+    sw_e5_series_cab_new_livery;
 }
 
 // COACH
@@ -139,16 +139,16 @@ switch(FEAT_TRAINS, SELF, ss_e5_series_panto_reversed, current_year) {
     sw_e5_series_panto_reversed_new_livery;
 }
 
-// TAIL
+// CAB REVERSED
 
-switch(FEAT_TRAINS, SELF, sw_e5_series_tail_new_livery, cargo_subtype) {
-    1: ss_e5_series_tail_purple_livery;
-    ss_e5_series_tail_pink_livery;
+switch(FEAT_TRAINS, SELF, sw_e5_series_cab_rev_new_livery, cargo_subtype) {
+    1: ss_e5_series_cab_rev_purple_livery;
+    ss_e5_series_cab_rev_pink_livery;
 }
 
-switch(FEAT_TRAINS, SELF, ss_e5_series_tail, current_year) {
-    0..2016: ss_e5_series_tail_pink_livery;
-    sw_e5_series_tail_new_livery;
+switch(FEAT_TRAINS, SELF, ss_e5_series_cab_rev, current_year) {
+    0..2016: ss_e5_series_cab_rev_pink_livery;
+    sw_e5_series_cab_rev_new_livery;
 }
 
 // Pre 2016 subtype text
@@ -216,7 +216,7 @@ switch (FEAT_TRAINS, SELF, sw_e5_series_length, position_in_consist%3) {
 switch (FEAT_TRAINS, SELF, sw_e5_series_graphics, position_in_articulated_veh) {
 	// Car 1
     0:  dummy_sprites; 					
-	1:  ss_e5_series_head; 					
+	1:  ss_e5_series_cab; 					
 	2:  dummy_sprites;
     // Car 2					
 	3:  dummy_sprites; 					
@@ -252,7 +252,7 @@ switch (FEAT_TRAINS, SELF, sw_e5_series_graphics, position_in_articulated_veh) {
     26: dummy_sprites;
     // Car 10
     27: dummy_sprites;
-	28: ss_e5_series_tail;
+	28: ss_e5_series_cab_rev;
 	29: dummy_sprites;
 }
 
@@ -272,7 +272,7 @@ item(FEAT_TRAINS, series_e5, 2005) {
 		name: 							string(STR_NAME_E5_SERIES);
 		climates_available:             ALL_CLIMATES;
 		introduction_date:              date(2011,03,05); 
-		model_life:                     VEHICLE_NEVER_EXPIRES;		//
+		model_life:                     VEHICLE_NEVER_EXPIRES;		
 		vehicle_life:                   30;							// 
 		reliability_decay:              5;
 		refittable_cargo_classes:       bitmask(CC_PASSENGERS);
@@ -282,14 +282,14 @@ item(FEAT_TRAINS, series_e5, 2005) {
 		loading_speed:                  50;							
 		cargo_age_period:               278; 						// 1.5 times normal for this expensive long-distance train
 		sprite_id:                      SPRITE_ID_NEW_TRAIN; 		// required to enable new graphics
-		speed:                          321 km/h;				// Operational Top Speed
+		speed:                          321 km/h;					// Operational Top Speed
 		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
 		track_type:                     SHINKANSEN;
 		ai_special_flag:                AI_FLAG_PASSENGER;
 		running_cost_base:              RUNNING_COST_STEAM;
 		engine_class:                   ENGINE_CLASS_ELECTRIC;
-		power:                          8050 kW;					// Agreed to Wikipedia
-		weight:                         302 tons;					// Agreed to Wikipedia 
+		power:                          20380;						// 7.5 tile JapanSet E5
+		weight:                         675 tons;					// 45t x 10cars x 1.5longsprite
 		tractive_effort_coefficient:    0.3;
 
 	}

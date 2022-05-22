@@ -30,7 +30,8 @@ trains = [
     "e6_series",
     "e4_series_fixed",
     "e5_series_fixed",
-    "e3_series"
+    "e3_series",
+    "e5e6_series_fixed",
     ]
 
 # Do you want to copy the completed NewGRF to your OpenTTD folder? (True/False)

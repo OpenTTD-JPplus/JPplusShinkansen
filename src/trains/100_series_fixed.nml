@@ -414,12 +414,18 @@ switch(FEAT_TRAINS, SELF, sw_100_series_shorten_6_car_vehicle, position_in_consi
     return 1;
 }
 
+switch(FEAT_TRAINS, SELF, ss_100_series_year_dep_length, current_year) {
+    0..1999: sw_100_series_length_standard;
+    return 1;
+}
 
 switch(FEAT_TRAINS, SELF, sw_100_series_length, cargo_subtype) {
+    0: ss_100_series_year_dep_length;           // Year Dependent length
     3: return 1;                                // 4-car 
     4: sw_100_series_shorten_6_car_vehicle;     // 6-car
     sw_100_series_length_standard;              // All other 16-length sets
 }
+
 
 /* PUT TOGETHER THE EMU*/
 
