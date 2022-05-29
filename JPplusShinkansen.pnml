@@ -1,0 +1,38 @@
+/*---HEADER--*/
+
+//Define the GRF
+#include "src/header.pnml"
+
+//Helpers
+#include "src/basecosts.pnml"
+#include "src/railtypetable.pnml"
+#include "src/cargotable.pnml"
+#include "src/template.pnml"
+#include "src/functions.pnml"
+
+//IDs
+#include "src/vehicleid.pnml"
+#include "src/dummy.pnml"
+#include "src/mucar.pnml"
+
+//Sorting
+#include "src/sorting.pnml"
+
+//Final Settings
+#include "src/grfintegration.pnml"
+
+/*---TRAINS---*/
+#include "src/trains/0_series_fixed.pnml"
+#include "src/trains/200_series_fixed.pnml"
+#include "src/trains/400_series.pnml"
+#include "src/trains/100_series_fixed.pnml"
+#include "src/trains/e6_series.pnml"
+#include "src/trains/e5_series_fixed.pnml"
+#include "src/trains/e4_series_fixed.pnml"
+#include "src/trains/e3_series.pnml"
+#include "src/trains/e1_series_fixed.pnml"
+#include "src/trains/e5e6_series_fixed.pnml"
+
+//GRF OVERRIDE
+#include "src/grfoverrides.pnml"
+

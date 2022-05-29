@@ -57,6 +57,10 @@ SAME_UNIQUE                 : You can only attach other EMUs of the same design.
 MUCAR                       :JP+ Mini-Shinkansen Car {WHITE}(MU){BLACK}
 MUCAR_DESC                  :{BLUE}Used to represent  {GREEN}motor and trailer cars{BLUE} within a Shinkansen formation. {}{RED}Cannot be the rear of an EMU consist.
 
+# ########################
+# Not JR East 
+# ########################
+
 # 0 Series Shinkansen
 STR_NAME_0_SERIES           :0 Series Shinkansen
 STR_DESC_0_SERIES           :{BLACK}Gauge:{GOLD} Standard{}{BLACK}Usage: {SILVER}Express Passengers{}{}{BLACK}Operators: {WHITE}JNR {}
@@ -74,6 +78,8 @@ LV_100_SERIES_V             : {WHITE}(16-car) {BLACK}200 Series {BLUE}V Set
 LV_100_SERIES_P             : {WHITE}(4-car) {BLACK}200 Series {GREEN}P Set
 LV_100_SERIES_K             : {WHITE}(6-car) {BLACK}200 Series {GREEN}K Set
 
+# 300 Series Shinkansen
+STR_NAME_300_SERIES         :300 Series Shinkansen
 
 # ########################
 # JR East
@@ -96,8 +102,14 @@ STR_DESC_400_SERIES         :{BLACK}Gauge:{GOLD} Standard{}{BLACK}Usage: {SILVER
 LV_400_SERIES_ORIGINAL      : 400 Series Original
 LV_400_SERIES_REFURB        : 400 Series Refurbished
 
-# E2 Series Shinkansen
+# E1 Series Shinkansen
+STR_NAME_E1_SERIES          :E1 Series Shinkansen (MAX)
+STR_DESC_E1_SERIES          :{BLACK}Gauge:{GOLD} Standard{}{BLACK}Usage: {SILVER}Express Passengers{}{BLACK}Operators: {WHITE}JR {GREEN}East{}{BLACK}Liveries: {SILVER}Original {BLACK}(1994), {BLUE}Refurbished {BLACK}(2003){}{BLACK}Length(s): {GOLD} 9.0 tiles
+LV_E1_SERIES_ORIGINAL       : {WHITE}(12-car) {BLACK}E1 Series {SILVER}Original Livery
+LV_E1_SERIES_REFURB         : {WHITE}(12-car) {BLACK}E1 Series {BLUE}Refurbished Livery
 
+# E2 Series Shinkansen
+STR_NAME_E2_SERIES          :E2 Series Shinkansen
 
 # E3 Series Shinkansen
 STR_NAME_E3_SERIES          :E3 Series Shinkansen
