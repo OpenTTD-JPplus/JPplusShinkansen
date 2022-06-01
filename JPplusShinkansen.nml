@@ -282,10 +282,8 @@ template template_8_reversed(x, y) {
 //IDs
 # 1 "src/vehicleid.pnml" 1
 
-item(FEAT_TRAINS, mu_car, 1000) {} //mucar 				0x3E8
-item(FEAT_TRAINS, mu_cardd, 1001) {} //mucardd 		0x3E9
-item(FEAT_TRAINS, mu_cab, 1002) {} //mucab 				0x3EA
-
+// Assign IDs
+item(FEAT_TRAINS, mu_car, 1000) {}
 
 item(FEAT_TRAINS, series_400, 400) {}
 item(FEAT_TRAINS, series_e1, 2001) {}
@@ -295,6 +293,7 @@ item(FEAT_TRAINS, series_e5, 2005) {}
 item(FEAT_TRAINS, series_e6, 2006) {}
 item(FEAT_TRAINS, series_e5e6, 2056) {}
 
+// Sort the Order in the Purchase Menu below
 sort(FEAT_TRAINS, [
 
 /* JNR */
@@ -304,7 +303,7 @@ sort(FEAT_TRAINS, [
 /* JR East */
 200,    // 200 Series Shinkansen
 400,    // 400 Series Shinkansen
-2001,   // E1 Series Shinkansen
+2001,   // E1 Series Shinkansen (Max)
 2003,   // E3 Series Shinkansen
 2004,   // E4 Series Shinkansen (Max)
 2005,   // E5 Series Shinkansen
@@ -3604,6 +3603,17 @@ switch (FEAT_TRAINS, SELF, sw_e4_series_visual_effect_and_powered, ((position_in
 	return visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
 }
 
+// Cargo Capacity
+
+// Passenger Capacities for each parameter level
+switch(FEAT_TRAINS, SELF, sw_e4_series_param_cargo_capacity, param_basecapacity) {
+    // Assuming 100 capacity per car (same as JapanSet)
+    0: return 40;       // Low Capacity
+    2: return 60;       // High Capacity
+    3: return 70;       // Very High Capacity
+    return 50;          // Normal Capacity 
+}
+
 item(FEAT_TRAINS, series_e4, 2004) {
 	property {
 		name: 							string(STR_NAME_E4_SERIES);
@@ -3626,7 +3636,7 @@ item(FEAT_TRAINS, series_e4, 2004) {
 		running_cost_base:              RUNNING_COST_STEAM;
 		engine_class:                   ENGINE_CLASS_ELECTRIC;
 		power:                          8050 kW;					// Agreed to Wikipedia
-		weight:                         302 tons;					// Agreed to Wikipedia 
+		weight:                         648 tons;					// Agreed to Wikipedia 
 		tractive_effort_coefficient:    0.3;
 
 	}
@@ -3635,7 +3645,7 @@ item(FEAT_TRAINS, series_e4, 2004) {
 		purchase:                       sw_e4_series_year_dep_purchase;
 		articulated_part:               sw_e4_series_articulated_part;
 		length:                         sw_e4_series_length;
-		cargo_capacity:                 50;
+		cargo_capacity:                 sw_e4_series_param_cargo_capacity;
 		//colour_mapping:                 sw_cc_blue_white;s
 		cargo_subtype_text:             sw_e4_series_year_dep_subtype_text;
 		cost_factor:                    257;
@@ -4106,7 +4116,7 @@ alternative_sprites(ss_e1_series_panto_reversed_refurb_livery,      ZOOM_LEVEL_N
 
 switch(FEAT_TRAINS, SELF, sw_e1_series_cab_year_dep_livery, build_year) {
     0..2003: ss_e1_series_cab_original_livery;
-    2003..9999: ss_e1_series_cab_refurb_livery;
+    2004..9999: ss_e1_series_cab_refurb_livery;
     ss_e1_series_cab_original_livery;
 }
 
@@ -4130,7 +4140,7 @@ switch(FEAT_TRAINS, SELF, ss_e1_series_cab, current_year) {
 
 switch(FEAT_TRAINS, SELF, sw_e1_series_cab_rev_year_dep_livery, build_year) {
     0..2003: ss_e1_series_cab_rev_original_livery;
-    2003..9999: ss_e1_series_cab_rev_refurb_livery;
+    2004..9999: ss_e1_series_cab_rev_refurb_livery;
     ss_e1_series_cab_rev_original_livery;
 }
 
@@ -4154,7 +4164,7 @@ switch(FEAT_TRAINS, SELF, ss_e1_series_cab_rev, current_year) {
 
 switch(FEAT_TRAINS, SELF, sw_e1_series_coach_year_dep_livery, build_year) {
     0..2003: ss_e1_series_coach_original_livery;
-    2003..9999: ss_e1_series_coach_refurb_livery;
+    2004..9999: ss_e1_series_coach_refurb_livery;
     ss_e1_series_coach_original_livery;
 }
 
@@ -4178,7 +4188,7 @@ switch(FEAT_TRAINS, SELF, ss_e1_series_coach, current_year) {
 
 switch(FEAT_TRAINS, SELF, sw_e1_series_coach_reversed_year_dep_livery, build_year) {
     0..2003: ss_e1_series_coach_reversed_original_livery;
-    2003..9999: ss_e1_series_coach_reversed_refurb_livery;
+    2004..9999: ss_e1_series_coach_reversed_refurb_livery;
     ss_e1_series_coach_reversed_original_livery;
 }
 
@@ -4202,7 +4212,7 @@ switch(FEAT_TRAINS, SELF, ss_e1_series_coach_reversed, current_year) {
 
 switch(FEAT_TRAINS, SELF, sw_e1_series_panto_year_dep_livery, build_year) {
     0..2003: ss_e1_series_panto_original_livery;
-    2003..9999: ss_e1_series_panto_refurb_livery;
+    2004..9999: ss_e1_series_panto_refurb_livery;
     ss_e1_series_panto_original_livery;
 }
 
@@ -4226,7 +4236,7 @@ switch(FEAT_TRAINS, SELF, ss_e1_series_panto, current_year) {
 
 switch(FEAT_TRAINS, SELF, sw_e1_series_panto_reversed_year_dep_livery, build_year) {
     0..2003: ss_e1_series_panto_reversed_original_livery;
-    2003..9999: ss_e1_series_panto_reversed_refurb_livery;
+    2004..9999: ss_e1_series_panto_reversed_refurb_livery;
     ss_e1_series_panto_reversed_original_livery;
 }
 
@@ -4321,6 +4331,17 @@ switch (FEAT_TRAINS, SELF, sw_e1_series_visual_effect_and_powered, ((position_in
 	return visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
 }
 
+// Cargo Capacity
+
+// Passenger Capacities for each parameter level
+switch(FEAT_TRAINS, SELF, sw_e1_series_param_cargo_capacity, param_basecapacity) {
+    // Assuming 100 capacity per car (same as JapanSet)
+    0: return 40;       // Low Capacity
+    2: return 60;       // High Capacity
+    3: return 70;       // Very High Capacity
+    return 50;          // Normal Capacity 
+}
+
 item(FEAT_TRAINS, series_e1) {
 	property {
 		name: 							string(STR_NAME_E1_SERIES);
@@ -4342,8 +4363,8 @@ item(FEAT_TRAINS, series_e1) {
 		ai_special_flag:                AI_FLAG_PASSENGER;
 		running_cost_base:              RUNNING_COST_STEAM;
 		engine_class:                   ENGINE_CLASS_ELECTRIC;
-		power:                          8050 kW;					// Agreed to Wikipedia
-		weight:                         302 tons;					// Agreed to Wikipedia 
+		power:                          11300 kW;					// 
+		weight:                         1044 tons;					// Agreed to 9.0 tile JapanSet E1 Series
 		tractive_effort_coefficient:    0.3;
 
 	}
@@ -4352,7 +4373,7 @@ item(FEAT_TRAINS, series_e1) {
 		purchase:                       sw_e1_series_year_dep_purchase;
 		articulated_part:               sw_e1_series_articulated_part;
 		length:                         sw_e1_series_length;
-		cargo_capacity:                 50;
+		cargo_capacity:                 sw_e1_series_param_cargo_capacity;                                         
 		//colour_mapping:                 sw_cc_blue_white;s
 		cargo_subtype_text:             sw_e1_series_year_dep_subtype_text;
 		cost_factor:                    257;

@@ -276,6 +276,17 @@ switch (FEAT_TRAINS, SELF, sw_e4_series_visual_effect_and_powered, ((position_in
 	return visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
 }
 
+// Cargo Capacity
+
+// Passenger Capacities for each parameter level
+switch(FEAT_TRAINS, SELF, sw_e4_series_param_cargo_capacity, param_basecapacity) {
+    // Assuming 100 capacity per car (same as JapanSet)
+    0: return 40;       // Low Capacity
+    2: return 60;       // High Capacity
+    3: return 70;       // Very High Capacity
+    return 50;          // Normal Capacity 
+}
+
 item(FEAT_TRAINS, series_e4, 2004) {
 	property {
 		name: 							string(STR_NAME_E4_SERIES);
@@ -298,7 +309,7 @@ item(FEAT_TRAINS, series_e4, 2004) {
 		running_cost_base:              RUNNING_COST_STEAM;
 		engine_class:                   ENGINE_CLASS_ELECTRIC;
 		power:                          8050 kW;					// Agreed to Wikipedia
-		weight:                         302 tons;					// Agreed to Wikipedia 
+		weight:                         648 tons;					// Agreed to Wikipedia 
 		tractive_effort_coefficient:    0.3;
 
 	}
@@ -307,7 +318,7 @@ item(FEAT_TRAINS, series_e4, 2004) {
 		purchase:                       sw_e4_series_year_dep_purchase;
 		articulated_part:               sw_e4_series_articulated_part;
 		length:                         sw_e4_series_length;
-		cargo_capacity:                 50;
+		cargo_capacity:                 sw_e4_series_param_cargo_capacity;
 		//colour_mapping:                 sw_cc_blue_white;s
 		cargo_subtype_text:             sw_e4_series_year_dep_subtype_text;
 		cost_factor:                    257;
