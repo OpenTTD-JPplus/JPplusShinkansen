@@ -1,23 +1,28 @@
 # JPplusShinkansen
 
+## JR West of Tokyo
 
-| Shinkansen | Status | Year 
-| --- | --- |
-| 0 Series | ✅ | 
-| 100 Series | ✅ | 
-| 200 Series | ✅ | 
-| 300 Series | | 
-| 400 Series | WIP | 
-| 500 Series | |
-| 700 Series | |
-| N700 Series | |
-| 800 Series | |
-| E1 (MAX) Series | |
-| E2 Series | |
-| E3 Series | ✅ |
-| E4 (MAX) Series | ✅ |  
-| E5 Series | ✅ | 
-| E6 Series |  ✅ | 
-| E7/W7 Series |
-| E8 Series |
-| L0 Series |
+| | Shinkansen | Release |  |
+| --- | --- | --- | --- |
+|![0 Series](/src/gfx/0_series/purchase_original.png)| 0 Series | 1964 | |
+|![100 Series](/src/gfx/100_series/purchase_original_jnr.png)| 100 Series | 1985 | |
+|| 300 Series | | |
+|| 500 Series | ||
+|| 700 Series | ||
+|| N700 Series | ||
+|| 800 Series | ||
+
+## JR East of Tokyo 
+
+| | Shinkansen | Release | Mini-Shinkansen |
+| --- | --- | --- | --- |
+|![200 Series](/src/gfx/200_series/purchase_original_jre.png)| 200 Series | 1982 | |
+|![400 Series](/src/gfx/400_series/buy_400.png)| 400 Series | 1992 | ✅ |
+|![E1 Series](/src/gfx/e1_series/buy_e1_original.png)| E1 (MAX) Series | 1994 ||
+|![E2 Series](/src/gfx/e2_series/purchase.png)| E2 Series | 1997 ||
+|![E3 Series](/src/gfx/e3_series/buy_e3_r.png)| E3 Series | 1997 | ✅ |
+|![E4 Series](/src/gfx/e4_series/purchase_yellow.png)| E4 (MAX) Series | 1997 | |
+|![E5 Series](/src/gfx/e5_series/purchase.png)| E5 Series | 2011 | |
+|![E6 Series](/src/gfx/e6_series/purchase.png)| E6 Series | 2013|  ✅ | 
+|![E7 Series](/src/gfx/e7_series/purchase.png)| E7/W7 Series | 2014 | |
+|| E8 Series | 2024 |✅|
