@@ -668,7 +668,6 @@ switch(FEAT_TRAINS, SELF, sw_200_series_weight, cargo_subtype) {
 }
 
 // Power
-
 switch(FEAT_TRAINS, SELF, sw_200_series_power, cargo_subtype) {
     2: return 19011; 
     3: return 15209;
@@ -679,13 +678,12 @@ switch(FEAT_TRAINS, SELF, sw_200_series_power, cargo_subtype) {
 }
 
 // Speed
-
 switch(FEAT_TRAINS, SELF, sw_200_series_speed, cargo_subtype) {
     1..3: return 210;   // Original speed
     return 240;         // Sharknose and Refurbished Speed
 }
 
-item(FEAT_TRAINS, series_200, 200) {
+item(FEAT_TRAINS, series_200) {
 	property {
 		name: 							string(STR_NAME_200_SERIES);
 		climates_available:             ALL_CLIMATES;

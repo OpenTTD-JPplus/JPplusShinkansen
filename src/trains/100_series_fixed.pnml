@@ -574,7 +574,7 @@ switch(FEAT_TRAINS, SELF, sw_100_series_speed, cargo_subtype) {
     return 230;         // Kodama speed
 }
 
-item(FEAT_TRAINS, series_100, 100) {
+item(FEAT_TRAINS, series_100) {
 	property {
 		name: 							string(STR_NAME_100_SERIES);
 		climates_available:             ALL_CLIMATES;

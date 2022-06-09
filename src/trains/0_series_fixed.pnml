@@ -603,7 +603,7 @@ switch (FEAT_TRAINS, SELF, sw_0_series_speed, current_year) {
 	return 220;                                 // After 1986, Speed = 220 km/h
 }
 
-item(FEAT_TRAINS, series_0, 0) {
+item(FEAT_TRAINS, series_0) {
 	property {
 		name: 							string(STR_NAME_0_SERIES);
 		climates_available:             ALL_CLIMATES;

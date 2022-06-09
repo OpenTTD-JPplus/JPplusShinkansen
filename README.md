@@ -25,4 +25,4 @@
 |![E5 Series](/src/gfx/e5_series/purchase.png)| E5 Series | 2011 | |
 |![E6 Series](/src/gfx/e6_series/purchase.png)| E6 Series | 2013|  ✅ | 
 |![E7 Series](/src/gfx/e7_series/purchase.png)| E7/W7 Series | 2014 | |
-|| E8 Series | 2024 |✅|
+|![E8 Series](/src/gfx/e8_series/purchase.png)| E8 Series | 2024 |✅|
