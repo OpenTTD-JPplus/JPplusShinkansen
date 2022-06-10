@@ -6,15 +6,15 @@
 | --- | --- | --- | --- |
 |![0 Series](/src/gfx/0_series/purchase_original.png)| 0 Series | 1964 | |
 |![100 Series](/src/gfx/100_series/purchase_original_jnr.png)| 100 Series | 1985 | |
-|| 300 Series | | |
-|| 500 Series | ||
-|| 700 Series | ||
-|| N700 Series | ||
-|| 800 Series | ||
+|![100 Series](/src/gfx/300_series/purchase_original.png)| 300 Series | 1992 | |
+|| 500 Series | 1997 ||
+|| 700 Series | 1999 ||
+|| N700 Series | 2007 ||
+|| 800 Series | 2004 ||
 
 ## JR East of Tokyo 
 
-| | Shinkansen | Release | Mini-Shinkansen |
+| | Shinkansen | Release | Mini |
 | --- | --- | --- | --- |
 |![200 Series](/src/gfx/200_series/purchase_original_jre.png)| 200 Series | 1982 | |
 |![400 Series](/src/gfx/400_series/buy_400.png)| 400 Series | 1992 | ✅ |

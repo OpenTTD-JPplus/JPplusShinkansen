@@ -5,40 +5,40 @@
 // From 1982 to 1987
 switch(FEAT_TRAINS, SELF, sw_200_series_1982_subtype_text, cargo_subtype) {
     0: return string(LV_YEAR_DEP_LIVERY);
-	1: return string(LV_200_SERIES_ORIGINAL);
+	1: return string(LV_200_SERIES_ORIGINAL);           // Original 12-car
        return CB_RESULT_NO_TEXT;
     }
 
 // From 1987 to 1990 - introduction of 10-car and 8-car sets
 switch(FEAT_TRAINS, SELF, sw_200_series_1987_subtype_text, cargo_subtype) {
     0: return string(LV_YEAR_DEP_LIVERY);
-	1: return string(LV_200_SERIES_ORIGINAL);
-    2: return string(LV_200_SERIES_10CAR);
-    3: return string(LV_200_SERIES_08CAR);
+	1: return string(LV_200_SERIES_ORIGINAL);           // Original 12-car
+    2: return string(LV_200_SERIES_10CAR);              // Original 10-car
+    3: return string(LV_200_SERIES_08CAR);              // Original 8-car
        return CB_RESULT_NO_TEXT;
     }
 
 // From 1990 to 1992 - introduction of Sharknose sets
 switch(FEAT_TRAINS, SELF, sw_200_series_1990_subtype_text, cargo_subtype) {
     0: return string(LV_YEAR_DEP_LIVERY);
-	1: return string(LV_200_SERIES_ORIGINAL);
-    2: return string(LV_200_SERIES_10CAR);
-    3: return string(LV_200_SERIES_08CAR);
-    4: return string(LV_200_SERIES_SHARK12);
-    5: return string(LV_200_SERIES_SHARK16);
+	1: return string(LV_200_SERIES_ORIGINAL);           // Original 12-car
+    2: return string(LV_200_SERIES_10CAR);              // Original 10-car
+    3: return string(LV_200_SERIES_08CAR);              // Original 8-car
+    4: return string(LV_200_SERIES_SHARK12);            // Sharknose 12-car
+    5: return string(LV_200_SERIES_SHARK16);            // Sharknose 16-car
        return CB_RESULT_NO_TEXT;
     }
 
 // From 1992 onwards - introduction of Refurbished Livery
 switch(FEAT_TRAINS, SELF, sw_200_series_1992_subtype_text, cargo_subtype) {
     0: return string(LV_YEAR_DEP_LIVERY);
-	1: return string(LV_200_SERIES_ORIGINAL);
-    2: return string(LV_200_SERIES_10CAR);
-    3: return string(LV_200_SERIES_08CAR);
-    4: return string(LV_200_SERIES_SHARK12);
-    5: return string(LV_200_SERIES_SHARK16);
-    6: return string(LV_200_SERIES_REFURB10);
-    7: return string(LV_200_SERIES_REFURB08);
+	1: return string(LV_200_SERIES_ORIGINAL);           // Original 12-car
+    2: return string(LV_200_SERIES_10CAR);              // Original 10-car
+    3: return string(LV_200_SERIES_08CAR);              // Original 8-car
+    4: return string(LV_200_SERIES_SHARK12);            // Sharknose 12-car         
+    5: return string(LV_200_SERIES_SHARK16);            // Sharknose 16-car
+    6: return string(LV_200_SERIES_REFURB10);           // Refurbished 10-car
+    7: return string(LV_200_SERIES_REFURB08);           // Refurbished 8-car
        return CB_RESULT_NO_TEXT;
     }
 

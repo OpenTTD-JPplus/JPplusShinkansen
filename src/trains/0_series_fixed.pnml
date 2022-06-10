@@ -400,62 +400,39 @@ switch(FEAT_TRAINS, SELF, sw_0_series_year_dep_subtype_text, current_year) {
     sw_0_series_2002_subtype_text;
 }
 
-/* COACHES 
-  Repeating 4 switches to create a;
-1) Coach Car going forwards and a Panto Car going backwards
-2) Coach Car going forwards and a Coach Car going backwards
-3) Panto Car going forwards and a Coach Car going backwards
-4) Panto Car going forwards and a Panto Car going backwards
+/* REVERSERS */
 
-   1) check reversed */ 
-
-switch (FEAT_TRAINS, PARENT, sw_0_series_reverser_C_P, vehicle_is_reversed) {
-	0: ss_0_series_coach;
-	ss_0_series_panto_rev;
-}
-
-/* 2) check reversed */ 
-/*
-switch (FEAT_TRAINS, PARENT, sw_0_series_reverser_C_C, vehicle_is_reversed) {
-	0: ss_0_series_coach;
-	ss_0_series_coach_rev;
-}
-*/
-
-/* 3) check reversed */ 
-switch (FEAT_TRAINS, PARENT, sw_0_series_reverser_P_C, vehicle_is_reversed) {
-	0: ss_0_series_panto;
-	ss_0_series_coach_rev;
-}
-
-/* 4) check reversed */ 
-/*
-switch (FEAT_TRAINS, PARENT, sw_0_series_reverser_P_P, vehicle_is_reversed) {
-	0: ss_0_series_panto;
-	ss_0_series_panto_rev;
-}
-*/
+    // Coach-Panto
+    switch (FEAT_TRAINS, PARENT, sw_0_series_reverser_C_P, vehicle_is_reversed) {
+	    0: ss_0_series_coach;
+	    ss_0_series_panto_rev;
+    }
+    // Panto - Coach
+    switch (FEAT_TRAINS, PARENT, sw_0_series_reverser_P_C, vehicle_is_reversed) {
+	    0: ss_0_series_panto;
+	    ss_0_series_coach_rev;
+    }
 
 /* LENGTH*/
 
-// Make the Middle long sprite length 6 and the dummy sprites length 3
-switch (FEAT_TRAINS, SELF, sw_0_series_length_standard, position_in_consist%3) {
-    1: return 8;
-    return 2;
-}
+    // Make the Middle long sprite length 8 and the dummy sprites length 2
+    switch (FEAT_TRAINS, SELF, sw_0_series_length_standard, position_in_consist%3) {
+        1: return 8;
+        return 2;
+    }
 
-// Make a 12 car set by adjusting sprite sizes
-switch(FEAT_TRAINS, SELF, sw_0_series_shorten_12_car_vehicle, position_in_consist%4) {
-    2: return 8;
-    3: return 2;
-    return 1;
-}
+    // Make a 12 car set by adjusting sprite sizes
+    switch(FEAT_TRAINS, SELF, sw_0_series_shorten_12_car_vehicle, position_in_consist%4) {
+        2: return 8;
+        3: return 2;
+        return 1;
+    }
 
-// Make a 6 car set by adjusting sprite sizes
-switch(FEAT_TRAINS, SELF, sw_0_series_shorten_6_car_vehicle, position_in_consist%8) {
-    2: return 5;
-    return 1;
-}
+    // Make a 6 car set by adjusting sprite sizes
+    switch(FEAT_TRAINS, SELF, sw_0_series_shorten_6_car_vehicle, position_in_consist%8) {
+        2: return 5;
+        return 1;
+    }
 
 switch(FEAT_TRAINS, SELF, sw_0_series_length, cargo_subtype) {
     2: sw_0_series_shorten_12_car_vehicle;      // Nose Set
@@ -547,60 +524,56 @@ switch (FEAT_TRAINS, SELF, sw_0_series_visual_effect_and_powered, ((position_in_
 	return visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
 }
 
-// Cargo Capacity
+// CARGO CAPACITY
 
-// Passenger Capacities for each parameter level
-switch(FEAT_TRAINS, SELF, sw_0_series_param_cargo_capacity, param_basecapacity) {
-    // Assuming 65 capacity per car if it was 0.5 tile (same as JapanSet)
-    0: return 52;       // Low Capacity
-    2: return 78;       // High Capacity
-    3: return 91;       // Very High Capacity
-    return 65;          // Normal Capacity 
-}
+    // Passenger Capacities for each parameter level
+    switch(FEAT_TRAINS, SELF, sw_0_series_param_cargo_capacity, param_basecapacity) {
+        // Assuming 65 capacity per car if it was 0.5 tile (same as JapanSet)
+        0: return 52;       // Low Capacity
+        2: return 78;       // High Capacity
+        3: return 91;       // Very High Capacity
+        return 65;          // Normal Capacity 
+    }
 
-// Scaling factor for each length of consist
-switch(FEAT_TRAINS, SELF, sw_0_series_cargo_capacity_factor, cargo_subtype) {
-    2: return 3750;     // Length 12 (9 tiles)
-    3: return 1875;     // Length 6 (4.5 tiles)
-    4: return 1250;     // Length 4 (3 tiles)
-    return 5000;        // Length 16 (12 tiles)
-}
+    // Scaling factor for each length of consist
+    switch(FEAT_TRAINS, SELF, sw_0_series_cargo_capacity_factor, cargo_subtype) {
+        2: return 3750;     // Length 12 (9 tiles)
+        3: return 1875;     // Length 6 (4.5 tiles)
+        4: return 1250;     // Length 4 (3 tiles)
+        return 5000;        // Length 16 (12 tiles)
+    }
 
-switch(FEAT_TRAINS, SELF, sw_0_series_cargo_capacity, (sw_0_series_param_cargo_capacity() * sw_0_series_cargo_capacity_factor() ) / 10000 )
-    {return;}
+    switch(FEAT_TRAINS, SELF, sw_0_series_cargo_capacity, (sw_0_series_param_cargo_capacity() * sw_0_series_cargo_capacity_factor() ) / 10000 )
+        {return;}
 
-// Running Costs
+// RUNNING COSTS
+    switch(FEAT_TRAINS, SELF, sw_0_series_running_costs, cargo_subtype) {
+        2: return 225; 
+        3: return 187;
+        4: return 113;
+        return 300;
+    }
 
-switch(FEAT_TRAINS, SELF, sw_0_series_running_costs, cargo_subtype) {
-    2: return 225; 
-    3: return 187;
-    4: return 113;
-    return 300;
-}
+// WEIGHT
+    switch(FEAT_TRAINS, SELF, sw_0_series_weight, cargo_subtype) {
+        2: return 1098;     // Weight of a 9.0 tile long JapanSet 0 Series
+        3: return 549;      // Weight of a 4.5 tile long JapanSet 0 Series
+        4: return 366;      // Weight of a 3.0 tile long JapanSet 0 Series
+        return 1464;        // Weight of a 12.0 tile long JapanSet 0 Series
+    }
 
-// Weight
+// POWER
+    switch(FEAT_TRAINS, SELF, sw_0_series_power, cargo_subtype) {
+        2: return 18750;    // 12-car    
+        3: return 9375;     // 6-car 
+        4: return 6250;     // 4-car    
+        return 25000;       // 16-car       
+    }
 
-switch(FEAT_TRAINS, SELF, sw_0_series_weight, cargo_subtype) {
-    2: return 1098;     // Weight of a 9.0 tile long JapanSet 0 Series
-    3: return 549;      // Weight of a 4.5 tile long JapanSet 0 Series
-    4: return 366;      // Weight of a 3.0 tile long JapanSet 0 Series
-    return 1464;        // Weight of a 12.0 tile long JapanSet 0 Series
-}
-
-// Power
-
-switch(FEAT_TRAINS, SELF, sw_0_series_power, cargo_subtype) {
-    2: return 18252;     
-    3: return 9126;      
-    4: return 6084;      
-    return 24336;        
-}
-
-// Speed
-
-switch (FEAT_TRAINS, SELF, sw_0_series_speed, current_year) {
-	0..1986: return 210;                        // Until 1986, Speed = 210 km/h
-	return 220;                                 // After 1986, Speed = 220 km/h
+// SPEED
+    switch (FEAT_TRAINS, SELF, sw_0_series_speed, current_year) {
+	    0..1986: return 210;                        // Until 1986, Speed = 210 km/h
+	    return 220;                                 // After 1986, Speed = 220 km/h
 }
 
 item(FEAT_TRAINS, series_0) {
@@ -622,7 +595,7 @@ item(FEAT_TRAINS, series_0) {
 		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
 		track_type:                     SHINKANSEN;
 		ai_special_flag:                AI_FLAG_PASSENGER;
-		running_cost_base:              RUNNING_COST_STEAM;
+		running_cost_base:              RUNNING_COST_ELECTRIC;
 		engine_class:                   ENGINE_CLASS_ELECTRIC;
 		power:                          8050 kW;					
 		weight:                         1464 ton;                   // Changed by callback					
@@ -638,7 +611,6 @@ item(FEAT_TRAINS, series_0) {
         power:                          sw_0_series_power;
         speed:							sw_0_series_speed;
 		cargo_capacity:                 sw_0_series_cargo_capacity;
-		//colour_mapping:                 sw_cc_blue_white;s
 		cargo_subtype_text:             sw_0_series_year_dep_subtype_text;
 		cost_factor:                    257;
 		running_cost_factor:            sw_0_series_running_costs;              // Varies depending on length

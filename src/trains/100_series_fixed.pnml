@@ -12,7 +12,7 @@ switch(FEAT_TRAINS, SELF, sw_100_series_1985_subtype_text, cargo_subtype) {
 // From 1988 to 2000 - introduction of V set with more double decker cars
 switch(FEAT_TRAINS, SELF, sw_100_series_1988_subtype_text, cargo_subtype) {
     0: return string(LV_YEAR_DEP_LIVERY);
-	1: return string(LV_100_SERIES_X);
+	1: return string(LV_100_SERIES_X);      // 16-car set
     2: return string(LV_100_SERIES_V);
        return CB_RESULT_NO_TEXT;
     }
@@ -20,7 +20,7 @@ switch(FEAT_TRAINS, SELF, sw_100_series_1988_subtype_text, cargo_subtype) {
 // From 2000 to 2002 - introduction of 4-car P Set
 switch(FEAT_TRAINS, SELF, sw_100_series_2000_subtype_text, cargo_subtype) {
     0: return string(LV_YEAR_DEP_LIVERY);
-	1: return string(LV_100_SERIES_X);
+	1: return string(LV_100_SERIES_X);      // 16-car set
     2: return string(LV_100_SERIES_V);
     3: return string(LV_100_SERIES_P);
        return CB_RESULT_NO_TEXT;
@@ -29,7 +29,7 @@ switch(FEAT_TRAINS, SELF, sw_100_series_2000_subtype_text, cargo_subtype) {
 // From 2002 onwards - introduction of 6-car K Set
 switch(FEAT_TRAINS, SELF, sw_100_series_2002_subtype_text, cargo_subtype) {
     0: return string(LV_YEAR_DEP_LIVERY);
-	1: return string(LV_100_SERIES_X);
+	1: return string(LV_100_SERIES_X);      // 16-car set
     2: return string(LV_100_SERIES_V);
     3: return string(LV_100_SERIES_P);
     4: return string(LV_100_SERIES_K);
