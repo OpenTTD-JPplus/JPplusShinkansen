@@ -6,8 +6,8 @@
 | --- | --- | --- | --- |
 |![0 Series](/src/gfx/0_series/purchase_original.png)| 0 Series | 1964 | |
 |![100 Series](/src/gfx/100_series/purchase_original_jnr.png)| 100 Series | 1985 | |
-|![100 Series](/src/gfx/300_series/purchase_original.png)| 300 Series | 1992 | |
-|| 500 Series | 1997 ||
+|![300 Series](/src/gfx/300_series/purchase.png)| 300 Series | 1992 | |
+|![500 Series](/src/gfx/500_series/purchase.png)| 500 Series | 1997 ||
 || 700 Series | 1999 ||
 || N700 Series | 2007 ||
 || 800 Series | 2004 ||
