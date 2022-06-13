@@ -285,6 +285,7 @@ item(FEAT_TRAINS, series_200, 200) {}
 item(FEAT_TRAINS, series_300, 300) {}
 item(FEAT_TRAINS, series_400, 400) {}
 item(FEAT_TRAINS, series_500, 500) {}
+item(FEAT_TRAINS, series_800, 800) {}
 item(FEAT_TRAINS, series_e1, 2001) {}
 item(FEAT_TRAINS, series_e2, 2002) {}
 item(FEAT_TRAINS, series_e3, 2003) {}
@@ -303,6 +304,7 @@ sort(FEAT_TRAINS, [
 100,    // 100 Series Shinkansen
 300,    // 300 Series Shinkansen
 500,    // 500 Series Shinkansen
+800,    // 800 Series Shinkansen
 
 /* JR East */
 200,    // 200 Series Shinkansen
@@ -1980,6 +1982,139 @@ item(FEAT_TRAINS, series_100) {
 }
 
 /* End 100 Series */
+# 1 "JPplusShinkansen.pnml" 4
+# 1 "src/trains/800_series_fixed.pnml" 1
+/* Begin 800 Series */
+
+/* CARGO SUBTYPE MENU*/
+
+    // None (for now)
+
+/* SPRITES */
+
+    // Purchase Menu
+    spriteset (ss_800_series_buy,	        	    "src/gfx/dummy/purchase.png")           {template_purchase(0, 0)}
+    alternative_sprites(ss_800_series_buy,          ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,     "src/gfx/800_series/purchase.png") {template_purchase(0, 0)}
+
+    // "CAB"
+    spriteset(ss_800_series_cab,             		"src/gfx/dummy/empty.png")     			{template_dummy(0,0)}
+    spriteset(ss_800_series_cab_rev,             	"src/gfx/dummy/empty.png")     			{template_dummy(0,0)}
+    alternative_sprites(ss_800_series_cab,     	    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,     "src/gfx/800_series/800_series.png") {template_12_standard(1,1)}
+    alternative_sprites(ss_800_series_cab_rev,      ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,     "src/gfx/800_series/800_series.png") {template_12_reversed(1,41)}		
+
+    // COACH
+    spriteset(ss_800_series_coach,             		"src/gfx/dummy/empty.png")     			{template_dummy(0,0)}
+    spriteset(ss_800_series_coach_rev,    		    "src/gfx/dummy/empty.png")     			{template_dummy(0,0)}
+    alternative_sprites(ss_800_series_coach,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,     "src/gfx/800_series/800_series.png") {template_12_standard(1,121)}
+    alternative_sprites(ss_800_series_coach_rev,    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,     "src/gfx/800_series/800_series.png") {template_12_reversed(1,121)}
+
+    // COACH PANTO
+    spriteset(ss_800_series_panto,          		"src/gfx/dummy/empty.png")     			{template_dummy(0,0)}
+    spriteset(ss_800_series_panto_rev, 		        "src/gfx/dummy/empty.png")     			{template_dummy(0,0)}
+    alternative_sprites(ss_800_series_panto,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,     "src/gfx/800_series/800_series.png") {template_12_standard(1,81)}
+    alternative_sprites(ss_800_series_panto_rev,    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,     "src/gfx/800_series/800_series.png") {template_12_reversed(1,81)}	
+
+/* REVERSERS */
+
+    switch (FEAT_TRAINS, PARENT, sw_800_series_reverser_P_P, vehicle_is_reversed) {
+	    0: ss_800_series_panto;
+	    ss_800_series_panto_rev;
+    }
+
+    switch (FEAT_TRAINS, PARENT, sw_800_series_reverser_C_C, vehicle_is_reversed) {
+	    0: ss_800_series_coach;
+	    ss_800_series_coach_rev;
+    }
+
+/* LENGTH*/
+
+    // Make the Middle long sprite length 8 and the dummy sprites length 2
+    switch (FEAT_TRAINS, SELF, sw_800_series_length, position_in_consist%3) {
+        1: return 8;
+        return 2;
+    }
+
+/* PUT TOGETHER THE EMU*/
+
+    // 6 Car Set
+    switch (FEAT_TRAINS, SELF, sw_800_series_graphics, position_in_articulated_veh) {					
+	    1:  ss_800_series_cab; 	            // Car 1	Car 6								
+	    4:  sw_800_series_reverser_P_P;	    // Car 2	Car 5	    						
+	    7:  sw_800_series_reverser_C_C;     // Car 3    Car 4
+	    10: sw_800_series_reverser_C_C;     // Car 4    Car 3
+        13: sw_800_series_reverser_P_P;     // Car 5    Car 2
+        16: ss_800_series_cab_rev;          // Car 6    Car 1
+	    dummy_sprites;
+    }
+
+    /* Assemble an articulated vehicle. */
+    switch (FEAT_TRAINS, SELF, sw_800_series_articulated_part, extra_callback_info1) {
+	    1 .. 17: return series_800;										// Should be same as range above
+	    return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+    }
+
+    switch (FEAT_TRAINS, SELF, sw_800_series_visual_effect_and_powered, ((position_in_articulated_veh == 0) && !func_is_reversed()) || ((position_in_articulated_veh_from_end == 0) && func_is_reversed()) ) {
+	    1: return visual_effect_and_powered(VISUAL_EFFECT_ELECTRIC, 0, ENABLE_WAGON_POWER);
+	    return visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+    }
+
+/* CARGO CAPACITY */
+
+    // Passenger Capacities for each parameter level
+    switch(FEAT_TRAINS, SELF, sw_800_series_param_cargo_capacity, param_basecapacity) {
+        // Assuming 65 capacity per car if it was 0.5 tile (same as JapanSet)
+        0: return 52;       // Low Capacity
+        2: return 78;       // High Capacity
+        3: return 92;       // Very High Capacity
+        return 66;          // Normal Capacity 
+    }
+
+    switch(FEAT_TRAINS, SELF, sw_800_series_cargo_capacity, (sw_800_series_param_cargo_capacity()  / 2 ) ){return;}     // Half since n * 1.5 (long)/ 3 (3 parts per car)
+
+item(FEAT_TRAINS, series_800) {
+	property {
+		name: 							string(STR_NAME_800_SERIES);
+		climates_available:             ALL_CLIMATES;
+		introduction_date:              date(2004,03,13);
+		model_life:                     VEHICLE_NEVER_EXPIRES;		//
+		vehicle_life:                   30;							// 
+		reliability_decay:              5;
+		refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+		refit_cost:                     0;
+		default_cargo_type:             PASS;
+		cargo_capacity:                 1;							// 
+		loading_speed:                  50;							
+		cargo_age_period:               278; 						// 1.5 times normal for this expensive long-distance train
+		sprite_id:                      SPRITE_ID_NEW_TRAIN; 		// required to enable new graphics
+		speed:                          261 km/h;				
+		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT);
+		track_type:                     SHINKANSEN;
+		ai_special_flag:                AI_FLAG_PASSENGER;
+		running_cost_base:              RUNNING_COST_ELECTRIC;
+		engine_class:                   ENGINE_CLASS_ELECTRIC;
+		power:                          14500 kW;					
+		weight:                         396 tons;					
+		tractive_effort_coefficient:    0.3;
+
+	}
+	graphics {
+		default:                        sw_800_series_graphics;
+		purchase:                       ss_800_series_buy;
+		articulated_part:               sw_800_series_articulated_part;
+		length:                         sw_800_series_length;
+        //power:                          sw_800_series_power;
+        //weight:                         sw_800_series_weight;
+		cargo_capacity:                 sw_800_series_cargo_capacity;
+		//cargo_subtype_text:             sw_800_series_subtype_text;
+		cost_factor:                    257;
+		running_cost_factor:            func_running_costs(300);
+		purchase_running_cost_factor:   300;
+		visual_effect_and_powered:      sw_800_series_visual_effect_and_powered;
+		additional_text:                string(STR_DESC_800_SERIES);
+	}
+}
+
+/* End 800 series */
 # 1 "JPplusShinkansen.pnml" 4
 
 /*---JR EAST TRAINS---*/
