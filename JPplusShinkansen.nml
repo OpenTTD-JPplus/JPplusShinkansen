@@ -285,6 +285,7 @@ item(FEAT_TRAINS, series_200, 200) {}
 item(FEAT_TRAINS, series_300, 300) {}
 item(FEAT_TRAINS, series_400, 400) {}
 item(FEAT_TRAINS, series_500, 500) {}
+item(FEAT_TRAINS, series_700, 700) {}
 item(FEAT_TRAINS, series_800, 800) {}
 item(FEAT_TRAINS, series_e1, 2001) {}
 item(FEAT_TRAINS, series_e2, 2002) {}
@@ -304,6 +305,7 @@ sort(FEAT_TRAINS, [
 100,    // 100 Series Shinkansen
 300,    // 300 Series Shinkansen
 500,    // 500 Series Shinkansen
+700,    // 700 Series Shinkansen
 800,    // 800 Series Shinkansen
 
 /* JR East */
@@ -1060,6 +1062,248 @@ item(FEAT_TRAINS, series_0) {
 }
 
 /* End 0 series */
+# 1 "JPplusShinkansen.pnml" 4
+# 1 "src/trains/700_series_fixed.pnml" 1
+/* Begin 700 Series */
+
+/* CARGO SUBTYPE MENU*/
+
+    switch(FEAT_TRAINS, SELF, sw_700_series_subtype_text, cargo_subtype) {
+	    0: return string(LV_700_SERIES_ORIGINAL);
+        1: return string(LV_700_SERIES_HIKARI);
+        return CB_RESULT_NO_TEXT;
+        }
+
+/* SPRITES */
+
+    /* Purchase Menu */
+    spriteset (ss_700_series_buy,	        	"src/gfx/dummy/purchase.png")               		{template_purchase(0, 0)}
+    alternative_sprites(ss_700_series_buy,     ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,     "src/gfx/700_series/purchase.png") {template_purchase(0, 0)}
+
+    /* EMU Parts */
+
+    /* "CAB" */
+    spriteset(ss_700_series_cab_original_livery,             		"src/gfx/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_700_series_cab_rev_original_livery,             	"src/gfx/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_700_series_cab_hikari_livery,             		    "src/gfx/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_700_series_cab_rev_hikari_livery,             		"src/gfx/dummy/empty.png") {template_dummy(0,0)}
+
+    // 700 Series Original Strip Livery
+    alternative_sprites(ss_700_series_cab_original_livery,     	    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/700_series/original.png") {template_12_standard(1,1)}
+    alternative_sprites(ss_700_series_cab_rev_original_livery,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/700_series/original.png") {template_12_reversed(1,41)}		
+
+    // 700 Series Hikari Strip Livery
+    alternative_sprites(ss_700_series_cab_hikari_livery,            ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/700_series/hikari.png") {template_12_standard(1,1)}
+    alternative_sprites(ss_700_series_cab_rev_hikari_livery,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/700_series/hikari.png") {template_12_reversed(1,41)}
+
+    /* COACH */
+    spriteset(ss_700_series_coach_original_livery,             		"src/gfx/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_700_series_coach_rev_original_livery,    		    "src/gfx/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_700_series_coach_hikari_livery,             		"src/gfx/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_700_series_coach_rev_hikari_livery,    		    "src/gfx/dummy/empty.png") {template_dummy(0,0)}
+
+    // 700 Series Original Strip Livery
+    alternative_sprites(ss_700_series_coach_original_livery,        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/700_series/original.png") {template_12_standard(1,121)}
+    alternative_sprites(ss_700_series_coach_rev_original_livery,    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/700_series/original.png") {template_12_reversed(1,121)}
+
+    // 700 Series Hikari Strip Livery
+    alternative_sprites(ss_700_series_coach_hikari_livery,     		ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/700_series/hikari.png") {template_12_standard(1,121)}
+    alternative_sprites(ss_700_series_coach_rev_hikari_livery,      ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/700_series/hikari.png") {template_12_reversed(1,121)}	
+
+    // Coach Panto
+    spriteset(ss_700_series_panto_original_livery,          		"src/gfx/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_700_series_panto_rev_original_livery, 		        "src/gfx/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_700_series_panto_hikari_livery,          		    "src/gfx/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_700_series_panto_rev_hikari_livery, 		        "src/gfx/dummy/empty.png") {template_dummy(0,0)}
+
+    // 700 Series Original Strip Livery
+    alternative_sprites(ss_700_series_panto_original_livery,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,  "src/gfx/700_series/original.png") {template_12_standard(1,81)}
+    alternative_sprites(ss_700_series_panto_rev_original_livery,    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,  "src/gfx/700_series/original.png") {template_12_reversed(1,81)}	
+
+    // 700 Series Hikari Strip Livery
+    alternative_sprites(ss_700_series_panto_hikari_livery,     		ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/700_series/hikari.png") {template_12_standard(1,81)}
+    alternative_sprites(ss_700_series_panto_rev_hikari_livery,      ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/700_series/hikari.png") {template_12_reversed(1,81)}	
+
+/* PICK THE LIVERY */
+
+    // CAB
+
+    switch(FEAT_TRAINS, SELF, ss_700_series_cab, cargo_subtype) {
+        1: ss_700_series_cab_hikari_livery;
+        ss_700_series_cab_original_livery;
+    }
+
+    switch(FEAT_TRAINS, SELF, ss_700_series_cab_rev, cargo_subtype) {
+        1: ss_700_series_cab_rev_hikari_livery;
+        ss_700_series_cab_rev_original_livery;
+    }
+
+    // COACH
+
+    switch(FEAT_TRAINS, SELF, ss_700_series_coach, cargo_subtype) {
+        1: ss_700_series_coach_hikari_livery;
+        ss_700_series_coach_original_livery;
+    }
+
+    switch(FEAT_TRAINS, SELF, ss_700_series_coach_rev, cargo_subtype) {
+        1: ss_700_series_coach_rev_hikari_livery;
+        ss_700_series_coach_rev_original_livery;
+    }
+
+    // PANTO
+
+    switch(FEAT_TRAINS, SELF, ss_700_series_panto, cargo_subtype) {
+        1: ss_700_series_panto_hikari_livery;
+        ss_700_series_panto_original_livery;
+    }
+
+    switch(FEAT_TRAINS, SELF, ss_700_series_panto_rev, cargo_subtype) {
+        1: ss_700_series_panto_rev_hikari_livery;
+        ss_700_series_panto_rev_original_livery;
+    }
+
+/* REVERSERS */
+
+    switch (FEAT_TRAINS, PARENT, sw_700_series_reverser_C_C, vehicle_is_reversed) {
+	    0: ss_700_series_coach;
+	    ss_700_series_coach_rev;
+    }
+
+    switch (FEAT_TRAINS, PARENT, sw_700_series_reverser_P_P, vehicle_is_reversed) {
+	    0: ss_700_series_panto;
+	    ss_700_series_panto_rev;
+    }
+
+/* LENGTH*/
+
+    /* Make the Middle long sprite length 8 and the dummy sprites length 2*/
+    switch (FEAT_TRAINS, SELF, sw_700_series_length_standard, position_in_consist%3) {
+        1: return 8;
+        return 2;
+    }
+
+    switch (FEAT_TRAINS, SELF, sw_700_series_shorten_8_car_vehicle, position_in_consist%6) {
+        2: return 7;
+        return 1;
+    }
+
+    switch (FEAT_TRAINS, SELF, sw_700_series_length, cargo_subtype) {
+        1: sw_700_series_shorten_8_car_vehicle;
+        sw_700_series_length_standard;
+    }
+
+/* PUT TOGETHER THE EMU*/
+
+    /* Select the correct part of the train */
+    switch (FEAT_TRAINS, SELF, sw_700_series_graphics_16car, position_in_articulated_veh) {					
+	    1:  ss_700_series_cab; 	                // Car 1	Car 16								
+	    4:  sw_700_series_reverser_C_C;	        // Car 2	Car 15	    						
+	    7:  sw_700_series_reverser_C_C;         // Car 3    Car 14
+	    10: sw_700_series_reverser_C_C;         // Car 4    Car 13
+        13: sw_700_series_reverser_P_P;         // Car 5    Car 12
+        16: sw_700_series_reverser_C_C;         // Car 6    Car 11
+        19: sw_700_series_reverser_C_C;         // Car 7    Car 10
+	    22: sw_700_series_reverser_C_C;         // Car 8    Car 9
+        25: sw_700_series_reverser_C_C;         // Car 9    Car 8
+        28: sw_700_series_reverser_C_C;         // Car 10   Car 7
+        31: sw_700_series_reverser_C_C;         // Car 11   Car 6
+        34: sw_700_series_reverser_P_P;         // Car 12   Car 5
+        37: sw_700_series_reverser_C_C;         // Car 13   Car 4
+        40: sw_700_series_reverser_C_C;         // Car 14   Car 3
+        43: sw_700_series_reverser_C_C;         // Car 15   Car 2
+        46: ss_700_series_cab_rev;              // Car 16   Car 1
+	    dummy_sprites;
+    }
+
+    switch (FEAT_TRAINS, SELF, sw_700_series_graphics_8car, position_in_articulated_veh) {					
+	    2:  ss_700_series_cab; 	                // Car 1	Car 8								
+	    8:  sw_700_series_reverser_P_P;	        // Car 2	Car 7	    						
+	    14: sw_700_series_reverser_C_C;         // Car 3    Car 6
+	    20: sw_700_series_reverser_C_C;         // Car 4    Car 5
+        26: sw_700_series_reverser_C_C;         // Car 5    Car 4
+        32: sw_700_series_reverser_C_C;         // Car 6    Car 3
+        38: sw_700_series_reverser_P_P;         // Car 7    Car 2
+        44: ss_700_series_cab_rev;              // Car 8    Car 1
+	    dummy_sprites;
+    }
+
+    switch (FEAT_TRAINS, SELF, sw_700_series_graphics, cargo_subtype) {
+        1: sw_700_series_graphics_8car;
+        sw_700_series_graphics_16car;
+    }
+
+/* Assemble an 16-car articulated vehicle. */
+switch (FEAT_TRAINS, SELF, sw_700_series_articulated_part, extra_callback_info1) {
+	1 .. 47: return series_700;										// Should be same as range above
+	return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+
+switch (FEAT_TRAINS, SELF, sw_700_series_visual_effect_and_powered, ((position_in_articulated_veh == 0) && !func_is_reversed()) || ((position_in_articulated_veh_from_end == 0) && func_is_reversed()) ) {
+	1: return visual_effect_and_powered(VISUAL_EFFECT_ELECTRIC, 0, ENABLE_WAGON_POWER);
+	return visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+}
+
+// Cargo Capacity
+
+// Passenger Capacities for each parameter level
+switch(FEAT_TRAINS, SELF, sw_700_series_param_cargo_capacity, param_basecapacity) {
+    // Assuming 100 capacity per car (same as JapanSet)
+    0: return 52;       // Low Capacity
+    2: return 78;       // High Capacity
+    3: return 91;       // Very High Capacity
+    return 65;          // Normal Capacity 
+}
+
+    // Scaling factor for each length of consist
+    switch(FEAT_TRAINS, SELF, sw_700_series_cargo_capacity_factor, cargo_subtype) {
+        1: return 25;     // Length 8 (6.0 tiles)
+        return 50;        // Length 16 (12.0 tiles)
+    }
+
+    switch(FEAT_TRAINS, SELF, sw_700_series_cargo_capacity, (sw_700_series_param_cargo_capacity() * sw_700_series_cargo_capacity_factor() ) / 100 ) {return;}
+
+item(FEAT_TRAINS, series_700) {
+	property {
+		name: 							string(STR_NAME_700_SERIES);
+		climates_available:             ALL_CLIMATES;
+		introduction_date:              date(1999,03,13);
+		model_life:                     VEHICLE_NEVER_EXPIRES;		//
+		vehicle_life:                   30;							// 
+		reliability_decay:              5;
+		refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+		refit_cost:                     0;
+		default_cargo_type:             PASS;
+		cargo_capacity:                 1;							// 
+		loading_speed:                  50;							
+		cargo_age_period:               278; 						// 1.5 times normal for this expensive long-distance train
+		sprite_id:                      SPRITE_ID_NEW_TRAIN; 		// required to enable new graphics
+		speed:                          286 km/h;				// Operational Top Speed
+		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
+		track_type:                     SHINKANSEN;
+		ai_special_flag:                AI_FLAG_PASSENGER;
+		running_cost_base:              RUNNING_COST_STEAM;
+		engine_class:                   ENGINE_CLASS_ELECTRIC;
+		power:                          8050 kW;					// Agreed to Wikipedia
+		weight:                         648 tons;					// Agreed to Wikipedia 
+		tractive_effort_coefficient:    0.3;
+
+	}
+	graphics {
+		default:                        sw_700_series_graphics;
+		purchase:                       ss_700_series_buy;
+		articulated_part:               sw_700_series_articulated_part;
+		length:                         sw_700_series_length;
+		cargo_capacity:                 sw_700_series_cargo_capacity;
+		cargo_subtype_text:             sw_700_series_subtype_text;
+		cost_factor:                    257;
+		running_cost_factor:            func_running_costs(300);
+		purchase_running_cost_factor:   300;
+		visual_effect_and_powered:      sw_700_series_visual_effect_and_powered;
+		additional_text:                string(STR_DESC_700_SERIES);
+	}
+}
+
+/* End 700 series */
 # 1 "JPplusShinkansen.pnml" 4
 # 1 "src/trains/500_series_fixed.pnml" 1
 /* Begin 500 Series */
