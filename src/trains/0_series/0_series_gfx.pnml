@@ -1,0 +1,74 @@
+/* Begin 0 Series Graphics*/
+
+    /* Purchase Menu */
+    spriteset (ss_0_series_buy_original_livery,	        	        "src/gfx/dummy/purchase.png") {template_purchase(0, 0)}
+    spriteset (ss_0_series_buy_kodama_livery,	        	        "src/gfx/dummy/purchase.png") {template_purchase(0, 0)}
+    spriteset (ss_0_series_buy_original_1987,	        	        "src/gfx/dummy/purchase.png") {template_purchase(0, 0)}
+
+    alternative_sprites(ss_0_series_buy_original_livery,            ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/0_series/purchase_original.png") {template_purchase(0, 0)}
+    alternative_sprites(ss_0_series_buy_kodama_livery,     	        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/0_series/purchase_kodama.png") {template_purchase(0, 0)}
+    alternative_sprites(ss_0_series_buy_original_1987,              ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/0_series/purchase_original_v2.png") {template_purchase(0, 0)}
+
+    /* EMU Parts */
+
+    /* "CAB" */
+    spriteset(ss_0_series_cab_original_livery,             		    "src/gfx/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_0_series_cab_rev_original_livery,    		        "src/gfx/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_0_series_cab_kodama_livery,             		    "src/gfx/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_0_series_cab_rev_kodama_livery,    		        "src/gfx/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_0_series_cab_nose_livery,             		        "src/gfx/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_0_series_cab_rev_nose_livery,    		            "src/gfx/dummy/empty.png") {template_dummy(0,0)}
+
+    // 0 Series Original Strip Livery
+    alternative_sprites(ss_0_series_cab_original_livery,     	    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/0_series/original.png") {template_12_standard(1,1)}
+    alternative_sprites(ss_0_series_cab_rev_original_livery,        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/0_series/original.png") {template_12_reversed(1,41)}		
+
+    // 0 Series Kodama Strip Livery
+    alternative_sprites(ss_0_series_cab_kodama_livery,     		    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/0_series/kodama.png") {template_12_standard(1,1)}
+    alternative_sprites(ss_0_series_cab_rev_kodama_livery,          ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/0_series/kodama.png") {template_12_reversed(1,41)}	
+
+    // 0 Series Nose Livery
+    alternative_sprites(ss_0_series_cab_nose_livery,     		    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/0_series/nose.png") {template_12_standard(1,1)}
+    alternative_sprites(ss_0_series_cab_rev_nose_livery,            ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/0_series/nose.png") {template_12_reversed(1,41)}
+
+    /* COACH */
+    spriteset(ss_0_series_coach_original_livery,             		"src/gfx/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_0_series_coach_rev_original_livery,    		    "src/gfx/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_0_series_coach_kodama_livery,             		    "src/gfx/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_0_series_coach_rev_kodama_livery,    		        "src/gfx/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_0_series_coach_nose_livery,             		    "src/gfx/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_0_series_coach_rev_nose_livery,    		        "src/gfx/dummy/empty.png") {template_dummy(0,0)}
+
+    // 0 Series Original Strip Livery
+    alternative_sprites(ss_0_series_coach_original_livery,     		ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/0_series/original.png") {template_12_standard(1,121)}
+    alternative_sprites(ss_0_series_coach_rev_original_livery,      ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/0_series/original.png") {template_12_reversed(1,121)}
+
+    // 0 Series Kodama Strip Livery
+    alternative_sprites(ss_0_series_coach_kodama_livery,     		ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/0_series/kodama.png") {template_12_standard(1,121)}
+    alternative_sprites(ss_0_series_coach_rev_kodama_livery,        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/0_series/kodama.png") {template_12_reversed(1,121)}	
+
+    // 0 Series Nose Livery
+    alternative_sprites(ss_0_series_coach_nose_livery,     		    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/0_series/nose.png") {template_12_standard(1,121)}
+    alternative_sprites(ss_0_series_coach_rev_nose_livery,          ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/0_series/nose.png") {template_12_reversed(1,121)}
+
+    // PANTO COACH
+    spriteset(ss_0_series_panto_original_livery,          		    "src/gfx/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_0_series_panto_rev_original_livery, 		        "src/gfx/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_0_series_panto_kodama_livery,          		    "src/gfx/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_0_series_panto_rev_kodama_livery, 		            "src/gfx/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_0_series_panto_nose_livery,          		        "src/gfx/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_0_series_panto_rev_nose_livery, 		            "src/gfx/dummy/empty.png") {template_dummy(0,0)}
+
+    // 0 Series Original Strip Livery
+    alternative_sprites(ss_0_series_panto_original_livery,          ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/0_series/original.png") {template_12_standard(1,81)}
+    alternative_sprites(ss_0_series_panto_rev_original_livery,      ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/0_series/original.png") {template_12_reversed(1,81)}	
+
+    // 0 Series Kodama Strip Livery
+    alternative_sprites(ss_0_series_panto_kodama_livery,     		ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/0_series/kodama.png") {template_12_standard(1,81)}
+    alternative_sprites(ss_0_series_panto_rev_kodama_livery,        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/0_series/kodama.png") {template_12_reversed(1,81)}	
+
+    // 0 Series Nose Livery
+    alternative_sprites(ss_0_series_panto_nose_livery,     		    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/0_series/nose.png") {template_12_standard(1,81)}
+    alternative_sprites(ss_0_series_panto_rev_nose_livery,          ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/0_series/nose.png") {template_12_reversed(1,81)}	
+
+/* End 0 series Graphics */

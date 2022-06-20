@@ -1,0 +1,278 @@
+/* Begin 0 Series */
+
+/* 0 Series GRAPHICS */
+
+#include "src/trains/0_series/0_series_gfx.pnml"
+#include "src/trains/0_series/0_series_liveries.pnml"
+
+/* CARGO SUBTYPE MENU */
+
+    // From 2002 onwards - introduction of Kodama Livery
+    switch(FEAT_TRAINS, SELF, sw_0_series_2002_subtype_text, cargo_subtype) {
+        0: return string(LV_YEAR_DEP_LIVERY);
+	    1: return string(LV_0_SERIES_ORIGINAL_16CAR);
+        2: return string(LV_0_SERIES_NOSE_12CAR);
+        3: return string(LV_0_SERIES_KODAMA_16CAR);
+        return CB_RESULT_NO_TEXT;
+        }
+    
+    // From 1964 to 2002
+    switch(FEAT_TRAINS, SELF, sw_0_series_1964_subtype_text, cargo_subtype) {
+        0: return string(LV_YEAR_DEP_LIVERY);
+	    1: return string(LV_0_SERIES_ORIGINAL_16CAR);
+        2: return string(LV_0_SERIES_NOSE_12CAR);
+        return CB_RESULT_NO_TEXT;
+        }
+
+    // Cargo Subtype List
+    switch(FEAT_TRAINS, SELF, sw_0_series_year_dep_subtype_text, current_year) {
+        0..2001: sw_0_series_1964_subtype_text;
+        sw_0_series_2002_subtype_text;
+    }
+
+/* REVERSERS */
+
+    // Coach-Panto
+    switch (FEAT_TRAINS, PARENT, sw_0_series_reverser_C_P, vehicle_is_reversed) {
+	    0: ss_0_series_coach;
+	    ss_0_series_panto_rev;
+    }
+    // Panto - Coach
+    switch (FEAT_TRAINS, PARENT, sw_0_series_reverser_P_C, vehicle_is_reversed) {
+	    0: ss_0_series_panto;
+	    ss_0_series_coach_rev;
+    }
+
+
+/* LENGTH*/
+
+    // Standard 2-8-2 Length
+    switch (FEAT_TRAINS, SELF, sw_0_series_length_standard, position_in_consist%3) {
+        1: return 8;
+        return 2;
+    }
+
+    // Make a 12 car set by adjusting sprite size to 1-1-8-2
+    switch(FEAT_TRAINS, SELF, sw_0_series_shorten_12_car_vehicle, position_in_consist%4) {
+        2: return 8;
+        3: return 2;
+        return 1;
+    }
+
+switch(FEAT_TRAINS, SELF, sw_0_series_length, cargo_subtype) {
+    2: sw_0_series_shorten_12_car_vehicle;      // Nose Set
+    sw_0_series_length_standard;                // All other 16-length sets
+}
+
+/* PUT TOGETHER THE EMU*/
+
+/* 16-car sent */
+switch (FEAT_TRAINS, SELF, sw_0_series_graphics_16car, position_in_articulated_veh) {
+                                    // 16-car   
+    1:  ss_0_series_cab; 	        // Car 1    	
+	4:  sw_0_series_reverser_P_C;	// Car 2	
+	7:  sw_0_series_reverser_C_P;   // Car 3    
+	10: sw_0_series_reverser_P_C;   // Car 4    
+    13: sw_0_series_reverser_C_P;   // Car 5    
+    16: sw_0_series_reverser_P_C;   // Car 6   
+    19: sw_0_series_reverser_C_P;   // Car 7    
+	22: sw_0_series_reverser_P_C;   // Car 8    
+    25: sw_0_series_reverser_C_P;   // Car 9    
+    28: sw_0_series_reverser_P_C;   // Car 10   
+    31: sw_0_series_reverser_C_P;   // Car 11   
+    34: sw_0_series_reverser_P_C;   // Car 12   
+    37: sw_0_series_reverser_C_P;   // Car 13   
+    40: sw_0_series_reverser_P_C;   // Car 14   
+    43: sw_0_series_reverser_C_P;   // Car 15   
+    46: ss_0_series_cab_rev;           // Car 16   
+	dummy_sprites;
+}
+
+// For 12-car set
+switch (FEAT_TRAINS, SELF, sw_0_series_graphics_12car, position_in_articulated_veh) {
+                                    // 12-car
+    2:  ss_0_series_cab; 	        // Car 1	
+	6:  sw_0_series_reverser_P_C;   // Car 2
+    10: sw_0_series_reverser_C_P;   // Car 3
+    14: sw_0_series_reverser_P_C;   // Car 4 
+    18: sw_0_series_reverser_C_P;   // Car 5
+    22: sw_0_series_reverser_P_C;   // Car 6
+    26: sw_0_series_reverser_C_P;   // Car 7
+    30: sw_0_series_reverser_P_C;   // Car 8
+    34: sw_0_series_reverser_C_P;   // Car 9
+    38: sw_0_series_reverser_P_C;   // Car 10
+    42: sw_0_series_reverser_C_P;   // Car 11
+    46: ss_0_series_cab_rev;        // Car 12
+	dummy_sprites;
+}
+
+/* Choose which Graphics based on which Cargo Subtype */
+switch(FEAT_TRAINS, SELF, sw_0_series_graphics, cargo_subtype) {
+    2: sw_0_series_graphics_12car;
+    sw_0_series_graphics_16car;
+}
+
+/* Assemble an 48 part articulated vehicle. */
+switch (FEAT_TRAINS, SELF, sw_0_series_articulated_part, extra_callback_info1) {
+	1 .. 47: return series_0;										// Should be same as range above
+	return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+ 
+switch (FEAT_TRAINS, SELF, sw_0_series_visual_effect_and_powered, ((position_in_articulated_veh == 0) && !func_is_reversed()) || ((position_in_articulated_veh_from_end == 0) && func_is_reversed()) ) {
+	1: return visual_effect_and_powered(VISUAL_EFFECT_ELECTRIC, 0, ENABLE_WAGON_POWER);
+	return visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+}
+
+/* STATS */
+
+    // NUMBER OF CARS 
+
+    switch(FEAT_TRAINS, SELF, sw_0_series_number_cars, cargo_subtype) {
+        2: return 12;     // Weight of a 9.0 tile long JapanSet 0 Series
+        return 16;        // Weight of a 12.0 tile long JapanSet 0 Series
+    }
+
+    // CARGO CAPACITY
+
+    // Passenger Capacities for each parameter level
+    switch(FEAT_TRAINS, SELF, sw_0_series_param_cargo_capacity, param_basecapacity) {
+        // Assuming 65 capacity per car if it was 0.5 tile (same as JapanSet)
+        0: return 52;       // Low Capacity
+        2: return 78;       // High Capacity
+        3: return 91;       // Very High Capacity
+        return 65;          // Normal Capacity 
+    }
+
+    // Scaling factor for each length of consist
+    switch(FEAT_TRAINS, SELF, sw_0_series_cargo_capacity_factor, cargo_subtype) {
+        2: return 3750;     // Length 12 (9 tiles)
+        return 5000;        // Length 16 (12 tiles)
+    }
+
+    switch(FEAT_TRAINS, SELF, sw_0_series_cargo_capacity, (sw_0_series_param_cargo_capacity() * sw_0_series_cargo_capacity_factor() ) / 10000 )
+        {return;}
+
+    // RUNNING COSTS
+    switch(FEAT_TRAINS, SELF, sw_0_series_running_costs, (sw_0_series_number_cars() * 100 ) )
+            {return;}
+
+    // WEIGHT
+    switch(FEAT_TRAINS, SELF, sw_0_series_weight, (sw_0_series_number_cars() * 61 ) )   // Number of cars for each cargo subtype x weight (t)
+        {return;}
+
+    // POWER
+    switch(FEAT_TRAINS, SELF, sw_0_series_power, (sw_0_series_number_cars() * 1000 ) )   // Number of cars for each cargo subtype x power (hp)
+        {return;}
+
+    // SPEED
+    switch (FEAT_TRAINS, SELF, sw_0_series_speed, current_year) {
+	    0..1986: return 210;                        // Until 1986, Speed = 210 km/h
+	    return 220;                                 // After 1986, Speed = 220 km/h
+    }
+
+    // COST FACTOR
+    /*
+    switch(FEAT_TRAINS, SELF, sw_0_series_cost_factor, cargo_subtype) {
+        2: return 300;     // Length 12 (9 tiles)
+        return 400;        // Length 16 (12 tiles)
+    }
+*/
+    // REFIT COST
+
+    switch(FEAT_TRAINS, SELF, sw_0_series_refit_cost_minus2, cargo_subtype) {
+        2: return 7;       // Currently 'Nose', Cost to move to 'Year Dependent Livery'       
+        return 0;
+    }
+    
+    switch(FEAT_TRAINS, SELF, sw_0_series_refit_cost_minus1_check, cargo_subtype) {
+        3: return -6;       // Currently 'Kodama', Refund to move to 'Nose'     
+        return 0;           // Currently 'Original' moving to 'Year Dependent'    
+    }
+
+    switch(FEAT_TRAINS, SELF, sw_0_series_refit_cost_minus1, cargo_subtype) {
+        2: return 7;       // Currently 'Nose', Cost to move to 'Original'     
+        sw_0_series_refit_cost_minus1_check;
+    }
+
+    switch(FEAT_TRAINS, SELF, sw_0_series_refit_cost_plus1_check, cargo_subtype) {
+        1: return -6;       // Currently 'Original', Refund to move to 'Nose'               
+        return 0;           // Currently 'Year Dependent' moving to 'Original' 
+    }
+
+    switch(FEAT_TRAINS, SELF, sw_0_series_refit_cost_plus1, cargo_subtype) {
+        2: return 7;       // Currently 'Nose', Cost to move to 'Kodama'               
+        sw_0_series_refit_cost_plus1_check;
+    }
+
+    switch(FEAT_TRAINS, SELF, sw_0_series_refit_cost_plus2, cargo_subtype) {
+        0: return -6;      // Currently 'Year Depedent', Refund to move to    
+        return 0;
+    }
+
+    switch(FEAT_TRAINS, SELF, sw_0_series_refit_cost, var[0x10,8,0xFF] - cargo_subtype) {
+        /* Refit cost based on difference between target cargo sybtype and current cargo subtype.
+	    Refitting to fewer carriages refunds money, while adding carriages costs (more) money.    */    
+	    -3:             0; 
+        -2:				sw_0_series_refit_cost_minus2;
+	    -1:				sw_0_series_refit_cost_minus1;
+	    0:				0;
+	    1:				sw_0_series_refit_cost_plus1;
+	    2:				sw_0_series_refit_cost_plus2;
+        3:              0;
+	    return CB_FAILED;
+    }
+    
+    
+item(FEAT_TRAINS, series_0) {
+	property {
+		/* Menu */
+        name: 							string(STR_NAME_0_SERIES);
+        sprite_id:                      SPRITE_ID_NEW_TRAIN; 		// required to enable new graphics
+        misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
+		running_cost_base:              RUNNING_COST_ELECTRIC;
+		engine_class:                   ENGINE_CLASS_ELECTRIC;
+        /* Availability */
+		climates_available:             ALL_CLIMATES;
+		introduction_date:              date(1964,10,01);           // Date of launch
+		model_life:                     2008 - 1964;		        // Until 2008
+		vehicle_life:                   30;							// Same as JapanSet
+        track_type:                     SHINKANSEN;
+		/* Cargo */
+        reliability_decay:              5;
+		refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+		refit_cost:                     0;
+		default_cargo_type:             PASS;
+        ai_special_flag:                AI_FLAG_PASSENGER;
+		cargo_capacity:                 1;							// 
+		loading_speed:                  50;                         // 							
+		cargo_age_period:               278; 						// Default 185 x 1.5
+		/* Stats */
+        speed:                          210 km/h;                   // Changed by callback
+        power:                          8050 kW;	                // Changed by callback				
+		weight:                         1464 ton;                   // Changed by callback					
+		tractive_effort_coefficient:    0.3;                        // Standard
+	}
+	graphics {
+		/* Menu */
+        additional_text:                string(STR_DESC_0_SERIES);
+        cargo_subtype_text:             sw_0_series_year_dep_subtype_text;
+        /* Graphics */
+        default:                        sw_0_series_graphics;
+		purchase:                       sw_0_series_year_dep_purchase;
+		articulated_part:               sw_0_series_articulated_part;
+        visual_effect_and_powered:      sw_0_series_visual_effect_and_powered;
+		/* Stats */
+        length:                         sw_0_series_length;
+        weight:                         sw_0_series_weight;
+        power:                          sw_0_series_power;
+        speed:							sw_0_series_speed;
+		cargo_capacity:                 sw_0_series_cargo_capacity;
+		/* Costs */
+        cost_factor:                    400;
+        refit_cost:                     sw_0_series_refit_cost;
+		running_cost_factor:            sw_0_series_running_costs;              // Varies depending on length
+		purchase_running_cost_factor:   300;
+	}
+}
+
+/* End 0 series */
