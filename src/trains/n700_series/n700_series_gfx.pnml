@@ -1,0 +1,51 @@
+/* Begin N700 Series GRAPHICS */
+
+    /* Purchase Menu */
+    spriteset (ss_n700_series_buy,	        	"src/gfx/dummy/purchase.png")               		{template_purchase(0, 0)}
+    alternative_sprites(ss_n700_series_buy,     ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,     "src/gfx/n700_series/purchase.png") {template_purchase(0, 0)}
+
+    /* EMU Parts */
+
+    /* "CAB" */
+    spriteset(ss_n700_series_cab_original_livery,             		"src/gfx/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_n700_series_cab_rev_original_livery,             	"src/gfx/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_n700_series_cab_kyushu_livery,             	    "src/gfx/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_n700_series_cab_rev_kyushu_livery,             	"src/gfx/dummy/empty.png") {template_dummy(0,0)}
+
+    // n700 Series Original Strip Livery
+    alternative_sprites(ss_n700_series_cab_original_livery,         ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/n700_series/original.png") {template_12_standard(1,1)}
+    alternative_sprites(ss_n700_series_cab_rev_original_livery,     ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/n700_series/original.png") {template_12_reversed(1,41)}		
+
+    // n700 Series Kyushu Strip Livery
+    alternative_sprites(ss_n700_series_cab_kyushu_livery,           ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/n700_series/kyushu.png") {template_12_standard(1,1)}
+    alternative_sprites(ss_n700_series_cab_rev_kyushu_livery,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/n700_series/kyushu.png") {template_12_reversed(1,41)}
+
+    /* COACH */
+    spriteset(ss_n700_series_coach_original_livery,             	"src/gfx/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_n700_series_coach_rev_original_livery,    		    "src/gfx/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_n700_series_coach_kyushu_livery,             		"src/gfx/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_n700_series_coach_rev_kyushu_livery,    		    "src/gfx/dummy/empty.png") {template_dummy(0,0)}
+
+    // N700 Series Original Strip Livery
+    alternative_sprites(ss_n700_series_coach_original_livery,        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/n700_series/original.png") {template_12_standard(1,121)}
+    alternative_sprites(ss_n700_series_coach_rev_original_livery,    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/n700_series/original.png") {template_12_reversed(1,121)}
+
+    // N700 Series Kyushu Strip Livery
+    alternative_sprites(ss_n700_series_coach_kyushu_livery,     	 ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/n700_series/kyushu.png") {template_12_standard(1,121)}
+    alternative_sprites(ss_n700_series_coach_rev_kyushu_livery,      ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/n700_series/kyushu.png") {template_12_reversed(1,121)}	
+
+    // Coach Panto
+    spriteset(ss_n700_series_panto_original_livery,          		"src/gfx/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_n700_series_panto_rev_original_livery, 		    "src/gfx/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_n700_series_panto_kyushu_livery,          		    "src/gfx/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_n700_series_panto_rev_kyushu_livery, 		        "src/gfx/dummy/empty.png") {template_dummy(0,0)}
+
+    // N700 Series Original Strip Livery
+    alternative_sprites(ss_n700_series_panto_original_livery,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,  "src/gfx/n700_series/original.png") {template_12_standard(1,81)}
+    alternative_sprites(ss_n700_series_panto_rev_original_livery,   ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,  "src/gfx/n700_series/original.png") {template_12_reversed(1,81)}	
+
+    // N700 Series Kyushu Strip Livery
+    alternative_sprites(ss_n700_series_panto_kyushu_livery,         ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/n700_series/kyushu.png") {template_12_standard(1,81)}
+    alternative_sprites(ss_n700_series_panto_rev_kyushu_livery,     ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/n700_series/kyushu.png") {template_12_reversed(1,81)}	
+
+/* End N700 series GRAPHICS */

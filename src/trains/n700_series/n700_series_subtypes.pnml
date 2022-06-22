@@ -1,0 +1,22 @@
+/* N700 CARGO SUBTYPE MENU*/
+
+    // Post 2011 subtype text
+    switch(FEAT_TRAINS, SELF, sw_n700_series_subtype_text_1999, cargo_subtype) {
+	    0: return string(LV_N700_SERIES_ORIGINAL);      // 16 Car Original
+        return CB_RESULT_NO_TEXT;
+        }
+
+
+    // Post 2011 subtype text
+    switch(FEAT_TRAINS, SELF, sw_n700_series_subtype_text_2011, cargo_subtype) {
+	    0: return string(LV_N700_SERIES_ORIGINAL);      // 16 Car Original
+        1: return string(LV_N700_SERIES_ORIGINAL_08);   // 8 Car Original
+        2: return string(LV_N700_SERIES_KYUSHU);        // 8 Car Kyushu
+        return CB_RESULT_NO_TEXT;
+        }
+
+
+    switch(FEAT_TRAINS, SELF, sw_n700_series_subtype_text, current_year) {
+    0..2010: sw_n700_series_subtype_text_1999;
+    sw_n700_series_subtype_text_2011;
+    }

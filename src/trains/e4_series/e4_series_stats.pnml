@@ -1,0 +1,27 @@
+/* Begin E4 Series STATS */
+
+/* LENGTH*/
+
+/* Make the Middle long sprite length 8 and the dummy sprites length 2*/
+switch (FEAT_TRAINS, SELF, sw_e4_series_length, position_in_consist%3) {
+    1: return 8;
+    return 2;
+}
+
+/* CARGO CAPACITY
+
+IRL 8 car = 817     JPS 960/1200/1440/1680
+
+    8-car   parts   per part
+RW  816     24      34   
+LS  1224    24      51
+DC  1632    24      68
+
+*/
+
+// Passenger Capacities for each parameter level
+switch(FEAT_TRAINS, SELF, sw_e4_series_param_cargo_capacity, param_basecapacity) {
+    0: return 34;       // 1x Real World Capacity
+    2: return 68;       // 2x Double Real World Capacity
+    return 51;          // 1.5x Normal Capacity 
+}

@@ -1,0 +1,56 @@
+
+/* Purchase Menu */
+    spriteset (ss_e4_series_buy_yellow_livery,	        	"src/gfx/dummy/purchase.png")               		{template_purchase(0, 0)}
+    spriteset (ss_e4_series_buy_pink_livery,	        	"src/gfx/dummy/purchase.png")               		{template_purchase(0, 0)}
+
+    alternative_sprites(ss_e4_series_buy_yellow_livery,     ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,     "src/gfx/e4_series/purchase_yellow.png") {template_purchase(0, 0)}
+    alternative_sprites(ss_e4_series_buy_pink_livery,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,     "src/gfx/e4_series/purchase_pink.png")   {template_purchase(0, 0)}
+
+    switch(FEAT_TRAINS, SELF, sw_e4_series_year_dep_purchase, current_year) {
+        0..2014: ss_e4_series_buy_yellow_livery;
+        ss_e4_series_buy_pink_livery;
+    }
+
+/* EMU Parts */
+
+    /* "CAB" */
+    spriteset(ss_e4_series_cab_yellow_livery,             		    "src/gfx/dummy/empty.png")     			{template_dummy(0,0)}
+    spriteset(ss_e4_series_cab_rev_yellow_livery,             		"src/gfx/dummy/empty.png")     			{template_dummy(0,0)}
+    spriteset(ss_e4_series_cab_pink_livery,             		    "src/gfx/dummy/empty.png")     			{template_dummy(0,0)}
+    spriteset(ss_e4_series_cab_rev_pink_livery,             		"src/gfx/dummy/empty.png")     			{template_dummy(0,0)}
+
+    // E4 Series Yellow Strip Livery
+    alternative_sprites(ss_e4_series_cab_yellow_livery,     	    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,     "src/gfx/e4_series/e4y.png") {template_12_standard(1,1)}
+    alternative_sprites(ss_e4_series_cab_rev_yellow_livery,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,     "src/gfx/e4_series/e4y.png")  {template_12_reversed(1,41)}		
+
+    // E4 Series Pink Strip Livery
+    alternative_sprites(ss_e4_series_cab_pink_livery,     		    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,     "src/gfx/e4_series/e4p.png") {template_12_standard(1,1)}
+    alternative_sprites(ss_e4_series_cab_rev_pink_livery,     		ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,     "src/gfx/e4_series/e4p.png") {template_12_reversed(1,41)}
+
+    /* COACH */
+    spriteset(ss_e4_series_coach_yellow_livery,             		"src/gfx/dummy/empty.png")     			{template_dummy(0,0)}
+    spriteset(ss_e4_series_coach_reversed_yellow_livery,    		"src/gfx/dummy/empty.png")     			{template_dummy(0,0)}
+    spriteset(ss_e4_series_coach_pink_livery,             		    "src/gfx/dummy/empty.png")     			{template_dummy(0,0)}
+    spriteset(ss_e4_series_coach_reversed_pink_livery,    		    "src/gfx/dummy/empty.png")     			{template_dummy(0,0)}
+
+    // E4 Series Yellow Strip Livery
+    alternative_sprites(ss_e4_series_coach_yellow_livery,     		ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,     "src/gfx/e4_series/e4y.png") {template_12_standard(1,121)}
+    alternative_sprites(ss_e4_series_coach_reversed_yellow_livery,  ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,     "src/gfx/e4_series/e4y.png") {template_12_reversed(1,121)}
+
+    // E4 Series Pink Strip Livery
+    alternative_sprites(ss_e4_series_coach_pink_livery,     		ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,     "src/gfx/e4_series/e4p.png") {template_12_standard(1,121)}
+    alternative_sprites(ss_e4_series_coach_reversed_pink_livery,    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,     "src/gfx/e4_series/e4p.png") {template_12_reversed(1,121)}	
+
+    // Coach Panto
+    spriteset(ss_e4_series_panto_yellow_livery,          		    "src/gfx/dummy/empty.png")     			{template_dummy(0,0)}
+    spriteset(ss_e4_series_panto_reversed_yellow_livery, 		    "src/gfx/dummy/empty.png")     			{template_dummy(0,0)}
+    spriteset(ss_e4_series_panto_pink_livery,          		        "src/gfx/dummy/empty.png")     			{template_dummy(0,0)}
+    spriteset(ss_e4_series_panto_reversed_pink_livery, 		        "src/gfx/dummy/empty.png")     			{template_dummy(0,0)}
+
+    // E4 Series Yellow Strip Livery
+    alternative_sprites(ss_e4_series_panto_yellow_livery,     		ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,     "src/gfx/e4_series/e4y.png") {template_12_standard(1,81)}
+    alternative_sprites(ss_e4_series_panto_reversed_yellow_livery,  ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,     "src/gfx/e4_series/e4y.png") {template_12_reversed(1,81)}	
+
+    // E4 Series Pink Strip Livery
+    alternative_sprites(ss_e4_series_panto_pink_livery,     		ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,     "src/gfx/e4_series/e4p.png") {template_12_standard(1,81)}
+    alternative_sprites(ss_e4_series_panto_reversed_pink_livery,    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,     "src/gfx/e4_series/e4p.png") {template_12_reversed(1,81)}	

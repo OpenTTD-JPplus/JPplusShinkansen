@@ -1,0 +1,24 @@
+/* 0 Series CARGO SUBTYPE MENU */
+
+    // From 2002 onwards - introduction of Kodama Livery
+    switch(FEAT_TRAINS, SELF, sw_0_series_2002_subtype_text, cargo_subtype) {
+        0: return string(LV_YEAR_DEP_LIVERY);
+	    1: return string(LV_0_SERIES_ORIGINAL_16CAR);
+        2: return string(LV_0_SERIES_NOSE_12CAR);
+        3: return string(LV_0_SERIES_KODAMA_16CAR);
+        return CB_RESULT_NO_TEXT;
+        }
+    
+    // From 1964 to 2002
+    switch(FEAT_TRAINS, SELF, sw_0_series_1964_subtype_text, cargo_subtype) {
+        0: return string(LV_YEAR_DEP_LIVERY);
+	    1: return string(LV_0_SERIES_ORIGINAL_16CAR);
+        2: return string(LV_0_SERIES_NOSE_12CAR);
+        return CB_RESULT_NO_TEXT;
+        }
+
+    // Cargo Subtype List
+    switch(FEAT_TRAINS, SELF, sw_0_series_year_dep_subtype_text, current_year) {
+        0..2001: sw_0_series_1964_subtype_text;
+        sw_0_series_2002_subtype_text;
+    }
