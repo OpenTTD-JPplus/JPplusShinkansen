@@ -1,0 +1,79 @@
+/* Begin 100 Series GRAPHICS */
+
+/* SPRITES */
+
+/* Purchase Menu */
+spriteset (ss_100_series_buy_original_jnr,	        	    "src/gfx/dummy/purchase.png") {template_purchase(0, 0)}
+spriteset (ss_100_series_buy_original_jrc,	        	    "src/gfx/dummy/purchase.png") {template_purchase(0, 0)}
+spriteset (ss_100_series_buy_original_c_w,	        	    "src/gfx/dummy/purchase.png") {template_purchase(0, 0)}
+spriteset (ss_100_series_buy_kodama_c_w,	        	    "src/gfx/dummy/purchase.png") {template_purchase(0, 0)}
+spriteset (ss_100_series_buy_kodama_jrw,	        	    "src/gfx/dummy/purchase.png") {template_purchase(0, 0)}
+
+alternative_sprites(ss_100_series_buy_original_jnr,         ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/100_series/purchase_original_jnr.png") {template_purchase(0, 0)}
+alternative_sprites(ss_100_series_buy_original_jrc,         ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/100_series/purchase_original_jrc.png") {template_purchase(0, 0)}
+alternative_sprites(ss_100_series_buy_original_c_w,         ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/100_series/purchase_original_c&w.png") {template_purchase(0, 0)}
+alternative_sprites(ss_100_series_buy_kodama_c_w,           ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/100_series/purchase_kodama_c&w.png")   {template_purchase(0, 0)}
+alternative_sprites(ss_100_series_buy_kodama_jrw,           ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/100_series/purchase_kodama_jrw.png")   {template_purchase(0, 0)}
+
+/* EMU Parts */
+
+/* "CAB" */
+
+spriteset(ss_100_series_cab_original_livery,             		"src/gfx/dummy/empty.png") {template_dummy(0,0)}
+spriteset(ss_100_series_cab_rev_original_livery,    		    "src/gfx/dummy/empty.png") {template_dummy(0,0)}
+spriteset(ss_100_series_cab_kodama_livery,             		    "src/gfx/dummy/empty.png") {template_dummy(0,0)}
+spriteset(ss_100_series_cab_rev_kodama_livery,    		        "src/gfx/dummy/empty.png") {template_dummy(0,0)}
+
+// 200 Series Original Strip Livery
+alternative_sprites(ss_100_series_cab_original_livery,     	    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/100_series/original.png") {template_12_standard(1,1)}
+alternative_sprites(ss_100_series_cab_rev_original_livery,      ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/100_series/original.png") {template_12_reversed(1,41)}		
+
+// 200 Series Kodama Strip Livery
+alternative_sprites(ss_100_series_cab_kodama_livery,     	    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/100_series/kodama.png") {template_12_standard(1,1)}
+alternative_sprites(ss_100_series_cab_rev_kodama_livery,        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/100_series/kodama.png") {template_12_reversed(1,41)}	
+
+
+/* "COACH" */
+
+spriteset(ss_100_series_coach_original_livery,             		"src/gfx/dummy/empty.png") {template_dummy(0,0)}
+spriteset(ss_100_series_coach_rev_original_livery,    		    "src/gfx/dummy/empty.png") {template_dummy(0,0)}
+spriteset(ss_100_series_coach_kodama_livery,             		"src/gfx/dummy/empty.png") {template_dummy(0,0)}
+spriteset(ss_100_series_coach_rev_kodama_livery,    		    "src/gfx/dummy/empty.png") {template_dummy(0,0)}
+
+// 200 Series Original Strip Livery
+alternative_sprites(ss_100_series_coach_original_livery,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/100_series/original.png") {template_12_standard(1,121)}
+alternative_sprites(ss_100_series_coach_rev_original_livery,    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/100_series/original.png") {template_12_reversed(1,121)}		
+
+// 200 Series Kodama Strip Livery
+alternative_sprites(ss_100_series_coach_kodama_livery,     	    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/100_series/kodama.png") {template_12_standard(1,121)}
+alternative_sprites(ss_100_series_coach_rev_kodama_livery,      ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/100_series/kodama.png") {template_12_reversed(1,121)}	
+
+
+/* "PANTO" */
+
+spriteset(ss_100_series_panto_original_livery,             		"src/gfx/dummy/empty.png") {template_dummy(0,0)}
+spriteset(ss_100_series_panto_rev_original_livery,    		    "src/gfx/dummy/empty.png") {template_dummy(0,0)}
+spriteset(ss_100_series_panto_kodama_livery,             		"src/gfx/dummy/empty.png") {template_dummy(0,0)}
+spriteset(ss_100_series_panto_rev_kodama_livery,    		    "src/gfx/dummy/empty.png") {template_dummy(0,0)}
+
+// 200 Series Original Strip Livery
+alternative_sprites(ss_100_series_panto_original_livery,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/100_series/original.png") {template_12_standard(1,81)}
+alternative_sprites(ss_100_series_panto_rev_original_livery,    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/100_series/original.png") {template_12_reversed(1,81)}		
+
+// 200 Series Kodama Strip Livery
+alternative_sprites(ss_100_series_panto_kodama_livery,     	    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/100_series/kodama.png") {template_12_standard(1,81)}
+alternative_sprites(ss_100_series_panto_rev_kodama_livery,      ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/100_series/kodama.png") {template_12_reversed(1,81)}	
+
+
+/* "DOUBLE DECKER" */
+
+spriteset(ss_100_series_2deck,             	                    "src/gfx/dummy/empty.png") {template_dummy(0,0)}
+spriteset(ss_100_series_2deck_rev,    		                    "src/gfx/dummy/empty.png") {template_dummy(0,0)}
+spriteset(ss_100_series_2dec2,             	                    "src/gfx/dummy/empty.png") {template_dummy(0,0)}
+spriteset(ss_100_series_2dec2_rev,    		                    "src/gfx/dummy/empty.png") {template_dummy(0,0)}
+
+// 100 Series Original Livery
+alternative_sprites(ss_100_series_2deck,                        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/100_series/original.png") {template_12_standard(1,161)}
+alternative_sprites(ss_100_series_2deck_rev,                    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/100_series/original.png") {template_12_reversed(1,161)}	
+alternative_sprites(ss_100_series_2dec2,                        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/100_series/original.png") {template_12_standard(1,201)}
+alternative_sprites(ss_100_series_2dec2_rev,                    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/100_series/original.png") {template_12_reversed(1,201)}
