@@ -1,25 +1,5 @@
 // Begin e6_series STATS
 
-// Cargo Capacity
-
-// Passenger Capacities for each parameter level
-switch(FEAT_TRAINS, SELF, sw_e6_series_cargo_capacity, param_basecapacity) {
-        0: return 48;       // 1x Real World Capacity
-        2: return 72;       // Double Real World Capacity (1.5x for Mini-Shinkansen)
-        return 60;          // Long Sprite Adjusted Capacity (1.25x for Mini-Shinkansen)
-}
-
-// Loading Speed
-
-// Loading Speeds for each parameter level
-switch(FEAT_TRAINS, SELF, sw_e6_series_param_loading_speed, param_basecapacity) {
-    // Loading Capacity for a 2 door
-    0: return 10;       // Low Capacity
-    2: return 30;       // High Capacity
-    3: return 40;       // Very High Capacity
-    return 20;          // Normal Capacity 
-}
-
 /* CARGO CAPACITY 
 
     per car JPS   40/50/60/70
@@ -30,3 +10,10 @@ switch(FEAT_TRAINS, SELF, sw_e6_series_param_loading_speed, param_basecapacity) 
     LS  60       
     DC  72         
 */
+
+// Passenger Capacities for each parameter level
+switch(FEAT_TRAINS, SELF, sw_e6_series_cargo_capacity, param_basecapacity) {
+        0: return 48;       // 1x Real World Capacity
+        2: return 72;       // Double Real World Capacity (1.5x for Mini-Shinkansen)
+        return 60;          // Long Sprite Adjusted Capacity (1.25x for Mini-Shinkansen)
+}

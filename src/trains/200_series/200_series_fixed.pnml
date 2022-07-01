@@ -1,0 +1,54 @@
+/* Begin 200 Series */
+
+#include "src/trains/200_series/200_series_subtypes.pnml"
+#include "src/trains/200_series/200_series_gfx.pnml"
+#include "src/trains/200_series/200_series_liveries.pnml"
+#include "src/trains/200_series/200_series_stats.pnml"
+#include "src/trains/200_series/200_series_formation.pnml"
+
+item(FEAT_TRAINS, series_200) {
+	property {
+		name: 							string(STR_NAME_200_SERIES);
+		climates_available:             ALL_CLIMATES;
+		introduction_date:              date(1982,06,23);           // Date of launch
+		model_life:                     34;		                    // Until 2008
+		vehicle_life:                   30;							// 
+		reliability_decay:              5;
+		refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+		refit_cost:                     0;
+		default_cargo_type:             PASS;
+		cargo_capacity:                 1;							// Changed by callback
+		loading_speed:                  50;							
+		cargo_age_period:               278; 						// 1.5 times normal for this expensive long-distance train
+		sprite_id:                      SPRITE_ID_NEW_TRAIN; 		// required to enable new graphics
+		speed:                          210 km/h;                   // Changed by callback
+		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
+		track_type:                     SHINKANSEN;
+		ai_special_flag:                AI_FLAG_PASSENGER;
+		running_cost_base:              RUNNING_COST_STEAM;
+		engine_class:                   ENGINE_CLASS_ELECTRIC;
+		power:                          8050 kW;					// Changed by callback
+		weight:                         1464 ton;                   // Changed by callback					
+		tractive_effort_coefficient:    0.3;
+
+	}
+	graphics {
+		default:                        sw_200_series_graphics;
+		purchase:                       sw_200_series_year_dep_purchase;
+		articulated_part:               sw_200_series_articulated_part;
+		length:                         sw_200_series_length;
+        weight:                         sw_200_series_weight;
+        power:                          sw_200_series_power;
+        speed:							sw_200_series_speed;
+		cargo_capacity:                 sw_200_series_cargo_capacity;
+		//colour_mapping:                 sw_cc_blue_white;s
+		cargo_subtype_text:             sw_200_series_year_dep_subtype_text;
+		cost_factor:                    257;
+		running_cost_factor:            sw_200_series_running_costs;              // Varies depending on length
+		purchase_running_cost_factor:   300;
+		visual_effect_and_powered:      sw_visual_effect_and_powered;
+		additional_text:                string(STR_DESC_200_SERIES);
+	}
+}
+
+/* End 200 Series */

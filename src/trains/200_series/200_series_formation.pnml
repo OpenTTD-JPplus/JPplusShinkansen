@@ -1,0 +1,121 @@
+/* Begin 200 Series FORMATION */
+
+/* REVERSERS */
+
+switch (FEAT_TRAINS, PARENT, sw_200_series_reverser_C_P, vehicle_is_reversed) {
+	0: sw_200_series_coach;
+	sw_200_series_panto_rev;
+}
+
+switch (FEAT_TRAINS, PARENT, sw_200_series_reverser_P_C, vehicle_is_reversed) {
+	0: sw_200_series_panto;
+	sw_200_series_coach_rev;
+}
+
+switch (FEAT_TRAINS, PARENT, sw_200_series_reverser_P_D, vehicle_is_reversed) {
+	0: sw_200_series_panto;
+	ss_200_series_2deck_rev;
+}
+
+switch (FEAT_TRAINS, PARENT, sw_200_series_reverser_C_D, vehicle_is_reversed) {
+	0: sw_200_series_coach;
+	ss_200_series_2deck_rev;
+}
+
+switch (FEAT_TRAINS, PARENT, sw_200_series_reverser_D_P, vehicle_is_reversed) {
+	0: ss_200_series_2deck;
+	sw_200_series_panto_rev;
+}
+
+switch (FEAT_TRAINS, PARENT, sw_200_series_reverser_D_C, vehicle_is_reversed) {
+	0: ss_200_series_2deck;
+	sw_200_series_coach_rev;
+}
+
+/* PUT TOGETHER THE EMU*/
+
+/* 16-car sent */
+switch (FEAT_TRAINS, SELF, sw_200_series_graphics_16car, position_in_articulated_veh) {
+                                        // 16-car   
+    1:  sw_200_series_cab; 	            // Car 1    Car 16  	
+	4:  sw_200_series_reverser_P_C;	    // Car 2    Car 15     	
+	7:  sw_200_series_reverser_C_P;     // Car 3    Car 14   
+	10: sw_200_series_reverser_P_C;     // Car 4    Car 13  
+    13: sw_200_series_reverser_C_P;     // Car 5    Car 12  
+    16: sw_200_series_reverser_P_D;     // Car 6    Car 11  
+    19: sw_200_series_reverser_C_D;     // Car 7    Car 10   
+	22: sw_200_series_reverser_P_C;     // Car 8    Car 9  
+    25: sw_200_series_reverser_C_P;     // Car 9    Car 8    
+    28: sw_200_series_reverser_D_C;     // Car 10   Car 7 
+    31: sw_200_series_reverser_D_P;     // Car 11   Car 6  
+    34: sw_200_series_reverser_P_C;     // Car 12   Car 5
+    37: sw_200_series_reverser_C_P;     // Car 13   Car 4  
+    40: sw_200_series_reverser_P_C;     // Car 14   Car 3   
+    43: sw_200_series_reverser_C_P;     // Car 15   Car 2  
+    46: sw_200_series_cab_rev;          // Car 16   Car 1  
+	dummy_sprites;
+}
+
+// For 12-car set
+switch (FEAT_TRAINS, SELF, sw_200_series_graphics_12car, position_in_articulated_veh) {
+                                        // 12-car
+    2:  sw_200_series_cab; 	            // Car 1    Car 12	
+	6:  sw_200_series_reverser_P_C;     // Car 2    Car 11
+    10: sw_200_series_reverser_C_P;     // Car 3    Car 10
+    14: sw_200_series_reverser_P_C;     // Car 4    Car 9
+    18: sw_200_series_reverser_C_P;     // Car 5    Car 8
+    22: sw_200_series_reverser_P_C;     // Car 6    Car 7
+    26: sw_200_series_reverser_C_P;     // Car 7    Car 6
+    30: sw_200_series_reverser_P_C;     // Car 8    Car 5
+    34: sw_200_series_reverser_C_P;     // Car 9    Car 4
+    38: sw_200_series_reverser_P_C;     // Car 10   Car 3
+    42: sw_200_series_reverser_C_P;     // Car 11   Car 2
+    46: sw_200_series_cab_rev;          // Car 12   Car 1
+	dummy_sprites;
+}
+
+// For 10-car set
+switch (FEAT_TRAINS, SELF, sw_200_series_graphics_10car, position_in_articulated_veh) {
+                                        // 10-car
+    2:  sw_200_series_cab; 		        // Car 1    Car 10	
+	7:  sw_200_series_reverser_P_C;     // Car 2    Car 9
+    12: sw_200_series_reverser_C_P;     // Car 3    Car 8
+    17: sw_200_series_reverser_P_C;     // Car 4    Car 4
+    22: sw_200_series_reverser_C_P;     // Car 5    Car 6
+    27: sw_200_series_reverser_P_C;     // Car 6    Car 5
+    32: sw_200_series_reverser_C_P;     // Car 7    Car 4
+    37: sw_200_series_reverser_P_C;     // Car 8    Car 3
+    42: sw_200_series_reverser_C_P;     // Car 9    Car 2
+    46: sw_200_series_cab_rev;          // Car 10   Car 1
+	dummy_sprites;
+}
+
+// For 8-car set
+switch (FEAT_TRAINS, SELF, sw_200_series_graphics_8car, position_in_articulated_veh) {
+                                        // 8-car
+    2:  sw_200_series_cab; 	 	        // Car 1    Car 8	
+	8:  sw_200_series_reverser_P_C;     // Car 2    Car 7
+    14: sw_200_series_reverser_C_P;     // Car 3    Car 6
+    20: sw_200_series_reverser_P_C;     // Car 4    Car 5
+    26: sw_200_series_reverser_C_P;     // Car 5    Car 4
+    32: sw_200_series_reverser_P_C;     // Car 6    Car 3
+    38: sw_200_series_reverser_C_P;     // Car 7    Car 2
+    44: sw_200_series_cab_rev;          // Car 8    Car 1
+	dummy_sprites;
+}
+
+/* Choose which Graphics based on which Cargo Subtype */
+switch(FEAT_TRAINS, SELF, sw_200_series_graphics, cargo_subtype) {
+    2: sw_200_series_graphics_10car;
+    3: sw_200_series_graphics_8car;
+    5: sw_200_series_graphics_16car;
+    6: sw_200_series_graphics_10car;
+    7: sw_200_series_graphics_8car;
+    sw_200_series_graphics_12car;
+}
+
+/* Assemble an 48 part articulated vehicle. */
+switch (FEAT_TRAINS, SELF, sw_200_series_articulated_part, extra_callback_info1) {
+	1 .. 47: return series_200;										
+	return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}

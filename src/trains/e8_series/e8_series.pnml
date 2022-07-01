@@ -1,53 +1,8 @@
-// Begin e8_series
+// Begin E8_series
 
-/* GFX */
-
-    // Purchase Sprites
-        spriteset (spriteset_e8_series_purchase,	        	"src/gfx/dummy/purchase.png") {tmpl_purchase_dh(0, 0)}
-        alternative_sprites(spriteset_e8_series_purchase,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/e8_series/purchase.png") {tmpl_purchase_dh_32bpp(0, 0)}
-
-    // E8 Series
-        spriteset(ss_e8_series_cab_original,                    "src/gfx/dummy/mucar.png") {template_8_standard(1,1)}
-        spriteset(ss_e8_series_cab_rev_original,                "src/gfx/dummy/mucar.png") {template_8_standard(1,1)}
-        spriteset(ss_e8_series_coach_original,                  "src/gfx/dummy/mucar.png") {template_8_standard(1,1)}
-        spriteset(ss_e8_series_coach_rev_original,              "src/gfx/dummy/mucar.png") {template_8_standard(1,1)}
-        spriteset(ss_e8_series_panto_original,                  "src/gfx/dummy/mucar.png") {template_8_standard(1,1)}
-        spriteset(ss_e8_series_panto_rev_original,              "src/gfx/dummy/mucar.png") {template_8_standard(1,1)}
-
-        alternative_sprites(ss_e8_series_cab_original,          ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/e8_series/e8_series.png") {template_8_standard(1,1)}
-        alternative_sprites(ss_e8_series_cab_rev_original,      ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/e8_series/e8_series.png") {template_8_standard(1,41)}
-        alternative_sprites(ss_e8_series_coach_original,        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/e8_series/e8_series.png") {template_8_standard(1,121)}
-        alternative_sprites(ss_e8_series_coach_rev_original,    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/e8_series/e8_series.png") {template_8_reversed(1,121)}
-        alternative_sprites(ss_e8_series_panto_original,        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/e8_series/e8_series.png") {template_8_standard(1,81)}
-        alternative_sprites(ss_e8_series_panto_rev_original,    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/e8_series/e8_series.png") {template_8_reversed(1,81)}
-
-/* LIVERIES */
-
-    // Cab Livery (Yelow Lights)
-    switch(FEAT_TRAINS, SELF, sw_e8_series_gfx_cab_livery, [STORE_TEMP(position_in_consist_from_end-position_in_consist, 0x10F), var[0x61, 0, 0x0000FFFF, 0xF2]]){
-        0 : ss_e8_series_cab_original;
-    }
-    // Cab Reversed Livery (Red lights)
-    switch(FEAT_TRAINS, SELF, sw_e8_series_gfx_cab_rev_livery, [STORE_TEMP(position_in_consist_from_end-position_in_consist, 0x10F), var[0x61, 0, 0x0000FFFF, 0xF2]]){
-        0 : ss_e8_series_cab_rev_original;
-    }
-    // Coach Livery
-    switch(FEAT_TRAINS, SELF, sw_e8_series_gfx_coach_livery, [STORE_TEMP(position_in_consist_from_end-position_in_consist, 0x10F), var[0x61, 0, 0x0000FFFF, 0xF2]]){
-        0 : ss_e8_series_coach_original;
-    }
-    // Coach Reversed Livery
-    switch(FEAT_TRAINS, SELF, sw_e8_series_gfx_coach_rev_livery, [STORE_TEMP(position_in_consist_from_end-position_in_consist, 0x10F), var[0x61, 0, 0x0000FFFF, 0xF2]]){
-        0 : ss_e8_series_coach_rev_original;
-    }
-    // Panto Livery
-    switch(FEAT_TRAINS, SELF, sw_e8_series_gfx_panto_livery, [STORE_TEMP(position_in_consist_from_end-position_in_consist, 0x10F), var[0x61, 0, 0x0000FFFF, 0xF2]]){
-        0 : ss_e8_series_panto_original;
-    }
-    // Panto Reversed Livery
-    switch(FEAT_TRAINS, SELF, sw_e8_series_gfx_panto_rev_livery, [STORE_TEMP(position_in_consist_from_end-position_in_consist, 0x10F), var[0x61, 0, 0x0000FFFF, 0xF2]]){
-        0 : ss_e8_series_panto_rev_original;
-
-    }
+#include "src/trains/e8_series/e8_series_gfx.pnml"
+#include "src/trains/e8_series/e8_series_liveries.pnml"
+#include "src/trains/e8_series/e8_series_stats.pnml"
 
 /* COACH and PANTO flipping */
 
@@ -181,28 +136,6 @@ switch(FEAT_TRAINS, SELF, sw_e8_series_attach_vehid, [vehicle_type_id == series_
 }
 /*---END OF SECTION---*/
 
-// Cargo Capacity
-
-// Passenger Capacities for each parameter level
-switch(FEAT_TRAINS, SELF, sw_e8_series_param_cargo_capacity, param_basecapacity) {
-    // Assuming 50 capacity per car (same as JapanSet)
-    0: return 40;       // Low Capacity
-    2: return 60;       // High Capacity
-    3: return 70;       // Very High Capacity
-    return 50;          // Normal Capacity 
-}
-
-// Loading Speed
-
-// Loading Speeds for each parameter level
-switch(FEAT_TRAINS, SELF, sw_e8_series_param_loading_speed, param_basecapacity) {
-    // Loading Capacity for a 2 door
-    0: return 10;       // Low Capacity
-    2: return 30;       // High Capacity
-    3: return 40;       // Very High Capacity
-    return 20;          // Normal Capacity 
-}
-
 item(FEAT_TRAINS, series_e8) {
     property {
         name:                           string(STR_NAME_E8_SERIES);
@@ -247,8 +180,8 @@ item(FEAT_TRAINS, series_e8) {
     /*Multiple Unit Car*/
       livery_override(mu_car){
         default:                        sw_e8_series_gfx_mucar;
-        cargo_capacity:                 sw_e8_series_param_cargo_capacity;
-        loading_speed:                  sw_e8_series_param_loading_speed;
+        cargo_capacity:                 sw_e8_series_cargo_capacity;
+        //loading_speed:                  sw_e8_series_param_loading_speed;
         //cargo_subtype_text:             sw_e8_series_subtypetext_mucar;
         power:                          400/2;
         weight:                         30;
@@ -256,4 +189,4 @@ item(FEAT_TRAINS, series_e8) {
 
 }
 
-// End e8_series
+// End E8_series

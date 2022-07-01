@@ -1,0 +1,32 @@
+/* Begin 800 Series FORMATION */
+
+/* REVERSERS */
+
+    switch (FEAT_TRAINS, PARENT, sw_800_series_reverser_P_P, vehicle_is_reversed) {
+	    0: ss_800_series_panto;
+	    ss_800_series_panto_rev;
+    }
+
+    switch (FEAT_TRAINS, PARENT, sw_800_series_reverser_C_C, vehicle_is_reversed) {
+	    0: ss_800_series_coach;
+	    ss_800_series_coach_rev;
+    }
+
+/* PUT TOGETHER THE EMU*/
+
+    // 6 Car Set
+    switch (FEAT_TRAINS, SELF, sw_800_series_graphics, position_in_articulated_veh) {					
+	    1:  ss_800_series_cab; 	            // Car 1	Car 6								
+	    4:  sw_800_series_reverser_P_P;	    // Car 2	Car 5	    						
+	    7:  sw_800_series_reverser_C_C;     // Car 3    Car 4
+	    10: sw_800_series_reverser_C_C;     // Car 4    Car 3
+        13: sw_800_series_reverser_P_P;     // Car 5    Car 2
+        16: ss_800_series_cab_rev;          // Car 6    Car 1
+	    dummy_sprites;
+    }
+
+    /* Assemble an articulated vehicle. */
+    switch (FEAT_TRAINS, SELF, sw_800_series_articulated_part, extra_callback_info1) {
+	    1 .. 17: return series_800;										// Should be same as range above
+	    return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+    }

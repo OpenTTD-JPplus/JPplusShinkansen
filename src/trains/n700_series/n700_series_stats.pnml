@@ -137,9 +137,9 @@
 /* LENGTH */
 
     switch (FEAT_TRAINS, SELF, sw_n700_series_shorten_6_car_vehicle, position_in_consist%4) {
-        1: return 7;
-        2: return 1;
-        return 2;
+        0: return 2;
+        1: return 8;
+        return 1;
     }
     
     switch(FEAT_TRAINS, SELF, sw_n700_series_kyushu_length_year_dep, build_year) {

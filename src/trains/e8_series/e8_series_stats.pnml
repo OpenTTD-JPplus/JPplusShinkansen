@@ -1,0 +1,12 @@
+// Begin E8_series STATS
+
+/* CARGO CAPACITY */
+
+  // Passenger Capacities for each parameter level
+  switch(FEAT_TRAINS, SELF, sw_e8_series_cargo_capacity, param_basecapacity) {
+          0: return 48;       // 1x Real World Capacity
+          2: return 72;       // Double Real World Capacity (1.5x for Mini-Shinkansen)
+          return 60;          // Long Sprite Adjusted Capacity (1.25x for Mini-Shinkansen)
+  }
+
+

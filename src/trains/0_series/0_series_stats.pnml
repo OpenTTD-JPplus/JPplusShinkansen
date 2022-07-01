@@ -20,46 +20,57 @@ switch(FEAT_TRAINS, SELF, sw_0_series_length, cargo_subtype) {
 
 /* STATS */
 
-    // NUMBER OF CARS 
+/* CARGO CAPACITY 
 
-    switch(FEAT_TRAINS, SELF, sw_0_series_number_cars, cargo_subtype) {
-        2: return 12;     // Weight of a 9.0 tile long JapanSet 0 Series
-        return 16;        // Weight of a 12.0 tile long JapanSet 0 Series
+    16-car JPS  1248/1560/1872/2184
+    12-car JPS  936/1170/1404/1638
+
+        16-car  12-car 
+    IRL 1340    ?        
+    RW  1344    1008               
+    LS  2016    1488             
+    DC  2688    2016      
+
+*/
+
+    // 16 car
+    switch(FEAT_TRAINS, SELF, sw_0_series_param_cargo_capacity_16car, param_basecapacity) {
+        0: return 28;       // 1x Real World Capacity
+        2: return 56;       // 2x Double Real World Capacity
+        return 42;          // 1.5x Long Sprite Adjusted Capacity 
     }
 
-    // CARGO CAPACITY
-
-    // Passenger Capacities for each parameter level
-    switch(FEAT_TRAINS, SELF, sw_0_series_param_cargo_capacity, param_basecapacity) {
-        // Assuming 65 capacity per car if it was 0.5 tile (same as JapanSet)
-        0: return 52;       // Low Capacity
-        2: return 78;       // High Capacity
-        3: return 91;       // Very High Capacity
-        return 65;          // Normal Capacity 
+    // 12 car
+    switch(FEAT_TRAINS, SELF, sw_0_series_param_cargo_capacity_12car, param_basecapacity) {
+        0: return 21;       // 1x Real World Capacity
+        2: return 42;       // 2x Double Real World Capacity
+        return 31;          // 1.5x Long Sprite Adjusted Capacity 
     }
 
-    // Scaling factor for each length of consist
-    switch(FEAT_TRAINS, SELF, sw_0_series_cargo_capacity_factor, cargo_subtype) {
-        2: return 3750;     // Length 12 (9 tiles)
-        return 5000;        // Length 16 (12 tiles)
+    switch(FEAT_TRAINS, SELF, sw_0_series_cargo_capacity, cargo_subtype) {
+        2: sw_0_series_param_cargo_capacity_12car;  
+        sw_0_series_param_cargo_capacity_16car;
     }
 
-    switch(FEAT_TRAINS, SELF, sw_0_series_cargo_capacity, (sw_0_series_param_cargo_capacity() * sw_0_series_cargo_capacity_factor() ) / 10000 )
-        {return;}
+/* RUNNING COSTS */
+    switch(FEAT_TRAINS, SELF, sw_0_series_running_costs, cargo_subtype) {
+        2: return 100*12;     
+        return 100*16;       
+    }
 
-    // RUNNING COSTS
-    switch(FEAT_TRAINS, SELF, sw_0_series_running_costs, (sw_0_series_number_cars() * 100 ) )
-            {return;}
+/* WEIGHT */
+    switch(FEAT_TRAINS, SELF, sw_0_series_weight, cargo_subtype) {
+        2: return 61*12;     
+        return 61*16;       
+    }
 
-    // WEIGHT
-    switch(FEAT_TRAINS, SELF, sw_0_series_weight, (sw_0_series_number_cars() * 61 ) )   // Number of cars for each cargo subtype x weight (t)
-        {return;}
+/* POWER */
+    switch(FEAT_TRAINS, SELF, sw_0_series_power, cargo_subtype) {
+        2: return 15878/4*3;     
+        return 15878;       
+    }
 
-    // POWER
-    switch(FEAT_TRAINS, SELF, sw_0_series_power, (sw_0_series_number_cars() * 1000 ) )   // Number of cars for each cargo subtype x power (hp)
-        {return;}
-
-    // SPEED
+/* SPEED */
     switch (FEAT_TRAINS, SELF, sw_0_series_speed, current_year) {
 	    0..1986: return 210;                        // Until 1986, Speed = 210 km/h
 	    return 220;                                 // After 1986, Speed = 220 km/h
@@ -72,7 +83,7 @@ switch(FEAT_TRAINS, SELF, sw_0_series_length, cargo_subtype) {
         return 400;        // Length 16 (12 tiles)
     }
     */
-    // REFIT COST
+/* REFIT COST */
 
     switch(FEAT_TRAINS, SELF, sw_0_series_refit_cost_minus2, cargo_subtype) {
         2: return 7;       // Currently 'Nose', Cost to move to 'Year Dependent Livery'       

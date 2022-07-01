@@ -1,0 +1,27 @@
+/* Begin 800 Series STATS */
+
+/* LENGTH*/
+
+    // Make the Middle long sprite length 8 and the dummy sprites length 2
+    switch (FEAT_TRAINS, SELF, sw_800_series_length, position_in_consist%3) {
+        1: return 8;
+        return 2;
+    }
+
+/* CARGO CAPACITY 
+
+    6-car JPS equivalent 468/585/702/819
+
+        6-car
+    IRL 392
+    RW  396       
+    LS  594   
+    DC  792       
+*/
+
+    // Passenger Capacities for each parameter level
+    switch(FEAT_TRAINS, SELF, sw_800_series_cargo_capacity, param_basecapacity) {
+        0: return 22;       // 1x Real World Capacity
+        2: return 44;       // 2x Double Real World Capacity
+        return 33;          // 1.5x Long Sprite Adjusted Capacity 
+    }
