@@ -1,0 +1,65 @@
+/* Begin 700 Series */
+
+/* LENGTH */
+
+    /* Make the Middle long sprite length 8 and the dummy sprites length 2*/
+    switch (FEAT_TRAINS, SELF, sw_700_series_length_standard, position_in_consist%3) {
+        1: return 8;
+        return 2;
+    }
+
+    switch (FEAT_TRAINS, SELF, sw_700_series_shorten_8_car_vehicle, position_in_consist%6) {
+        2: return 7;
+        return 1;
+    }
+
+    switch (FEAT_TRAINS, SELF, sw_700_series_length, cargo_subtype) {
+        1: sw_700_series_shorten_8_car_vehicle;
+        sw_700_series_length_standard;
+    }
+
+/* WEIGHT */
+
+    switch(FEAT_TRAINS, SELF, sw_700_series_weight, cargo_subtype) {
+        1: return 44*8;      // Weight from JPS - 44t x 8 cars
+        return 44*16;        // Weight from JPS - 44t x 16 cars
+    }
+
+/* POWER */
+
+    switch(FEAT_TRAINS, SELF, sw_700_series_power, cargo_subtype) {
+        1: return 8900;      // Agreed to Wikipedia
+        return 17700;        // Agreed to Wikipedia
+    }
+
+/* CARGO CAPACITY 
+
+    16-car JPS  1248/1560/1872/2184
+    8-car JPS   624/780/936/1092
+
+        16-car  8-car
+    IRL 1323    571
+    RW  1344    576        
+    LS  2016    864    
+    DC  2688    1152         
+*/
+
+    // 16 car
+    switch(FEAT_TRAINS, SELF, sw_700_series_param_cargo_capacity_16car, param_basecapacity) {
+        0: return 28;       // 1x Real World Capacity
+        2: return 56;       // 2x Double Real World Capacity
+        return 42;          // 1.5x Long Sprite Adjusted Capacity 
+    }
+
+    // 8 car
+    switch(FEAT_TRAINS, SELF, sw_700_series_param_cargo_capacity_8car, param_basecapacity) {
+        0: return 12;       // 1x Real World Capacity
+        2: return 24;       // 2x Double Real World Capacity
+        return 18;          // 1.5x Long Sprite Adjusted Capacity 
+    }
+
+    // Scaling factor for each length of consist
+    switch(FEAT_TRAINS, SELF, sw_700_series_cargo_capacity, cargo_subtype) {
+        1: sw_700_series_param_cargo_capacity_8car;
+        sw_700_series_param_cargo_capacity_16car;  
+    }

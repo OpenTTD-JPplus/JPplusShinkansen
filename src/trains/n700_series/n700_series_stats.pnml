@@ -55,14 +55,14 @@
 
     // Not a lot of available weight info for the N700S, other than talke of weight savings from the engines - therefore slight reduction
     switch(FEAT_TRAINS, SELF, sw_n700_series_weight_year_dep, build_year) {
-        0..2019: return 715/2;                  // N700 and N700A
-        return 710/2;                           // N700S - 
+        0..2019: return 715;                    // N700 and N700A
+        return 710;                             // N700S
     }
     
     switch(FEAT_TRAINS, SELF, sw_n700_series_weight, cargo_subtype) {
         0: sw_n700_series_weight_year_dep;
         2: return 715/2;                        // Half of the above for an 8 car
-        4: return 710/2;                        // N700S, 
+        4: return 710;                          // N700S, 
         return 715;                             // Weight of a 16 car N700 as stated on Wikipedia
     }
 
