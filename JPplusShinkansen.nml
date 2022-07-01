@@ -5781,8 +5781,11 @@ item(FEAT_TRAINS, series_e5, 2005) {
 
 /* End e5 series */
 # 1 "JPplusShinkansen.pnml" 4
-# 1 "src/trains/e6_series.pnml" 1
+# 1 "src/trains/e6_series/e6_series.pnml" 1
 // Begin e6_series
+
+# 1 "src/trains/e6_series/e6_series_gfx.pnml" 1
+// Begin e6_series GRAPHICS
 
 // Purchase Sprites
 spriteset (spriteset_e6_series_purchase,	        	"src/gfx/dummy/purchase.png")               		{tmpl_purchase_dh(0, 0)}
@@ -5840,6 +5843,7 @@ alternative_sprites(spriteset_e6_series_revflip_mid_panto_std,     // Panto
     ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,                     "src/gfx/e6_series/e6.png")                 {template_8_reversed(1,161)}
 alternative_sprites(spriteset_e6_series_revflip_back_panto_std,    // Front Panto   
     ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,                     "src/gfx/e6_series/e6.png")                 {template_8_standard(1, 81)}
+# 1 "src/trains/e6_series/e6_series.pnml" 3
 
 /*---END OF SECTION---*/
 /*---GFX: Train Reversing Switches---*/
