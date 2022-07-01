@@ -1,0 +1,22 @@
+/* Begin 300 Series STATS */
+
+/* LENGTH*/
+
+    // Make the Middle long sprite length 8 and the dummy sprites length 2
+    switch (FEAT_TRAINS, SELF, sw_300_series_length, position_in_consist%3) {
+        1: return 8;
+        return 2;
+    }
+
+/* CARGO CAPACITY */
+
+    // Passenger Capacities for each parameter level
+    switch(FEAT_TRAINS, SELF, sw_300_series_param_cargo_capacity, param_basecapacity) {
+        // Assuming 65 capacity per car if it was 0.5 tile (same as JapanSet)
+        0: return 52;       // Low Capacity
+        2: return 78;       // High Capacity
+        3: return 92;       // Very High Capacity
+        return 66;          // Normal Capacity 
+    }
+
+    switch(FEAT_TRAINS, SELF, sw_300_series_cargo_capacity, (sw_300_series_param_cargo_capacity()  / 2 ) ){return;}     // Half since n * 1.5 (long)/ 3 (3 parts per car)
