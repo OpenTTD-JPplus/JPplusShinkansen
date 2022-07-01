@@ -16,7 +16,59 @@ item(FEAT_TRAINS, series_n700) {
 		engine_class:                   ENGINE_CLASS_ELECTRIC;
         /* Availability */
         climates_available:             ALL_CLIMATES;
-		introduction_date:              date(1999,03,13);
+		introduction_date:              date(2007,07,01);
+		model_life:                     VEHICLE_NEVER_EXPIRES;		//
+		vehicle_life:                   30;							// 
+		track_type:                     SHINKANSEN;
+        /* Cargo */
+        reliability_decay:              5;
+		refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+		refit_cost:                     0;
+		default_cargo_type:             PASS;
+		ai_special_flag:                AI_FLAG_PASSENGER;
+        cargo_capacity:                 1;							// 
+		loading_speed:                  50;							
+		cargo_age_period:               278; 						// Default 185 x 1.5
+		/* Stats */
+		speed:                          301 km/h;				    // Overwritten by callback
+    	power:                          22900 kW;					// Overwritten by callback
+		weight:                         648 tons;					// Overwritten by callback
+		tractive_effort_coefficient:    0.3;
+
+	}
+	graphics {
+		/* Menu */
+        additional_text:                string(STR_DESC_N700_SERIES);
+        cargo_subtype_text:             sw_n700_series_subtype_text;
+        /* Graphics */
+        default:                        sw_n700_series_graphics;
+		purchase:                       sw_n700_series_year_dep_purchase;
+		articulated_part:               sw_n700_series_articulated_part;
+		visual_effect_and_powered:      sw_visual_effect_and_powered;
+        /* Stats */
+        length:                         sw_n700_series_length;
+        weight:                         sw_n700_series_weight;
+        power:                          sw_n700_series_power;
+		speed:							sw_n700_series_speed;
+		cargo_capacity:                 sw_n700_series_cargo_capacity;
+		cost_factor:                    257;
+        refit_cost:                     sw_n700_series_refit_cost;
+		running_cost_factor:            func_running_costs(300);
+		purchase_running_cost_factor:   300;
+	}
+}
+
+item(FEAT_TRAINS, series_n700_kyushu) {
+	property {
+		/* Menu */
+        name: 							string(STR_NAME_N700_SERIES_KYUSHU);
+        sprite_id:                      SPRITE_ID_NEW_TRAIN; 		// required to enable new graphics
+		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
+        running_cost_base:              RUNNING_COST_ELECTRIC;
+		engine_class:                   ENGINE_CLASS_ELECTRIC;
+        /* Availability */
+        climates_available:             ALL_CLIMATES;
+		introduction_date:              date(2011,03,12);
 		model_life:                     VEHICLE_NEVER_EXPIRES;		//
 		vehicle_life:                   30;							// 
 		track_type:                     SHINKANSEN;
@@ -38,20 +90,20 @@ item(FEAT_TRAINS, series_n700) {
 	}
 	graphics {
 		/* Menu */
-        additional_text:                string(STR_DESC_N700_SERIES);
-        cargo_subtype_text:             sw_n700_series_subtype_text;
+        additional_text:                string(STR_DESC_N700_SERIES_KYUSHU);
+        cargo_subtype_text:             sw_n700_series_kyushu_subtype_text;
         /* Graphics */
-        default:                        sw_n700_series_graphics;
-		purchase:                       ss_n700_series_buy;
-		articulated_part:               sw_n700_series_articulated_part;
+        default:                        sw_n700_series_kyushu_graphics;
+		purchase:                       sw_n700_series_kyushu_year_dep_purchase;
+		articulated_part:               sw_n700_series_kyushu_articulated_part;
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
         /* Stats */
-        length:                         sw_n700_series_length;
-        weight:                         sw_n700_series_weight;
-        power:                          sw_n700_series_power;
-		cargo_capacity:                 sw_n700_series_cargo_capacity;
+        length:                         sw_n700_series_kyushu_length;
+        weight:                         sw_n700_series_kyushu_weight;
+        power:                          sw_n700_series_kyushu_power;
+		cargo_capacity:                 sw_n700_series_kyushu_cargo_capacity;
 		cost_factor:                    257;
-        refit_cost:                     sw_n700_series_refit_cost;
+        refit_cost:                     sw_n700_series_kyushu_refit_cost;
 		running_cost_factor:            func_running_costs(300);
 		purchase_running_cost_factor:   300;
 	}

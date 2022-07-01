@@ -40,10 +40,10 @@
     8-car JPS   624/780/936/1092
 
         16-car(X)   16-car(V)   12-car  8-car
-    IRL 1277        1285        1031    525* 
-    RW  1296        1296        1056    528        
-    LS  1920        1920        1584    792     
-    DC  2592        2592        2112    1056         
+    IRL 1277        1285        1031    638* 
+    RW  1296        1296        1056    624        
+    LS  1920        1920        1440    960     
+    DC  2592        2592        1968    1296         
 
     * made up since no length 8 sets
 
@@ -58,48 +58,52 @@
 
     // 12 car
     switch(FEAT_TRAINS, SELF, sw_100_series_param_cargo_capacity_12car, param_basecapacity) {
-        0: return 27;       // 1x Real World Capacity
-        2: return 54;       // 2x Double Real World Capacity
-        return 40;          // 1.5x Long Sprite Adjusted Capacity 
+        0: return 22;       // 1x Real World Capacity
+        2: return 41;       // 2x Double Real World Capacity
+        return 30;          // 1.5x Long Sprite Adjusted Capacity 
+    }
+
+    // 8 car
+    switch(FEAT_TRAINS, SELF, sw_100_series_param_cargo_capacity_8car, param_basecapacity) {
+        0: return 13;       // 1x Real World Capacity
+        2: return 27;       // 2x Double Real World Capacity
+        return 20;          // 1.5x Long Sprite Adjusted Capacity 
     }
 
     // Scaling factor for each length of consist
-    switch(FEAT_TRAINS, SELF, sw_100_series_cargo_capacity_factor, cargo_subtype) {
-        3: return 1250;     // Length 4 (3 tiles)
-        4: return 1875;     // Length 6 (4.5 tiles)
-        sw_100_series_param_cargo_capacity_16car;        // Length 16 (12 tiles)
+    switch(FEAT_TRAINS, SELF, sw_100_series_cargo_capacity, cargo_subtype) {
+        2: sw_100_series_param_cargo_capacity_12car;
+        4: sw_100_series_param_cargo_capacity_8car;
+        sw_100_series_param_cargo_capacity_16car;  
     }
-
-    switch(FEAT_TRAINS, SELF, sw_100_series_cargo_capacity, (sw_100_series_param_cargo_capacity() * sw_100_series_cargo_capacity_factor() ) / 10000 )
-        {return;}
 
 // Running Costs
 
-switch(FEAT_TRAINS, SELF, sw_100_series_running_costs, cargo_subtype) {
-    3: return 113;
-    4: return 75;
-    return 300;
-}
+    switch(FEAT_TRAINS, SELF, sw_100_series_running_costs, cargo_subtype) {
+        3: return 113;
+        4: return 75;
+        return 300;
+    }
 
 // Weight
 
-switch(FEAT_TRAINS, SELF, sw_100_series_weight, cargo_subtype) {
-    3: return 318;      // Weight of a 3.0 tile long JapanSet 100 Series
-    4: return 477;      // Weight of a 4.5 tile long JapanSet 100 Series
-    return 1272;        // Weight of a 12.0 tile long JapanSet 100 Series
-}
+    switch(FEAT_TRAINS, SELF, sw_100_series_weight, cargo_subtype) {
+        3: return 318;      // Weight of a 3.0 tile long JapanSet 100 Series
+        4: return 477;      // Weight of a 4.5 tile long JapanSet 100 Series
+        return 1272;        // Weight of a 12.0 tile long JapanSet 100 Series
+    }
 
 /* Power */
 
-switch(FEAT_TRAINS, SELF, sw_100_series_power, cargo_subtype) {
-    3: return 5962;
-    4: return 8943;
-    return 23847;    
-}
+    switch(FEAT_TRAINS, SELF, sw_100_series_power, cargo_subtype) {
+        3: return 5962;
+        4: return 8943;
+        return 23847;    
+    }
 
 /* Speed */
 
-switch(FEAT_TRAINS, SELF, sw_100_series_speed, cargo_subtype) {
-    1..3: return 220;   // Original speed
-    return 230;         // Kodama speed
-}
+    switch(FEAT_TRAINS, SELF, sw_100_series_speed, cargo_subtype) {
+        1..3: return 220;   // Original speed
+        return 230;         // Kodama speed
+    }
