@@ -1,0 +1,35 @@
+// Begin 400_series GRAPHICS
+
+    // Purchase Sprites
+        spriteset (spriteset_400_series_purchase,	        	"src/gfx/dummy/purchase.png") {tmpl_purchase_dh(0, 0)}
+        alternative_sprites(spriteset_400_series_purchase,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/400_series/buy_400.png") {tmpl_purchase_dh_32bpp(0, 0)}
+
+    // 400 Series Original
+        spriteset(ss_400_series_cab_original,                   "src/gfx/dummy/mucar.png") {template_8_standard(1,1)}
+        spriteset(ss_400_series_cab_rev_original,               "src/gfx/dummy/mucar.png") {template_8_standard(1,1)}
+        spriteset(ss_400_series_coach_original,                 "src/gfx/dummy/mucar.png") {template_8_standard(1,1)}
+        spriteset(ss_400_series_coach_rev_original,             "src/gfx/dummy/mucar.png") {template_8_standard(1,1)}
+        spriteset(ss_400_series_panto_original,                 "src/gfx/dummy/mucar.png") {template_8_standard(1,1)}
+        spriteset(ss_400_series_panto_rev_original,             "src/gfx/dummy/mucar.png") {template_8_standard(1,1)}
+
+        alternative_sprites(ss_400_series_cab_original,         ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/400_series/400_series_original.png") {template_8_standard(1,1)}
+        alternative_sprites(ss_400_series_cab_rev_original,     ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/400_series/400_series_original.png") {template_8_standard(1,41)}
+        alternative_sprites(ss_400_series_coach_original,       ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/400_series/400_series_original.png") {template_8_standard(1,121)}
+        alternative_sprites(ss_400_series_coach_rev_original,   ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/400_series/400_series_original.png") {template_8_reversed(1,121)}
+        alternative_sprites(ss_400_series_panto_original,       ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/400_series/400_series_original.png") {template_8_standard(1,81)}
+        alternative_sprites(ss_400_series_panto_rev_original,   ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/400_series/400_series_original.png") {template_8_reversed(1,81)}
+
+    // 400 Series Refurbished
+        spriteset(ss_400_series_cab_refurb,                     "src/gfx/dummy/mucar.png") {template_8_standard(1,1)}
+        spriteset(ss_400_series_cab_rev_refurb,                 "src/gfx/dummy/mucar.png") {template_8_standard(1,1)}
+        spriteset(ss_400_series_coach_refurb,                   "src/gfx/dummy/mucar.png") {template_8_standard(1,1)}
+        spriteset(ss_400_series_coach_rev_refurb,               "src/gfx/dummy/mucar.png") {template_8_standard(1,1)}
+        spriteset(ss_400_series_panto_refurb,                   "src/gfx/dummy/mucar.png") {template_8_standard(1,1)}
+        spriteset(ss_400_series_panto_rev_refurb,               "src/gfx/dummy/mucar.png") {template_8_standard(1,1)}
+
+        alternative_sprites(ss_400_series_cab_refurb,           ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/400_series/400_series_refurb.png") {template_8_standard(1,1)}
+        alternative_sprites(ss_400_series_cab_rev_refurb,       ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/400_series/400_series_refurb.png") {template_8_standard(1,41)}
+        alternative_sprites(ss_400_series_coach_refurb,         ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/400_series/400_series_refurb.png") {template_8_standard(1,121)}
+        alternative_sprites(ss_400_series_coach_rev_refurb,     ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/400_series/400_series_refurb.png") {template_8_reversed(1,121)}
+        alternative_sprites(ss_400_series_panto_refurb,         ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/400_series/400_series_refurb.png") {template_8_standard(1,81)}
+        alternative_sprites(ss_400_series_panto_rev_refurb,     ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/400_series/400_series_refurb.png") {template_8_reversed(1,81)}    

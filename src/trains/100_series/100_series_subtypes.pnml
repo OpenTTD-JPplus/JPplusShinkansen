@@ -26,3 +26,10 @@ switch(FEAT_TRAINS, SELF, sw_100_series_2000_subtype_text, cargo_subtype) {
     4: return string(LV_100_SERIES_KODAMA);     // 8-car ser with Kodama livery 
        return CB_RESULT_NO_TEXT;
     }
+
+// SUBTYPE MENU over time
+switch(FEAT_TRAINS, SELF, sw_100_series_year_dep_subtype_text, current_year) {
+    0..1987: sw_100_series_1985_subtype_text;
+    1988..1999: sw_100_series_1988_subtype_text;
+    sw_100_series_2000_subtype_text;
+}

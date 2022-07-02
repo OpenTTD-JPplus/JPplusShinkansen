@@ -5,11 +5,11 @@
 | | Shinkansen | Release | End Year  | Speed (km/h) | Weight per car| |
 | --- | --- | --- | --- | --- | --- | --- | 
 |![0 Series](/src/gfx/0_series/purchase_original.png)| 0 Series | 1964 | 2008 |  210^ | 61t |
-|![100 Series](/src/gfx/100_series/purchase_original_jnr.png)| 100 Series | 1985 | |
-|![300 Series](/src/gfx/300_series/purchase.png)| 300 Series | 1992 | |
-|![500 Series](/src/gfx/500_series/purchase.png)| 500 Series | 1997 |
+|![100 Series](/src/gfx/100_series/purchase_original_jnr.png)| 100 Series | 1985 | | 220 | 53t
+|![300 Series](/src/gfx/300_series/purchase.png)| 300 Series | 1992 | | 270 | 44t|
+|![500 Series](/src/gfx/500_series/purchase.png)| 500 Series | 1997 | | 300 | 42t |
 |![700 Series](/src/gfx/700_series/purchase.png)| 700 Series | 1999 |
-|![N700 Series](/src/gfx/n700_series/purchase.png)| N700 Series | 2007 || 300|44t|
+|![N700 Series](/src/gfx/n700_series/buy_n700.png)| N700 Series | 2007 || 300|44t|
 |![800 Series](/src/gfx/800_series/purchase.png)| 800 Series | 2004 |
 
 ^ 210 km/h until 1986, 220 km/h thereafter

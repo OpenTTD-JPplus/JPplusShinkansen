@@ -1,0 +1,10 @@
+// Begin 400_series SUBTYPES
+
+  switch(FEAT_TRAINS, SELF, sw_400_series_subtypetext_mucar, cargo_subtype) {
+    0 : string(LV_400_SERIES_ORIGINAL);
+    1 : string(LV_400_SERIES_REFURB);
+  }
+  switch(FEAT_TRAINS, SELF, sw_400_series_subtypetext_main, cargo_subtype) {
+    0 : string(LV_400_SERIES_ORIGINAL);
+    1 : string(LV_400_SERIES_REFURB);
+  }

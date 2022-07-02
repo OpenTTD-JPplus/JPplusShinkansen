@@ -78,32 +78,29 @@
     }
 
 /* RUNNING COSTS */
-
     switch(FEAT_TRAINS, SELF, sw_100_series_running_costs, cargo_subtype) {
-        3: return 113;
+        2: return 113;
         4: return 75;
         return 300;
     }
 
 /* WEIGHT */
-
     switch(FEAT_TRAINS, SELF, sw_100_series_weight, cargo_subtype) {
-        3: return 318;      // Weight of a 3.0 tile long JapanSet 100 Series
-        4: return 477;      // Weight of a 4.5 tile long JapanSet 100 Series
-        return 1272;        // Weight of a 12.0 tile long JapanSet 100 Series
+        2: return 53*12;        // 53t (per JPS) x 12 cars
+        4: return 53*8;         // 53t (per JPS) x 08 cars
+        return 53*16;           // 53t (per JPS) x 16 cars
     }
 
 /* POWER */
-
     switch(FEAT_TRAINS, SELF, sw_100_series_power, cargo_subtype) {
-        3: return 5962;
-        4: return 8943;
-        return 23847;    
+        // 230 kW a motor (per HAGIWARA doc), 4 motors per car
+        2: return 230*4*10*4/3;         // 230 kW x 4 x 10 motorised cars converted to hp
+        4: return 230*4*8*4/3;          // 230 kW x 4 x 08 motorised cars converted to hp
+        return 230*4*12*4/3;            // 230 kW x 4 x 12 motorised cars converted to hp
     }
 
 /* SPEED */
-
     switch(FEAT_TRAINS, SELF, sw_100_series_speed, cargo_subtype) {
-        1..3: return 220;   // Original speed
+        0..3: return 220;   // Original speed
         return 230;         // Kodama speed
     }

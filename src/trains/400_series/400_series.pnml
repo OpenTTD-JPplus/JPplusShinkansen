@@ -1,0 +1,235 @@
+// Begin 400_series
+
+#include "src/trains/400_series/400_series_subtypes.pnml"
+#include "src/trains/400_series/400_series_gfx.pnml"
+#include "src/trains/400_series/400_series_liveries.pnml"
+#include "src/trains/400_series/400_series_stats.pnml"
+
+/* COACH and PANTO flipping */
+
+    // Check if Coach is flipped
+    switch(FEAT_TRAINS, SELF, sw_400_series_gfx_coach_flippedcheck, vehicle_is_flipped) {
+        1 : sw_400_series_gfx_coach_livery;
+        default : sw_400_series_gfx_coach_rev_livery;
+    }
+    // Check if Panto is flipped
+    switch(FEAT_TRAINS, SELF, sw_400_series_gfx_panto_flippedcheck, vehicle_is_flipped) {
+        1 : sw_400_series_gfx_panto_livery;
+        default : sw_400_series_gfx_panto_rev_livery;
+    }
+
+/* PANTOGRAPH CHECKS */
+
+    switch(FEAT_TRAINS, SELF, sw_400_series_gfx_rev_pantograph_pos_original_sw1, [STORE_TEMP(position_in_consist_from_end-position_in_consist, 0x10F), var[0x61, 0, 0x000000FF, 0x41]]){
+        0 : sw_400_series_gfx_panto_flippedcheck;
+        default : sw_400_series_gfx_coach_flippedcheck;
+    }
+    switch(FEAT_TRAINS, SELF, sw_400_series_gfx_rev_pantograph_pos_original_sw2, [STORE_TEMP(position_in_consist_from_end-position_in_consist, 0x10F), var[0x61, 0, 0x000000FF, 0x41]%10]){
+        1 : sw_400_series_gfx_panto_flippedcheck;
+        //4 : sw_400_series_gfx_panto_flippedcheck;
+        7 : sw_400_series_gfx_panto_flippedcheck;
+    default : sw_400_series_gfx_coach_flippedcheck;
+    }
+
+    switch(FEAT_TRAINS, SELF, sw_400_series_gfx_rev_pantograph_pos_original, [STORE_TEMP(position_in_consist_from_end-position_in_consist, 0x10F), var[0x61, 16, 0x000000FF, 0x41]]){
+        0..2 : sw_400_series_gfx_rev_pantograph_pos_original_sw1;
+        default : sw_400_series_gfx_rev_pantograph_pos_original_sw2;
+    }
+
+    switch(FEAT_TRAINS, SELF, sw_400_series_gfx_rev_pantograph_pos_refurb_sw1, [STORE_TEMP(position_in_consist_from_end-position_in_consist, 0x10F), var[0x61, 0, 0x000000FF, 0x41]]){
+        0 : sw_400_series_gfx_panto_flippedcheck;
+        default : sw_400_series_gfx_coach_flippedcheck;
+    }
+    switch(FEAT_TRAINS, SELF, sw_400_series_gfx_rev_pantograph_pos_refurb_sw2, [STORE_TEMP(position_in_consist_from_end-position_in_consist, 0x10F), var[0x61, 0, 0x000000FF, 0x41]%10]){
+        1 : sw_400_series_gfx_panto_flippedcheck;
+        //4 : sw_400_series_gfx_panto_flippedcheck;
+        7 : sw_400_series_gfx_panto_flippedcheck;
+        default : sw_400_series_gfx_coach_flippedcheck;
+    }
+
+    switch(FEAT_TRAINS, SELF, sw_400_series_gfx_rev_pantograph_pos_refurb, [STORE_TEMP(position_in_consist_from_end-position_in_consist, 0x10F), var[0x61, 16, 0x000000FF, 0x41]]){
+        0..2 : sw_400_series_gfx_rev_pantograph_pos_refurb_sw1;
+        default : sw_400_series_gfx_rev_pantograph_pos_refurb_sw2;
+    }
+
+    switch(FEAT_TRAINS,SELF, sw_400_series_gfx_rev_pantograph_pos, [STORE_TEMP(position_in_consist_from_end-position_in_consist, 0x10F), var[0x61, 0, 0x0000FFFF, 0xF2]]){
+        0 : sw_400_series_gfx_rev_pantograph_pos_original;
+        1 : sw_400_series_gfx_rev_pantograph_pos_refurb;
+    }
+
+    switch(FEAT_TRAINS, SELF, sw_400_series_gfx_rev_frontback_nomucars,
+    [STORE_TEMP(position_in_consist_from_end-position_in_consist-1, 0x10F), var[0x61, 0, 0x000000FF, 0x41]%2]){
+        1 : sw_400_series_gfx_cab_rev_livery;
+        0 : sw_400_series_gfx_cab_livery;
+    }
+    switch(FEAT_TRAINS, SELF, sw_400_series_gfx_rev_frontback_aftermucars,
+    [STORE_TEMP(position_in_consist_from_end-position_in_consist-1, 0x10F), var[0x61, 0, 0x000000FF, 0x41]%2]){
+        1 : sw_400_series_gfx_cab_livery;
+        0 : sw_400_series_gfx_cab_rev_livery;
+    }
+    switch(FEAT_TRAINS, SELF, sw_400_series_gfx_rev_frontback_mucarcheck,
+    [STORE_TEMP(position_in_consist_from_end-position_in_consist, 0x10F),STORE_TEMP(var[0x61, 0, 0x000000FF, 0x41],0),
+    STORE_TEMP((position_in_consist_from_end-position_in_consist-1)-LOAD_TEMP(0), 0x10F),
+    var[0x61, 0, 0x0000FFFF, 0xC6]]){
+        1000 : sw_400_series_gfx_rev_frontback_aftermucars;         // From above switch
+        default : sw_400_series_gfx_rev_frontback_nomucars;         // From above switch
+    }
+    switch(FEAT_TRAINS, SELF, sw_400_series_gfx_rev_frontback_sameid,
+    [STORE_TEMP(position_in_consist_from_end-position_in_consist+1, 0x10F), var[0x61, 0, 0x0000FFFF, 0xC6]]){
+        400 : sw_400_series_gfx_rev_frontback_mucarcheck;
+        1000 : sw_400_series_gfx_cab_rev_livery;
+        default : sw_400_series_gfx_cab_livery;
+    }
+    switch(FEAT_TRAINS, SELF, sw_400_series_gfx_rev_frontback,
+    [STORE_TEMP(position_in_consist_from_end-position_in_consist-1, 0x10F), var[0x61, 0, 0x0000FFFF, 0xC6]]){
+        400 : sw_400_series_gfx_rev_frontback_sameid;
+        1000 : sw_400_series_gfx_cab_livery;
+        default : sw_400_series_gfx_cab_rev_livery;
+    }
+    switch(FEAT_TRAINS, SELF, sw_400_series_gfx_rev_idcheck, [STORE_TEMP(position_in_consist_from_end-position_in_consist, 0x10F), var[0x61, 0, 0x0000FFFF, 0xC6]]){
+        1000 : sw_400_series_gfx_rev_pantograph_pos;        
+        400 : sw_400_series_gfx_rev_frontback;
+    }
+/*---END OF SECTION---*/
+/*---GFX: Pantograph Positions---*/
+    
+    // Original
+    switch(FEAT_TRAINS, SELF, sw_400_series_gfx_pantograph_pos_original_sw1, position_in_vehid_chain){
+        0 : ss_400_series_panto_original;
+        default : ss_400_series_coach_original;
+    }
+    switch(FEAT_TRAINS, SELF, sw_400_series_gfx_pantograph_pos_original_sw2, position_in_vehid_chain%10){
+        1 : ss_400_series_panto_original;
+        //4 : ss_400_series_panto_original;
+        7 : ss_400_series_panto_original;
+        default : ss_400_series_coach_original;
+    }
+    switch(FEAT_TRAINS, SELF, sw_400_series_gfx_pantograph_pos_original, num_vehs_in_vehid_chain){
+        0..2 : sw_400_series_gfx_pantograph_pos_original_sw1;
+        default : sw_400_series_gfx_pantograph_pos_original_sw2;
+    }
+    
+    // Refurbished
+    switch(FEAT_TRAINS, SELF, sw_400_series_gfx_pantograph_pos_refurb_sw1, position_in_vehid_chain){
+        0 : ss_400_series_panto_refurb;
+        default : ss_400_series_coach_refurb;
+    }
+    switch(FEAT_TRAINS, SELF, sw_400_series_gfx_pantograph_pos_refurb_sw2, position_in_vehid_chain%10){
+        1 : ss_400_series_panto_refurb;
+        //4 : ss_400_series_panto_refurb;
+        7 : ss_400_series_panto_refurb;
+        default : ss_400_series_coach_refurb;
+    }
+    switch(FEAT_TRAINS, SELF, sw_400_series_gfx_pantograph_pos_refurb, num_vehs_in_vehid_chain){
+        0..2 : sw_400_series_gfx_pantograph_pos_refurb_sw1;
+        default : sw_400_series_gfx_pantograph_pos_refurb_sw2;
+    }
+
+/*---END OF SECTION---*/
+/*---GFX: Front/Back Cab Car Switches---*/
+
+// Original Set
+    switch(FEAT_TRAINS, SELF, sw_400_series_gfx_cab_flipcheck_original, vehicle_is_flipped){
+        0: ss_400_series_cab_original;                             // Cab
+        default: ss_400_series_cab_rev_original;                   // Cab Reversed
+    }
+    switch(FEAT_TRAINS, PARENT, sw_400_series_gfx_cab_original, vehicle_is_reversed){
+        0: sw_400_series_gfx_cab_flipcheck_original;               // Above switch
+        default: sw_400_series_gfx_rev_idcheck;              
+    }
+
+// Refurbished Set
+    switch(FEAT_TRAINS, SELF, sw_400_series_gfx_cab_flipcheck_refurb, vehicle_is_flipped){
+        0: ss_400_series_cab_refurb;                             // Cab
+        default: ss_400_series_cab_rev_refurb;                   // Cab Reversed
+    }
+    switch(FEAT_TRAINS, PARENT, sw_400_series_gfx_cab_refurb, vehicle_is_reversed){
+        0: sw_400_series_gfx_cab_flipcheck_refurb;               // Above switch
+        default: sw_400_series_gfx_rev_idcheck;             
+    }
+
+
+/*---END OF SECTION---*/
+/*---GFX: Middle Car Switches---*/
+    switch(FEAT_TRAINS, PARENT, sw_400_series_gfx_mucar_revcheck_mid_original, vehicle_is_reversed){
+        0: sw_400_series_gfx_pantograph_pos_original;
+        default: sw_400_series_gfx_rev_idcheck;
+    }
+
+    switch(FEAT_TRAINS, PARENT, sw_400_series_gfx_mucar_revcheck_mid_refurb, vehicle_is_reversed){
+        0: sw_400_series_gfx_pantograph_pos_refurb;
+        default: sw_400_series_gfx_rev_idcheck;
+    }
+
+/*---END OF SECTION---*/
+/*---GFX: Livery Refitting Switches---*/
+    switch(FEAT_TRAINS, SELF, sw_400_series_gfx_mucar,  cargo_subtype) {
+        0 : sw_400_series_gfx_mucar_revcheck_mid_original;
+        1 : sw_400_series_gfx_mucar_revcheck_mid_refurb;
+    }
+    switch(FEAT_TRAINS, SELF, sw_400_series_gfx_main,  cargo_subtype) {
+        0 : sw_400_series_gfx_cab_original;
+        1 : sw_400_series_gfx_cab_refurb;
+    }
+/*---END OF SECTION---*/
+
+/*---Coupling Switch---*/
+    switch(FEAT_TRAINS, SELF, sw_400_series_attach_vehid, [vehicle_type_id == series_400 || vehicle_type_id == mu_car]) {
+        0: return string(MU_UNIQUE);
+    }
+/*---END OF SECTION---*/
+
+item(FEAT_TRAINS, series_400) {
+    property {
+        name:                           string(STR_NAME_400_SERIES);
+        introduction_date:              date(1992,07,01);
+        model_life:                     VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                   38;
+        reliability_decay:              21;
+        cargo_capacity:                 50;
+        loading_speed:                  20;
+        cost_factor:                    18;
+        running_cost_factor:            48;
+        speed:                          240 km/h;
+        track_type:                     MINI_SHINKANSEN;
+        power:                          280 hp;
+        weight:                         42 ton;
+        climates_available:             ALL_CLIMATES;
+        ai_special_flag:                AI_FLAG_PASSENGER;
+        sprite_id:                      SPRITE_ID_NEW_TRAIN;
+        misc_flags:                     bitmask(TRAIN_FLAG_MU);
+        refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes:   bitmask();
+        refit_cost:                     0;
+        dual_headed:                    1;
+        ai_engine_rank:                 0;
+        running_cost_base:              RUNNING_COST_ELECTRIC;
+        engine_class:                   ENGINE_CLASS_ELECTRIC;
+        visual_effect_and_powered:      visual_effect_and_powered(VISUAL_EFFECT_ELECTRIC, 4, ENABLE_WAGON_POWER);
+        tractive_effort_coefficient:    0.2;
+        air_drag_coefficient:           0.07;
+        bitmask_vehicle_info:           0;
+        length:                         8;
+    }
+    /*Graphics and Callbacks*/
+      graphics {
+        default:                        sw_400_series_gfx_main;
+	    purchase:                       spriteset_400_series_purchase;
+		additional_text:	            return string(STR_DESC_400_SERIES);
+        cargo_subtype_text:             sw_400_series_subtypetext_main;
+        can_attach_wagon:			    sw_400_series_attach_vehid;
+        //start_stop:                   ;
+    }
+    /*Multiple Unit Car*/
+      livery_override(mu_car){
+        default:                        sw_400_series_gfx_mucar;
+        cargo_capacity:                 sw_400_series_cargo_capacity;
+        loading_speed:                  sw_400_series_param_loading_speed;
+        cargo_subtype_text:             sw_400_series_subtypetext_mucar;
+        power:                          280;
+        weight:                         30;
+      }
+
+}
+
+// End 400_series

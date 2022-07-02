@@ -1,0 +1,30 @@
+// Begin e3_series
+
+/* CARGO CAPACITY 
+
+    per car JPS   40/50/60/70
+
+        per car
+    IRL 56      Average 338/6, 402/7, 394/7 = 56    
+    RW  56          
+    LS  71       
+    DC  85         
+*/
+
+// Passenger Capacities for each parameter level
+  switch(FEAT_TRAINS, SELF, sw_e3_series_cargo_capacity, param_basecapacity) {
+      // Assuming 50 capacity per car (same as JapanSet)
+        0: return 56;       // 1x Real World Capacity
+        2: return 84;       // Double Real World Capacity (1.5x for Mini-Shinkansen)
+        return 70;          // Long Sprite Adjusted Capacity (1.25x for Mini-Shinkansen)
+  }
+
+// Loading Speed
+
+// Loading Speeds for each parameter level
+  switch(FEAT_TRAINS, SELF, sw_e3_series_param_loading_speed, param_basecapacity) {
+      // Loading Capacity for a 2 door
+      0: return 10;       // Low Capacity
+      2: return 30;       // High Capacity
+      return 20;          // Normal Capacity 
+  }

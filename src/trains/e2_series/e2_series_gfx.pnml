@@ -1,0 +1,23 @@
+/* Begin e2 Series GRPAHICS */
+
+    // Purchase Menu
+    spriteset (ss_e2_series_buy,	        	    "src/gfx/dummy/purchase.png")           {template_purchase(0, 0)}
+    alternative_sprites(ss_e2_series_buy,           ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,     "src/gfx/e2_series/purchase.png") {template_purchase(0, 0)}
+
+    // "CAB"
+    spriteset(ss_e2_series_cab,             		"src/gfx/dummy/empty.png")     			{template_dummy(0,0)}
+    spriteset(ss_e2_series_cab_rev,             	"src/gfx/dummy/empty.png")     			{template_dummy(0,0)}
+    alternative_sprites(ss_e2_series_cab,     	    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,     "src/gfx/e2_series/e2_series.png") {template_12_standard(1,1)}
+    alternative_sprites(ss_e2_series_cab_rev,       ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,     "src/gfx/e2_series/e2_series.png") {template_12_reversed(1,41)}		
+
+    // COACH
+    spriteset(ss_e2_series_coach,             		"src/gfx/dummy/empty.png")     			{template_dummy(0,0)}
+    spriteset(ss_e2_series_coach_rev,    		    "src/gfx/dummy/empty.png")     			{template_dummy(0,0)}
+    alternative_sprites(ss_e2_series_coach,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,     "src/gfx/e2_series/e2_series.png") {template_12_standard(1,121)}
+    alternative_sprites(ss_e2_series_coach_rev,     ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,     "src/gfx/e2_series/e2_series.png") {template_12_reversed(1,121)}
+
+    // COACH PANTO
+    spriteset(ss_e2_series_panto,          		    "src/gfx/dummy/empty.png")     			{template_dummy(0,0)}
+    spriteset(ss_e2_series_panto_rev, 		        "src/gfx/dummy/empty.png")     			{template_dummy(0,0)}
+    alternative_sprites(ss_e2_series_panto,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,     "src/gfx/e2_series/e2_series.png") {template_12_standard(1,81)}
+    alternative_sprites(ss_e2_series_panto_rev,     ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,     "src/gfx/e2_series/e2_series.png") {template_12_reversed(1,81)}	

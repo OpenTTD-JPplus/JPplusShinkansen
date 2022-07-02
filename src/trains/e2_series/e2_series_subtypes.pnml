@@ -1,0 +1,19 @@
+/* Begin e2 Series SUBTYPES */
+
+    // From 1997 to 2002
+    switch(FEAT_TRAINS, SELF, sw_e2_series_1997_subtype_text, cargo_subtype) {
+        0: return string(LV_E2_SERIES_08CAR);
+        return CB_RESULT_NO_TEXT;
+        }
+
+    // From 2002 onwards - introduction of 10-car sets
+    switch(FEAT_TRAINS, SELF, sw_e2_series_2002_subtype_text, cargo_subtype) {
+        0: return string(LV_E2_SERIES_08CAR);
+	    1: return string(LV_E2_SERIES_10CAR);
+        return CB_RESULT_NO_TEXT;
+        }
+
+    switch(FEAT_TRAINS, SELF, sw_e2_series_year_dep_subtype_text, current_year) {
+        0..2001: sw_e2_series_1997_subtype_text;
+        sw_e2_series_2002_subtype_text;
+    }

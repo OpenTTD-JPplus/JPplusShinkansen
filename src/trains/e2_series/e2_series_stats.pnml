@@ -1,0 +1,86 @@
+/* Begin e2 Series STATS */
+
+/* LENGTH*/
+
+    // Make the Middle long sprite length 8 and the dummy sprites length 2
+    switch (FEAT_TRAINS, SELF, sw_e2_series_length_standard, position_in_consist%3) {
+        1: return 8;
+        return 2;
+    }
+
+    switch (FEAT_TRAINS, SELF, sw_e2_series_length_08car_majority, position_in_consist%4) {
+        0: return 2;
+        1: return 8;
+        return 1;
+    }
+
+    switch (FEAT_TRAINS, SELF, sw_e2_series_length_08car, position_in_consist) {
+        24: return 2;
+        25: return 8;
+        26: return 2;
+        27: return 2;
+        28: return 8;
+        29: return 2;
+        return sw_e2_series_length_08car_majority;
+    }
+
+    switch(FEAT_TRAINS, SELF, sw_e2_series_length, cargo_subtype) {
+        1: sw_e2_series_length_standard;        // 10-car Set
+        sw_e2_series_length_08car;               // 8-car Set
+    }
+
+/* CARGO CAPACITY
+
+    JPS 780/975/1170/1365
+    JPS 624/780/936/1092
+
+        10-car  8-car
+    IRL 815     630
+    RW  810     630  
+    LS  1200    864
+    DC  1620    1152
+
+    */
+
+    // round(IRL capacity/30)
+    switch(FEAT_TRAINS, SELF, sw_e2_series_param_cargo_capacity_10car, param_basecapacity) {
+        0: return 27;       // 1x Real World Capacity
+        2: return 54;       // 2x Double Real World Capacity
+        return 40;          // 1.5x Long Sprite Adjusted Capacity 
+    }
+    // round(IRL capacity/30)
+    switch(FEAT_TRAINS, SELF, sw_e2_series_param_cargo_capacity_08car, param_basecapacity) {
+        0: return 21;       // 1x Real World Capacity
+        2: return 42;       // 2x Double Real World Capacity
+        return 31;          // 1.5x Long Sprite Adjusted Capacity 
+    }
+
+    // Capacity for each length    
+    switch(FEAT_TRAINS, SELF, sw_e2_series_cargo_capacity, cargo_subtype) {
+        2: sw_e2_series_param_cargo_capacity_08car;       // Length 08 (6.0 tiles)
+        sw_e2_series_param_cargo_capacity_10car;          // Length 10 (7.5 tiles)
+    }
+
+/* WEIGHT */
+    switch(FEAT_TRAINS, SELF, sw_e2_series_weight, cargo_subtype) {
+        //46t per JPS
+        1: return 46*10;            // 10 cars
+        return 46*8;                // 08 cars
+    }
+
+/* POWER */
+    switch(FEAT_TRAINS, SELF, sw_e2_series_power, cargo_subtype) {
+        //300 kW per motor, 4 motors per car. 4/3 for kW to hp
+        1: return 300*4*8*4/3;      // 8 of 10 cars motorised 
+        return 300*4*6*4/3;         // 6 of 08 cars motorised 
+    }
+
+/* REFIT COST */
+    switch(FEAT_TRAINS, SELF, sw_e2_series_refit_cost, var[0x10,8,0xFF] - cargo_subtype) {
+        /* Refit cost based on difference between target cargo subtype and current cargo subtype.
+	    Refitting to fewer carriages refunds money, while adding carriages costs (more) money.    */    
+	    -1:				-4;
+	    0:				0;
+	    1:				5;
+	    return CB_FAILED;
+    }

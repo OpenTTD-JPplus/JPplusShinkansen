@@ -30,9 +30,9 @@ item(FEAT_TRAINS, series_300) {
 		loading_speed:                  50;							
 		cargo_age_period:               278; 						// 1.5 times normal for this expensive long-distance train
 		/* Stats */
-        speed:                          271 km/h;					
-		power:                          12000 kW;                   // Agreed to Wikipedia					
-		weight:                         704 tons;	                // 44t (per JPS) x 16 cars				
+        speed:                          271 km/h;					// Agreed to Wikipedia					
+		power:                          300*4*10*4/3 kW;            // 300kw x 10 motorised cars x 4 per car				
+		weight:                         44*16 tons;	                // 44t (per JPS) x 16 cars				
 		tractive_effort_coefficient:    0.3;
 
 	}

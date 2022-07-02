@@ -1,0 +1,32 @@
+// Begin 400_series LIVERIES
+
+    // Cab Livery (Yellow Lights)
+    switch(FEAT_TRAINS, SELF, sw_400_series_gfx_cab_livery, [STORE_TEMP(position_in_consist_from_end-position_in_consist, 0x10F), var[0x61, 0, 0x0000FFFF, 0xF2]]){
+        0 : ss_400_series_cab_original;
+        1 : ss_400_series_cab_refurb;
+    }
+    // Cab Reversed Livery (Red lights)
+    switch(FEAT_TRAINS, SELF, sw_400_series_gfx_cab_rev_livery, [STORE_TEMP(position_in_consist_from_end-position_in_consist, 0x10F), var[0x61, 0, 0x0000FFFF, 0xF2]]){
+        0 : ss_400_series_cab_rev_original;
+        1 : ss_400_series_cab_rev_refurb;
+    }
+    // Coach Livery
+    switch(FEAT_TRAINS, SELF, sw_400_series_gfx_coach_livery, [STORE_TEMP(position_in_consist_from_end-position_in_consist, 0x10F), var[0x61, 0, 0x0000FFFF, 0xF2]]){
+        0 : ss_400_series_coach_original;
+        1 : ss_400_series_coach_refurb;
+    }
+    // Coach Reversed Livery
+    switch(FEAT_TRAINS, SELF, sw_400_series_gfx_coach_rev_livery, [STORE_TEMP(position_in_consist_from_end-position_in_consist, 0x10F), var[0x61, 0, 0x0000FFFF, 0xF2]]){
+        0 : ss_400_series_coach_rev_original;
+        1 : ss_400_series_coach_rev_refurb;
+    }
+    // Panto Livery
+    switch(FEAT_TRAINS, SELF, sw_400_series_gfx_panto_livery, [STORE_TEMP(position_in_consist_from_end-position_in_consist, 0x10F), var[0x61, 0, 0x0000FFFF, 0xF2]]){
+        0 : ss_400_series_panto_original;
+        1 : ss_400_series_panto_refurb;
+    }
+    // Panto Reversed Livery
+    switch(FEAT_TRAINS, SELF, sw_400_series_gfx_panto_rev_livery, [STORE_TEMP(position_in_consist_from_end-position_in_consist, 0x10F), var[0x61, 0, 0x0000FFFF, 0xF2]]){
+        0 : ss_400_series_panto_rev_original;
+        1 : ss_400_series_panto_rev_refurb;
+    }
