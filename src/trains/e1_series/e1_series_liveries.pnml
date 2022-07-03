@@ -1,0 +1,145 @@
+/* Begin E1 Series LIVERIES */
+
+// CAB
+
+    switch(FEAT_TRAINS, SELF, sw_e1_series_cab_year_dep_livery, build_year) {
+        0..2003: ss_e1_series_cab_original_livery;
+        2004..9999: ss_e1_series_cab_refurb_livery;
+        ss_e1_series_cab_original_livery;
+    }
+
+    switch(FEAT_TRAINS, SELF, sw_e1_series_cab_old_livery, cargo_subtype) {
+        1: ss_e1_series_cab_original_livery;
+        sw_e1_series_cab_year_dep_livery;
+    }
+
+    switch(FEAT_TRAINS, SELF, sw_e1_series_cab_new_livery, cargo_subtype) {
+        1: ss_e1_series_cab_original_livery;
+        2: ss_e1_series_cab_refurb_livery;
+        sw_e1_series_cab_year_dep_livery;
+    }
+
+    switch(FEAT_TRAINS, SELF, ss_e1_series_cab, current_year) {
+        0..2003: sw_e1_series_cab_old_livery;
+        sw_e1_series_cab_new_livery;
+    }
+
+// CAB REVERSED
+
+    switch(FEAT_TRAINS, SELF, sw_e1_series_cab_rev_year_dep_livery, build_year) {
+        0..2003: ss_e1_series_cab_rev_original_livery;
+        2004..9999: ss_e1_series_cab_rev_refurb_livery;
+        ss_e1_series_cab_rev_original_livery;
+    }
+
+    switch(FEAT_TRAINS, SELF, sw_e1_series_cab_rev_old_livery, cargo_subtype) {
+        1: ss_e1_series_cab_rev_original_livery;
+        sw_e1_series_cab_rev_year_dep_livery;
+    }
+
+    switch(FEAT_TRAINS, SELF, sw_e1_series_cab_rev_new_livery, cargo_subtype) {
+        1: ss_e1_series_cab_rev_original_livery;
+        2: ss_e1_series_cab_rev_refurb_livery;
+        sw_e1_series_cab_rev_year_dep_livery;
+    }
+
+    switch(FEAT_TRAINS, SELF, ss_e1_series_cab_rev, current_year) {
+        0..2003: sw_e1_series_cab_rev_old_livery;
+        sw_e1_series_cab_rev_new_livery;
+    }
+
+// Coach
+
+    switch(FEAT_TRAINS, SELF, sw_e1_series_coach_year_dep_livery, build_year) {
+        0..2003: ss_e1_series_coach_original_livery;
+        2004..9999: ss_e1_series_coach_refurb_livery;
+        ss_e1_series_coach_original_livery;
+    }
+
+    switch(FEAT_TRAINS, SELF, sw_e1_series_coach_old_livery, cargo_subtype) {
+        1: ss_e1_series_coach_original_livery;
+        sw_e1_series_coach_year_dep_livery;
+    }
+
+    switch(FEAT_TRAINS, SELF, sw_e1_series_coach_new_livery, cargo_subtype) {
+        1: ss_e1_series_coach_original_livery;
+        2: ss_e1_series_coach_refurb_livery;
+        sw_e1_series_coach_year_dep_livery;
+    }
+
+    switch(FEAT_TRAINS, SELF, ss_e1_series_coach, current_year) {
+        0..2003: sw_e1_series_coach_old_livery;
+        sw_e1_series_coach_new_livery;
+    }
+
+// Coach Reversed
+
+    switch(FEAT_TRAINS, SELF, sw_e1_series_coach_reversed_year_dep_livery, build_year) {
+        0..2003: ss_e1_series_coach_reversed_original_livery;
+        2004..9999: ss_e1_series_coach_reversed_refurb_livery;
+        ss_e1_series_coach_reversed_original_livery;
+    }
+
+    switch(FEAT_TRAINS, SELF, sw_e1_series_coach_reversed_old_livery, cargo_subtype) {
+        1: ss_e1_series_coach_reversed_original_livery;
+        sw_e1_series_coach_reversed_year_dep_livery;
+    }
+
+    switch(FEAT_TRAINS, SELF, sw_e1_series_coach_reversed_new_livery, cargo_subtype) {
+        1: ss_e1_series_coach_reversed_original_livery;
+        2: ss_e1_series_coach_reversed_refurb_livery;
+        sw_e1_series_coach_reversed_year_dep_livery;
+    }
+
+    switch(FEAT_TRAINS, SELF, ss_e1_series_coach_reversed, current_year) {
+        0..2003: sw_e1_series_coach_reversed_old_livery;
+        sw_e1_series_coach_reversed_new_livery;
+    }
+
+// Panto
+
+    switch(FEAT_TRAINS, SELF, sw_e1_series_panto_year_dep_livery, build_year) {
+        0..2003: ss_e1_series_panto_original_livery;
+        2004..9999: ss_e1_series_panto_refurb_livery;
+        ss_e1_series_panto_original_livery;
+    }
+
+    switch(FEAT_TRAINS, SELF, sw_e1_series_panto_old_livery, cargo_subtype) {
+        1: ss_e1_series_panto_original_livery;
+        sw_e1_series_panto_year_dep_livery;
+    }
+
+    switch(FEAT_TRAINS, SELF, sw_e1_series_panto_new_livery, cargo_subtype) {
+        1: ss_e1_series_panto_original_livery;
+        2: ss_e1_series_panto_refurb_livery;
+        sw_e1_series_panto_year_dep_livery;
+    }
+
+    switch(FEAT_TRAINS, SELF, ss_e1_series_panto, current_year) {
+        0..2003: sw_e1_series_panto_old_livery;
+        sw_e1_series_panto_new_livery;
+    }
+
+// Panto Reversed
+
+    switch(FEAT_TRAINS, SELF, sw_e1_series_panto_reversed_year_dep_livery, build_year) {
+        0..2003: ss_e1_series_panto_reversed_original_livery;
+        2004..9999: ss_e1_series_panto_reversed_refurb_livery;
+        ss_e1_series_panto_reversed_original_livery;
+    }
+
+    switch(FEAT_TRAINS, SELF, sw_e1_series_panto_reversed_old_livery, cargo_subtype) {
+        1: ss_e1_series_panto_reversed_original_livery;
+        sw_e1_series_panto_reversed_year_dep_livery;
+    }
+
+    switch(FEAT_TRAINS, SELF, sw_e1_series_panto_reversed_new_livery, cargo_subtype) {
+        1: ss_e1_series_panto_reversed_original_livery;
+        2: ss_e1_series_panto_reversed_refurb_livery;
+        sw_e1_series_panto_reversed_year_dep_livery;
+    }
+
+    switch(FEAT_TRAINS, SELF, ss_e1_series_panto_reversed, current_year) {
+        0..2003: sw_e1_series_panto_reversed_old_livery;
+        sw_e1_series_panto_reversed_new_livery;
+    }

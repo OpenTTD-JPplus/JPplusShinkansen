@@ -8,15 +8,20 @@
         return 2;
     }
 
-/* CARGO CAPACITY */
+/* CARGO CAPACITY 
+
+    16-car JPS  1248/1560/1872/2184
+
+        16-car
+    IRL 1324
+    RW  1344       
+    LS  2016   
+    DC  2688        
+*/
 
     // Passenger Capacities for each parameter level
-    switch(FEAT_TRAINS, SELF, sw_500_series_param_cargo_capacity, param_basecapacity) {
-        // Assuming 65 capacity per car if it was 0.5 tile (same as JapanSet)
-        0: return 52;       // Low Capacity
-        2: return 78;       // High Capacity
-        3: return 92;       // Very High Capacity
-        return 66;          // Normal Capacity 
+    switch(FEAT_TRAINS, SELF, sw_500_series_cargo_capacity, param_basecapacity) {
+        0: return 28;       // 1x Real World Capacity
+        2: return 56;       // 2x Double Real World Capacity
+        return 42;          // 1.5x Long Sprite Adjusted Capacity 
     }
-
-    switch(FEAT_TRAINS, SELF, sw_500_series_cargo_capacity, (sw_500_series_param_cargo_capacity()  / 2 ) ){return;}     // Half since n * 1.5 (long)/ 3 (3 parts per car)

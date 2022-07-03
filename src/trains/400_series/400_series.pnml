@@ -183,7 +183,7 @@ item(FEAT_TRAINS, series_400) {
     property {
         name:                           string(STR_NAME_400_SERIES);
         introduction_date:              date(1992,07,01);
-        model_life:                     VEHICLE_NEVER_EXPIRES;
+        model_life:                     28;                             // In service until 2010,04,18
         vehicle_life:                   38;
         reliability_decay:              21;
         cargo_capacity:                 50;

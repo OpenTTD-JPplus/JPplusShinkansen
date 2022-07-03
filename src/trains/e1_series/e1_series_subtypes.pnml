@@ -1,0 +1,21 @@
+/* Begin e1 Series SUBTYPES */
+
+// Pre 2003 subtype text
+switch(FEAT_TRAINS, SELF, sw_e1_series_old_livery_subtype_text, cargo_subtype) {
+    0: return string(LV_YEAR_DEP_LIVERY);
+	1: return string(LV_E1_SERIES_ORIGINAL); 
+       return CB_RESULT_NO_TEXT;
+    }
+
+// Post 2003 subtype text
+switch(FEAT_TRAINS, SELF, sw_e1_series_new_livery_subtype_text, cargo_subtype) {
+    0: return string(LV_YEAR_DEP_LIVERY);
+	1: return string(LV_E1_SERIES_ORIGINAL);
+    2: return string(LV_E1_SERIES_REFURB);
+       return CB_RESULT_NO_TEXT;
+    }
+
+switch(FEAT_TRAINS, SELF, sw_e1_series_year_dep_subtype_text, current_year) {
+    0..2003: sw_e1_series_old_livery_subtype_text;
+    sw_e1_series_new_livery_subtype_text;
+}

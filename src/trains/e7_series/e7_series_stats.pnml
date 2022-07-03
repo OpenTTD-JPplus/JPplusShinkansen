@@ -1,0 +1,28 @@
+/* Begin E7 Series STATS */
+
+/* LENGTH*/
+
+    // Make the Middle long sprite length 8 and the dummy sprites length 2
+    switch (FEAT_TRAINS, SELF, sw_e7_series_length, position_in_consist%3) {
+        1: return 8;
+        return 2;
+    }
+
+/* CARGO CAPACITY
+
+    IRL 12 car = 934     JPS 936/1170/1404/1638
+
+        12-car  parts   per part
+    IRL 934     36      25.944
+    RW  936     36      26   
+    LS  1404    36      39
+    DC  1872    36      52
+
+    */
+
+    // Passenger Capacities for each parameter level
+    switch(FEAT_TRAINS, SELF, sw_e7_series_cargo_capacity, param_basecapacity) {
+        0: return 26;       // 1x Real World Capacity
+        2: return 52;       // 2x Double Real World Capacity
+        return 39;          // 1.5x Normal Capacity 
+    }

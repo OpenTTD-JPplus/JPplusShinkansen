@@ -1,0 +1,7 @@
+/* Begin E7 Series SUBTYPES */
+
+    switch(FEAT_TRAINS, SELF, sw_e7_series_subtype_text, cargo_subtype) {
+        0: return string(LV_E7_SERIES_E7);
+	    1: return string(LV_E7_SERIES_W7);
+        return CB_RESULT_NO_TEXT;
+        }

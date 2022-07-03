@@ -1,0 +1,28 @@
+/* Begin E5 Series STATS */
+
+/* LENGTH*/
+
+	/* Make the Middle long sprite length 8 and the dummy sprites length 2*/
+	switch (FEAT_TRAINS, SELF, sw_e5_series_length, position_in_consist%3) {
+		1: return 8;
+		return 2;
+	}
+
+/* CARGO CAPACITY
+
+    JPS 780/975/1170/1365
+
+        10-car	Parts	Per Part
+    IRL 731		30		24.367
+    RW  750  	30		25			
+    LS  1110	30		37	
+    DC  1500	30		50	
+
+    */
+
+    // Passenger Capacities for each parameter level
+    switch(FEAT_TRAINS, SELF, sw_e5_series_cargo_capacity, param_basecapacity) {
+        0: return 25;       // 1x Real World Capacity
+        2: return 50;       // 2x Double Real World Capacity
+        return 37;          // 1.5x Normal Capacity 
+    }
