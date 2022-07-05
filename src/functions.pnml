@@ -13,4 +13,25 @@ switch (FEAT_TRAINS, SELF, sw_visual_effect_and_powered, ((position_in_articulat
 	return visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
 }
 
+/* LENGTHS */
+
+// Standard 2-8-2 Length
+    switch (FEAT_TRAINS, SELF, sw_length_2_8_2, position_in_consist%3) {
+        1: return 8;
+        return 2;
+    }
+
+// 1-1-8-2
+    switch(FEAT_TRAINS, SELF, sw_length_1_1_8_2, position_in_consist%4) {
+        2: return 8;
+        3: return 2;
+        return 1;
+    }
+
+// 1-1-7-1-1-1
+    switch(FEAT_TRAINS, SELF, sw_length_1_1_7_1_1_1, position_in_consist%6) {
+        2: return 7;
+        return 1;
+    }
+
 /* End Functions */ 

@@ -1,24 +1,41 @@
+/* NUMBER OF CARS */
+
+    switch(FEAT_TRAINS, SELF, sw_0_series_number_of_cars, cargo_subtype) {
+            2: return 12;     
+            return 16;       
+        }
+
+    switch(FEAT_TRAINS, SELF, sw_0_series_number_of_motor_cars, cargo_subtype) {
+            2: return 12;       // All cars motorised   
+            return 16;          // All cars motorised
+        }
+
 /* LENGTH*/
-
-    // Standard 2-8-2 Length
-    switch (FEAT_TRAINS, SELF, sw_0_series_length_standard, position_in_consist%3) {
-        1: return 8;
-        return 2;
+    switch(FEAT_TRAINS, SELF, sw_0_series_length, cargo_subtype) {
+        2: sw_length_1_1_8_2;      // Nose Set
+        sw_length_2_8_2;                // All other 16-length sets
     }
 
-    // Make a 12 car set by adjusting sprite size to 1-1-8-2
-    switch(FEAT_TRAINS, SELF, sw_0_series_shorten_12_car_vehicle, position_in_consist%4) {
-        2: return 8;
-        3: return 2;
-        return 1;
+/* RUNNING COSTS */
+    running_cost_0_series = 187;    // 150 is approx JPS
+    
+    switch (FEAT_TRAINS, SELF, sw_0_series_running_costs, current_speed) {
+        0: running_cost_0_series / 10 * sw_0_series_number_of_cars();           // Stopped
+        1..15: running_cost_0_series / 4 * sw_0_series_number_of_cars(); 	    // Moving below ~33.5 mph
+        running_cost_0_series * sw_0_series_number_of_cars(); 				    // Track speed
     }
 
-switch(FEAT_TRAINS, SELF, sw_0_series_length, cargo_subtype) {
-    2: sw_0_series_shorten_12_car_vehicle;      // Nose Set
-    sw_0_series_length_standard;                // All other 16-length sets
-}
-
-/* STATS */
+/* WEIGHT */  
+    weight_0_series = 61;           // 61t per JPS
+    
+/* POWER */
+    power_per_motor_0_series = 248; // in hp (185 kW)
+    
+/* SPEED */
+    switch (FEAT_TRAINS, SELF, sw_0_series_speed, current_year) {
+	    0..1986: return 210;                        // Until 1986, Speed = 210 km/h
+	    return 220;                                 // After 1986, Speed = 220 km/h
+    }
 
 /* CARGO CAPACITY 
 
@@ -52,37 +69,6 @@ switch(FEAT_TRAINS, SELF, sw_0_series_length, cargo_subtype) {
         sw_0_series_param_cargo_capacity_16car;
     }
 
-/* RUNNING COSTS */
-    switch(FEAT_TRAINS, SELF, sw_0_series_running_costs, cargo_subtype) {
-        2: return 100*12;     
-        return 100*16;       
-    }
-
-/* WEIGHT */
-    switch(FEAT_TRAINS, SELF, sw_0_series_weight, cargo_subtype) {
-        2: return 61*12;     
-        return 61*16;       
-    }
-
-/* POWER */
-    switch(FEAT_TRAINS, SELF, sw_0_series_power, cargo_subtype) {
-        2: return 15878/4*3;     
-        return 15878;       
-    }
-
-/* SPEED */
-    switch (FEAT_TRAINS, SELF, sw_0_series_speed, current_year) {
-	    0..1986: return 210;                        // Until 1986, Speed = 210 km/h
-	    return 220;                                 // After 1986, Speed = 220 km/h
-    }
-
-    // COST FACTOR
-    /*
-    switch(FEAT_TRAINS, SELF, sw_0_series_cost_factor, cargo_subtype) {
-        2: return 300;     // Length 12 (9 tiles)
-        return 400;        // Length 16 (12 tiles)
-    }
-    */
 /* REFIT COST */
 
     switch(FEAT_TRAINS, SELF, sw_0_series_refit_cost_minus2, cargo_subtype) {

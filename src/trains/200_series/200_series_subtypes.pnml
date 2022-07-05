@@ -29,7 +29,7 @@ switch(FEAT_TRAINS, SELF, sw_200_series_1990_subtype_text, cargo_subtype) {
 
 // From 1992 onwards - introduction of Refurbished Livery
 switch(FEAT_TRAINS, SELF, sw_200_series_1992_subtype_text, cargo_subtype) {
-    0: return string(LV_YEAR_DEP_LIVERY);
+    0: return string(LV_YEAR_DEP_LIVERY);               // Year Dependent (12-car)
 	1: return string(LV_200_SERIES_ORIGINAL);           // Original 12-car
     2: return string(LV_200_SERIES_10CAR);              // Original 10-car
     3: return string(LV_200_SERIES_08CAR);              // Original 8-car
