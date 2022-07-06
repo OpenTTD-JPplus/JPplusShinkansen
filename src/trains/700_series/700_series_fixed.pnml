@@ -47,12 +47,13 @@ item(FEAT_TRAINS, series_700) {
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
         /* Stats */
         length:                         sw_700_series_length;
-        weight:                         sw_700_series_weight;
-        power:                          sw_700_series_power;
+        weight:                         weight_700_series * sw_700_series_number_of_cars();
+        power:                          power_per_motor_700_series * 4 * sw_700_series_number_of_motor_cars();
 		cargo_capacity:                 sw_700_series_cargo_capacity;
-		cost_factor:                    257;
-		running_cost_factor:            func_running_costs(300);
-		purchase_running_cost_factor:   300;
+		cost_factor:                    538;
+		refit_cost:						sw_700_series_refit_cost;
+		running_cost_factor:            sw_700_series_running_costs;
+		purchase_running_cost_factor:   running_cost_700_series * sw_700_series_number_of_cars();
 	}
 }
 

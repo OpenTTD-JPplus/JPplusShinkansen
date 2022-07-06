@@ -48,13 +48,13 @@ item(FEAT_TRAINS, series_n700) {
         /* Stats */
         length:                         sw_n700_series_length;
         weight:                         sw_n700_series_weight;
-        power:                          sw_n700_series_power;
+        power:                          power_per_motor_n700_series * 4 * sw_n700_series_number_of_motor_cars();
 		speed:							sw_n700_series_speed;
 		cargo_capacity:                 sw_n700_series_cargo_capacity;
-		cost_factor:                    257;
+		cost_factor:                    554;
         refit_cost:                     sw_n700_series_refit_cost;
-		running_cost_factor:            func_running_costs(300);
-		purchase_running_cost_factor:   300;
+		running_cost_factor:            sw_n700_series_running_costs;
+		purchase_running_cost_factor:   running_cost_n700_series * sw_n700_series_number_of_cars();
 	}
 }
 
@@ -100,12 +100,12 @@ item(FEAT_TRAINS, series_n700_kyushu) {
         /* Stats */
         length:                         sw_n700_series_kyushu_length;
         weight:                         sw_n700_series_kyushu_weight;
-        power:                          sw_n700_series_kyushu_power;
+        power:                          power_per_motor_n700_series_kyushu * 4 * sw_n700_series_kyushu_number_of_motor_cars();
 		cargo_capacity:                 sw_n700_series_kyushu_cargo_capacity;
-		cost_factor:                    257;
+		cost_factor:                    sw_n700_series_kyushu_cost_factor;
         refit_cost:                     sw_n700_series_kyushu_refit_cost;
-		running_cost_factor:            func_running_costs(300);
-		purchase_running_cost_factor:   300;
+		running_cost_factor:            sw_n700_series_kyushu_running_costs;
+		purchase_running_cost_factor:   running_cost_n700_series_kyushu * sw_n700_series_kyushu_number_of_cars();
 	}
 }
 

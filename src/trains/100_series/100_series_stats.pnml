@@ -106,10 +106,9 @@
     }
 
 /* COST FACTOR */
-
     switch(FEAT_TRAINS, SELF, sw_100_series_cost_factor, build_year) {
-        0..1999: return 500; 
-        return 250;           
+        0..1999: return 526; 
+        return 526/2;           
     }
 
 /* REFIT COST */

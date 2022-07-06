@@ -1,35 +1,36 @@
-/* Begin 700 Series */
+/* Begin 700 Series STATS */
+
+/* NUMBER OF CARS */
+
+    switch(FEAT_TRAINS, SELF, sw_700_series_number_of_cars, cargo_subtype) {
+            1: return 8;     
+            return 16;       
+        }
+
+    switch(FEAT_TRAINS, SELF, sw_700_series_number_of_motor_cars, cargo_subtype) {
+            1: return 6;        // 6M 2T  
+            return 12;          // 12M 4T
+        }
 
 /* LENGTH */
-
-    /* Make the Middle long sprite length 8 and the dummy sprites length 2*/
-    switch (FEAT_TRAINS, SELF, sw_700_series_length_standard, position_in_consist%3) {
-        1: return 8;
-        return 2;
-    }
-
-    switch (FEAT_TRAINS, SELF, sw_700_series_shorten_8_car_vehicle, position_in_consist%6) {
-        2: return 7;
-        return 1;
-    }
-
     switch (FEAT_TRAINS, SELF, sw_700_series_length, cargo_subtype) {
-        1: sw_700_series_shorten_8_car_vehicle;
-        sw_700_series_length_standard;
+        1: sw_length_1_1_7_1_1_1;
+        sw_length_2_8_2;
     }
 
 /* WEIGHT */
-
-    switch(FEAT_TRAINS, SELF, sw_700_series_weight, cargo_subtype) {
-        1: return 44*8;      // Weight from JPS - 44t x 8 cars
-        return 44*16;        // Weight from JPS - 44t x 16 cars
-    }
+    weight_700_series = 44;           // 44t per JPS
 
 /* POWER */
+    power_per_motor_700_series = 369; // in hp (275 kW)
 
-    switch(FEAT_TRAINS, SELF, sw_700_series_power, cargo_subtype) {
-        1: return 8900;      // Agreed to Wikipedia
-        return 17700;        // Agreed to Wikipedia
+/* RUNNING COSTS */
+    running_cost_700_series = 187;    // 150 is approx JPS
+    
+    switch (FEAT_TRAINS, SELF, sw_700_series_running_costs, current_speed) {
+        0: running_cost_700_series / 10 * sw_700_series_number_of_cars();           // Stopped
+        1..15: running_cost_700_series / 4 * sw_700_series_number_of_cars(); 	    // Moving below ~33.5 mph
+        running_cost_700_series * sw_700_series_number_of_cars(); 				    // Track speed
     }
 
 /* CARGO CAPACITY 
@@ -62,4 +63,14 @@
     switch(FEAT_TRAINS, SELF, sw_700_series_cargo_capacity, cargo_subtype) {
         1: sw_700_series_param_cargo_capacity_8car;
         sw_700_series_param_cargo_capacity_16car;  
+    }
+
+/* REFIT COST */
+    switch(FEAT_TRAINS, SELF, sw_700_series_refit_cost, var[0x10,8,0xFF] - cargo_subtype) {
+        /* Refit cost based on difference between target cargo sybtype and current cargo subtype.
+	    Refitting to fewer carriages refunds money, while adding carriages costs (more) money.    */    
+	    -1:				8;
+	    0:				0;
+	    1:				-8;
+	    return CB_FAILED;
     }

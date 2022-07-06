@@ -32,7 +32,7 @@ item(FEAT_TRAINS, series_800) {
 		/* Stats */
 		speed:                          261 km/h;				
 		power:                          9300 hp;					// 1550 hp (per JPS) x 6 cars					
-		weight:                         44*6 tons;					// 44t (per JPS) x 6 cars					
+		weight:                         44 * 6 tons;				// 44t (per JPS) x 6 cars					
 		tractive_effort_coefficient:    0.3;
 
 	}
@@ -46,13 +46,13 @@ item(FEAT_TRAINS, series_800) {
 		articulated_part:               sw_800_series_articulated_part;
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
 		/* Stats */
-		length:                         sw_800_series_length;
+		length:                         sw_length_2_8_2;
         //power:                          sw_800_series_power;
         //weight:                         sw_800_series_weight;
 		cargo_capacity:                 sw_800_series_cargo_capacity;
-		cost_factor:                    257;
-		running_cost_factor:            func_running_costs(300);
-		purchase_running_cost_factor:   300;
+		cost_factor:                    189;
+		running_cost_factor:            sw_800_series_running_costs;
+		purchase_running_cost_factor:   running_cost_800_series * 6;
 	}
 }
 

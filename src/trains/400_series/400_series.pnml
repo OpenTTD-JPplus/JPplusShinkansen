@@ -188,11 +188,11 @@ item(FEAT_TRAINS, series_400) {
         reliability_decay:              21;
         cargo_capacity:                 50;
         loading_speed:                  20;
-        cost_factor:                    18;
-        running_cost_factor:            48;
+        cost_factor:                    175;
+        running_cost_factor:            120;
         speed:                          240 km/h;
         track_type:                     MINI_SHINKANSEN;
-        power:                          280 hp;
+        power:                          4 * 280 hp;
         weight:                         42 ton;
         climates_available:             ALL_CLIMATES;
         ai_special_flag:                AI_FLAG_PASSENGER;
@@ -226,8 +226,9 @@ item(FEAT_TRAINS, series_400) {
         cargo_capacity:                 sw_400_series_cargo_capacity;
         loading_speed:                  sw_400_series_param_loading_speed;
         cargo_subtype_text:             sw_400_series_subtypetext_mucar;
-        power:                          280;
-        weight:                         30;
+        power:                          4 * 280;
+        weight:                         42;
+        running_cost_factor:            120;
       }
 
 }

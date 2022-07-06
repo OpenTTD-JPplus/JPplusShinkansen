@@ -1,11 +1,12 @@
 /* Begin 500 Series STATS */
 
-/* LENGTH*/
-
-    // Make the Middle long sprite length 8 and the dummy sprites length 2
-    switch (FEAT_TRAINS, SELF, sw_500_series_length, position_in_consist%3) {
-        1: return 8;
-        return 2;
+/* RUNNING COSTS */
+    running_cost_500_series = 187;    // 150 is approx JPS
+    
+    switch (FEAT_TRAINS, SELF, sw_500_series_running_costs, current_speed) {
+        0: running_cost_500_series / 10 * 16;           // Stopped
+        1..15: running_cost_500_series / 4 * 16; 	    // Moving below ~33.5 mph
+        running_cost_500_series * 16; 				    // Track speed
     }
 
 /* CARGO CAPACITY 
@@ -25,3 +26,5 @@
         2: return 56;       // 2x Double Real World Capacity
         return 42;          // 1.5x Long Sprite Adjusted Capacity 
     }
+
+

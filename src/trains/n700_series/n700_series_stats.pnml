@@ -1,21 +1,21 @@
 /* N700 STATS */
 
+/* NUMBER OF CARS */
+
+    switch(FEAT_TRAINS, SELF, sw_n700_series_number_of_cars, cargo_subtype) {
+            2: return 8;     
+            return 16;       
+        }
+
+    switch(FEAT_TRAINS, SELF, sw_n700_series_number_of_motor_cars, cargo_subtype) {
+            2: return 8;        // All motorised  
+            return 14;          // 14M 2T
+        }
+
 /* LENGTH */
-
-    /* Make the Middle long sprite length 8 and the dummy sprites length 2*/
-    switch (FEAT_TRAINS, SELF, sw_n700_series_length_standard, position_in_consist%3) {
-        1: return 8;
-        return 2;
-    }
-
-    switch (FEAT_TRAINS, SELF, sw_n700_series_shorten_8_car_vehicle, position_in_consist%6) {
-        2: return 7;
-        return 1;
-    }
-
     switch (FEAT_TRAINS, SELF, sw_n700_series_length, cargo_subtype) {
-        2: sw_n700_series_shorten_8_car_vehicle;
-        sw_n700_series_length_standard;      
+        2: sw_length_1_1_7_1_1_1;
+        sw_length_2_8_2;      
         
     }
 
@@ -52,27 +52,22 @@
     }
 
 /* WEIGHT */
+    weight_n700_series = 44;           // 44t per JPS
 
-    // Not a lot of available weight info for the N700S, other than talke of weight savings from the engines - therefore slight reduction
+    // Not a lot of available weight info for the N700S, other than talk of weight savings from the engines - therefore slight reduction
     switch(FEAT_TRAINS, SELF, sw_n700_series_weight_year_dep, build_year) {
-        0..2019: return 715;                    // N700 and N700A
-        return 710;                             // N700S
+        0..2019: return weight_n700_series * sw_n700_series_number_of_cars();       // N700 and N700A
+        return (weight_n700_series - 1) * sw_n700_series_number_of_cars();          // N700S
     }
     
     switch(FEAT_TRAINS, SELF, sw_n700_series_weight, cargo_subtype) {
-        0: sw_n700_series_weight_year_dep;
-        2: return 715/2;                        // Half of the above for an 8 car
-        4: return 710;                          // N700S, 
-        return 715;                             // Weight of a 16 car N700 as stated on Wikipedia
+        0: sw_n700_series_weight_year_dep;                                          // Year Dependent Weight
+        4: return (weight_n700_series - 1) * sw_n700_series_number_of_cars();       // N700S, slightly ligther
+        return weight_n700_series * sw_n700_series_number_of_cars();                // Weight of a 16 car N700 as stated on Wikipedia
     }
 
 /* POWER */
-
-    switch(FEAT_TRAINS, SELF, sw_n700_series_power, cargo_subtype) {
-        2: return 11450;                        // Half of the above for an 8 car
-        return 22900;                           // Power of a 16 car as stated on Wikipedia
-        
-    }
+    power_per_motor_n700_series = 409;          // in hp (or 305 kW)
 
 /* SPEED */
 
@@ -88,30 +83,39 @@
         
     }
 
+/* RUNNING COSTS */
+    running_cost_n700_series = 187;    // 150 is approx JPS
+    
+    switch (FEAT_TRAINS, SELF, sw_n700_series_running_costs, current_speed) {
+        0: running_cost_n700_series / 10 * sw_n700_series_number_of_cars();         // Stopped
+        1..15: running_cost_n700_series / 4 * sw_n700_series_number_of_cars();      // Moving below ~33.5 mph
+        running_cost_n700_series * sw_n700_series_number_of_cars(); 				// Track speed
+    }
+
 /* REFIT COST */
 
     switch(FEAT_TRAINS, SELF, sw_n700_series_refit_cost_minus2, cargo_subtype) {
-        2: return 7;       // Currently 'N700 8-car', Cost to move elsewhere
-        4: return -6;       // Currently 'N700S 16-car', Refund to move to 'N700 8-car'    
+        2: return -8+16;        // Currently 'N700 8-car', Cost to move elsewhere
+        4: return -16+8;        // Currently 'N700S 16-car', Refund to move to 'N700 8-car'    
         return 0;       
     }
     
     switch(FEAT_TRAINS, SELF, sw_n700_series_refit_cost_minus1, cargo_subtype) {
-        2: return 7;        // Currently 'N700 8-car', Cost to move elsewhere
-        3: return -6;       // Currently 'N700A 16-car', Refund to move to 'N700 8-car'   
-        return 0;           // Otherwise, moving to another 16-car 
+        2: return -8+16;        // Currently 'N700 8-car', Cost to move elsewhere
+        3: return -16+8;        // Currently 'N700A 16-car', Refund to move to 'N700 8-car'   
+        return 0;               // Otherwise, moving to another 16-car 
     }
   
     switch(FEAT_TRAINS, SELF, sw_n700_series_refit_cost_plus1, cargo_subtype) {
-        1: return -6;       // Currently 'N700 16-car', Refund to move to 'N700 8-car'
-        2: return 7;        // Currently 'N700 8-car', Cost to move elsewhere               
-        return 0;           // Otherwise, moving to another 16-car 
+        1: return -16+8;        // Currently 'N700 16-car', Refund to move to 'N700 8-car'
+        2: return -8+16;        // Currently 'N700 8-car', Cost to move elsewhere               
+        return 0;               // Otherwise, moving to another 16-car 
     }
 
     switch(FEAT_TRAINS, SELF, sw_n700_series_refit_cost_plus2, cargo_subtype) {
-        0: return -6;       // Currently 'Year Dep', Refund to move to 'N700 8-car'
-        2: return 7;        // Currently 'N700 8-car', Cost to move elsewhere                
-        return 0;           // Otherwise, moving to another 16-car 
+        0: return -16+8;        // Currently 'Year Dep', Refund to move to 'N700 8-car'
+        2: return -8+16;        // Currently 'N700 8-car', Cost to move elsewhere                
+        return 0;               // Otherwise, moving to another 16-car 
     }
 
 
@@ -134,22 +138,39 @@
 
 /* N700 Kyushu STATS */
 
-/* LENGTH */
+/* NUMBER OF CARS */
 
-    switch (FEAT_TRAINS, SELF, sw_n700_series_shorten_6_car_vehicle, position_in_consist%4) {
-        0: return 2;
-        1: return 8;
-        return 1;
+    switch(FEAT_TRAINS, SELF, sw_n700_series_kyushu_number_of_cars_year_dep, build_year) {
+        0..2022: return 8;      // 8-car Kyushu
+        return 6;               // 6-car Kanome
     }
     
+    switch(FEAT_TRAINS, SELF, sw_n700_series_kyushu_number_of_cars, cargo_subtype) {
+            1: return 8;
+            2: return 6;     
+            sw_n700_series_kyushu_number_of_cars_year_dep;       
+        }
+
+    switch(FEAT_TRAINS, SELF, sw_n700_series_kyushu_number_of_motor_cars_year_dep, build_year) {
+        0..2022: return 8;      // 8-car Kyushu
+        return 6;               // 6-car Kanome
+    }
+        
+    switch(FEAT_TRAINS, SELF, sw_n700_series_kyushu_number_of_motor_cars, cargo_subtype) {
+            1: return 8;
+            2: return 6;     
+            sw_n700_series_kyushu_number_of_motor_cars_year_dep; 
+        }
+
+/* LENGTH */
     switch(FEAT_TRAINS, SELF, sw_n700_series_kyushu_length_year_dep, build_year) {
-        0..2022: sw_n700_series_length_standard;            // N700 Kyushu
-        sw_n700_series_shorten_6_car_vehicle;               // N700S Koname
+        0..2022: sw_length_2_8_2;                           // N700 Kyushu
+        sw_length_1_1_8_2;                                  // N700S Koname
     }
 
     switch (FEAT_TRAINS, SELF, sw_n700_series_kyushu_length, cargo_subtype) {
-        1: sw_n700_series_length_standard;      
-        2: sw_n700_series_shorten_6_car_vehicle;
+        1: sw_length_2_8_2;      
+        2: sw_length_1_1_8_2;
         sw_n700_series_kyushu_length_year_dep;
     }
 
@@ -193,23 +214,42 @@
     }
 
 /* WEIGHT */
+    weight_n700_series_kyushu = 44;           // 44t per JPS
 
+    // Not a lot of available weight info for the N700S, other than talk of weight savings from the engines - therefore slight reduction
     switch(FEAT_TRAINS, SELF, sw_n700_series_kyushu_weight_year_dep, build_year) {
-        0..2022: return 268;                                // N700 Kyushu
-        return 357;                                         // N700S Koname
+        0..2022: return weight_n700_series_kyushu * sw_n700_series_kyushu_number_of_cars();       // N700 and N700A
+        return (weight_n700_series_kyushu - 1) * sw_n700_series_kyushu_number_of_cars();          // N700S
     }
-
+    
     switch(FEAT_TRAINS, SELF, sw_n700_series_kyushu_weight, cargo_subtype) {
-        0: sw_n700_series_kyushu_weight_year_dep;
-        2: return 268;                                      // Scaled weight of 6 car set 715/16*6
-        return 357;                                         // Scaled weight of 8 car set 715/2
+        0: sw_n700_series_kyushu_weight_year_dep;                                   // Year Dependent Weight
+        2: return (weight_n700_series - 1) * sw_n700_series_number_of_cars();       // N700S Kanome
+        return weight_n700_series * sw_n700_series_number_of_cars();                // N700 Kyushu
     }
 
 /* POWER */
+    power_per_motor_n700_series_kyushu = 409;               // in hp (or 305 kW)
 
-    switch(FEAT_TRAINS, SELF, sw_n700_series_kyushu_power, cargo_subtype) {
-        0: return 22900;    // Power of a 16 car as stated on Wikipedia
-        return 11450;       // Half of the above for an 8 car
+/* COST FACTOR */
+    switch(FEAT_TRAINS, SELF, sw_n700_series_kyushu_cost_factor_year_dep, build_year) {
+        0..2022: return 277;                                // N700 Kyushu
+        return 208;                                         // N700S Koname
+    }
+
+    switch(FEAT_TRAINS, SELF, sw_n700_series_kyushu_cost_factor, cargo_subtype) {
+        1: return 277;                                      // N700 Kyushu
+        2: return 208;                                      // N700S Koname                                  
+        sw_n700_series_kyushu_cost_factor_year_dep;         // Year Dependent                                         
+    }
+
+/* RUNNING COSTS */
+    running_cost_n700_series_kyushu = 187;    // 150 is approx JPS
+    
+    switch (FEAT_TRAINS, SELF, sw_n700_series_kyushu_running_costs, current_speed) {
+        0: running_cost_n700_series_kyushu / 10 * sw_n700_series_kyushu_number_of_cars();         // Stopped
+        1..15: running_cost_n700_series_kyushu / 4 * sw_n700_series_kyushu_number_of_cars();      // Moving below ~33.5 mph
+        running_cost_n700_series_kyushu * sw_n700_series_kyushu_number_of_cars(); 				// Track speed
     }
 
 /* REFIT COST */
