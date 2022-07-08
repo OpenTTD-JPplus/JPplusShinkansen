@@ -59,9 +59,15 @@
     power_per_motor_200_series = 308;               // in hp (230 kW)
 
 /* SPEED */
+    switch(FEAT_TRAINS, SELF, sw_200_series_speed_year_dep, build_year) {
+        0..1986: return 210;    // Original speed
+        return 240;             // Sharknose and Refurbished Speed
+    }
+        
     switch(FEAT_TRAINS, SELF, sw_200_series_speed, cargo_subtype) {
-        1..3: return 210;   // Original speed
-        return 240;         // Sharknose and Refurbished Speed
+        0: sw_200_series_speed_year_dep;
+        1..3: return 210;       // Original speed
+        return 240;             // Sharknose and Refurbished Speed
     }
 
 /* CARGO CAPACITY

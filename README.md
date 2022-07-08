@@ -1,5 +1,21 @@
 # JPplusShinkansen
 
+Welcome to 🇯🇵🚅 **JP+Shinkansen!** 🚅🇯🇵
+
+This is the sister set to 🚂[JP+ Engines & Wagons](https://github.com/EmperorJake/JPengines)🚂 and 🚆[JP+ Multiple Units](https://github.com/Tintinfan/JPplusSet)🚆, adding the world's first High Speed Rail Network's iconic trains.
+
+## Credits
+**Coding:** KeepinItRail <br>
+**Graphics:** KeepinItRail <br>
+**Thanks to:** The JapanSet Team, Tinny, Emperor Jake, Asuza, Erato, Saya
+
+## Features
+
+* Long Sprites for 'full Shinkansen' - fixed length sets with different livery and length options via Cargo Subtype Menu
+* Normal Length Sprites fo Mini-Shinkansen - choose your length
+* Real World Stats were possible (or approximations when not known)
+
+
 ## JR West of Tokyo
 
 | | Shinkansen | Release | End Year  | Speed (km/h) | Weight per car| |
@@ -31,3 +47,8 @@
 
 ~ 210 km/h until 1989, 240 km/h thereafter
 ^ Technically out of service from 2021, but I like it, so it won't expire. Viva the E4! 😉
+
+## Useful Sources
+
+https://en.wikipedia.org/wiki/Shinkansen <br>
+http://kakeyama.image.coocan.jp/tec.htm

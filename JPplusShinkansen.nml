@@ -112,7 +112,8 @@ basecost {
 // https://newgrf-specs.tt-wiki.net/wiki/TracktypeLabels
 
 railtypetable {
-
+	RAIL,
+	ELRL,
 	SHINKANSEN: [
 		SADE, 		// JapanSet Tracks - International Mode - Highspeed line
 		SAEE, 		// JapanSet Tracks - Japanese Mode - Shinkansen highspeed
@@ -121,8 +122,9 @@ railtypetable {
 		SDAE, 		// U&ReRMM 2 - High-Speed Line
 		SEAE,		// U&ReRMM 2 - Modern High-Speed Line
 		SFAE,		// U&ReRMM 2 - Very High-Speed Line
-		SHAE]		// SUKTS - Very High Speed
-		,
+		SHAE,		// SUKTS - Very High Speed
+		ELRL],		// Backup	
+		
 	MINI_SHINKANSEN: [
 		SACE,		// JapanSet Tracks - Modern Standard Guage (Electrified)
 		SADE, 		// JapanSet Tracks - International Mode - Highspeed line
@@ -132,7 +134,8 @@ railtypetable {
 		SDAE, 		// U&ReRMM 2 - High-Speed Line
 		SEAE,		// U&ReRMM 2 - Modern High-Speed Line
 		SFAE,		// U&ReRMM 2 - Very High-Speed Line
-		SHAE],		// SUKTS - Very High Speed
+		SHAE,		// SUKTS - Very High Speed
+		ELRL],		// Backup		
 }
 
 // End railtypetable
@@ -1724,24 +1727,24 @@ item(FEAT_TRAINS, series_0) {
 /* N700 KYUSHU PUT TOGETHER THE EMU*/
 
     switch (FEAT_TRAINS, SELF, sw_n700_series_kyushu_graphics_8car, position_in_articulated_veh) {					
-	    1:  ss_n700_series_kyushu_cab; 	            // Car 1	Car 8								
-	    4:  sw_n700_series_kyushu_reverser_P_P;	    // Car 2	Car 7	    						
-	    7:  sw_n700_series_kyushu_reverser_C_C;        // Car 3    Car 6
-	    10: sw_n700_series_kyushu_reverser_C_C;        // Car 4    Car 5
-        13: sw_n700_series_kyushu_reverser_C_C;        // Car 5    Car 4
-        16: sw_n700_series_kyushu_reverser_C_C;        // Car 6    Car 3
-        19: sw_n700_series_kyushu_reverser_P_P;        // Car 7    Car 2
-        22: ss_n700_series_kyushu_cab_rev;             // Car 8    Car 1
+	    1:  ss_n700_series_kyushu_cab; 	                // Car 1	Car 8								
+	    4:  sw_n700_series_kyushu_reverser_P_P;	        // Car 2	Car 7	    						
+	    7:  sw_n700_series_kyushu_reverser_C_C;         // Car 3    Car 6
+	    10: sw_n700_series_kyushu_reverser_C_C;         // Car 4    Car 5
+        13: sw_n700_series_kyushu_reverser_C_C;         // Car 5    Car 4
+        16: sw_n700_series_kyushu_reverser_C_C;         // Car 6    Car 3
+        19: sw_n700_series_kyushu_reverser_P_P;         // Car 7    Car 2
+        22: ss_n700_series_kyushu_cab_rev;              // Car 8    Car 1
 	    dummy_sprites;
     }
 
     switch (FEAT_TRAINS, SELF, sw_n700_series_kyushu_graphics_6car, position_in_articulated_veh) {					
-	    1:  ss_n700_series_kyushu_cab; 	            // Car 1	Car 6								
-	    5:  sw_n700_series_kyushu_reverser_P_P;	    // Car 2	Car 5	    						
-	    9:  sw_n700_series_kyushu_reverser_C_C;        // Car 3    Car 4
-	    13: sw_n700_series_kyushu_reverser_C_C;        // Car 4    Car 3
-        17: sw_n700_series_kyushu_reverser_P_P;        // Car 5    Car 2
-        21: ss_n700_series_kyushu_cab_rev;             // Car 6    Car 1
+	    2:  ss_n700_series_kyushu_cab; 	                // Car 1	Car 6								
+	    6:  sw_n700_series_kyushu_reverser_P_P;	        // Car 2	Car 5	    						
+	    10:  sw_n700_series_kyushu_reverser_C_C;        // Car 3    Car 4
+	    14: sw_n700_series_kyushu_reverser_C_C;         // Car 4    Car 3
+        18: sw_n700_series_kyushu_reverser_P_P;         // Car 5    Car 2
+        22: ss_n700_series_kyushu_cab_rev;              // Car 6    Car 1
 	    dummy_sprites;
     }
 
@@ -2168,7 +2171,15 @@ item(FEAT_TRAINS, series_700) {
 # 1 "src/trains/500_series/500_series_fixed.pnml" 1
 /* Begin 500 Series */
 
-// #include "src/trains/500_series/500_series_subtypes.pnml"
+# 1 "src/trains/500_series/500_series_subtypes.pnml" 1
+/* 500 Series CARGO SUBTYPE MENU*/
+
+    switch(FEAT_TRAINS, SELF, sw_500_series_subtype_text, cargo_subtype) {
+	    0: return string(LV_500_SERIES_16CAR);        // 16 Car Original
+        1: return string(LV_500_SERIES_08CAR);        // 08 Car Original
+        return CB_RESULT_NO_TEXT;
+        }
+# 1 "src/trains/500_series/500_series_fixed.pnml" 3
 # 1 "src/trains/500_series/500_series_gfx.pnml" 1
 /* Begin 500 Series GRAPHICS */
 
@@ -2193,40 +2204,74 @@ item(FEAT_TRAINS, series_700) {
     spriteset(ss_500_series_panto_rev, 		        "src/gfx/dummy/empty.png")     			{template_dummy(0,0)}
     alternative_sprites(ss_500_series_panto,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,     "src/gfx/500_series/500_series.png") {template_12_standard(1,81)}
     alternative_sprites(ss_500_series_panto_rev,    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,     "src/gfx/500_series/500_series.png") {template_12_reversed(1,81)}	
-# 1 "src/trains/500_series/500_series_fixed.pnml" 4
+# 1 "src/trains/500_series/500_series_fixed.pnml" 3
 // #include "src/trains/500_series/500_series_liveries.pnml"
 # 1 "src/trains/500_series/500_series_stats.pnml" 1
 /* Begin 500 Series STATS */
+
+/* NUMBER OF CARS */
+
+    switch(FEAT_TRAINS, SELF, sw_500_series_number_of_cars, cargo_subtype) {
+            1: return 8;     
+            return 16;       
+        }
+
+    switch(FEAT_TRAINS, SELF, sw_500_series_number_of_motor_cars, cargo_subtype) {
+            1: return 8;        // All motorised 
+            return 16;          // All motorised
+        }
+
+/* LENGTH */
+    switch (FEAT_TRAINS, SELF, sw_500_series_length, cargo_subtype) {
+        1: sw_length_1_1_7_1_1_1;
+        sw_length_2_8_2;
+    }
+
+/* WEIGHT */
+    weight_500_series = 42;           // 42 tons from https://web-japan.org/atlas/technology/tec08.html	
+
+/* POWER */
+    power_per_motor_500_series = 382; // in hp (285 kW)
 
 /* RUNNING COSTS */
     running_cost_500_series = 187;    // 150 is approx JPS
     
     switch (FEAT_TRAINS, SELF, sw_500_series_running_costs, current_speed) {
-        0: running_cost_500_series / 10 * 16;           // Stopped
-        1..15: running_cost_500_series / 4 * 16; 	    // Moving below ~33.5 mph
-        running_cost_500_series * 16; 				    // Track speed
+        0: running_cost_500_series / 10 * sw_500_series_number_of_cars();           // Stopped
+        1..15: running_cost_500_series / 4 * sw_500_series_number_of_cars(); 	    // Moving below ~33.5 mph
+        running_cost_500_series * sw_500_series_number_of_cars(); 				    // Track speed
     }
 
 /* CARGO CAPACITY 
 
     16-car JPS  1248/1560/1872/2184
+    08-car JPS  624/780/936/1092
 
-        16-car
-    IRL 1324
-    RW  1344       
-    LS  2016   
-    DC  2688        
+        16-car  8-car
+    IRL 1324    608
+    RW  1344    624       
+    LS  2016      
+    DC  2688           
 */
 
     // Passenger Capacities for each parameter level
-    switch(FEAT_TRAINS, SELF, sw_500_series_cargo_capacity, param_basecapacity) {
+    switch(FEAT_TRAINS, SELF, sw_500_series_cargo_capacity_16car, param_basecapacity) {
         0: return 28;       // 1x Real World Capacity
         2: return 56;       // 2x Double Real World Capacity
         return 42;          // 1.5x Long Sprite Adjusted Capacity 
     }
 
+    switch(FEAT_TRAINS, SELF, sw_500_series_cargo_capacity_08car, param_basecapacity) {
+        0: return 13;       // 1x Real World Capacity
+        2: return 26;       // 2x Double Real World Capacity
+        return 20;          // 1.5x Long Sprite Adjusted Capacity 
+    }
 
-# 1 "src/trains/500_series/500_series_fixed.pnml" 4
+    switch (FEAT_TRAINS, SELF, sw_500_series_cargo_capacity, cargo_subtype) {
+        1: sw_500_series_cargo_capacity_08car;
+        sw_500_series_cargo_capacity_16car;
+    }
+# 1 "src/trains/500_series/500_series_fixed.pnml" 3
 # 1 "src/trains/500_series/500_series_formation.pnml" 1
 /* Begin 500 Series FORMATION */
 
@@ -2247,27 +2292,49 @@ item(FEAT_TRAINS, series_700) {
 	    ss_500_series_coach_rev;
     }
 
+    switch (FEAT_TRAINS, PARENT, sw_500_series_reverser_P_P, vehicle_is_reversed) {
+	    0: ss_500_series_panto;
+	    ss_500_series_panto_rev;
+    }
+
 /* PUT TOGETHER THE EMU*/
 
     // 16 Car Set
-    switch (FEAT_TRAINS, SELF, sw_500_series_graphics, position_in_articulated_veh) {					
+    switch (FEAT_TRAINS, SELF, sw_500_series_graphics_16car, position_in_articulated_veh) {					
 	    1:  ss_500_series_cab; 	            // Car 1	Car 16								
 	    4:  sw_500_series_reverser_C_C;	    // Car 2	Car 15	    						
 	    7:  sw_500_series_reverser_C_C;     // Car 3    Car 14
-	    10: sw_500_series_reverser_C_C;     // Car 4    Car 13
-        13: sw_500_series_reverser_C_P;     // Car 5    Car 12
-        16: sw_500_series_reverser_P_C;     // Car 6    Car 11
+	    10: sw_500_series_reverser_C_P;     // Car 4    Car 13
+        13: sw_500_series_reverser_P_C;     // Car 5    Car 12
+        16: sw_500_series_reverser_C_C;     // Car 6    Car 11
         19: sw_500_series_reverser_C_C;     // Car 7    Car 10
 	    22: sw_500_series_reverser_C_C;     // Car 8    Car 9
         25: sw_500_series_reverser_C_C;     // Car 9    Car 8
         28: sw_500_series_reverser_C_C;     // Car 10   Car 7
-        31: sw_500_series_reverser_C_P;     // Car 11   Car 6
-        34: sw_500_series_reverser_P_C;     // Car 12   Car 5
-        37: sw_500_series_reverser_C_C;     // Car 13   Car 4
+        31: sw_500_series_reverser_C_C;     // Car 11   Car 6
+        34: sw_500_series_reverser_C_P;     // Car 12   Car 5
+        37: sw_500_series_reverser_P_C;     // Car 13   Car 4
         40: sw_500_series_reverser_C_C;     // Car 14   Car 3
         43: sw_500_series_reverser_C_C;     // Car 15   Car 2
         46: ss_500_series_cab_rev;          // Car 16   Car 1 
 	    dummy_sprites;
+    }
+
+    switch (FEAT_TRAINS, SELF, sw_500_series_graphics_08car, position_in_articulated_veh) {					
+	    2:  ss_500_series_cab; 	                // Car 1	Car 8								
+	    8:  sw_500_series_reverser_P_P;	        // Car 2	Car 7	    						
+	    14: sw_500_series_reverser_C_C;         // Car 3    Car 6
+	    20: sw_500_series_reverser_C_C;         // Car 4    Car 5
+        26: sw_500_series_reverser_C_C;         // Car 5    Car 4
+        32: sw_500_series_reverser_C_C;         // Car 6    Car 3
+        38: sw_500_series_reverser_P_P;         // Car 7    Car 2
+        44: ss_500_series_cab_rev;              // Car 8    Car 1
+	    dummy_sprites;
+    }
+
+    switch (FEAT_TRAINS, SELF, sw_500_series_graphics, cargo_subtype) {
+        1: sw_500_series_graphics_08car;
+        sw_500_series_graphics_16car;
     }
 
     /* Assemble an articulated vehicle. */
@@ -2275,7 +2342,7 @@ item(FEAT_TRAINS, series_700) {
 	    1 .. 47: return series_500;										// Should be same as range above
 	    return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
     }
-# 1 "src/trains/500_series/500_series_fixed.pnml" 4
+# 1 "src/trains/500_series/500_series_fixed.pnml" 3
 
 item(FEAT_TRAINS, series_500) {
 	property {
@@ -2302,27 +2369,29 @@ item(FEAT_TRAINS, series_500) {
 		cargo_age_period:               278; 						// 1.5 times normal for this expensive long-distance train
 		/* Stats */
 		speed:                          301 km/h;				
-		power:                          18240 kW;	                // from https://en.wikipedia.org/wiki/500_Series_Shinkansen				
-		weight:                         42*16 tons;	                // 42 tons from https://web-japan.org/atlas/technology/tec08.html				
-		tractive_effort_coefficient:    0.6;                        // to equalise with JapanSet
+		power:                          18240 kW;	                // Changed by callback		
+		weight:                         42*16 tons;	                // Changed by callback			
+		tractive_effort_coefficient:    0.3;                        // Standard
 
 	}
 	graphics {
 		/* Menu */
 		additional_text:                string(STR_DESC_500_SERIES);
-		//cargo_subtype_text:             sw_500_series_subtype_text;
+		cargo_subtype_text:             sw_500_series_subtype_text;
 		/* Graphics */
 		default:                        sw_500_series_graphics;
 		purchase:                       ss_500_series_buy;
 		articulated_part:               sw_500_series_articulated_part;
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
 		/* Stats */
-		length:                         sw_length_2_8_2;
+		length:                         sw_500_series_length;
+		weight:							weight_500_series * sw_500_series_number_of_cars();
+		power:							power_per_motor_500_series * 4 * sw_500_series_number_of_motor_cars();
 		cargo_capacity:                 sw_500_series_cargo_capacity;
 		cargo_age_period:				param_decay_express;
 		cost_factor:                    612;
 		running_cost_factor:            sw_500_series_running_costs;
-		purchase_running_cost_factor:   running_cost_500_series * 16;	
+		purchase_running_cost_factor:   running_cost_500_series * sw_500_series_number_of_cars();	
 	}
 }
 
@@ -3594,9 +3663,15 @@ switch(FEAT_TRAINS, SELF, sw_200_series_panto_rev, cargo_subtype) {
     power_per_motor_200_series = 308;               // in hp (230 kW)
 
 /* SPEED */
+    switch(FEAT_TRAINS, SELF, sw_200_series_speed_year_dep, build_year) {
+        0..1986: return 210;    // Original speed
+        return 240;             // Sharknose and Refurbished Speed
+    }
+        
     switch(FEAT_TRAINS, SELF, sw_200_series_speed, cargo_subtype) {
-        1..3: return 210;   // Original speed
-        return 240;         // Sharknose and Refurbished Speed
+        0: sw_200_series_speed_year_dep;
+        1..3: return 210;       // Original speed
+        return 240;             // Sharknose and Refurbished Speed
     }
 
 /* CARGO CAPACITY

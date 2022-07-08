@@ -1,30 +1,64 @@
 /* Begin 500 Series STATS */
 
+/* NUMBER OF CARS */
+
+    switch(FEAT_TRAINS, SELF, sw_500_series_number_of_cars, cargo_subtype) {
+            1: return 8;     
+            return 16;       
+        }
+
+    switch(FEAT_TRAINS, SELF, sw_500_series_number_of_motor_cars, cargo_subtype) {
+            1: return 8;        // All motorised 
+            return 16;          // All motorised
+        }
+
+/* LENGTH */
+    switch (FEAT_TRAINS, SELF, sw_500_series_length, cargo_subtype) {
+        1: sw_length_1_1_7_1_1_1;
+        sw_length_2_8_2;
+    }
+
+/* WEIGHT */
+    weight_500_series = 42;           // 42 tons from https://web-japan.org/atlas/technology/tec08.html	
+
+/* POWER */
+    power_per_motor_500_series = 382; // in hp (285 kW)
+
 /* RUNNING COSTS */
     running_cost_500_series = 187;    // 150 is approx JPS
     
     switch (FEAT_TRAINS, SELF, sw_500_series_running_costs, current_speed) {
-        0: running_cost_500_series / 10 * 16;           // Stopped
-        1..15: running_cost_500_series / 4 * 16; 	    // Moving below ~33.5 mph
-        running_cost_500_series * 16; 				    // Track speed
+        0: running_cost_500_series / 10 * sw_500_series_number_of_cars();           // Stopped
+        1..15: running_cost_500_series / 4 * sw_500_series_number_of_cars(); 	    // Moving below ~33.5 mph
+        running_cost_500_series * sw_500_series_number_of_cars(); 				    // Track speed
     }
 
 /* CARGO CAPACITY 
 
     16-car JPS  1248/1560/1872/2184
+    08-car JPS  624/780/936/1092
 
-        16-car
-    IRL 1324
-    RW  1344       
-    LS  2016   
-    DC  2688        
+        16-car  8-car
+    IRL 1324    608
+    RW  1344    624       
+    LS  2016      
+    DC  2688           
 */
 
     // Passenger Capacities for each parameter level
-    switch(FEAT_TRAINS, SELF, sw_500_series_cargo_capacity, param_basecapacity) {
+    switch(FEAT_TRAINS, SELF, sw_500_series_cargo_capacity_16car, param_basecapacity) {
         0: return 28;       // 1x Real World Capacity
         2: return 56;       // 2x Double Real World Capacity
         return 42;          // 1.5x Long Sprite Adjusted Capacity 
     }
 
+    switch(FEAT_TRAINS, SELF, sw_500_series_cargo_capacity_08car, param_basecapacity) {
+        0: return 13;       // 1x Real World Capacity
+        2: return 26;       // 2x Double Real World Capacity
+        return 20;          // 1.5x Long Sprite Adjusted Capacity 
+    }
 
+    switch (FEAT_TRAINS, SELF, sw_500_series_cargo_capacity, cargo_subtype) {
+        1: sw_500_series_cargo_capacity_08car;
+        sw_500_series_cargo_capacity_16car;
+    }

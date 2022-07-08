@@ -1,6 +1,6 @@
 /* Begin 500 Series */
 
-// #include "src/trains/500_series/500_series_subtypes.pnml"
+#include "src/trains/500_series/500_series_subtypes.pnml"
 #include "src/trains/500_series/500_series_gfx.pnml"
 // #include "src/trains/500_series/500_series_liveries.pnml"
 #include "src/trains/500_series/500_series_stats.pnml"
@@ -31,27 +31,29 @@ item(FEAT_TRAINS, series_500) {
 		cargo_age_period:               278; 						// 1.5 times normal for this expensive long-distance train
 		/* Stats */
 		speed:                          301 km/h;				
-		power:                          18240 kW;	                // from https://en.wikipedia.org/wiki/500_Series_Shinkansen				
-		weight:                         42*16 tons;	                // 42 tons from https://web-japan.org/atlas/technology/tec08.html				
-		tractive_effort_coefficient:    0.6;                        // to equalise with JapanSet
+		power:                          18240 kW;	                // Changed by callback		
+		weight:                         42*16 tons;	                // Changed by callback			
+		tractive_effort_coefficient:    0.3;                        // Standard
 
 	}
 	graphics {
 		/* Menu */
 		additional_text:                string(STR_DESC_500_SERIES);
-		//cargo_subtype_text:             sw_500_series_subtype_text;
+		cargo_subtype_text:             sw_500_series_subtype_text;
 		/* Graphics */
 		default:                        sw_500_series_graphics;
 		purchase:                       ss_500_series_buy;
 		articulated_part:               sw_500_series_articulated_part;
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
 		/* Stats */
-		length:                         sw_length_2_8_2;
+		length:                         sw_500_series_length;
+		weight:							weight_500_series * sw_500_series_number_of_cars();
+		power:							power_per_motor_500_series * 4 * sw_500_series_number_of_motor_cars();
 		cargo_capacity:                 sw_500_series_cargo_capacity;
 		cargo_age_period:				param_decay_express;
 		cost_factor:                    612;
 		running_cost_factor:            sw_500_series_running_costs;
-		purchase_running_cost_factor:   running_cost_500_series * 16;	
+		purchase_running_cost_factor:   running_cost_500_series * sw_500_series_number_of_cars();	
 	}
 }
 

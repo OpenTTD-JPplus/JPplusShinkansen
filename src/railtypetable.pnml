@@ -3,7 +3,8 @@
 // https://newgrf-specs.tt-wiki.net/wiki/TracktypeLabels
 
 railtypetable {
-
+	RAIL,
+	ELRL,
 	SHINKANSEN: [
 		SADE, 		// JapanSet Tracks - International Mode - Highspeed line
 		SAEE, 		// JapanSet Tracks - Japanese Mode - Shinkansen highspeed
@@ -12,8 +13,9 @@ railtypetable {
 		SDAE, 		// U&ReRMM 2 - High-Speed Line
 		SEAE,		// U&ReRMM 2 - Modern High-Speed Line
 		SFAE,		// U&ReRMM 2 - Very High-Speed Line
-		SHAE]		// SUKTS - Very High Speed
-		,
+		SHAE,		// SUKTS - Very High Speed
+		ELRL],		// Backup	
+		
 	MINI_SHINKANSEN: [
 		SACE,		// JapanSet Tracks - Modern Standard Guage (Electrified)
 		SADE, 		// JapanSet Tracks - International Mode - Highspeed line
@@ -23,7 +25,8 @@ railtypetable {
 		SDAE, 		// U&ReRMM 2 - High-Speed Line
 		SEAE,		// U&ReRMM 2 - Modern High-Speed Line
 		SFAE,		// U&ReRMM 2 - Very High-Speed Line
-		SHAE],		// SUKTS - Very High Speed
+		SHAE,		// SUKTS - Very High Speed
+		ELRL],		// Backup		
 }
 
 // End railtypetable
