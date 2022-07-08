@@ -102,6 +102,7 @@ item(FEAT_TRAINS, series_n700_kyushu) {
         weight:                         sw_n700_series_kyushu_weight;
         power:                          power_per_motor_n700_series_kyushu * 4 * sw_n700_series_kyushu_number_of_motor_cars();
 		cargo_capacity:                 sw_n700_series_kyushu_cargo_capacity;
+		cargo_age_period:				param_decay_express;
 		cost_factor:                    sw_n700_series_kyushu_cost_factor;
         refit_cost:                     sw_n700_series_kyushu_refit_cost;
 		running_cost_factor:            sw_n700_series_kyushu_running_costs;

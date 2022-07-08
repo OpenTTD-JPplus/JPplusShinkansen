@@ -31,8 +31,8 @@ item(FEAT_TRAINS, series_e1) {
 		cargo_age_period:               278; 						// 1.5 times normal for this expensive long-distance train
 		/* Stats */
 		speed:                          241 km/h;					// Operational Top Speed
-		power:                          410*4*6 kW;					// 410 kW per motor x 4 motors per car x 6 motorised cars
-		weight:                         58*12 tons;					// 58t (per JPS) x 12 cars
+		power:                          550 * 4 * 6 hp;					// 550 hp (or 410 kW) per motor x 4 motors per car x 6 motorised cars
+		weight:                         58 * 12 tons;					// 58t (per JPS) x 12 cars
 		tractive_effort_coefficient:    0.3;
 
 	}
@@ -46,11 +46,12 @@ item(FEAT_TRAINS, series_e1) {
 		articulated_part:               sw_e1_series_articulated_part;
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
 		/* Stats */
-		length:                         sw_e1_series_length;
+		length:                         sw_length_2_8_2;
 		cargo_capacity:                 sw_e1_series_cargo_capacity;                                         
-		cost_factor:                    257;
-		running_cost_factor:            func_running_costs(300);
-		purchase_running_cost_factor:   300;
+		cargo_age_period:				param_decay_express;
+		cost_factor:                    397;
+		running_cost_factor:            sw_e1_series_running_costs;
+		purchase_running_cost_factor:   running_cost_e1_series * 12;
 	}
 }
 

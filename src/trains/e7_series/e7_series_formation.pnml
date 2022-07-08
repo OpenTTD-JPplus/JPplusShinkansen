@@ -19,7 +19,7 @@ switch (FEAT_TRAINS, PARENT, sw_e7_series_reverser_P_C, vehicle_is_reversed) {
 
 /* PUT TOGETHER THE EMU*/
 
-    // 10 Car Set
+    // 12 Car Set
     switch (FEAT_TRAINS, SELF, sw_e7_series_graphics, position_in_articulated_veh) {					
 	    1:  ss_e7_series_cab; 	            // Car 1	Car 12								
 	    4:  sw_e7_series_reverser_C_C;	    // Car 2	Car 11	    						

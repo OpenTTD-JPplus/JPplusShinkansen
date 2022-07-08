@@ -46,11 +46,12 @@ item(FEAT_TRAINS, series_e5, 2005) {
 		articulated_part:               sw_e5_series_articulated_part;
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
 		/* Stats */
-		length:                         sw_e5_series_length;
+		length:                         sw_length_2_8_2;
 		cargo_capacity:                 sw_e5_series_cargo_capacity;
-		cost_factor:                    257;
-		running_cost_factor:            func_running_costs(300);
-		purchase_running_cost_factor:   300;
+		cargo_age_period:				param_decay_express;
+		cost_factor:                    359;
+		running_cost_factor:            sw_e5_series_running_costs;
+		purchase_running_cost_factor:   running_cost_e5_series * 10;
 	}
 }
 

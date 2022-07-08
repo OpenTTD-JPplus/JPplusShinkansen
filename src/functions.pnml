@@ -1,16 +1,21 @@
 /* Begin Functions */
 
-switch (FEAT_TRAINS, SELF, func_running_costs, cost, current_speed) {
-	0: return cost / 10; 		// Stopped
-	1..15: return cost / 4; 	// Moving below ~33.5 mph
-	return cost; 				// Track speed
-}
-
 switch (FEAT_TRAINS, PARENT, func_is_reversed, vehicle_is_reversed) {return;}
 
 switch (FEAT_TRAINS, SELF, sw_visual_effect_and_powered, ((position_in_articulated_veh == 0) && !func_is_reversed()) || ((position_in_articulated_veh_from_end == 0) && func_is_reversed()) ) {
 	1: return visual_effect_and_powered(VISUAL_EFFECT_ELECTRIC, 0, ENABLE_WAGON_POWER);
 	return visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+}
+
+/*	CARGO DECAY	*/
+if (param_cargodecay == 0) {
+	param_decay_express = 256;
+}
+if (param_cargodecay == 1) {
+	param_decay_express = 384;
+}
+if (param_cargodecay >= 2) {
+	param_decay_express = 512;
 }
 
 /* LENGTHS */
@@ -31,6 +36,12 @@ switch (FEAT_TRAINS, SELF, sw_visual_effect_and_powered, ((position_in_articulat
 // 1-1-7-1-1-1
     switch(FEAT_TRAINS, SELF, sw_length_1_1_7_1_1_1, position_in_consist%6) {
         2: return 7;
+        return 1;
+    }
+
+// 1-1-8-1-1
+    switch(FEAT_TRAINS, SELF, sw_length_1_1_8_1_1, position_in_consist%5) {
+        2: return 8;
         return 1;
     }
 

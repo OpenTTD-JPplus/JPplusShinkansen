@@ -31,8 +31,8 @@ item(FEAT_TRAINS, series_e4, 2004) {
 		cargo_age_period:               278; 						// 1.5 times normal for this expensive long-distance train
 		/* Stats */
 		speed:                          241 km/h;					// Operational Top Speed
-		power:                          9010 hp;					// Agreed to Wikipedia
-		weight:                         428 tons;					// Agreed to Wikipedia 
+		power:                          560 * 4 * 8 hp;				// Agreed to Wikipedia
+		weight:                         54 * 8 tons;				// Agreed to Wikipedia 
 		tractive_effort_coefficient:    0.3;
 
 	}
@@ -46,12 +46,13 @@ item(FEAT_TRAINS, series_e4, 2004) {
 		articulated_part:               sw_e4_series_articulated_part;
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
         /* Stats */
-        length:                         sw_e4_series_length;
+        length:                         sw_length_2_8_2;
 		cargo_capacity:                 sw_e4_series_param_cargo_capacity;
-		cost_factor:                    257;
+		cargo_age_period:				param_decay_express;
+		cost_factor:                    264;
 		//refit_cost:                   // N/A - No changes in length 
-        running_cost_factor:            func_running_costs(300);
-		purchase_running_cost_factor:   300;
+        running_cost_factor:            sw_e4_series_running_costs;
+		purchase_running_cost_factor:   running_cost_e4_series * 8;
 	}
 }
 

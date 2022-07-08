@@ -55,25 +55,16 @@
 						name: string(STR_PARAM_NAME_BASECAPACITY);
 						desc: string(STR_PARAM_DESC_BASECAPACITY);
 						min_value: 0;
-						max_value: 3;
+						max_value: 2;
 						def_value: 1;
 						names: {
-												0: string(STR_PARAM_LOW);
-												1: string(STR_PARAM_NORMAL);
-												2: string(STR_PARAM_HIGH);
-												3: string(STR_PARAM_VHIGH);
+												0: string(STR_PARAM_REAL);
+												1: string(STR_PARAM_LONGADJ);
+												2: string(STR_PARAM_DOUBLE);
+
 												//4: string(STR_PARAM_REAL);
 						};
 				}
-		}
-		//extra capacity for locals
-		param 3 {
-			 param_boostcapacity {
-					name: string(STR_PARAM_NAME_BOOSTCAPACITY);
-					desc: string(STR_PARAM_DESC_BOOSTCAPACITY);
-					type: bool;
-					bit:  0;
-			 }
 		}
 		//cargo decay
 		param 5 {

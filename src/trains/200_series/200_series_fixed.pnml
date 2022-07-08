@@ -51,6 +51,7 @@ item(FEAT_TRAINS, series_200) {
         power:                          power_per_motor_200_series * 4 * sw_200_series_number_of_motor_cars();
         speed:							sw_200_series_speed;
 		cargo_capacity:                 sw_200_series_cargo_capacity;
+		cargo_age_period:				param_decay_express;
 		cost_factor:                    508;
 		refit_cost:                     sw_200_series_refit_cost;
 		running_cost_factor:            sw_200_series_running_costs;
