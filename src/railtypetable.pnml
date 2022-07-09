@@ -1,7 +1,7 @@
 // Begin railtypetable
 
 // https://newgrf-specs.tt-wiki.net/wiki/TracktypeLabels
-
+/*
 railtypetable {
 	RAIL,
 	ELRL,
@@ -27,6 +27,14 @@ railtypetable {
 		SFAE,		// U&ReRMM 2 - Very High-Speed Line
 		SHAE,		// SUKTS - Very High Speed
 		ELRL],		// Backup		
+}
+*/
+
+railtypetable {
+	RAIL,
+	ELRL,
+	SHINKANSEN: [SAAE, ELRL],
+	MINI_SHINKANSEN: [SAAE, ELRL],
 }
 
 // End railtypetable
