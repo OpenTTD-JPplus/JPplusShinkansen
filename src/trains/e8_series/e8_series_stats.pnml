@@ -9,4 +9,12 @@
           return 60;          // Long Sprite Adjusted Capacity (1.25x for Mini-Shinkansen)
   }
 
+// Loading Speed
 
+// Loading Speeds for each parameter level
+  switch(FEAT_TRAINS, SELF, sw_e8_series_loading_speed, param_basecapacity) {
+      // Loading Capacity for a 1 door
+      0: return 48 / param_loading_1D;       // Low Capacity
+      2: return 72 / param_loading_1D;       // High Capacity
+      return 60 / param_loading_1D;          // Normal Capacity 
+  }

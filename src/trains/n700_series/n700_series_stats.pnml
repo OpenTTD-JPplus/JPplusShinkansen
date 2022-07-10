@@ -51,6 +51,27 @@
         sw_n700_series_param_cargo_capacity_16car;          // Length 16 (12.0 tiles)
     }
 
+/* LOADING SPEED */
+
+    // 16 car
+    switch(FEAT_TRAINS, SELF, sw_n700_series_loading_speed_16car, param_basecapacity) {
+        0: return 28 / param_loading_2D;        // 1x Real World Capacity
+        2: return 56 / param_loading_2D;        // 2x Double Real World Capacity
+        return 42 / param_loading_2D;           // 1.5x Long Sprite Adjusted Capacity 
+    }
+
+    // 8 car
+    switch(FEAT_TRAINS, SELF, sw_n700_series_loading_speed_08car, param_basecapacity) {
+        0: return 12 / param_loading_2D;        // 1x Real World Capacity
+        2: return 24 / param_loading_2D;        // 2x Double Real World Capacity
+        return 18 / param_loading_2D;           // 1.5x Long Sprite Adjusted Capacity 
+    }
+
+    switch (FEAT_TRAINS, SELF, sw_n700_series_loading_speed, cargo_subtype) {
+        1: sw_n700_series_loading_speed_08car;
+        sw_n700_series_loading_speed_16car;
+    }
+
 /* WEIGHT */
     weight_n700_series = 44;           // 44t per JPS
 
@@ -211,6 +232,33 @@
         1: sw_n700_series_kyushu_param_cargo_capacity_08car;        // Length 8 (6.0 tiles)
         2: sw_n700_series_kyushu_param_cargo_capacity_06car;        // Length 6 (4.5 tiles)
         sw_n700_series_kyushu_cargo_capacity_year_dep;              // Year Dependent
+    }
+
+/* LOADING SPEED */
+
+    // 8 car
+    switch(FEAT_TRAINS, SELF, sw_n700_series_kyushu_loading_speed_08car, param_basecapacity) {
+        0: return 24 / param_loading_2D;        // 1x Real World Capacity
+        2: return 48 / param_loading_2D;        // 2x Double Real World Capacity
+        return 36 / param_loading_2D;           // 1.5x Long Sprite Adjusted Capacity 
+    }
+
+    // 6 car
+    switch(FEAT_TRAINS, SELF, sw_n700_series_kyushu_loading_speed_06car, param_basecapacity) {
+        0: return 18 / param_loading_2D;        // 1x Real World Capacity
+        2: return 36 / param_loading_2D;        // 2x Double Real World Capacity
+        return 27 / param_loading_2D;           // 1.5x Long Sprite Adjusted Capacity 
+    }
+
+    switch(FEAT_TRAINS, SELF, sw_n700_series_kyushu_loading_speed_year_dep, build_year) {
+        0..2022: sw_n700_series_kyushu_loading_speed_08car;     // N700 Kyushu                    
+        sw_n700_series_kyushu_loading_speed_06car;              // N700S Koname
+    }
+
+    switch (FEAT_TRAINS, SELF, sw_n700_series_kyushu_loading_speed, cargo_subtype) {
+        1: sw_n700_series_kyushu_loading_speed_08car;
+        2: sw_n700_series_kyushu_loading_speed_06car;
+        sw_n700_series_kyushu_loading_speed_year_dep;
     }
 
 /* WEIGHT */

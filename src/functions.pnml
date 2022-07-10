@@ -18,29 +18,43 @@ if (param_cargodecay >= 2) {
 	param_decay_express = 512;
 }
 
+/*	LOADING SPEEDS	*/
+if (param_basecapacity == 0) {
+	param_loading_1D = 8;       // 1 door //
+	param_loading_2D = 4;      // 2 doors //
+}
+if (param_basecapacity == 1) {
+	param_loading_1D = 8;       // 1 door //
+	param_loading_2D = 4;      // 2 doors //
+}
+if (param_basecapacity == 2) {
+	param_loading_1D = 8;       // 1 door //
+	param_loading_2D = 4;      // 2 doors //
+}
+
 /* LENGTHS */
 
 // Standard 2-8-2 Length
-    switch (FEAT_TRAINS, SELF, sw_length_2_8_2, position_in_consist%3) {
+    switch (FEAT_TRAINS, SELF, sw_length_2_8_2, position_in_articulated_veh % 3) {
         1: return 8;
         return 2;
     }
 
 // 1-1-8-2
-    switch(FEAT_TRAINS, SELF, sw_length_1_1_8_2, position_in_consist%4) {
+    switch(FEAT_TRAINS, SELF, sw_length_1_1_8_2, position_in_articulated_veh % 4) {
         2: return 8;
         3: return 2;
         return 1;
     }
 
 // 1-1-7-1-1-1
-    switch(FEAT_TRAINS, SELF, sw_length_1_1_7_1_1_1, position_in_consist%6) {
+    switch(FEAT_TRAINS, SELF, sw_length_1_1_7_1_1_1, position_in_articulated_veh % 6 ) {
         2: return 7;
         return 1;
     }
 
 // 1-1-8-1-1
-    switch(FEAT_TRAINS, SELF, sw_length_1_1_8_1_1, position_in_consist%5) {
+    switch(FEAT_TRAINS, SELF, sw_length_1_1_8_1_1, position_in_articulated_veh %5 ) {
         2: return 8;
         return 1;
     }

@@ -23,12 +23,12 @@
 /* LENGTH*/
 
     // Make a 10 car set by adjusting sprite sizes
-    switch(FEAT_TRAINS, SELF, sw_200_series_shorten_10_car_vehicle_majority, position_in_consist%5) {
+    switch(FEAT_TRAINS, SELF, sw_200_series_shorten_10_car_vehicle_majority, position_in_articulated_veh % 5) {
         2: return 8;
         return 1;
     }
 
-    switch(FEAT_TRAINS, SELF, sw_200_series_shorten_10_car_vehicle, position_in_consist) {
+    switch(FEAT_TRAINS, SELF, sw_200_series_shorten_10_car_vehicle, position_in_articulated_veh) {
         0..44: sw_200_series_shorten_10_car_vehicle_majority;
         46: return 8;
         return 2;
@@ -85,25 +85,25 @@
 
     */
 
-    // Passenger Capacities for each parameter level
+    // 16 car
     switch(FEAT_TRAINS, SELF, sw_200_series_cargo_capacity_16car, param_basecapacity) {
         0: return 28;       // 1x Real World Capacity
         2: return 56;       // 2x Double Real World Capacity
         return 42;          // 1.5x Long Sprite Adjusted Capacity 
     }
-
+    // 12 car
     switch(FEAT_TRAINS, SELF, sw_200_series_cargo_capacity_12car, param_basecapacity) {
         0: return 21;       // 1x Real World Capacity
         2: return 42;       // 2x Double Real World Capacity
         return 31;          // 1.5x Long Sprite Adjusted Capacity 
     }
-
+    // 10 car
     switch(FEAT_TRAINS, SELF, sw_200_series_cargo_capacity_10car, param_basecapacity) {
         0: return 17;       // 1x Real World Capacity
         2: return 35;       // 2x Double Real World Capacity
         return 26;          // 1.5x Long Sprite Adjusted Capacity 
     }
-
+    // 8 car
     switch(FEAT_TRAINS, SELF, sw_200_series_cargo_capacity_08car, param_basecapacity) {
         0: return 14;       // 1x Real World Capacity
         2: return 28;       // 2x Double Real World Capacity
@@ -118,6 +118,45 @@
         6: sw_200_series_cargo_capacity_10car;
         7: sw_200_series_cargo_capacity_08car;
         sw_200_series_cargo_capacity_12car;
+    }
+
+/* LOADING SPEED */
+
+    // 16 car
+    switch(FEAT_TRAINS, SELF, sw_200_series_param_loading_speed_16car, param_basecapacity) {
+        0: return 28 / param_loading_2D;        // 1x Real World Capacity
+        2: return 56 / param_loading_2D;        // 2x Double Real World Capacity
+        return 42 / param_loading_2D;           // 1.5x Long Sprite Adjusted Capacity 
+    }
+
+    // 12 car
+    switch(FEAT_TRAINS, SELF, sw_200_series_param_loading_speed_12car, param_basecapacity) {
+        0: return 21 / param_loading_2D;        // 1x Real World Capacity
+        2: return 42 / param_loading_2D;        // 2x Double Real World Capacity
+        return 31 / param_loading_2D;           // 1.5x Long Sprite Adjusted Capacity 
+    }
+
+    // 10 car
+    switch(FEAT_TRAINS, SELF, sw_200_series_param_loading_speed_10car, param_basecapacity) {
+        0: return 17 / param_loading_2D;        // 1x Real World Capacity
+        2: return 35 / param_loading_2D;        // 2x Double Real World Capacity
+        return 26 / param_loading_2D;           // 1.5x Long Sprite Adjusted Capacity 
+    }
+
+    // 8 car
+    switch(FEAT_TRAINS, SELF, sw_200_series_param_loading_speed_08car, param_basecapacity) {
+        0: return 13 / param_loading_2D;        // 1x Real World Capacity
+        2: return 27 / param_loading_2D;        // 2x Double Real World Capacity
+        return 20 / param_loading_2D;           // 1.5x Long Sprite Adjusted Capacity 
+    }
+
+    switch(FEAT_TRAINS, SELF, sw_200_series_loading_speed, cargo_subtype) {
+        2: sw_200_series_param_loading_speed_10car;
+        3: sw_200_series_param_loading_speed_08car;
+        5: sw_200_series_param_loading_speed_16car;
+        6: sw_200_series_param_loading_speed_10car;
+        7: sw_200_series_param_loading_speed_08car;
+        sw_200_series_param_loading_speed_12car;
     }
 
 /* REFIT COST */

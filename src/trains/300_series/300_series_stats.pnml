@@ -26,3 +26,12 @@
         2: return 56;       // 2x Double Real World Capacity
         return 42;          // 1.5x Long Sprite Adjusted Capacity 
     }
+
+/* LOADING SPEED */
+
+    // 16 car
+    switch(FEAT_TRAINS, SELF, sw_300_series_loading_speed, param_basecapacity) {
+        0: return 28 / param_loading_2D;        // 1x Real World Capacity
+        2: return 56 / param_loading_2D;        // 2x Double Real World Capacity
+        return 42 / param_loading_2D;           // 1.5x Long Sprite Adjusted Capacity 
+    }

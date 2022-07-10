@@ -22,9 +22,9 @@
 // Loading Speed
 
 // Loading Speeds for each parameter level
-  switch(FEAT_TRAINS, SELF, sw_e3_series_param_loading_speed, param_basecapacity) {
-      // Loading Capacity for a 2 door
-      0: return 10;       // Low Capacity
-      2: return 30;       // High Capacity
-      return 20;          // Normal Capacity 
+  switch(FEAT_TRAINS, SELF, sw_e3_series_loading_speed, param_basecapacity) {
+      // Loading Capacity for a 1 door
+      0: return 56 / param_loading_1D;       // Low Capacity
+      2: return 84 / param_loading_1D;       // High Capacity
+      return 70 / param_loading_1D;          // Normal Capacity 
   }

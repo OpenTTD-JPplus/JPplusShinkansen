@@ -74,3 +74,24 @@
         2: sw_e2_series_param_cargo_capacity_08car;       // Length 08 (6.0 tiles)
         sw_e2_series_param_cargo_capacity_10car;          // Length 10 (7.5 tiles)
     }
+
+/* LOADING SPEED */
+
+    // 10 car
+    switch(FEAT_TRAINS, SELF, sw_e2_series_loading_speed_10car, param_basecapacity) {
+        0: return 20 / param_loading_2D;        // 1x Real World Capacity
+        2: return 40 / param_loading_2D;        // 2x Double Real World Capacity
+        return 30 / param_loading_2D;           // 1.5x Long Sprite Adjusted Capacity 
+    }
+
+    // 8 car
+    switch(FEAT_TRAINS, SELF, sw_e2_series_loading_speed_08car, param_basecapacity) {
+        0: return 16 / param_loading_2D;        // 1x Real World Capacity
+        2: return 32 / param_loading_2D;        // 2x Double Real World Capacity
+        return 24 / param_loading_2D;           // 1.5x Long Sprite Adjusted Capacity 
+    }
+
+    switch (FEAT_TRAINS, SELF, sw_e2_series_loading_speed, cargo_subtype) {
+        1: sw_e2_series_loading_speed_08car;
+        sw_e2_series_loading_speed_10car;
+    }

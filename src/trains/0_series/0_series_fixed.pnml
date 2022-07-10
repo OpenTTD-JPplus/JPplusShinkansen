@@ -27,13 +27,14 @@ item(FEAT_TRAINS, series_0) {
 		default_cargo_type:             PASS;
         ai_special_flag:                AI_FLAG_PASSENGER;
 		cargo_capacity:                 1;							// 
-		loading_speed:                  50;                         // 							
+		loading_speed:                  50;                         // Changed by callback						
 		cargo_age_period:               278; 						// Default 185 x 1.5
 		/* Stats */
         speed:                          211 km/h;                   // Changed by callback
         power:                          8050 kW;	                // Changed by callback				
 		weight:                         1464 ton;                   // Changed by callback					
 		tractive_effort_coefficient:    0.3;                        // Standard
+		air_drag_coefficient:			0;
 	}
 	graphics {
 		/* Menu */
@@ -50,6 +51,7 @@ item(FEAT_TRAINS, series_0) {
         power:                          power_per_motor_0_series * 4 * sw_0_series_number_of_motor_cars();
         speed:							sw_0_series_speed;
 		cargo_capacity:                 sw_0_series_cargo_capacity;
+		loading_speed:					sw_0_series_loading_speed;
 		cargo_age_period:				param_decay_express;
         cost_factor:                    500;
         refit_cost:                     sw_0_series_refit_cost;

@@ -34,7 +34,7 @@ item(FEAT_TRAINS, series_e5, 2005) {
 		power:                          12900 hp;					// Agreed to https://en.wikipedia.org/wiki/E5_and_H5_Series_Shinkansen
 		weight:                         453 tons;					// Agreed to https://en.wikipedia.org/wiki/E5_and_H5_Series_Shinkansen
 		tractive_effort_coefficient:    0.3;
-
+		air_drag_coefficient:			0;
 	}
 	graphics {
 		/* Menu */
@@ -48,6 +48,7 @@ item(FEAT_TRAINS, series_e5, 2005) {
 		/* Stats */
 		length:                         sw_length_2_8_2;
 		cargo_capacity:                 sw_e5_series_cargo_capacity;
+		loading_speed:					sw_e5_series_loading_speed;
 		cargo_age_period:				param_decay_express;
 		cost_factor:                    359;
 		running_cost_factor:            sw_e5_series_running_costs;

@@ -69,6 +69,27 @@
         sw_0_series_param_cargo_capacity_16car;
     }
 
+/* LOADING SPEED */
+
+    // 16 car
+    switch(FEAT_TRAINS, SELF, sw_0_series_param_loading_speed_16car, param_basecapacity) {
+        0: return 28 / param_loading_2D;        // 1x Real World Capacity
+        2: return 56 / param_loading_2D;        // 2x Double Real World Capacity
+        return 42 / param_loading_2D;           // 1.5x Long Sprite Adjusted Capacity 
+    }
+
+    // 12 car
+    switch(FEAT_TRAINS, SELF, sw_0_series_param_loading_speed_12car, param_basecapacity) {
+        0: return 21 / param_loading_2D;        // 1x Real World Capacity
+        2: return 42 / param_loading_2D;        // 2x Double Real World Capacity
+        return 31 / param_loading_2D;           // 1.5x Long Sprite Adjusted Capacity 
+    }
+
+    switch(FEAT_TRAINS, SELF, sw_0_series_loading_speed, cargo_subtype) {
+        2: sw_0_series_param_loading_speed_12car;  
+        sw_0_series_param_loading_speed_16car;
+    }
+
 /* REFIT COST */
 
     switch(FEAT_TRAINS, SELF, sw_0_series_refit_cost_minus2, cargo_subtype) {

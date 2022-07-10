@@ -62,3 +62,24 @@
         1: sw_500_series_cargo_capacity_08car;
         sw_500_series_cargo_capacity_16car;
     }
+
+/* LOADING SPEED */
+
+    // 16 car
+    switch(FEAT_TRAINS, SELF, sw_500_series_loading_speed_16car, param_basecapacity) {
+        0: return 28 / param_loading_2D;        // 1x Real World Capacity
+        2: return 56 / param_loading_2D;        // 2x Double Real World Capacity
+        return 42 / param_loading_2D;           // 1.5x Long Sprite Adjusted Capacity 
+    }
+
+    // 8 car
+    switch(FEAT_TRAINS, SELF, sw_500_series_loading_speed_08car, param_basecapacity) {
+        0: return 13 / param_loading_2D;        // 1x Real World Capacity
+        2: return 26 / param_loading_2D;        // 2x Double Real World Capacity
+        return 20 / param_loading_2D;           // 1.5x Long Sprite Adjusted Capacity 
+    }
+
+    switch (FEAT_TRAINS, SELF, sw_500_series_loading_speed, cargo_subtype) {
+        1: sw_500_series_loading_speed_08car;
+        sw_500_series_loading_speed_16car;
+    }

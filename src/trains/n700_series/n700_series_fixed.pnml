@@ -51,6 +51,7 @@ item(FEAT_TRAINS, series_n700) {
         power:                          power_per_motor_n700_series * 4 * sw_n700_series_number_of_motor_cars();
 		speed:							sw_n700_series_speed;
 		cargo_capacity:                 sw_n700_series_cargo_capacity;
+		loading_speed:					sw_n700_series_loading_speed;
 		cost_factor:                    554;
         refit_cost:                     sw_n700_series_refit_cost;
 		running_cost_factor:            sw_n700_series_running_costs;
@@ -86,7 +87,7 @@ item(FEAT_TRAINS, series_n700_kyushu) {
     	power:                          22900 kW;					// Overwritten by callback
 		weight:                         648 tons;					// Overwritten by callback
 		tractive_effort_coefficient:    0.3;
-
+		air_drag_coefficient:			0;
 	}
 	graphics {
 		/* Menu */
@@ -102,6 +103,7 @@ item(FEAT_TRAINS, series_n700_kyushu) {
         weight:                         sw_n700_series_kyushu_weight;
         power:                          power_per_motor_n700_series_kyushu * 4 * sw_n700_series_kyushu_number_of_motor_cars();
 		cargo_capacity:                 sw_n700_series_kyushu_cargo_capacity;
+		loading_speed:					sw_n700_series_kyushu_loading_speed;
 		cargo_age_period:				param_decay_express;
 		cost_factor:                    sw_n700_series_kyushu_cost_factor;
         refit_cost:                     sw_n700_series_kyushu_refit_cost;
