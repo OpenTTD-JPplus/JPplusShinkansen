@@ -2,7 +2,7 @@
 
 #include "src/trains/e2_series/e2_series_subtypes.pnml"
 #include "src/trains/e2_series/e2_series_gfx.pnml"
-// #include "src/trains/e2_series/e2_series_liveries.pnml"
+#include "src/trains/e2_series/e2_series_liveries.pnml"
 #include "src/trains/e2_series/e2_series_stats.pnml"
 #include "src/trains/e2_series/e2_series_formation.pnml"
 
@@ -42,7 +42,7 @@ item(FEAT_TRAINS, series_e2) {
         cargo_subtype_text:             sw_e2_series_year_dep_subtype_text;
         /* Graphics */
         default:                        sw_e2_series_graphics;
-		purchase:                       ss_e2_series_buy;
+		purchase:                       sw_e2_series_buy;
 		articulated_part:               sw_e2_series_articulated_part;
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
         /* Stats */

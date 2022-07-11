@@ -3,25 +3,25 @@
 /* REVERSERS */
 
 switch (FEAT_TRAINS, PARENT, sw_e2_series_reverser_C_P, vehicle_is_reversed) {
-	0: ss_e2_series_coach;
-	ss_e2_series_panto_rev;
+	0: sw_e2_series_coach;
+	sw_e2_series_panto_rev;
 }
 
 switch (FEAT_TRAINS, PARENT, sw_e2_series_reverser_C_C, vehicle_is_reversed) {
-	0: ss_e2_series_coach;
-	ss_e2_series_coach_rev;
+	0: sw_e2_series_coach;
+	sw_e2_series_coach_rev;
 }
 
 switch (FEAT_TRAINS, PARENT, sw_e2_series_reverser_P_C, vehicle_is_reversed) {
-	0: ss_e2_series_panto;
-	ss_e2_series_coach_rev;
+	0: sw_e2_series_panto;
+	sw_e2_series_coach_rev;
 }
  
 /* PUT TOGETHER THE EMU*/
 
     // 10 Car Set
     switch (FEAT_TRAINS, SELF, sw_e2_series_graphics_10car, position_in_articulated_veh) {					
-	    2:  ss_e2_series_cab; 	            // Car 1	Car 10								
+	    2:  sw_e2_series_cab; 	            // Car 1	Car 10								
 	    6:  sw_e2_series_reverser_C_C;	    // Car 2	Car 9	    						
 	    10: sw_e2_series_reverser_C_C;      // Car 3    Car 8
 	    14: sw_e2_series_reverser_P_C;      // Car 4    Car 7
@@ -30,24 +30,25 @@ switch (FEAT_TRAINS, PARENT, sw_e2_series_reverser_P_C, vehicle_is_reversed) {
         26: sw_e2_series_reverser_C_P;      // Car 7    Car 4
 	    30: sw_e2_series_reverser_C_C;      // Car 8    Car 3
         34: sw_e2_series_reverser_C_C;      // Car 9    Car 2
-        38: ss_e2_series_cab_rev;           // Car 10   Car 1
+        38: sw_e2_series_cab_rev;           // Car 10   Car 1
 	    dummy_sprites;
     }
     // 8 Car Set
     switch (FEAT_TRAINS, SELF, sw_e2_series_graphics_08car, position_in_articulated_veh) {					
-	    2:  ss_e2_series_cab; 	            // Car 1	Car 8								
+	    2:  sw_e2_series_cab; 	            // Car 1	Car 8								
 	    7:  sw_e2_series_reverser_C_C;	    // Car 2	Car 7	    						
 	    12: sw_e2_series_reverser_C_P;      // Car 3    Car 6
 	    17: sw_e2_series_reverser_P_C;      // Car 4    Car 5
         22: sw_e2_series_reverser_C_P;      // Car 5    Car 4
         27: sw_e2_series_reverser_P_C;      // Car 6    Car 3
         32: sw_e2_series_reverser_C_C;      // Car 7    Car 2
-        37: ss_e2_series_cab_rev;           // Car 8    Car 1
+        37: sw_e2_series_cab_rev;           // Car 8    Car 1
 	    dummy_sprites;
     }
     // Graphics selection per cargo subtype
     switch(FEAT_TRAINS, SELF, sw_e2_series_graphics, cargo_subtype) {
         1: sw_e2_series_graphics_10car;         // 10-car Set
+        3: sw_e2_series_graphics_10car;         // 10-car Set
         sw_e2_series_graphics_08car;            // 8-car Set
     }
 

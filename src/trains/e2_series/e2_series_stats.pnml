@@ -3,18 +3,21 @@
 /* NUMBER OF CARS */
 
     switch(FEAT_TRAINS, SELF, sw_e2_series_number_of_cars, cargo_subtype) {
-            1: return 10; 
+            1: return 10;
+            3: return 10;
             return 8;       
         }
 
     switch(FEAT_TRAINS, SELF, sw_e2_series_number_of_motor_cars, cargo_subtype) {
             1: return 8;   // 8M 2T  
+            3: return 8;   // 8M 2T
             return 6;      // 6M 2T
         }
 
 /* LENGTH*/
     switch(FEAT_TRAINS, SELF, sw_e2_series_length, cargo_subtype) {
         1: sw_length_1_1_8_2;                   // 10-car Set
+        3: sw_length_1_1_8_2;                   // 10-car Set
         sw_length_1_1_8_1_1;                    // 8-car Set
     }
 
@@ -34,12 +37,26 @@
     }
 
 /* REFIT COST */
+    
+    switch(FEAT_TRAINS, SELF, sw_e2_series_refit_cost_plusminus1, cargo_subtype) {
+        0: return -8+10;
+        2: return -8+10;
+        4: return -8+10; 
+        return -10+8;
+    }
+    
     switch(FEAT_TRAINS, SELF, sw_e2_series_refit_cost, var[0x10,8,0xFF] - cargo_subtype) {
         /* Refit cost based on difference between target cargo subtype and current cargo subtype.
 	    Refitting to fewer carriages refunds money, while adding carriages costs (more) money.    */    
-	    -1:				-2;
+	    -4:             0;
+        -3:             sw_e2_series_refit_cost_plusminus1;       
+        -2:             0;
+        -1:				sw_e2_series_refit_cost_plusminus1;
 	    0:				0;
-	    1:				2;
+	    1:				sw_e2_series_refit_cost_plusminus1;
+        2:              0;
+        3:              sw_e2_series_refit_cost_plusminus1;
+        4:              0;
 	    return CB_FAILED;
     }
 
@@ -71,8 +88,9 @@
 
     // Capacity for each length    
     switch(FEAT_TRAINS, SELF, sw_e2_series_cargo_capacity, cargo_subtype) {
-        2: sw_e2_series_param_cargo_capacity_08car;       // Length 08 (6.0 tiles)
-        sw_e2_series_param_cargo_capacity_10car;          // Length 10 (7.5 tiles)
+        1: sw_e2_series_param_cargo_capacity_10car;          // Length 10 (7.5 tiles)
+        3: sw_e2_series_param_cargo_capacity_10car;          // Length 10 (7.5 tiles)
+        sw_e2_series_param_cargo_capacity_08car; 
     }
 
 /* LOADING SPEED */
@@ -92,6 +110,7 @@
     }
 
     switch (FEAT_TRAINS, SELF, sw_e2_series_loading_speed, cargo_subtype) {
-        1: sw_e2_series_loading_speed_08car;
-        sw_e2_series_loading_speed_10car;
+        1: sw_e2_series_loading_speed_10car;
+        3: sw_e2_series_loading_speed_10car;
+        sw_e2_series_loading_speed_08car;
     }
