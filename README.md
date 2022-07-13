@@ -15,6 +15,7 @@ This is the sister set to 🚂[JP+ Engines & Wagons](https://github.com/EmperorJ
 * Normal Length Sprites fo Mini-Shinkansen - choose your length
 * Real World Stats were possible (or approximations when not known)
 
+Like 
 
 ## JR West of Tokyo
 
@@ -30,14 +31,14 @@ This is the sister set to 🚂[JP+ Engines & Wagons](https://github.com/EmperorJ
 
 ^ 210 km/h until 1986, 220 km/h thereafter
 
-## JR East of Tokyo 
+## JR East
 
 | | Shinkansen | Release | End Year  | Speed (km/h) | Weight per car | 
 | --- | --- | --- | --- |--- | --- | 
 |![200 Series](/src/gfx/200_series/purchase_original_jre.png)| 200 Series | 1982 | 2008 | 210~ | 58t
 |![400 Series](/src/gfx/400_series/buy_400.png)| 400 Series | 1992 | 2010 | 240 | 42t
 |![E1 Series](/src/gfx/e1_series/buy_e1_original.png)| E1 Series | 1994 | 2012 | 240 | 58t 
-|![E2 Series](/src/gfx/e2_series/purchase.png)| E2 Series | 1997 | N/A | 275 | 46t
+|![E2 Series](/src/gfx/e2_series/buy_red.png)| E2 Series | 1997 | N/A | 275 | 46t
 |![E3 Series](/src/gfx/e3_series/buy_e3_r.png)| E3 Series | 1997 | N/A | 275 | 43t
 |![E4 Series](/src/gfx/e4_series/purchase_yellow.png)| E4 Series | 1997 | N/A^ | 240 | 54t |
 |![E5 Series](/src/gfx/e5_series/purchase.png)| E5 Series | 2011 | N/A | 321 | 45t

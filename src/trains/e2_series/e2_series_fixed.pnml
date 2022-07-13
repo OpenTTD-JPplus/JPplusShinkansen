@@ -40,7 +40,8 @@ item(FEAT_TRAINS, series_e2) {
 		/* Menu */
         additional_text:                string(STR_DESC_E2_SERIES);
         cargo_subtype_text:             sw_e2_series_year_dep_subtype_text;
-        /* Graphics */
+        can_attach_wagon:				sw_full_jreast_attach_vehid;
+		/* Graphics */
         default:                        sw_e2_series_graphics;
 		purchase:                       sw_e2_series_buy;
 		articulated_part:               sw_e2_series_articulated_part;

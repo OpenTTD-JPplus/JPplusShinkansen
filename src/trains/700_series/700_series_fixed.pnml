@@ -40,6 +40,7 @@ item(FEAT_TRAINS, series_700) {
 		/* Menu */
         additional_text:                string(STR_DESC_700_SERIES);
         cargo_subtype_text:             sw_700_series_subtype_text;
+		can_attach_wagon:				sw_full_notjreast_attach_vehid;
         /* Graphics */
         default:                        sw_700_series_graphics;
 		purchase:                       ss_700_series_buy;

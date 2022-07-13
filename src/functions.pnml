@@ -7,6 +7,26 @@ switch (FEAT_TRAINS, SELF, sw_visual_effect_and_powered, ((position_in_articulat
 	return visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
 }
 
+/* Which IDs can attach */
+switch(FEAT_TRAINS, SELF, sw_full_jreast_attach_vehid, [
+    vehicle_type_id == series_200 ||
+    vehicle_type_id == series_e1 || 
+    vehicle_type_id == series_e2 || 
+    vehicle_type_id == series_e4 ||
+    vehicle_type_id == series_e5 ||
+    vehicle_type_id == series_e7
+    ]) {0: return string(JR_EAST_ONLY_FULL);}
+
+switch(FEAT_TRAINS, SELF, sw_full_notjreast_attach_vehid, [
+    vehicle_type_id == series_0 || 
+    vehicle_type_id == series_100 || 
+    vehicle_type_id == series_300 ||
+    vehicle_type_id == series_500 ||
+    vehicle_type_id == series_700 ||
+    vehicle_type_id == series_n700 ||
+    vehicle_type_id == series_n700_kyushu
+    ]) {0: return string(NON_JR_EAST_ONLY_FULL);}
+
 /*	CARGO DECAY	*/
 if (param_cargodecay == 0) {
 	param_decay_express = 256;

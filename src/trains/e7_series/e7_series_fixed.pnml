@@ -40,6 +40,7 @@ item(FEAT_TRAINS, series_e7) {
 		/* Menu */
         additional_text:                string(STR_DESC_E7_SERIES);
         cargo_subtype_text:             sw_e7_series_subtype_text;
+		can_attach_wagon:				sw_full_jreast_attach_vehid;
         /* Graphics */
         default:                        sw_e7_series_graphics;
 		purchase:                       ss_e7_series_buy;

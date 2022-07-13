@@ -158,6 +158,26 @@ switch (FEAT_TRAINS, SELF, sw_visual_effect_and_powered, ((position_in_articulat
 	return visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
 }
 
+/* Which IDs can attach */
+switch(FEAT_TRAINS, SELF, sw_full_jreast_attach_vehid, [
+    vehicle_type_id == series_200 ||
+    vehicle_type_id == series_e1 || 
+    vehicle_type_id == series_e2 || 
+    vehicle_type_id == series_e4 ||
+    vehicle_type_id == series_e5 ||
+    vehicle_type_id == series_e7
+    ]) {0: return string(JR_EAST_ONLY_FULL);}
+
+switch(FEAT_TRAINS, SELF, sw_full_notjreast_attach_vehid, [
+    vehicle_type_id == series_0 || 
+    vehicle_type_id == series_100 || 
+    vehicle_type_id == series_300 ||
+    vehicle_type_id == series_500 ||
+    vehicle_type_id == series_700 ||
+    vehicle_type_id == series_n700 ||
+    vehicle_type_id == series_n700_kyushu
+    ]) {0: return string(NON_JR_EAST_ONLY_FULL);}
+
 /*	CARGO DECAY	*/
 if (param_cargodecay == 0) {
 	param_decay_express = 256;
@@ -342,8 +362,8 @@ item(FEAT_TRAINS, series_700, 700) {}
 item(FEAT_TRAINS, series_n700, 777) {}
 item(FEAT_TRAINS, series_n700_kyushu, 778) {}
 item(FEAT_TRAINS, series_800, 800) {}
-item(FEAT_TRAINS, series_e1, 2001) {}
-item(FEAT_TRAINS, series_e2, 2002) {}
+item(FEAT_TRAINS, series_e1, 1551) {}
+item(FEAT_TRAINS, series_e2, 1552) {}
 item(FEAT_TRAINS, series_e3, 2003) {}
 item(FEAT_TRAINS, series_e4, 2004) {} 
 item(FEAT_TRAINS, series_e5, 2005) {} 
@@ -368,8 +388,8 @@ sort(FEAT_TRAINS, [
 /* JR East */
 200,    // 200 Series Shinkansen
 400,    // 400 Series Shinkansen
-2001,   // E1 Series Shinkansen (Max)
-2002,   // E2 Series Shinkansen
+1551,     // E1 Series Shinkansen (Max)
+1552,     // E2 Series Shinkansen
 2003,   // E3 Series Shinkansen
 2004,   // E4 Series Shinkansen (Max)
 2005,   // E5 Series Shinkansen
@@ -474,14 +494,14 @@ if (ttd_platform != PLATFORM_OPENTTD || openttd_version < version_openttd(1, 2, 
 if (((grf_current_status("SZ\0D\00") == 0) && (grf_current_status("DP\30\00") == 0)) || ((grf_future_status("SZ\0D\00") == 0) && (grf_future_status("DP\30\00") == 0)) || ((grf_order_behind("SZ\0D\00") == 0) && (grf_order_behind("DP\30\00") == 0))) {
 	error( WARNING, string(GRF_JAPANSET));
 }
-*/
+
 if (grf_order_behind("BS\42\13") == 0) {
 	error(FATAL, string(GRF_JPPLUSSET));
 }
-/*
+
 if (((grf_order_behind("EN\21\01") == 0) && (grf_order_behind("BS\07\20") != 0)) || ((grf_future_status("EN\21\01") == 0) && (grf_future_status("BS\07\20") == 0)) || ((grf_current_status("EN\21\01") != 0) && (grf_current_status("BS\07\20") == 0))) {
 	error(WARNING, string(GRF_NATSSET));
-}*/
+}
 
 if (grf_order_behind("SZ\0D\00") == 0) {
 	error(WARNING, string(GRF_JAPANSETTRAINS));
@@ -490,7 +510,7 @@ if (grf_order_behind("SZ\0D\00") == 0) {
 if (grf_order_behind("JD\A1\E1") == 0) {
 	error(WARNING, string(GRF_JAPANSECRETORDER));
 }
-
+*/
 // End grfintegration
 # 1 "JPplusShinkansen.pnml" 4
 
@@ -1010,6 +1030,7 @@ item(FEAT_TRAINS, series_0) {
 		/* Menu */
         additional_text:                string(STR_DESC_0_SERIES);
         cargo_subtype_text:             sw_0_series_year_dep_subtype_text;
+		can_attach_wagon:				sw_full_notjreast_attach_vehid;
         /* Graphics */
         default:                        sw_0_series_graphics;
 		purchase:                       sw_0_series_year_dep_purchase;
@@ -1893,6 +1914,7 @@ item(FEAT_TRAINS, series_n700) {
 		/* Menu */
         additional_text:                string(STR_DESC_N700_SERIES);
         cargo_subtype_text:             sw_n700_series_subtype_text;
+		can_attach_wagon:				sw_full_notjreast_attach_vehid;
         /* Graphics */
         default:                        sw_n700_series_graphics;
 		purchase:                       sw_n700_series_year_dep_purchase;
@@ -2264,6 +2286,7 @@ item(FEAT_TRAINS, series_700) {
 		/* Menu */
         additional_text:                string(STR_DESC_700_SERIES);
         cargo_subtype_text:             sw_700_series_subtype_text;
+		can_attach_wagon:				sw_full_notjreast_attach_vehid;
         /* Graphics */
         default:                        sw_700_series_graphics;
 		purchase:                       ss_700_series_buy;
@@ -2516,6 +2539,7 @@ item(FEAT_TRAINS, series_500) {
 		/* Menu */
 		additional_text:                string(STR_DESC_500_SERIES);
 		cargo_subtype_text:             sw_500_series_subtype_text;
+		can_attach_wagon:				sw_full_notjreast_attach_vehid;
 		/* Graphics */
 		default:                        sw_500_series_graphics;
 		purchase:                       ss_500_series_buy;
@@ -2689,6 +2713,7 @@ item(FEAT_TRAINS, series_300) {
 		/* Menu */
         additional_text:                string(STR_DESC_300_SERIES);
         //cargo_subtype_text:             sw_300_series_subtype_text;
+		can_attach_wagon:				sw_full_notjreast_attach_vehid;
         /* Graphics */
         default:                        sw_300_series_graphics;
 		purchase:                       ss_300_series_buy;
@@ -3337,6 +3362,7 @@ item(FEAT_TRAINS, series_100) {
 		/* Menu */
         additional_text:                string(STR_DESC_100_SERIES);
         cargo_subtype_text:             sw_100_series_year_dep_subtype_text;
+		can_attach_wagon:				sw_full_notjreast_attach_vehid;
         /* Graphics */
         default:                        sw_100_series_graphics;
 		purchase:                       sw_100_series_year_dep_purchase;
@@ -3498,6 +3524,7 @@ item(FEAT_TRAINS, series_800) {
 		/* Menu */
 		additional_text:                string(STR_DESC_800_SERIES);
 		//cargo_subtype_text:             sw_800_series_subtype_text;
+		can_attach_wagon:				sw_full_notjreast_attach_vehid;
 		/* Graphics */
 		default:                        sw_800_series_graphics;
 		purchase:                       ss_800_series_buy;
@@ -4223,6 +4250,7 @@ item(FEAT_TRAINS, series_200) {
 		/* Menu */
 		additional_text:                string(STR_DESC_200_SERIES);
 		cargo_subtype_text:             sw_200_series_year_dep_subtype_text;
+		can_attach_wagon:				sw_full_jreast_attach_vehid;
 		/* Graphics */
 		default:                        sw_200_series_graphics;
 		purchase:                       sw_200_series_year_dep_purchase;
@@ -4948,6 +4976,7 @@ item(FEAT_TRAINS, series_e1) {
 		/* Menu */
 		additional_text:                string(STR_DESC_E1_SERIES);
 		cargo_subtype_text:             sw_e1_series_year_dep_subtype_text;
+		can_attach_wagon:				sw_full_jreast_attach_vehid;
 		/* Graphics */
 		default:                        sw_e1_series_graphics;
 		purchase:                       sw_e1_series_year_dep_purchase;
@@ -5354,7 +5383,8 @@ item(FEAT_TRAINS, series_e2) {
 		/* Menu */
         additional_text:                string(STR_DESC_E2_SERIES);
         cargo_subtype_text:             sw_e2_series_year_dep_subtype_text;
-        /* Graphics */
+        can_attach_wagon:				sw_full_jreast_attach_vehid;
+		/* Graphics */
         default:                        sw_e2_series_graphics;
 		purchase:                       sw_e2_series_buy;
 		articulated_part:               sw_e2_series_articulated_part;
@@ -6130,6 +6160,7 @@ item(FEAT_TRAINS, series_e4, 2004) {
 		/* Menu */
         additional_text:                string(STR_DESC_E4_SERIES);
         cargo_subtype_text:             sw_e4_series_year_dep_subtype_text;
+		can_attach_wagon:				sw_full_jreast_attach_vehid;
         /* Graphics */
         default:                        sw_e4_series_graphics;
 		purchase:                       sw_e4_series_year_dep_purchase;
@@ -6421,6 +6452,7 @@ item(FEAT_TRAINS, series_e5, 2005) {
 		/* Menu */
 		additional_text:                string(STR_DESC_E5_SERIES);
 		cargo_subtype_text:             sw_e5_series_year_dep_subtype_text;
+		can_attach_wagon:				sw_full_jreast_attach_vehid;
 		/* Graphics */
 		default:                        sw_e5_series_graphics;
 		purchase:                       ss_e5_series_purchase_pink_livery;
@@ -6916,6 +6948,7 @@ item(FEAT_TRAINS, series_e7) {
 		/* Menu */
         additional_text:                string(STR_DESC_E7_SERIES);
         cargo_subtype_text:             sw_e7_series_subtype_text;
+		can_attach_wagon:				sw_full_jreast_attach_vehid;
         /* Graphics */
         default:                        sw_e7_series_graphics;
 		purchase:                       ss_e7_series_buy;
@@ -7205,3 +7238,124 @@ item(FEAT_TRAINS, series_e8) {
 # 1 "JPplusShinkansen.pnml" 4
 
 // #include "src/trains/WIP/e5e6_series_fixed.pnml"
+
+// GRF OVERRIDE
+# 1 "src/grfoverrides.pnml" 1
+if (param_japansetdisable == 0) {
+	disable_item(FEAT_TRAINS, 0, 115); //Disables original vehicles
+}
+
+//JPSet3 DUPLICATION 
+
+if (param_japansetdisable == 1) {
+	engine_override("SZ\0D\00");
+
+	item(FEAT_TRAINS, japanset_0_series, 0x17) {
+		property {
+			climates_available: NO_CLIMATE;
+		}
+	} 
+
+	item(FEAT_TRAINS, japanset_100_series, 0x3a) {
+		property {
+			climates_available: NO_CLIMATE;
+		}
+	} 
+
+	item(FEAT_TRAINS, japanset_300_series, 0x3d) {
+		property {
+			climates_available: NO_CLIMATE;
+		}
+	} 
+
+	item(FEAT_TRAINS, japanset_500_series, 0x46) {
+		property {
+			climates_available: NO_CLIMATE;
+		}
+	} 
+
+	item(FEAT_TRAINS, japanset_700_series, 0x4b) {
+		property {
+			climates_available: NO_CLIMATE;
+		}
+	} 
+
+	item(FEAT_TRAINS, japanset_n700_series, 0x5f) {
+		property {
+			climates_available: NO_CLIMATE;
+		}
+	} 
+
+	item(FEAT_TRAINS, japanset_800_series, 0x4f) {
+		property {
+			climates_available: NO_CLIMATE;
+		}
+	} 
+
+	item(FEAT_TRAINS, japanset_200_series, 0x4c) {
+		property {
+			climates_available: NO_CLIMATE;
+		}
+	} 
+
+	item(FEAT_TRAINS, japanset_400_series, 0x400) {
+		property {
+			climates_available: NO_CLIMATE;
+		}
+	} 
+
+	item(FEAT_TRAINS, japanset_e1_series, 0x45) {
+		property {
+			climates_available: NO_CLIMATE;
+		}
+	} 
+
+	item(FEAT_TRAINS, japanset_e2_series, 0x65) {
+		property {
+			climates_available: NO_CLIMATE;
+		}
+	} 
+
+	item(FEAT_TRAINS, japanset_e3_series, 0x401) {
+		property {
+			climates_available: NO_CLIMATE;
+		}
+	} 
+
+	item(FEAT_TRAINS, japanset_e4_series, 0x6d) {
+		property {
+			climates_available: NO_CLIMATE;
+		}
+	} 
+
+	item(FEAT_TRAINS, japanset_e5_series, 0x6e) {
+		property {
+			climates_available: NO_CLIMATE;
+		}
+	} 
+
+	item(FEAT_TRAINS, japanset_e6_series, 0x402) {
+		property {
+			climates_available: NO_CLIMATE;
+		}
+	} 
+
+	item(FEAT_TRAINS, japanset_e7_series, 0x403) {
+		property {
+			climates_available: NO_CLIMATE;
+		}
+	} 
+
+	item(FEAT_TRAINS, japanset_pax_car, 0x59) {
+		property {
+			climates_available: NO_CLIMATE;
+		}
+	} 
+
+	item(FEAT_TRAINS, japanset_mail_car, 0x5a) {
+		property {
+			climates_available: NO_CLIMATE;
+		}
+	} 
+}
+# 1 "JPplusShinkansen.pnml" 4
