@@ -105,7 +105,7 @@ switch (FEAT_TRAINS, SELF, sw_100_series_graphics_8car_kodama, position_in_artic
 /* Choose which Graphics based on which Cargo Subtype */
 
 switch(FEAT_TRAINS, SELF, sw_100_series_graphics_year_dep, build_year) {
-    0..1987: sw_100_series_graphics_16car_x;
+    0..1999: sw_100_series_graphics_16car_x;
     sw_100_series_graphics_8car_kodama;
 }
 
