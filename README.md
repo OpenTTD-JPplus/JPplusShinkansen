@@ -12,15 +12,18 @@ This is the sister set to 🚂[JP+ Engines & Wagons](https://github.com/EmperorJ
 ## Features
 
 * Long Sprites for 'full Shinkansen' - fixed length sets with different livery and length options via Cargo Subtype Menu
-* Normal Length Sprites fo Mini-Shinkansen - choose your length
+* Normal Length Sprites for Mini-Shinkansen - choose your length
 * Real World Stats were possible (or approximations when not known)
-
-Like 
+* Parameters for;
+    * Disabling JapanSet Shinkansen
+    * Enabling Shinkansen Tracks (to counteract the previous parameter which disables JapanSet Shinkansen tracks)
+    * Disabling Shinkansen Track Fences
+    * Capacity Levels
 
 ## JR West of Tokyo
 
-| | Shinkansen | Release | End Year  | Speed (km/h) | Weight per car| |
-| --- | --- | --- | --- | --- | --- | --- | 
+| | Shinkansen | Release | End Year  | Speed (km/h) | Weight per car| 
+| --- | --- | --- | --- | --- | --- | 
 |![0 Series](/src/gfx/0_series/purchase_original.png)| 0 Series | 1964 | 2008 |  210^ | 61t |
 |![100 Series](/src/gfx/100_series/purchase_original_jnr.png)| 100 Series | 1985 | 2012 | 220 | 53t
 |![300 Series](/src/gfx/300_series/purchase.png)| 300 Series | 1992 | 2012 | 270 | 44t|
