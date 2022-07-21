@@ -28,8 +28,11 @@ STR_PARAM_REAL                      :Real World Capacities (1x)
 STR_PARAM_LONGADJ                   :Long Sprite Adjusted (1.5x)
 STR_PARAM_DOUBLE                    :Double (2x)
 
-STR_PARAM_NAME_FENCES               :Disable Shinkansen track fences
-STR_PARAM_DESC_FENCES               :When JapanSet3 Shinkansen are disabled by the above parameter, this removes their tracks. Select whether fences appear on replacement the Shinkansen tracks. This affects no other tracks or track sets, including JapanSet Tracks.
+STR_PARAM_NAME_TRACKS               :Enable replacement Shinkansen tracks
+STR_PARAM_DESC_TRACKS               :When JapanSet3 Shinkansen are disabled by the above parameter, this removes the Shinkansen tracks from JapanSet Tracks. This parameter enables 'replacement' Shinkansen tracks. 
+
+STR_PARAM_NAME_FENCES               :Disable replacement Shinkansen track fences
+STR_PARAM_DESC_FENCES               :Select whether fences appear on the replacement Shinkansen tracks. Only affects the 'replacement' Shinkansen track, not any other tracks or track sets.
 
 # Error Messages
 GRF_OTTDVER                 : You are below the required OpenTTD version to run this NewGRF. Please update your version of OpenTTD.
@@ -182,14 +185,14 @@ LV_YEAR_DEP_LIVERY          : Year Dependent Livery
 
 STR_NAME_HSSN               :Shinkansen high speed railway
 STR_MENU_HSSN               :Shinkansen high speed line {LTBLUE}(electrified) {WHITE}
-STR_CAPT_HSSN               :New Shinkansen High Speed Electric Trains
-STR_TOOL_HSSN               :Shinkansen High Speed Railway Construction
-STR_AUTO_HSSN               :Shinkansen High Speed Trains
+STR_CAPT_HSSN               :New Shinkansen high speed electric Trains
+STR_TOOL_HSSN               :Shinkansen high speed railway Construction
+STR_AUTO_HSSN               :Shinkansen high Speed trains
 STR_NEWE_HSSN               :Standard Gauge Vehicle
 
 STR_NAME_MDSN               :Shinkansen modern high speed railway
 STR_MENU_MDSN               :Shinkansen modern high speed line {LTBLUE}(electrified) {WHITE}
-STR_CAPT_MDSN               :New Shinkansen High Speed Electric Trains
-STR_TOOL_MDSN               :Shinkansen high speed railway construction
-STR_AUTO_MDSN               :Standard Gauge Electric Trains
+STR_CAPT_MDSN               :New Shinkansen high speed electric Trains
+STR_TOOL_MDSN               :Shinkansen modern high speed railway construction
+STR_AUTO_MDSN               :Shinkansen high Speed trains
 STR_NEWE_MDSN               :Standard Gauge Vehicle

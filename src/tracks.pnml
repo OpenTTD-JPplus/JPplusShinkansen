@@ -88,7 +88,7 @@ switch(FEAT_RAILTYPES, SELF, sw_fences, param_fences) {
 spriteset(ss_shin_01_gui_ttd,	"src/gfx/tracks/shin_01.png") {japan_rails_gui_ttd()}
 spriteset(ss_shin_02_gui_ttd,	"src/gfx/tracks/shin_02.png") {japan_rails_gui_ttd()}
 
-if (param_japansetdisable == 1){
+if (param_japansetdisable == 1 && param_tracks == 1 ){
 
 /*
     item(FEAT_RAILTYPES) {
