@@ -19,6 +19,16 @@
 					def_value: 0;
 			 }
 		}
+		//track fences
+		param 3 {
+			 param_fences {
+					name: string(STR_PARAM_NAME_FENCES);
+					desc: string(STR_PARAM_DESC_FENCES);
+					type: bool;
+					bit:  0;
+					def_value: 0;
+			 }
+		}
 		//basecosts
 		param 0 {
 				param_basecostbuy {
@@ -98,6 +108,330 @@ cargotable {
 }
 # 1 "JPplusShinkansen.pnml" 4
 
+// Templates
+# 1 "src/template.pnml" 1
+// Begin template
+
+/* Dummy Template */
+
+template template_dummy (x, y) {
+  [0, 0, 2, 2, 0, 0, CROP]
+  [0, 0, 2, 2, 0, 0, CROP]
+  [0, 0, 2, 2, 0, 0, CROP]
+  [0, 0, 2, 2, 0, 0, CROP]
+  [0, 0, 2, 2, 0, 0, CROP]
+  [0, 0, 2, 2, 0, 0, CROP]
+  [0, 0, 2, 2, 0, 0, CROP]
+  [0, 0, 2, 2, 0, 0, CROP]
+}
+
+/* Purchase Templates */
+
+template template_purchase (x, y) {
+		[]
+	 	[]
+	 	[]
+	 	[]
+	 	[]
+	 	[]
+    	[x, y, 75, 15, -28, -10]
+		[]
+}
+
+template tmpl_purchase_dh (x, y) {
+		[1 , 1, 1, 1, 0, 0, "src/gfx/dummy/empty.png"]
+	 	[1 , 1, 1, 1, 0, 0, "src/gfx/dummy/empty.png"]
+	 	[1 , 1, 1, 1, 0, 0, "src/gfx/dummy/empty.png"]
+	 	[1 , 1, 1, 1, 0, 0, "src/gfx/dummy/empty.png"]
+	 	[1 , 1, 1, 1, 0, 0, "src/gfx/dummy/empty.png"]
+	 	[1 , 1, 1, 1, 0, 0, "src/gfx/dummy/empty.png"]
+        [x, y, 76, 15, -14, -10]
+		[1 , 1, 1, 1, 0, 0, "src/gfx/dummy/empty.png"]
+}
+template tmpl_purchase_dh_32bpp (x, y) {
+		[1 , 1, 1, 1, 0, 0, "src/gfx/dummy/empty_32bpp.png"]
+	 	[1 , 1, 1, 1, 0, 0, "src/gfx/dummy/empty_32bpp.png"]
+	 	[1 , 1, 1, 1, 0, 0, "src/gfx/dummy/empty_32bpp.png"]
+	 	[1 , 1, 1, 1, 0, 0, "src/gfx/dummy/empty_32bpp.png"]
+	 	[1 , 1, 1, 1, 0, 0, "src/gfx/dummy/empty_32bpp.png"]
+	 	[1 , 1, 1, 1, 0, 0, "src/gfx/dummy/empty_32bpp.png"]
+        [x, y, 75, 15, -14, -10]
+		[1 , 1, 1, 1, 0, 0, "src/gfx/dummy/empty_32bpp.png"]
+}
+
+/* EMU Templates */
+
+// STANDARD
+
+template template_12_standard(x, y) {
+    //left_x, upper_y, width, height, offset_x, offset_y
+	//							more negative to shift left
+	//											more negative to shift up
+    [ x,		y,		8,		36,		-3,			-18]
+    [ x+16,		y,		30,		29,		-18,		-19]
+    [ x+54,		y,		48,		16,		-24,		-12]
+    [ x+110,	y,		30,		29,		-10,		-19]
+    [ x+148,	y,		8,		36,		-3,			-18]
+    [ x+164,	y,		30,		29,		-18,		-19]
+    [ x+202,	y,		48,		16,		-24,		-12]
+    [ x+258,	y,		30,		29,		-10,		-19]
+}
+
+template template_12_reversed(x, y) {
+    //left_x, upper_y, width, height, offset_x, offset_y
+	//							more negative to shift left
+	//											more negative to shift up
+    [ x+148,	y,		8,		36,		-3,			-18]
+    [ x+164,	y,		30,		29,		-18,		-19]
+    [ x+202,	y,		48,		16,		-24,		-12]
+    [ x+258,	y,		30,		29,		-10,		-19]
+    [ x,		y,		8,		36,		-3,			-18]
+    [ x+16,		y,		30,		29,		-18,		-19]
+    [ x+54,		y,		48,		16,		-24,		-12]
+    [ x+110,	y,		30,		29,		-10,		-19]
+}
+
+template template_8_standard(x, y) {
+    //left_x, upper_y, width, height, offset_x, offset_y
+	//							more negative to shift left
+	//											more negative to shift up
+    [ x,		y,		8,		36,		-3,			-18]
+    [ x+20,		y,		22,		27,		-15,		-19]
+    [ x+62,		y,		32,		16,		-16,		-12]
+    [ x+114,	y,		22,		27,		-08,		-20]
+    [ x+148,	y,		8,		36,		-3,			-18]
+    [ x+168,	y,		22,		27,		-15,		-19]
+    [ x+210,	y,		32,		16,		-16,		-12]
+    [ x+262,	y,		22,		27,		-08,		-20]
+}
+
+template template_8_reversed(x, y) {
+    //left_x, upper_y, width, height, offset_x, offset_y
+	//							more negative to shift left
+	//											more negative to shift up
+    [ x+148,	y,		8,		36,		-3,			-18]
+    [ x+168,	y,		22,		27,		-15,		-19]
+    [ x+210,	y,		32,		16,		-16,		-12]
+    [ x+262,	y,		22,		27,		-08,		-20]
+    [ x,		y,		8,		36,		-3,			-18]
+    [ x+20,		y,		22,		27,		-15,		-19]
+    [ x+62,		y,		32,		16,		-16,		-12]
+    [ x+114,	y,		22,		27,		-08,		-20]
+}
+
+/* TRACKS */
+
+// Overlay
+template japan_rails_overlay() {
+    //left_x, upper_y, width, height, offset_x, offset_y
+    [   0,    200,       40,    21,     -19,         5]
+    [  48,    200,       40,    21,     -19,         5]
+    [  96,    200,       40,     7,     -19,         4]
+    [ 144,    200,       40,     7,     -19,        20]
+    [ 192,    200,       12,    19,      11,         6]
+    [ 224,    200,       12,    19,     -21,         6]
+	//Slopes
+    [ 256,    200,       64,    39,     -31,        -8]
+    [ 336,    200,       64,    23,     -31,         0]
+	[ 416,    200,       64,    23,     -31,         0]
+    [ 496,    200,       64,    39,     -31,        -8]
+}
+
+// Underlay
+template japan_rails_underlay() {
+    //left_x, upper_y, width, height, offset_x, offset_y
+    [   0,    300,       64,    31,     -31,         0]
+    [  80,    300,       64,    31,     -31,         0]
+    [ 160,    300,       64,    31,     -31,         0]
+    [ 240,    300,       64,    31,     -31,         0]
+    [ 320,    300,       64,    31,     -31,         0]
+    [ 400,    300,       64,    31,     -31,         0]
+	//Slopes
+    [ 0,      400,       64,    39,     -31,        -8]
+    [ 80,     400,       64,    23,     -31,         0]
+	[ 160,    400,       64,    23,     -31,         0]
+    [ 240,    400,       64,    39,     -31,        -8]
+	//Crossings
+	[ 320,   400,       64,    31,     -31,         0]
+	[   0,   500,       64,    31,     -31,         0]
+    [  80,   500,       64,    31,     -31,         0]
+    [ 160,   500,       64,    31,     -31,         0]
+    [ 240,   500,       64,    31,     -31,         0]
+    [ 320,   500,       64,    31,     -31,         0]
+}
+
+// Depots
+template japan_rails_depot() {
+	//left_x, upper_y, width, height, offset_x, offset_y
+	[  0,  0, 16, 11,  17,   4]
+	[ 32,  0, 64, 45,  -9, -29]
+	[112,  0, 16, 11, -31,   4]
+	[144,  0, 64, 45, -53, -29]
+	[224,  0, 64, 45, -53, -29]
+	[304,  0, 64, 45,  -9, -29]
+}
+
+template japan_rails_depot_snow() {
+	//left_x, upper_y, width, height, offset_x, offset_y
+	[  0,  100, 16, 11,  17,   4, WHITE]
+	[ 32,  100, 64, 45,  -9, -29, WHITE]
+	[112,  100, 16, 11, -31,   4, WHITE]
+	[144,  100, 64, 45, -53, -29, WHITE]
+	[224,  100, 64, 45, -53, -29, WHITE]
+	[304,  100, 64, 45,  -9, -29, WHITE]
+}
+
+// Bridges
+template japan_rails_bridge() {
+	//left_x, upper_y, width, height, offset_x, offset_y
+	[   0,    700,       64,    31,       -31,        0]
+	[  80,    700,       64,    31,       -31,        0]
+	//Slopes
+	[ 160,    700,       64,    39,       -31,       -8]
+	[ 240,    700,       64,    23,       -31,        0]
+	[ 320,    700,       64,    23,       -31,        0]
+	[ 400,    700,       64,    39,       -31,       -8]
+}
+
+//Tunnel
+template japan_rails_tunnel() {
+	//left_x, upper_y, width, height, offset_x, offset_y
+    [   0,    600,       64,    39,       -31,        -8]
+    [  80,    600,       64,    23,       -31,        -8]
+    [  160,   600,       64,    23,       -31,        -8]
+    [  240,   600,       64,    39,       -31,        -8]
+}
+
+template japan_rails_tunnel_overlay() {
+	//left_x, upper_y, width, height, offset_x, offset_y
+    [ 320, 		600,       64,    39,       -31,        -38]
+    [ 400,    	600,       64,    31,       -31,        -38]
+    [ 480,   	600,       64,    31,       -31,        -38]
+    [ 560,   	600,       64,    39,       -31,        -38]
+}
+
+// Catenary Poles
+template japan_rails_pylons_brown() {
+	[      0,       100,     10,     19,       -8, 	 -19]
+	[     16,       100,     9,     21,        0, 		 -21]
+	[     32,       100,     10,     19,        0, 	 -19]
+	[     48,       100,     9,     21,       -7, 		 -21]
+	[     64,       100,     3,      18,        0,  	 -19]
+	[     80,       100,     3,      21,        0,  	 -21]
+	[     96,       100,     10,     19, 	     -2,  	 -17]
+	[    112,       100,     10,     19,       -7, 		 -15]
+}
+
+template japan_rails_pylons_blue() {
+	[      0,       0,      10,     19,       -8, 	 -19]
+	[     16,       0,      9,     21,        0, 		 -21]
+	[     32,       0,      10,     19,        0, 	 -19]
+	[     48,       0,      9,     21,       -7, 		 -21]
+	[     64,       0,      3,      18,        0,  	 -19]
+	[     80,       0,      3,      21,        0,  	 -21]
+	[     96,       0,      10,     19, 	     -2,  	 -17]
+	[    112,       0,      10,     19,       -7, 		 -15]
+}
+
+// Catenary Wires
+template japan_rails_wires() {
+	[0,		0,  	32, 20, -29, -6]
+	[48,	0,  	32, 20,  -1, -6]
+	[96,	0,  	32,  5,  -1, -6]
+	[144,	0,  	1,  20,   0, -7]
+	[160,	0,  	32, 28, -29, -6]
+	[208,	0,  	32, 13,  -1,  2]
+	[256,	0,  	32, 13, -29,  2]
+	[304,	0,  	32, 28,  -1, -6]
+	[352,	0, 		32, 19, -29, -5]
+	[400,	0, 		32, 19,  -1, -5]
+	[448,	0, 		32,  5,  -1, -6]
+	[496,	0, 		1,  20,   0, -7]
+	[512,	0, 		32, 27, -29, -5]
+	[560,	0, 		32, 12,  -1,  3]
+	[608,	0, 		32, 12, -29,  3]
+	[656,	0, 		32, 27,  -1, -5]
+	[704,	0, 		32, 20, -29, -6]
+	[0, 	50, 	32,	20,  -1, -6]
+	[48, 	50, 	32,  5,  -1, -6]
+	[96, 	50, 	1,  20,   0, -7]
+	[112, 	50, 	32, 28, -29, -6]
+	[160, 	50, 	32, 13,  -1,  2]
+	[208, 	50, 	32,	13, -29,  2]
+	[256, 	50, 	32, 28,  -1, -6]
+	[304, 	50, 	16, 11, -29,  3]
+	[336, 	50, 	16, 12,  -1, -6]
+	[368, 	50, 	16, 12, -13, -6]
+	[400, 	50, 	16, 11,  15,  3]
+}
+
+// Fences
+
+template japan_rails_fences() {
+	[0,		0, 		33, 22,	-31, -6]
+	[48,	0, 		33, 22,	0, -6]
+	[96,	0, 		2,  38,	0, 	-22]
+	[112,	0, 		65,  6,	-31, -6]
+	[192,	0, 		33, 14,	-31, -6]
+	[240, 	0, 		33, 14,	0, 	-6]
+	[288,	0, 		33, 30,	-31, -14]
+	[336, 	0, 		33, 30,	0, -14]
+}
+
+template japan_rails_fences_empty() {
+	[1, 1, 1, 1, 0, 0]
+	[1, 1, 1, 1, 0, 0]
+	[1, 1, 1, 1, 0, 0]
+	[1, 1, 1, 1, 0, 0]
+	[1, 1, 1, 1, 0, 0]
+	[1, 1, 1, 1, 0, 0]
+	[1, 1, 1, 1, 0, 0]
+	[1, 1, 1, 1, 0, 0]
+}
+
+// GUI
+
+template japan_rails_gui_ttd() {
+	[0,		0, 		20, 20,	0, 	0]
+	[32,	0, 		20, 20,	0, 	0]
+	[64,	0, 		20, 20,	0, 	0]
+	[96,	0, 		20, 20,	0, 	0]
+	[128,	0, 		20, 20,	0, 	0]
+	[160, 	0, 		20, 20,	0, 	0]
+	[192, 	0, 		20, 20,	0, 	0]
+	[224, 	0, 		20, 20,	0, 	0]
+	[256, 	0, 		38, 30, -4, 15]
+	[304, 	0, 		72, 44, -16,-8]
+	[384, 	0, 		44,	34, -21, -2]
+	[448, 	0, 		72, 44, -16, -36]
+	[528, 	0, 		56, 43, 0,  0]
+	[592, 	0, 		32, 32, 0,  0]
+	[640, 	0, 		32, 32, 0,  0]
+	[688, 	0, 		32, 32, 0,  0]
+}
+
+template japan_rails_gui_gfx() {
+	[0,		0, 		20, 20,	0, 	0]
+	[32,	0, 		20, 20,	0, 	0]
+	[64,	0, 		20, 20,	0, 	0]
+	[96,	0, 		20, 20,	0, 	0]
+	[128,	0, 		20, 20,	0, 	0]
+	[160, 	0, 		20, 20,	0, 	0]
+	[192, 	0, 		20, 20,	0, 	0]
+	[224, 	0, 		20, 20,	0, 	0]
+	[256, 	0, 		20, 29, 0,  0]
+	[304, 	0, 		26, 28, 0,  0]
+	[384, 	0, 		27,	26, 0,  0]
+	[448, 	0, 		26, 28, 0,  0]
+	[528, 	0, 		26, 28, 0,  0]
+	[592, 	0, 		32, 32, 0,  0]
+	[640, 	0, 		27, 30, 0,  0]
+	[688, 	0, 		29, 28, 0,  0]
+}
+
+// End template
+# 1 "JPplusShinkansen.pnml" 4
+
 //Helpers
 # 1 "src/basecosts.pnml" 1
 basecost {
@@ -105,6 +439,197 @@ basecost {
 		 PR_BUILD_VEHICLE_WAGON: param_basecostbuy +3;
 		 PR_RUNNING: param_basecostrun +1; //3
 }
+# 1 "JPplusShinkansen.pnml" 4
+# 1 "src/tracks.pnml" 1
+// Begin Tracks
+
+// Shinkansen Tracks
+
+// Overlay
+spriteset(ss_norm_overlay_shin_01,	"src/gfx/tracks/shin_01.png") {japan_rails_overlay()}
+spriteset(ss_snow_overlay_shin_01,	"src/gfx/tracks/shin_01_snow.png") {japan_rails_overlay()}
+spriteset(ss_norm_overlay_shin_02,	"src/gfx/tracks/shin_02.png") {japan_rails_overlay()}
+spriteset(ss_snow_overlay_shin_02,	"src/gfx/tracks/shin_02_snow.png") {japan_rails_overlay()}
+
+switch(FEAT_RAILTYPES, SELF, sw_overlay_shin_01, terrain_type) {
+	TILETYPE_SNOW: ss_snow_overlay_shin_01;
+	ss_norm_overlay_shin_01;
+}
+
+switch(FEAT_RAILTYPES, SELF, sw_overlay_shin_02, terrain_type) {
+	TILETYPE_SNOW: ss_snow_overlay_shin_02;
+	ss_norm_overlay_shin_02;
+}
+
+// Underlay
+spriteset(ss_norm_underlay_shin_01,	"src/gfx/tracks/shin_01.png") {japan_rails_underlay()}
+spriteset(ss_snow_underlay_shin_01,	"src/gfx/tracks/shin_01_snow.png") {japan_rails_underlay()}
+spriteset(ss_norm_underlay_shin_02,	"src/gfx/tracks/shin_02.png") {japan_rails_underlay()}
+spriteset(ss_snow_underlay_shin_02,	"src/gfx/tracks/shin_02_snow.png") {japan_rails_underlay()}
+
+switch(FEAT_RAILTYPES, SELF, sw_underlay_shin_01, terrain_type) {
+	TILETYPE_SNOW: ss_snow_underlay_shin_01;
+	ss_norm_underlay_shin_01;
+}
+
+switch(FEAT_RAILTYPES, SELF, sw_underlay_shin_02, terrain_type) {
+	TILETYPE_SNOW: ss_snow_underlay_shin_02;
+	ss_norm_underlay_shin_02;
+}
+
+
+// Depot
+spriteset(ss_depot_shin_01_norm, 	"src/gfx/tracks/depots_shin_01.png") {japan_rails_depot()}	
+spriteset(ss_depot_shin_01_snow, 	"src/gfx/tracks/depots_shin_01.png") {japan_rails_depot_snow()}	
+spriteset(ss_depot_shin_02_norm, 	"src/gfx/tracks/depots_shin_02.png") {japan_rails_depot()}
+spriteset(ss_depot_shin_02_snow, 	"src/gfx/tracks/depots_shin_02.png") {japan_rails_depot_snow()}		
+
+switch(FEAT_RAILTYPES, SELF, sw_depot_shin_01, terrain_type) {
+	TILETYPE_SNOW: ss_depot_shin_01_snow;
+	ss_depot_shin_01_norm;
+}
+
+switch(FEAT_RAILTYPES, SELF, sw_depot_shin_02, terrain_type) {
+	TILETYPE_SNOW: ss_depot_shin_02_snow;
+	ss_depot_shin_02_norm;
+}
+
+// Bridges
+spriteset(ss_norm_bridge_shin_01,	"src/gfx/tracks/shin_01.png") {japan_rails_bridge()}
+spriteset(ss_norm_bridge_shin_02,	"src/gfx/tracks/shin_02.png") {japan_rails_bridge()}
+
+// Tunnels
+spriteset(ss_shin_norm_tunnel,	"src/gfx/tracks/shin_01.png") {japan_rails_tunnel()}
+spriteset(ss_shin_snow_tunnel,	"src/gfx/tracks/shin_01_snow.png") {japan_rails_tunnel()}
+spriteset(ss_shin_norm_tunnel_overlay,	"src/gfx/tracks/shin_01.png") {japan_rails_tunnel_overlay()}
+spriteset(ss_shin_snow_tunnel_overlay,	"src/gfx/tracks/shin_01_snow.png") {japan_rails_tunnel_overlay()}
+
+switch(FEAT_RAILTYPES, SELF, sw_tunnel, terrain_type) {
+	TILETYPE_SNOW: ss_shin_snow_tunnel;
+	ss_shin_norm_tunnel;
+}
+
+switch(FEAT_RAILTYPES, SELF, sw_tunnel_overlay, terrain_type) {
+	TILETYPE_SNOW: ss_shin_snow_tunnel_overlay;
+	ss_shin_norm_tunnel_overlay;
+}
+
+// Catenary
+spriteset(ss_wires, 				"src/gfx/tracks/catwire.png") {japan_rails_wires()}
+spriteset(ss_poles, 				"src/gfx/tracks/catpoles.png") {japan_rails_pylons_blue()}	
+
+// Fences
+spriteset(ss_fences, 				"src/gfx/tracks/fences.png") {japan_rails_fences()}
+spriteset(ss_fences_empty, 			"src/gfx/tracks/fences.png") {japan_rails_fences_empty()}
+
+switch(FEAT_RAILTYPES, SELF, sw_fences, param_fences) {
+    0: ss_fences;
+	1: ss_fences_empty;
+}
+
+// GUI
+spriteset(ss_shin_01_gui_ttd,	"src/gfx/tracks/shin_01.png") {japan_rails_gui_ttd()}
+spriteset(ss_shin_02_gui_ttd,	"src/gfx/tracks/shin_02.png") {japan_rails_gui_ttd()}
+
+if (param_japansetdisable == 1){
+
+/*
+    item(FEAT_RAILTYPES) {
+    property {
+        label: "SAEE";
+        compatible_railtype_list: ["DABN", "DABE", "ELRL", "SUBE", "SACE", "SAEE", "SBEE", "SAB3", "SUB3", "RAIL", "SAAN"];
+        powered_railtype_list:    ["DABE", "ELRL", "SUBE", "SACE", "SAEE", "SBEE"];                 
+
+    }
+}
+
+    item(FEAT_RAILTYPES) {
+    property {
+        label: "SBEE";
+        compatible_railtype_list: ["DABN", "DABE", "ELRL", "SUBE", "SACE", "SAEE", "SBEE", "SAB3", "SUB3", "RAIL", "SAAN"];
+        powered_railtype_list:    ["DABE", "ELRL", "SUBE", "SACE", "SAEE", "SBEE"];       
+        speed_limit: 0 km/h;
+
+    }
+}
+*/
+item(FEAT_RAILTYPES) {
+    property {
+        label: "ELRL";
+        compatible_railtype_list: ["HSSN", "MDSN", "DABN", "DABE", "RAIL", "ELRL", "SACE", "SAEE", "SBEE", "SUBE", "SAB3", "SUB3", "SAAN"];
+        powered_railtype_list:    ["HSSN", "MDSN", "DABE", "ELRL", "SACE", "SAEE", "SBEE", "SUBE"]; 
+
+    }
+}
+
+item(FEAT_RAILTYPES) {
+    property {
+        label:                      "HSSN";								
+        name:                       string(STR_NAME_HSSN);
+        menu_text:                  string(STR_MENU_HSSN);
+        build_window_caption:       string(STR_CAPT_HSSN);
+		toolbar_caption:			string(STR_TOOL_HSSN);
+        autoreplace_text:           string(STR_AUTO_HSSN);
+        new_engine_text:            string(STR_NEWE_HSSN);
+        compatible_railtype_list: 	["HSSN", "MDSN", "SAEE", "SBEE", "SAAE", "SABN", "RAIL", "SBCN", "SADN", "SBCE", "SADE", "ELRL", "SAC3", "SACZ", "SUCE", "SUC3"];
+		powered_railtype_list:    	["HSSN", "MDSN", "SAEE", "SBEE", "SAAE", "SBCE", "SADE", "ELRL", "SACZ", "SUCE"];       
+		speed_limit: 				241 km/h;
+		railtype_flags: 			bitmask(RAILTYPE_FLAG_CATENARY,RAILTYPE_FLAG_NO_LEVEL_CROSSING);
+		introduction_date: 			date(1964,1,1);
+		construction_cost: 			600;
+		maintenance_cost:  			32;
+
+    }
+	graphics {
+		track_overlay: 				sw_overlay_shin_01;
+		underlay:					sw_underlay_shin_01;
+		tunnels:					sw_tunnel;
+		tunnel_overlay:				sw_tunnel_overlay;
+		bridge_surfaces: 			ss_norm_bridge_shin_01;
+		depots:						sw_depot_shin_01;
+		//level_crossings:  		switch_dg_crossing; 			// No Level Crossing Allowed  
+		fences:						sw_fences;
+		gui:						ss_shin_01_gui_ttd;
+		catenary_wire:				ss_wires;
+		catenary_pylons:			ss_poles;
+	}
+}
+
+item(FEAT_RAILTYPES) {
+    property {
+        label:                      "MDSN";								
+        name:                       string(STR_NAME_MDSN);
+        menu_text:                  string(STR_MENU_MDSN);
+        build_window_caption:       string(STR_CAPT_MDSN);
+		toolbar_caption:			string(STR_TOOL_MDSN);
+        autoreplace_text:           string(STR_AUTO_MDSN);
+        new_engine_text:            string(STR_NEWE_MDSN);
+        compatible_railtype_list: 	["HSSN", "MDSN", "SAEE", "SBEE", "SAAE", "SABN", "RAIL", "SBCN", "SADN", "SBCE", "SADE", "ELRL", "SAC3", "SACZ", "SUCE", "SUC3"];
+		powered_railtype_list:    	["HSSN", "MDSN", "SAEE", "SBEE", "SAAE", "SBCE", "SADE", "ELRL", "SACZ", "SUCE"];       
+		speed_limit: 				0 km/h;
+		railtype_flags: 			bitmask(RAILTYPE_FLAG_CATENARY,RAILTYPE_FLAG_NO_LEVEL_CROSSING);
+		introduction_date: 			date(1990,1,1);
+		construction_cost: 			600;
+		maintenance_cost:  			32;
+
+    }
+	graphics {
+		track_overlay: 				sw_overlay_shin_02;
+		underlay:					sw_underlay_shin_02;
+		tunnels:					sw_tunnel;
+		tunnel_overlay:				sw_tunnel_overlay;
+		bridge_surfaces: 			ss_norm_bridge_shin_02;
+		depots:						sw_depot_shin_02;
+		//level_crossings:  		switch_dg_crossing; 			// No Level Crossing Allowed  
+		fences:						sw_fences;
+		gui:						ss_shin_02_gui_ttd;
+		catenary_wire:				ss_wires;
+		catenary_pylons:			ss_poles;
+	}
+}
+
+}
+// End Tracks
 # 1 "JPplusShinkansen.pnml" 4
 # 1 "src/railtypetable.pnml" 1
 // Begin railtypetable
@@ -233,127 +758,13 @@ if (param_basecapacity == 2) {
 /* End Functions */ 
 # 1 "JPplusShinkansen.pnml" 4
 
-// Templates
-# 1 "src/template.pnml" 1
-// Begin template
-
-/* Dummy Template */
-
-template template_dummy (x, y) {
-  [0, 0, 2, 2, 0, 0, CROP]
-  [0, 0, 2, 2, 0, 0, CROP]
-  [0, 0, 2, 2, 0, 0, CROP]
-  [0, 0, 2, 2, 0, 0, CROP]
-  [0, 0, 2, 2, 0, 0, CROP]
-  [0, 0, 2, 2, 0, 0, CROP]
-  [0, 0, 2, 2, 0, 0, CROP]
-  [0, 0, 2, 2, 0, 0, CROP]
-}
-
-/* Purchase Templates */
-
-template template_purchase (x, y) {
-		[]
-	 	[]
-	 	[]
-	 	[]
-	 	[]
-	 	[]
-    	[x, y, 75, 15, -28, -10]
-		[]
-}
-
-template tmpl_purchase_dh (x, y) {
-		[1 , 1, 1, 1, 0, 0, "src/gfx/dummy/empty.png"]
-	 	[1 , 1, 1, 1, 0, 0, "src/gfx/dummy/empty.png"]
-	 	[1 , 1, 1, 1, 0, 0, "src/gfx/dummy/empty.png"]
-	 	[1 , 1, 1, 1, 0, 0, "src/gfx/dummy/empty.png"]
-	 	[1 , 1, 1, 1, 0, 0, "src/gfx/dummy/empty.png"]
-	 	[1 , 1, 1, 1, 0, 0, "src/gfx/dummy/empty.png"]
-        [x, y, 76, 15, -14, -10]
-		[1 , 1, 1, 1, 0, 0, "src/gfx/dummy/empty.png"]
-}
-template tmpl_purchase_dh_32bpp (x, y) {
-		[1 , 1, 1, 1, 0, 0, "src/gfx/dummy/empty_32bpp.png"]
-	 	[1 , 1, 1, 1, 0, 0, "src/gfx/dummy/empty_32bpp.png"]
-	 	[1 , 1, 1, 1, 0, 0, "src/gfx/dummy/empty_32bpp.png"]
-	 	[1 , 1, 1, 1, 0, 0, "src/gfx/dummy/empty_32bpp.png"]
-	 	[1 , 1, 1, 1, 0, 0, "src/gfx/dummy/empty_32bpp.png"]
-	 	[1 , 1, 1, 1, 0, 0, "src/gfx/dummy/empty_32bpp.png"]
-        [x, y, 75, 15, -14, -10]
-		[1 , 1, 1, 1, 0, 0, "src/gfx/dummy/empty_32bpp.png"]
-}
-
-/* EMU Templates */
-
-// STANDARD
-
-template template_12_standard(x, y) {
-    //left_x, upper_y, width, height, offset_x, offset_y
-	//							more negative to shift left
-	//											more negative to shift up
-    [ x,		y,		8,		36,		-3,			-18]
-    [ x+16,		y,		30,		29,		-18,		-19]
-    [ x+54,		y,		48,		16,		-24,		-12]
-    [ x+110,	y,		30,		29,		-10,		-19]
-    [ x+148,	y,		8,		36,		-3,			-18]
-    [ x+164,	y,		30,		29,		-18,		-19]
-    [ x+202,	y,		48,		16,		-24,		-12]
-    [ x+258,	y,		30,		29,		-10,		-19]
-}
-
-template template_12_reversed(x, y) {
-    //left_x, upper_y, width, height, offset_x, offset_y
-	//							more negative to shift left
-	//											more negative to shift up
-    [ x+148,	y,		8,		36,		-3,			-18]
-    [ x+164,	y,		30,		29,		-18,		-19]
-    [ x+202,	y,		48,		16,		-24,		-12]
-    [ x+258,	y,		30,		29,		-10,		-19]
-    [ x,		y,		8,		36,		-3,			-18]
-    [ x+16,		y,		30,		29,		-18,		-19]
-    [ x+54,		y,		48,		16,		-24,		-12]
-    [ x+110,	y,		30,		29,		-10,		-19]
-}
-
-template template_8_standard(x, y) {
-    //left_x, upper_y, width, height, offset_x, offset_y
-	//							more negative to shift left
-	//											more negative to shift up
-    [ x,		y,		8,		36,		-3,			-18]
-    [ x+20,		y,		22,		27,		-15,		-19]
-    [ x+62,		y,		32,		16,		-16,		-12]
-    [ x+114,	y,		22,		27,		-08,		-20]
-    [ x+148,	y,		8,		36,		-3,			-18]
-    [ x+168,	y,		22,		27,		-15,		-19]
-    [ x+210,	y,		32,		16,		-16,		-12]
-    [ x+262,	y,		22,		27,		-08,		-20]
-}
-
-template template_8_reversed(x, y) {
-    //left_x, upper_y, width, height, offset_x, offset_y
-	//							more negative to shift left
-	//											more negative to shift up
-    [ x+148,	y,		8,		36,		-3,			-18]
-    [ x+168,	y,		22,		27,		-15,		-19]
-    [ x+210,	y,		32,		16,		-16,		-12]
-    [ x+262,	y,		22,		27,		-08,		-20]
-    [ x,		y,		8,		36,		-3,			-18]
-    [ x+20,		y,		22,		27,		-15,		-19]
-    [ x+62,		y,		32,		16,		-16,		-12]
-    [ x+114,	y,		22,		27,		-08,		-20]
-}
-
-// End template
-# 1 "JPplusShinkansen.pnml" 4
-
 //IDs
 # 1 "src/vehicleid.pnml" 1
 
 // Assign IDs
 item(FEAT_TRAINS, mu_car, 1000) {}
-item(FEAT_TRAINS, series_0, 0) {}
-item(FEAT_TRAINS, series_100, 100) {}
+item(FEAT_TRAINS, series_0, 123) {}
+item(FEAT_TRAINS, series_100, 124) {}
 item(FEAT_TRAINS, series_200, 200) {}
 item(FEAT_TRAINS, series_300, 300) {}
 item(FEAT_TRAINS, series_400, 400) {}
@@ -376,8 +787,8 @@ item(FEAT_TRAINS, series_e8, 2008) {}
 sort(FEAT_TRAINS, [
 
 /* Not JR East */
-0,      // 0 Series Shinkansen
-100,    // 100 Series Shinkansen
+123,      // 0 Series Shinkansen
+124,    // 100 Series Shinkansen
 300,    // 300 Series Shinkansen
 500,    // 500 Series Shinkansen
 700,    // 700 Series Shinkansen
@@ -3308,7 +3719,7 @@ switch (FEAT_TRAINS, SELF, sw_100_series_graphics_8car_kodama, position_in_artic
 /* Choose which Graphics based on which Cargo Subtype */
 
 switch(FEAT_TRAINS, SELF, sw_100_series_graphics_year_dep, build_year) {
-    0..1987: sw_100_series_graphics_16car_x;
+    0..1999: sw_100_series_graphics_16car_x;
     sw_100_series_graphics_8car_kodama;
 }
 
@@ -7239,7 +7650,7 @@ item(FEAT_TRAINS, series_e8) {
 
 // #include "src/trains/WIP/e5e6_series_fixed.pnml"
 
-// GRF OVERRIDE
+// GRF OVERRIDES
 # 1 "src/grfoverrides.pnml" 1
 if (param_japansetdisable == 0) {
 	disable_item(FEAT_TRAINS, 0, 115); //Disables original vehicles
@@ -7340,7 +7751,7 @@ if (param_japansetdisable == 1) {
 		}
 	} 
 
-	item(FEAT_TRAINS, japanset_e7_series, 0x403) {
+	item(FEAT_TRAINS, japanset_e7_series, 0x72) {
 		property {
 			climates_available: NO_CLIMATE;
 		}
@@ -7357,5 +7768,6 @@ if (param_japansetdisable == 1) {
 			climates_available: NO_CLIMATE;
 		}
 	} 
+
 }
 # 1 "JPplusShinkansen.pnml" 4
