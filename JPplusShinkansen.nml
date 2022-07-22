@@ -584,10 +584,10 @@ item(FEAT_RAILTYPES) {
         compatible_railtype_list: 	["HSSN", "MDSN", "SAEE", "SBEE", "SAAE", "SABN", "RAIL", "SBCN", "SADN", "SBCE", "SADE", "ELRL", "SAC3", "SACZ", "SUCE", "SUC3"];
 		powered_railtype_list:    	["HSSN", "MDSN", "SAEE", "SBEE", "SAAE", "SBCE", "SADE", "ELRL", "SACZ", "SUCE"];       
 		speed_limit: 				241 km/h;
-		railtype_flags: 			bitmask(RAILTYPE_FLAG_CATENARY,RAILTYPE_FLAG_NO_LEVEL_CROSSING);
+		railtype_flags: 			bitmask(RAILTYPE_FLAG_CATENARY,RAILTYPE_FLAG_NO_LEVEL_CROSSING,RAILTYPE_FLAG_DISALLOW_90DEG);
 		introduction_date: 			date(1964,1,1);
-		construction_cost: 			600;
-		maintenance_cost:  			32;
+		construction_cost: 			750;
+		maintenance_cost:  			60;
 
     }
 	graphics {
@@ -617,10 +617,10 @@ item(FEAT_RAILTYPES) {
         compatible_railtype_list: 	["HSSN", "MDSN", "SAEE", "SBEE", "SAAE", "SABN", "RAIL", "SBCN", "SADN", "SBCE", "SADE", "ELRL", "SAC3", "SACZ", "SUCE", "SUC3"];
 		powered_railtype_list:    	["HSSN", "MDSN", "SAEE", "SBEE", "SAAE", "SBCE", "SADE", "ELRL", "SACZ", "SUCE"];       
 		speed_limit: 				0 km/h;
-		railtype_flags: 			bitmask(RAILTYPE_FLAG_CATENARY,RAILTYPE_FLAG_NO_LEVEL_CROSSING);
+		railtype_flags: 			bitmask(RAILTYPE_FLAG_CATENARY,RAILTYPE_FLAG_NO_LEVEL_CROSSING,RAILTYPE_FLAG_DISALLOW_90DEG);
 		introduction_date: 			date(1990,1,1);
-		construction_cost: 			600;
-		maintenance_cost:  			32;
+		construction_cost: 			1250;
+		maintenance_cost:  			100;
 
     }
 	graphics {
