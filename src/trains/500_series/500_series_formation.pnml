@@ -45,6 +45,24 @@
 	    dummy_sprites;
     }
 
+    // 12 Car Set
+    switch (FEAT_TRAINS, SELF, sw_500_series_graphics_12car, position_in_articulated_veh) {					
+	    1:  ss_500_series_cab; 	            // Car 1	Car 12								
+	    4:  sw_500_series_reverser_C_C;	    // Car 2	Car 11	    						
+	    7:  sw_500_series_reverser_C_C;     // Car 3    Car 10
+	    10: sw_500_series_reverser_C_P;     // Car 4    Car 9
+        13: sw_500_series_reverser_P_C;     // Car 5    Car 8
+        16: sw_500_series_reverser_C_C;     // Car 6    Car 7
+        19: sw_500_series_reverser_C_C;     // Car 7    Car 6
+	    22: sw_500_series_reverser_C_P;     // Car 8    Car 5
+        25: sw_500_series_reverser_P_C;     // Car 9    Car 4
+        28: sw_500_series_reverser_C_C;     // Car 10   Car 3
+        31: sw_500_series_reverser_C_C;     // Car 11   Car 2
+        46: ss_500_series_cab_rev;          // Car 12   Car 1 
+	    dummy_sprites;
+    }
+
+    // 8 car set
     switch (FEAT_TRAINS, SELF, sw_500_series_graphics_08car, position_in_articulated_veh) {					
 	    2:  ss_500_series_cab; 	                // Car 1	Car 8								
 	    8:  sw_500_series_reverser_P_P;	        // Car 2	Car 7	    						
@@ -58,7 +76,8 @@
     }
 
     switch (FEAT_TRAINS, SELF, sw_500_series_graphics, cargo_subtype) {
-        1: sw_500_series_graphics_08car;
+        1: sw_500_series_graphics_12car;
+        2: sw_500_series_graphics_08car;
         sw_500_series_graphics_16car;
     }
 

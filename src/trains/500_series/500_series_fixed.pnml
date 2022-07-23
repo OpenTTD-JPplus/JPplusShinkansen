@@ -54,6 +54,7 @@ item(FEAT_TRAINS, series_500) {
 		loading_speed:					sw_500_series_loading_speed;
 		cargo_age_period:				param_decay_express;
 		cost_factor:                    612;
+		refit_cost:                     sw_500_series_refit_cost;
 		running_cost_factor:            sw_500_series_running_costs;
 		purchase_running_cost_factor:   running_cost_500_series * sw_500_series_number_of_cars();	
 	}
