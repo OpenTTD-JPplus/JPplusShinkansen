@@ -8,22 +8,13 @@
         ss_0_series_cab_original_livery;
     }
 
-    switch(FEAT_TRAINS, SELF, sw_0_series_cab_1964_livery, cargo_subtype) {
+    switch(FEAT_TRAINS, SELF, sw_0_series_cab, cargo_subtype) {
         1: ss_0_series_cab_original_livery;
         2: ss_0_series_cab_nose_livery;
+        3: ss_0_series_cab_original_livery;
+        4: ss_0_series_cab_kodama_livery;
+        5: ss_0_series_cab_kodama_livery;
         sw_0_series_cab_year_dep_livery;
-    }
-
-    switch(FEAT_TRAINS, SELF, sw_0_series_cab_2002_livery, cargo_subtype) {
-        1: ss_0_series_cab_original_livery;
-        2: ss_0_series_cab_nose_livery;
-        3: ss_0_series_cab_kodama_livery;
-        sw_0_series_cab_year_dep_livery;
-    }
-
-    switch(FEAT_TRAINS, SELF, ss_0_series_cab, current_year) {
-        0..2001: sw_0_series_cab_1964_livery;
-        sw_0_series_cab_2002_livery;
     }
 
     // CAB REVERSED
@@ -34,22 +25,13 @@
         ss_0_series_cab_rev_original_livery;
     }
 
-    switch(FEAT_TRAINS, SELF, sw_0_series_cab_rev_1964_livery, cargo_subtype) {
+    switch(FEAT_TRAINS, SELF, sw_0_series_cab_rev, cargo_subtype) {
         1: ss_0_series_cab_rev_original_livery;
         2: ss_0_series_cab_rev_nose_livery;
+        3: ss_0_series_cab_rev_original_livery;
+        4: ss_0_series_cab_rev_kodama_livery;
+        5: ss_0_series_cab_rev_kodama_livery;
         sw_0_series_cab_rev_year_dep_livery;
-    }
-
-    switch(FEAT_TRAINS, SELF, sw_0_series_cab_rev_2002_livery, cargo_subtype) {
-        1: ss_0_series_cab_rev_original_livery;
-        2: ss_0_series_cab_rev_nose_livery;
-        3: ss_0_series_cab_rev_kodama_livery;
-        sw_0_series_cab_rev_year_dep_livery;
-    }
-
-    switch(FEAT_TRAINS, SELF, ss_0_series_cab_rev, current_year) {
-        0..2001: sw_0_series_cab_rev_1964_livery;
-        sw_0_series_cab_rev_2002_livery;
     }
 
     // COACH
@@ -60,22 +42,13 @@
         ss_0_series_coach_original_livery;
     }
 
-    switch(FEAT_TRAINS, SELF, sw_0_series_coach_1964_livery, cargo_subtype) {
+    switch(FEAT_TRAINS, SELF, sw_0_series_coach, cargo_subtype) {
         1: ss_0_series_coach_original_livery;
         2: ss_0_series_coach_nose_livery;
+        3: ss_0_series_coach_original_livery;
+        4: ss_0_series_coach_kodama_livery;
+        5: ss_0_series_coach_kodama_livery;
         sw_0_series_coach_year_dep_livery;
-    }
-
-    switch(FEAT_TRAINS, SELF, sw_0_series_coach_2002_livery, cargo_subtype) {
-        1: ss_0_series_coach_original_livery;
-        2: ss_0_series_coach_nose_livery;
-        3: ss_0_series_coach_kodama_livery;
-        sw_0_series_coach_year_dep_livery;
-    }
-
-    switch(FEAT_TRAINS, SELF, ss_0_series_coach, current_year) {
-        0..2001: sw_0_series_coach_1964_livery;
-        sw_0_series_coach_2002_livery;
     }
 
     // COACH REVERSED
@@ -86,22 +59,13 @@
         ss_0_series_coach_rev_original_livery;
     }
 
-    switch(FEAT_TRAINS, SELF, sw_0_series_coach_rev_1964_livery, cargo_subtype) {
+    switch(FEAT_TRAINS, SELF, sw_0_series_coach_rev, cargo_subtype) {
         1: ss_0_series_coach_rev_original_livery;
         2: ss_0_series_coach_rev_nose_livery;
+        3: ss_0_series_coach_rev_original_livery;
+        4: ss_0_series_coach_rev_kodama_livery;
+        5: ss_0_series_coach_rev_kodama_livery;
         sw_0_series_coach_rev_year_dep_livery;
-    }
-
-    switch(FEAT_TRAINS, SELF, sw_0_series_coach_rev_2002_livery, cargo_subtype) {
-        1: ss_0_series_coach_rev_original_livery;
-        2: ss_0_series_coach_rev_nose_livery;
-        3: ss_0_series_coach_rev_kodama_livery;
-        sw_0_series_coach_rev_year_dep_livery;
-    }
-
-    switch(FEAT_TRAINS, SELF, ss_0_series_coach_rev, current_year) {
-        0..2001: sw_0_series_coach_rev_1964_livery;
-        sw_0_series_coach_rev_2002_livery;
     }
 
     // PANTO
@@ -112,22 +76,13 @@
         ss_0_series_panto_original_livery;
     }
 
-    switch(FEAT_TRAINS, SELF, sw_0_series_panto_1964_livery, cargo_subtype) {
+    switch(FEAT_TRAINS, SELF, sw_0_series_panto, cargo_subtype) {
         1: ss_0_series_panto_original_livery;
         2: ss_0_series_panto_nose_livery;
+        3: ss_0_series_panto_original_livery;
+        4: ss_0_series_panto_kodama_livery;
+        5: ss_0_series_panto_kodama_livery;
         sw_0_series_panto_year_dep_livery;
-    }
-
-    switch(FEAT_TRAINS, SELF, sw_0_series_panto_2002_livery, cargo_subtype) {
-        1: ss_0_series_panto_original_livery;
-        2: ss_0_series_panto_nose_livery;
-        3: ss_0_series_panto_kodama_livery;
-        sw_0_series_panto_year_dep_livery;
-    }
-
-    switch(FEAT_TRAINS, SELF, ss_0_series_panto, current_year) {
-        0..2001: sw_0_series_panto_1964_livery;
-        sw_0_series_panto_2002_livery;
     }
 
     // PANTO REVERSED
@@ -138,22 +93,13 @@
         ss_0_series_panto_rev_original_livery;
     }
 
-    switch(FEAT_TRAINS, SELF, sw_0_series_panto_rev_1964_livery, cargo_subtype) {
+    switch(FEAT_TRAINS, SELF, sw_0_series_panto_rev, cargo_subtype) {
         1: ss_0_series_panto_rev_original_livery;
         2: ss_0_series_panto_rev_nose_livery;
+        3: ss_0_series_panto_rev_original_livery;
+        4: ss_0_series_panto_rev_kodama_livery;
+        5: ss_0_series_panto_rev_kodama_livery;
         sw_0_series_panto_rev_year_dep_livery;
-    }
-
-    switch(FEAT_TRAINS, SELF, sw_0_series_panto_rev_2002_livery, cargo_subtype) {
-        1: ss_0_series_panto_rev_original_livery;
-        2: ss_0_series_panto_rev_nose_livery;
-        3: ss_0_series_panto_rev_kodama_livery;
-        sw_0_series_panto_rev_year_dep_livery;
-    }
-
-    switch(FEAT_TRAINS, SELF, ss_0_series_panto_rev, current_year) {
-        0..2001: sw_0_series_panto_rev_1964_livery;
-        sw_0_series_panto_rev_2002_livery;
     }
 
     // PURCHASE MENU
