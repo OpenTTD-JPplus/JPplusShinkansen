@@ -2950,7 +2950,7 @@ item(FEAT_TRAINS, series_700) {
     switch (FEAT_TRAINS, SELF, sw_500_series_graphics_12car, position_in_articulated_veh) {					
 	    2:  ss_500_series_cab; 	            // Car 1	Car 12								
 	    6:  sw_500_series_reverser_C_C;	    // Car 2	Car 11	    						
-	    10:  sw_500_series_reverser_C_C;     // Car 3    Car 10
+	    10: sw_500_series_reverser_C_C;     // Car 3    Car 10
 	    14: sw_500_series_reverser_C_P;     // Car 4    Car 9
         18: sw_500_series_reverser_P_C;     // Car 5    Car 8
         22: sw_500_series_reverser_C_C;     // Car 6    Car 7
@@ -3048,7 +3048,16 @@ item(FEAT_TRAINS, series_500) {
 # 1 "src/trains/300_series/300_series_fixed.pnml" 1
 /* Begin 300 Series */
 
-// #include "src/trains/300_series/300_series_subtypes.pnml"
+# 1 "src/trains/300_series/300_series_subtypes.pnml" 1
+/* 300 Series CARGO SUBTYPE MENU*/
+
+    switch(FEAT_TRAINS, SELF, sw_300_series_subtype_text, cargo_subtype) {
+	    0: return string(LV_300_SERIES_16CAR);        // 16 Car Original
+        1: return string(LV_300_SERIES_12CAR);        // 12 Car Original
+        2: return string(LV_300_SERIES_08CAR);        // 08 Car Original
+        return CB_RESULT_NO_TEXT;
+        }
+# 1 "src/trains/300_series/300_series_fixed.pnml" 3
 # 1 "src/trains/300_series/300_series_gfx.pnml" 1
 /* Begin 300 Series SPRITES*/
 
@@ -3073,23 +3082,51 @@ item(FEAT_TRAINS, series_500) {
     spriteset(ss_300_series_panto_rev, 		        "src/gfx/dummy/empty.png")     			{template_dummy(0,0)}
     alternative_sprites(ss_300_series_panto,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,     "src/gfx/300_series/300_series.png") {template_12_standard(1,81)}
     alternative_sprites(ss_300_series_panto_rev,    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,     "src/gfx/300_series/300_series.png") {template_12_reversed(1,81)}	
-# 1 "src/trains/300_series/300_series_fixed.pnml" 4
+# 1 "src/trains/300_series/300_series_fixed.pnml" 3
 // #include "src/trains/300_series/300_series_liveries.pnml"
 # 1 "src/trains/300_series/300_series_stats.pnml" 1
 /* Begin 300 Series STATS */
+
+/* NUMBER OF CARS */
+
+    switch(FEAT_TRAINS, SELF, sw_300_series_number_of_cars, cargo_subtype) {
+            1: return 12; 
+            2: return 8;     
+            return 16;       
+        }
+
+    switch(FEAT_TRAINS, SELF, sw_300_series_number_of_motor_cars, cargo_subtype) {
+            1: return 8;        // 8M 4T
+            2: return 6;        // 6M 2T 
+            return 10;          // 10M 6T
+        }
+
+/* LENGTH */
+    switch (FEAT_TRAINS, SELF, sw_300_series_length, cargo_subtype) {
+        1: sw_length_1_1_8_2;
+        2: sw_length_1_1_7_1_1_1;
+        sw_length_2_8_2;
+    }
+
+/* WEIGHT */
+    weight_300_series = 44;           // 42 tons from https://web-japan.org/atlas/technology/tec08.html	
+
+/* POWER */
+    power_per_motor_300_series = 402; // in hp (300 kW)
 
 /* RUNNING COSTS */
     running_cost_300_series = 187;                  // 150 is approx JPS
     
     switch(FEAT_TRAINS, SELF, sw_300_series_running_costs, current_speed) {
-        0: running_cost_300_series / 10 * 16;       // Stopped
-        1..15: running_cost_300_series / 4 * 16; 	// Moving below ~33.5 mph
-        running_cost_300_series * 16; 				// Track speed
+        0: running_cost_300_series / 10 * sw_300_series_number_of_cars();       // Stopped
+        1..15: running_cost_300_series / 4 * sw_300_series_number_of_cars(); 	// Moving below ~33.5 mph
+        running_cost_300_series * sw_300_series_number_of_cars(); 				// Track speed
     }
 
 /* CARGO CAPACITY 
 
     16-car JPS  1248/1560/1872/2184
+    08-car JPS  624/780/936/1092
 
         16-car
     IRL 1323
@@ -3099,21 +3136,72 @@ item(FEAT_TRAINS, series_500) {
 */
 
     // Passenger Capacities for each parameter level
-    switch(FEAT_TRAINS, SELF, sw_300_series_cargo_capacity, param_basecapacity) {
+    switch(FEAT_TRAINS, SELF, sw_300_series_cargo_capacity_16car, param_basecapacity) {
         0: return 28;       // 1x Real World Capacity
         2: return 56;       // 2x Double Real World Capacity
         return 42;          // 1.5x Long Sprite Adjusted Capacity 
     }
 
+    switch(FEAT_TRAINS, SELF, sw_300_series_cargo_capacity_12car, param_basecapacity) {
+        0: return 20;       // 1x Real World Capacity
+        2: return 40;       // 2x Double Real World Capacity
+        return 30;          // 1.5x Long Sprite Adjusted Capacity 
+    }
+
+    switch(FEAT_TRAINS, SELF, sw_300_series_cargo_capacity_08car, param_basecapacity) {
+        0: return 13;       // 1x Real World Capacity
+        2: return 26;       // 2x Double Real World Capacity
+        return 20;          // 1.5x Long Sprite Adjusted Capacity 
+    }
+
+    switch (FEAT_TRAINS, SELF, sw_300_series_cargo_capacity, cargo_subtype) {
+        1: sw_300_series_cargo_capacity_12car;
+        2: sw_300_series_cargo_capacity_08car;
+        sw_300_series_cargo_capacity_16car;
+    }
+
 /* LOADING SPEED */
 
     // 16 car
-    switch(FEAT_TRAINS, SELF, sw_300_series_loading_speed, param_basecapacity) {
+    switch(FEAT_TRAINS, SELF, sw_300_series_loading_speed_16car, param_basecapacity) {
         0: return 28 / param_loading_2D;        // 1x Real World Capacity
         2: return 56 / param_loading_2D;        // 2x Double Real World Capacity
         return 42 / param_loading_2D;           // 1.5x Long Sprite Adjusted Capacity 
     }
-# 1 "src/trains/300_series/300_series_fixed.pnml" 4
+
+    // 12 car
+    switch(FEAT_TRAINS, SELF, sw_300_series_loading_speed_12car, param_basecapacity) {
+        0: return 20 / param_loading_2D;        // 1x Real World Capacity
+        2: return 40 / param_loading_2D;        // 2x Double Real World Capacity
+        return 30 / param_loading_2D;           // 1.5x Long Sprite Adjusted Capacity 
+    }
+
+    // 8 car
+    switch(FEAT_TRAINS, SELF, sw_300_series_loading_speed_08car, param_basecapacity) {
+        0: return 13 / param_loading_2D;        // 1x Real World Capacity
+        2: return 26 / param_loading_2D;        // 2x Double Real World Capacity
+        return 20 / param_loading_2D;           // 1.5x Long Sprite Adjusted Capacity 
+    }
+
+    switch (FEAT_TRAINS, SELF, sw_300_series_loading_speed, cargo_subtype) {
+        1: sw_300_series_loading_speed_12car;
+        2: sw_300_series_loading_speed_08car;
+        sw_300_series_loading_speed_16car;
+    }
+
+/* REFIT COST */
+   
+    switch(FEAT_TRAINS, SELF, sw_300_series_refit_cost, var[0x10,8,0xFF] - cargo_subtype) {
+        /* Refit cost based on difference between target cargo sybtype and current cargo subtype.
+	    Refitting to fewer carriages refunds money, while adding carriages costs (more) money.    */    
+
+        -2:				8;
+	    -1:				4;
+	    0:				0;
+	    1:				-4;
+	    2:				-8;
+    }
+# 1 "src/trains/300_series/300_series_fixed.pnml" 3
 # 1 "src/trains/300_series/300_series_formation.pnml" 1
 /* Begin 300 Series FORMATION*/
 
@@ -3134,10 +3222,15 @@ item(FEAT_TRAINS, series_500) {
 	    ss_300_series_coach_rev;
     }
 
+    switch (FEAT_TRAINS, PARENT, sw_300_series_reverser_P_P, vehicle_is_reversed) {
+	    0: ss_300_series_panto;
+	    ss_300_series_panto_rev;
+    }
+
 /* PUT TOGETHER THE EMU*/
 
     // 16 Car Set
-    switch (FEAT_TRAINS, SELF, sw_300_series_graphics, position_in_articulated_veh) {					
+    switch (FEAT_TRAINS, SELF, sw_300_series_graphics_16car, position_in_articulated_veh) {					
 	    1:  ss_300_series_cab; 	            // Car 1	Car 16								
 	    4:  sw_300_series_reverser_C_C;	    // Car 2	Car 15	    						
 	    7:  sw_300_series_reverser_C_C;     // Car 3    Car 14
@@ -3157,12 +3250,48 @@ item(FEAT_TRAINS, series_500) {
 	    dummy_sprites;
     }
 
+    // 12 Car Set
+    switch (FEAT_TRAINS, SELF, sw_300_series_graphics_12car, position_in_articulated_veh) {					
+	    2:  ss_300_series_cab; 	            // Car 1	Car 12								
+	    6:  sw_300_series_reverser_C_C;	    // Car 2	Car 11	    						
+	    10: sw_300_series_reverser_C_C;     // Car 3    Car 10
+	    14: sw_300_series_reverser_C_P;     // Car 4    Car 9
+        18: sw_300_series_reverser_P_C;     // Car 5    Car 8
+        22: sw_300_series_reverser_C_C;     // Car 6    Car 7
+        26: sw_300_series_reverser_C_C;     // Car 7    Car 6
+	    30: sw_300_series_reverser_C_P;     // Car 8    Car 5
+        34: sw_300_series_reverser_P_C;     // Car 9    Car 4
+        38: sw_300_series_reverser_C_C;     // Car 10   Car 3
+        42: sw_300_series_reverser_C_C;     // Car 11   Car 2
+        46: ss_300_series_cab_rev;          // Car 12   Car 1 
+	    dummy_sprites;
+    }
+
+    // 8 car set
+    switch (FEAT_TRAINS, SELF, sw_300_series_graphics_08car, position_in_articulated_veh) {					
+	    2:  ss_300_series_cab; 	                // Car 1	Car 8								
+	    8:  sw_300_series_reverser_P_P;	        // Car 2	Car 7	    						
+	    14: sw_300_series_reverser_C_C;         // Car 3    Car 6
+	    20: sw_300_series_reverser_C_C;         // Car 4    Car 5
+        26: sw_300_series_reverser_C_C;         // Car 5    Car 4
+        32: sw_300_series_reverser_C_C;         // Car 6    Car 3
+        38: sw_300_series_reverser_P_P;         // Car 7    Car 2
+        44: ss_300_series_cab_rev;              // Car 8    Car 1
+	    dummy_sprites;
+    }
+
+    switch (FEAT_TRAINS, SELF, sw_300_series_graphics, cargo_subtype) {
+        1: sw_300_series_graphics_12car;
+        2: sw_300_series_graphics_08car;
+        sw_300_series_graphics_16car;
+    }
+
     /* Assemble an articulated vehicle. */
     switch (FEAT_TRAINS, SELF, sw_300_series_articulated_part, extra_callback_info1) {
 	    1 .. 47: return series_300;										// Should be same as range above
 	    return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
     }
-# 1 "src/trains/300_series/300_series_fixed.pnml" 4
+# 1 "src/trains/300_series/300_series_fixed.pnml" 3
 
 item(FEAT_TRAINS, series_300) {
 	property {
@@ -3197,7 +3326,7 @@ item(FEAT_TRAINS, series_300) {
 	graphics {
 		/* Menu */
         additional_text:                string(STR_DESC_300_SERIES);
-        //cargo_subtype_text:             sw_300_series_subtype_text;
+        cargo_subtype_text:             sw_300_series_subtype_text;
 		can_attach_wagon:				sw_full_notjreast_attach_vehid;
         /* Graphics */
         default:                        sw_300_series_graphics;
@@ -3205,15 +3334,16 @@ item(FEAT_TRAINS, series_300) {
 		articulated_part:               sw_300_series_articulated_part;
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
         /* Stats */
-        length:                         sw_length_2_8_2;
-        //power:                          sw_300_series_power;
-        //weight:                         sw_300_series_weight;
+        length:                         sw_300_series_length;
+        power:                          power_per_motor_300_series * 4 * sw_300_series_number_of_motor_cars();
+        weight:                         weight_300_series * sw_300_series_number_of_cars();
 		cargo_capacity:                 sw_300_series_cargo_capacity;
 		loading_speed:					sw_300_series_loading_speed;
 		cargo_age_period:				param_decay_express;
 		cost_factor:                    548;
+		refit_cost:                     sw_300_series_refit_cost;
 		running_cost_factor:            sw_300_series_running_costs;
-		purchase_running_cost_factor:   running_cost_300_series * 16;	
+		purchase_running_cost_factor:   running_cost_300_series * sw_300_series_number_of_cars();	
 	}
 }
 

@@ -1,0 +1,8 @@
+/* 300 Series CARGO SUBTYPE MENU*/
+
+    switch(FEAT_TRAINS, SELF, sw_300_series_subtype_text, cargo_subtype) {
+	    0: return string(LV_300_SERIES_16CAR);        // 16 Car Original
+        1: return string(LV_300_SERIES_12CAR);        // 12 Car Original
+        2: return string(LV_300_SERIES_08CAR);        // 08 Car Original
+        return CB_RESULT_NO_TEXT;
+        }
