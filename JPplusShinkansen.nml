@@ -772,7 +772,7 @@ if (param_basecapacity == 2) {
 # 1 "src/vehicleid.pnml" 1
 
 // Assign IDs
-item(FEAT_TRAINS, mu_car, 1000) {}
+item(FEAT_TRAINS, mu_car_ms, 1111) {}
 item(FEAT_TRAINS, series_0, 123) {}
 item(FEAT_TRAINS, series_100, 124) {}
 item(FEAT_TRAINS, series_200, 200) {}
@@ -820,7 +820,7 @@ sort(FEAT_TRAINS, [
 2008,   // E8 Series Shinkansen
 
 /*MU Cars*/
-mu_car,
+mu_car_ms,
 ]);
 # 1 "JPplusShinkansen.pnml" 4
 
@@ -5073,23 +5073,23 @@ item(FEAT_TRAINS, series_200) {
     [STORE_TEMP(position_in_consist_from_end-position_in_consist, 0x10F),STORE_TEMP(var[0x61, 0, 0x000000FF, 0x41],0),
     STORE_TEMP((position_in_consist_from_end-position_in_consist-1)-LOAD_TEMP(0), 0x10F),
     var[0x61, 0, 0x0000FFFF, 0xC6]]){
-        1000 : sw_400_series_gfx_rev_frontback_aftermucars;         // From above switch
+        1111 : sw_400_series_gfx_rev_frontback_aftermucars;         // From above switch
         default : sw_400_series_gfx_rev_frontback_nomucars;         // From above switch
     }
     switch(FEAT_TRAINS, SELF, sw_400_series_gfx_rev_frontback_sameid,
     [STORE_TEMP(position_in_consist_from_end-position_in_consist+1, 0x10F), var[0x61, 0, 0x0000FFFF, 0xC6]]){
         400 : sw_400_series_gfx_rev_frontback_mucarcheck;
-        1000 : sw_400_series_gfx_cab_rev_livery;
+        1111 : sw_400_series_gfx_cab_rev_livery;
         default : sw_400_series_gfx_cab_livery;
     }
     switch(FEAT_TRAINS, SELF, sw_400_series_gfx_rev_frontback,
     [STORE_TEMP(position_in_consist_from_end-position_in_consist-1, 0x10F), var[0x61, 0, 0x0000FFFF, 0xC6]]){
         400 : sw_400_series_gfx_rev_frontback_sameid;
-        1000 : sw_400_series_gfx_cab_livery;
+        1111 : sw_400_series_gfx_cab_livery;
         default : sw_400_series_gfx_cab_rev_livery;
     }
     switch(FEAT_TRAINS, SELF, sw_400_series_gfx_rev_idcheck, [STORE_TEMP(position_in_consist_from_end-position_in_consist, 0x10F), var[0x61, 0, 0x0000FFFF, 0xC6]]){
-        1000 : sw_400_series_gfx_rev_pantograph_pos;        
+        1111 : sw_400_series_gfx_rev_pantograph_pos;        
         400 : sw_400_series_gfx_rev_frontback;
     }
 /*---END OF SECTION---*/
@@ -6241,23 +6241,23 @@ switch(FEAT_TRAINS, SELF, sw_e3_series_gfx_rev_frontback_mucarcheck,
 [STORE_TEMP(position_in_consist_from_end-position_in_consist, 0x10F),STORE_TEMP(var[0x61, 0, 0x000000FF, 0x41],0),
 STORE_TEMP((position_in_consist_from_end-position_in_consist-1)-LOAD_TEMP(0), 0x10F),
 var[0x61, 0, 0x0000FFFF, 0xC6]]){
- 1000 : sw_e3_series_gfx_rev_frontback_aftermucars;         // From above switch
+ 1111 : sw_e3_series_gfx_rev_frontback_aftermucars;         // From above switch
  default : sw_e3_series_gfx_rev_frontback_nomucars;         // From above switch
 }
 switch(FEAT_TRAINS, SELF, sw_e3_series_gfx_rev_frontback_sameid,
 [STORE_TEMP(position_in_consist_from_end-position_in_consist+1, 0x10F), var[0x61, 0, 0x0000FFFF, 0xC6]]){
  2003 : sw_e3_series_gfx_rev_frontback_mucarcheck;
- 1000 : sw_e3_series_gfx_cab_rev_livery;
+ 1111 : sw_e3_series_gfx_cab_rev_livery;
  default : sw_e3_series_gfx_cab_livery;
 }
 switch(FEAT_TRAINS, SELF, sw_e3_series_gfx_rev_frontback,
 [STORE_TEMP(position_in_consist_from_end-position_in_consist-1, 0x10F), var[0x61, 0, 0x0000FFFF, 0xC6]]){
  2003 : sw_e3_series_gfx_rev_frontback_sameid;
- 1000 : sw_e3_series_gfx_cab_livery;
+ 1111 : sw_e3_series_gfx_cab_livery;
  default : sw_e3_series_gfx_cab_rev_livery;
 }
 switch(FEAT_TRAINS, SELF, sw_e3_series_gfx_rev_idcheck, [STORE_TEMP(position_in_consist_from_end-position_in_consist, 0x10F), var[0x61, 0, 0x0000FFFF, 0xC6]]){
- 1000 : sw_e3_series_gfx_rev_pantograph_pos;        
+ 1111 : sw_e3_series_gfx_rev_pantograph_pos;        
  2003 : sw_e3_series_gfx_rev_frontback;
 }
 /*---END OF SECTION---*/
@@ -7268,23 +7268,23 @@ switch(FEAT_TRAINS, SELF, sw_e6_series_gfx_rev_frontback_mucarcheck,
 [STORE_TEMP(position_in_consist_from_end-position_in_consist, 0x10F),STORE_TEMP(var[0x61, 0, 0x000000FF, 0x41],0),
 STORE_TEMP((position_in_consist_from_end-position_in_consist-1)-LOAD_TEMP(0), 0x10F),
 var[0x61, 0, 0x0000FFFF, 0xC6]]){
- 1000 : sw_e6_series_gfx_rev_frontback_aftermucars;
+ 1111 : sw_e6_series_gfx_rev_frontback_aftermucars;
  default : sw_e6_series_gfx_rev_frontback_nomucars;
 }
 switch(FEAT_TRAINS, SELF, sw_e6_series_gfx_rev_frontback_sameid,
 [STORE_TEMP(position_in_consist_from_end-position_in_consist+1, 0x10F), var[0x61, 0, 0x0000FFFF, 0xC6]]){
  2006 : sw_e6_series_gfx_rev_frontback_mucarcheck;
- 1000 : sw_e6_series_gfx_rev_front_flippedcheck;
+ 1111 : sw_e6_series_gfx_rev_front_flippedcheck;
  default : sw_e6_series_gfx_rev_back_pantocheck;
 }
 switch(FEAT_TRAINS, SELF, sw_e6_series_gfx_rev_frontback,
 [STORE_TEMP(position_in_consist_from_end-position_in_consist-1, 0x10F), var[0x61, 0, 0x0000FFFF, 0xC6]]){
  2006 : sw_e6_series_gfx_rev_frontback_sameid;
- 1000 : sw_e6_series_gfx_rev_back_pantocheck;
+ 1111 : sw_e6_series_gfx_rev_back_pantocheck;
  default : sw_e6_series_gfx_rev_front_flippedcheck;
 }
 switch(FEAT_TRAINS, SELF, sw_e6_series_gfx_rev_idcheck, [STORE_TEMP(position_in_consist_from_end-position_in_consist, 0x10F), var[0x61, 0, 0x0000FFFF, 0xC6]]){
- 1000 : sw_e6_series_gfx_rev_pantograph_pos;
+ 1111 : sw_e6_series_gfx_rev_pantograph_pos;
  2006 : sw_e6_series_gfx_rev_frontback;
 }
 /*---END OF SECTION---*/
@@ -7710,23 +7710,23 @@ switch(FEAT_TRAINS, SELF, sw_e8_series_gfx_rev_frontback_mucarcheck,
 [STORE_TEMP(position_in_consist_from_end-position_in_consist, 0x10F),STORE_TEMP(var[0x61, 0, 0x000000FF, 0x41],0),
 STORE_TEMP((position_in_consist_from_end-position_in_consist-1)-LOAD_TEMP(0), 0x10F),
 var[0x61, 0, 0x0000FFFF, 0xC6]]){
- 1000 : sw_e8_series_gfx_rev_frontback_aftermucars;         // From above switch
+ 1111 : sw_e8_series_gfx_rev_frontback_aftermucars;         // From above switch
  default : sw_e8_series_gfx_rev_frontback_nomucars;         // From above switch
 }
 switch(FEAT_TRAINS, SELF, sw_e8_series_gfx_rev_frontback_sameid,
 [STORE_TEMP(position_in_consist_from_end-position_in_consist+1, 0x10F), var[0x61, 0, 0x0000FFFF, 0xC6]]){
  2008 : sw_e8_series_gfx_rev_frontback_mucarcheck;
- 1000 : sw_e8_series_gfx_cab_rev_livery;
+ 1111 : sw_e8_series_gfx_cab_rev_livery;
  default : sw_e8_series_gfx_cab_livery;
 }
 switch(FEAT_TRAINS, SELF, sw_e8_series_gfx_rev_frontback,
 [STORE_TEMP(position_in_consist_from_end-position_in_consist-1, 0x10F), var[0x61, 0, 0x0000FFFF, 0xC6]]){
  2008 : sw_e8_series_gfx_rev_frontback_sameid;
- 1000 : sw_e8_series_gfx_cab_livery;
+ 1111 : sw_e8_series_gfx_cab_livery;
  default : sw_e8_series_gfx_cab_rev_livery;
 }
 switch(FEAT_TRAINS, SELF, sw_e8_series_gfx_rev_idcheck, [STORE_TEMP(position_in_consist_from_end-position_in_consist, 0x10F), var[0x61, 0, 0x0000FFFF, 0xC6]]){
- 1000 : sw_e8_series_gfx_rev_pantograph_pos;        
+ 1111 : sw_e8_series_gfx_rev_pantograph_pos;        
  2008 : sw_e8_series_gfx_rev_frontback;
 }
 /*---END OF SECTION---*/
