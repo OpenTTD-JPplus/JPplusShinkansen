@@ -209,7 +209,7 @@ switch(FEAT_TRAINS, SELF, sw_e3_series_gfx_main,  cargo_subtype) {
 }
 /*---END OF SECTION---*/
 /*---Coupling Switch---*/
-switch(FEAT_TRAINS, SELF, sw_e3_series_attach_vehid, [vehicle_type_id == series_e3 || vehicle_type_id == mu_car]) {
+switch(FEAT_TRAINS, SELF, sw_e3_series_attach_vehid, [vehicle_type_id == series_e3 || vehicle_type_id == mu_car_ms]) {
  0: return string(MU_UNIQUE);
 }
 /*---END OF SECTION---*/
@@ -256,7 +256,7 @@ item(FEAT_TRAINS, series_e3) {
         //start_stop:                   ;
     }
     /*Multiple Unit Car*/
-      livery_override(mu_car){
+      livery_override(mu_car_ms){
         default:                        sw_e3_series_gfx_mucar;
         cargo_capacity:                 sw_e3_series_cargo_capacity;
         cargo_age_period:				        param_decay_express;
