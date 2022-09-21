@@ -2,20 +2,23 @@
 
     switch(FEAT_TRAINS, SELF, sw_0_series_number_of_cars, cargo_subtype) {
             2: return 12;
-            3: return 8;     
+            3: return 8;
+            5: return 8;     
             return 16;       
         }
 
     switch(FEAT_TRAINS, SELF, sw_0_series_number_of_motor_cars, cargo_subtype) {
             2: return 12;           // All cars motorised
-            3: return 8;            // All cars motorised   
+            3: return 8;            // All cars motorised
+            5: return 8;            // All cars motorised   
             return 16;              // All cars motorised
         }
 
 /* LENGTH*/
     switch(FEAT_TRAINS, SELF, sw_0_series_length, cargo_subtype) {
         2: sw_length_1_1_8_2;       // Nose Set
-        3: sw_length_1_1_7_1_1_1;   // 8-car set  
+        3: sw_length_1_1_7_1_1_1;   // 8-car set
+        5: sw_length_1_1_7_1_1_1;   // 8-car set  
         sw_length_2_8_2;            // All other 16-length sets
     }
 
@@ -79,6 +82,7 @@
     switch(FEAT_TRAINS, SELF, sw_0_series_cargo_capacity, cargo_subtype) {
         2: sw_0_series_param_cargo_capacity_12car;
         3: sw_0_series_param_cargo_capacity_08car;
+        5: sw_0_series_param_cargo_capacity_08car;
         sw_0_series_param_cargo_capacity_16car;
     }
 
@@ -108,6 +112,7 @@
     switch(FEAT_TRAINS, SELF, sw_0_series_loading_speed, cargo_subtype) {
         2: sw_0_series_param_loading_speed_12car; 
         3: sw_0_series_param_loading_speed_08car;
+        5: sw_0_series_param_loading_speed_08car;
         sw_0_series_param_loading_speed_16car;
     }
 
