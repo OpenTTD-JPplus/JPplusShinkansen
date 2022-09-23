@@ -1,6 +1,8 @@
 
 // Assign IDs
 item(FEAT_TRAINS, mu_car_ms, 1111) {}
+item(FEAT_TRAINS, mu_car_full, 1112) {}
+
 item(FEAT_TRAINS, series_0, 123) {}
 item(FEAT_TRAINS, series_100, 124) {}
 item(FEAT_TRAINS, series_200, 200) {}
@@ -25,7 +27,7 @@ item(FEAT_TRAINS, series_e8, 2008) {}
 sort(FEAT_TRAINS, [
 
 /* Not JR East */
-123,      // 0 Series Shinkansen
+123,    // 0 Series Shinkansen
 124,    // 100 Series Shinkansen
 300,    // 300 Series Shinkansen
 500,    // 500 Series Shinkansen
@@ -37,8 +39,8 @@ sort(FEAT_TRAINS, [
 /* JR East */
 200,    // 200 Series Shinkansen
 400,    // 400 Series Shinkansen
-1551,     // E1 Series Shinkansen (Max)
-1552,     // E2 Series Shinkansen
+1551,   // E1 Series Shinkansen (Max)
+1552,   // E2 Series Shinkansen
 2003,   // E3 Series Shinkansen
 2004,   // E4 Series Shinkansen (Max)
 2005,   // E5 Series Shinkansen
@@ -46,7 +48,10 @@ sort(FEAT_TRAINS, [
 2056,   // E5 & E6 Series Shinkansen
 2007,   // E7/W7 Series Shinkansen
 2008,   // E8 Series Shinkansen
+5555,   // Test E5 Series Shinkansen
 
 /*MU Cars*/
+mu_car_full,
 mu_car_ms,
+
 ]);

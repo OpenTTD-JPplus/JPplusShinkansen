@@ -3,10 +3,10 @@
 /* RUNNING COSTS */
     running_cost_e5_series = 187;    // 150 is approx JPS
     
-    switch (FEAT_TRAINS, SELF, sw_e5_series_running_costs, current_speed) {
-        0: running_cost_e5_series / 10;         // Stopped
-        1..15: running_cost_e5_series / 4;      // Moving below ~33.5 mph
-        running_cost_e5_series; 				// Track speed
+    switch (FEAT_TRAINS, SELF, sw_e5_series_fixed_running_costs, current_speed) {
+        0: running_cost_e5_series / 10 * 10;        // Stopped
+        1..15: running_cost_e5_series / 4 * 10;     // Moving below ~33.5 mph
+        running_cost_e5_series * 10; 				// Track speed
     }
 
 /* CARGO CAPACITY
@@ -22,7 +22,7 @@
     */
 
     // Passenger Capacities for each parameter level
-    switch(FEAT_TRAINS, SELF, sw_e5_series_cargo_capacity, param_basecapacity) {
+    switch(FEAT_TRAINS, SELF, sw_e5_series_fixed_cargo_capacity, param_basecapacity) {
         0: return 25;       // 1x Real World Capacity
         2: return 50;       // 2x Double Real World Capacity
         return 37;          // 1.5x Normal Capacity 
@@ -31,7 +31,7 @@
 /* LOADING SPEED */
 
     // 10 car
-    switch(FEAT_TRAINS, SELF, sw_e5_series_loading_speed, param_basecapacity) {
+    switch(FEAT_TRAINS, SELF, sw_e5_series_fixed_loading_speed, param_basecapacity) {
         0: return 25 / param_loading_2D;        // 1x Real World Capacity
         2: return 50 / param_loading_2D;        // 2x Double Real World Capacity
         return 37 / param_loading_2D;           // 1.5x Long Sprite Adjusted Capacity 

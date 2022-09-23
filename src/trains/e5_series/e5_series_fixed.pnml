@@ -3,10 +3,10 @@
 #include "src/trains/e5_series/e5_series_subtypes.pnml"
 #include "src/trains/e5_series/e5_series_gfx.pnml"
 #include "src/trains/e5_series/e5_series_liveries.pnml"
-#include "src/trains/e5_series/e5_series_stats.pnml"
+#include "src/trains/e5_series/e5_series_fixed_stats.pnml"
 #include "src/trains/e5_series/e5_series_formation.pnml"
 
-item(FEAT_TRAINS, series_e5, 2005) {
+item(FEAT_TRAINS, series_e5_fixed, 2005) {
 	property {
 		/* Menu */
 		name: 							string(STR_NAME_E5_SERIES);
@@ -42,17 +42,17 @@ item(FEAT_TRAINS, series_e5, 2005) {
 		cargo_subtype_text:             sw_e5_series_year_dep_subtype_text;
 		can_attach_wagon:				sw_full_jreast_attach_vehid;
 		/* Graphics */
-		default:                        sw_e5_series_graphics;
+		default:                        sw_e5_series_fixed_graphics;
 		purchase:                       ss_e5_series_purchase_pink_livery;
-		articulated_part:               sw_e5_series_articulated_part;
+		articulated_part:               sw_e5_series_fixed_articulated_part;
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
 		/* Stats */
 		length:                         sw_length_2_8_2;
-		cargo_capacity:                 sw_e5_series_cargo_capacity;
-		loading_speed:					sw_e5_series_loading_speed;
+		cargo_capacity:                 sw_e5_series_fixed_cargo_capacity;
+		loading_speed:					sw_e5_series_fixed_loading_speed;
 		cargo_age_period:				param_decay_express;
 		cost_factor:                    359;
-		running_cost_factor:            sw_e5_series_running_costs;
+		running_cost_factor:            sw_e5_series_fixed_running_costs;
 		purchase_running_cost_factor:   running_cost_e5_series * 10;
 	}
 }

@@ -23,7 +23,7 @@
 /* PUT TOGETHER THE EMU*/
 
 	/* Select the correct part of the train */
-	switch (FEAT_TRAINS, SELF, sw_e5_series_graphics, position_in_articulated_veh) {				
+	switch (FEAT_TRAINS, SELF, sw_e5_series_fixed_graphics, position_in_articulated_veh) {				
 		1:  ss_e5_series_cab; 				// Car 1								
 		4:  sw_e5_series_reverser_C_C;		// Car 2									
 		7:  sw_e5_series_reverser_P_C;		// Car 3
@@ -38,7 +38,7 @@
 	}
 
 	/* Assemble an 10-car articulated vehicle. */
-	switch (FEAT_TRAINS, SELF, sw_e5_series_articulated_part, extra_callback_info1) {
+	switch (FEAT_TRAINS, SELF, sw_e5_series_fixed_articulated_part, extra_callback_info1) {
 		1 .. 29: return series_e5;										// Should be same as range above
 		return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
 	}

@@ -7,8 +7,8 @@
 	grfid:					"KR03";
 	name:					string(STR_GRF_NAME);
 	desc:					string(STR_GRF_DESC);
-	version:				6;
-	min_compatible_version: 6;
+	version:				7;
+	min_compatible_version: 7;
 		//japanset3 removal
 		param 4 {
 			 param_japansetdisable {
@@ -773,6 +773,8 @@ if (param_basecapacity == 2) {
 
 // Assign IDs
 item(FEAT_TRAINS, mu_car_ms, 1111) {}
+item(FEAT_TRAINS, mu_car_full, 1112) {}
+
 item(FEAT_TRAINS, series_0, 123) {}
 item(FEAT_TRAINS, series_100, 124) {}
 item(FEAT_TRAINS, series_200, 200) {}
@@ -797,7 +799,7 @@ item(FEAT_TRAINS, series_e8, 2008) {}
 sort(FEAT_TRAINS, [
 
 /* Not JR East */
-123,      // 0 Series Shinkansen
+123,    // 0 Series Shinkansen
 124,    // 100 Series Shinkansen
 300,    // 300 Series Shinkansen
 500,    // 500 Series Shinkansen
@@ -809,8 +811,8 @@ sort(FEAT_TRAINS, [
 /* JR East */
 200,    // 200 Series Shinkansen
 400,    // 400 Series Shinkansen
-1551,     // E1 Series Shinkansen (Max)
-1552,     // E2 Series Shinkansen
+1551,   // E1 Series Shinkansen (Max)
+1552,   // E2 Series Shinkansen
 2003,   // E3 Series Shinkansen
 2004,   // E4 Series Shinkansen (Max)
 2005,   // E5 Series Shinkansen
@@ -818,9 +820,12 @@ sort(FEAT_TRAINS, [
 2056,   // E5 & E6 Series Shinkansen
 2007,   // E7/W7 Series Shinkansen
 2008,   // E8 Series Shinkansen
+5555,   // Test E5 Series Shinkansen
 
 /*MU Cars*/
+mu_car_full,
 mu_car_ms,
+
 ]);
 # 1 "JPplusShinkansen.pnml" 4
 
@@ -844,12 +849,12 @@ spriteset (dummy_sprites, "src/gfx/dummy/empty.png")
 /*---GFX: Spritesets---*/
 spriteset (set_mu_car_purchase,	    "src/gfx/dummy/mucarbuy.png") 	{template_purchase (0, 0)}
 spriteset (set_mu_car_base,       	"src/gfx/dummy/mucar.png")     	{template_8_standard(1,1)}
-
+//spriteset (set_mu_car_full,       	"src/gfx/dummy/mucar_full.png")  {template_12_standard(1,1)}
 
 item(FEAT_TRAINS, mu_car_ms) {
     /* Define properties first, make sure to set all of them */
     property {
-        name:                         string(MUCAR);
+        name:                         string(MUCAR_MINI);
         introduction_date:            date(1800,1,1);
         climates_available:           ALL_CLIMATES;
         model_life:                   VEHICLE_NEVER_EXPIRES;
@@ -6800,7 +6805,7 @@ item(FEAT_TRAINS, series_e4, 2004) {
 
 /* End E4 series */
 # 1 "JPplusShinkansen.pnml" 4
-# 1 "src/trains/e5_series/e5_series_fixed.pnml" 1
+# 1 "src/trains/e5_series/e5_series.pnml" 1
 /* Begin E5 Series */
 
 # 1 "src/trains/e5_series/e5_series_subtypes.pnml" 1
@@ -6823,7 +6828,7 @@ switch(FEAT_TRAINS, SELF, sw_e5_series_year_dep_subtype_text, current_year) {
     0..2016: sw_e5_series_old_livery_subtype_text;
     sw_e5_series_new_livery_subtype_text;
 }
-# 1 "src/trains/e5_series/e5_series_fixed.pnml" 3
+# 1 "src/trains/e5_series/e5_series.pnml" 3
 # 1 "src/trains/e5_series/e5_series_gfx.pnml" 1
 /* Begin E5 Series GRAPHICS */
 
@@ -6878,7 +6883,7 @@ switch(FEAT_TRAINS, SELF, sw_e5_series_year_dep_subtype_text, current_year) {
 	// E5 Series purple Strip Livery
 	alternative_sprites(ss_e5_series_panto_purple_livery,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/e5_series/h5purple.png") {template_12_standard(1,81)}
 	alternative_sprites(ss_e5_series_panto_rev_purple_livery,  	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/e5_series/h5purple.png") {template_12_reversed(1,81)}	
-# 1 "src/trains/e5_series/e5_series_fixed.pnml" 3
+# 1 "src/trains/e5_series/e5_series.pnml" 3
 # 1 "src/trains/e5_series/e5_series_liveries.pnml" 1
 /* Begin E5 Series LIVERIES */
 
@@ -6950,7 +6955,7 @@ switch(FEAT_TRAINS, SELF, sw_e5_series_year_dep_subtype_text, current_year) {
 		0..2016: ss_e5_series_panto_rev_pink_livery;
 		sw_e5_series_panto_rev_new_livery;
 	}
-# 1 "src/trains/e5_series/e5_series_fixed.pnml" 3
+# 1 "src/trains/e5_series/e5_series.pnml" 3
 # 1 "src/trains/e5_series/e5_series_stats.pnml" 1
 /* Begin E5 Series STATS */
 
@@ -6958,9 +6963,9 @@ switch(FEAT_TRAINS, SELF, sw_e5_series_year_dep_subtype_text, current_year) {
     running_cost_e5_series = 187;    // 150 is approx JPS
     
     switch (FEAT_TRAINS, SELF, sw_e5_series_running_costs, current_speed) {
-        0: running_cost_e5_series / 10 * 10;        // Stopped
-        1..15: running_cost_e5_series / 4 * 10;     // Moving below ~33.5 mph
-        running_cost_e5_series * 10; 				// Track speed
+        0: running_cost_e5_series / 10;         // Stopped
+        1..15: running_cost_e5_series / 4;      // Moving below ~33.5 mph
+        running_cost_e5_series; 				// Track speed
     }
 
 /* CARGO CAPACITY
@@ -6990,55 +6995,57 @@ switch(FEAT_TRAINS, SELF, sw_e5_series_year_dep_subtype_text, current_year) {
         2: return 50 / param_loading_2D;        // 2x Double Real World Capacity
         return 37 / param_loading_2D;           // 1.5x Long Sprite Adjusted Capacity 
     }
-# 1 "src/trains/e5_series/e5_series_fixed.pnml" 3
-# 1 "src/trains/e5_series/e5_series_formation.pnml" 1
-/* Begin E5 Series FORMATION */
+# 1 "src/trains/e5_series/e5_series.pnml" 3
 
-/* REVERSERS */
-
-	// Coach Car going forwards and a Panto Car going backwards
-	switch (FEAT_TRAINS, PARENT, sw_e5_series_reverser_C_P, vehicle_is_reversed) {
-		0: ss_e5_series_coach;
-		ss_e5_series_panto_rev;
+switch (FEAT_TRAINS, SELF, sw_e5_series_backwards, position_in_vehid_chain_from_end%30) {				
+		7:  ss_e5_series_panto_rev;
+		19: ss_e5_series_panto_rev;
+		ss_e5_series_coach_rev;				
 	}
 
-	// Coach Car going forwards and a Coach Car going backwards
-	switch (FEAT_TRAINS, PARENT, sw_e5_series_reverser_C_C, vehicle_is_reversed) {
-		0: ss_e5_series_coach;
-		ss_e5_series_coach_rev;
+switch (FEAT_TRAINS, SELF, sw_e5_series_forwards, position_in_vehid_chain%30) {				
+		7:  ss_e5_series_panto;
+		19: ss_e5_series_panto;
+		ss_e5_series_coach;				
 	}
 
-	// Panto Car going forwards and a Coach Car going backwards
-	switch (FEAT_TRAINS, PARENT, sw_e5_series_reverser_P_C, vehicle_is_reversed) {
-		0: ss_e5_series_panto;
-		ss_e5_series_coach_rev;
+switch (FEAT_TRAINS, PARENT, sw_e5_series_direction, vehicle_is_reversed) {				
+		0:  sw_e5_series_forwards;
+		sw_e5_series_backwards;				
 	}
 
-/* PUT TOGETHER THE EMU*/
+switch (FEAT_TRAINS, SELF, sw_e5_series_back, position_in_vehid_chain_from_end) {				
+		1:  ss_e5_series_cab_rev;
+		sw_e5_series_direction;				
+	}
 
-	/* Select the correct part of the train */
-	switch (FEAT_TRAINS, SELF, sw_e5_series_graphics, position_in_articulated_veh) {				
-		1:  ss_e5_series_cab; 				// Car 1								
-		4:  sw_e5_series_reverser_C_C;		// Car 2									
-		7:  sw_e5_series_reverser_P_C;		// Car 3
-		10: sw_e5_series_reverser_C_P;		// Car 4
-		13: sw_e5_series_reverser_C_C;		// Car 5
-		16: sw_e5_series_reverser_C_C;		// Car 6
-		19: sw_e5_series_reverser_P_C;		// Car 7
-		22: sw_e5_series_reverser_C_P;		// Car 8	
-		25: sw_e5_series_reverser_C_C;		// Car 9
-		28: ss_e5_series_cab_rev;			// Car 10
+switch (FEAT_TRAINS, SELF, sw_e5_series_front, position_in_vehid_chain) {				
+		1:  ss_e5_series_cab;
+		sw_e5_series_back;				
+	}
+
+switch (FEAT_TRAINS, SELF, sw_e5_series_graphics, position_in_vehid_chain%3) {				
+		1:  sw_e5_series_front; 				
 		dummy_sprites;
 	}
 
-	/* Assemble an 10-car articulated vehicle. */
-	switch (FEAT_TRAINS, SELF, sw_e5_series_articulated_part, extra_callback_info1) {
-		1 .. 29: return series_e5;										// Should be same as range above
+switch (FEAT_TRAINS, SELF, sw_e5_series_articulated_part, extra_callback_info1) {
+		1 .. 2: return series_e5;									
 		return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
 	}
-# 1 "src/trains/e5_series/e5_series_fixed.pnml" 3
 
-item(FEAT_TRAINS, series_e5, 2005) {
+/*---Coupling Switch---*/
+switch(FEAT_TRAINS, SELF, sw_e5_series_attach_vehid, [vehicle_type_id == series_e5]) {
+ 0: return string(MU_UNIQUE);
+}
+
+/*---Length Check---*/
+switch (FEAT_TRAINS, SELF, sw_e5_series_stop_start, num_vehs_in_consist < 12) {				
+		1:  return string(STR_JOIN_MORE); 				
+		return CB_RESULT_NO_TEXT; 
+	}
+
+item(FEAT_TRAINS, series_e5) {
 	property {
 		/* Menu */
 		name: 							string(STR_NAME_E5_SERIES);
@@ -7063,8 +7070,8 @@ item(FEAT_TRAINS, series_e5, 2005) {
 		cargo_age_period:               278; 						// 1.5 times normal for this expensive long-distance train
 		/* Stats */
 		speed:                          321 km/h;					// Operational Top Speed
-		power:                          12900 hp;					// Agreed to https://en.wikipedia.org/wiki/E5_and_H5_Series_Shinkansen
-		weight:                         453 tons;					// Agreed to https://en.wikipedia.org/wiki/E5_and_H5_Series_Shinkansen
+		power:                          1290 hp;					// Agreed to https://en.wikipedia.org/wiki/E5_and_H5_Series_Shinkansen
+		weight:                         45.3 tons;					// Agreed to https://en.wikipedia.org/wiki/E5_and_H5_Series_Shinkansen
 		tractive_effort_coefficient:    0.3;
 		air_drag_coefficient:			0;
 	}
@@ -7072,20 +7079,21 @@ item(FEAT_TRAINS, series_e5, 2005) {
 		/* Menu */
 		additional_text:                string(STR_DESC_E5_SERIES);
 		cargo_subtype_text:             sw_e5_series_year_dep_subtype_text;
-		can_attach_wagon:				sw_full_jreast_attach_vehid;
+		can_attach_wagon:				sw_e5_series_attach_vehid;
+		start_stop:						sw_e5_series_stop_start;
 		/* Graphics */
 		default:                        sw_e5_series_graphics;
 		purchase:                       ss_e5_series_purchase_pink_livery;
-		articulated_part:               sw_e5_series_articulated_part;
+		articulated_part:               sw_e5_series_articulated_part;	
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
 		/* Stats */
 		length:                         sw_length_2_8_2;
 		cargo_capacity:                 sw_e5_series_cargo_capacity;
 		loading_speed:					sw_e5_series_loading_speed;
 		cargo_age_period:				param_decay_express;
-		cost_factor:                    359;
+		cost_factor:                    36;
 		running_cost_factor:            sw_e5_series_running_costs;
-		purchase_running_cost_factor:   running_cost_e5_series * 10;
+		purchase_running_cost_factor:   running_cost_e5_series;
 	}
 }
 

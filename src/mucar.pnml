@@ -3,12 +3,12 @@
 /*---GFX: Spritesets---*/
 spriteset (set_mu_car_purchase,	    "src/gfx/dummy/mucarbuy.png") 	{template_purchase (0, 0)}
 spriteset (set_mu_car_base,       	"src/gfx/dummy/mucar.png")     	{template_8_standard(1,1)}
-
+//spriteset (set_mu_car_full,       	"src/gfx/dummy/mucar_full.png")  {template_12_standard(1,1)}
 
 item(FEAT_TRAINS, mu_car_ms) {
     /* Define properties first, make sure to set all of them */
     property {
-        name:                         string(MUCAR);
+        name:                         string(MUCAR_MINI);
         introduction_date:            date(1800,1,1);
         climates_available:           ALL_CLIMATES;
         model_life:                   VEHICLE_NEVER_EXPIRES;
