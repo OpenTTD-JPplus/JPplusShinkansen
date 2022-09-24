@@ -91,7 +91,7 @@ switch(FEAT_TRAINS, SELF, sw_e4_series_coach_reversed_new_livery, cargo_subtype)
     sw_e4_series_coach_reversed_year_dep_livery;
 }
 
-switch(FEAT_TRAINS, SELF, ss_e4_series_coach_reversed, current_year) {
+switch(FEAT_TRAINS, SELF, ss_e4_series_coach_rev, current_year) {
     0..2014: sw_e4_series_coach_reversed_old_livery;
     sw_e4_series_coach_reversed_new_livery;
 }
@@ -139,7 +139,7 @@ switch(FEAT_TRAINS, SELF, sw_e4_series_panto_reversed_new_livery, cargo_subtype)
     sw_e4_series_panto_reversed_year_dep_livery;
 }
 
-switch(FEAT_TRAINS, SELF, ss_e4_series_panto_reversed, current_year) {
+switch(FEAT_TRAINS, SELF, ss_e4_series_panto_rev, current_year) {
     0..2014: sw_e4_series_panto_reversed_old_livery;
     sw_e4_series_panto_reversed_new_livery;
 }
