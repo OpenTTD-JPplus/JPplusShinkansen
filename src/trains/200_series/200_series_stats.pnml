@@ -17,7 +17,7 @@
 /* POWER */
     power_per_motor_200_series = 308;               // in hp (230 kW)
 
-    switch (FEAT_TRAINS, SELF, sw_200_series_power, (NumberCarsInConsist() - 2 )* power_per_motor_200_series * 4 ) {return;}
+    switch (FEAT_TRAINS, SELF, sw_200_series_power, NumberCarsInConsist() * power_per_motor_200_series * 4 ) {return;}
 
 
 /* SPEED */

@@ -17,7 +17,7 @@
 /* POWER */
     power_per_motor_e7_series = 335; // in hp (250 kW)
     
-    switch (FEAT_TRAINS, SELF, sw_e7_series_power, (NumberCarsInConsist() - 2 )* power_per_motor_e7_series * 4 ) {return;}
+    switch (FEAT_TRAINS, SELF, sw_e7_series_power, max ((NumberCarsInConsist() - 2 ),0) * power_per_motor_e7_series * 4 ) {return;}
 
 /* CARGO CAPACITY
 

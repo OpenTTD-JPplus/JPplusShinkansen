@@ -4464,7 +4464,7 @@ switch(FEAT_TRAINS, SELF, ss_200_series_panto_rev, cargo_subtype) {
 /* POWER */
     power_per_motor_200_series = 308;               // in hp (230 kW)
 
-    switch (FEAT_TRAINS, SELF, sw_200_series_power, (NumberCarsInConsist() - 2 )* power_per_motor_200_series * 4 ) {return;}
+    switch (FEAT_TRAINS, SELF, sw_200_series_power, NumberCarsInConsist() * power_per_motor_200_series * 4 ) {return;}
 
 
 /* SPEED */
@@ -5627,7 +5627,7 @@ switch(FEAT_TRAINS, SELF, ss_e2_series_panto_rev, cargo_subtype) {
 /* POWER */
     power_per_motor_e2_series = 402;            // in hp (300 kW)
 
-    switch (FEAT_TRAINS, SELF, sw_e2_series_power, (NumberCarsInConsist() - 2 )* power_per_motor_e2_series * 4 ) {return;}
+    switch (FEAT_TRAINS, SELF, sw_e2_series_power, max((NumberCarsInConsist() - 2 ),0) * power_per_motor_e2_series * 4 ) {return;}
 
 /* CARGO CAPACITY
 
@@ -6820,7 +6820,7 @@ switch(FEAT_TRAINS, SELF, sw_e5_series_year_dep_subtype_text, current_year) {
 /* POWER */
     power_per_motor_e5_series = 402; // in hp (300 kW)
     
-    switch (FEAT_TRAINS, SELF, sw_e5_series_power, (NumberCarsInConsist() - 2 )* power_per_motor_e5_series * 4 ) {return;}
+    switch (FEAT_TRAINS, SELF, sw_e5_series_power, max ((NumberCarsInConsist() - 2 ),0) * power_per_motor_e5_series * 4 ) {return;}
 
 /* CARGO CAPACITY
 
@@ -7346,7 +7346,7 @@ item(FEAT_TRAINS, series_e6, 2006) {
 /* POWER */
     power_per_motor_e7_series = 335; // in hp (250 kW)
     
-    switch (FEAT_TRAINS, SELF, sw_e7_series_power, (NumberCarsInConsist() - 2 )* power_per_motor_e7_series * 4 ) {return;}
+    switch (FEAT_TRAINS, SELF, sw_e7_series_power, max ((NumberCarsInConsist() - 2 ),0) * power_per_motor_e7_series * 4 ) {return;}
 
 /* CARGO CAPACITY
 
