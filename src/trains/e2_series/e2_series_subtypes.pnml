@@ -3,18 +3,15 @@
     // From 1997 to 2002
     switch(FEAT_TRAINS, SELF, sw_e2_series_1997_subtype_text, cargo_subtype) {
         0: return string(LV_YEAR_DEP_LIVERY);
-        1: return string(LV_E2_SERIES_08CAR_RED);
-        2: return string(LV_E2_SERIES_10CAR_RED);
+        1: return string(LV_E2_SERIES_RED);
         return CB_RESULT_NO_TEXT;
         }
 
-    // From 2002 onwards - introduction of 10-car sets
+    // From 2002 onwards
     switch(FEAT_TRAINS, SELF, sw_e2_series_2002_subtype_text, cargo_subtype) {
         0: return string(LV_YEAR_DEP_LIVERY);
-        1: return string(LV_E2_SERIES_10CAR_RED);
-        2: return string(LV_E2_SERIES_08CAR_RED);
-        3: return string(LV_E2_SERIES_10CAR_PINK);
-        4: return string(LV_E2_SERIES_08CAR_PINK);
+        1: return string(LV_E2_SERIES_RED);
+        2: return string(LV_E2_SERIES_PINK);
         return CB_RESULT_NO_TEXT;
         }
 

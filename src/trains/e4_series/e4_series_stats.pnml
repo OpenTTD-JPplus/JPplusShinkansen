@@ -4,16 +4,20 @@
     running_cost_e4_series = 187;    // 150 is approx JPS
     
     switch (FEAT_TRAINS, SELF, sw_e4_series_running_costs, current_speed) {
-        0: running_cost_e4_series / 10 * 8;        // Stopped
-        1..15: running_cost_e4_series / 4 * 8;     // Moving below ~33.5 mph
-        running_cost_e4_series * 8; 				// Track speed
+        0: running_cost_e4_series / 10 ;         // Stopped
+        1..15: running_cost_e4_series / 4 ;      // Moving below ~33.5 mph
+        running_cost_e4_series ; 				// Track speed
     }
 
 /* WEIGHT */  
-    weight_e4_series = 54;           
+    weight_e4_series = 54;        
+
+    switch (FEAT_TRAINS, SELF, sw_e4_series_weight, NumberCarsInConsist() * weight_e4_series ) {return;}   
     
 /* POWER */
-    power_per_motor_e4_series = 563; // in hp (400 kW)
+    power_per_motor_e4_series = 563; // in hp (420 kW)
+
+    switch (FEAT_TRAINS, SELF, sw_e4_series_power, NumberCarsInConsist() / 2 * power_per_motor_e4_series * 4 ) {return;}
 
 /* CARGO CAPACITY
 
@@ -35,7 +39,6 @@
 
 /* LOADING SPEED */
 
-    // 8 car
     switch(FEAT_TRAINS, SELF, sw_e4_series_loading_speed, param_basecapacity) {
         0: return 34 / param_loading_2D;        // 1x Real World Capacity
         2: return 68 / param_loading_2D;        // 2x Double Real World Capacity

@@ -2,21 +2,14 @@
 
 switch (FEAT_TRAINS, PARENT, func_is_reversed, vehicle_is_reversed) {return;}
 
+switch (FEAT_TRAINS, PARENT, NumberCarsInConsist, num_vehs_in_consist / 3) {return;}
+
 switch (FEAT_TRAINS, SELF, sw_visual_effect_and_powered, ((position_in_articulated_veh == 0) && !func_is_reversed()) || ((position_in_articulated_veh_from_end == 0) && func_is_reversed()) ) {
 	1: return visual_effect_and_powered(VISUAL_EFFECT_ELECTRIC, 0, ENABLE_WAGON_POWER);
 	return visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
 }
 
 /* Which IDs can attach */
-switch(FEAT_TRAINS, SELF, sw_full_jreast_attach_vehid, [
-    vehicle_type_id == series_200 ||
-    vehicle_type_id == series_e1 || 
-    vehicle_type_id == series_e2 || 
-    vehicle_type_id == series_e4 ||
-    vehicle_type_id == series_e5 ||
-    vehicle_type_id == series_e7
-    ]) {0: return string(JR_EAST_ONLY_FULL);}
-
 switch(FEAT_TRAINS, SELF, sw_full_notjreast_attach_vehid, [
     vehicle_type_id == series_0 || 
     vehicle_type_id == series_100 || 
@@ -70,12 +63,6 @@ if (param_basecapacity == 2) {
 // 1-1-7-1-1-1
     switch(FEAT_TRAINS, SELF, sw_length_1_1_7_1_1_1, position_in_articulated_veh % 6 ) {
         2: return 7;
-        return 1;
-    }
-
-// 1-1-8-1-1
-    switch(FEAT_TRAINS, SELF, sw_length_1_1_8_1_1, position_in_articulated_veh %5 ) {
-        2: return 8;
         return 1;
     }
 

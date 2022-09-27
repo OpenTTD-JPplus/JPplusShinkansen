@@ -2,6 +2,7 @@
 
 /*---GFX: Spritesets---*/
 spriteset (set_mu_car_purchase,	    "src/gfx/dummy/mucarbuy.png") 	{template_purchase (0, 0)}
+spriteset (set_mucar_full_purchase, "src/gfx/dummy/mucarfullbuy.png") 	{template_purchase (0, 0)}
 spriteset (set_mu_car_base,       	"src/gfx/dummy/mucar.png")     	{template_8_standard(1,1)}
 spriteset (set_mu_car_full,       	"src/gfx/dummy/mucar_full.png")  {template_12_standard(1,1)}
 
@@ -41,7 +42,7 @@ item(FEAT_TRAINS, mu_car_ms) {
      * Setting all callbacks is not needed, only define what is used */
     graphics {
 		  purchase:                     set_mu_car_purchase;
-      additional_text:			        return string(MUCAR_DESC);
+      additional_text:			        return string(MUCAR_MINI_DESC);
       set_mu_car_base;
     }
 
@@ -95,8 +96,8 @@ item(FEAT_TRAINS, mu_car_full) {
      * Setting all callbacks is not needed, only define what is used */
     graphics {
 		default:                        sw_mucar_full_graphics;                     
-        purchase:                       set_mu_car_purchase;
-        additional_text:			    return string(MUCAR_DESC);
+        purchase:                       set_mucar_full_purchase;
+        additional_text:			    return string(MUCAR_FULL_DESC);
         articulated_part:               sw_mucar_full_articulated_part;
         length:                         sw_length_2_8_2;  
     }

@@ -16,9 +16,9 @@ switch(FEAT_TRAINS, SELF, sw_e2_series_cab_year_dep_livery, build_year) {
     ss_e2_series_cab_red_livery;
 }
 
-switch(FEAT_TRAINS, SELF, sw_e2_series_cab, cargo_subtype) {
-    1..2: ss_e2_series_cab_red_livery;
-    3..4: ss_e2_series_cab_pink_livery;
+switch(FEAT_TRAINS, SELF, ss_e2_series_cab, cargo_subtype) {
+    1: ss_e2_series_cab_red_livery;
+    2: ss_e2_series_cab_pink_livery;
     sw_e2_series_cab_year_dep_livery;
 }
 
@@ -30,9 +30,9 @@ switch(FEAT_TRAINS, SELF, sw_e2_series_cab_rev_year_dep_livery, build_year) {
     ss_e2_series_cab_rev_red_livery;
 }
 
-switch(FEAT_TRAINS, SELF, sw_e2_series_cab_rev, cargo_subtype) {
-    1..2: ss_e2_series_cab_rev_red_livery;
-    3..4: ss_e2_series_cab_rev_pink_livery;
+switch(FEAT_TRAINS, SELF, ss_e2_series_cab_rev, cargo_subtype) {
+    1: ss_e2_series_cab_rev_red_livery;
+    2: ss_e2_series_cab_rev_pink_livery;
     sw_e2_series_cab_rev_year_dep_livery;
 }
 
@@ -44,9 +44,9 @@ switch(FEAT_TRAINS, SELF, sw_e2_series_coach_year_dep_livery, build_year) {
     ss_e2_series_coach_red_livery;
 }
 
-switch(FEAT_TRAINS, SELF, sw_e2_series_coach, cargo_subtype) {
-    1..2: ss_e2_series_coach_red_livery;
-    3..4: ss_e2_series_coach_pink_livery;
+switch(FEAT_TRAINS, SELF, ss_e2_series_coach, cargo_subtype) {
+    1: ss_e2_series_coach_red_livery;
+    2: ss_e2_series_coach_pink_livery;
     sw_e2_series_coach_year_dep_livery;
 }
 
@@ -58,9 +58,9 @@ switch(FEAT_TRAINS, SELF, sw_e2_series_coach_rev_year_dep_livery, build_year) {
     ss_e2_series_coach_rev_red_livery;
 }
 
-switch(FEAT_TRAINS, SELF, sw_e2_series_coach_rev, cargo_subtype) {
-    1..2: ss_e2_series_coach_rev_red_livery;
-    3..4: ss_e2_series_coach_rev_pink_livery;
+switch(FEAT_TRAINS, SELF, ss_e2_series_coach_rev, cargo_subtype) {
+    1: ss_e2_series_coach_rev_red_livery;
+    2: ss_e2_series_coach_rev_pink_livery;
     sw_e2_series_coach_rev_year_dep_livery;
 }
 
@@ -72,9 +72,9 @@ switch(FEAT_TRAINS, SELF, sw_e2_series_panto_year_dep_livery, build_year) {
     ss_e2_series_panto_red_livery;
 }
 
-switch(FEAT_TRAINS, SELF, sw_e2_series_panto, cargo_subtype) {
-    1..2: ss_e2_series_panto_red_livery;
-    3..4: ss_e2_series_panto_pink_livery;
+switch(FEAT_TRAINS, SELF, ss_e2_series_panto, cargo_subtype) {
+    1: ss_e2_series_panto_red_livery;
+    2: ss_e2_series_panto_pink_livery;
     sw_e2_series_panto_year_dep_livery;
 }
 
@@ -86,8 +86,8 @@ switch(FEAT_TRAINS, SELF, sw_e2_series_panto_rev_year_dep_livery, build_year) {
     ss_e2_series_panto_rev_red_livery;
 }
 
-switch(FEAT_TRAINS, SELF, sw_e2_series_panto_rev, cargo_subtype) {
-    1..2: ss_e2_series_panto_rev_red_livery;
-    3..4: ss_e2_series_panto_rev_pink_livery;
+switch(FEAT_TRAINS, SELF, ss_e2_series_panto_rev, cargo_subtype) {
+    1: ss_e2_series_panto_rev_red_livery;
+    2: ss_e2_series_panto_rev_pink_livery;
     sw_e2_series_panto_rev_year_dep_livery;
 }

@@ -1,0 +1,124 @@
+/* Begin E7 Series */
+
+#include "src/trains/e7_series/e7_series_subtypes.pnml"
+#include "src/trains/e7_series/e7_series_gfx.pnml"
+// #include "src/trains/e7_series/e7_series_liveries.pnml"
+#include "src/trains/e7_series/e7_series_stats.pnml"
+
+switch (FEAT_TRAINS, SELF, sw_e7_series_backwards, position_in_consist_from_end % 36) {				
+		7:  ss_e7_series_panto_rev;
+		19: ss_e7_series_panto_rev;
+		ss_e7_series_coach_rev;				
+	}
+
+switch (FEAT_TRAINS, SELF, sw_e7_series_forwards, position_in_consist % 36) {				
+		7:  ss_e7_series_panto;
+		19: ss_e7_series_panto;
+		ss_e7_series_coach;				
+	}
+
+switch (FEAT_TRAINS, PARENT, sw_e7_series_direction, vehicle_is_reversed) {				
+		0:  sw_e7_series_forwards;
+		sw_e7_series_backwards;				
+	}
+
+switch (FEAT_TRAINS, SELF, sw_e7_series_back, position_in_consist_from_end) {				
+		1:  ss_e7_series_cab_rev;
+		sw_e7_series_direction;				
+	}
+
+switch (FEAT_TRAINS, SELF, sw_e7_series_front, position_in_consist) {				
+		1:  ss_e7_series_cab;
+		sw_e7_series_back;				
+	}
+
+switch (FEAT_TRAINS, SELF, sw_e7_series_graphics, position_in_consist % 3) {				
+		1:  sw_e7_series_front; 				
+		dummy_sprites;
+	}
+
+switch (FEAT_TRAINS, SELF, sw_e7_series_articulated_part, extra_callback_info1) {
+		1 .. 2: return series_e7;									
+		return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+	}
+
+/*---Coupling Switch---*/
+switch(FEAT_TRAINS, SELF, sw_e7_series_attach_vehid, [vehicle_type_id == mu_car_full]) {
+ 0: return string(ONLY_ADD_MUCAR);
+}
+
+/*---Length Check---*/
+switch (FEAT_TRAINS, SELF, sw_e7_series_stop_start, num_vehs_in_consist < 12) {				
+		1:  return string(STR_LENGTH_ERROR); 				
+		return CB_RESULT_NO_TEXT; 
+	}
+
+item(FEAT_TRAINS, series_e7) {
+	property {
+		/* Menu */
+        name: 							string(STR_NAME_E7_SERIES);
+		sprite_id:                      SPRITE_ID_NEW_TRAIN; 		// required to enable new graphics
+		misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT);
+		running_cost_base:              RUNNING_COST_ELECTRIC;
+		engine_class:                   ENGINE_CLASS_ELECTRIC;
+        /* Availability */
+        climates_available:             ALL_CLIMATES;
+		introduction_date:              date(2014,03,15);
+		model_life:                     VEHICLE_NEVER_EXPIRES;
+		vehicle_life:                   30;
+		track_type:                     SHINKANSEN;
+        /* Cargo */
+        reliability_decay:              5;
+		refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+		refit_cost:                     0;
+		default_cargo_type:             PASS;
+		ai_special_flag:                AI_FLAG_PASSENGER;
+        cargo_capacity:                 1;                          // Overwritten by callback
+		loading_speed:                  50;							
+		cargo_age_period:               278; 						// 1.5 times normal for this expensive long-distance train
+		/* Stats */
+        speed:                          275 km/h;				    // Per https://en.wikipedia.org/wiki/E7_and_W7_Series_Shinkansen
+		power:                          12000 kW;                   // Per https://en.wikipedia.org/wiki/E7_and_W7_Series_Shinkansen					
+		weight:                         540 tons;	                // Per https://en.wikipedia.org/wiki/E7_and_W7_Series_Shinkansen				
+		tractive_effort_coefficient:    0.3;
+		air_drag_coefficient:			0;
+	}
+	graphics {
+		/* Menu */
+        additional_text:                string(STR_DESC_E7_SERIES);
+        cargo_subtype_text:             sw_e7_series_subtype_text;
+		can_attach_wagon:				sw_e7_series_attach_vehid;
+		start_stop:						sw_e7_series_stop_start;
+        /* Graphics */
+        default:                        sw_e7_series_graphics;
+		purchase:                       ss_e7_series_buy;
+		articulated_part:               sw_e7_series_articulated_part;
+		visual_effect_and_powered:      sw_visual_effect_and_powered;
+        /* Stats */
+        length:                         sw_length_2_8_2;
+        power:                          sw_e7_series_power;
+        weight:                         sw_e7_series_weight;
+		cargo_capacity:                 sw_e7_series_cargo_capacity;
+		loading_speed:					sw_e7_series_loading_speed;
+		cargo_age_period:				param_decay_express;
+		cost_factor:                    130;
+		running_cost_factor:            sw_e7_series_running_costs;
+		purchase_running_cost_factor:   running_cost_e7_series;		
+	}
+
+	/*Multiple Unit Car*/
+	
+      livery_override(mu_car_full){
+        default:                        sw_e7_series_graphics;
+        cargo_capacity:                 sw_e7_series_cargo_capacity;
+        cargo_age_period:				param_decay_express;
+        loading_speed:                  sw_e7_series_loading_speed;
+		articulated_part:				sw_mucar_full_articulated_part;
+		length:							sw_length_2_8_2;
+		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
+		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
+        running_cost_factor:            sw_e7_series_running_costs;
+      }
+}
+
+/* End E7 series */

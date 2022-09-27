@@ -62,7 +62,7 @@ switch (FEAT_TRAINS, SELF, sw_e4_series_back, position_in_consist_from_end) {
 		sw_e4_series_midcars;				
 	}
 
-// Front Cab seclection
+// Front Cab selection
 switch (FEAT_TRAINS, SELF, sw_e4_series_front, position_in_consist) {				
 		1:  ss_e4_series_cab;
 		sw_e4_series_back;				
@@ -90,13 +90,12 @@ switch (FEAT_TRAINS, SELF, sw_e4_series_stop_start, [num_vehs_in_consist < 12]) 
 		return CB_RESULT_NO_TEXT; 
 	}
 
-
 item(FEAT_TRAINS, series_e4) {
 	property {
 		/* Menu */
         name: 							string(STR_NAME_E4_SERIES);
 		sprite_id:                      SPRITE_ID_NEW_TRAIN; 		// required to enable new graphics
-        misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
+        misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT);
         running_cost_base:              RUNNING_COST_ELECTRIC;
 		engine_class:                   ENGINE_CLASS_ELECTRIC;
         /* Availability */
@@ -134,8 +133,8 @@ item(FEAT_TRAINS, series_e4) {
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
         /* Stats */
         length:                         sw_length_2_8_2;
-		power:							power_per_motor_e4_series * 4;
-		weight:							weight_e4_series;
+		power:							sw_e4_series_power;
+		weight:							sw_e4_series_weight;
 		cargo_capacity:                 sw_e4_series_param_cargo_capacity;
 		loading_speed:					sw_e4_series_loading_speed;
 		cargo_age_period:				param_decay_express;
@@ -152,11 +151,10 @@ item(FEAT_TRAINS, series_e4) {
         cargo_age_period:				param_decay_express;
         loading_speed:                  sw_e4_series_loading_speed;
 		articulated_part:				sw_mucar_full_articulated_part;
-        power:                          power_per_motor_e4_series * 4;
-        weight:                         weight_e4_series;
+		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
+        //weight:						// Apply weight in graphics block to calculate Max T.E. correctly
 		length:							sw_length_2_8_2;
-        running_cost_factor:            18;
-		purchase_running_cost_factor:	18;
+        running_cost_factor:            sw_e4_series_running_costs;
       }
 }
 

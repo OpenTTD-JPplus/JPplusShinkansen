@@ -91,7 +91,7 @@
         sw_e1_series_coach_reversed_year_dep_livery;
     }
 
-    switch(FEAT_TRAINS, SELF, ss_e1_series_coach_reversed, current_year) {
+    switch(FEAT_TRAINS, SELF, ss_e1_series_coach_rev, current_year) {
         0..2003: sw_e1_series_coach_reversed_old_livery;
         sw_e1_series_coach_reversed_new_livery;
     }
@@ -139,7 +139,7 @@
         sw_e1_series_panto_reversed_year_dep_livery;
     }
 
-    switch(FEAT_TRAINS, SELF, ss_e1_series_panto_reversed, current_year) {
+    switch(FEAT_TRAINS, SELF, ss_e1_series_panto_rev, current_year) {
         0..2003: sw_e1_series_panto_reversed_old_livery;
         sw_e1_series_panto_reversed_new_livery;
     }
