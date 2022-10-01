@@ -15,21 +15,44 @@ switch (FEAT_TRAINS, SELF, sw_0_series_forwards, position_in_consist % 6) {
 		ss_0_series_coach;				
 	}
 
-switch (FEAT_TRAINS, PARENT, sw_0_series_direction, vehicle_is_reversed) {				
+switch (FEAT_TRAINS, PARENT, sw_0_series_midcars, vehicle_is_reversed) {				
 		0:  sw_0_series_forwards;
 		sw_0_series_backwards;				
 	}
 
+// Back Car Pantocheck
+switch (FEAT_TRAINS, PARENT, sw_0_series_back_evenreversecheck, vehicle_is_reversed) {				
+		0:  ss_0_series_cabwp_rev;
+		ss_0_series_cab_rev;				
+	}
+
+switch (FEAT_TRAINS, SELF, sw_0_series_back_oddevencheck, num_vehs_in_consist % 2) {				
+		0:  sw_0_series_back_evenreversecheck;
+		ss_0_series_cab_rev;				
+	}
+
 switch (FEAT_TRAINS, SELF, sw_0_series_back, position_in_consist_from_end) {				
-		1:  ss_0_series_cab_rev;
-		sw_0_series_direction;				
+		1:  sw_0_series_back_oddevencheck;
+		sw_0_series_midcars;				
+	}
+
+// Front Car Pantocheck
+switch (FEAT_TRAINS, SELF, sw_0_series_front_oddevencheck, num_vehs_in_consist % 2) {				
+		1:  ss_0_series_cab;
+		ss_0_series_cabwp;				
+	}
+
+switch (FEAT_TRAINS, PARENT, sw_0_series_front_reversecheck, vehicle_is_reversed) {				
+		0:  ss_0_series_cab;
+		sw_0_series_front_oddevencheck;				
 	}
 
 switch (FEAT_TRAINS, SELF, sw_0_series_front, position_in_consist) {				
-		1:  ss_0_series_cab;
+		1:  sw_0_series_front_reversecheck;
 		sw_0_series_back;				
 	}
 
+// GRAPHICS
 switch (FEAT_TRAINS, SELF, sw_0_series_graphics, position_in_consist % 3) {				
 		1:  sw_0_series_front; 				
 		dummy_sprites;

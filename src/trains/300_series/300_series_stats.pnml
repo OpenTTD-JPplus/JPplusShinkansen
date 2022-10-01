@@ -1,40 +1,23 @@
 /* Begin 300 Series STATS */
 
-/* NUMBER OF CARS */
-
-    switch(FEAT_TRAINS, SELF, sw_300_series_number_of_cars, cargo_subtype) {
-            1: return 12; 
-            2: return 8;     
-            return 16;       
-        }
-
-    switch(FEAT_TRAINS, SELF, sw_300_series_number_of_motor_cars, cargo_subtype) {
-            1: return 8;        // 8M 4T
-            2: return 6;        // 6M 2T 
-            return 10;          // 10M 6T
-        }
-
-/* LENGTH */
-    switch (FEAT_TRAINS, SELF, sw_300_series_length, cargo_subtype) {
-        1: sw_length_1_1_8_2;
-        2: sw_length_1_1_7_1_1_1;
-        sw_length_2_8_2;
+/* RUNNING COSTS */
+    running_cost_300_series = 187;              // 150 is approx JPS
+    
+    switch (FEAT_TRAINS, SELF, sw_300_series_running_costs, current_speed) {
+        0: running_cost_300_series / 10 ;       // Stopped
+        1..15: running_cost_300_series / 4 ;    // Moving below ~33.5 mph
+        running_cost_300_series ;               // Track speed
     }
 
 /* WEIGHT */
-    weight_300_series = 44;           // 42 tons from https://web-japan.org/atlas/technology/tec08.html	
+    weight_300_series = 44;
+
+    switch (FEAT_TRAINS, SELF, sw_300_series_weight, NumberCarsInConsist() * weight_300_series ) {return;}                         
 
 /* POWER */
-    power_per_motor_300_series = 402; // in hp (300 kW)
+    power_per_motor_300_series = 402;           // in hp (300 kW)
 
-/* RUNNING COSTS */
-    running_cost_300_series = 187;                  // 150 is approx JPS
-    
-    switch(FEAT_TRAINS, SELF, sw_300_series_running_costs, current_speed) {
-        0: running_cost_300_series / 10 * sw_300_series_number_of_cars();       // Stopped
-        1..15: running_cost_300_series / 4 * sw_300_series_number_of_cars(); 	// Moving below ~33.5 mph
-        running_cost_300_series * sw_300_series_number_of_cars(); 				// Track speed
-    }
+    switch (FEAT_TRAINS, SELF, sw_300_series_power, (( NumberCarsInConsist() / 2 ) + 2 ) * power_per_motor_300_series * 4 ) {return;}
 
 /* CARGO CAPACITY 
 
@@ -49,68 +32,16 @@
 */
 
     // Passenger Capacities for each parameter level
-    switch(FEAT_TRAINS, SELF, sw_300_series_cargo_capacity_16car, param_basecapacity) {
+    switch(FEAT_TRAINS, SELF, sw_300_series_cargo_capacity, param_basecapacity) {
         0: return 28;       // 1x Real World Capacity
         2: return 56;       // 2x Double Real World Capacity
         return 42;          // 1.5x Long Sprite Adjusted Capacity 
     }
 
-    switch(FEAT_TRAINS, SELF, sw_300_series_cargo_capacity_12car, param_basecapacity) {
-        0: return 20;       // 1x Real World Capacity
-        2: return 40;       // 2x Double Real World Capacity
-        return 30;          // 1.5x Long Sprite Adjusted Capacity 
-    }
-
-    switch(FEAT_TRAINS, SELF, sw_300_series_cargo_capacity_08car, param_basecapacity) {
-        0: return 13;       // 1x Real World Capacity
-        2: return 26;       // 2x Double Real World Capacity
-        return 20;          // 1.5x Long Sprite Adjusted Capacity 
-    }
-
-    switch (FEAT_TRAINS, SELF, sw_300_series_cargo_capacity, cargo_subtype) {
-        1: sw_300_series_cargo_capacity_12car;
-        2: sw_300_series_cargo_capacity_08car;
-        sw_300_series_cargo_capacity_16car;
-    }
-
 /* LOADING SPEED */
 
-    // 16 car
-    switch(FEAT_TRAINS, SELF, sw_300_series_loading_speed_16car, param_basecapacity) {
+    switch(FEAT_TRAINS, SELF, sw_300_series_loading_speed, param_basecapacity) {
         0: return 28 / param_loading_2D;        // 1x Real World Capacity
         2: return 56 / param_loading_2D;        // 2x Double Real World Capacity
         return 42 / param_loading_2D;           // 1.5x Long Sprite Adjusted Capacity 
-    }
-
-    // 12 car
-    switch(FEAT_TRAINS, SELF, sw_300_series_loading_speed_12car, param_basecapacity) {
-        0: return 20 / param_loading_2D;        // 1x Real World Capacity
-        2: return 40 / param_loading_2D;        // 2x Double Real World Capacity
-        return 30 / param_loading_2D;           // 1.5x Long Sprite Adjusted Capacity 
-    }
-
-    // 8 car
-    switch(FEAT_TRAINS, SELF, sw_300_series_loading_speed_08car, param_basecapacity) {
-        0: return 13 / param_loading_2D;        // 1x Real World Capacity
-        2: return 26 / param_loading_2D;        // 2x Double Real World Capacity
-        return 20 / param_loading_2D;           // 1.5x Long Sprite Adjusted Capacity 
-    }
-
-    switch (FEAT_TRAINS, SELF, sw_300_series_loading_speed, cargo_subtype) {
-        1: sw_300_series_loading_speed_12car;
-        2: sw_300_series_loading_speed_08car;
-        sw_300_series_loading_speed_16car;
-    }
-
-/* REFIT COST */
-   
-    switch(FEAT_TRAINS, SELF, sw_300_series_refit_cost, var[0x10,8,0xFF] - cargo_subtype) {
-        /* Refit cost based on difference between target cargo sybtype and current cargo subtype.
-	    Refitting to fewer carriages refunds money, while adding carriages costs (more) money.    */    
-
-        -2:				8;
-	    -1:				4;
-	    0:				0;
-	    1:				-4;
-	    2:				-8;
     }

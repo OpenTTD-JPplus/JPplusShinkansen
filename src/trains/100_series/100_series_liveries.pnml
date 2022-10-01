@@ -20,11 +20,10 @@ switch(FEAT_TRAINS, SELF, sw_100_series_cab_year_dep_livery, build_year) {
     ss_100_series_cab_kodama_livery;
 }
 
-switch(FEAT_TRAINS, SELF, sw_100_series_cab, cargo_subtype) {
+switch(FEAT_TRAINS, SELF, ss_100_series_cab, cargo_subtype) {
     1: ss_100_series_cab_original_livery;       // Original
     2: ss_100_series_cab_original_livery;       // Original
-    3: ss_100_series_cab_original_livery;       // Original
-    4: ss_100_series_cab_kodama_livery;         // Kodama
+    3: ss_100_series_cab_kodama_livery;         // Kodama
     sw_100_series_cab_year_dep_livery;          // Year-dependent Livery
 }
 
@@ -35,12 +34,40 @@ switch(FEAT_TRAINS, SELF, sw_100_series_cab_rev_year_dep_livery, build_year) {
     ss_100_series_cab_rev_kodama_livery;
 }
 
-switch(FEAT_TRAINS, SELF, sw_100_series_cab_rev, cargo_subtype) {
+switch(FEAT_TRAINS, SELF, ss_100_series_cab_rev, cargo_subtype) {
     1: ss_100_series_cab_rev_original_livery;   // Original
     2: ss_100_series_cab_rev_original_livery;   // Original
-    3: ss_100_series_cab_rev_original_livery;   // Original
-    4: ss_100_series_cab_rev_kodama_livery;     // Kodama
+    3: ss_100_series_cab_rev_kodama_livery;     // Kodama
     sw_100_series_cab_rev_year_dep_livery;      // Year-dependent Livery
+}
+
+/* "CAB" w/ PANTO*/
+
+// Year Dependent Livery
+switch(FEAT_TRAINS, SELF, sw_100_series_cabwp_year_dep_livery, build_year) {
+    0..1999: ss_100_series_cabwp_original_livery;
+    ss_100_series_cabwp_kodama_livery;
+}
+
+switch(FEAT_TRAINS, SELF, ss_100_series_cabwp, cargo_subtype) {
+    1: ss_100_series_cabwp_original_livery;       // Original
+    2: ss_100_series_cabwp_original_livery;       // Original
+    3: ss_100_series_cabwp_kodama_livery;         // Kodama
+    sw_100_series_cabwp_year_dep_livery;          // Year-dependent Livery
+}
+
+// Reversed
+// Year Dependent Livery
+switch(FEAT_TRAINS, SELF, sw_100_series_cabwp_rev_year_dep_livery, build_year) {
+    0..1999: ss_100_series_cabwp_rev_original_livery;
+    ss_100_series_cabwp_rev_kodama_livery;
+}
+
+switch(FEAT_TRAINS, SELF, ss_100_series_cabwp_rev, cargo_subtype) {
+    1: ss_100_series_cabwp_rev_original_livery;   // Original
+    2: ss_100_series_cabwp_rev_original_livery;   // Original
+    3: ss_100_series_cabwp_rev_kodama_livery;     // Kodama
+    sw_100_series_cabwp_rev_year_dep_livery;      // Year-dependent Livery
 }
 
 /* "COACH" */
@@ -51,11 +78,10 @@ switch(FEAT_TRAINS, SELF, sw_100_series_coach_year_dep_livery, build_year) {
     ss_100_series_coach_kodama_livery;
 }
 
-switch(FEAT_TRAINS, SELF, sw_100_series_coach, cargo_subtype) {
+switch(FEAT_TRAINS, SELF, ss_100_series_coach, cargo_subtype) {
     1: ss_100_series_coach_original_livery;       // Original
     2: ss_100_series_coach_original_livery;       // Original
-    3: ss_100_series_coach_original_livery;       // Original
-    4: ss_100_series_coach_kodama_livery;         // Kodama
+    3: ss_100_series_coach_kodama_livery;         // Kodama
     sw_100_series_coach_year_dep_livery;          // Year-dependent Livery
 }
 
@@ -66,11 +92,10 @@ switch(FEAT_TRAINS, SELF, sw_100_series_coach_rev_year_dep_livery, build_year) {
     ss_100_series_coach_rev_kodama_livery;
 }
 
-switch(FEAT_TRAINS, SELF, sw_100_series_coach_rev, cargo_subtype) {
+switch(FEAT_TRAINS, SELF, ss_100_series_coach_rev, cargo_subtype) {
     1: ss_100_series_coach_rev_original_livery;   // Original
     2: ss_100_series_coach_rev_original_livery;   // Original
-    3: ss_100_series_coach_rev_original_livery;   // Original
-    4: ss_100_series_coach_rev_kodama_livery;     // Kodama
+    3: ss_100_series_coach_rev_kodama_livery;     // Kodama
     sw_100_series_coach_rev_year_dep_livery;      // Year-dependent Livery
 }
 
@@ -82,11 +107,10 @@ switch(FEAT_TRAINS, SELF, sw_100_series_panto_year_dep_livery, build_year) {
     ss_100_series_panto_kodama_livery;
 }
 
-switch(FEAT_TRAINS, SELF, sw_100_series_panto, cargo_subtype) {
+switch(FEAT_TRAINS, SELF, ss_100_series_panto, cargo_subtype) {
     1: ss_100_series_panto_original_livery;       // Original
     2: ss_100_series_panto_original_livery;       // Original
-    3: ss_100_series_panto_original_livery;       // Original
-    4: ss_100_series_panto_kodama_livery;         // Kodama
+    3: ss_100_series_panto_kodama_livery;         // Kodama
     sw_100_series_panto_year_dep_livery;          // Year-dependent Livery
 }
 
@@ -97,10 +121,9 @@ switch(FEAT_TRAINS, SELF, sw_100_series_panto_rev_year_dep_livery, build_year) {
     ss_100_series_panto_rev_kodama_livery;
 }
 
-switch(FEAT_TRAINS, SELF, sw_100_series_panto_rev, cargo_subtype) {
+switch(FEAT_TRAINS, SELF, ss_100_series_panto_rev, cargo_subtype) {
     1: ss_100_series_panto_rev_original_livery;   // Original
     2: ss_100_series_panto_rev_original_livery;   // Original
-    3: ss_100_series_panto_rev_original_livery;   // Original
-    4: ss_100_series_panto_rev_kodama_livery;     // Kodama
+    3: ss_100_series_panto_rev_kodama_livery;     // Kodama
     sw_100_series_panto_rev_year_dep_livery;      // Year-dependent Livery
 }

@@ -30,6 +30,36 @@
         sw_0_series_cab_rev_year_dep_livery;
     }
 
+    // CAB w/ PANTOS
+
+    switch(FEAT_TRAINS, SELF, sw_0_series_cabwp_year_dep_livery, build_year) {
+        0..2001: ss_0_series_cabwp_original_livery;
+        2002..9999: ss_0_series_cabwp_kodama_livery;
+        ss_0_series_cabwp_original_livery;
+    }
+
+    switch(FEAT_TRAINS, SELF, ss_0_series_cabwp, cargo_subtype) {
+        1: ss_0_series_cabwp_original_livery;
+        2: ss_0_series_cabwp_nose_livery;
+        3: ss_0_series_cabwp_kodama_livery;
+        sw_0_series_cabwp_year_dep_livery;
+    }
+
+    // CAB REVERSED w/ PANTOS
+
+    switch(FEAT_TRAINS, SELF, sw_0_series_cabwp_rev_year_dep_livery, build_year) {
+        0..2001: ss_0_series_cabwp_rev_original_livery;
+        2002..9999: ss_0_series_cabwp_rev_kodama_livery;
+        ss_0_series_cabwp_rev_original_livery;
+    }
+
+    switch(FEAT_TRAINS, SELF, ss_0_series_cabwp_rev, cargo_subtype) {
+        1: ss_0_series_cabwp_rev_original_livery;
+        2: ss_0_series_cabwp_rev_nose_livery;
+        3: ss_0_series_cabwp_rev_kodama_livery;
+        sw_0_series_cabwp_rev_year_dep_livery;
+    }
+
     // COACH
 
     switch(FEAT_TRAINS, SELF, sw_0_series_coach_year_dep_livery, build_year) {
