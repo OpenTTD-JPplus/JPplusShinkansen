@@ -4,10 +4,20 @@
     running_cost_800_series = 187;    // 150 is approx JPS
     
     switch (FEAT_TRAINS, SELF, sw_800_series_running_costs, current_speed) {
-        0: running_cost_800_series / 10 * 6;           // Stopped
-        1..15: running_cost_800_series / 4 * 6; 	    // Moving below ~33.5 mph
-        running_cost_800_series * 6; 				    // Track speed
+        0: running_cost_800_series / 10 ;           // Stopped
+        1..15: running_cost_800_series / 4 ; 	    // Moving below ~33.5 mph
+        running_cost_800_series ; 				    // Track speed
     }
+
+/* WEIGHT */
+    weight_800_series = 44;          
+
+    switch (FEAT_TRAINS, SELF, sw_800_series_weight, NumberCarsInConsist() * weight_800_series ) {return;}  
+
+/* POWER */
+    power_per_motor_800_series = 375; // in hp (285 kW)
+
+    switch (FEAT_TRAINS, SELF, sw_800_series_power, NumberCarsInConsist() * power_per_motor_800_series * 4 ) {return;}
 
 /* CARGO CAPACITY 
 
