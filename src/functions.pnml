@@ -9,17 +9,6 @@ switch (FEAT_TRAINS, SELF, sw_visual_effect_and_powered, ((position_in_articulat
 	return visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
 }
 
-/* Which IDs can attach */
-switch(FEAT_TRAINS, SELF, sw_full_notjreast_attach_vehid, [
-    vehicle_type_id == series_0 || 
-    vehicle_type_id == series_100 || 
-    vehicle_type_id == series_300 ||
-    vehicle_type_id == series_500 ||
-    vehicle_type_id == series_700 ||
-    vehicle_type_id == series_n700 ||
-    vehicle_type_id == series_n700_kyushu
-    ]) {0: return string(NON_JR_EAST_ONLY_FULL);}
-
 /*	CARGO DECAY	*/
 if (param_cargodecay == 0) {
 	param_decay_express = 256;
@@ -51,19 +40,6 @@ if (param_basecapacity == 2) {
     switch (FEAT_TRAINS, SELF, sw_length_2_8_2, position_in_articulated_veh % 3) {
         1: return 8;
         return 2;
-    }
-
-// 1-1-8-2
-    switch(FEAT_TRAINS, SELF, sw_length_1_1_8_2, position_in_articulated_veh % 4) {
-        2: return 8;
-        3: return 2;
-        return 1;
-    }
-
-// 1-1-7-1-1-1
-    switch(FEAT_TRAINS, SELF, sw_length_1_1_7_1_1_1, position_in_articulated_veh % 6 ) {
-        2: return 7;
-        return 1;
     }
 
 /* End Functions */ 

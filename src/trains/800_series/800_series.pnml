@@ -7,13 +7,13 @@
 
 switch (FEAT_TRAINS, SELF, sw_800_series_backwards_long, position_in_consist_from_end % 48) {				
 		13: ss_800_series_panto_rev;
-		37: ss_800_series_panto_rev;
+		28: ss_800_series_panto_rev;
 		ss_800_series_coach_rev;				
 	}
 
 switch (FEAT_TRAINS, SELF, sw_800_series_forwards_long, position_in_consist % 48) {				
 		13: ss_800_series_panto;
-		37: ss_800_series_panto;
+		28: ss_800_series_panto;
 		ss_800_series_coach;				
 	}
 

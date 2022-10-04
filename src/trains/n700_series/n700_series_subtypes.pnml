@@ -3,34 +3,45 @@
     // Original N700 Series launched 2007
     switch(FEAT_TRAINS, SELF, sw_n700_series_subtype_text_2007, cargo_subtype) {
 	    0: return string(LV_YEAR_DEP_LIVERY);           // Year Dependent Livery
-        1: return string(LV_N700_SERIES_N700);          // 16 Car Original
+        1: return string(LV_N700_SERIES_N700);          // Original
         return CB_RESULT_NO_TEXT;
         }
 
-    // Post 2011 subtype text
+    // Post 2011 subtype text - N700 Kyushu
     switch(FEAT_TRAINS, SELF, sw_n700_series_subtype_text_2011, cargo_subtype) {
 	    0: return string(LV_YEAR_DEP_LIVERY);           // Year Dependent Livery
-        1: return string(LV_N700_SERIES_N700);          // 16 Car Original
-        2: return string(LV_N700_SERIES_N700_08CAR);    // 8 Car Original
+        1: return string(LV_N700_SERIES_N700);          // Original
+        2: return string(LV_N700_SERIES_KYUSHU);        // Kyushu
         return CB_RESULT_NO_TEXT;
         }
 
     // Post 2013 subtype text - N700A
     switch(FEAT_TRAINS, SELF, sw_n700_series_subtype_text_2013, cargo_subtype) {
 	    0: return string(LV_YEAR_DEP_LIVERY);           // Year Dependent Livery
-        1: return string(LV_N700_SERIES_N700);          // 16 Car Original
-        2: return string(LV_N700_SERIES_N700_08CAR);    // 8 Car Original
-        3: return string(LV_N700_SERIES_N700A);         // 16 Car N700A
+        1: return string(LV_N700_SERIES_N700);          // Original
+        2: return string(LV_N700_SERIES_KYUSHU);        // Kyushu
+        3: return string(LV_N700_SERIES_N700A);         // N700A
         return CB_RESULT_NO_TEXT;
         }
 
     // Post 2020 subtype text - N700S
     switch(FEAT_TRAINS, SELF, sw_n700_series_subtype_text_2020, cargo_subtype) {
 	    0: return string(LV_YEAR_DEP_LIVERY);           // Year Dependent Livery
-        1: return string(LV_N700_SERIES_N700);          // 16 Car Original
-        2: return string(LV_N700_SERIES_N700_08CAR);    // 8 Car Original
-        3: return string(LV_N700_SERIES_N700A);         // 16 Car N700A
-        4: return string(LV_N700_SERIES_N700S);         // 16 Car N700S    
+        1: return string(LV_N700_SERIES_N700);          // Original
+        2: return string(LV_N700_SERIES_KYUSHU);        // Kyushu
+        3: return string(LV_N700_SERIES_N700A);         // N700A
+        4: return string(LV_N700_SERIES_N700S);         // N700S    
+        return CB_RESULT_NO_TEXT;
+        }
+
+    // Post 2023 subtype text - N700S Kanome
+    switch(FEAT_TRAINS, SELF, sw_n700_series_subtype_text_2023, cargo_subtype) {
+	    0: return string(LV_YEAR_DEP_LIVERY);           // Year Dependent Livery
+        1: return string(LV_N700_SERIES_N700);          // Original
+        2: return string(LV_N700_SERIES_KYUSHU);        // Kyushu
+        3: return string(LV_N700_SERIES_N700A);         // N700A
+        4: return string(LV_N700_SERIES_N700S);         // N700S
+        5: return string(LV_N700_SERIES_KANOME);        // Kanome Livery    
         return CB_RESULT_NO_TEXT;
         }
 
@@ -38,27 +49,6 @@
         0..2010:    sw_n700_series_subtype_text_2007;
         2011..2012: sw_n700_series_subtype_text_2011;
         2013..2019: sw_n700_series_subtype_text_2013;
-        sw_n700_series_subtype_text_2020;
-        }
-
-/* N700 KYUSHU CARGO SUBTYPE MENU*/
-
-    // Post 2011 subtype text
-    switch(FEAT_TRAINS, SELF, sw_n700_series_kyushu_subtype_text_2011, cargo_subtype) {
-	    0: return string(LV_YEAR_DEP_LIVERY);           // Year Dependent Livery
-        1: return string(LV_N700_SERIES_KYUSHU);        // 16 Car Original
-        return CB_RESULT_NO_TEXT;
-        }
-
-    // Post 2023 subtype text
-    switch(FEAT_TRAINS, SELF, sw_n700_series_kyushu_subtype_text_2023, cargo_subtype) {
-	    0: return string(LV_YEAR_DEP_LIVERY);           // Year Dependent Livery
-        1: return string(LV_N700_SERIES_KYUSHU);        // 8 Car Kyushu Livery
-        2: return string(LV_N700_SERIES_KANOME);        // 6 Car Kanome Livery
-        return CB_RESULT_NO_TEXT;
-        }        
-
-    switch(FEAT_TRAINS, SELF, sw_n700_series_kyushu_subtype_text, current_year) {
-        0..2022: sw_n700_series_kyushu_subtype_text_2011;
-        sw_n700_series_kyushu_subtype_text_2023;
+        2020..2022: sw_n700_series_subtype_text_2020;
+        sw_n700_series_subtype_text_2023;
         }
