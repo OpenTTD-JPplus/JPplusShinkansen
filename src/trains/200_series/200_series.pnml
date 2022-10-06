@@ -79,13 +79,35 @@ switch (FEAT_TRAINS, PARENT, sw_200_series_midcars, vehicle_is_reversed) {
 		sw_200_series_backwards;				
 	}
 
+// Back Car Pantocheck
+switch (FEAT_TRAINS, PARENT, sw_200_series_back_evenreversecheck, vehicle_is_reversed) {				
+		0:  ss_200_series_cabwp_rev;
+		ss_200_series_cab_rev;				
+	}
+
+switch (FEAT_TRAINS, SELF, sw_200_series_back_oddevencheck, num_vehs_in_consist % 2) {				
+		0:  sw_200_series_back_evenreversecheck;
+		ss_200_series_cab_rev;				
+	}
+
 switch (FEAT_TRAINS, SELF, sw_200_series_back, position_in_consist_from_end) {				
-		1:  ss_200_series_cab_rev;
+		1:  sw_200_series_back_oddevencheck;
 		sw_200_series_midcars;				
 	}
 
-switch (FEAT_TRAINS, SELF, sw_200_series_front, position_in_consist) {				
+// Front Car Pantocheck
+switch (FEAT_TRAINS, SELF, sw_200_series_front_oddevencheck, num_vehs_in_consist % 2) {				
 		1:  ss_200_series_cab;
+		ss_200_series_cabwp;				
+	}
+
+switch (FEAT_TRAINS, PARENT, sw_200_series_front_reversecheck, vehicle_is_reversed) {				
+		0:  ss_200_series_cab;
+		sw_200_series_front_oddevencheck;				
+	}
+
+switch (FEAT_TRAINS, SELF, sw_200_series_front, position_in_consist) {				
+		1:  sw_200_series_front_reversecheck;
 		sw_200_series_back;				
 	}
 
