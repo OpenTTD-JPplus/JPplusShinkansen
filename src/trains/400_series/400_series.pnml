@@ -3,7 +3,6 @@
 #include "src/trains/400_series/400_series_subtypes.pnml"
 #include "src/trains/400_series/400_series_gfx.pnml"
 #include "src/trains/400_series/400_series_liveries.pnml"
-#include "src/trains/400_series/400_series_stats.pnml"
 
 /* COACH and PANTO flipping */
 
@@ -219,17 +218,23 @@ item(FEAT_TRAINS, series_400) {
         cargo_subtype_text:             sw_400_series_subtypetext_main;
         can_attach_wagon:			    sw_400_series_attach_vehid;
         //start_stop:                   ;
+        /* Stats */
+        power:                          max (num_vehs_in_consist - 1 , 0 ) * 282 * 4;               // 210 kW = 282 hp
+        cargo_capacity:                 57 * CapacityFactor();							            // 399 / 7 = 57					
+		loading_speed:					57 * CapacityFactor() / param_loading_1D;					// Capacity divided by door loading factor
+        running_cost_factor:            (145 + 70 * num_vehs_in_consist ) * RunningCostFactor();
+        purchase_running_cost_factor:   145 + 70 * num_vehs_in_consist;	
     }
     /*Multiple Unit Car*/
       livery_override(mu_car_ms){
         default:                        sw_400_series_gfx_mucar;
-        cargo_capacity:                 sw_400_series_cargo_capacity;
+        cargo_capacity:                 57 * CapacityFactor();	
         cargo_age_period:				param_decay_express;
-        loading_speed:                  sw_400_series_loading_speed;
+        loading_speed:                  57 * CapacityFactor() / param_loading_1D;
         cargo_subtype_text:             sw_400_series_subtypetext_mucar;
-        power:                          4 * 280;
+        //power:                          4 * 280;
         weight:                         42;
-        running_cost_factor:            120;
+        //running_cost_factor:            120;
       }
 
 }

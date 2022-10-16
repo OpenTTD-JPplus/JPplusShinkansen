@@ -3,7 +3,6 @@
 #include "src/trains/e5_series/e5_series_subtypes.pnml"
 #include "src/trains/e5_series/e5_series_gfx.pnml"
 #include "src/trains/e5_series/e5_series_liveries.pnml"
-#include "src/trains/e5_series/e5_series_stats.pnml"
 
 switch (FEAT_TRAINS, SELF, sw_e5_series_backwards, position_in_consist_from_end % 30) {				
 		7:  ss_e5_series_panto_rev;
@@ -96,28 +95,28 @@ item(FEAT_TRAINS, series_e5) {
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
 		/* Stats */
 		length:                         sw_length_2_8_2;
-		power:							sw_e5_series_power;
-		weight:							sw_e5_series_weight;
-		cargo_capacity:                 sw_e5_series_cargo_capacity;
-		loading_speed:					sw_e5_series_loading_speed;
+		power:							max ((NumberCarsInConsist() - 2 ),0) * 402 * 4 ;
+		weight:							NumberCarsInConsist() * 45;
+		cargo_capacity:                 25 * CapacityFactor();										// 731 capacity / (10 cars * 3 parts) is approx 25						
+		loading_speed:					25 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
 		cargo_age_period:				param_decay_express;
 		cost_factor:                    144;
-		running_cost_factor:            sw_e5_series_running_costs;
-		purchase_running_cost_factor:   running_cost_e5_series;
+		running_cost_factor:            (100 + 50 * NumberCarsInConsist() ) * RunningCostFactor();
+		purchase_running_cost_factor:   100 + 50 * NumberCarsInConsist();	
 	}
 
 	/*Multiple Unit Car*/
 	
       livery_override(mu_car_full){
         default:                        sw_e5_series_graphics;
-        cargo_capacity:                 sw_e5_series_cargo_capacity;
+        cargo_capacity:                 25 * CapacityFactor();
         cargo_age_period:				param_decay_express;
-        loading_speed:                  sw_e5_series_loading_speed;
+        loading_speed:                  25 * CapacityFactor() / param_loading_2D;
 		articulated_part:				sw_mucar_full_articulated_part;
 		length:							sw_length_2_8_2;
 		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
 		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
-        running_cost_factor:            sw_e5_series_running_costs;
+        //running_cost_factor:            sw_e5_series_running_costs;
       }
 }
 

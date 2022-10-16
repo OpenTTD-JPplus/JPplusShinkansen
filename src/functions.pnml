@@ -4,6 +4,18 @@ switch (FEAT_TRAINS, PARENT, func_is_reversed, vehicle_is_reversed) {return;}
 
 switch (FEAT_TRAINS, PARENT, NumberCarsInConsist, num_vehs_in_consist / 3) {return;}
 
+switch (FEAT_TRAINS, SELF, RunningCostFactor, current_speed) {
+        0: return 1/10 ;        	// Stopped
+        1..15: return 1/4 ;        	// Moving below ~33.5 mph
+        return 1; 				    // Track speed
+    }
+
+switch (FEAT_TRAINS, SELF, CapacityFactor, param_basecapacity) {
+        0: return 1;       			// 1x Real World Capacity
+        2: return 2;       			// 2x Double Real World Capacity
+        return 3/2;          		// 1.5x Normal Capacity 
+    }
+
 switch (FEAT_TRAINS, SELF, sw_visual_effect_and_powered, ((position_in_articulated_veh == 0) && !func_is_reversed()) || ((position_in_articulated_veh_from_end == 0) && func_is_reversed()) ) {
 	1: return visual_effect_and_powered(VISUAL_EFFECT_ELECTRIC, 0, ENABLE_WAGON_POWER);
 	return visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);

@@ -3,7 +3,6 @@
 #include "src/trains/200_series/200_series_subtypes.pnml"
 #include "src/trains/200_series/200_series_gfx.pnml"
 #include "src/trains/200_series/200_series_liveries.pnml"
-#include "src/trains/200_series/200_series_stats.pnml"
 
 // Midcars going backwards
 switch (FEAT_TRAINS, SELF, sw_200_series_backwards_sharknose, position_in_consist_from_end % 48) {				
@@ -133,6 +132,18 @@ switch (FEAT_TRAINS, SELF, sw_200_series_stop_start, num_vehs_in_consist < 12) {
 		return CB_RESULT_NO_TEXT; 
 	}
 
+/* SPEED */
+    switch(FEAT_TRAINS, SELF, sw_200_series_speed_year_dep, build_year) {
+        0..1989: return 210;    // Original speed
+        return 240;             // Sharknose and Refurbished Speed
+    }
+        
+    switch(FEAT_TRAINS, SELF, sw_200_series_speed, cargo_subtype) {
+        0: sw_200_series_speed_year_dep;
+        1: return 210;          // Original speed
+        return 240;             // Sharknose and Refurbished Speed
+    }
+
 item(FEAT_TRAINS, series_200) {
 	property {
 		/* Menu */
@@ -176,29 +187,29 @@ item(FEAT_TRAINS, series_200) {
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
 		/* Stats */
 		length:                         sw_length_2_8_2;
-        power:							sw_200_series_power;
-		weight:							sw_200_series_weight;
+        power:							NumberCarsInConsist() * 308 * 4 ;		// 230 kW
+		weight:							NumberCarsInConsist() * 58;
         speed:							sw_200_series_speed;
-		cargo_capacity:                 sw_200_series_cargo_capacity;
-		loading_speed:					sw_200_series_loading_speed;
+		cargo_capacity:                 26 * CapacityFactor();										// 1230 capacity / (16 cars * 3 parts) is approx 26						
+		loading_speed:					26 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
 		cargo_age_period:				param_decay_express;
 		cost_factor:                    130;
-		running_cost_factor:            sw_200_series_running_costs;
-		purchase_running_cost_factor:   running_cost_200_series;
+		running_cost_factor:            (95 + 50 * NumberCarsInConsist() ) * RunningCostFactor();
+		purchase_running_cost_factor:   95 + 50 * NumberCarsInConsist();
 		
 	}
 	/*Multiple Unit Car*/
 	
       livery_override(mu_car_full){
         default:                        sw_200_series_graphics;
-        cargo_capacity:                 sw_200_series_cargo_capacity;
+        cargo_capacity:                 26 * CapacityFactor();	
         cargo_age_period:				param_decay_express;
-        loading_speed:                  sw_200_series_loading_speed;
+        loading_speed:                  26 * CapacityFactor() / param_loading_2D;
 		articulated_part:				sw_mucar_full_articulated_part;
 		length:							sw_length_2_8_2;
 		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
 		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
-        running_cost_factor:            sw_200_series_running_costs;
+        //running_cost_factor:            sw_200_series_running_costs;
       }
 }
 
