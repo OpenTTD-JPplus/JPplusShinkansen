@@ -58,7 +58,7 @@ item(FEAT_TRAINS, series_e1) {
 		name: 							string(STR_NAME_E1_SERIES);
 		sprite_id:                      SPRITE_ID_NEW_TRAIN; 		// required to enable new graphics
 		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
-		running_cost_base:              RUNNING_COST_STEAM;
+		running_cost_base:              RUNNING_COST_ELECTRIC;
 		engine_class:                   ENGINE_CLASS_ELECTRIC;
 		/* Availability */
 		climates_available:             ALL_CLIMATES;

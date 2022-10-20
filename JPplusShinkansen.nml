@@ -445,9 +445,9 @@ template japan_rails_gui_gfx() {
 //Helpers
 # 1 "src/basecosts.pnml" 1
 basecost {
-		 PR_BUILD_VEHICLE : param_basecostbuy -1;
-		 PR_BUILD_VEHICLE_WAGON: param_basecostbuy +3;
-		 PR_RUNNING: param_basecostrun +1; //3
+	PR_BUILD_VEHICLE_TRAIN : 	param_basecostbuy -1;
+	PR_BUILD_VEHICLE_WAGON: 	param_basecostbuy +3;
+	PR_RUNNING_TRAIN_ELECTRIC:	param_basecostrun +1;
 }
 # 1 "JPplusShinkansen.pnml" 4
 # 1 "src/tracks.pnml" 1
@@ -854,8 +854,8 @@ item(FEAT_TRAINS, mu_car_ms) {
         refit_cost:                   0;
         track_type:                   MINI_SHINKANSEN;
         ai_special_flag:              AI_FLAG_PASSENGER;
-        running_cost_base:            RUNNING_COST_DIESEL;
-        engine_class:                 ENGINE_CLASS_STEAM;
+        running_cost_base:            RUNNING_COST_ELECTRIC;
+        engine_class:                 ENGINE_CLASS_ELECTRIC;
         visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
         sprite_id:                    SPRITE_ID_NEW_TRAIN;
         dual_headed:                  0;
@@ -908,8 +908,8 @@ item(FEAT_TRAINS, mu_car_full) {
         refit_cost:                   0;
         track_type:                   SHINKANSEN;
         ai_special_flag:              AI_FLAG_PASSENGER;
-        running_cost_base:            RUNNING_COST_DIESEL;
-        engine_class:                 ENGINE_CLASS_STEAM;
+        running_cost_base:            RUNNING_COST_ELECTRIC;
+        engine_class:                 ENGINE_CLASS_ELECTRIC;
         visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
         sprite_id:                    SPRITE_ID_NEW_TRAIN;
         dual_headed:                  0;
@@ -4506,7 +4506,7 @@ item(FEAT_TRAINS, series_e1) {
 		name: 							string(STR_NAME_E1_SERIES);
 		sprite_id:                      SPRITE_ID_NEW_TRAIN; 		// required to enable new graphics
 		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
-		running_cost_base:              RUNNING_COST_STEAM;
+		running_cost_base:              RUNNING_COST_ELECTRIC;
 		engine_class:                   ENGINE_CLASS_ELECTRIC;
 		/* Availability */
 		climates_available:             ALL_CLIMATES;

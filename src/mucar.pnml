@@ -29,8 +29,8 @@ item(FEAT_TRAINS, mu_car_ms) {
         refit_cost:                   0;
         track_type:                   MINI_SHINKANSEN;
         ai_special_flag:              AI_FLAG_PASSENGER;
-        running_cost_base:            RUNNING_COST_DIESEL;
-        engine_class:                 ENGINE_CLASS_STEAM;
+        running_cost_base:            RUNNING_COST_ELECTRIC;
+        engine_class:                 ENGINE_CLASS_ELECTRIC;
         visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
         sprite_id:                    SPRITE_ID_NEW_TRAIN;
         dual_headed:                  0;
@@ -83,8 +83,8 @@ item(FEAT_TRAINS, mu_car_full) {
         refit_cost:                   0;
         track_type:                   SHINKANSEN;
         ai_special_flag:              AI_FLAG_PASSENGER;
-        running_cost_base:            RUNNING_COST_DIESEL;
-        engine_class:                 ENGINE_CLASS_STEAM;
+        running_cost_base:            RUNNING_COST_ELECTRIC;
+        engine_class:                 ENGINE_CLASS_ELECTRIC;
         visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
         sprite_id:                    SPRITE_ID_NEW_TRAIN;
         dual_headed:                  0;
