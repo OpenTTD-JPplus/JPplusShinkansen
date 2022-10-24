@@ -3,7 +3,6 @@
 #include "src/trains/100_series/100_series_subtypes.pnml"
 #include "src/trains/100_series/100_series_gfx.pnml"
 #include "src/trains/100_series/100_series_liveries.pnml"
-#include "src/trains/100_series/100_series_stats.pnml"
 
 // Midcars going backwards
 switch (FEAT_TRAINS, SELF, sw_100_series_backwards_v, position_in_consist_from_end % 48) {				
@@ -125,6 +124,12 @@ switch (FEAT_TRAINS, SELF, sw_100_series_stop_start, num_vehs_in_consist < 12) {
 		return CB_RESULT_NO_TEXT; 
 	}
 
+/* SPEED */
+    switch(FEAT_TRAINS, SELF, sw_100_series_speed, cargo_subtype) {
+        0..2: return 220;   // Original speed
+        return 230;         // Kodama speed
+    }
+
 item(FEAT_TRAINS, series_100) {
 	property {
 		/* Menu */
@@ -168,29 +173,29 @@ item(FEAT_TRAINS, series_100) {
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
         /* Stats */
         length:                         sw_length_2_8_2;
-        weight:                         sw_100_series_weight;
-        power:                          sw_100_series_power;
+        weight:                         NumberCarsInConsist() * 53;
+        power:                          max (NumberCarsInConsist() - 2 ,0) * 308 * 4;	// 230 kW
         speed:							sw_100_series_speed;
-		cargo_capacity:                 sw_100_series_cargo_capacity;
-		loading_speed:					sw_100_series_loading_speed;
+		cargo_capacity:                 27 * CapacityFactor();															
+		loading_speed:					27 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
 		cargo_age_period:				param_decay_express;
 		cost_factor:                    132;
-		running_cost_factor:            sw_100_series_running_costs;              
-		purchase_running_cost_factor:   running_cost_100_series;
+		running_cost_factor:            (100 + 48 * NumberCarsInConsist() ) * RunningCostFactor();
+		purchase_running_cost_factor:   100 + 48 * NumberCarsInConsist();
 		
 	}
 	/*Multiple Unit Car*/
 	
       livery_override(mu_car_full){
         default:                        sw_100_series_graphics;
-        cargo_capacity:                 sw_100_series_cargo_capacity;
+        cargo_capacity:                 27 * CapacityFactor();	
         cargo_age_period:				param_decay_express;
-        loading_speed:                  sw_100_series_loading_speed;
+        loading_speed:					27 * CapacityFactor() / param_loading_2D;
 		articulated_part:				sw_mucar_full_articulated_part;
 		length:							sw_length_2_8_2;
 		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
 		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
-        running_cost_factor:            sw_100_series_running_costs;
+        //running_cost_factor:            sw_100_series_running_costs;
       }
 }
 

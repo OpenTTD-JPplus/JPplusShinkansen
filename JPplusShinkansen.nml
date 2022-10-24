@@ -447,6 +447,8 @@ template japan_rails_gui_gfx() {
 basecost {
 	PR_BUILD_VEHICLE_TRAIN : 	param_basecostbuy -1;
 	PR_BUILD_VEHICLE_WAGON: 	param_basecostbuy +3;
+	PR_RUNNING_TRAIN_STEAM: 	param_basecostrun +1;
+	PR_RUNNING_TRAIN_DIESEL:	param_basecostrun +1;
 	PR_RUNNING_TRAIN_ELECTRIC:	param_basecostrun +1;
 }
 # 1 "JPplusShinkansen.pnml" 4
@@ -1235,63 +1237,6 @@ if (grf_order_behind("JD\A1\E1") == 0) {
 
 /* End 0 series LIVERIES*/
 # 1 "src/trains/0_series/0_series.pnml" 3
-# 1 "src/trains/0_series/0_series_stats.pnml" 1
-/* Begin 0 Series STATS */
-
-/* RUNNING COSTS */
-    running_cost_0_series = 187;    // 150 is approx JPS
-    
-    switch (FEAT_TRAINS, SELF, sw_0_series_running_costs, current_speed) {
-        0: running_cost_0_series / 10 ;             // Stopped
-        1..15: running_cost_0_series / 4 ; 	        // Moving below ~33.5 mph
-        running_cost_0_series ; 				    // Track speed
-    }
-
-/* WEIGHT */  
-    weight_0_series = 61;                           // 61t per JPS
-    
-    switch (FEAT_TRAINS, SELF, sw_0_series_weight, NumberCarsInConsist() * weight_0_series ) {return;}   
-
-/* POWER */
-    power_per_motor_0_series = 248;                 // in hp (185 kW)
-
-    switch (FEAT_TRAINS, SELF, sw_0_series_power, NumberCarsInConsist() * power_per_motor_0_series * 4 ) {return;}
-    
-/* SPEED */
-    switch (FEAT_TRAINS, SELF, sw_0_series_speed, current_year) {
-	    0..1986: return 210;                        // Until 1986, Speed = 210 km/h
-	    return 220;                                 // After 1986, Speed = 220 km/h
-    }
-
-/* CARGO CAPACITY 
-
-    16-car JPS  1248/1560/1872/2184
-    12-car JPS  936/1170/1404/1638
-    8-car  JPS  624/780/986/1092
-
-        16-car  12-car 
-    IRL 1340    ?        
-    RW  1344    1008               
-    LS  2016    1488             
-    DC  2688    2016      
-
-*/
-
-    // Passenger Capacities for each parameter level
-    switch(FEAT_TRAINS, SELF, sw_0_series_cargo_capacity, param_basecapacity) {
-        0: return 28;       // 1x Real World Capacity
-        2: return 56;       // 2x Double Real World Capacity
-        return 42;          // 1.5x Long Sprite Adjusted Capacity 
-    }
-
-/* LOADING SPEED */
-
-    switch(FEAT_TRAINS, SELF, sw_0_series_loading_speed, param_basecapacity) {
-        0: return 28 / param_loading_2D;        // 1x Real World Capacity
-        2: return 56 / param_loading_2D;        // 2x Double Real World Capacity
-        return 42 / param_loading_2D;           // 1.5x Long Sprite Adjusted Capacity 
-    }
-# 1 "src/trains/0_series/0_series.pnml" 3
 
 switch (FEAT_TRAINS, SELF, sw_0_series_backwards, position_in_consist_from_end % 6) {				
 		4:  ss_0_series_panto_rev;
@@ -1362,6 +1307,12 @@ switch (FEAT_TRAINS, SELF, sw_0_series_stop_start, num_vehs_in_consist < 12) {
 		return CB_RESULT_NO_TEXT; 
 	}
 
+/* SPEED */
+    switch (FEAT_TRAINS, SELF, sw_0_series_speed, current_year) {
+	    0..1986: return 210;                        // Until 1986, Speed = 210 km/h
+	    return 220;                                 // After 1986, Speed = 220 km/h
+    }
+
 item(FEAT_TRAINS, series_0) {
 	property {
 		/* Menu */
@@ -1405,28 +1356,28 @@ item(FEAT_TRAINS, series_0) {
         visual_effect_and_powered:      sw_visual_effect_and_powered;
 		/* Stats */
         length:                         sw_length_2_8_2;
-        weight:                         sw_0_series_weight;
-        power:                          sw_0_series_power;
         speed:							sw_0_series_speed;
-		cargo_capacity:                 sw_0_series_cargo_capacity;
-		loading_speed:					sw_0_series_loading_speed;
+		weight:                         NumberCarsInConsist() * 61;
+        power:                          NumberCarsInConsist() * 248 * 4;	// 185 kW
+        cargo_capacity:                 28 * CapacityFactor();															
+		loading_speed:					28 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
 		cargo_age_period:				param_decay_express;
         cost_factor:                    125;
-		running_cost_factor:            sw_0_series_running_costs;
-		purchase_running_cost_factor:   running_cost_0_series;
+		running_cost_factor:            (100 + 50 * NumberCarsInConsist() ) * RunningCostFactor();
+		purchase_running_cost_factor:   100 + 50 * NumberCarsInConsist();
 	}
 	/*Multiple Unit Car*/
 	
       livery_override(mu_car_full){
         default:                        sw_0_series_graphics;
-        cargo_capacity:                 sw_0_series_cargo_capacity;
+        cargo_capacity:                 28 * CapacityFactor();
         cargo_age_period:				param_decay_express;
-        loading_speed:                  sw_0_series_loading_speed;
+        loading_speed:					28 * CapacityFactor() / param_loading_2D;
 		articulated_part:				sw_mucar_full_articulated_part;
 		length:							sw_length_2_8_2;
 		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
 		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
-        running_cost_factor:            sw_0_series_running_costs;
+        //running_cost_factor:            sw_0_series_running_costs;
       }
 }
 
@@ -1721,80 +1672,6 @@ item(FEAT_TRAINS, series_0) {
     }
 /* End N700 Liveries */
 # 1 "src/trains/n700_series/n700_series.pnml" 3
-# 1 "src/trains/n700_series/n700_series_stats.pnml" 1
-/* N700 STATS */
-
-/* RUNNING COSTS */
-    running_cost_n700_series = 187;    // 150 is approx JPS
-    
-    switch (FEAT_TRAINS, SELF, sw_n700_series_running_costs, current_speed) {
-        0: running_cost_n700_series / 10 ;         // Stopped
-        1..15: running_cost_n700_series / 4 ;      // Moving below ~33.5 mph
-        running_cost_n700_series ; 				// Track speed
-    }
-
-/* WEIGHT */
-    weight_n700_series = 44;           // 44t per JPS
-
-    // Not a lot of available weight info for the N700S, other than talk of weight savings from the engines - therefore slight reduction
-    switch(FEAT_TRAINS, SELF, sw_n700_series_weight_year_dep, build_year) {
-        0..2019: return weight_n700_series * NumberCarsInConsist();             // N700 and N700A
-        return (weight_n700_series - 1) * NumberCarsInConsist();                // N700S
-    }
-    
-    switch(FEAT_TRAINS, SELF, sw_n700_series_weight, cargo_subtype) {
-        0: sw_n700_series_weight_year_dep;                                      // Year Dependent Weight
-        4: return (weight_n700_series - 1) * NumberCarsInConsist();             // N700S, slightly ligther
-        return weight_n700_series * NumberCarsInConsist();                      // Weight of a 16 car N700 as stated on Wikipedia
-    }
-
-/* POWER */
-    power_per_motor_n700_series = 409;          // in hp (or 305 kW)
-
-    switch (FEAT_TRAINS, SELF, sw_n700_series_power, max (( NumberCarsInConsist() - 2 ) , 0 )* power_per_motor_n700_series * 4 ) {return;}
-
-/* CARGO CAPACITY
-
-    JPS 1248/1560/1872/2184
-    JPS 624/780/936/1092
-
-        16-car  8-car
-    IRL 1323    546
-    RW  1344    576  
-    LS  2016    864
-    DC  2688    1152
-
-    */
-
-    // round(IRL capacity/48)
-    switch(FEAT_TRAINS, SELF, sw_n700_series_cargo_capacity, param_basecapacity) {
-        0: return 28;       // 1x Real World Capacity
-        2: return 56;       // 2x Double Real World Capacity
-        return 42;          // 1.5x Long Sprite Adjusted Capacity 
-    }
-
-/* LOADING SPEED */
-
-    switch(FEAT_TRAINS, SELF, sw_n700_series_loading_speed, param_basecapacity) {
-        0: return 28 / param_loading_2D;        // 1x Real World Capacity
-        2: return 56 / param_loading_2D;        // 2x Double Real World Capacity
-        return 42 / param_loading_2D;           // 1.5x Long Sprite Adjusted Capacity 
-    }
-
-/* SPEED */
-
-    switch(FEAT_TRAINS, SELF, sw_n700_series_speed_year_dep, build_year) {
-        0..2019: return 300;                    // N700 and N700A
-        return 360;                             // N700S
-    }
-
-    switch(FEAT_TRAINS, SELF, sw_n700_series_speed, cargo_subtype) {
-        0: sw_n700_series_speed_year_dep;       // Year Dependent
-        4: return 360;                          // N700S    
-        return 300;                             // All others      
-        
-    }
-# 1 "src/trains/n700_series/n700_series.pnml" 3
 
 switch (FEAT_TRAINS, SELF, sw_n700_series_backwards_long, position_in_consist_from_end % 48) {				
 		13: ss_n700_series_panto_rev;
@@ -1866,6 +1743,20 @@ switch (FEAT_TRAINS, SELF, sw_n700_series_stop_start, num_vehs_in_consist < 12) 
 		return CB_RESULT_NO_TEXT; 
 	}
 
+/* SPEED */
+
+    switch(FEAT_TRAINS, SELF, sw_n700_series_speed_year_dep, build_year) {
+        0..2019: return 300;                    // N700 and N700A
+        return 360;                             // N700S
+    }
+
+    switch(FEAT_TRAINS, SELF, sw_n700_series_speed, cargo_subtype) {
+        0: sw_n700_series_speed_year_dep;       // Year Dependent
+        4: return 360;                          // N700S    
+        return 300;                             // All others      
+        
+    }
+
 item(FEAT_TRAINS, series_n700) {
 	property {
 		/* Menu */
@@ -1909,27 +1800,27 @@ item(FEAT_TRAINS, series_n700) {
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
         /* Stats */
         length:                         sw_length_2_8_2;
-        weight:                         sw_n700_series_weight;
-        power:                         	sw_n700_series_power;
+        weight:                         NumberCarsInConsist() * 44;
+        power:                         	max (( NumberCarsInConsist() - 2 ) , 0 )* 409 * 4;
 		speed:							sw_n700_series_speed;
-		cargo_capacity:                 sw_n700_series_cargo_capacity;
-		loading_speed:					sw_n700_series_loading_speed;
+		cargo_capacity:                 28 * CapacityFactor();															
+		loading_speed:					28 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
 		cost_factor:                    138;
-		running_cost_factor:            sw_n700_series_running_costs;
-		purchase_running_cost_factor:   running_cost_n700_series;
+		running_cost_factor:            (105 + 49 * NumberCarsInConsist() ) * RunningCostFactor();
+		purchase_running_cost_factor:   105 + 49 * NumberCarsInConsist();
 	}
 	/*Multiple Unit Car*/
 	
       livery_override(mu_car_full){
         default:                        sw_n700_series_graphics;
-        cargo_capacity:                 sw_n700_series_cargo_capacity;
+        cargo_capacity:                 28 * CapacityFactor();	
         cargo_age_period:				param_decay_express;
-        loading_speed:                  sw_n700_series_loading_speed;
+        loading_speed:                  28 * CapacityFactor() / param_loading_2D;
 		articulated_part:				sw_mucar_full_articulated_part;
 		length:							sw_length_2_8_2;
 		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
 		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
-        running_cost_factor:            sw_n700_series_running_costs;
+        //running_cost_factor:            sw_n700_series_running_costs;
       }
 }
 
@@ -2036,61 +1927,6 @@ item(FEAT_TRAINS, series_n700) {
         1: ss_700_series_panto_rev_hikari_livery;
         ss_700_series_panto_rev_original_livery;
     }
-# 1 "src/trains/700_series/700_series.pnml" 3
-# 1 "src/trains/700_series/700_series_stats.pnml" 1
-/* Begin 700 Series STATS */
-
-/* RUNNING COSTS */
-    running_cost_700_series = 187;    // 150 is approx JPS
-    
-    switch (FEAT_TRAINS, SELF, sw_700_series_running_costs, current_speed) {
-        0: running_cost_700_series / 10 ;           // Stopped
-        1..15: running_cost_700_series / 4 ; 	    // Moving below ~33.5 mph
-        running_cost_700_series ; 				    // Track speed
-    }
-
-/* WEIGHT */
-    weight_700_series = 44;           // 44t per JPS
-
-    switch (FEAT_TRAINS, SELF, sw_700_series_weight, NumberCarsInConsist() * weight_700_series ) {return;}  
-
-/* POWER */
-    power_per_motor_700_series = 369; // in hp (275 kW)
-
-    //switch (FEAT_TRAINS, SELF, sw_700_series_power, NumberCarsInConsist() * power_per_motor_700_series * 4 ) {return;}
-
-    switch(FEAT_TRAINS, SELF, sw_700_series_power, cargo_subtype) {
-        0: NumberCarsInConsist() * 3 / 4 * power_per_motor_700_series * 4;       
-        max ( NumberCarsInConsist() - 2 , 0 ) * power_per_motor_700_series * 4;
-    }
-
-/* CARGO CAPACITY 
-
-    16-car JPS  1248/1560/1872/2184
-    8-car JPS   624/780/936/1092
-
-        16-car  8-car
-    IRL 1323    571
-    RW  1344    576        
-    LS  2016    864    
-    DC  2688    1152         
-*/
-
-    switch(FEAT_TRAINS, SELF, sw_700_series_cargo_capacity, param_basecapacity) {
-        0: return 28;       // 1x Real World Capacity
-        2: return 56;       // 2x Double Real World Capacity
-        return 42;          // 1.5x Long Sprite Adjusted Capacity 
-    }
-
-/* LOADING SPEED */
-
-    switch(FEAT_TRAINS, SELF, sw_700_series_loading_speed, param_basecapacity) {
-        0: return 28 / param_loading_2D;        // 1x Real World Capacity
-        2: return 56 / param_loading_2D;        // 2x Double Real World Capacity
-        return 42 / param_loading_2D;           // 1.5x Long Sprite Adjusted Capacity 
-    }
-
-
 # 1 "src/trains/700_series/700_series.pnml" 3
 
 switch (FEAT_TRAINS, SELF, sw_700_series_backwards_long, position_in_consist_from_end % 48) {				
@@ -2206,27 +2042,27 @@ item(FEAT_TRAINS, series_700) {
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
         /* Stats */
         length:                         sw_length_2_8_2;
-        weight:                         sw_700_series_weight;
-        power:                          sw_700_series_power;
-		cargo_capacity:                 sw_700_series_cargo_capacity;
-		loading_speed:					sw_700_series_loading_speed;
+        weight:                         NumberCarsInConsist() * 44;
+        power:                          max ( NumberCarsInConsist() - 2 , 0 ) * 369 * 4;	// 275 kW
+		cargo_capacity:                 28 * CapacityFactor();															
+		loading_speed:					28 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
 		cargo_age_period:				param_decay_express;
 		cost_factor:                    134;
-		running_cost_factor:            sw_700_series_running_costs;
-		purchase_running_cost_factor:   running_cost_700_series;
+		running_cost_factor:            (100 + 48 * NumberCarsInConsist() ) * RunningCostFactor();
+		purchase_running_cost_factor:   100 + 48 * NumberCarsInConsist();
 	}
 	/*Multiple Unit Car*/
 	
       livery_override(mu_car_full){
         default:                        sw_700_series_graphics;
-        cargo_capacity:                 sw_700_series_cargo_capacity;
+        cargo_capacity:                 28 * CapacityFactor();
         cargo_age_period:				param_decay_express;
-        loading_speed:                  sw_700_series_loading_speed;
+        loading_speed:					28 * CapacityFactor() / param_loading_2D;
 		articulated_part:				sw_mucar_full_articulated_part;
 		length:							sw_length_2_8_2;
 		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
 		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
-        running_cost_factor:            sw_700_series_running_costs;
+        //running_cost_factor:            sw_700_series_running_costs;
       }
 }
 
@@ -2262,55 +2098,6 @@ item(FEAT_TRAINS, series_700) {
     alternative_sprites(ss_500_series_panto_rev,    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,     "src/gfx/500_series/500_series.png") {template_12_reversed(1,81)}	
 # 1 "src/trains/500_series/500_series.pnml" 4
 // #include "src/trains/500_series/500_series_liveries.pnml"
-# 1 "src/trains/500_series/500_series_stats.pnml" 1
-/* Begin 500 Series STATS */
-
-/* RUNNING COSTS */
-    running_cost_500_series = 187;    // 150 is approx JPS
-    
-    switch (FEAT_TRAINS, SELF, sw_500_series_running_costs, current_speed) {
-        0: running_cost_500_series / 10 ;           // Stopped
-        1..15: running_cost_500_series / 4 ; 	    // Moving below ~33.5 mph
-        running_cost_500_series ; 				    // Track speed
-    }
-
-/* WEIGHT */
-    weight_500_series = 42;           // 42 tons from https://web-japan.org/atlas/technology/tec08.html	
-
-    switch (FEAT_TRAINS, SELF, sw_500_series_weight, NumberCarsInConsist() * weight_500_series ) {return;}    
-
-/* POWER */
-    power_per_motor_500_series = 382; // in hp (285 kW)
-
-    switch (FEAT_TRAINS, SELF, sw_500_series_power, NumberCarsInConsist() * power_per_motor_500_series * 4 ) {return;}
-
-/* CARGO CAPACITY 
-
-    16-car JPS  1248/1560/1872/2184
-    08-car JPS  624/780/936/1092
-
-        16-car  8-car
-    IRL 1324    608
-    RW  1344    624       
-    LS  2016      
-    DC  2688           
-*/
-
-    // Passenger Capacities for each parameter level
-    switch(FEAT_TRAINS, SELF, sw_500_series_cargo_capacity, param_basecapacity) {
-        0: return 28;       // 1x Real World Capacity
-        2: return 56;       // 2x Double Real World Capacity
-        return 42;          // 1.5x Long Sprite Adjusted Capacity 
-    }
-
-/* LOADING SPEED */
-
-    switch(FEAT_TRAINS, SELF, sw_500_series_loading_speed, param_basecapacity) {
-        0: return 28 / param_loading_2D;        // 1x Real World Capacity
-        2: return 56 / param_loading_2D;        // 2x Double Real World Capacity
-        return 42 / param_loading_2D;           // 1.5x Long Sprite Adjusted Capacity 
-    }
-# 1 "src/trains/500_series/500_series.pnml" 4
 
 switch (FEAT_TRAINS, SELF, sw_500_series_backwards_long, position_in_consist_from_end % 48) {				
 		13: ss_500_series_panto_rev;
@@ -2423,27 +2210,27 @@ item(FEAT_TRAINS, series_500) {
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
 		/* Stats */
 		length:                         sw_length_2_8_2;
-		weight:							sw_500_series_weight;
-		power:							sw_500_series_power;
-		cargo_capacity:                 sw_500_series_cargo_capacity;
-		loading_speed:					sw_500_series_loading_speed;
+		weight:							NumberCarsInConsist() * 42;
+		power:							NumberCarsInConsist() * 382 * 4;	// 285 kW
+		cargo_capacity:                 28 * CapacityFactor();															
+		loading_speed:					28 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
 		cargo_age_period:				param_decay_express;
 		cost_factor:                    145;
-		running_cost_factor:            sw_500_series_running_costs;
-		purchase_running_cost_factor:   running_cost_500_series;	
+		running_cost_factor:            (103 + 52 * NumberCarsInConsist() ) * RunningCostFactor();
+		purchase_running_cost_factor:   103 + 52 * NumberCarsInConsist();	
 	}
 	/*Multiple Unit Car*/
 	
       livery_override(mu_car_full){
         default:                        sw_500_series_graphics;
-        cargo_capacity:                 sw_500_series_cargo_capacity;
+        cargo_capacity:                 28 * CapacityFactor();
         cargo_age_period:				param_decay_express;
-        loading_speed:                  sw_500_series_loading_speed;
+        loading_speed:					28 * CapacityFactor() / param_loading_2D;
 		articulated_part:				sw_mucar_full_articulated_part;
 		length:							sw_length_2_8_2;
 		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
 		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
-        running_cost_factor:            sw_500_series_running_costs;
+        //running_cost_factor:            sw_500_series_running_costs;
       }
 }
 
@@ -2479,55 +2266,6 @@ item(FEAT_TRAINS, series_500) {
     alternative_sprites(ss_300_series_panto_rev,    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,     "src/gfx/300_series/300_series.png") {template_12_reversed(1,81)}	
 # 1 "src/trains/300_series/300_series.pnml" 4
 // #include "src/trains/300_series/300_series_liveries.pnml"
-# 1 "src/trains/300_series/300_series_stats.pnml" 1
-/* Begin 300 Series STATS */
-
-/* RUNNING COSTS */
-    running_cost_300_series = 187;              // 150 is approx JPS
-    
-    switch (FEAT_TRAINS, SELF, sw_300_series_running_costs, current_speed) {
-        0: running_cost_300_series / 10 ;       // Stopped
-        1..15: running_cost_300_series / 4 ;    // Moving below ~33.5 mph
-        running_cost_300_series ;               // Track speed
-    }
-
-/* WEIGHT */
-    weight_300_series = 44;
-
-    switch (FEAT_TRAINS, SELF, sw_300_series_weight, NumberCarsInConsist() * weight_300_series ) {return;}                         
-
-/* POWER */
-    power_per_motor_300_series = 402;           // in hp (300 kW)
-
-    switch (FEAT_TRAINS, SELF, sw_300_series_power, (( NumberCarsInConsist() / 2 ) + 2 ) * power_per_motor_300_series * 4 ) {return;}
-
-/* CARGO CAPACITY 
-
-    16-car JPS  1248/1560/1872/2184
-    08-car JPS  624/780/936/1092
-
-        16-car
-    IRL 1323
-    RW  1344       
-    LS  2016   
-    DC  2688        
-*/
-
-    // Passenger Capacities for each parameter level
-    switch(FEAT_TRAINS, SELF, sw_300_series_cargo_capacity, param_basecapacity) {
-        0: return 28;       // 1x Real World Capacity
-        2: return 56;       // 2x Double Real World Capacity
-        return 42;          // 1.5x Long Sprite Adjusted Capacity 
-    }
-
-/* LOADING SPEED */
-
-    switch(FEAT_TRAINS, SELF, sw_300_series_loading_speed, param_basecapacity) {
-        0: return 28 / param_loading_2D;        // 1x Real World Capacity
-        2: return 56 / param_loading_2D;        // 2x Double Real World Capacity
-        return 42 / param_loading_2D;           // 1.5x Long Sprite Adjusted Capacity 
-    }
-# 1 "src/trains/300_series/300_series.pnml" 4
 
 switch (FEAT_TRAINS, SELF, sw_300_series_backwards_long, position_in_consist_from_end % 48) {				
 		16: ss_300_series_panto_rev;
@@ -2641,27 +2379,27 @@ item(FEAT_TRAINS, series_300) {
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
         /* Stats */
         length:                         sw_length_2_8_2;
-        power:                          sw_300_series_power;
-        weight:                         sw_300_series_weight;
-		cargo_capacity:                 sw_300_series_cargo_capacity;
-		loading_speed:					sw_300_series_loading_speed;
+        power:                          (( NumberCarsInConsist() / 2 ) + 2 ) * 402 * 4;	// 300 kW
+        weight:                         NumberCarsInConsist() * 44;
+		cargo_capacity:                 28 * CapacityFactor();															
+		loading_speed:					28 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
 		cargo_age_period:				param_decay_express;
 		cost_factor:                    130;
-		running_cost_factor:            sw_300_series_running_costs;
-		purchase_running_cost_factor:   running_cost_300_series;	
+		running_cost_factor:            (100 + 50 * NumberCarsInConsist() ) * RunningCostFactor();
+		purchase_running_cost_factor:   100 + 50 * NumberCarsInConsist();		
 	}
 	/*Multiple Unit Car*/
 	
       livery_override(mu_car_full){
         default:                        sw_300_series_graphics;
-        cargo_capacity:                 sw_300_series_cargo_capacity;
+        cargo_capacity:                 28 * CapacityFactor();
         cargo_age_period:				param_decay_express;
-        loading_speed:                  sw_300_series_loading_speed;
+        loading_speed:					28 * CapacityFactor() / param_loading_2D;
 		articulated_part:				sw_mucar_full_articulated_part;
 		length:							sw_length_2_8_2;
 		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
 		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
-        running_cost_factor:            sw_300_series_running_costs;
+        //running_cost_factor:            sw_300_series_running_costs;
       }
 }
 
@@ -2930,64 +2668,6 @@ switch(FEAT_TRAINS, SELF, ss_100_series_panto_rev, cargo_subtype) {
     sw_100_series_panto_rev_year_dep_livery;      // Year-dependent Livery
 }
 # 1 "src/trains/100_series/100_series.pnml" 3
-# 1 "src/trains/100_series/100_series_stats.pnml" 1
-/* Begin 100 Series STATS */
-
-/* RUNNING COSTS */
-    running_cost_100_series = 187;                  // 150 is approx JPS
-    
-    switch(FEAT_TRAINS, SELF, sw_100_series_running_costs, current_speed) {
-        0: running_cost_100_series / 10 ;           // Stopped
-        1..15: running_cost_100_series / 4 ; 	    // Moving below ~33.5 mph
-        running_cost_100_series ; 				    // Track speed
-    }
-
-/* WEIGHT */  
-    weight_100_series = 53;                         // 53t per JPS
-
-    switch (FEAT_TRAINS, SELF, sw_100_series_weight, NumberCarsInConsist() * weight_100_series ) {return;}  
-
-/* POWER */
-    power_per_motor_100_series = 308;               // in hp (230 kW)
-
-    switch (FEAT_TRAINS, SELF, sw_100_series_power, max (NumberCarsInConsist() - 2 ,0) * power_per_motor_100_series * 4 ) {return;}
-
-/* SPEED */
-    switch(FEAT_TRAINS, SELF, sw_100_series_speed, cargo_subtype) {
-        0..2: return 220;   // Original speed
-        return 230;         // Kodama speed
-    }
-
-/* CARGO CAPACITY 
-
-    16-car JPS  1248/1560/1872/2184
-    12-car JPS  936/1170/1404/1638
-    8-car JPS   624/780/936/1092
-
-        16-car(X)   16-car(V)   12-car  8-car
-    IRL 1277        1285        1031    638* 
-    RW  1296        1296        1056    624        
-    LS  1920        1920        1440    960     
-    DC  2592        2592        1968    1296         
-
-    * made up since no length 8 sets
-
-*/
-
-    switch(FEAT_TRAINS, SELF, sw_100_series_cargo_capacity, param_basecapacity) {
-        0: return 27;       // 1x Real World Capacity
-        2: return 54;       // 2x Double Real World Capacity
-        return 40;          // 1.5x Long Sprite Adjusted Capacity 
-    }
-
-/* LOADING SPEED */
-
-    switch(FEAT_TRAINS, SELF, sw_100_series_loading_speed, param_basecapacity) {
-        0: return 27 / param_loading_2D;        // 1x Real World Capacity
-        2: return 54 / param_loading_2D;        // 2x Double Real World Capacity
-        return 40 / param_loading_2D;           // 1.5x Long Sprite Adjusted Capacity 
-    }
-# 1 "src/trains/100_series/100_series.pnml" 3
 
 // Midcars going backwards
 switch (FEAT_TRAINS, SELF, sw_100_series_backwards_v, position_in_consist_from_end % 48) {				
@@ -3109,6 +2789,12 @@ switch (FEAT_TRAINS, SELF, sw_100_series_stop_start, num_vehs_in_consist < 12) {
 		return CB_RESULT_NO_TEXT; 
 	}
 
+/* SPEED */
+    switch(FEAT_TRAINS, SELF, sw_100_series_speed, cargo_subtype) {
+        0..2: return 220;   // Original speed
+        return 230;         // Kodama speed
+    }
+
 item(FEAT_TRAINS, series_100) {
 	property {
 		/* Menu */
@@ -3152,29 +2838,29 @@ item(FEAT_TRAINS, series_100) {
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
         /* Stats */
         length:                         sw_length_2_8_2;
-        weight:                         sw_100_series_weight;
-        power:                          sw_100_series_power;
+        weight:                         NumberCarsInConsist() * 53;
+        power:                          max (NumberCarsInConsist() - 2 ,0) * 308 * 4;	// 230 kW
         speed:							sw_100_series_speed;
-		cargo_capacity:                 sw_100_series_cargo_capacity;
-		loading_speed:					sw_100_series_loading_speed;
+		cargo_capacity:                 27 * CapacityFactor();															
+		loading_speed:					27 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
 		cargo_age_period:				param_decay_express;
 		cost_factor:                    132;
-		running_cost_factor:            sw_100_series_running_costs;              
-		purchase_running_cost_factor:   running_cost_100_series;
+		running_cost_factor:            (100 + 48 * NumberCarsInConsist() ) * RunningCostFactor();
+		purchase_running_cost_factor:   100 + 48 * NumberCarsInConsist();
 		
 	}
 	/*Multiple Unit Car*/
 	
       livery_override(mu_car_full){
         default:                        sw_100_series_graphics;
-        cargo_capacity:                 sw_100_series_cargo_capacity;
+        cargo_capacity:                 27 * CapacityFactor();	
         cargo_age_period:				param_decay_express;
-        loading_speed:                  sw_100_series_loading_speed;
+        loading_speed:					27 * CapacityFactor() / param_loading_2D;
 		articulated_part:				sw_mucar_full_articulated_part;
 		length:							sw_length_2_8_2;
 		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
 		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
-        running_cost_factor:            sw_100_series_running_costs;
+        //running_cost_factor:            sw_100_series_running_costs;
       }
 }
 
@@ -3210,55 +2896,6 @@ item(FEAT_TRAINS, series_100) {
     alternative_sprites(ss_800_series_panto_rev,    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,     "src/gfx/800_series/800_series.png") {template_12_reversed(1,81)}	
 # 1 "src/trains/800_series/800_series.pnml" 4
 // #include "src/trains/800_series/800_series_liveries.pnml"
-# 1 "src/trains/800_series/800_series_stats.pnml" 1
-/* Begin 800 Series STATS */
-
-/* RUNNING COSTS */
-    running_cost_800_series = 187;    // 150 is approx JPS
-    
-    switch (FEAT_TRAINS, SELF, sw_800_series_running_costs, current_speed) {
-        0: running_cost_800_series / 10 ;           // Stopped
-        1..15: running_cost_800_series / 4 ; 	    // Moving below ~33.5 mph
-        running_cost_800_series ; 				    // Track speed
-    }
-
-/* WEIGHT */
-    weight_800_series = 44;          
-
-    switch (FEAT_TRAINS, SELF, sw_800_series_weight, NumberCarsInConsist() * weight_800_series ) {return;}  
-
-/* POWER */
-    power_per_motor_800_series = 375; // in hp (285 kW)
-
-    switch (FEAT_TRAINS, SELF, sw_800_series_power, NumberCarsInConsist() * power_per_motor_800_series * 4 ) {return;}
-
-/* CARGO CAPACITY 
-
-    6-car JPS equivalent 468/585/702/819
-
-        6-car
-    IRL 392
-    RW  396       
-    LS  594   
-    DC  792       
-*/
-
-    // Passenger Capacities for each parameter level
-    switch(FEAT_TRAINS, SELF, sw_800_series_cargo_capacity, param_basecapacity) {
-        0: return 22;       // 1x Real World Capacity
-        2: return 44;       // 2x Double Real World Capacity
-        return 33;          // 1.5x Long Sprite Adjusted Capacity 
-    }
-
-/* LOADING SPEED */
-
-    // 6 car
-    switch(FEAT_TRAINS, SELF, sw_800_series_loading_speed, param_basecapacity) {
-        0: return 22 / param_loading_2D;        // 1x Real World Capacity
-        2: return 44 / param_loading_2D;        // 2x Double Real World Capacity
-        return 33 / param_loading_2D;           // 1.5x Long Sprite Adjusted Capacity 
-    }
-# 1 "src/trains/800_series/800_series.pnml" 4
 
 switch (FEAT_TRAINS, SELF, sw_800_series_backwards_long, position_in_consist_from_end % 48) {				
 		13: ss_800_series_panto_rev;
@@ -3373,27 +3010,27 @@ item(FEAT_TRAINS, series_800) {
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
 		/* Stats */
 		length:                         sw_length_2_8_2;
-        power:                          sw_800_series_power;
-        weight:                         sw_800_series_weight;
-		cargo_capacity:                 sw_800_series_cargo_capacity;
-		loading_speed:					sw_800_series_loading_speed;
+        power:                          NumberCarsInConsist() * 375 * 4;	// (285 kW)
+        weight:                         NumberCarsInConsist() * 44 ;
+		cargo_capacity:                 22 * CapacityFactor();															
+		loading_speed:					22 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
 		cargo_age_period:				param_decay_express;
 		cost_factor:                    121;
-		running_cost_factor:            sw_800_series_running_costs;
-		purchase_running_cost_factor:   running_cost_800_series;
+		running_cost_factor:            (90 + 45 * NumberCarsInConsist() ) * RunningCostFactor();
+		purchase_running_cost_factor:   90 + 45 * NumberCarsInConsist();
 	}
 	/*Multiple Unit Car*/
 	
       livery_override(mu_car_full){
         default:                        sw_800_series_graphics;
-        cargo_capacity:                 sw_800_series_cargo_capacity;
+        cargo_capacity:                 22 * CapacityFactor();
         cargo_age_period:				param_decay_express;
-        loading_speed:                  sw_800_series_loading_speed;
+        loading_speed:                  22 * CapacityFactor() / param_loading_2D;
 		articulated_part:				sw_mucar_full_articulated_part;
 		length:							sw_length_2_8_2;
 		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
 		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
-        running_cost_factor:            sw_800_series_running_costs;
+        //running_cost_factor:            sw_800_series_running_costs;
       }
 }
 
@@ -5904,8 +5541,8 @@ item(FEAT_TRAINS, series_e5) {
 		loading_speed:					25 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
 		cargo_age_period:				param_decay_express;
 		cost_factor:                    144;
-		running_cost_factor:            (100 + 50 * NumberCarsInConsist() ) * RunningCostFactor();
-		purchase_running_cost_factor:   100 + 50 * NumberCarsInConsist();	
+		running_cost_factor:            (98 + 51 * NumberCarsInConsist() ) * RunningCostFactor();
+		purchase_running_cost_factor:   98 + 51 * NumberCarsInConsist();	
 	}
 
 	/*Multiple Unit Car*/

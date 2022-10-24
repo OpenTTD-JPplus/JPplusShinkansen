@@ -3,7 +3,6 @@
 //#include "src/trains/500_series/500_series_subtypes.pnml"
 #include "src/trains/500_series/500_series_gfx.pnml"
 // #include "src/trains/500_series/500_series_liveries.pnml"
-#include "src/trains/500_series/500_series_stats.pnml"
 
 switch (FEAT_TRAINS, SELF, sw_500_series_backwards_long, position_in_consist_from_end % 48) {				
 		13: ss_500_series_panto_rev;
@@ -116,27 +115,27 @@ item(FEAT_TRAINS, series_500) {
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
 		/* Stats */
 		length:                         sw_length_2_8_2;
-		weight:							sw_500_series_weight;
-		power:							sw_500_series_power;
-		cargo_capacity:                 sw_500_series_cargo_capacity;
-		loading_speed:					sw_500_series_loading_speed;
+		weight:							NumberCarsInConsist() * 42;
+		power:							NumberCarsInConsist() * 382 * 4;	// 285 kW
+		cargo_capacity:                 28 * CapacityFactor();															
+		loading_speed:					28 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
 		cargo_age_period:				param_decay_express;
 		cost_factor:                    145;
-		running_cost_factor:            sw_500_series_running_costs;
-		purchase_running_cost_factor:   running_cost_500_series;	
+		running_cost_factor:            (103 + 52 * NumberCarsInConsist() ) * RunningCostFactor();
+		purchase_running_cost_factor:   103 + 52 * NumberCarsInConsist();	
 	}
 	/*Multiple Unit Car*/
 	
       livery_override(mu_car_full){
         default:                        sw_500_series_graphics;
-        cargo_capacity:                 sw_500_series_cargo_capacity;
+        cargo_capacity:                 28 * CapacityFactor();
         cargo_age_period:				param_decay_express;
-        loading_speed:                  sw_500_series_loading_speed;
+        loading_speed:					28 * CapacityFactor() / param_loading_2D;
 		articulated_part:				sw_mucar_full_articulated_part;
 		length:							sw_length_2_8_2;
 		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
 		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
-        running_cost_factor:            sw_500_series_running_costs;
+        //running_cost_factor:            sw_500_series_running_costs;
       }
 }
 
