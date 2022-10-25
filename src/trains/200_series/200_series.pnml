@@ -194,8 +194,8 @@ item(FEAT_TRAINS, series_200) {
 		loading_speed:					26 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
 		cargo_age_period:				param_decay_express;
 		cost_factor:                    130;
-		running_cost_factor:            (95 + 50 * NumberCarsInConsist() ) * RunningCostFactor();
-		purchase_running_cost_factor:   95 + 50 * NumberCarsInConsist();
+		running_cost_factor:            (295 + 125 * NumberCarsInConsist() ) * RunningCostFactor();
+		purchase_running_cost_factor:   295 + 125 * NumberCarsInConsist();
 		
 	}
 	/*Multiple Unit Car*/

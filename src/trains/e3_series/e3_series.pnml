@@ -257,8 +257,8 @@ item(FEAT_TRAINS, series_e3) {
         power:                          max (num_vehs_in_consist - 2 , 0 ) * 400 * 4;     // 300 kW = 400 hp
         cargo_capacity:                 56 * CapacityFactor();										        // Average 338/6, 402/7, 394/7 = 56  					
 		    loading_speed:					        56 * CapacityFactor() / param_loading_1D;					// Capacity divided by door loading factor
-        running_cost_factor:            (145 + 70 * num_vehs_in_consist ) * RunningCostFactor();
-        purchase_running_cost_factor:   145 + 70 * num_vehs_in_consist;	
+        running_cost_factor:            (445 + 170 * num_vehs_in_consist ) * RunningCostFactor();
+        purchase_running_cost_factor:   445 + 170 * num_vehs_in_consist;	
     }
     /*Multiple Unit Car*/
       livery_override(mu_car_ms){

@@ -137,8 +137,8 @@ item(FEAT_TRAINS, series_n700) {
 		cargo_capacity:                 28 * CapacityFactor();															
 		loading_speed:					28 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
 		cost_factor:                    138;
-		running_cost_factor:            (105 + 49 * NumberCarsInConsist() ) * RunningCostFactor();
-		purchase_running_cost_factor:   105 + 49 * NumberCarsInConsist();
+		running_cost_factor:            (300 + 125 * NumberCarsInConsist() ) * RunningCostFactor();
+		purchase_running_cost_factor:   300 + 125 * NumberCarsInConsist();
 	}
 	/*Multiple Unit Car*/
 	

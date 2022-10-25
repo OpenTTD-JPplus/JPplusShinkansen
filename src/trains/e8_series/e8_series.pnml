@@ -180,8 +180,8 @@ item(FEAT_TRAINS, series_e8) {
         power:                          max (num_vehs_in_consist - 2 , 0 ) * 400 * 4;
         cargo_capacity:                 48 * CapacityFactor();										        // 338 capacity / 7 cars  is approx 48						
 		    loading_speed:					        48 * CapacityFactor() / param_loading_1D;					// Capacity divided by door loading factor
-        running_cost_factor:            (145 + 70 * num_vehs_in_consist ) * RunningCostFactor();
-        purchase_running_cost_factor:   145 + 70 * num_vehs_in_consist;	
+        running_cost_factor:            (445 + 180 * num_vehs_in_consist ) * RunningCostFactor();
+        purchase_running_cost_factor:   445 + 180 * num_vehs_in_consist;	
     }
     /*Multiple Unit Car*/
       livery_override(mu_car_ms){

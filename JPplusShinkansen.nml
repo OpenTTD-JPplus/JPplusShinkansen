@@ -1363,8 +1363,8 @@ item(FEAT_TRAINS, series_0) {
 		loading_speed:					28 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
 		cargo_age_period:				param_decay_express;
         cost_factor:                    125;
-		running_cost_factor:            (100 + 50 * NumberCarsInConsist() ) * RunningCostFactor();
-		purchase_running_cost_factor:   100 + 50 * NumberCarsInConsist();
+		running_cost_factor:            (300 + 125 * NumberCarsInConsist() ) * RunningCostFactor();
+		purchase_running_cost_factor:   300 + 125 * NumberCarsInConsist();
 	}
 	/*Multiple Unit Car*/
 	
@@ -1806,8 +1806,8 @@ item(FEAT_TRAINS, series_n700) {
 		cargo_capacity:                 28 * CapacityFactor();															
 		loading_speed:					28 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
 		cost_factor:                    138;
-		running_cost_factor:            (105 + 49 * NumberCarsInConsist() ) * RunningCostFactor();
-		purchase_running_cost_factor:   105 + 49 * NumberCarsInConsist();
+		running_cost_factor:            (300 + 125 * NumberCarsInConsist() ) * RunningCostFactor();
+		purchase_running_cost_factor:   300 + 125 * NumberCarsInConsist();
 	}
 	/*Multiple Unit Car*/
 	
@@ -2048,8 +2048,8 @@ item(FEAT_TRAINS, series_700) {
 		loading_speed:					28 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
 		cargo_age_period:				param_decay_express;
 		cost_factor:                    134;
-		running_cost_factor:            (100 + 48 * NumberCarsInConsist() ) * RunningCostFactor();
-		purchase_running_cost_factor:   100 + 48 * NumberCarsInConsist();
+		running_cost_factor:            (310 + 48 * NumberCarsInConsist() ) * RunningCostFactor();
+		purchase_running_cost_factor:   310 + 48 * NumberCarsInConsist();
 	}
 	/*Multiple Unit Car*/
 	
@@ -2216,8 +2216,8 @@ item(FEAT_TRAINS, series_500) {
 		loading_speed:					28 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
 		cargo_age_period:				param_decay_express;
 		cost_factor:                    145;
-		running_cost_factor:            (103 + 52 * NumberCarsInConsist() ) * RunningCostFactor();
-		purchase_running_cost_factor:   103 + 52 * NumberCarsInConsist();	
+		running_cost_factor:            (303 + 127 * NumberCarsInConsist() ) * RunningCostFactor();
+		purchase_running_cost_factor:   303 + 127 * NumberCarsInConsist();	
 	}
 	/*Multiple Unit Car*/
 	
@@ -2385,8 +2385,8 @@ item(FEAT_TRAINS, series_300) {
 		loading_speed:					28 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
 		cargo_age_period:				param_decay_express;
 		cost_factor:                    130;
-		running_cost_factor:            (100 + 50 * NumberCarsInConsist() ) * RunningCostFactor();
-		purchase_running_cost_factor:   100 + 50 * NumberCarsInConsist();		
+		running_cost_factor:            (305 + 124 * NumberCarsInConsist() ) * RunningCostFactor();
+		purchase_running_cost_factor:   305 + 124 * NumberCarsInConsist();		
 	}
 	/*Multiple Unit Car*/
 	
@@ -2845,8 +2845,8 @@ item(FEAT_TRAINS, series_100) {
 		loading_speed:					27 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
 		cargo_age_period:				param_decay_express;
 		cost_factor:                    132;
-		running_cost_factor:            (100 + 48 * NumberCarsInConsist() ) * RunningCostFactor();
-		purchase_running_cost_factor:   100 + 48 * NumberCarsInConsist();
+		running_cost_factor:            (300 + 123 * NumberCarsInConsist() ) * RunningCostFactor();
+		purchase_running_cost_factor:   300 + 123 * NumberCarsInConsist();
 		
 	}
 	/*Multiple Unit Car*/
@@ -3016,8 +3016,8 @@ item(FEAT_TRAINS, series_800) {
 		loading_speed:					22 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
 		cargo_age_period:				param_decay_express;
 		cost_factor:                    121;
-		running_cost_factor:            (90 + 45 * NumberCarsInConsist() ) * RunningCostFactor();
-		purchase_running_cost_factor:   90 + 45 * NumberCarsInConsist();
+		running_cost_factor:            (290 + 120 * NumberCarsInConsist() ) * RunningCostFactor();
+		purchase_running_cost_factor:   290 + 120 * NumberCarsInConsist();
 	}
 	/*Multiple Unit Car*/
 	
@@ -3511,8 +3511,8 @@ item(FEAT_TRAINS, series_200) {
 		loading_speed:					26 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
 		cargo_age_period:				param_decay_express;
 		cost_factor:                    130;
-		running_cost_factor:            (95 + 50 * NumberCarsInConsist() ) * RunningCostFactor();
-		purchase_running_cost_factor:   95 + 50 * NumberCarsInConsist();
+		running_cost_factor:            (295 + 125 * NumberCarsInConsist() ) * RunningCostFactor();
+		purchase_running_cost_factor:   295 + 125 * NumberCarsInConsist();
 		
 	}
 	/*Multiple Unit Car*/
@@ -3837,8 +3837,8 @@ item(FEAT_TRAINS, series_400) {
         power:                          max (num_vehs_in_consist - 1 , 0 ) * 282 * 4;               // 210 kW = 282 hp
         cargo_capacity:                 57 * CapacityFactor();							            // 399 / 7 = 57					
 		loading_speed:					57 * CapacityFactor() / param_loading_1D;					// Capacity divided by door loading factor
-        running_cost_factor:            (145 + 70 * num_vehs_in_consist ) * RunningCostFactor();
-        purchase_running_cost_factor:   145 + 70 * num_vehs_in_consist;	
+        running_cost_factor:            (445 + 175 * num_vehs_in_consist ) * RunningCostFactor();
+        purchase_running_cost_factor:   445 + 175 * num_vehs_in_consist;	
     }
     /*Multiple Unit Car*/
       livery_override(mu_car_ms){
@@ -4186,8 +4186,8 @@ item(FEAT_TRAINS, series_e1) {
 		loading_speed:					34 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
 		cargo_age_period:				param_decay_express;
 		cost_factor:                    128;
-		running_cost_factor:            (95 + 45 * NumberCarsInConsist() ) * RunningCostFactor();
-		purchase_running_cost_factor:   95 + 45 * NumberCarsInConsist();
+		running_cost_factor:            (295 + 122 * NumberCarsInConsist() ) * RunningCostFactor();
+		purchase_running_cost_factor:   295 + 122 * NumberCarsInConsist();
 	}
 	/*Multiple Unit Car*/
 	
@@ -4503,8 +4503,8 @@ item(FEAT_TRAINS, series_e2) {
 		loading_speed:					27 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
 		cargo_age_period:				param_decay_express;
 		cost_factor:                    144;
-		running_cost_factor:            (90 + 45 * NumberCarsInConsist() ) * RunningCostFactor();
-		purchase_running_cost_factor:   90 + 45 * NumberCarsInConsist();	
+		running_cost_factor:            (290 + 120 * NumberCarsInConsist() ) * RunningCostFactor();
+		purchase_running_cost_factor:   290 + 120 * NumberCarsInConsist();	
 	}
 
 	/*Multiple Unit Car*/
@@ -4887,8 +4887,8 @@ item(FEAT_TRAINS, series_e3) {
         power:                          max (num_vehs_in_consist - 2 , 0 ) * 400 * 4;     // 300 kW = 400 hp
         cargo_capacity:                 56 * CapacityFactor();										        // Average 338/6, 402/7, 394/7 = 56  					
 		    loading_speed:					        56 * CapacityFactor() / param_loading_1D;					// Capacity divided by door loading factor
-        running_cost_factor:            (145 + 70 * num_vehs_in_consist ) * RunningCostFactor();
-        purchase_running_cost_factor:   145 + 70 * num_vehs_in_consist;	
+        running_cost_factor:            (445 + 170 * num_vehs_in_consist ) * RunningCostFactor();
+        purchase_running_cost_factor:   445 + 170 * num_vehs_in_consist;	
     }
     /*Multiple Unit Car*/
       livery_override(mu_car_ms){
@@ -5271,8 +5271,8 @@ item(FEAT_TRAINS, series_e4) {
 		loading_speed:					35 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
 		cargo_age_period:				param_decay_express;
 		cost_factor:                    105;
-        running_cost_factor:            (95 + 45 * NumberCarsInConsist() ) * RunningCostFactor();
-		purchase_running_cost_factor:   95 + 45 * NumberCarsInConsist();
+        running_cost_factor:            (295 + 120 * NumberCarsInConsist() ) * RunningCostFactor();
+		purchase_running_cost_factor:   295 + 120 * NumberCarsInConsist();
 	}
 
 	/*Multiple Unit Car*/
@@ -5541,8 +5541,8 @@ item(FEAT_TRAINS, series_e5) {
 		loading_speed:					25 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
 		cargo_age_period:				param_decay_express;
 		cost_factor:                    144;
-		running_cost_factor:            (98 + 51 * NumberCarsInConsist() ) * RunningCostFactor();
-		purchase_running_cost_factor:   98 + 51 * NumberCarsInConsist();	
+		running_cost_factor:            (298 + 127 * NumberCarsInConsist() ) * RunningCostFactor();
+		purchase_running_cost_factor:   298 + 127 * NumberCarsInConsist();	
 	}
 
 	/*Multiple Unit Car*/
@@ -5835,8 +5835,8 @@ item(FEAT_TRAINS, series_e6, 2006) {
         cargo_capacity:                 48 * CapacityFactor();										        // 338 capacity / 7 cars  is approx 48						
 		    loading_speed:					        48 * CapacityFactor() / param_loading_1D;					// Capacity divided by door loading factor
         cargo_age_period:				        param_decay_express;
-        running_cost_factor:            (150 + 75 * num_vehs_in_consist ) * RunningCostFactor();
-        purchase_running_cost_factor:   150 + 75 * num_vehs_in_consist;	
+        running_cost_factor:            (450 + 187 * num_vehs_in_consist ) * RunningCostFactor();
+        purchase_running_cost_factor:   450 + 187 * num_vehs_in_consist;	
     }
     /*Multiple Unit Car*/
       livery_override(mu_car_ms){
@@ -5992,8 +5992,8 @@ item(FEAT_TRAINS, series_e7) {
 		loading_speed:					26 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
 		cargo_age_period:				param_decay_express;
 		cost_factor:                    130;
-		running_cost_factor:            (95 + 45 * NumberCarsInConsist() ) * RunningCostFactor();
-		purchase_running_cost_factor:   95 + 45 * NumberCarsInConsist();	
+		running_cost_factor:            (295 + 120 * NumberCarsInConsist() ) * RunningCostFactor();
+		purchase_running_cost_factor:   295 + 120 * NumberCarsInConsist();	
 	}
 
 	/*Multiple Unit Car*/
@@ -6245,8 +6245,8 @@ item(FEAT_TRAINS, series_e8) {
         power:                          max (num_vehs_in_consist - 2 , 0 ) * 400 * 4;
         cargo_capacity:                 48 * CapacityFactor();										        // 338 capacity / 7 cars  is approx 48						
 		    loading_speed:					        48 * CapacityFactor() / param_loading_1D;					// Capacity divided by door loading factor
-        running_cost_factor:            (145 + 70 * num_vehs_in_consist ) * RunningCostFactor();
-        purchase_running_cost_factor:   145 + 70 * num_vehs_in_consist;	
+        running_cost_factor:            (445 + 180 * num_vehs_in_consist ) * RunningCostFactor();
+        purchase_running_cost_factor:   445 + 180 * num_vehs_in_consist;	
     }
     /*Multiple Unit Car*/
       livery_override(mu_car_ms){
