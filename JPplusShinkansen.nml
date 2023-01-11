@@ -7,8 +7,8 @@
 	grfid:					"KR03";
 	name:					string(STR_GRF_NAME);
 	desc:					string(STR_GRF_DESC);
-	version:				9;
-	min_compatible_version: 9;
+	version:				10;	// v0.2.2
+	min_compatible_version: 10;	// v0.2.2
 		//japanset3 removal
 		param 4 {
 			 param_japansetdisable {
@@ -754,7 +754,10 @@ item(FEAT_TRAINS, mu_car_full, 1112) {}
 
 item(FEAT_TRAINS, series_0, 123) {}
 item(FEAT_TRAINS, series_100, 124) {}
+// 200 Series Shinkansen
 item(FEAT_TRAINS, series_200, 200) {}
+item(FEAT_TRAINS, series_200_sharknose, 201) {}
+
 item(FEAT_TRAINS, series_300, 300) {}
 item(FEAT_TRAINS, series_400, 400) {}
 item(FEAT_TRAINS, series_500, 500) {}
@@ -765,7 +768,15 @@ item(FEAT_TRAINS, series_800, 800) {}
 item(FEAT_TRAINS, series_e1, 1551) {}
 item(FEAT_TRAINS, series_e2, 1552) {}
 item(FEAT_TRAINS, series_e3, 2003) {}
-item(FEAT_TRAINS, series_e4, 2004) {} 
+
+// E4 Series Shinkansen
+item(FEAT_TRAINS, series_e4, 2004) {}
+/*
+item(FEAT_TRAINS, series_e4_year_dep, 2004) {}
+item(FEAT_TRAINS, series_e4_yellow, 2104) {}
+item(FEAT_TRAINS, series_e4_pink, 2204) {}  
+*/
+
 item(FEAT_TRAINS, series_e5, 2005) {} 
 item(FEAT_TRAINS, series_e6, 2006) {}
 item(FEAT_TRAINS, series_e5e6, 2056) {}
@@ -794,6 +805,8 @@ sort(FEAT_TRAINS, [
 1552,   // E2 Series Shinkansen
 2003,   // E3 Series Shinkansen
 2004,   // E4 Series Shinkansen (Max)
+2104,
+2204,
 2005,   // E5 Series Shinkansen
 2006,   // E6 Series Shinkansen
 2056,   // E5 & E6 Series Shinkansen
@@ -3044,34 +3057,22 @@ item(FEAT_TRAINS, series_800) {
 # 1 "src/trains/200_series/200_series_subtypes.pnml" 1
 /* Begin 200 Series SUBTYPES*/
 
-// From 1982 to 1987
+// From 1982 to 1999
 switch(FEAT_TRAINS, SELF, sw_200_series_1982_subtype_text, cargo_subtype) {
-    0: return string(LV_YEAR_DEP_LIVERY);
-	1: return string(LV_200_SERIES_ORIGINAL);           // Original
+	0: return string(LV_200_SERIES_ORIGINAL);           // Original
        return CB_RESULT_NO_TEXT;
     }
 
-// From 1990 to 1992 - introduction of Sharknose sets
-switch(FEAT_TRAINS, SELF, sw_200_series_1990_subtype_text, cargo_subtype) {
-    0: return string(LV_YEAR_DEP_LIVERY);
-	1: return string(LV_200_SERIES_ORIGINAL);           // Original
-    2: return string(LV_200_SERIES_SHARK);              // Sharknose
-       return CB_RESULT_NO_TEXT;
-    }
-
-// From 1992 onwards - introduction of Refurbished Livery
+// From 1999 onwards - introduction of Refurbished Livery
 switch(FEAT_TRAINS, SELF, sw_200_series_1992_subtype_text, cargo_subtype) {
-    0: return string(LV_YEAR_DEP_LIVERY);               // Year Dependent (12-car)
-	1: return string(LV_200_SERIES_ORIGINAL);           // Original        
-    2: return string(LV_200_SERIES_SHARK);              // Sharknose
-    3: return string(LV_200_SERIES_REFURB);             // Refurbished
+	0: return string(LV_200_SERIES_ORIGINAL);           // Original        
+    1: return string(LV_200_SERIES_REFURB);             // Refurbished
        return CB_RESULT_NO_TEXT;
     }
 
 // Subtype Menu
 switch(FEAT_TRAINS, SELF, sw_200_series_year_dep_subtype_text, current_year) {
-        0..1989: sw_200_series_1982_subtype_text;
-        1990..1991: sw_200_series_1990_subtype_text;
+        0..1998: sw_200_series_1982_subtype_text;
         sw_200_series_1992_subtype_text;
     }
 # 1 "src/trains/200_series/200_series.pnml" 3
@@ -3081,11 +3082,9 @@ switch(FEAT_TRAINS, SELF, sw_200_series_year_dep_subtype_text, current_year) {
 /* Purchase Menu */
 spriteset (ss_200_series_buy_original_jnr,	        	    "src/gfx/dummy/purchase.png") {template_purchase(0, 0)}
 spriteset (ss_200_series_buy_original_jre,	        	    "src/gfx/dummy/purchase.png") {template_purchase(0, 0)}
-spriteset (ss_200_series_buy_sharknose_livery,	        	"src/gfx/dummy/purchase.png") {template_purchase(0, 0)}
 
 alternative_sprites(ss_200_series_buy_original_jnr,         ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/200_series/purchase_original_jnr.png") {template_purchase(0, 0)}
 alternative_sprites(ss_200_series_buy_original_jre,         ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/200_series/purchase_original_jre.png") {template_purchase(0, 0)}
-alternative_sprites(ss_200_series_buy_sharknose_livery,     ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/200_series/purchase_sharknose.png") {template_purchase(0, 0)}
 
 /* EMU Parts */
 
@@ -3093,18 +3092,12 @@ alternative_sprites(ss_200_series_buy_sharknose_livery,     ZOOM_LEVEL_NORMAL, B
 
 spriteset(ss_200_series_cab_original_livery,             		"src/gfx/dummy/empty.png") {template_dummy(0,0)}
 spriteset(ss_200_series_cab_rev_original_livery,    		    "src/gfx/dummy/empty.png") {template_dummy(0,0)}
-spriteset(ss_200_series_cab_sharknose_livery,             		"src/gfx/dummy/empty.png") {template_dummy(0,0)}
-spriteset(ss_200_series_cab_rev_sharknose_livery,    		    "src/gfx/dummy/empty.png") {template_dummy(0,0)}
 spriteset(ss_200_series_cab_refurb_livery,             		    "src/gfx/dummy/empty.png") {template_dummy(0,0)}
 spriteset(ss_200_series_cab_rev_refurb_livery,    		        "src/gfx/dummy/empty.png") {template_dummy(0,0)}
 
 // 200 Series Original Strip Livery
 alternative_sprites(ss_200_series_cab_original_livery,     	    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/200_series/original.png") {template_12_standard(1,1)}
-alternative_sprites(ss_200_series_cab_rev_original_livery,      ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/200_series/original.png") {template_12_reversed(1,41)}		
-
-// 200 Series Sharknose Strip Livery
-alternative_sprites(ss_200_series_cab_sharknose_livery,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/200_series/sharknose.png") {template_12_standard(1,1)}
-alternative_sprites(ss_200_series_cab_rev_sharknose_livery,     ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/200_series/sharknose.png") {template_12_reversed(1,41)}	
+alternative_sprites(ss_200_series_cab_rev_original_livery,      ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/200_series/original.png") {template_12_reversed(1,41)}			
 
 // 200 Series Refurbished Livery
 alternative_sprites(ss_200_series_cab_refurb_livery,     		ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/200_series/refurb.png") {template_12_standard(1,1)}
@@ -3114,18 +3107,12 @@ alternative_sprites(ss_200_series_cab_rev_refurb_livery,        ZOOM_LEVEL_NORMA
 
 spriteset(ss_200_series_cabwp_original_livery,             		"src/gfx/dummy/empty.png") {template_dummy(0,0)}
 spriteset(ss_200_series_cabwp_rev_original_livery,    		    "src/gfx/dummy/empty.png") {template_dummy(0,0)}
-spriteset(ss_200_series_cabwp_sharknose_livery,             	"src/gfx/dummy/empty.png") {template_dummy(0,0)}
-spriteset(ss_200_series_cabwp_rev_sharknose_livery,    		    "src/gfx/dummy/empty.png") {template_dummy(0,0)}
 spriteset(ss_200_series_cabwp_refurb_livery,             		"src/gfx/dummy/empty.png") {template_dummy(0,0)}
 spriteset(ss_200_series_cabwp_rev_refurb_livery,    		    "src/gfx/dummy/empty.png") {template_dummy(0,0)}
 
 // 200 Series Original Strip Livery
 alternative_sprites(ss_200_series_cabwp_original_livery,        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/200_series/original.png") {template_12_standard(1,81)}
 alternative_sprites(ss_200_series_cabwp_rev_original_livery,    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/200_series/original.png") {template_12_reversed(1,121)}		
-
-// 200 Series Sharknose Strip Livery
-alternative_sprites(ss_200_series_cabwp_sharknose_livery,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/200_series/sharknose.png") {template_12_standard(1,81)}
-alternative_sprites(ss_200_series_cabwp_rev_sharknose_livery,   ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/200_series/sharknose.png") {template_12_reversed(1,121)}	
 
 // 200 Series Refurbished Livery
 alternative_sprites(ss_200_series_cabwp_refurb_livery,     		ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/200_series/refurb.png") {template_12_standard(1,81)}
@@ -3136,18 +3123,12 @@ alternative_sprites(ss_200_series_cabwp_rev_refurb_livery,      ZOOM_LEVEL_NORMA
 
 spriteset(ss_200_series_coach_original_livery,             		"src/gfx/dummy/empty.png") {template_dummy(0,0)}
 spriteset(ss_200_series_coach_rev_original_livery,    		    "src/gfx/dummy/empty.png") {template_dummy(0,0)}
-spriteset(ss_200_series_coach_sharknose_livery,             	"src/gfx/dummy/empty.png") {template_dummy(0,0)}
-spriteset(ss_200_series_coach_rev_sharknose_livery,    		    "src/gfx/dummy/empty.png") {template_dummy(0,0)}
 spriteset(ss_200_series_coach_refurb_livery,             		"src/gfx/dummy/empty.png") {template_dummy(0,0)}
 spriteset(ss_200_series_coach_rev_refurb_livery,    		    "src/gfx/dummy/empty.png") {template_dummy(0,0)}
 
 // 200 Series Original Strip Livery
 alternative_sprites(ss_200_series_coach_original_livery,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/200_series/original.png") {template_12_standard(1,201)}
 alternative_sprites(ss_200_series_coach_rev_original_livery,    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/200_series/original.png") {template_12_reversed(1,201)}		
-
-// 200 Series Sharknose Strip Livery
-alternative_sprites(ss_200_series_coach_sharknose_livery,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/200_series/original.png") {template_12_standard(1,201)}
-alternative_sprites(ss_200_series_coach_rev_sharknose_livery,   ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/200_series/original.png") {template_12_reversed(1,201)}	
 
 // 200 Series Refurbished Livery
 alternative_sprites(ss_200_series_coach_refurb_livery,     		ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/200_series/refurb.png") {template_12_standard(1,201)}
@@ -3157,8 +3138,6 @@ alternative_sprites(ss_200_series_coach_rev_refurb_livery,      ZOOM_LEVEL_NORMA
 
 spriteset(ss_200_series_panto_original_livery,             		"src/gfx/dummy/empty.png") {template_dummy(0,0)}
 spriteset(ss_200_series_panto_rev_original_livery,    		    "src/gfx/dummy/empty.png") {template_dummy(0,0)}
-spriteset(ss_200_series_panto_sharknose_livery,             	"src/gfx/dummy/empty.png") {template_dummy(0,0)}
-spriteset(ss_200_series_panto_rev_sharknose_livery,    		    "src/gfx/dummy/empty.png") {template_dummy(0,0)}
 spriteset(ss_200_series_panto_refurb_livery,             		"src/gfx/dummy/empty.png") {template_dummy(0,0)}
 spriteset(ss_200_series_panto_rev_refurb_livery,    		    "src/gfx/dummy/empty.png") {template_dummy(0,0)}
 
@@ -3166,22 +3145,9 @@ spriteset(ss_200_series_panto_rev_refurb_livery,    		    "src/gfx/dummy/empty.p
 alternative_sprites(ss_200_series_panto_original_livery,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/200_series/original.png") {template_12_standard(1,161)}
 alternative_sprites(ss_200_series_panto_rev_original_livery,    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/200_series/original.png") {template_12_reversed(1,161)}		
 
-// 200 Series Sharknose Strip Livery
-alternative_sprites(ss_200_series_panto_sharknose_livery,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/200_series/original.png") {template_12_standard(1,161)}
-alternative_sprites(ss_200_series_panto_rev_sharknose_livery,   ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/200_series/original.png") {template_12_reversed(1,161)}	
-
 // 200 Series Refurbished Livery
 alternative_sprites(ss_200_series_panto_refurb_livery,     		ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/200_series/refurb.png") {template_12_standard(1,161)}
 alternative_sprites(ss_200_series_panto_rev_refurb_livery,      ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/200_series/refurb.png") {template_12_reversed(1,161)}
-
-/* "DOUBLE DECKER" */
-
-spriteset(ss_200_series_2deck,             	                    "src/gfx/dummy/empty.png") {template_dummy(0,0)}
-spriteset(ss_200_series_2deck_rev,    		                    "src/gfx/dummy/empty.png") {template_dummy(0,0)}
-
-// 200 Series Sharknose Strip Livery
-alternative_sprites(ss_200_series_2deck,                        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/200_series/sharknose.png") {template_12_standard(1,161)}
-alternative_sprites(ss_200_series_2deck_rev,                    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/200_series/sharknose.png") {template_12_reversed(1,161)}	
 # 1 "src/trains/200_series/200_series.pnml" 3
 # 1 "src/trains/200_series/200_series_liveries.pnml" 1
 /* Begin 200 Series LIVERIES*/
@@ -3190,151 +3156,64 @@ alternative_sprites(ss_200_series_2deck_rev,                    ZOOM_LEVEL_NORMA
 
     switch(FEAT_TRAINS, SELF, sw_200_series_year_dep_purchase, current_year) {
         0..1986: ss_200_series_buy_original_jnr;        // JNR
-        1987..1990: ss_200_series_buy_original_jre;     // JR East
-        ss_200_series_buy_sharknose_livery;             // UPDATE!!!
+        ss_200_series_buy_original_jre;                 // JR East
     }
 
 /* EMU Parts */
 
 /* "CAB" */
 
-    // Year Dependent Livery
-    switch(FEAT_TRAINS, SELF, sw_200_series_cab_year_dep_livery, build_year) {
-        0..1989: ss_200_series_cab_original_livery;
-        1990..9999: ss_200_series_cab_sharknose_livery;
-        ss_200_series_cab_original_livery;
-    }
-
-    switch(FEAT_TRAINS, SELF, ss_200_series_cab, cargo_subtype) {
-        1: ss_200_series_cab_original_livery;      // Original
-        2: ss_200_series_cab_sharknose_livery;     // Sharknose
-        3: ss_200_series_cab_refurb_livery;        // Refurbished
-        sw_200_series_cab_year_dep_livery;
+    switch(FEAT_TRAINS, SELF, ss_200_series_cab, cargo_subtype) { 
+        1: ss_200_series_cab_refurb_livery;             // Refurbished
+        ss_200_series_cab_original_livery;              // Original
     }
 
     // Reversed
-    // Year Dependent Livery
-    switch(FEAT_TRAINS, SELF, sw_200_series_cab_rev_year_dep_livery, build_year) {
-        0..1989: ss_200_series_cab_rev_original_livery;
-        1990..9999: ss_200_series_cab_rev_sharknose_livery;
-        ss_200_series_cab_rev_original_livery;
-    }
-
     switch(FEAT_TRAINS, SELF, ss_200_series_cab_rev, cargo_subtype) {
-        1: ss_200_series_cab_rev_original_livery;      // Original
-        2: ss_200_series_cab_rev_sharknose_livery;     // Sharknose
-        3: ss_200_series_cab_rev_refurb_livery;        // Refurbished
-        sw_200_series_cab_rev_year_dep_livery;
+        1: ss_200_series_cab_rev_refurb_livery;         // Refurbished
+        ss_200_series_cab_rev_original_livery;          // Original
     }
 
 /* "CAB" w/ PANTOs*/
 
-    // Year Dependent Livery
-    switch(FEAT_TRAINS, SELF, sw_200_series_cabwp_year_dep_livery, build_year) {
-        0..1989: ss_200_series_cabwp_original_livery;
-        1990..9999: ss_200_series_cabwp_sharknose_livery;
-        ss_200_series_cabwp_original_livery;
-    }
-
     switch(FEAT_TRAINS, SELF, ss_200_series_cabwp, cargo_subtype) {
-        1: ss_200_series_cabwp_original_livery;      // Original
-        2: ss_200_series_cabwp_sharknose_livery;     // Sharknose
-        3: ss_200_series_cabwp_refurb_livery;        // Refurbished
-        sw_200_series_cabwp_year_dep_livery;
+        1: ss_200_series_cabwp_refurb_livery;           // Refurbished
+        ss_200_series_cabwp_original_livery;            // Original
     }
 
     // Reversed
-    // Year Dependent Livery
-    switch(FEAT_TRAINS, SELF, sw_200_series_cabwp_rev_year_dep_livery, build_year) {
-        0..1989: ss_200_series_cabwp_rev_original_livery;
-        1990..9999: ss_200_series_cabwp_rev_sharknose_livery;
-        ss_200_series_cabwp_rev_original_livery;
-    }
-
     switch(FEAT_TRAINS, SELF, ss_200_series_cabwp_rev, cargo_subtype) {
-        1: ss_200_series_cabwp_rev_original_livery;      // Original
-        2: ss_200_series_cabwp_rev_sharknose_livery;     // Sharknose
-        3: ss_200_series_cabwp_rev_refurb_livery;        // Refurbished
-        sw_200_series_cabwp_rev_year_dep_livery;
+        1: ss_200_series_cabwp_rev_refurb_livery;       // Refurbished
+        ss_200_series_cabwp_rev_original_livery;        // Original
     }
 
 /* "COACH" */
+    switch(FEAT_TRAINS, SELF, ss_200_series_coach, cargo_subtype) {
+        1: ss_200_series_coach_refurb_livery;           // Refurbished
+        ss_200_series_coach_original_livery;            // Original
+    }
 
-// Year Dependent Livery
-switch(FEAT_TRAINS, SELF, sw_200_series_coach_year_dep_livery, build_year) {
-    0..1986: ss_200_series_coach_original_livery;
-    1987..9999: ss_200_series_coach_sharknose_livery;
-    ss_200_series_coach_original_livery;
-}
-
-switch(FEAT_TRAINS, SELF, ss_200_series_coach, cargo_subtype) {
-    1: ss_200_series_coach_original_livery;         // Original
-    2: ss_200_series_coach_sharknose_livery;        // Sharknose
-    3: ss_200_series_coach_refurb_livery;           // Refurbished
-    sw_200_series_coach_year_dep_livery;
-}
-
-// Reversed
-// Year Dependent Livery
-switch(FEAT_TRAINS, SELF, sw_200_series_coach_rev_year_dep_livery, build_year) {
-    0..1989: ss_200_series_coach_rev_original_livery;
-    1990..9999: ss_200_series_coach_rev_sharknose_livery;
-    ss_200_series_coach_rev_original_livery;
-}
-
-switch(FEAT_TRAINS, SELF, ss_200_series_coach_rev, cargo_subtype) {
-    1: ss_200_series_coach_rev_original_livery;      // Original
-    2: ss_200_series_coach_rev_sharknose_livery;     // Sharknose
-    3: ss_200_series_coach_rev_refurb_livery;        // Refurbished
-    sw_200_series_coach_rev_year_dep_livery;
-}
+    // Reversed
+    switch(FEAT_TRAINS, SELF, ss_200_series_coach_rev, cargo_subtype) {
+        1: ss_200_series_coach_rev_refurb_livery;       // Refurbished
+        ss_200_series_coach_rev_original_livery;        // Original
+    }
 
 /* "PANTO" */
-
-// Year Dependent Livery
-switch(FEAT_TRAINS, SELF, sw_200_series_panto_year_dep_livery, build_year) {
-    0..1989: ss_200_series_panto_original_livery;
-    1990..9999: ss_200_series_panto_sharknose_livery;
-    ss_200_series_panto_original_livery;
-}
-
-switch(FEAT_TRAINS, SELF, ss_200_series_panto, cargo_subtype) {
-    1: ss_200_series_panto_original_livery;         // Original
-    2: ss_200_series_panto_sharknose_livery;        // Sharknose
-    3: ss_200_series_panto_refurb_livery;           // Refurbished
-    sw_200_series_panto_year_dep_livery;
-}
+    switch(FEAT_TRAINS, SELF, ss_200_series_panto, cargo_subtype) {
+        1: ss_200_series_panto_refurb_livery;           // Refurbished
+        ss_200_series_panto_original_livery;            // Original
+    }
 
 // Reversed
-// Year Dependent Livery
-switch(FEAT_TRAINS, SELF, sw_200_series_panto_rev_year_dep_livery, build_year) {
-    0..1989: ss_200_series_panto_rev_original_livery;
-    1990..9999: ss_200_series_panto_rev_sharknose_livery;
-    ss_200_series_panto_rev_original_livery;
-}
-
-switch(FEAT_TRAINS, SELF, ss_200_series_panto_rev, cargo_subtype) {
-    1: ss_200_series_panto_rev_original_livery;      // Original
-    2: ss_200_series_panto_rev_sharknose_livery;     // Sharknose
-    3: ss_200_series_panto_rev_refurb_livery;        // Refurbished 10-car
-    sw_200_series_panto_rev_year_dep_livery;
-}
+    switch(FEAT_TRAINS, SELF, ss_200_series_panto_rev, cargo_subtype) {
+        1: ss_200_series_panto_rev_refurb_livery;       // Refurbished
+        ss_200_series_panto_rev_original_livery;        // Original
+    }
 # 1 "src/trains/200_series/200_series.pnml" 3
 
 // Midcars going backwards
-switch (FEAT_TRAINS, SELF, sw_200_series_backwards_sharknose, position_in_consist_from_end % 48) {				
-		4:  ss_200_series_panto_rev;
-		10: ss_200_series_panto_rev;
-		16: ss_200_series_panto_rev;
-		22: ss_200_series_panto_rev;
-		25: ss_200_series_2deck_rev;
-		28: ss_200_series_2deck_rev;
-		34: ss_200_series_panto_rev;
-		40: ss_200_series_panto_rev;
-		ss_200_series_coach_rev;				
-	}
-
-switch (FEAT_TRAINS, SELF, sw_200_series_backwards_others, position_in_consist_from_end % 36) {				
+switch (FEAT_TRAINS, SELF, sw_200_series_backwards, position_in_consist_from_end % 36) {				
 		4:  ss_200_series_panto_rev;
 		10: ss_200_series_panto_rev;
 		16: ss_200_series_panto_rev;
@@ -3344,31 +3223,8 @@ switch (FEAT_TRAINS, SELF, sw_200_series_backwards_others, position_in_consist_f
 		ss_200_series_coach_rev;				
 	}
 
-switch (FEAT_TRAINS, SELF, sw_200_series_backwards_year_dep, build_year) {				
-		0..1989:  sw_200_series_backwards_others;
-		sw_200_series_backwards_sharknose;				
-	}
-
-switch (FEAT_TRAINS, SELF, sw_200_series_backwards, cargo_subtype) {				
-		0:  sw_200_series_backwards_year_dep;
-		2:  sw_200_series_backwards_sharknose;
-		sw_200_series_backwards_others;				
-	}
-
 // Midcars going forwards
-switch (FEAT_TRAINS, SELF, sw_200_series_forwards_sharknose, position_in_consist % 48) {				
-		4:  ss_200_series_panto;
-		10: ss_200_series_panto;
-		16: ss_200_series_panto;
-		22: ss_200_series_panto;
-		25: ss_200_series_2deck;
-		28: ss_200_series_2deck;
-		34: ss_200_series_panto;
-		40: ss_200_series_panto;
-		ss_200_series_coach;				
-	}
-
-switch (FEAT_TRAINS, SELF, sw_200_series_forwards_others, position_in_consist % 36) {				
+switch (FEAT_TRAINS, SELF, sw_200_series_forwards, position_in_consist % 36) {				
 		4:  ss_200_series_panto;
 		10: ss_200_series_panto;
 		16: ss_200_series_panto;
@@ -3376,17 +3232,6 @@ switch (FEAT_TRAINS, SELF, sw_200_series_forwards_others, position_in_consist % 
 		28: ss_200_series_panto;
 		34: ss_200_series_panto;
 		ss_200_series_coach;				
-	}
-
-switch (FEAT_TRAINS, SELF, sw_200_series_forwards_year_dep, build_year) {				
-		0..1989:  sw_200_series_forwards_others;
-		sw_200_series_forwards_sharknose;				
-	}
-
-switch (FEAT_TRAINS, SELF, sw_200_series_forwards, cargo_subtype) {				
-		0:  sw_200_series_forwards_year_dep;
-		2:  sw_200_series_forwards_sharknose;
-		sw_200_series_forwards_others;				
 	}
 
 // Is vehicle reversed?
@@ -3440,7 +3285,7 @@ switch (FEAT_TRAINS, SELF, sw_200_series_articulated_part, extra_callback_info1)
 
 /*---Coupling Switch---*/
 switch(FEAT_TRAINS, SELF, sw_200_series_attach_vehid, [vehicle_type_id == mu_car_full]) {
- 0: return string(ONLY_ADD_MUCAR);
+ 		0: return string(ONLY_ADD_MUCAR);
 }
 
 /*---Length Check---*/
@@ -3448,18 +3293,6 @@ switch (FEAT_TRAINS, SELF, sw_200_series_stop_start, num_vehs_in_consist < 12) {
 		1:  return string(STR_LENGTH_ERROR); 				
 		return CB_RESULT_NO_TEXT; 
 	}
-
-/* SPEED */
-    switch(FEAT_TRAINS, SELF, sw_200_series_speed_year_dep, build_year) {
-        0..1989: return 210;    // Original speed
-        return 240;             // Sharknose and Refurbished Speed
-    }
-        
-    switch(FEAT_TRAINS, SELF, sw_200_series_speed, cargo_subtype) {
-        0: sw_200_series_speed_year_dep;
-        1: return 210;          // Original speed
-        return 240;             // Sharknose and Refurbished Speed
-    }
 
 item(FEAT_TRAINS, series_200) {
 	property {
@@ -3506,7 +3339,7 @@ item(FEAT_TRAINS, series_200) {
 		length:                         sw_length_2_8_2;
         power:							NumberCarsInConsist() * 308 * 4 ;		// 230 kW
 		weight:							NumberCarsInConsist() * 58;
-        speed:							sw_200_series_speed;
+        //speed:							sw_200_series_speed;
 		cargo_capacity:                 26 * CapacityFactor();										// 1230 capacity / (16 cars * 3 parts) is approx 26						
 		loading_speed:					26 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
 		cargo_age_period:				param_decay_express;
@@ -3531,6 +3364,211 @@ item(FEAT_TRAINS, series_200) {
 }
 
 /* End 200 Series */
+# 1 "JPplusShinkansen.pnml" 4
+# 1 "src/trains/200_series/200_series_sharknose.pnml" 1
+/* Begin 200 Series Sharknose */
+
+/* Purchase Menu */
+spriteset (ss_200_series_buy_sharknose_livery,	        	"src/gfx/dummy/purchase.png") {template_purchase(0, 0)}
+
+alternative_sprites(ss_200_series_buy_sharknose_livery,     ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/200_series/purchase_sharknose.png") {template_purchase(0, 0)}
+
+/* EMU Parts */
+
+/* "CAB" */
+spriteset(ss_200_series_sharknose_cab,             				"src/gfx/dummy/empty.png") {template_dummy(0,0)}
+spriteset(ss_200_series_sharknose_cab_rev,    		    		"src/gfx/dummy/empty.png") {template_dummy(0,0)}
+	
+alternative_sprites(ss_200_series_sharknose_cab,     			ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/200_series/sharknose.png") {template_12_standard(1,1)}
+alternative_sprites(ss_200_series_sharknose_cab_rev,     		ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/200_series/sharknose.png") {template_12_reversed(1,41)}	
+
+/* "CAB" w/ PANTOs*/
+spriteset(ss_200_series_sharknose_cabwp,             			"src/gfx/dummy/empty.png") {template_dummy(0,0)}
+spriteset(ss_200_series_sharknose_cabwp_rev,    		   	 	"src/gfx/dummy/empty.png") {template_dummy(0,0)}
+
+alternative_sprites(ss_200_series_sharknose_cabwp,     			ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/200_series/sharknose.png") {template_12_standard(1,81)}
+alternative_sprites(ss_200_series_sharknose_cabwp_rev,   		ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/200_series/sharknose.png") {template_12_reversed(1,121)}	
+
+/* "COACH" */
+spriteset(ss_200_series_sharknose_coach,             			"src/gfx/dummy/empty.png") {template_dummy(0,0)}
+spriteset(ss_200_series_sharknose_coach_rev,    		    	"src/gfx/dummy/empty.png") {template_dummy(0,0)}
+
+alternative_sprites(ss_200_series_sharknose_coach,     			ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/200_series/original.png") {template_12_standard(1,201)}
+alternative_sprites(ss_200_series_sharknose_coach_rev,   		ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/200_series/original.png") {template_12_reversed(1,201)}	
+
+/* "PANTO" */
+spriteset(ss_200_series_sharknose_panto,             			"src/gfx/dummy/empty.png") {template_dummy(0,0)}
+spriteset(ss_200_series_sharknose_panto_rev,    		    	"src/gfx/dummy/empty.png") {template_dummy(0,0)}
+
+alternative_sprites(ss_200_series_sharknose_panto,     			ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/200_series/original.png") {template_12_standard(1,161)}
+alternative_sprites(ss_200_series_sharknose_panto_rev,   		ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/200_series/original.png") {template_12_reversed(1,161)}	
+
+/* "DOUBLE DECKER" */
+spriteset(ss_200_series_sharknose_2deck,             	     	"src/gfx/dummy/empty.png") {template_dummy(0,0)}
+spriteset(ss_200_series_sharknose_2deck_rev,    		        "src/gfx/dummy/empty.png") {template_dummy(0,0)}
+
+alternative_sprites(ss_200_series_sharknose_2deck,              ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/200_series/sharknose.png") {template_12_standard(1,161)}
+alternative_sprites(ss_200_series_sharknose_2deck_rev,        	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/200_series/sharknose.png") {template_12_reversed(1,161)}	
+
+
+// Midcars going backwards
+switch (FEAT_TRAINS, SELF, sw_200_series_sharknose_backwards, position_in_consist_from_end % 48) {				
+		4:  ss_200_series_sharknose_panto_rev;
+		10: ss_200_series_sharknose_panto_rev;
+		16: ss_200_series_sharknose_panto_rev;
+		22: ss_200_series_sharknose_panto_rev;
+		25: ss_200_series_sharknose_2deck_rev;
+		28: ss_200_series_sharknose_2deck_rev;
+		34: ss_200_series_sharknose_panto_rev;
+		40: ss_200_series_sharknose_panto_rev;
+		ss_200_series_sharknose_coach_rev;				
+	}
+
+// Midcars going forwards
+switch (FEAT_TRAINS, SELF, sw_200_series_sharknose_forwards, position_in_consist % 48) {				
+		4:  ss_200_series_sharknose_panto;
+		10: ss_200_series_sharknose_panto;
+		16: ss_200_series_sharknose_panto;
+		22: ss_200_series_sharknose_panto;
+		25: ss_200_series_sharknose_2deck;
+		28: ss_200_series_sharknose_2deck;
+		34: ss_200_series_sharknose_panto;
+		40: ss_200_series_sharknose_panto;
+		ss_200_series_sharknose_coach;				
+	}
+
+// Is vehicle reversed?
+switch (FEAT_TRAINS, PARENT, sw_200_series_sharknose_midcars, vehicle_is_reversed) {				
+		0:  sw_200_series_sharknose_forwards;
+		sw_200_series_sharknose_backwards;				
+	}
+
+// Back Car Pantocheck
+switch (FEAT_TRAINS, PARENT, sw_200_series_sharknose_back_evenreversecheck, vehicle_is_reversed) {				
+		0:  ss_200_series_sharknose_cabwp_rev;
+		ss_200_series_sharknose_cab_rev;				
+	}
+
+switch (FEAT_TRAINS, SELF, sw_200_series_sharknose_back_oddevencheck, num_vehs_in_consist % 2) {				
+		0:  sw_200_series_sharknose_back_evenreversecheck;
+		ss_200_series_sharknose_cab_rev;				
+	}
+
+switch (FEAT_TRAINS, SELF, sw_200_series_sharknose_back, position_in_consist_from_end) {				
+		1:  sw_200_series_sharknose_back_oddevencheck;
+		sw_200_series_sharknose_midcars;				
+	}
+
+// Front Car Pantocheck
+switch (FEAT_TRAINS, SELF, sw_200_series_sharknose_front_oddevencheck, num_vehs_in_consist % 2) {				
+		1:  ss_200_series_sharknose_cab;
+		ss_200_series_sharknose_cabwp;				
+	}
+
+switch (FEAT_TRAINS, PARENT, sw_200_series_sharknose_front_reversecheck, vehicle_is_reversed) {				
+		0:  ss_200_series_sharknose_cab;
+		sw_200_series_sharknose_front_oddevencheck;				
+	}
+
+switch (FEAT_TRAINS, SELF, sw_200_series_sharknose_front, position_in_consist) {				
+		1:  sw_200_series_sharknose_front_reversecheck;
+		sw_200_series_sharknose_back;				
+	}
+
+// GRAPHICS
+switch (FEAT_TRAINS, SELF, sw_200_series_sharknose_graphics, position_in_consist % 3) {				
+		1:  sw_200_series_sharknose_front; 				
+		dummy_sprites;
+	}
+
+switch (FEAT_TRAINS, SELF, sw_200_series_sharknose_articulated_part, extra_callback_info1) {
+		1 .. 2: return series_200_sharknose;									
+		return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+	}
+
+/*---Coupling Switch---*/
+switch(FEAT_TRAINS, SELF, sw_200_series_sharknose_attach_vehid, [vehicle_type_id == mu_car_full]) {
+ 0: return string(ONLY_ADD_MUCAR);
+}
+
+/*---Length Check---*/
+switch (FEAT_TRAINS, SELF, sw_200_series_sharknose_stop_start, num_vehs_in_consist < 12) {				
+		1:  return string(STR_LENGTH_ERROR); 				
+		return CB_RESULT_NO_TEXT; 
+	}
+
+item(FEAT_TRAINS, series_200_sharknose) {
+	property {
+		/* Menu */
+		name: 							string(STR_NAME_200_SERIES_SHARK);
+		sprite_id:                      SPRITE_ID_NEW_TRAIN; 		// required to enable new graphics
+		misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT);
+		running_cost_base:              RUNNING_COST_ELECTRIC;
+		engine_class:                   ENGINE_CLASS_ELECTRIC;
+		variant_group:					200;
+		/* Availability */
+		climates_available:             ALL_CLIMATES;
+		introduction_date:              date(1990,03,01);           // Date of launch
+		model_life:                     34;		                    // Until 2008
+		vehicle_life:                   30;							// 
+		track_type:                     SHINKANSEN;
+		extra_flags:					bitmask(VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW);
+		/* Cargo */
+		reliability_decay:              5;
+		refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+		refit_cost:                     0;
+		default_cargo_type:             PASS;
+		ai_special_flag:                AI_FLAG_PASSENGER;
+		cargo_capacity:                 1;							// Changed by callback
+		loading_speed:                  50;							
+		cargo_age_period:               278; 						// 1.5 times normal for this expensive long-distance train
+		/* Stats */
+		speed:                          240 km/h;                   
+		power:                          8050 kW;					// Changed by callback
+		weight:                         1464 ton;                   // Changed by callback					
+		tractive_effort_coefficient:    0.3;
+		air_drag_coefficient:			0;
+	}
+	graphics {
+		/* Menu */
+		additional_text:                string(STR_DESC_200_SERIES_SHARK);
+		//cargo_subtype_text:             sw_200_series_sharknose_year_dep_subtype_text;
+		can_attach_wagon:				sw_200_series_sharknose_attach_vehid;
+		start_stop:						sw_200_series_sharknose_stop_start;
+		/* Graphics */
+		default:                        sw_200_series_sharknose_graphics;
+		purchase:                       ss_200_series_buy_sharknose_livery;
+		articulated_part:               sw_200_series_sharknose_articulated_part;
+		visual_effect_and_powered:      sw_visual_effect_and_powered;
+		/* Stats */
+		length:                         sw_length_2_8_2;
+        power:							NumberCarsInConsist() * 308 * 4 ;		// 230 kW
+		weight:							NumberCarsInConsist() * 58;
+        //speed:						240 km/h;
+		cargo_capacity:                 26 * CapacityFactor();										// 1230 capacity / (16 cars * 3 parts) is approx 26						
+		loading_speed:					26 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
+		cargo_age_period:				param_decay_express;
+		cost_factor:                    130;
+		running_cost_factor:            (295 + 125 * NumberCarsInConsist() ) * RunningCostFactor();
+		purchase_running_cost_factor:   295 + 125 * NumberCarsInConsist();
+		
+	}
+	/*Multiple Unit Car*/
+	
+      livery_override(mu_car_full){
+        default:                        sw_200_series_sharknose_graphics;
+        cargo_capacity:                 26 * CapacityFactor();	
+        cargo_age_period:				param_decay_express;
+        loading_speed:                  26 * CapacityFactor() / param_loading_2D;
+		articulated_part:				sw_mucar_full_articulated_part;
+		length:							sw_length_2_8_2;
+		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
+		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
+        //running_cost_factor:            sw_200_series_sharknose_running_costs;
+      }
+}
+
+/* End 200 Series Sharknose*/
 # 1 "JPplusShinkansen.pnml" 4
 # 1 "src/trains/400_series/400_series.pnml" 1
 // Begin 400_series
@@ -5292,6 +5330,9 @@ item(FEAT_TRAINS, series_e4) {
 
 /* End E4 series */
 # 1 "JPplusShinkansen.pnml" 4
+//#include "src/trains/e4_series/e4_series_yellow.pnml"
+//#include "src/trains/e4_series/e4_series_pink.pnml"
+//#include "src/trains/e4_series/e4_series_year_dep.pnml"
 # 1 "src/trains/e5_series/e5_series.pnml" 1
 /* Begin E5 Series */
 

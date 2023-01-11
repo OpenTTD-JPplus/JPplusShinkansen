@@ -4,132 +4,57 @@
 
     switch(FEAT_TRAINS, SELF, sw_200_series_year_dep_purchase, current_year) {
         0..1986: ss_200_series_buy_original_jnr;        // JNR
-        1987..1990: ss_200_series_buy_original_jre;     // JR East
-        ss_200_series_buy_sharknose_livery;             // UPDATE!!!
+        ss_200_series_buy_original_jre;                 // JR East
     }
 
 /* EMU Parts */
 
 /* "CAB" */
 
-    // Year Dependent Livery
-    switch(FEAT_TRAINS, SELF, sw_200_series_cab_year_dep_livery, build_year) {
-        0..1989: ss_200_series_cab_original_livery;
-        1990..9999: ss_200_series_cab_sharknose_livery;
-        ss_200_series_cab_original_livery;
-    }
-
-    switch(FEAT_TRAINS, SELF, ss_200_series_cab, cargo_subtype) {
-        1: ss_200_series_cab_original_livery;      // Original
-        2: ss_200_series_cab_sharknose_livery;     // Sharknose
-        3: ss_200_series_cab_refurb_livery;        // Refurbished
-        sw_200_series_cab_year_dep_livery;
+    switch(FEAT_TRAINS, SELF, ss_200_series_cab, cargo_subtype) { 
+        1: ss_200_series_cab_refurb_livery;             // Refurbished
+        ss_200_series_cab_original_livery;              // Original
     }
 
     // Reversed
-    // Year Dependent Livery
-    switch(FEAT_TRAINS, SELF, sw_200_series_cab_rev_year_dep_livery, build_year) {
-        0..1989: ss_200_series_cab_rev_original_livery;
-        1990..9999: ss_200_series_cab_rev_sharknose_livery;
-        ss_200_series_cab_rev_original_livery;
-    }
-
     switch(FEAT_TRAINS, SELF, ss_200_series_cab_rev, cargo_subtype) {
-        1: ss_200_series_cab_rev_original_livery;      // Original
-        2: ss_200_series_cab_rev_sharknose_livery;     // Sharknose
-        3: ss_200_series_cab_rev_refurb_livery;        // Refurbished
-        sw_200_series_cab_rev_year_dep_livery;
+        1: ss_200_series_cab_rev_refurb_livery;         // Refurbished
+        ss_200_series_cab_rev_original_livery;          // Original
     }
 
 /* "CAB" w/ PANTOs*/
 
-    // Year Dependent Livery
-    switch(FEAT_TRAINS, SELF, sw_200_series_cabwp_year_dep_livery, build_year) {
-        0..1989: ss_200_series_cabwp_original_livery;
-        1990..9999: ss_200_series_cabwp_sharknose_livery;
-        ss_200_series_cabwp_original_livery;
-    }
-
     switch(FEAT_TRAINS, SELF, ss_200_series_cabwp, cargo_subtype) {
-        1: ss_200_series_cabwp_original_livery;      // Original
-        2: ss_200_series_cabwp_sharknose_livery;     // Sharknose
-        3: ss_200_series_cabwp_refurb_livery;        // Refurbished
-        sw_200_series_cabwp_year_dep_livery;
+        1: ss_200_series_cabwp_refurb_livery;           // Refurbished
+        ss_200_series_cabwp_original_livery;            // Original
     }
 
     // Reversed
-    // Year Dependent Livery
-    switch(FEAT_TRAINS, SELF, sw_200_series_cabwp_rev_year_dep_livery, build_year) {
-        0..1989: ss_200_series_cabwp_rev_original_livery;
-        1990..9999: ss_200_series_cabwp_rev_sharknose_livery;
-        ss_200_series_cabwp_rev_original_livery;
-    }
-
     switch(FEAT_TRAINS, SELF, ss_200_series_cabwp_rev, cargo_subtype) {
-        1: ss_200_series_cabwp_rev_original_livery;      // Original
-        2: ss_200_series_cabwp_rev_sharknose_livery;     // Sharknose
-        3: ss_200_series_cabwp_rev_refurb_livery;        // Refurbished
-        sw_200_series_cabwp_rev_year_dep_livery;
+        1: ss_200_series_cabwp_rev_refurb_livery;       // Refurbished
+        ss_200_series_cabwp_rev_original_livery;        // Original
     }
 
 /* "COACH" */
+    switch(FEAT_TRAINS, SELF, ss_200_series_coach, cargo_subtype) {
+        1: ss_200_series_coach_refurb_livery;           // Refurbished
+        ss_200_series_coach_original_livery;            // Original
+    }
 
-// Year Dependent Livery
-switch(FEAT_TRAINS, SELF, sw_200_series_coach_year_dep_livery, build_year) {
-    0..1986: ss_200_series_coach_original_livery;
-    1987..9999: ss_200_series_coach_sharknose_livery;
-    ss_200_series_coach_original_livery;
-}
-
-switch(FEAT_TRAINS, SELF, ss_200_series_coach, cargo_subtype) {
-    1: ss_200_series_coach_original_livery;         // Original
-    2: ss_200_series_coach_sharknose_livery;        // Sharknose
-    3: ss_200_series_coach_refurb_livery;           // Refurbished
-    sw_200_series_coach_year_dep_livery;
-}
-
-// Reversed
-// Year Dependent Livery
-switch(FEAT_TRAINS, SELF, sw_200_series_coach_rev_year_dep_livery, build_year) {
-    0..1989: ss_200_series_coach_rev_original_livery;
-    1990..9999: ss_200_series_coach_rev_sharknose_livery;
-    ss_200_series_coach_rev_original_livery;
-}
-
-switch(FEAT_TRAINS, SELF, ss_200_series_coach_rev, cargo_subtype) {
-    1: ss_200_series_coach_rev_original_livery;      // Original
-    2: ss_200_series_coach_rev_sharknose_livery;     // Sharknose
-    3: ss_200_series_coach_rev_refurb_livery;        // Refurbished
-    sw_200_series_coach_rev_year_dep_livery;
-}
+    // Reversed
+    switch(FEAT_TRAINS, SELF, ss_200_series_coach_rev, cargo_subtype) {
+        1: ss_200_series_coach_rev_refurb_livery;       // Refurbished
+        ss_200_series_coach_rev_original_livery;        // Original
+    }
 
 /* "PANTO" */
-
-// Year Dependent Livery
-switch(FEAT_TRAINS, SELF, sw_200_series_panto_year_dep_livery, build_year) {
-    0..1989: ss_200_series_panto_original_livery;
-    1990..9999: ss_200_series_panto_sharknose_livery;
-    ss_200_series_panto_original_livery;
-}
-
-switch(FEAT_TRAINS, SELF, ss_200_series_panto, cargo_subtype) {
-    1: ss_200_series_panto_original_livery;         // Original
-    2: ss_200_series_panto_sharknose_livery;        // Sharknose
-    3: ss_200_series_panto_refurb_livery;           // Refurbished
-    sw_200_series_panto_year_dep_livery;
-}
+    switch(FEAT_TRAINS, SELF, ss_200_series_panto, cargo_subtype) {
+        1: ss_200_series_panto_refurb_livery;           // Refurbished
+        ss_200_series_panto_original_livery;            // Original
+    }
 
 // Reversed
-// Year Dependent Livery
-switch(FEAT_TRAINS, SELF, sw_200_series_panto_rev_year_dep_livery, build_year) {
-    0..1989: ss_200_series_panto_rev_original_livery;
-    1990..9999: ss_200_series_panto_rev_sharknose_livery;
-    ss_200_series_panto_rev_original_livery;
-}
-
-switch(FEAT_TRAINS, SELF, ss_200_series_panto_rev, cargo_subtype) {
-    1: ss_200_series_panto_rev_original_livery;      // Original
-    2: ss_200_series_panto_rev_sharknose_livery;     // Sharknose
-    3: ss_200_series_panto_rev_refurb_livery;        // Refurbished 10-car
-    sw_200_series_panto_rev_year_dep_livery;
-}
+    switch(FEAT_TRAINS, SELF, ss_200_series_panto_rev, cargo_subtype) {
+        1: ss_200_series_panto_rev_refurb_livery;       // Refurbished
+        ss_200_series_panto_rev_original_livery;        // Original
+    }

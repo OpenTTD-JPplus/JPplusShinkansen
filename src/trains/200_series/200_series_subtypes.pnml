@@ -1,32 +1,20 @@
 /* Begin 200 Series SUBTYPES*/
 
-// From 1982 to 1987
+// From 1982 to 1999
 switch(FEAT_TRAINS, SELF, sw_200_series_1982_subtype_text, cargo_subtype) {
-    0: return string(LV_YEAR_DEP_LIVERY);
-	1: return string(LV_200_SERIES_ORIGINAL);           // Original
+	0: return string(LV_200_SERIES_ORIGINAL);           // Original
        return CB_RESULT_NO_TEXT;
     }
 
-// From 1990 to 1992 - introduction of Sharknose sets
-switch(FEAT_TRAINS, SELF, sw_200_series_1990_subtype_text, cargo_subtype) {
-    0: return string(LV_YEAR_DEP_LIVERY);
-	1: return string(LV_200_SERIES_ORIGINAL);           // Original
-    2: return string(LV_200_SERIES_SHARK);              // Sharknose
-       return CB_RESULT_NO_TEXT;
-    }
-
-// From 1992 onwards - introduction of Refurbished Livery
+// From 1999 onwards - introduction of Refurbished Livery
 switch(FEAT_TRAINS, SELF, sw_200_series_1992_subtype_text, cargo_subtype) {
-    0: return string(LV_YEAR_DEP_LIVERY);               // Year Dependent (12-car)
-	1: return string(LV_200_SERIES_ORIGINAL);           // Original        
-    2: return string(LV_200_SERIES_SHARK);              // Sharknose
-    3: return string(LV_200_SERIES_REFURB);             // Refurbished
+	0: return string(LV_200_SERIES_ORIGINAL);           // Original        
+    1: return string(LV_200_SERIES_REFURB);             // Refurbished
        return CB_RESULT_NO_TEXT;
     }
 
 // Subtype Menu
 switch(FEAT_TRAINS, SELF, sw_200_series_year_dep_subtype_text, current_year) {
-        0..1989: sw_200_series_1982_subtype_text;
-        1990..1991: sw_200_series_1990_subtype_text;
+        0..1998: sw_200_series_1982_subtype_text;
         sw_200_series_1992_subtype_text;
     }

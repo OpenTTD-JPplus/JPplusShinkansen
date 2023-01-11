@@ -5,19 +5,7 @@
 #include "src/trains/200_series/200_series_liveries.pnml"
 
 // Midcars going backwards
-switch (FEAT_TRAINS, SELF, sw_200_series_backwards_sharknose, position_in_consist_from_end % 48) {				
-		4:  ss_200_series_panto_rev;
-		10: ss_200_series_panto_rev;
-		16: ss_200_series_panto_rev;
-		22: ss_200_series_panto_rev;
-		25: ss_200_series_2deck_rev;
-		28: ss_200_series_2deck_rev;
-		34: ss_200_series_panto_rev;
-		40: ss_200_series_panto_rev;
-		ss_200_series_coach_rev;				
-	}
-
-switch (FEAT_TRAINS, SELF, sw_200_series_backwards_others, position_in_consist_from_end % 36) {				
+switch (FEAT_TRAINS, SELF, sw_200_series_backwards, position_in_consist_from_end % 36) {				
 		4:  ss_200_series_panto_rev;
 		10: ss_200_series_panto_rev;
 		16: ss_200_series_panto_rev;
@@ -27,31 +15,8 @@ switch (FEAT_TRAINS, SELF, sw_200_series_backwards_others, position_in_consist_f
 		ss_200_series_coach_rev;				
 	}
 
-switch (FEAT_TRAINS, SELF, sw_200_series_backwards_year_dep, build_year) {				
-		0..1989:  sw_200_series_backwards_others;
-		sw_200_series_backwards_sharknose;				
-	}
-
-switch (FEAT_TRAINS, SELF, sw_200_series_backwards, cargo_subtype) {				
-		0:  sw_200_series_backwards_year_dep;
-		2:  sw_200_series_backwards_sharknose;
-		sw_200_series_backwards_others;				
-	}
-
 // Midcars going forwards
-switch (FEAT_TRAINS, SELF, sw_200_series_forwards_sharknose, position_in_consist % 48) {				
-		4:  ss_200_series_panto;
-		10: ss_200_series_panto;
-		16: ss_200_series_panto;
-		22: ss_200_series_panto;
-		25: ss_200_series_2deck;
-		28: ss_200_series_2deck;
-		34: ss_200_series_panto;
-		40: ss_200_series_panto;
-		ss_200_series_coach;				
-	}
-
-switch (FEAT_TRAINS, SELF, sw_200_series_forwards_others, position_in_consist % 36) {				
+switch (FEAT_TRAINS, SELF, sw_200_series_forwards, position_in_consist % 36) {				
 		4:  ss_200_series_panto;
 		10: ss_200_series_panto;
 		16: ss_200_series_panto;
@@ -59,17 +24,6 @@ switch (FEAT_TRAINS, SELF, sw_200_series_forwards_others, position_in_consist % 
 		28: ss_200_series_panto;
 		34: ss_200_series_panto;
 		ss_200_series_coach;				
-	}
-
-switch (FEAT_TRAINS, SELF, sw_200_series_forwards_year_dep, build_year) {				
-		0..1989:  sw_200_series_forwards_others;
-		sw_200_series_forwards_sharknose;				
-	}
-
-switch (FEAT_TRAINS, SELF, sw_200_series_forwards, cargo_subtype) {				
-		0:  sw_200_series_forwards_year_dep;
-		2:  sw_200_series_forwards_sharknose;
-		sw_200_series_forwards_others;				
 	}
 
 // Is vehicle reversed?
@@ -123,7 +77,7 @@ switch (FEAT_TRAINS, SELF, sw_200_series_articulated_part, extra_callback_info1)
 
 /*---Coupling Switch---*/
 switch(FEAT_TRAINS, SELF, sw_200_series_attach_vehid, [vehicle_type_id == mu_car_full]) {
- 0: return string(ONLY_ADD_MUCAR);
+ 		0: return string(ONLY_ADD_MUCAR);
 }
 
 /*---Length Check---*/
@@ -131,18 +85,6 @@ switch (FEAT_TRAINS, SELF, sw_200_series_stop_start, num_vehs_in_consist < 12) {
 		1:  return string(STR_LENGTH_ERROR); 				
 		return CB_RESULT_NO_TEXT; 
 	}
-
-/* SPEED */
-    switch(FEAT_TRAINS, SELF, sw_200_series_speed_year_dep, build_year) {
-        0..1989: return 210;    // Original speed
-        return 240;             // Sharknose and Refurbished Speed
-    }
-        
-    switch(FEAT_TRAINS, SELF, sw_200_series_speed, cargo_subtype) {
-        0: sw_200_series_speed_year_dep;
-        1: return 210;          // Original speed
-        return 240;             // Sharknose and Refurbished Speed
-    }
 
 item(FEAT_TRAINS, series_200) {
 	property {
@@ -189,7 +131,7 @@ item(FEAT_TRAINS, series_200) {
 		length:                         sw_length_2_8_2;
         power:							NumberCarsInConsist() * 308 * 4 ;		// 230 kW
 		weight:							NumberCarsInConsist() * 58;
-        speed:							sw_200_series_speed;
+        //speed:							sw_200_series_speed;
 		cargo_capacity:                 26 * CapacityFactor();										// 1230 capacity / (16 cars * 3 parts) is approx 26						
 		loading_speed:					26 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
 		cargo_age_period:				param_decay_express;

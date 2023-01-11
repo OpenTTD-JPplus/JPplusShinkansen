@@ -26,4 +26,10 @@ Then
 * I compile in a folder called **'Applications'** and put the latest version into a subfolder called **'jgrpp-latest'**
 * If downloading a new version, rename the current jgrpp-latest folder to the version number (or delete it)
 * Replace x.xx.x in git checkout jgrpp-x.xx.x above with the latest version on GitHub
+
+## Getting latest nml code from repo (so plus any commits since the latest release)
+
+pip install git+https://github.com/OpenTTD/nml
+
+
   
