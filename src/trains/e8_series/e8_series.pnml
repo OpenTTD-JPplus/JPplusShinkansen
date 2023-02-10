@@ -1,7 +1,53 @@
 // Begin E8_series
 
-#include "src/trains/e8_series/e8_series_gfx.pnml"
-#include "src/trains/e8_series/e8_series_liveries.pnml"
+/* GRAPHICS */
+
+    // Purchase Sprites
+        spriteset (spriteset_e8_series_purchase,	        	    "src/trains/dummy/purchase.png") {tmpl_purchase_dh(0, 0)}
+        alternative_sprites(spriteset_e8_series_purchase,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e8_series/purchase.png") {tmpl_purchase_dh_32bpp(0, 0)}
+
+    // E8 Series
+        spriteset(ss_e8_series_cab_original,                    "src/trains/dummy/mucar.png") {template_8_standard(1,1)}
+        spriteset(ss_e8_series_cab_rev_original,                "src/trains/dummy/mucar.png") {template_8_standard(1,1)}
+        spriteset(ss_e8_series_coach_original,                  "src/trains/dummy/mucar.png") {template_8_standard(1,1)}
+        spriteset(ss_e8_series_coach_rev_original,              "src/trains/dummy/mucar.png") {template_8_standard(1,1)}
+        spriteset(ss_e8_series_panto_original,                  "src/trains/dummy/mucar.png") {template_8_standard(1,1)}
+        spriteset(ss_e8_series_panto_rev_original,              "src/trains/dummy/mucar.png") {template_8_standard(1,1)}
+
+        alternative_sprites(ss_e8_series_cab_original,          ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e8_series/e8_series.png") {template_8_standard(1,1)}
+        alternative_sprites(ss_e8_series_cab_rev_original,      ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e8_series/e8_series.png") {template_8_standard(1,41)}
+        alternative_sprites(ss_e8_series_coach_original,        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e8_series/e8_series.png") {template_8_standard(1,121)}
+        alternative_sprites(ss_e8_series_coach_rev_original,    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e8_series/e8_series.png") {template_8_reversed(1,121)}
+        alternative_sprites(ss_e8_series_panto_original,        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e8_series/e8_series.png") {template_8_standard(1,81)}
+        alternative_sprites(ss_e8_series_panto_rev_original,    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e8_series/e8_series.png") {template_8_reversed(1,81)}
+
+/* LIVERIES */
+
+    // Cab Livery (Yelow Lights)
+    switch(FEAT_TRAINS, SELF, sw_e8_series_gfx_cab_livery, [STORE_TEMP(position_in_consist_from_end-position_in_consist, 0x10F), var[0x61, 0, 0x0000FFFF, 0xF2]]){
+        0 : ss_e8_series_cab_original;
+    }
+    // Cab Reversed Livery (Red lights)
+    switch(FEAT_TRAINS, SELF, sw_e8_series_gfx_cab_rev_livery, [STORE_TEMP(position_in_consist_from_end-position_in_consist, 0x10F), var[0x61, 0, 0x0000FFFF, 0xF2]]){
+        0 : ss_e8_series_cab_rev_original;
+    }
+    // Coach Livery
+    switch(FEAT_TRAINS, SELF, sw_e8_series_gfx_coach_livery, [STORE_TEMP(position_in_consist_from_end-position_in_consist, 0x10F), var[0x61, 0, 0x0000FFFF, 0xF2]]){
+        0 : ss_e8_series_coach_original;
+    }
+    // Coach Reversed Livery
+    switch(FEAT_TRAINS, SELF, sw_e8_series_gfx_coach_rev_livery, [STORE_TEMP(position_in_consist_from_end-position_in_consist, 0x10F), var[0x61, 0, 0x0000FFFF, 0xF2]]){
+        0 : ss_e8_series_coach_rev_original;
+    }
+    // Panto Livery
+    switch(FEAT_TRAINS, SELF, sw_e8_series_gfx_panto_livery, [STORE_TEMP(position_in_consist_from_end-position_in_consist, 0x10F), var[0x61, 0, 0x0000FFFF, 0xF2]]){
+        0 : ss_e8_series_panto_original;
+    }
+    // Panto Reversed Livery
+    switch(FEAT_TRAINS, SELF, sw_e8_series_gfx_panto_rev_livery, [STORE_TEMP(position_in_consist_from_end-position_in_consist, 0x10F), var[0x61, 0, 0x0000FFFF, 0xF2]]){
+        0 : ss_e8_series_panto_rev_original;
+
+    }
 
 /* COACH and PANTO flipping */
 

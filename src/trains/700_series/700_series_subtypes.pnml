@@ -1,7 +1,0 @@
-/* Begin 700 Series SUBTYPES*/
-
-    switch(FEAT_TRAINS, SELF, sw_700_series_subtype_text, cargo_subtype) {
-	    0: return string(LV_700_SERIES_ORIGINAL);
-        1: return string(LV_700_SERIES_HIKARI);
-        return CB_RESULT_NO_TEXT;
-        }

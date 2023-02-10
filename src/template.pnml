@@ -27,24 +27,24 @@ template template_purchase (x, y) {
 }
 
 template tmpl_purchase_dh (x, y) {
-		[1 , 1, 1, 1, 0, 0, "src/gfx/dummy/empty.png"]
-	 	[1 , 1, 1, 1, 0, 0, "src/gfx/dummy/empty.png"]
-	 	[1 , 1, 1, 1, 0, 0, "src/gfx/dummy/empty.png"]
-	 	[1 , 1, 1, 1, 0, 0, "src/gfx/dummy/empty.png"]
-	 	[1 , 1, 1, 1, 0, 0, "src/gfx/dummy/empty.png"]
-	 	[1 , 1, 1, 1, 0, 0, "src/gfx/dummy/empty.png"]
+		[1 , 1, 1, 1, 0, 0, "src/trains/dummy/empty.png"]
+	 	[1 , 1, 1, 1, 0, 0, "src/trains/dummy/empty.png"]
+	 	[1 , 1, 1, 1, 0, 0, "src/trains/dummy/empty.png"]
+	 	[1 , 1, 1, 1, 0, 0, "src/trains/dummy/empty.png"]
+	 	[1 , 1, 1, 1, 0, 0, "src/trains/dummy/empty.png"]
+	 	[1 , 1, 1, 1, 0, 0, "src/trains/dummy/empty.png"]
         [x, y, 76, 15, -14, -10]
-		[1 , 1, 1, 1, 0, 0, "src/gfx/dummy/empty.png"]
+		[1 , 1, 1, 1, 0, 0, "src/trains/dummy/empty.png"]
 }
 template tmpl_purchase_dh_32bpp (x, y) {
-		[1 , 1, 1, 1, 0, 0, "src/gfx/dummy/empty_32bpp.png"]
-	 	[1 , 1, 1, 1, 0, 0, "src/gfx/dummy/empty_32bpp.png"]
-	 	[1 , 1, 1, 1, 0, 0, "src/gfx/dummy/empty_32bpp.png"]
-	 	[1 , 1, 1, 1, 0, 0, "src/gfx/dummy/empty_32bpp.png"]
-	 	[1 , 1, 1, 1, 0, 0, "src/gfx/dummy/empty_32bpp.png"]
-	 	[1 , 1, 1, 1, 0, 0, "src/gfx/dummy/empty_32bpp.png"]
+		[1 , 1, 1, 1, 0, 0, "src/trains/dummy/empty_32bpp.png"]
+	 	[1 , 1, 1, 1, 0, 0, "src/trains/dummy/empty_32bpp.png"]
+	 	[1 , 1, 1, 1, 0, 0, "src/trains/dummy/empty_32bpp.png"]
+	 	[1 , 1, 1, 1, 0, 0, "src/trains/dummy/empty_32bpp.png"]
+	 	[1 , 1, 1, 1, 0, 0, "src/trains/dummy/empty_32bpp.png"]
+	 	[1 , 1, 1, 1, 0, 0, "src/trains/dummy/empty_32bpp.png"]
         [x, y, 75, 15, -14, -10]
-		[1 , 1, 1, 1, 0, 0, "src/gfx/dummy/empty_32bpp.png"]
+		[1 , 1, 1, 1, 0, 0, "src/trains/dummy/empty_32bpp.png"]
 }
 
 /* EMU Templates */
@@ -77,6 +77,34 @@ template template_12_reversed(x, y) {
     [ x+16,		y,		30,		29,		-18,		-19]
     [ x+54,		y,		48,		16,		-24,		-12]
     [ x+110,	y,		30,		29,		-10,		-19]
+}
+
+template template_10_standard(x, y) {
+    //left_x, upper_y, width, height, offset_x, offset_y
+	//							more negative to shift left
+	//											more negative to shift up
+    [ x,		y,		8,		36,		-3,			-18]
+    [ x+16,		y,		26,		29,		-18,		-19]
+    [ x+54,		y,		40,		16,		-20,		-12]
+    [ x+110,	y,		26,		29,		-10,		-19]
+    [ x+148,	y,		8,		36,		-3,			-18]
+    [ x+164,	y,		26,		29,		-18,		-19]
+    [ x+202,	y,		40,		16,		-20,		-12]
+    [ x+258,	y,		26,		29,		-10,		-19]
+}
+
+template template_10_reversed(x, y) {
+    //left_x, upper_y, width, height, offset_x, offset_y
+	//							more negative to shift left
+	//											more negative to shift up
+    [ x+148,	y,		8,		36,		-3,			-18]
+    [ x+164,	y,		26,		29,		-18,		-19]
+    [ x+202,	y,		40,		16,		-20,		-12]
+    [ x+258,	y,		26,		29,		-10,		-19]
+    [ x,		y,		8,		36,		-3,			-18]
+    [ x+16,		y,		26,		29,		-18,		-19]
+    [ x+54,		y,		40,		16,		-20,		-12]
+    [ x+110,	y,		26,		29,		-10,		-19]
 }
 
 template template_8_standard(x, y) {

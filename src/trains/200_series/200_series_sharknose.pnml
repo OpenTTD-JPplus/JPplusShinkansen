@@ -1,47 +1,127 @@
 /* Begin 200 Series Sharknose */
 
-/* Purchase Menu */
-spriteset (ss_200_series_buy_sharknose_livery,	        	"src/gfx/dummy/purchase.png") {template_purchase(0, 0)}
+/* GRAPHICS */
 
-alternative_sprites(ss_200_series_buy_sharknose_livery,     ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/200_series/purchase_sharknose.png") {template_purchase(0, 0)}
+	/* Purchase Menu */
+	spriteset (ss_200_series_buy_sharknose_livery_12,	        	"src/trains/dummy/purchase.png") {template_purchase(0, 0)}
+	spriteset (ss_200_series_buy_sharknose_livery_10,	        	"src/trains/dummy/purchase.png") {template_purchase(0, 0)}
 
-/* EMU Parts */
+	alternative_sprites(ss_200_series_buy_sharknose_livery_12,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/12/purchase_sharknose.png") {template_purchase(0, 0)}
+	alternative_sprites(ss_200_series_buy_sharknose_livery_10,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/12/purchase_sharknose.png") {template_purchase(0, 0)}
 
-/* "CAB" */
-spriteset(ss_200_series_sharknose_cab,             				"src/gfx/dummy/empty.png") {template_dummy(0,0)}
-spriteset(ss_200_series_sharknose_cab_rev,    		    		"src/gfx/dummy/empty.png") {template_dummy(0,0)}
-	
-alternative_sprites(ss_200_series_sharknose_cab,     			ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/200_series/sharknose.png") {template_12_standard(1,1)}
-alternative_sprites(ss_200_series_sharknose_cab_rev,     		ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/200_series/sharknose.png") {template_12_reversed(1,41)}	
+		switch (FEAT_TRAINS, SELF, ss_200_series_buy_sharknose_livery, param_spritelength) {
+			1: ss_200_series_buy_sharknose_livery_10;				// Length 10
+			ss_200_series_buy_sharknose_livery_12;					// Length 12
+		}
 
-/* "CAB" w/ PANTOs*/
-spriteset(ss_200_series_sharknose_cabwp,             			"src/gfx/dummy/empty.png") {template_dummy(0,0)}
-spriteset(ss_200_series_sharknose_cabwp_rev,    		   	 	"src/gfx/dummy/empty.png") {template_dummy(0,0)}
+	/* EMU Parts */
 
-alternative_sprites(ss_200_series_sharknose_cabwp,     			ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/200_series/sharknose.png") {template_12_standard(1,81)}
-alternative_sprites(ss_200_series_sharknose_cabwp_rev,   		ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/200_series/sharknose.png") {template_12_reversed(1,121)}	
+	/* "CAB" */
+	spriteset(ss_200_series_sharknose_cab_12,             			"src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_200_series_sharknose_cab_rev_12,    		    	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_200_series_sharknose_cab_10,             			"src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_200_series_sharknose_cab_rev_10,    		    	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+		
+	alternative_sprites(ss_200_series_sharknose_cab_12,     		ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/12/sharknose.png") {template_12_standard(1,1)}
+	alternative_sprites(ss_200_series_sharknose_cab_rev_12,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/12/sharknose.png") {template_12_reversed(1,41)}
+	alternative_sprites(ss_200_series_sharknose_cab_10,     		ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/10/sharknose.png") {template_10_standard(1,1)}
+	alternative_sprites(ss_200_series_sharknose_cab_rev_10,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/10/sharknose.png") {template_10_reversed(1,41)}	
 
-/* "COACH" */
-spriteset(ss_200_series_sharknose_coach,             			"src/gfx/dummy/empty.png") {template_dummy(0,0)}
-spriteset(ss_200_series_sharknose_coach_rev,    		    	"src/gfx/dummy/empty.png") {template_dummy(0,0)}
+		switch (FEAT_TRAINS, SELF, ss_200_series_sharknose_cab, param_spritelength) {
+			1: ss_200_series_sharknose_cab_10;						// Length 10
+			ss_200_series_sharknose_cab_12;							// Length 12
+		}
 
-alternative_sprites(ss_200_series_sharknose_coach,     			ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/200_series/original.png") {template_12_standard(1,201)}
-alternative_sprites(ss_200_series_sharknose_coach_rev,   		ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/200_series/original.png") {template_12_reversed(1,201)}	
+		switch (FEAT_TRAINS, SELF, ss_200_series_sharknose_cab_rev, param_spritelength) {
+			1: ss_200_series_sharknose_cab_rev_10;					// Length 10
+			ss_200_series_sharknose_cab_rev_12;						// Length 12
+		}
 
-/* "PANTO" */
-spriteset(ss_200_series_sharknose_panto,             			"src/gfx/dummy/empty.png") {template_dummy(0,0)}
-spriteset(ss_200_series_sharknose_panto_rev,    		    	"src/gfx/dummy/empty.png") {template_dummy(0,0)}
+	/* "CAB" w/ PANTOs*/
+	spriteset(ss_200_series_sharknose_cabwp_12,             		"src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_200_series_sharknose_cabwp_rev_12,    		   	 	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_200_series_sharknose_cabwp_10,             		"src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_200_series_sharknose_cabwp_rev_10,    		   	 	"src/trains/dummy/empty.png") {template_dummy(0,0)}
 
-alternative_sprites(ss_200_series_sharknose_panto,     			ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/200_series/original.png") {template_12_standard(1,161)}
-alternative_sprites(ss_200_series_sharknose_panto_rev,   		ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/200_series/original.png") {template_12_reversed(1,161)}	
+	alternative_sprites(ss_200_series_sharknose_cabwp_12,     		ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/12/sharknose.png") {template_12_standard(1,81)}
+	alternative_sprites(ss_200_series_sharknose_cabwp_rev_12,   	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/12/sharknose.png") {template_12_reversed(1,121)}	
+	alternative_sprites(ss_200_series_sharknose_cabwp_10,     		ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/10/sharknose.png") {template_10_standard(1,81)}
+	alternative_sprites(ss_200_series_sharknose_cabwp_rev_10,   	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/10/sharknose.png") {template_10_reversed(1,121)}	
 
-/* "DOUBLE DECKER" */
-spriteset(ss_200_series_sharknose_2deck,             	     	"src/gfx/dummy/empty.png") {template_dummy(0,0)}
-spriteset(ss_200_series_sharknose_2deck_rev,    		        "src/gfx/dummy/empty.png") {template_dummy(0,0)}
+		switch (FEAT_TRAINS, SELF, ss_200_series_sharknose_cabwp, param_spritelength) {
+			1: ss_200_series_sharknose_cabwp_10;					// Length 10
+			ss_200_series_sharknose_cabwp_12;						// Length 12
+		}
 
-alternative_sprites(ss_200_series_sharknose_2deck,              ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/200_series/sharknose.png") {template_12_standard(1,161)}
-alternative_sprites(ss_200_series_sharknose_2deck_rev,        	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/gfx/200_series/sharknose.png") {template_12_reversed(1,161)}	
+		switch (FEAT_TRAINS, SELF, ss_200_series_sharknose_cabwp_rev, param_spritelength) {
+			1: ss_200_series_sharknose_cabwp_rev_10;				// Length 10
+			ss_200_series_sharknose_cabwp_rev_12;					// Length 12
+		}
 
+	/* "COACH" */
+	spriteset(ss_200_series_sharknose_coach_12,             		"src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_200_series_sharknose_coach_rev_12,    		    	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_200_series_sharknose_coach_10,             		"src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_200_series_sharknose_coach_rev_10,    		    	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+
+	alternative_sprites(ss_200_series_sharknose_coach_12,     		ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/12/original.png") {template_12_standard(1,201)}
+	alternative_sprites(ss_200_series_sharknose_coach_rev_12,   	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/12/original.png") {template_12_reversed(1,201)}	
+	alternative_sprites(ss_200_series_sharknose_coach_10,     		ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/10/original.png") {template_10_standard(1,201)}
+	alternative_sprites(ss_200_series_sharknose_coach_rev_10,   	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/10/original.png") {template_10_reversed(1,201)}
+
+		switch (FEAT_TRAINS, SELF, ss_200_series_sharknose_coach, param_spritelength) {
+			1: ss_200_series_sharknose_coach_10;					// Length 10
+			ss_200_series_sharknose_coach_12;						// Length 12
+		}
+
+		switch (FEAT_TRAINS, SELF, ss_200_series_sharknose_coach_rev, param_spritelength) {
+			1: ss_200_series_sharknose_coach_rev_10;				// Length 10
+			ss_200_series_sharknose_coach_rev_12;					// Length 12
+		}
+
+	/* "PANTO" */
+	spriteset(ss_200_series_sharknose_panto_12,             		"src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_200_series_sharknose_panto_rev_12,    		    	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_200_series_sharknose_panto_10,             		"src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_200_series_sharknose_panto_rev_10,    		    	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+
+	alternative_sprites(ss_200_series_sharknose_panto_12,     		ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/12/original.png") {template_12_standard(1,161)}
+	alternative_sprites(ss_200_series_sharknose_panto_rev_12,   	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/12/original.png") {template_12_reversed(1,161)}	
+	alternative_sprites(ss_200_series_sharknose_panto_10,     		ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/10/original.png") {template_10_standard(1,161)}
+	alternative_sprites(ss_200_series_sharknose_panto_rev_10,   	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/10/original.png") {template_10_reversed(1,161)}
+
+		switch (FEAT_TRAINS, SELF, ss_200_series_sharknose_panto, param_spritelength) {
+			1: ss_200_series_sharknose_panto_10;					// Length 10
+			ss_200_series_sharknose_panto_12;						// Length 12
+		}
+
+		switch (FEAT_TRAINS, SELF, ss_200_series_sharknose_panto_rev, param_spritelength) {
+			1: ss_200_series_sharknose_panto_rev_10;				// Length 10
+			ss_200_series_sharknose_panto_rev_12;					// Length 12
+		}
+
+	/* "DOUBLE DECKER" */
+	spriteset(ss_200_series_sharknose_2deck_12,             	    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_200_series_sharknose_2deck_rev_12,    		        "src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_200_series_sharknose_2deck_10,             	    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_200_series_sharknose_2deck_rev_10,    		        "src/trains/dummy/empty.png") {template_dummy(0,0)}
+
+	alternative_sprites(ss_200_series_sharknose_2deck_12,          	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/12/sharknose.png") {template_12_standard(1,161)}
+	alternative_sprites(ss_200_series_sharknose_2deck_rev_12,       ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/12/sharknose.png") {template_12_reversed(1,161)}	
+	alternative_sprites(ss_200_series_sharknose_2deck_10,          	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/10/sharknose.png") {template_10_standard(1,161)}
+	alternative_sprites(ss_200_series_sharknose_2deck_rev_10,       ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/10/sharknose.png") {template_10_reversed(1,161)}	
+
+		switch (FEAT_TRAINS, SELF, ss_200_series_sharknose_2deck, param_spritelength) {
+			1: ss_200_series_sharknose_2deck_10;					// Length 10
+			ss_200_series_sharknose_2deck_12;						// Length 12
+		}
+
+		switch (FEAT_TRAINS, SELF, ss_200_series_sharknose_2deck_rev, param_spritelength) {
+			1: ss_200_series_sharknose_2deck_rev_10;				// Length 10
+			ss_200_series_sharknose_2deck_rev_12;					// Length 12
+		}
+
+/* FORMATIONS */
 
 // Midcars going backwards
 switch (FEAT_TRAINS, SELF, sw_200_series_sharknose_backwards, position_in_consist_from_end % 48) {				
@@ -173,7 +253,7 @@ item(FEAT_TRAINS, series_200_sharknose) {
 		articulated_part:               sw_200_series_sharknose_articulated_part;
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
 		/* Stats */
-		length:                         sw_length_2_8_2;
+		length:                         sw_param_length;
         power:							NumberCarsInConsist() * 308 * 4 ;		// 230 kW
 		weight:							NumberCarsInConsist() * 58;
         //speed:						240 km/h;
@@ -193,7 +273,7 @@ item(FEAT_TRAINS, series_200_sharknose) {
         cargo_age_period:				param_decay_express;
         loading_speed:                  26 * CapacityFactor() / param_loading_2D;
 		articulated_part:				sw_mucar_full_articulated_part;
-		length:							sw_length_2_8_2;
+		length:							sw_param_length;
 		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
 		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
         //running_cost_factor:            sw_200_series_sharknose_running_costs;

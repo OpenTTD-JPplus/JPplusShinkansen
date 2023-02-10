@@ -1,8 +1,289 @@
 /* Begin 200 Series */
 
-#include "src/trains/200_series/200_series_subtypes.pnml"
-#include "src/trains/200_series/200_series_gfx.pnml"
-#include "src/trains/200_series/200_series_liveries.pnml"
+/* SUBTYPES */
+
+	// From 1982 to 1999
+	switch(FEAT_TRAINS, SELF, sw_200_series_1982_subtype_text, cargo_subtype) {
+		0: return string(LV_200_SERIES_ORIGINAL);           // Original
+		return CB_RESULT_NO_TEXT;
+		}
+
+	// From 1999 onwards - introduction of Refurbished Livery
+	switch(FEAT_TRAINS, SELF, sw_200_series_1992_subtype_text, cargo_subtype) {
+		0: return string(LV_200_SERIES_ORIGINAL);           // Original        
+		1: return string(LV_200_SERIES_REFURB);             // Refurbished
+		return CB_RESULT_NO_TEXT;
+		}
+
+	// Subtype Menu
+	switch(FEAT_TRAINS, SELF, sw_200_series_year_dep_subtype_text, current_year) {
+			0..1998: sw_200_series_1982_subtype_text;
+			sw_200_series_1992_subtype_text;
+		}
+
+/* GRAPHICS */
+
+	/* Purchase Menu */
+	spriteset (ss_200_series_buy_original_jnr_12,	        	    "src/trains/dummy/purchase.png") {template_purchase(0, 0)}
+	spriteset (ss_200_series_buy_original_jre_12,	        	    "src/trains/dummy/purchase.png") {template_purchase(0, 0)}
+	spriteset (ss_200_series_buy_original_jnr_10,	        	    "src/trains/dummy/purchase.png") {template_purchase(0, 0)}
+	spriteset (ss_200_series_buy_original_jre_10,	        	    "src/trains/dummy/purchase.png") {template_purchase(0, 0)}
+
+	alternative_sprites(ss_200_series_buy_original_jnr_12,          ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/12/purchase_original_jnr.png") {template_purchase(0, 0)}
+	alternative_sprites(ss_200_series_buy_original_jre_12,          ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/12/purchase_original_jre.png") {template_purchase(0, 0)}
+	alternative_sprites(ss_200_series_buy_original_jnr_10,          ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/12/purchase_original_jnr.png") {template_purchase(0, 0)}
+	alternative_sprites(ss_200_series_buy_original_jre_10,          ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/12/purchase_original_jre.png") {template_purchase(0, 0)}
+
+		switch (FEAT_TRAINS, SELF, ss_200_series_buy_original_jnr, param_spritelength) {
+			1: ss_200_series_buy_original_jnr_10;					// Length 10
+			ss_200_series_buy_original_jnr_12;						// Length 12
+		}
+
+		switch (FEAT_TRAINS, SELF, ss_200_series_buy_original_jre, param_spritelength) {
+			1: ss_200_series_buy_original_jre_10;					// Length 10
+			ss_200_series_buy_original_jre_12;						// Length 12
+		}
+
+	/* EMU Parts */
+
+	/* "CAB" */
+
+	spriteset(ss_200_series_cab_original_livery_12,             	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_200_series_cab_rev_original_livery_12,    		    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_200_series_cab_refurb_livery_12,             		"src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_200_series_cab_rev_refurb_livery_12,    		    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+
+	spriteset(ss_200_series_cab_original_livery_10,             	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_200_series_cab_rev_original_livery_10,    		    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_200_series_cab_refurb_livery_10,             		"src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_200_series_cab_rev_refurb_livery_10,    		    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+
+	// 200 Series Original Strip Livery
+	alternative_sprites(ss_200_series_cab_original_livery_12,       ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/12/original.png") {template_12_standard(1,1)}
+	alternative_sprites(ss_200_series_cab_rev_original_livery_12,   ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/12/original.png") {template_12_reversed(1,41)}			
+	alternative_sprites(ss_200_series_cab_original_livery_10,       ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/10/original.png") {template_10_standard(1,1)}
+	alternative_sprites(ss_200_series_cab_rev_original_livery_10,   ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/10/original.png") {template_10_reversed(1,41)}
+
+	// 200 Series Refurbished Livery
+	alternative_sprites(ss_200_series_cab_refurb_livery_12,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/12/refurb.png") {template_12_standard(1,1)}
+	alternative_sprites(ss_200_series_cab_rev_refurb_livery_12,     ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/12/refurb.png") {template_12_reversed(1,41)}
+	alternative_sprites(ss_200_series_cab_refurb_livery_10,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/10/refurb.png") {template_10_standard(1,1)}
+	alternative_sprites(ss_200_series_cab_rev_refurb_livery_10,     ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/10/refurb.png") {template_10_reversed(1,41)}
+
+		switch (FEAT_TRAINS, SELF, ss_200_series_cab_original_livery, param_spritelength) {
+			1: ss_200_series_cab_original_livery_10;				// Length 10
+			ss_200_series_cab_original_livery_12;					// Length 12
+		}
+
+		switch (FEAT_TRAINS, SELF, ss_200_series_cab_rev_original_livery, param_spritelength) {
+			1: ss_200_series_cab_rev_original_livery_10;			// Length 10
+			ss_200_series_cab_rev_original_livery_12;				// Length 12
+		}
+
+		switch (FEAT_TRAINS, SELF, ss_200_series_cab_refurb_livery, param_spritelength) {
+			1: ss_200_series_cab_refurb_livery_10;					// Length 10
+			ss_200_series_cab_refurb_livery_12;						// Length 12
+		}
+
+		switch (FEAT_TRAINS, SELF, ss_200_series_cab_rev_refurb_livery, param_spritelength) {
+			1: ss_200_series_cab_rev_refurb_livery_10;				// Length 10
+			ss_200_series_cab_rev_refurb_livery_12;					// Length 12
+		}
+
+	/* "CAB" w/ PANTOs*/
+
+	spriteset(ss_200_series_cabwp_original_livery_12,             	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_200_series_cabwp_rev_original_livery_12,    		"src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_200_series_cabwp_refurb_livery_12,             	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_200_series_cabwp_rev_refurb_livery_12,    		    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+	
+	spriteset(ss_200_series_cabwp_original_livery_10,             	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_200_series_cabwp_rev_original_livery_10,    		"src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_200_series_cabwp_refurb_livery_10,             	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_200_series_cabwp_rev_refurb_livery_10,    		    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+
+	// 200 Series Original Strip Livery
+	alternative_sprites(ss_200_series_cabwp_original_livery_12,     ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/12/original.png") {template_12_standard(1,81)}
+	alternative_sprites(ss_200_series_cabwp_rev_original_livery_12, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/12/original.png") {template_12_reversed(1,121)}
+	alternative_sprites(ss_200_series_cabwp_original_livery_10,     ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/10/original.png") {template_10_standard(1,81)}
+	alternative_sprites(ss_200_series_cabwp_rev_original_livery_10, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/10/original.png") {template_10_reversed(1,121)}		
+
+	// 200 Series Refurbished Livery
+	alternative_sprites(ss_200_series_cabwp_refurb_livery_12,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/12/refurb.png") {template_12_standard(1,81)}
+	alternative_sprites(ss_200_series_cabwp_rev_refurb_livery_12,   ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/12/refurb.png") {template_12_reversed(1,121)}
+	alternative_sprites(ss_200_series_cabwp_refurb_livery_10,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/10/refurb.png") {template_10_standard(1,81)}
+	alternative_sprites(ss_200_series_cabwp_rev_refurb_livery_10,   ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/10/refurb.png") {template_10_reversed(1,121)}
+
+		switch (FEAT_TRAINS, SELF, ss_200_series_cabwp_original_livery, param_spritelength) {
+			1: ss_200_series_cabwp_original_livery_10;				// Length 10
+			ss_200_series_cabwp_original_livery_12;					// Length 12
+		}
+
+		switch (FEAT_TRAINS, SELF, ss_200_series_cabwp_rev_original_livery, param_spritelength) {
+			1: ss_200_series_cabwp_rev_original_livery_10;			// Length 10
+			ss_200_series_cabwp_rev_original_livery_12;				// Length 12
+		}
+
+		switch (FEAT_TRAINS, SELF, ss_200_series_cabwp_refurb_livery, param_spritelength) {
+			1: ss_200_series_cabwp_refurb_livery_10;				// Length 10
+			ss_200_series_cabwp_refurb_livery_12;					// Length 12
+		}
+
+		switch (FEAT_TRAINS, SELF, ss_200_series_cabwp_rev_refurb_livery, param_spritelength) {
+			1: ss_200_series_cabwp_rev_refurb_livery_10;			// Length 10
+			ss_200_series_cabwp_rev_refurb_livery_12;				// Length 12
+		}
+
+	/* "COACH" */
+
+	spriteset(ss_200_series_coach_original_livery_12,             	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_200_series_coach_rev_original_livery_12,    		"src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_200_series_coach_refurb_livery_12,             	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_200_series_coach_rev_refurb_livery_12,    		    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+
+	spriteset(ss_200_series_coach_original_livery_10,             	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_200_series_coach_rev_original_livery_10,    		"src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_200_series_coach_refurb_livery_10,             	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_200_series_coach_rev_refurb_livery_10,    		    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+
+	// 200 Series Original Strip Livery
+	alternative_sprites(ss_200_series_coach_original_livery_12,     ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/12/original.png") {template_12_standard(1,201)}
+	alternative_sprites(ss_200_series_coach_rev_original_livery_12, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/12/original.png") {template_12_reversed(1,201)}		
+	alternative_sprites(ss_200_series_coach_original_livery_10,     ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/10/original.png") {template_10_standard(1,201)}
+	alternative_sprites(ss_200_series_coach_rev_original_livery_10, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/10/original.png") {template_10_reversed(1,201)}
+
+	// 200 Series Refurbished Livery
+	alternative_sprites(ss_200_series_coach_refurb_livery_12,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/12/refurb.png") {template_12_standard(1,201)}
+	alternative_sprites(ss_200_series_coach_rev_refurb_livery_12,   ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/12/refurb.png") {template_12_reversed(1,201)}
+	alternative_sprites(ss_200_series_coach_refurb_livery_10,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/10/refurb.png") {template_10_standard(1,201)}
+	alternative_sprites(ss_200_series_coach_rev_refurb_livery_10,   ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/10/refurb.png") {template_10_reversed(1,201)}
+
+		switch (FEAT_TRAINS, SELF, ss_200_series_coach_original_livery, param_spritelength) {
+			1: ss_200_series_coach_original_livery_10;				// Length 10
+			ss_200_series_coach_original_livery_12;					// Length 12
+		}
+
+		switch (FEAT_TRAINS, SELF, ss_200_series_coach_rev_original_livery, param_spritelength) {
+			1: ss_200_series_coach_rev_original_livery_10;			// Length 10
+			ss_200_series_coach_rev_original_livery_12;				// Length 12
+		}
+
+		switch (FEAT_TRAINS, SELF, ss_200_series_coach_refurb_livery, param_spritelength) {
+			1: ss_200_series_coach_refurb_livery_10;				// Length 10
+			ss_200_series_coach_refurb_livery_12;					// Length 12
+		}
+
+		switch (FEAT_TRAINS, SELF, ss_200_series_coach_rev_refurb_livery, param_spritelength) {
+			1: ss_200_series_coach_rev_refurb_livery_10;			// Length 10
+			ss_200_series_coach_rev_refurb_livery_12;				// Length 12
+		}
+
+	/* "PANTO" */
+
+	spriteset(ss_200_series_panto_original_livery_12,             	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_200_series_panto_rev_original_livery_12,    		"src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_200_series_panto_refurb_livery_12,             	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_200_series_panto_rev_refurb_livery_12,    		    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+
+	spriteset(ss_200_series_panto_original_livery_10,             	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_200_series_panto_rev_original_livery_10,    		"src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_200_series_panto_refurb_livery_10,             	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_200_series_panto_rev_refurb_livery_10,    		    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+
+	// 200 Series Original Strip Livery
+	alternative_sprites(ss_200_series_panto_original_livery_12,     ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/12/original.png") {template_12_standard(1,161)}
+	alternative_sprites(ss_200_series_panto_rev_original_livery_12, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/12/original.png") {template_12_reversed(1,161)}		
+	alternative_sprites(ss_200_series_panto_original_livery_10,     ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/10/original.png") {template_10_standard(1,161)}
+	alternative_sprites(ss_200_series_panto_rev_original_livery_10, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/10/original.png") {template_10_reversed(1,161)}
+
+	// 200 Series Refurbished Livery
+	alternative_sprites(ss_200_series_panto_refurb_livery_12,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/12/refurb.png") {template_12_standard(1,161)}
+	alternative_sprites(ss_200_series_panto_rev_refurb_livery_12,   ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/12/refurb.png") {template_12_reversed(1,161)}
+	alternative_sprites(ss_200_series_panto_refurb_livery_10,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/10/refurb.png") {template_10_standard(1,161)}
+	alternative_sprites(ss_200_series_panto_rev_refurb_livery_10,   ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/10/refurb.png") {template_10_reversed(1,161)}
+
+		switch (FEAT_TRAINS, SELF, ss_200_series_panto_original_livery, param_spritelength) {
+			1: ss_200_series_panto_original_livery_10;				// Length 10
+			ss_200_series_panto_original_livery_12;					// Length 12
+		}
+
+		switch (FEAT_TRAINS, SELF, ss_200_series_panto_rev_original_livery, param_spritelength) {
+			1: ss_200_series_panto_rev_original_livery_10;			// Length 10
+			ss_200_series_panto_rev_original_livery_12;				// Length 12
+		}
+
+		switch (FEAT_TRAINS, SELF, ss_200_series_panto_refurb_livery, param_spritelength) {
+			1: ss_200_series_panto_refurb_livery_10;				// Length 10
+			ss_200_series_panto_refurb_livery_12;					// Length 12
+		}
+
+		switch (FEAT_TRAINS, SELF, ss_200_series_panto_rev_refurb_livery, param_spritelength) {
+			1: ss_200_series_panto_rev_refurb_livery_10;			// Length 10
+			ss_200_series_panto_rev_refurb_livery_12;				// Length 12
+		}
+
+/* LIVERIES */
+
+	/* Purchase Menu */
+
+		switch(FEAT_TRAINS, SELF, sw_200_series_year_dep_purchase, current_year) {
+			0..1986: ss_200_series_buy_original_jnr;        // JNR
+			ss_200_series_buy_original_jre;                 // JR East
+		}
+
+	/* EMU Parts */
+
+	/* "CAB" */
+
+		switch(FEAT_TRAINS, SELF, ss_200_series_cab, cargo_subtype) { 
+			1: ss_200_series_cab_refurb_livery;             // Refurbished
+			ss_200_series_cab_original_livery;              // Original
+		}
+
+		// Reversed
+		switch(FEAT_TRAINS, SELF, ss_200_series_cab_rev, cargo_subtype) {
+			1: ss_200_series_cab_rev_refurb_livery;         // Refurbished
+			ss_200_series_cab_rev_original_livery;          // Original
+		}
+
+	/* "CAB" w/ PANTOs*/
+
+		switch(FEAT_TRAINS, SELF, ss_200_series_cabwp, cargo_subtype) {
+			1: ss_200_series_cabwp_refurb_livery;           // Refurbished
+			ss_200_series_cabwp_original_livery;            // Original
+		}
+
+		// Reversed
+		switch(FEAT_TRAINS, SELF, ss_200_series_cabwp_rev, cargo_subtype) {
+			1: ss_200_series_cabwp_rev_refurb_livery;       // Refurbished
+			ss_200_series_cabwp_rev_original_livery;        // Original
+		}
+
+	/* "COACH" */
+		switch(FEAT_TRAINS, SELF, ss_200_series_coach, cargo_subtype) {
+			1: ss_200_series_coach_refurb_livery;           // Refurbished
+			ss_200_series_coach_original_livery;            // Original
+		}
+
+		// Reversed
+		switch(FEAT_TRAINS, SELF, ss_200_series_coach_rev, cargo_subtype) {
+			1: ss_200_series_coach_rev_refurb_livery;       // Refurbished
+			ss_200_series_coach_rev_original_livery;        // Original
+		}
+
+	/* "PANTO" */
+		switch(FEAT_TRAINS, SELF, ss_200_series_panto, cargo_subtype) {
+			1: ss_200_series_panto_refurb_livery;           // Refurbished
+			ss_200_series_panto_original_livery;            // Original
+		}
+
+	// Reversed
+		switch(FEAT_TRAINS, SELF, ss_200_series_panto_rev, cargo_subtype) {
+			1: ss_200_series_panto_rev_refurb_livery;       // Refurbished
+			ss_200_series_panto_rev_original_livery;        // Original
+		}
+
+/* FORMATIONS */
 
 // Midcars going backwards
 switch (FEAT_TRAINS, SELF, sw_200_series_backwards, position_in_consist_from_end % 36) {				
@@ -128,7 +409,7 @@ item(FEAT_TRAINS, series_200) {
 		articulated_part:               sw_200_series_articulated_part;
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
 		/* Stats */
-		length:                         sw_length_2_8_2;
+		length:                         sw_param_length;
         power:							NumberCarsInConsist() * 308 * 4 ;		// 230 kW
 		weight:							NumberCarsInConsist() * 58;
         //speed:							sw_200_series_speed;
@@ -148,7 +429,7 @@ item(FEAT_TRAINS, series_200) {
         cargo_age_period:				param_decay_express;
         loading_speed:                  26 * CapacityFactor() / param_loading_2D;
 		articulated_part:				sw_mucar_full_articulated_part;
-		length:							sw_length_2_8_2;
+		length:							sw_param_length;
 		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
 		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
         //running_cost_factor:            sw_200_series_running_costs;

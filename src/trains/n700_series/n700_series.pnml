@@ -1,41 +1,236 @@
 /* Begin N700 Series */
 
-#include "src/trains/n700_series/n700_series_subtypes.pnml"
-#include "src/trains/n700_series/n700_series_gfx.pnml"
-#include "src/trains/n700_series/n700_series_liveries.pnml"
+/* Purchase Menu */
+    spriteset (ss_n700_series_buy,	        			"src/trains/dummy/purchase.png") {template_purchase(0, 0)}
+    alternative_sprites(ss_n700_series_buy,     		ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/12/buy_n700.png") {template_purchase(0, 0)}
 
-switch (FEAT_TRAINS, SELF, sw_n700_series_backwards_long, position_in_consist_from_end % 48) {				
-		13: ss_n700_series_panto_rev;
-		34: ss_n700_series_panto_rev;
-		ss_n700_series_coach_rev;				
+    /* EMU Parts */
+
+    /* "CAB" */
+    spriteset(ss_n700_cab_12,             		    	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_n700_cab_rev_12,             	    	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_n700_kyushu_cab_12,             	    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_n700_kyushu_cab_rev_12,             	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+
+    spriteset(ss_n700_cab_10,             		    	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_n700_cab_rev_10,             	    	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_n700_kyushu_cab_10,             	    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_n700_kyushu_cab_rev_10,             	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+
+    // N700 Series Livery
+    alternative_sprites(ss_n700_cab_12,             	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/12/n700.png") {template_12_standard(1,1)}
+    alternative_sprites(ss_n700_cab_rev_12,         	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/12/n700.png") {template_12_reversed(1,41)}
+
+    alternative_sprites(ss_n700_cab_10,             	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/10/n700.png") {template_10_standard(1,1)}
+    alternative_sprites(ss_n700_cab_rev_10,         	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/10/n700.png") {template_10_reversed(1,41)}		
+
+    // N700 Series Kyushu Strip Livery
+    alternative_sprites(ss_n700_kyushu_cab_12,          ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/12/kyushu.png") {template_12_standard(1,1)}
+    alternative_sprites(ss_n700_kyushu_cab_rev_12,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/12/kyushu.png") {template_12_reversed(1,41)}
+
+    alternative_sprites(ss_n700_kyushu_cab_10,          ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/10/kyushu.png") {template_10_standard(1,1)}
+    alternative_sprites(ss_n700_kyushu_cab_rev_10,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/10/kyushu.png") {template_10_reversed(1,41)}
+
+        // Parameter  length selection
+		switch (FEAT_TRAINS, SELF, ss_n700_cab, param_spritelength) {
+			1: ss_n700_cab_10;						    // Length 10
+			ss_n700_cab_12;						        // Length 12
+		}
+		
+        switch (FEAT_TRAINS, SELF, ss_n700_cab_rev, param_spritelength) {
+			1: ss_n700_cab_rev_10;					    // Length 10
+			ss_n700_cab_rev_12;						    // Length 12
+		}
+
+        switch (FEAT_TRAINS, SELF, ss_n700_kyushu_cab, param_spritelength) {
+			1: ss_n700_kyushu_cab_10;					// Length 10
+			ss_n700_kyushu_cab_12;						// Length 12
+		}
+
+        switch (FEAT_TRAINS, SELF, ss_n700_kyushu_cab_rev, param_spritelength) {
+			1: ss_n700_kyushu_cab_rev_10;				// Length 10
+			ss_n700_kyushu_cab_rev_12;					// Length 12
+		}
+
+    /* COACH */
+    spriteset(ss_n700_coach_12,             	    	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_n700_coach_rev_12,    		        	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_n700_kyushu_coach_12,             		"src/trains/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_n700_kyushu_coach_rev_12,    		   	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+
+    spriteset(ss_n700_coach_10,             	    	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_n700_coach_rev_10,    		        	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_n700_kyushu_coach_10,             		"src/trains/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_n700_kyushu_coach_rev_10,    		   	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+
+    // N700 Series Livery
+    alternative_sprites(ss_n700_coach_12,           	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/12/n700.png") {template_12_standard(1,121)}
+    alternative_sprites(ss_n700_coach_rev_12,       	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/12/n700.png") {template_12_reversed(1,121)}
+
+    alternative_sprites(ss_n700_coach_10,           	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/10/n700.png") {template_10_standard(1,121)}
+    alternative_sprites(ss_n700_coach_rev_10,       	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/10/n700.png") {template_10_reversed(1,121)}
+
+    // N700 Series Kyushu Strip Livery
+    alternative_sprites(ss_n700_kyushu_coach_12,        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/12/kyushu.png") {template_12_standard(1,121)}
+    alternative_sprites(ss_n700_kyushu_coach_rev_12,    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/12/kyushu.png") {template_12_reversed(1,121)}	
+
+    alternative_sprites(ss_n700_kyushu_coach_10,        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/10/kyushu.png") {template_10_standard(1,121)}
+    alternative_sprites(ss_n700_kyushu_coach_rev_10,    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/10/kyushu.png") {template_10_reversed(1,121)}
+
+    	// Parameter  length selection
+		switch (FEAT_TRAINS, SELF, ss_n700_coach, param_spritelength) {
+			1: ss_n700_coach_10;						    // Length 10
+			ss_n700_coach_12;						        // Length 12
+		}
+		
+        switch (FEAT_TRAINS, SELF, ss_n700_coach_rev, param_spritelength) {
+			1: ss_n700_coach_rev_10;					    // Length 10
+			ss_n700_coach_rev_12;						    // Length 12
+		}
+
+        switch (FEAT_TRAINS, SELF, ss_n700_kyushu_coach, param_spritelength) {
+			1: ss_n700_kyushu_coach_10;					// Length 10
+			ss_n700_kyushu_coach_12;						// Length 12
+		}
+
+        switch (FEAT_TRAINS, SELF, ss_n700_kyushu_coach_rev, param_spritelength) {
+			1: ss_n700_kyushu_coach_rev_10;				// Length 10
+			ss_n700_kyushu_coach_rev_12;					// Length 12
+		}
+
+    /* PANTO */
+    spriteset(ss_n700_panto_12,          		    	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_n700_panto_rev_12, 		        	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_n700_kyushu_panto_12,          		"src/trains/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_n700_kyushu_panto_rev_12, 		        "src/trains/dummy/empty.png") {template_dummy(0,0)}
+
+    spriteset(ss_n700_panto_10,          		    	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_n700_panto_rev_10, 		        	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_n700_kyushu_panto_10,          		"src/trains/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_n700_kyushu_panto_rev_10, 		        "src/trains/dummy/empty.png") {template_dummy(0,0)}
+
+    // N700 Series Livery
+    alternative_sprites(ss_n700_panto_12,     	    	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,  "src/trains/n700_series/12/n700.png") {template_12_standard(1,81)}
+    alternative_sprites(ss_n700_panto_rev_12,       	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,  "src/trains/n700_series/12/n700.png") {template_12_reversed(1,81)}
+
+    alternative_sprites(ss_n700_panto_10,     	    	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,  "src/trains/n700_series/10/n700.png") {template_10_standard(1,81)}
+    alternative_sprites(ss_n700_panto_rev_10,       	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,  "src/trains/n700_series/10/n700.png") {template_10_reversed(1,81)}
+
+    // N700 Series Kyushu Strip Livery
+    alternative_sprites(ss_n700_kyushu_panto_12,        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/12/kyushu.png") {template_12_standard(1,81)}
+    alternative_sprites(ss_n700_kyushu_panto_rev_12,    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/12/kyushu.png") {template_12_reversed(1,81)}
+
+    alternative_sprites(ss_n700_kyushu_panto_10,        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/10/kyushu.png") {template_10_standard(1,81)}
+    alternative_sprites(ss_n700_kyushu_panto_rev_10,    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/10/kyushu.png") {template_10_reversed(1,81)}
+
+        // Parameter  length selection
+		switch (FEAT_TRAINS, SELF, ss_n700_panto, param_spritelength) {
+			1: ss_n700_panto_10;						// Length 10
+			ss_n700_panto_12;						    // Length 12
+		}
+		
+        switch (FEAT_TRAINS, SELF, ss_n700_panto_rev, param_spritelength) {
+			1: ss_n700_panto_rev_10;					// Length 10
+			ss_n700_panto_rev_12;						// Length 12
+		}
+
+        switch (FEAT_TRAINS, SELF, ss_n700_kyushu_panto, param_spritelength) {
+			1: ss_n700_kyushu_panto_10;					// Length 10
+			ss_n700_kyushu_panto_12;					// Length 12
+		}
+
+        switch (FEAT_TRAINS, SELF, ss_n700_kyushu_panto_rev, param_spritelength) {
+			1: ss_n700_kyushu_panto_rev_10;				// Length 10
+			ss_n700_kyushu_panto_rev_12;				// Length 12
+		}
+
+/* LIVERIES */
+
+    // CAB
+
+    // Cab
+    switch(FEAT_TRAINS, SELF, ss_n700_series_cab, cargo_subtype) { 
+        1: ss_n700_kyushu_cab;                				// Kyushu
+		ss_n700_cab;                 						// N700
+    }
+	// Cab reversed
+    switch(FEAT_TRAINS, SELF, ss_n700_series_cab_rev, cargo_subtype) {
+        1: ss_n700_kyushu_cab_rev;                			// Kyushu
+		ss_n700_cab_rev;                 					// N700
+    }
+
+    // COACH
+
+    // Coach
+    switch(FEAT_TRAINS, SELF, ss_n700_series_coach, cargo_subtype) { 
+        1: ss_n700_kyushu_coach;                			// Kyushu
+		ss_n700_coach;                 						// N700
+    }
+	// Coach reversed
+    switch(FEAT_TRAINS, SELF, ss_n700_series_coach_rev, cargo_subtype) {
+        1: ss_n700_kyushu_coach_rev;                		// Kyushu
+		ss_n700_coach_rev;                 					// N700
+    }
+
+    // PANTO
+
+    // Panto
+    switch(FEAT_TRAINS, SELF, ss_n700_series_panto, cargo_subtype) { 
+        1: ss_n700_kyushu_panto;                			// Kyushu
+		ss_n700_panto;                 						// N700
+    }
+	// Panto reversed
+    switch(FEAT_TRAINS, SELF, ss_n700_series_panto_rev, cargo_subtype) {
+        1: ss_n700_kyushu_panto_rev;                		// Kyushu
+		ss_n700_panto_rev;                 					// N700
+    }
+
+/* FORMATION */
+
+// Forwards
+switch (FEAT_TRAINS, SELF, sw_n700_series_forwards_5th_and_4_from_end, position_in_consist == 13 || position_in_consist_from_end  == 10) {				
+		0:  ss_n700_series_coach;
+		ss_n700_series_panto;				
 	}
 
-switch (FEAT_TRAINS, SELF, sw_n700_series_forwards_long, position_in_consist % 48) {				
-		13: ss_n700_series_panto;
-		34: ss_n700_series_panto;
-		ss_n700_series_coach;				
+switch (FEAT_TRAINS, SELF, sw_n700_series_forwards_2nd_and_penultimate, position_in_consist == 4 || position_in_consist_from_end  == 4) {				
+		0:  ss_n700_series_coach;
+		ss_n700_series_panto;				
 	}
 
-switch (FEAT_TRAINS, SELF, sw_n700_series_backwards_short, position_in_consist_from_end % 24) {				
-		4:  ss_n700_series_panto_rev;
-		19: ss_n700_series_panto_rev;
-		ss_n700_series_coach_rev;				
+switch (FEAT_TRAINS, SELF, sw_n700_series_forwards_panto_in_middle, (position_in_consist == position_in_consist_from_end ) || (position_in_consist - 3 == position_in_consist_from_end)) {				
+		0:  ss_n700_series_coach;
+		ss_n700_series_panto;				
 	}
 
-switch (FEAT_TRAINS, SELF, sw_n700_series_forwards_short, position_in_consist % 24) {				
-		4:  ss_n700_series_panto;
-		19: ss_n700_series_panto;
-		ss_n700_series_coach;				
+switch (FEAT_TRAINS, SELF, sw_n700_series_forwards, num_vehs_in_consist ) {				
+		0..21:  sw_n700_series_forwards_panto_in_middle;
+		22..24: sw_n700_series_forwards_2nd_and_penultimate;
+        25..35: sw_n700_series_forwards_panto_in_middle;
+        sw_n700_series_forwards_5th_and_4_from_end;
 	}
 
-switch (FEAT_TRAINS, SELF, sw_n700_series_forwards, num_vehs_in_consist <= 24) {				
-		0:  sw_n700_series_forwards_long;
-		sw_n700_series_forwards_short;				
+// Backwards
+switch (FEAT_TRAINS, SELF, sw_n700_series_backwards_5th_and_4_from_end, position_in_consist == 10 || position_in_consist_from_end  == 13) {				
+		0:  ss_n700_series_coach_rev;
+		ss_n700_series_panto_rev;				
 	}
 
-switch (FEAT_TRAINS, SELF, sw_n700_series_backwards, num_vehs_in_consist <= 24) {				
-		0:  sw_n700_series_backwards_long;
-		sw_n700_series_backwards_short;				
+switch (FEAT_TRAINS, SELF, sw_n700_series_backwards_2nd_and_penultimate, position_in_consist == 4 || position_in_consist_from_end  == 4) {				
+		0:  ss_n700_series_coach_rev;
+		ss_n700_series_panto_rev;				
+	}
+
+switch (FEAT_TRAINS, SELF, sw_n700_series_backwards_panto_in_middle, (position_in_consist == position_in_consist_from_end ) || (position_in_consist - 3 == position_in_consist_from_end)) {				
+		0:  ss_n700_series_coach_rev;
+		ss_n700_series_panto_rev;				
+	}
+
+switch (FEAT_TRAINS, SELF, sw_n700_series_backwards, num_vehs_in_consist ) {				
+		0..21:  sw_n700_series_backwards_panto_in_middle;
+		22..24: sw_n700_series_backwards_2nd_and_penultimate;
+        25..35: sw_n700_series_backwards_panto_in_middle;
+        sw_n700_series_backwards_5th_and_4_from_end;
 	}
 
 switch (FEAT_TRAINS, PARENT, sw_n700_series_midcars, vehicle_is_reversed) {				
@@ -74,19 +269,23 @@ switch (FEAT_TRAINS, SELF, sw_n700_series_stop_start, num_vehs_in_consist < 12) 
 		return CB_RESULT_NO_TEXT; 
 	}
 
-/* SPEED */
+/*---Cargo Subtype Menu---*/
+switch(FEAT_TRAINS, SELF, sw_n700_series_subtype_text_2007, cargo_subtype) {
+        0: return string(LV_N700_SERIES_N700);          	// Original
+        return CB_RESULT_NO_TEXT;
+        }
 
-    switch(FEAT_TRAINS, SELF, sw_n700_series_speed_year_dep, build_year) {
-        0..2019: return 300;                    // N700 and N700A
-        return 360;                             // N700S
-    }
+switch(FEAT_TRAINS, SELF, sw_n700_series_subtype_text_2010, cargo_subtype) {
+        0: return string(LV_N700_SERIES_N700);          	// N700
+		1: return string(LV_N700_SERIES_KYUSHU);          	// Kyushu
+        return CB_RESULT_NO_TEXT;
+        }
 
-    switch(FEAT_TRAINS, SELF, sw_n700_series_speed, cargo_subtype) {
-        0: sw_n700_series_speed_year_dep;       // Year Dependent
-        4: return 360;                          // N700S    
-        return 300;                             // All others      
-        
-    }
+switch(FEAT_TRAINS, SELF, sw_n700_series_subtype_text, current_year) {
+        0..2009:    sw_n700_series_subtype_text_2007;
+        sw_n700_series_subtype_text_2010;
+        }
+
 
 item(FEAT_TRAINS, series_n700) {
 	property {
@@ -126,14 +325,13 @@ item(FEAT_TRAINS, series_n700) {
 		start_stop:						sw_n700_series_stop_start;
         /* Graphics */
         default:                        sw_n700_series_graphics;
-		purchase:                       sw_n700_series_year_dep_purchase;
+		purchase:                       ss_n700_series_buy;
 		articulated_part:               sw_n700_series_articulated_part;
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
         /* Stats */
-        length:                         sw_length_2_8_2;
+        length:                         sw_param_length;
         weight:                         NumberCarsInConsist() * 44;
         power:                         	max (( NumberCarsInConsist() - 2 ) , 0 )* 409 * 4;
-		speed:							sw_n700_series_speed;
 		cargo_capacity:                 28 * CapacityFactor();															
 		loading_speed:					28 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
 		cost_factor:                    138;
@@ -148,7 +346,7 @@ item(FEAT_TRAINS, series_n700) {
         cargo_age_period:				param_decay_express;
         loading_speed:                  28 * CapacityFactor() / param_loading_2D;
 		articulated_part:				sw_mucar_full_articulated_part;
-		length:							sw_length_2_8_2;
+		length:							sw_param_length;
 		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
 		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
         //running_cost_factor:            sw_n700_series_running_costs;

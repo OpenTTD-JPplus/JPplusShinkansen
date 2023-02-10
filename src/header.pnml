@@ -75,14 +75,13 @@
 						name: string(STR_PARAM_NAME_BASECAPACITY);
 						desc: string(STR_PARAM_DESC_BASECAPACITY);
 						min_value: 0;
-						max_value: 2;
+						max_value: 3;
 						def_value: 1;
 						names: {
 												0: string(STR_PARAM_REAL);
-												1: string(STR_PARAM_LONGADJ);
-												2: string(STR_PARAM_DOUBLE);
-
-												//4: string(STR_PARAM_REAL);
+												1: string(STR_PARAM_1_25);
+												2: string(STR_PARAM_LONGADJ);
+												3: string(STR_PARAM_DOUBLE);
 						};
 				}
 		}
@@ -101,10 +100,23 @@
 												2: string(STR_PARAM_VLOW);
 				};
 			 
+			}	
 		}
-		
-		
-	}
+		//sprite length
+		param 7 {
+				param_spritelength {
+						type: int;
+						name: string(STR_PARAM_NAME_SPRITELENGTH);
+						desc: string(STR_PARAM_DESC_SPRITELENGTH);
+						min_value: 0;
+						max_value: 1;
+						def_value: 0;
+						names: {
+												0: string(STR_PARAM_LENGTH_12);
+												1: string(STR_PARAM_LENGTH_10);
+						};
+				}
+		}
 }
 
 // Cargo table - Passengers only

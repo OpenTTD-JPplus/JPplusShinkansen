@@ -1,10 +1,9 @@
 // Begin mucar
 
-/*---GFX: Spritesets---*/
-spriteset (set_mu_car_purchase,	    "src/gfx/dummy/mucarbuy.png") 	{template_purchase (0, 0)}
-spriteset (set_mucar_full_purchase, "src/gfx/dummy/mucarfullbuy.png") 	{template_purchase (0, 0)}
-spriteset (set_mu_car_base,       	"src/gfx/dummy/mucar.png")     	{template_8_standard(1,1)}
-spriteset (set_mu_car_full,       	"src/gfx/dummy/mucar_full.png")  {template_12_standard(1,1)}
+/* MINI-SHINKANSEN */
+
+spriteset (set_mu_car_mini_purchase,    "src/trains/dummy/mucarbuy.png") 	{template_purchase (0, 0)}
+spriteset (set_mu_car_base,       	"src/trains/dummy/mucar.png")     	{template_8_standard(1,1)}
 
 item(FEAT_TRAINS, mu_car_ms) {
     /* Define properties first, make sure to set all of them */
@@ -41,15 +40,33 @@ item(FEAT_TRAINS, mu_car_ms) {
     /* Define graphics and callbacks
      * Setting all callbacks is not needed, only define what is used */
     graphics {
-		  purchase:                     set_mu_car_purchase;
-      additional_text:			        return string(MUCAR_MINI_DESC);
-      set_mu_car_base;
+	    purchase:                     set_mu_car_mini_purchase;
+        additional_text:			  return string(MUCAR_MINI_DESC);
+        set_mu_car_base;
     }
-
 }
 
+/* FULL SHINKANSEN */
+
+spriteset (ss_mucar_full_12_purchase,      "src/trains/dummy/mucarfullbuy.png") {template_purchase (0, 0)}
+spriteset (ss_mucar_full_10_purchase,      "src/trains/dummy/mucar10buy.png") {template_purchase (0, 0)}
+
+spriteset (ss_mucar_full_12,       	        "src/trains/dummy/mucar_full.png") {template_12_standard(1,1)}
+spriteset (ss_mucar_full_10,       	        "src/trains/dummy/mucar_10.png") {template_10_standard(1,1)}
+
+switch (FEAT_TRAINS, SELF, sw_buy_mucar_full, param_spritelength) {
+        1: ss_mucar_full_10_purchase;		// Length 10
+        ss_mucar_full_12_purchase;			// Length 12
+    }
+
+switch (FEAT_TRAINS, SELF, sw_graphics_mucar_full, param_spritelength) {
+        1: ss_mucar_full_10;		// Length 10
+        ss_mucar_full_12;			// Length 12
+    }
+
+
 switch (FEAT_TRAINS, SELF, sw_mucar_full_graphics, position_in_articulated_veh) {				
-		1:  set_mu_car_full; 				
+		1:  sw_graphics_mucar_full; 				
 		dummy_sprites;
 	}
 
@@ -96,10 +113,10 @@ item(FEAT_TRAINS, mu_car_full) {
      * Setting all callbacks is not needed, only define what is used */
     graphics {
 		default:                        sw_mucar_full_graphics;                     
-        purchase:                       set_mucar_full_purchase;
+        purchase:                       sw_buy_mucar_full;
         additional_text:			    return string(MUCAR_FULL_DESC);
         articulated_part:               sw_mucar_full_articulated_part;
-        length:                         sw_length_2_8_2;  
+        length:                         sw_param_length;  
     }
 }
 

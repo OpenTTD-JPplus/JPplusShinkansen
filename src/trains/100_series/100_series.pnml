@@ -1,28 +1,483 @@
 /* Begin 100 Series */
 
-#include "src/trains/100_series/100_series_subtypes.pnml"
-#include "src/trains/100_series/100_series_gfx.pnml"
-#include "src/trains/100_series/100_series_liveries.pnml"
+/* SUBTYPES */
 
-// Midcars going backwards
-switch (FEAT_TRAINS, SELF, sw_100_series_backwards_v, position_in_consist_from_end % 48) {				
+	// From 1985 to 1988
+	switch(FEAT_TRAINS, SELF, sw_100_series_1985_subtype_text, cargo_subtype) {
+		0: return string(LV_YEAR_DEP_LIVERY);       // Year Dependent Livery
+		1: return string(LV_100_SERIES_X);          // X
+		return CB_RESULT_NO_TEXT;
+		}
+
+	// From 1988 to 2000 - introduction of V set with more double decker cars
+	switch(FEAT_TRAINS, SELF, sw_100_series_1988_subtype_text, cargo_subtype) {
+		0: return string(LV_YEAR_DEP_LIVERY);       // Year Dependent Livery
+		1: return string(LV_100_SERIES_X);          // X
+		2: return string(LV_100_SERIES_V);          // V set with bilevel
+		return CB_RESULT_NO_TEXT;
+		}
+
+	// From 2000 onwards - introduction of Kodama Livery
+	switch(FEAT_TRAINS, SELF, sw_100_series_2000_subtype_text, cargo_subtype) {
+		0: return string(LV_YEAR_DEP_LIVERY);       // Year Dependent Livery
+		1: return string(LV_100_SERIES_X);          // X
+		2: return string(LV_100_SERIES_V);          // V set with bilevel
+		3: return string(LV_100_SERIES_KODAMA);     // 8-car ser with Kodama livery 
+		return CB_RESULT_NO_TEXT;
+		}
+
+	// SUBTYPE MENU over time
+	switch(FEAT_TRAINS, SELF, sw_100_series_year_dep_subtype_text, current_year) {
+		0..1987: sw_100_series_1985_subtype_text;
+		1988..1999: sw_100_series_1988_subtype_text;
+		sw_100_series_2000_subtype_text;
+	}
+
+/* GRAPHICS */
+
+	/* Purchase Menu */
+	spriteset (ss_100_series_buy_original_jnr_12,	        	    "src/trains/dummy/purchase.png") {template_purchase(0, 0)}
+	spriteset (ss_100_series_buy_original_jrc_12,	        	    "src/trains/dummy/purchase.png") {template_purchase(0, 0)}
+	spriteset (ss_100_series_buy_original_c_w_12,	        	    "src/trains/dummy/purchase.png") {template_purchase(0, 0)}
+	spriteset (ss_100_series_buy_kodama_c_w_12,	        	    	"src/trains/dummy/purchase.png") {template_purchase(0, 0)}
+	spriteset (ss_100_series_buy_kodama_jrw_12,	        	    	"src/trains/dummy/purchase.png") {template_purchase(0, 0)}
+
+	spriteset (ss_100_series_buy_original_jnr_10,	        	    "src/trains/dummy/purchase.png") {template_purchase(0, 0)}
+	spriteset (ss_100_series_buy_original_jrc_10,	        	    "src/trains/dummy/purchase.png") {template_purchase(0, 0)}
+	spriteset (ss_100_series_buy_original_c_w_10,	        	    "src/trains/dummy/purchase.png") {template_purchase(0, 0)}
+	spriteset (ss_100_series_buy_kodama_c_w_10,	        	    	"src/trains/dummy/purchase.png") {template_purchase(0, 0)}
+	spriteset (ss_100_series_buy_kodama_jrw_10,	        	    	"src/trains/dummy/purchase.png") {template_purchase(0, 0)}
+
+	alternative_sprites(ss_100_series_buy_original_jnr_12,         	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/100_series/12/purchase_original_jnr.png") {template_purchase(0, 0)}
+	alternative_sprites(ss_100_series_buy_original_jrc_12,         	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/100_series/12/purchase_original_jrc.png") {template_purchase(0, 0)}
+	alternative_sprites(ss_100_series_buy_original_c_w_12,         	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/100_series/12/purchase_original_c&w.png") {template_purchase(0, 0)}
+	alternative_sprites(ss_100_series_buy_kodama_c_w_12,           	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/100_series/12/purchase_kodama_c&w.png")   {template_purchase(0, 0)}
+	alternative_sprites(ss_100_series_buy_kodama_jrw_12,           	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/100_series/12/purchase_kodama_jrw.png")   {template_purchase(0, 0)}
+
+	alternative_sprites(ss_100_series_buy_original_jnr_10,         	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/100_series/12/purchase_original_jnr.png") {template_purchase(0, 0)}
+	alternative_sprites(ss_100_series_buy_original_jrc_10,         	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/100_series/12/purchase_original_jrc.png") {template_purchase(0, 0)}
+	alternative_sprites(ss_100_series_buy_original_c_w_10,         	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/100_series/12/purchase_original_c&w.png") {template_purchase(0, 0)}
+	alternative_sprites(ss_100_series_buy_kodama_c_w_10,           	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/100_series/12/purchase_kodama_c&w.png")   {template_purchase(0, 0)}
+	alternative_sprites(ss_100_series_buy_kodama_jrw_10,           	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/100_series/12/purchase_kodama_jrw.png")   {template_purchase(0, 0)}
+
+		switch (FEAT_TRAINS, SELF, ss_100_series_buy_original_jnr, param_spritelength) {
+			1: ss_100_series_buy_original_jnr_10;					// Length 10
+			ss_100_series_buy_original_jnr_12;						// Length 12
+		}
+
+		switch (FEAT_TRAINS, SELF, ss_100_series_buy_original_jrc, param_spritelength) {
+			1: ss_100_series_buy_original_jrc_10;					// Length 10
+			ss_100_series_buy_original_jrc_12;						// Length 12
+		}
+
+		switch (FEAT_TRAINS, SELF, ss_100_series_buy_original_c_w, param_spritelength) {
+			1: ss_100_series_buy_original_c_w_10;					// Length 10
+			ss_100_series_buy_original_c_w_12;						// Length 12
+		}
+
+		switch (FEAT_TRAINS, SELF, ss_100_series_buy_kodama_c_w, param_spritelength) {
+			1: ss_100_series_buy_kodama_c_w_10;						// Length 10
+			ss_100_series_buy_kodama_c_w_12;						// Length 12
+		}
+
+		switch (FEAT_TRAINS, SELF, ss_100_series_buy_kodama_jrw, param_spritelength) {
+			1: ss_100_series_buy_kodama_jrw_10;						// Length 10
+			ss_100_series_buy_kodama_jrw_12;						// Length 12
+		}
+
+	/* EMU Parts */
+
+	/* "CAB" */
+
+	spriteset(ss_100_series_cab_original_livery_12,          		"src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_100_series_cab_rev_original_livery_12,    		    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_100_series_cab_kodama_livery_12,             		"src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_100_series_cab_rev_kodama_livery_12,    		    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+
+	spriteset(ss_100_series_cab_original_livery_10,          		"src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_100_series_cab_rev_original_livery_10,    		    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_100_series_cab_kodama_livery_10,             		"src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_100_series_cab_rev_kodama_livery_10,    		    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+
+	// 200 Series Original Strip Livery
+	alternative_sprites(ss_100_series_cab_original_livery_12,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/100_series/12/original.png") {template_12_standard(1,1)}
+	alternative_sprites(ss_100_series_cab_rev_original_livery_12,   ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/100_series/12/original.png") {template_12_reversed(1,41)}
+	alternative_sprites(ss_100_series_cab_original_livery_10,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/100_series/10/original.png") {template_10_standard(1,1)}
+	alternative_sprites(ss_100_series_cab_rev_original_livery_10,   ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/100_series/10/original.png") {template_10_reversed(1,41)}		
+
+	// 200 Series Kodama Strip Livery
+	alternative_sprites(ss_100_series_cab_kodama_livery_12,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/100_series/12/kodama.png") {template_12_standard(1,1)}
+	alternative_sprites(ss_100_series_cab_rev_kodama_livery_12,     ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/100_series/12/kodama.png") {template_12_reversed(1,41)}
+	alternative_sprites(ss_100_series_cab_kodama_livery_10,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/100_series/10/kodama.png") {template_10_standard(1,1)}
+	alternative_sprites(ss_100_series_cab_rev_kodama_livery_10,     ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/100_series/10/kodama.png") {template_10_reversed(1,41)}	
+
+		switch (FEAT_TRAINS, SELF, ss_100_series_cab_original_livery, param_spritelength) {
+			1: ss_100_series_cab_original_livery_10;				// Length 10
+			ss_100_series_cab_original_livery_12;					// Length 12
+		}
+
+		switch (FEAT_TRAINS, SELF, ss_100_series_cab_rev_original_livery, param_spritelength) {
+			1: ss_100_series_cab_rev_original_livery_10;			// Length 10
+			ss_100_series_cab_rev_original_livery_12;				// Length 12
+		}
+
+		switch (FEAT_TRAINS, SELF, ss_100_series_cab_kodama_livery, param_spritelength) {
+			1: ss_100_series_cab_kodama_livery_10;					// Length 10
+			ss_100_series_cab_kodama_livery_12;						// Length 12
+		}
+
+		switch (FEAT_TRAINS, SELF, ss_100_series_cab_rev_kodama_livery, param_spritelength) {
+			1: ss_100_series_cab_rev_kodama_livery_10;				// Length 10
+			ss_100_series_cab_rev_kodama_livery_12;					// Length 12
+		}
+
+	/* "CAB" w/ PANTO*/
+
+	spriteset(ss_100_series_cabwp_original_livery_12,             	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_100_series_cabwp_rev_original_livery_12,    		"src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_100_series_cabwp_kodama_livery_12,             	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_100_series_cabwp_rev_kodama_livery_12,    		    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+
+	spriteset(ss_100_series_cabwp_original_livery_10,             	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_100_series_cabwp_rev_original_livery_10,    		"src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_100_series_cabwp_kodama_livery_10,             	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_100_series_cabwp_rev_kodama_livery_10,    		    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+
+	// 200 Series Original Strip Livery
+	alternative_sprites(ss_100_series_cabwp_original_livery_12,     ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/100_series/12/original.png") {template_12_standard(1,81)}
+	alternative_sprites(ss_100_series_cabwp_rev_original_livery_12,	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/100_series/12/original.png") {template_12_reversed(1,121)}		
+	alternative_sprites(ss_100_series_cabwp_original_livery_10,     ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/100_series/10/original.png") {template_10_standard(1,81)}
+	alternative_sprites(ss_100_series_cabwp_rev_original_livery_10,	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/100_series/10/original.png") {template_10_reversed(1,121)}
+
+	// 200 Series Kodama Strip Livery
+	alternative_sprites(ss_100_series_cabwp_kodama_livery_12,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/100_series/12/kodama.png") {template_12_standard(1,81)}
+	alternative_sprites(ss_100_series_cabwp_rev_kodama_livery_12,   ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/100_series/12/kodama.png") {template_12_reversed(1,121)}
+	alternative_sprites(ss_100_series_cabwp_kodama_livery_10,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/100_series/10/kodama.png") {template_10_standard(1,81)}
+	alternative_sprites(ss_100_series_cabwp_rev_kodama_livery_10,   ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/100_series/10/kodama.png") {template_10_reversed(1,121)}	
+
+		switch (FEAT_TRAINS, SELF, ss_100_series_cabwp_original_livery, param_spritelength) {
+			1: ss_100_series_cabwp_original_livery_10;				// Length 10
+			ss_100_series_cabwp_original_livery_12;					// Length 12
+		}
+
+		switch (FEAT_TRAINS, SELF, ss_100_series_cabwp_rev_original_livery, param_spritelength) {
+			1: ss_100_series_cabwp_rev_original_livery_10;			// Length 10
+			ss_100_series_cabwp_rev_original_livery_12;				// Length 12
+		}
+
+		switch (FEAT_TRAINS, SELF, ss_100_series_cabwp_kodama_livery, param_spritelength) {
+			1: ss_100_series_cabwp_kodama_livery_10;				// Length 10
+			ss_100_series_cabwp_kodama_livery_12;					// Length 12
+		}
+
+		switch (FEAT_TRAINS, SELF, ss_100_series_cabwp_rev_kodama_livery, param_spritelength) {
+			1: ss_100_series_cabwp_rev_kodama_livery_10;			// Length 10
+			ss_100_series_cabwp_rev_kodama_livery_12;				// Length 12
+		}
+
+	/* "COACH" */
+
+	spriteset(ss_100_series_coach_original_livery_12,             	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_100_series_coach_rev_original_livery_12,    		"src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_100_series_coach_kodama_livery_12,             	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_100_series_coach_rev_kodama_livery_12,    		    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+
+	spriteset(ss_100_series_coach_original_livery_10,             	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_100_series_coach_rev_original_livery_10,    		"src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_100_series_coach_kodama_livery_10,             	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_100_series_coach_rev_kodama_livery_10,    		    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+
+	// 200 Series Original Strip Livery
+	alternative_sprites(ss_100_series_coach_original_livery_12,     ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/100_series/12/original.png") {template_12_standard(1,201)}
+	alternative_sprites(ss_100_series_coach_rev_original_livery_12, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/100_series/12/original.png") {template_12_reversed(1,201)}		
+	alternative_sprites(ss_100_series_coach_original_livery_10,     ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/100_series/10/original.png") {template_10_standard(1,201)}
+	alternative_sprites(ss_100_series_coach_rev_original_livery_10, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/100_series/10/original.png") {template_10_reversed(1,201)}		
+
+	// 200 Series Kodama Strip Livery
+	alternative_sprites(ss_100_series_coach_kodama_livery_12,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/100_series/12/kodama.png") {template_12_standard(1,201)}
+	alternative_sprites(ss_100_series_coach_rev_kodama_livery_12,  	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/100_series/12/kodama.png") {template_12_reversed(1,201)}	
+	alternative_sprites(ss_100_series_coach_kodama_livery_10,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/100_series/10/kodama.png") {template_10_standard(1,201)}
+	alternative_sprites(ss_100_series_coach_rev_kodama_livery_10,  	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/100_series/10/kodama.png") {template_10_reversed(1,201)}
+
+		switch (FEAT_TRAINS, SELF, ss_100_series_coach_original_livery, param_spritelength) {
+			1: ss_100_series_coach_original_livery_10;				// Length 10
+			ss_100_series_coach_original_livery_12;					// Length 12
+		}
+
+		switch (FEAT_TRAINS, SELF, ss_100_series_coach_rev_original_livery, param_spritelength) {
+			1: ss_100_series_coach_rev_original_livery_10;			// Length 10
+			ss_100_series_coach_rev_original_livery_12;				// Length 12
+		}
+
+		switch (FEAT_TRAINS, SELF, ss_100_series_coach_kodama_livery, param_spritelength) {
+			1: ss_100_series_coach_kodama_livery_10;				// Length 10
+			ss_100_series_coach_kodama_livery_12;					// Length 12
+		}
+
+		switch (FEAT_TRAINS, SELF, ss_100_series_coach_rev_kodama_livery, param_spritelength) {
+			1: ss_100_series_coach_rev_kodama_livery_10;			// Length 10
+			ss_100_series_coach_rev_kodama_livery_12;				// Length 12
+		}
+
+	/* "PANTO" */
+
+	spriteset(ss_100_series_panto_original_livery_12,             	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_100_series_panto_rev_original_livery_12,    		"src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_100_series_panto_kodama_livery_12,             	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_100_series_panto_rev_kodama_livery_12,    		    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+
+	spriteset(ss_100_series_panto_original_livery_10,             	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_100_series_panto_rev_original_livery_10,    		"src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_100_series_panto_kodama_livery_10,             	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_100_series_panto_rev_kodama_livery_10,    		    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+
+	// 200 Series Original Strip Livery
+	alternative_sprites(ss_100_series_panto_original_livery_12,     ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/100_series/12/original.png") {template_12_standard(1,161)}
+	alternative_sprites(ss_100_series_panto_rev_original_livery_12, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/100_series/12/original.png") {template_12_reversed(1,161)}		
+	alternative_sprites(ss_100_series_panto_original_livery_10,     ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/100_series/10/original.png") {template_10_standard(1,161)}
+	alternative_sprites(ss_100_series_panto_rev_original_livery_10, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/100_series/10/original.png") {template_10_reversed(1,161)}
+
+	// 200 Series Kodama Strip Livery
+	alternative_sprites(ss_100_series_panto_kodama_livery_12,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/100_series/12/kodama.png") {template_12_standard(1,161)}
+	alternative_sprites(ss_100_series_panto_rev_kodama_livery_12,   ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/100_series/12/kodama.png") {template_12_reversed(1,161)}	
+	alternative_sprites(ss_100_series_panto_kodama_livery_10,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/100_series/10/kodama.png") {template_10_standard(1,161)}
+	alternative_sprites(ss_100_series_panto_rev_kodama_livery_10,   ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/100_series/10/kodama.png") {template_10_reversed(1,161)}
+
+		switch (FEAT_TRAINS, SELF, ss_100_series_panto_original_livery, param_spritelength) {
+			1: ss_100_series_panto_original_livery_10;				// Length 10
+			ss_100_series_panto_original_livery_12;					// Length 12
+		}
+
+		switch (FEAT_TRAINS, SELF, ss_100_series_panto_rev_original_livery, param_spritelength) {
+			1: ss_100_series_panto_rev_original_livery_10;			// Length 10
+			ss_100_series_panto_rev_original_livery_12;				// Length 12
+		}
+
+		switch (FEAT_TRAINS, SELF, ss_100_series_panto_kodama_livery, param_spritelength) {
+			1: ss_100_series_panto_kodama_livery_10;				// Length 10
+			ss_100_series_panto_kodama_livery_12;					// Length 12
+		}
+
+		switch (FEAT_TRAINS, SELF, ss_100_series_panto_rev_kodama_livery, param_spritelength) {
+			1: ss_100_series_panto_rev_kodama_livery_10;			// Length 10
+			ss_100_series_panto_rev_kodama_livery_12;				// Length 12
+		}
+
+	/* "DOUBLE DECKER" */
+
+	spriteset(ss_100_series_2deck_12,             	                "src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_100_series_2deck_rev_12,    		               	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_100_series_2dec2_12,             	                "src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_100_series_2dec2_rev_12,    		                "src/trains/dummy/empty.png") {template_dummy(0,0)}
+
+	spriteset(ss_100_series_2deck_10,             	                "src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_100_series_2deck_rev_10,    		               	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_100_series_2dec2_10,             	                "src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_100_series_2dec2_rev_10,    		                "src/trains/dummy/empty.png") {template_dummy(0,0)}	
+
+	// 100 Series Original Livery
+	alternative_sprites(ss_100_series_2deck_12,                		ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/100_series/12/original.png") {template_12_standard(1,241)}
+	alternative_sprites(ss_100_series_2deck_rev_12,                 ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/100_series/12/original.png") {template_12_reversed(1,241)}	
+	alternative_sprites(ss_100_series_2dec2_12,                     ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/100_series/12/original.png") {template_12_standard(1,281)}
+	alternative_sprites(ss_100_series_2dec2_rev_12,                 ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/100_series/12/original.png") {template_12_reversed(1,281)}
+
+	alternative_sprites(ss_100_series_2deck_10,                		ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/100_series/10/original.png") {template_10_standard(1,241)}
+	alternative_sprites(ss_100_series_2deck_rev_10,                 ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/100_series/10/original.png") {template_10_reversed(1,241)}	
+	alternative_sprites(ss_100_series_2dec2_10,                     ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/100_series/10/original.png") {template_10_standard(1,281)}
+	alternative_sprites(ss_100_series_2dec2_rev_10,                 ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/100_series/10/original.png") {template_10_reversed(1,281)}
+
+		switch (FEAT_TRAINS, SELF, ss_100_series_2deck, param_spritelength) {
+			1: ss_100_series_2deck_10;								// Length 10
+			ss_100_series_2deck_12;									// Length 12
+		}
+
+		switch (FEAT_TRAINS, SELF, ss_100_series_2deck_rev, param_spritelength) {
+			1: ss_100_series_2deck_rev_10;							// Length 10
+			ss_100_series_2deck_rev_12;								// Length 12
+		}
+
+		switch (FEAT_TRAINS, SELF, ss_100_series_2dec2, param_spritelength) {
+			1: ss_100_series_2dec2_10;								// Length 10
+			ss_100_series_2dec2_12;									// Length 12
+		}
+
+		switch (FEAT_TRAINS, SELF, ss_100_series_2dec2_rev, param_spritelength) {
+			1: ss_100_series_2dec2_rev_10;							// Length 10
+			ss_100_series_2dec2_rev_12;								// Length 12
+		}
+
+/* LIVERIES */
+
+	/* Purchase Menu */
+
+		switch(FEAT_TRAINS, SELF, sw_100_series_year_dep_purchase, current_year) {
+			0..1986: ss_100_series_buy_original_jnr;        // JNR (Original Livery)
+			1987..1988: ss_100_series_buy_original_jrc;     // JR Central (Original Livery)
+			1989..1999: ss_100_series_buy_original_c_w;     // JR Central & West (Original Livery)
+			2000..2001: ss_100_series_buy_kodama_c_w;       // JR Central & West (Kodama Livery)
+			ss_100_series_buy_kodama_jrw;                   // JR West (Kodama Livery)
+		}
+
+	/* EMU Parts */
+
+	/* "CAB" */
+
+	// Year Dependent Livery
+	switch(FEAT_TRAINS, SELF, sw_100_series_cab_year_dep_livery, build_year) {
+		0..1999: ss_100_series_cab_original_livery;
+		ss_100_series_cab_kodama_livery;
+	}
+
+	switch(FEAT_TRAINS, SELF, ss_100_series_cab, cargo_subtype) {
+		1: ss_100_series_cab_original_livery;       // Original
+		2: ss_100_series_cab_original_livery;       // Original
+		3: ss_100_series_cab_kodama_livery;         // Kodama
+		sw_100_series_cab_year_dep_livery;          // Year-dependent Livery
+	}
+
+	// Reversed
+	// Year Dependent Livery
+	switch(FEAT_TRAINS, SELF, sw_100_series_cab_rev_year_dep_livery, build_year) {
+		0..1999: ss_100_series_cab_rev_original_livery;
+		ss_100_series_cab_rev_kodama_livery;
+	}
+
+	switch(FEAT_TRAINS, SELF, ss_100_series_cab_rev, cargo_subtype) {
+		1: ss_100_series_cab_rev_original_livery;   // Original
+		2: ss_100_series_cab_rev_original_livery;   // Original
+		3: ss_100_series_cab_rev_kodama_livery;     // Kodama
+		sw_100_series_cab_rev_year_dep_livery;      // Year-dependent Livery
+	}
+
+	/* "CAB" w/ PANTO*/
+
+	// Year Dependent Livery
+	switch(FEAT_TRAINS, SELF, sw_100_series_cabwp_year_dep_livery, build_year) {
+		0..1999: ss_100_series_cabwp_original_livery;
+		ss_100_series_cabwp_kodama_livery;
+	}
+
+	switch(FEAT_TRAINS, SELF, ss_100_series_cabwp, cargo_subtype) {
+		1: ss_100_series_cabwp_original_livery;       // Original
+		2: ss_100_series_cabwp_original_livery;       // Original
+		3: ss_100_series_cabwp_kodama_livery;         // Kodama
+		sw_100_series_cabwp_year_dep_livery;          // Year-dependent Livery
+	}
+
+	// Reversed
+	// Year Dependent Livery
+	switch(FEAT_TRAINS, SELF, sw_100_series_cabwp_rev_year_dep_livery, build_year) {
+		0..1999: ss_100_series_cabwp_rev_original_livery;
+		ss_100_series_cabwp_rev_kodama_livery;
+	}
+
+	switch(FEAT_TRAINS, SELF, ss_100_series_cabwp_rev, cargo_subtype) {
+		1: ss_100_series_cabwp_rev_original_livery;   // Original
+		2: ss_100_series_cabwp_rev_original_livery;   // Original
+		3: ss_100_series_cabwp_rev_kodama_livery;     // Kodama
+		sw_100_series_cabwp_rev_year_dep_livery;      // Year-dependent Livery
+	}
+
+	/* "COACH" */
+
+	// Year Dependent Livery
+	switch(FEAT_TRAINS, SELF, sw_100_series_coach_year_dep_livery, build_year) {
+		0..1999: ss_100_series_coach_original_livery;
+		ss_100_series_coach_kodama_livery;
+	}
+
+	switch(FEAT_TRAINS, SELF, ss_100_series_coach, cargo_subtype) {
+		1: ss_100_series_coach_original_livery;       // Original
+		2: ss_100_series_coach_original_livery;       // Original
+		3: ss_100_series_coach_kodama_livery;         // Kodama
+		sw_100_series_coach_year_dep_livery;          // Year-dependent Livery
+	}
+
+	// Reversed
+	// Year Dependent Livery
+	switch(FEAT_TRAINS, SELF, sw_100_series_coach_rev_year_dep_livery, build_year) {
+		0..1999: ss_100_series_coach_rev_original_livery;
+		ss_100_series_coach_rev_kodama_livery;
+	}
+
+	switch(FEAT_TRAINS, SELF, ss_100_series_coach_rev, cargo_subtype) {
+		1: ss_100_series_coach_rev_original_livery;   // Original
+		2: ss_100_series_coach_rev_original_livery;   // Original
+		3: ss_100_series_coach_rev_kodama_livery;     // Kodama
+		sw_100_series_coach_rev_year_dep_livery;      // Year-dependent Livery
+	}
+
+	/* "PANTO" */
+
+	// Year Dependent Livery
+	switch(FEAT_TRAINS, SELF, sw_100_series_panto_year_dep_livery, build_year) {
+		0..1999: ss_100_series_panto_original_livery;
+		ss_100_series_panto_kodama_livery;
+	}
+
+	switch(FEAT_TRAINS, SELF, ss_100_series_panto, cargo_subtype) {
+		1: ss_100_series_panto_original_livery;       // Original
+		2: ss_100_series_panto_original_livery;       // Original
+		3: ss_100_series_panto_kodama_livery;         // Kodama
+		sw_100_series_panto_year_dep_livery;          // Year-dependent Livery
+	}
+
+	// Reversed
+	// Year Dependent Livery
+	switch(FEAT_TRAINS, SELF, sw_100_series_panto_rev_year_dep_livery, build_year) {
+		0..1999: ss_100_series_panto_rev_original_livery;
+		ss_100_series_panto_rev_kodama_livery;
+	}
+
+	switch(FEAT_TRAINS, SELF, ss_100_series_panto_rev, cargo_subtype) {
+		1: ss_100_series_panto_rev_original_livery;   // Original
+		2: ss_100_series_panto_rev_original_livery;   // Original
+		3: ss_100_series_panto_rev_kodama_livery;     // Kodama
+		sw_100_series_panto_rev_year_dep_livery;      // Year-dependent Livery
+	}
+
+/* FORMATIONS */
+
+// Backwards
+switch (FEAT_TRAINS, SELF, sw_100_series_backwards_v_smaller, position_in_consist_from_end % 6) {				
 		4:  ss_100_series_panto_rev;
-		10: ss_100_series_panto_rev;
-		16: ss_100_series_panto_rev;
+		ss_100_series_coach_rev;				
+	}
+
+switch (FEAT_TRAINS, SELF, sw_100_series_backwards_9_and_10, position_in_consist_from_end == 13 || position_in_consist_from_end == 16 ) {				
+		0:  sw_100_series_backwards_v_smaller;
+		ss_100_series_2deck_rev;				
+	}
+
+switch (FEAT_TRAINS, SELF, sw_100_series_backwards_11_to_14, position_in_consist_from_end ) {				
+		13: ss_100_series_2deck_rev;
+		16: ss_100_series_2deck_rev;
+		19: ss_100_series_2dec2_rev;
+		22: ss_100_series_2deck_rev;
+		sw_100_series_backwards_v_smaller;				
+	}
+
+switch (FEAT_TRAINS, SELF, sw_100_series_backwards_v_15plus, position_in_consist_from_end ) {				
 		19: ss_100_series_2deck_rev;
 		22: ss_100_series_2deck_rev;
 		25: ss_100_series_2dec2_rev;
 		28: ss_100_series_2deck_rev;
-		34: ss_100_series_panto_rev;
-		40: ss_100_series_panto_rev;
-		ss_100_series_coach_rev;				
+		sw_100_series_backwards_v_smaller;				
 	}
 
+switch (FEAT_TRAINS, SELF, sw_100_series_backwards_v, num_vehs_in_consist ) {				
+		0..24:  sw_100_series_backwards_v_smaller;
+		25..30: sw_100_series_backwards_9_and_10;
+		31..42: sw_100_series_backwards_11_to_14;
+        sw_100_series_backwards_v_15plus;
+	}
+// Kodama
 switch (FEAT_TRAINS, SELF, sw_100_series_backwards_others, position_in_consist_from_end % 6) {				
 		4:  ss_100_series_panto_rev;
 		ss_100_series_coach_rev;				
 	}
 
+// Year Dependent
 switch (FEAT_TRAINS, SELF, sw_100_series_backwards_year_dep, build_year) {				
 		1988..1999:  sw_100_series_backwards_v;
 		sw_100_series_backwards_others;				
@@ -34,25 +489,50 @@ switch (FEAT_TRAINS, SELF, sw_100_series_backwards, cargo_subtype) {
 		sw_100_series_backwards_others;				
 	}
 
-// Midcars going forwards
-switch (FEAT_TRAINS, SELF, sw_100_series_forwards_v, position_in_consist % 48) {				
+
+// Forwards
+
+// V
+switch (FEAT_TRAINS, SELF, sw_100_series_forwards_v_smaller, position_in_consist % 6) {				
 		4:  ss_100_series_panto;
-		10: ss_100_series_panto;
-		16: ss_100_series_panto;
+		ss_100_series_coach;				
+	}
+
+switch (FEAT_TRAINS, SELF, sw_100_series_forwards_9_and_10, position_in_consist == 13 || position_in_consist == 16 ) {				
+		0:  sw_100_series_forwards_v_smaller;
+		ss_100_series_2deck;				
+	}
+
+switch (FEAT_TRAINS, SELF, sw_100_series_forwards_11_to_14, position_in_consist ) {				
+		13: ss_100_series_2deck;
+		16: ss_100_series_2deck;
+		19: ss_100_series_2dec2;
+		22: ss_100_series_2deck;
+		sw_100_series_forwards_v_smaller;				
+	}
+
+switch (FEAT_TRAINS, SELF, sw_100_series_forwards_v_15plus, position_in_consist ) {				
 		19: ss_100_series_2deck;
 		22: ss_100_series_2deck;
 		25: ss_100_series_2dec2;
 		28: ss_100_series_2deck;
-		34: ss_100_series_panto;
-		40: ss_100_series_panto;
-		ss_100_series_coach;				
+		sw_100_series_forwards_v_smaller;				
 	}
 
+switch (FEAT_TRAINS, SELF, sw_100_series_forwards_v, num_vehs_in_consist ) {				
+		0..24:  sw_100_series_forwards_v_smaller;
+		25..30: sw_100_series_forwards_9_and_10;
+		31..42: sw_100_series_forwards_11_to_14;
+        sw_100_series_forwards_v_15plus;
+	}
+
+// Kodama
 switch (FEAT_TRAINS, SELF, sw_100_series_forwards_others, position_in_consist % 6) {				
 		4:  ss_100_series_panto;
 		ss_100_series_coach;				
 	}
 
+// Year Dep
 switch (FEAT_TRAINS, SELF, sw_100_series_forwards_year_dep, build_year) {				
 		1988..1999:  sw_100_series_forwards_v;
 		sw_100_series_forwards_others;				
@@ -141,7 +621,7 @@ item(FEAT_TRAINS, series_100) {
         /* Availability */
         climates_available:             ALL_CLIMATES;
 		introduction_date:              date(1985,10,01);           // Date of launch
-		model_life:                     26;		                    // 
+		model_life:                     1993 - 1985;		        // Constructed until 1992
 		vehicle_life:                   30;							// 
 		track_type:                     SHINKANSEN;
         /* Cargo */
@@ -172,7 +652,7 @@ item(FEAT_TRAINS, series_100) {
 		articulated_part:               sw_100_series_articulated_part;
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
         /* Stats */
-        length:                         sw_length_2_8_2;
+        length:                         sw_param_length;
         weight:                         NumberCarsInConsist() * 53;
         power:                          max (NumberCarsInConsist() - 2 ,0) * 308 * 4;	// 230 kW
         speed:							sw_100_series_speed;
@@ -192,7 +672,7 @@ item(FEAT_TRAINS, series_100) {
         cargo_age_period:				param_decay_express;
         loading_speed:					27 * CapacityFactor() / param_loading_2D;
 		articulated_part:				sw_mucar_full_articulated_part;
-		length:							sw_length_2_8_2;
+		length:							sw_param_length;
 		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
 		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
         //running_cost_factor:            sw_100_series_running_costs;

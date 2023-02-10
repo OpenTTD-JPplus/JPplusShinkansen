@@ -3,10 +3,10 @@
 // Shinkansen Tracks
 
 // Overlay
-spriteset(ss_norm_overlay_shin_01,	"src/gfx/tracks/shin_01.png") {japan_rails_overlay()}
-spriteset(ss_snow_overlay_shin_01,	"src/gfx/tracks/shin_01_snow.png") {japan_rails_overlay()}
-spriteset(ss_norm_overlay_shin_02,	"src/gfx/tracks/shin_02.png") {japan_rails_overlay()}
-spriteset(ss_snow_overlay_shin_02,	"src/gfx/tracks/shin_02_snow.png") {japan_rails_overlay()}
+spriteset(ss_norm_overlay_shin_01,	"src/tracks/shin_01.png") {japan_rails_overlay()}
+spriteset(ss_snow_overlay_shin_01,	"src/tracks/shin_01_snow.png") {japan_rails_overlay()}
+spriteset(ss_norm_overlay_shin_02,	"src/tracks/shin_02.png") {japan_rails_overlay()}
+spriteset(ss_snow_overlay_shin_02,	"src/tracks/shin_02_snow.png") {japan_rails_overlay()}
 
 switch(FEAT_RAILTYPES, SELF, sw_overlay_shin_01, terrain_type) {
 	TILETYPE_SNOW: ss_snow_overlay_shin_01;
@@ -19,10 +19,10 @@ switch(FEAT_RAILTYPES, SELF, sw_overlay_shin_02, terrain_type) {
 }
 
 // Underlay
-spriteset(ss_norm_underlay_shin_01,	"src/gfx/tracks/shin_01.png") {japan_rails_underlay()}
-spriteset(ss_snow_underlay_shin_01,	"src/gfx/tracks/shin_01_snow.png") {japan_rails_underlay()}
-spriteset(ss_norm_underlay_shin_02,	"src/gfx/tracks/shin_02.png") {japan_rails_underlay()}
-spriteset(ss_snow_underlay_shin_02,	"src/gfx/tracks/shin_02_snow.png") {japan_rails_underlay()}
+spriteset(ss_norm_underlay_shin_01,	"src/tracks/shin_01.png") {japan_rails_underlay()}
+spriteset(ss_snow_underlay_shin_01,	"src/tracks/shin_01_snow.png") {japan_rails_underlay()}
+spriteset(ss_norm_underlay_shin_02,	"src/tracks/shin_02.png") {japan_rails_underlay()}
+spriteset(ss_snow_underlay_shin_02,	"src/tracks/shin_02_snow.png") {japan_rails_underlay()}
 
 switch(FEAT_RAILTYPES, SELF, sw_underlay_shin_01, terrain_type) {
 	TILETYPE_SNOW: ss_snow_underlay_shin_01;
@@ -36,10 +36,10 @@ switch(FEAT_RAILTYPES, SELF, sw_underlay_shin_02, terrain_type) {
 
 
 // Depot
-spriteset(ss_depot_shin_01_norm, 	"src/gfx/tracks/depots_shin_01.png") {japan_rails_depot()}	
-spriteset(ss_depot_shin_01_snow, 	"src/gfx/tracks/depots_shin_01.png") {japan_rails_depot_snow()}	
-spriteset(ss_depot_shin_02_norm, 	"src/gfx/tracks/depots_shin_02.png") {japan_rails_depot()}
-spriteset(ss_depot_shin_02_snow, 	"src/gfx/tracks/depots_shin_02.png") {japan_rails_depot_snow()}		
+spriteset(ss_depot_shin_01_norm, 	"src/tracks/depots_shin_01.png") {japan_rails_depot()}	
+spriteset(ss_depot_shin_01_snow, 	"src/tracks/depots_shin_01.png") {japan_rails_depot_snow()}	
+spriteset(ss_depot_shin_02_norm, 	"src/tracks/depots_shin_02.png") {japan_rails_depot()}
+spriteset(ss_depot_shin_02_snow, 	"src/tracks/depots_shin_02.png") {japan_rails_depot_snow()}		
 
 switch(FEAT_RAILTYPES, SELF, sw_depot_shin_01, terrain_type) {
 	TILETYPE_SNOW: ss_depot_shin_01_snow;
@@ -52,14 +52,14 @@ switch(FEAT_RAILTYPES, SELF, sw_depot_shin_02, terrain_type) {
 }
 
 // Bridges
-spriteset(ss_norm_bridge_shin_01,	"src/gfx/tracks/shin_01.png") {japan_rails_bridge()}
-spriteset(ss_norm_bridge_shin_02,	"src/gfx/tracks/shin_02.png") {japan_rails_bridge()}
+spriteset(ss_norm_bridge_shin_01,	"src/tracks/shin_01.png") {japan_rails_bridge()}
+spriteset(ss_norm_bridge_shin_02,	"src/tracks/shin_02.png") {japan_rails_bridge()}
 
 // Tunnels
-spriteset(ss_shin_norm_tunnel,	"src/gfx/tracks/shin_01.png") {japan_rails_tunnel()}
-spriteset(ss_shin_snow_tunnel,	"src/gfx/tracks/shin_01_snow.png") {japan_rails_tunnel()}
-spriteset(ss_shin_norm_tunnel_overlay,	"src/gfx/tracks/shin_01.png") {japan_rails_tunnel_overlay()}
-spriteset(ss_shin_snow_tunnel_overlay,	"src/gfx/tracks/shin_01_snow.png") {japan_rails_tunnel_overlay()}
+spriteset(ss_shin_norm_tunnel,	"src/tracks/shin_01.png") {japan_rails_tunnel()}
+spriteset(ss_shin_snow_tunnel,	"src/tracks/shin_01_snow.png") {japan_rails_tunnel()}
+spriteset(ss_shin_norm_tunnel_overlay,	"src/tracks/shin_01.png") {japan_rails_tunnel_overlay()}
+spriteset(ss_shin_snow_tunnel_overlay,	"src/tracks/shin_01_snow.png") {japan_rails_tunnel_overlay()}
 
 switch(FEAT_RAILTYPES, SELF, sw_tunnel, terrain_type) {
 	TILETYPE_SNOW: ss_shin_snow_tunnel;
@@ -72,12 +72,12 @@ switch(FEAT_RAILTYPES, SELF, sw_tunnel_overlay, terrain_type) {
 }
 
 // Catenary
-spriteset(ss_wires, 				"src/gfx/tracks/catwire.png") {japan_rails_wires()}
-spriteset(ss_poles, 				"src/gfx/tracks/catpoles.png") {japan_rails_pylons_blue()}	
+spriteset(ss_wires, 				"src/tracks/catwire.png") {japan_rails_wires()}
+spriteset(ss_poles, 				"src/tracks/catpoles.png") {japan_rails_pylons_blue()}	
 
 // Fences
-spriteset(ss_fences, 				"src/gfx/tracks/fences.png") {japan_rails_fences()}
-spriteset(ss_fences_empty, 			"src/gfx/tracks/fences.png") {japan_rails_fences_empty()}
+spriteset(ss_fences, 				"src/tracks/fences.png") {japan_rails_fences()}
+spriteset(ss_fences_empty, 			"src/tracks/fences.png") {japan_rails_fences_empty()}
 
 switch(FEAT_RAILTYPES, SELF, sw_fences, param_fences) {
     0: ss_fences;
@@ -85,8 +85,8 @@ switch(FEAT_RAILTYPES, SELF, sw_fences, param_fences) {
 }
 
 // GUI
-spriteset(ss_shin_01_gui_ttd,	"src/gfx/tracks/shin_01.png") {japan_rails_gui_ttd()}
-spriteset(ss_shin_02_gui_ttd,	"src/gfx/tracks/shin_02.png") {japan_rails_gui_ttd()}
+spriteset(ss_shin_01_gui_ttd,	"src/tracks/shin_01.png") {japan_rails_gui_ttd()}
+spriteset(ss_shin_02_gui_ttd,	"src/tracks/shin_02.png") {japan_rails_gui_ttd()}
 
 if (param_japansetdisable == 1 && param_tracks == 1 ){
 
