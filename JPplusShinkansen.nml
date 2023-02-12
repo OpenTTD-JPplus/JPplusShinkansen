@@ -7,8 +7,8 @@
 	grfid:					"KR03";
 	name:					string(STR_GRF_NAME);
 	desc:					string(STR_GRF_DESC);
-	version:				10;	// v0.2.2
-	min_compatible_version: 10;	// v0.2.2
+	version:				10;	// v0.3.0
+	min_compatible_version: 10;	// v0.3.0
 		//japanset3 removal
 		param 4 {
 			 param_japansetdisable {
@@ -799,8 +799,9 @@ switch (FEAT_TRAINS, SELF, sw_param_length, param_spritelength) {
 
 //IDs
 # 1 "src/vehicleid.pnml" 1
-
 // Assign IDs
+
+// Mucars
 item(FEAT_TRAINS, mu_car_ms, 1111) {}
 item(FEAT_TRAINS, mu_car_full, 1112) {}
 
@@ -824,15 +825,7 @@ item(FEAT_TRAINS, series_800, 800) {}
 item(FEAT_TRAINS, series_e1, 1551) {}
 item(FEAT_TRAINS, series_e2, 1552) {}
 item(FEAT_TRAINS, series_e3, 2003) {}
-
-// E4 Series Shinkansen
 item(FEAT_TRAINS, series_e4, 2004) {}
-/*
-item(FEAT_TRAINS, series_e4_year_dep, 2004) {}
-item(FEAT_TRAINS, series_e4_yellow, 2104) {}
-item(FEAT_TRAINS, series_e4_pink, 2204) {}  
-*/
-
 item(FEAT_TRAINS, series_e5, 2005) {} 
 item(FEAT_TRAINS, series_e6, 2006) {}
 item(FEAT_TRAINS, series_e5e6, 2056) {}
@@ -862,8 +855,6 @@ sort(FEAT_TRAINS, [
 1552,   // E2 Series Shinkansen
 2003,   // E3 Series Shinkansen
 2004,   // E4 Series Shinkansen (Max)
-2104,
-2204,
 2005,   // E5 Series Shinkansen
 2006,   // E6 Series Shinkansen
 2056,   // E5 & E6 Series Shinkansen
@@ -8289,185 +8280,7 @@ item(FEAT_TRAINS, series_e8) {
 // End E8_series
 # 1 "JPplusShinkansen.pnml" 4
 
-# 1 "src/trains/e5e6_series/e5e6_series.pnml" 1
-/* Begin E5+E6 Series */
-
-	spriteset (ss_buy_e5e6_series_pink_livery_12,	        			"src/trains/dummy/purchase.png") {template_purchase(0, 0)}
-	alternative_sprites(ss_buy_e5e6_series_pink_livery_12,   			ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e5e6_series/buy_e5e6.png") {template_purchase(0, 0)}
-
-
-switch (FEAT_TRAINS, SELF, sw_e5e6_series_backwards, position_in_consist_from_end ) {				
-		1:  ss_e5_series_cab;
-		4:  ss_e5_series_coach;
-		7:  ss_e5_series_panto;
-		10: ss_e5_series_coach;
-		13: ss_e5_series_coach;
-		16: ss_e5_series_coach;
-		19: ss_e5_series_panto;
-		22: ss_e5_series_coach;
-		25: ss_e5_series_coach;
-		28: ss_e5_series_cab_rev;
-		30: spriteset_e6_series_front_std;
-		31: spriteset_e6_series_mid_std;
-		32: spriteset_e6_series_mid_std;
-		33: spriteset_e6_series_mid_std;
-		34: spriteset_e6_series_mid_std;
-		35: spriteset_e6_series_mid_std;
-		36: spriteset_e6_series_revflip_front_std;
-		dummy_sprites;			
-	}			
-
-switch (FEAT_TRAINS, SELF, sw_e5e6_series_forwards, position_in_consist ) {				
-		1:  ss_e5_series_cab;
-		4:  ss_e5_series_coach;
-		7:  ss_e5_series_panto;
-		10: ss_e5_series_coach;
-		13: ss_e5_series_coach;
-		16: ss_e5_series_coach;
-		19: ss_e5_series_panto;
-		22: ss_e5_series_coach;
-		25: ss_e5_series_coach;
-		28: ss_e5_series_cab_rev;
-		30: spriteset_e6_series_front_std;
-		31: spriteset_e6_series_mid_std;
-		32: spriteset_e6_series_mid_std;
-		33: spriteset_e6_series_mid_std;
-		34: spriteset_e6_series_mid_std;
-		35: spriteset_e6_series_mid_std;
-		36: spriteset_e6_series_revflip_front_std;
-		dummy_sprites;			
-	}
-
-switch (FEAT_TRAINS, PARENT, sw_e5e6_series_graphics, vehicle_is_reversed ) {				
-		0:  sw_e5e6_series_forwards; 				
-		sw_e5e6_series_backwards;
-	}
-
-switch (FEAT_TRAINS, SELF, sw_e5e6_series_articulated_part, extra_callback_info1) {
-		1 .. 36: return series_e5e6;									
-		return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
-	}
-
-/*---Coupling Switch---*/
-switch(FEAT_TRAINS, SELF, sw_e5e6_series_attach_vehid, [vehicle_type_id == series_e5e6]) {
- 0: return string(MU_UNIQUE);
-}
-
-/*---Length Check---*/
-switch (FEAT_TRAINS, SELF, sw_e5e6_series_stop_start, num_vehs_in_consist < 12) {				
-		1:  return string(STR_LENGTH_ERROR); 				
-		return CB_RESULT_NO_TEXT; 
-	}
-
-/* LENGTH*/
-/*
-switch (FEAT_TRAINS, SELF, sw_e5e6_series_length_backwards, position_in_consist_from_end) {				
-		7:  return 1;		// First part of 1
-		9..10:  return 1;	// Between 1 and 2
-		12..13:  return 1;	// Between 2 and 3
-		15..16:  return 1;	// Between 3 and 4
-		18..19: return 1;	// Between 4 and 5
-		21..22: return 1;	// Between 5 and 6
-		24..25: return 1;	// Between 6 and 7
-		27..28: return 1;	// Between 7 and 8
-		30..31: return 1;	// Between 8 and 9
-		33..34: return 1;	// Between 9 and 10
-		36: return 1;		// Last part of 10	
-		return 8;
-	}
-*/
-switch (FEAT_TRAINS, SELF, sw_e5e6_series_length_backwards, position_in_consist_from_end) {				
-		0:  return 1;		// First part of 1
-		2..3:  return 1;	// Between 1 and 2
-		5..6:  return 1;	// Between 2 and 3
-		8..9:  return 1;	// Between 3 and 4
-		11..12: return 1;	// Between 4 and 5
-		14..15: return 1;	// Between 5 and 6
-		17..18: return 1;	// Between 6 and 7
-		20..21: return 1;	// Between 7 and 8
-		23..24: return 1;	// Between 8 and 9
-		26..27: return 1;	// Between 9 and 10
-		29: return 1;		// Last part of 10	
-		return 8;
-	}
-
-
-switch (FEAT_TRAINS, SELF, sw_e5e6_series_length_forwards, position_in_consist) {				
-		0:  return 1;		// First part of 1
-		2..3:  return 1;	// Between 1 and 2
-		5..6:  return 1;	// Between 2 and 3
-		8..9:  return 1;	// Between 3 and 4
-		11..12: return 1;	// Between 4 and 5
-		14..15: return 1;	// Between 5 and 6
-		17..18: return 1;	// Between 6 and 7
-		20..21: return 1;	// Between 7 and 8
-		23..24: return 1;	// Between 8 and 9
-		26..27: return 1;	// Between 9 and 10
-		29: return 1;		// Last part of 10	
-		return 8;
-	}
-
-switch (FEAT_TRAINS, PARENT, sw_e5e6_series_length, vehicle_is_reversed ) {				
-		0:  sw_e5e6_series_length_forwards; 				
-		sw_e5e6_series_length_backwards;
-	}
-
-item(FEAT_TRAINS, series_e5e6) {
-	property {
-		/* Menu */
-		name: 							string(STR_NAME_E5E6_SERIES);
-		sprite_id:                      SPRITE_ID_NEW_TRAIN; 		// required to enable new graphics
-		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
-		running_cost_base:              RUNNING_COST_ELECTRIC;
-		engine_class:                   ENGINE_CLASS_ELECTRIC;
-		variant_group:					2005;
-		/* Availability */
-		climates_available:             ALL_CLIMATES;
-		introduction_date:              date(2011,03,05); 
-		model_life:                     VEHICLE_NEVER_EXPIRES;		
-		vehicle_life:                   30;							// 
-		track_type:                     SHINKANSEN;
-		/* Cargo */
-		reliability_decay:              5;
-		refittable_cargo_classes:       bitmask(CC_PASSENGERS);
-		refit_cost:                     0;
-		default_cargo_type:             PASS;
-		ai_special_flag:                AI_FLAG_PASSENGER;
-		cargo_capacity:                 1;							// 
-		loading_speed:                  50;							
-		cargo_age_period:               278; 						// 1.5 times normal for this expensive long-distance train
-		/* Stats */
-		speed:                          321 km/h;					// Operational Top Speed
-		power:                          1290 hp;					// Agreed to https://en.wikipedia.org/wiki/E5_and_H5_Series_Shinkansen
-		weight:                         45.3 tons;					// Agreed to https://en.wikipedia.org/wiki/E5_and_H5_Series_Shinkansen
-		tractive_effort_coefficient:    0.3;
-		air_drag_coefficient:			0;
-	}
-	graphics {
-		/* Menu */
-		additional_text:                string(STR_DESC_E5E6_SERIES);
-		//cargo_subtype_text:             sw_e5e6_series_year_dep_subtype_text;
-		can_attach_wagon:				sw_e5e6_series_attach_vehid;
-		start_stop:						sw_e5e6_series_stop_start;
-		/* Graphics */
-		default:                        sw_e5e6_series_graphics;
-		purchase:                       ss_buy_e5e6_series_pink_livery_12;
-		articulated_part:               sw_e5e6_series_articulated_part;	
-		visual_effect_and_powered:      sw_visual_effect_and_powered;
-		/* Stats */
-		length:                         sw_e5e6_series_length;
-		cargo_capacity:                 25 * CapacityFactor();
-		loading_speed:					25 * CapacityFactor() / param_loading_2D;
-		cargo_age_period:				param_decay_express;
-		cost_factor:                    144;
-		running_cost_factor:            (298 + 127 * NumberCarsInConsist() ) * RunningCostFactor();
-		purchase_running_cost_factor:   298 + 127 * NumberCarsInConsist();	
-	}
-}
-
-/* End E5+E6 series */
-# 1 "JPplusShinkansen.pnml" 4
-//#include "src/trains/test_700_series/test_700_series.pnml"
+//#include "src/trains/e5e6_series/e5e6_series.pnml"
 
 // GRF OVERRIDES
 # 1 "src/grfoverrides.pnml" 1

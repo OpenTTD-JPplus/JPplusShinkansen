@@ -15,7 +15,7 @@ This is the sister set to 🚂[JP+ Engines & Wagons](https://github.com/EmperorJ
 * Normal Length Sprites for Mini-Shinkansen
 * Real World Stats were possible (or approximations when not known)
 * Parameters for;
-    * Full length Shinkansen size - 10/8 or 12/8
+    * Full length Shinkansen size - Choose between 10/8 or 12/8
     * Disabling JapanSet Shinkansen
     * Enabling Shinkansen Tracks (to counteract the previous parameter which disables JapanSet Shinkansen tracks)
     * Disabling Shinkansen Track Fences
