@@ -183,7 +183,7 @@
 		ss_e5_series_cab_pink_livery;
 	}
 
-	switch(FEAT_TRAINS, SELF, ss_e5_series_cab, current_year) {
+	switch(FEAT_TRAINS, PARENT, ss_e5_series_cab, current_year) {
 		0..2016: ss_e5_series_cab_pink_livery;
 		sw_e5_series_cab_new_livery;
 	}
@@ -194,7 +194,7 @@
 		ss_e5_series_cab_rev_pink_livery;
 	}
 
-	switch(FEAT_TRAINS, SELF, ss_e5_series_cab_rev, current_year) {
+	switch(FEAT_TRAINS, PARENT, ss_e5_series_cab_rev, current_year) {
 		0..2016: ss_e5_series_cab_rev_pink_livery;
 		sw_e5_series_cab_rev_new_livery;
 	}
@@ -206,7 +206,7 @@
 		ss_e5_series_coach_pink_livery;
 	}
 
-	switch(FEAT_TRAINS, SELF, ss_e5_series_coach, current_year) {
+	switch(FEAT_TRAINS, PARENT, ss_e5_series_coach, current_year) {
 		0..2016: ss_e5_series_coach_pink_livery;
 		sw_e5_series_coach_new_livery;
 	}
@@ -217,7 +217,7 @@
 		ss_e5_series_coach_rev_pink_livery;
 	}
 
-	switch(FEAT_TRAINS, SELF, ss_e5_series_coach_rev, current_year) {
+	switch(FEAT_TRAINS, PARENT, ss_e5_series_coach_rev, current_year) {
 		0..2016: ss_e5_series_coach_rev_pink_livery;
 		sw_e5_series_coach_rev_new_livery;
 	}
@@ -229,7 +229,7 @@
 		ss_e5_series_panto_pink_livery;
 	}
 
-	switch(FEAT_TRAINS, SELF, ss_e5_series_panto, current_year) {
+	switch(FEAT_TRAINS, PARENT, ss_e5_series_panto, current_year) {
 		0..2016: ss_e5_series_panto_pink_livery;
 		sw_e5_series_panto_new_livery;
 	}
@@ -240,7 +240,7 @@
 		ss_e5_series_panto_rev_pink_livery;
 	}
 
-	switch(FEAT_TRAINS, SELF, ss_e5_series_panto_rev, current_year) {
+	switch(FEAT_TRAINS, PARENT, ss_e5_series_panto_rev, current_year) {
 		0..2016: ss_e5_series_panto_rev_pink_livery;
 		sw_e5_series_panto_rev_new_livery;
 	}

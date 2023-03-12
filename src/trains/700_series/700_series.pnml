@@ -156,36 +156,36 @@
 
   	// CAB
 
-    switch(FEAT_TRAINS, SELF, ss_700_series_cab, cargo_subtype) {
+    switch(FEAT_TRAINS, PARENT, ss_700_series_cab, cargo_subtype) {
         1: ss_700_series_cab_hikari_livery;
         ss_700_series_cab_original_livery;
     }
 
-    switch(FEAT_TRAINS, SELF, ss_700_series_cab_rev, cargo_subtype) {
+    switch(FEAT_TRAINS, PARENT, ss_700_series_cab_rev, cargo_subtype) {
         1: ss_700_series_cab_rev_hikari_livery;
         ss_700_series_cab_rev_original_livery;
     }
 
     // COACH
 
-    switch(FEAT_TRAINS, SELF, ss_700_series_coach, cargo_subtype) {
+    switch(FEAT_TRAINS, PARENT, ss_700_series_coach, cargo_subtype) {
         1: ss_700_series_coach_hikari_livery;
         ss_700_series_coach_original_livery;
     }
 
-    switch(FEAT_TRAINS, SELF, ss_700_series_coach_rev, cargo_subtype) {
+    switch(FEAT_TRAINS, PARENT, ss_700_series_coach_rev, cargo_subtype) {
         1: ss_700_series_coach_rev_hikari_livery;
         ss_700_series_coach_rev_original_livery;
     }
 
     // PANTO
 
-    switch(FEAT_TRAINS, SELF, ss_700_series_panto, cargo_subtype) {
+    switch(FEAT_TRAINS, PARENT, ss_700_series_panto, cargo_subtype) {
         1: ss_700_series_panto_hikari_livery;
         ss_700_series_panto_original_livery;
     }
 
-    switch(FEAT_TRAINS, SELF, ss_700_series_panto_rev, cargo_subtype) {
+    switch(FEAT_TRAINS, PARENT, ss_700_series_panto_rev, cargo_subtype) {
         1: ss_700_series_panto_rev_hikari_livery;
         ss_700_series_panto_rev_original_livery;
     }

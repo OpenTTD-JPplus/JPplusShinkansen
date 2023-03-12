@@ -191,20 +191,10 @@ switch(FEAT_TRAINS, SELF, sw_e1_series_year_dep_subtype_text, current_year) {
         ss_e1_series_cab_original_livery;
     }
 
-    switch(FEAT_TRAINS, SELF, sw_e1_series_cab_old_livery, cargo_subtype) {
-        1: ss_e1_series_cab_original_livery;
-        sw_e1_series_cab_year_dep_livery;
-    }
-
-    switch(FEAT_TRAINS, SELF, sw_e1_series_cab_new_livery, cargo_subtype) {
+    switch(FEAT_TRAINS, SELF, sw_e1_series_cab, cargo_subtype) {
         1: ss_e1_series_cab_original_livery;
         2: ss_e1_series_cab_refurb_livery;
         sw_e1_series_cab_year_dep_livery;
-    }
-
-    switch(FEAT_TRAINS, SELF, ss_e1_series_cab, current_year) {
-        0..2003: sw_e1_series_cab_old_livery;
-        sw_e1_series_cab_new_livery;
     }
 
 // CAB REVERSED
@@ -215,20 +205,10 @@ switch(FEAT_TRAINS, SELF, sw_e1_series_year_dep_subtype_text, current_year) {
         ss_e1_series_cab_rev_original_livery;
     }
 
-    switch(FEAT_TRAINS, SELF, sw_e1_series_cab_rev_old_livery, cargo_subtype) {
-        1: ss_e1_series_cab_rev_original_livery;
-        sw_e1_series_cab_rev_year_dep_livery;
-    }
-
-    switch(FEAT_TRAINS, SELF, sw_e1_series_cab_rev_new_livery, cargo_subtype) {
+    switch(FEAT_TRAINS, PARENT, sw_e1_series_cab_rev, cargo_subtype) {
         1: ss_e1_series_cab_rev_original_livery;
         2: ss_e1_series_cab_rev_refurb_livery;
         sw_e1_series_cab_rev_year_dep_livery;
-    }
-
-    switch(FEAT_TRAINS, SELF, ss_e1_series_cab_rev, current_year) {
-        0..2003: sw_e1_series_cab_rev_old_livery;
-        sw_e1_series_cab_rev_new_livery;
     }
 
 // Coach
@@ -239,20 +219,10 @@ switch(FEAT_TRAINS, SELF, sw_e1_series_year_dep_subtype_text, current_year) {
         ss_e1_series_coach_original_livery;
     }
 
-    switch(FEAT_TRAINS, SELF, sw_e1_series_coach_old_livery, cargo_subtype) {
-        1: ss_e1_series_coach_original_livery;
-        sw_e1_series_coach_year_dep_livery;
-    }
-
-    switch(FEAT_TRAINS, SELF, sw_e1_series_coach_new_livery, cargo_subtype) {
+    switch(FEAT_TRAINS, PARENT, sw_e1_series_coach, cargo_subtype) {
         1: ss_e1_series_coach_original_livery;
         2: ss_e1_series_coach_refurb_livery;
         sw_e1_series_coach_year_dep_livery;
-    }
-
-    switch(FEAT_TRAINS, SELF, ss_e1_series_coach, current_year) {
-        0..2003: sw_e1_series_coach_old_livery;
-        sw_e1_series_coach_new_livery;
     }
 
 // Coach Reversed
@@ -263,20 +233,10 @@ switch(FEAT_TRAINS, SELF, sw_e1_series_year_dep_subtype_text, current_year) {
         ss_e1_series_coach_rev_original_livery;
     }
 
-    switch(FEAT_TRAINS, SELF, sw_e1_series_coach_rev_old_livery, cargo_subtype) {
-        1: ss_e1_series_coach_rev_original_livery;
-        sw_e1_series_coach_rev_year_dep_livery;
-    }
-
-    switch(FEAT_TRAINS, SELF, sw_e1_series_coach_rev_new_livery, cargo_subtype) {
+    switch(FEAT_TRAINS, PARENT, sw_e1_series_coach_rev, cargo_subtype) {
         1: ss_e1_series_coach_rev_original_livery;
         2: ss_e1_series_coach_rev_refurb_livery;
         sw_e1_series_coach_rev_year_dep_livery;
-    }
-
-    switch(FEAT_TRAINS, SELF, ss_e1_series_coach_rev, current_year) {
-        0..2003: sw_e1_series_coach_rev_old_livery;
-        sw_e1_series_coach_rev_new_livery;
     }
 
 // Panto
@@ -287,20 +247,10 @@ switch(FEAT_TRAINS, SELF, sw_e1_series_year_dep_subtype_text, current_year) {
         ss_e1_series_panto_original_livery;
     }
 
-    switch(FEAT_TRAINS, SELF, sw_e1_series_panto_old_livery, cargo_subtype) {
-        1: ss_e1_series_panto_original_livery;
-        sw_e1_series_panto_year_dep_livery;
-    }
-
-    switch(FEAT_TRAINS, SELF, sw_e1_series_panto_new_livery, cargo_subtype) {
+    switch(FEAT_TRAINS, PARENT, sw_e1_series_panto, cargo_subtype) {
         1: ss_e1_series_panto_original_livery;
         2: ss_e1_series_panto_refurb_livery;
         sw_e1_series_panto_year_dep_livery;
-    }
-
-    switch(FEAT_TRAINS, SELF, ss_e1_series_panto, current_year) {
-        0..2003: sw_e1_series_panto_old_livery;
-        sw_e1_series_panto_new_livery;
     }
 
 // Panto rev
@@ -311,34 +261,23 @@ switch(FEAT_TRAINS, SELF, sw_e1_series_year_dep_subtype_text, current_year) {
         ss_e1_series_panto_rev_original_livery;
     }
 
-    switch(FEAT_TRAINS, SELF, sw_e1_series_panto_rev_old_livery, cargo_subtype) {
-        1: ss_e1_series_panto_rev_original_livery;
-        sw_e1_series_panto_rev_year_dep_livery;
-    }
-
-    switch(FEAT_TRAINS, SELF, sw_e1_series_panto_rev_new_livery, cargo_subtype) {
+    switch(FEAT_TRAINS, PARENT, sw_e1_series_panto_rev, cargo_subtype) {
         1: ss_e1_series_panto_rev_original_livery;
         2: ss_e1_series_panto_rev_refurb_livery;
         sw_e1_series_panto_rev_year_dep_livery;
     }
 
-    switch(FEAT_TRAINS, SELF, ss_e1_series_panto_rev, current_year) {
-        0..2003: sw_e1_series_panto_rev_old_livery;
-        sw_e1_series_panto_rev_new_livery;
-    }
-
-
 /* FORMATIONS */
 
 // Backwards
 switch (FEAT_TRAINS, SELF, sw_e1_series_backwards_panto_in_middle, (position_in_consist == position_in_consist_from_end ) || (position_in_consist - 3 == position_in_consist_from_end)) {				
-		0:  ss_e1_series_coach_rev;
-		ss_e1_series_panto_rev;				
+		0:  sw_e1_series_coach_rev;
+		sw_e1_series_panto_rev;				
 	}
 
 switch (FEAT_TRAINS, SELF, sw_e1_series_backwards_6th_and_3_from_end, position_in_consist == 7 || position_in_consist_from_end  == 16) {				
-		0:  ss_e1_series_coach_rev;
-		ss_e1_series_panto_rev;				
+		0:  sw_e1_series_coach_rev;
+		sw_e1_series_panto_rev;				
 	}
 
 switch (FEAT_TRAINS, SELF, sw_e1_series_backwards, num_vehs_in_consist ) {				
@@ -348,13 +287,13 @@ switch (FEAT_TRAINS, SELF, sw_e1_series_backwards, num_vehs_in_consist ) {
 
 // Forwards
 switch (FEAT_TRAINS, SELF, sw_e1_series_forwards_panto_in_middle, (position_in_consist == position_in_consist_from_end ) || (position_in_consist - 3 == position_in_consist_from_end)) {				
-		0:  ss_e1_series_coach;
-		ss_e1_series_panto;				
+		0:  sw_e1_series_coach;
+		sw_e1_series_panto;				
 	}
 
 switch (FEAT_TRAINS, SELF, sw_e1_series_forwards_6th_and_3_from_end, position_in_consist == 16 || position_in_consist_from_end  == 7) {				
-		0:  ss_e1_series_coach;
-		ss_e1_series_panto;				
+		0:  sw_e1_series_coach;
+		sw_e1_series_panto;				
 	}
 
 switch (FEAT_TRAINS, SELF, sw_e1_series_forwards, num_vehs_in_consist ) {				
@@ -368,12 +307,12 @@ switch (FEAT_TRAINS, PARENT, sw_e1_series_direction, vehicle_is_reversed) {
 	}
 
 switch (FEAT_TRAINS, SELF, sw_e1_series_back, position_in_consist_from_end) {				
-		1:  ss_e1_series_cab_rev;
+		1:  sw_e1_series_cab_rev;
 		sw_e1_series_direction;				
 	}
 
 switch (FEAT_TRAINS, SELF, sw_e1_series_front, position_in_consist) {				
-		1:  ss_e1_series_cab;
+		1:  sw_e1_series_cab;
 		sw_e1_series_back;				
 	}
 

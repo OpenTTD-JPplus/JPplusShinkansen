@@ -328,7 +328,7 @@
 		ss_100_series_cab_kodama_livery;
 	}
 
-	switch(FEAT_TRAINS, SELF, ss_100_series_cab, cargo_subtype) {
+	switch(FEAT_TRAINS, PARENT, ss_100_series_cab, cargo_subtype) {
 		1: ss_100_series_cab_original_livery;       // Original
 		2: ss_100_series_cab_original_livery;       // Original
 		3: ss_100_series_cab_kodama_livery;         // Kodama
@@ -342,7 +342,7 @@
 		ss_100_series_cab_rev_kodama_livery;
 	}
 
-	switch(FEAT_TRAINS, SELF, ss_100_series_cab_rev, cargo_subtype) {
+	switch(FEAT_TRAINS, PARENT, ss_100_series_cab_rev, cargo_subtype) {
 		1: ss_100_series_cab_rev_original_livery;   // Original
 		2: ss_100_series_cab_rev_original_livery;   // Original
 		3: ss_100_series_cab_rev_kodama_livery;     // Kodama
@@ -357,7 +357,7 @@
 		ss_100_series_cabwp_kodama_livery;
 	}
 
-	switch(FEAT_TRAINS, SELF, ss_100_series_cabwp, cargo_subtype) {
+	switch(FEAT_TRAINS, PARENT, ss_100_series_cabwp, cargo_subtype) {
 		1: ss_100_series_cabwp_original_livery;       // Original
 		2: ss_100_series_cabwp_original_livery;       // Original
 		3: ss_100_series_cabwp_kodama_livery;         // Kodama
@@ -371,7 +371,7 @@
 		ss_100_series_cabwp_rev_kodama_livery;
 	}
 
-	switch(FEAT_TRAINS, SELF, ss_100_series_cabwp_rev, cargo_subtype) {
+	switch(FEAT_TRAINS, PARENT, ss_100_series_cabwp_rev, cargo_subtype) {
 		1: ss_100_series_cabwp_rev_original_livery;   // Original
 		2: ss_100_series_cabwp_rev_original_livery;   // Original
 		3: ss_100_series_cabwp_rev_kodama_livery;     // Kodama
@@ -386,7 +386,7 @@
 		ss_100_series_coach_kodama_livery;
 	}
 
-	switch(FEAT_TRAINS, SELF, ss_100_series_coach, cargo_subtype) {
+	switch(FEAT_TRAINS, PARENT, ss_100_series_coach, cargo_subtype) {
 		1: ss_100_series_coach_original_livery;       // Original
 		2: ss_100_series_coach_original_livery;       // Original
 		3: ss_100_series_coach_kodama_livery;         // Kodama
@@ -400,7 +400,7 @@
 		ss_100_series_coach_rev_kodama_livery;
 	}
 
-	switch(FEAT_TRAINS, SELF, ss_100_series_coach_rev, cargo_subtype) {
+	switch(FEAT_TRAINS, PARENT, ss_100_series_coach_rev, cargo_subtype) {
 		1: ss_100_series_coach_rev_original_livery;   // Original
 		2: ss_100_series_coach_rev_original_livery;   // Original
 		3: ss_100_series_coach_rev_kodama_livery;     // Kodama
@@ -415,7 +415,7 @@
 		ss_100_series_panto_kodama_livery;
 	}
 
-	switch(FEAT_TRAINS, SELF, ss_100_series_panto, cargo_subtype) {
+	switch(FEAT_TRAINS, PARENT, ss_100_series_panto, cargo_subtype) {
 		1: ss_100_series_panto_original_livery;       // Original
 		2: ss_100_series_panto_original_livery;       // Original
 		3: ss_100_series_panto_kodama_livery;         // Kodama
@@ -429,7 +429,7 @@
 		ss_100_series_panto_rev_kodama_livery;
 	}
 
-	switch(FEAT_TRAINS, SELF, ss_100_series_panto_rev, cargo_subtype) {
+	switch(FEAT_TRAINS, PARENT, ss_100_series_panto_rev, cargo_subtype) {
 		1: ss_100_series_panto_rev_original_livery;   // Original
 		2: ss_100_series_panto_rev_original_livery;   // Original
 		3: ss_100_series_panto_rev_kodama_livery;     // Kodama
@@ -483,7 +483,7 @@ switch (FEAT_TRAINS, SELF, sw_100_series_backwards_year_dep, build_year) {
 		sw_100_series_backwards_others;				
 	}
 
-switch (FEAT_TRAINS, SELF, sw_100_series_backwards, cargo_subtype) {				
+switch (FEAT_TRAINS, PARENT, sw_100_series_backwards, cargo_subtype) {				
 		0:  sw_100_series_backwards_year_dep;
 		2:  sw_100_series_backwards_v;
 		sw_100_series_backwards_others;				
@@ -538,7 +538,7 @@ switch (FEAT_TRAINS, SELF, sw_100_series_forwards_year_dep, build_year) {
 		sw_100_series_forwards_others;				
 	}
 
-switch (FEAT_TRAINS, SELF, sw_100_series_forwards, cargo_subtype) {				
+switch (FEAT_TRAINS, PARENT, sw_100_series_forwards, cargo_subtype) {				
 		0:  sw_100_series_forwards_year_dep;
 		2:  sw_100_series_forwards_v;
 		sw_100_series_forwards_others;				
