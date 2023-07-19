@@ -2,12 +2,13 @@
 
 Welcome to 🇯🇵🚅 **JP+Shinkansen!** 🚅🇯🇵
 
-This is the sister set to 🚂[JP+ Engines & Wagons](https://github.com/EmperorJake/JPengines)🚂 and 🚆[JP+ Multiple Units](https://github.com/Tintinfan/JPplusSet)🚆, adding the world's first High Speed Rail Network's iconic trains.
+This is the sister set to 🚂[JP+ Engines & Wagons](https://github.com/EmperorJake/JPengines)🚂 , 🚆[JP+ Multiple Units](https://github.com/Tintinfan/JPplusSet)🚆 and 🚇[JP+ Metro](https://github.com/Yozora3/JPplusMetro)🚇, adding the world's first High Speed Rail Network's iconic trains.
 
 ## Credits
 **Coding:** KeepinItRail <br>
-**Graphics:** KeepinItRail <br>
-**Thanks to:** The JapanSet Team, Tinny, Emperor Jake, Asuza, Erato, Saya
+**Graphics:** KeepinItRail & Azusa<br>
+**Translations:** freeaim (Japanese)
+**Thanks to:** The JapanSet Team, Tinny, Emperor Jake, Yozora, Erato, Saya
 
 ## Features
 
@@ -20,6 +21,7 @@ This is the sister set to 🚂[JP+ Engines & Wagons](https://github.com/EmperorJ
     * Enabling Shinkansen Tracks (to counteract the previous parameter which disables JapanSet Shinkansen tracks)
     * Disabling Shinkansen Track Fences
     * Capacity Levels
+    * Usage of Doctor Yellow Shinkansen
 
 ## JR West of Tokyo
 

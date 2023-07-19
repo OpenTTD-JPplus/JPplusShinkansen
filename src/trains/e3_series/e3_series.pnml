@@ -353,12 +353,14 @@ item(FEAT_TRAINS, series_e3) {
         cargo_subtype_text:             sw_e3_series_subtypetext_main;
         can_attach_wagon:			          sw_e3_series_attach_vehid;
         //start_stop:                   ;
+        purchase_weight:                43 / 2;
+        purchase_power:                 400 * 4;
         /* Stats */
         power:                          max (num_vehs_in_consist - 2 , 0 ) * 400 * 4;     // 300 kW = 400 hp
         cargo_capacity:                 56 * CapacityFactor();										        // Average 338/6, 402/7, 394/7 = 56  					
 		    loading_speed:					        56 * CapacityFactor() / param_loading_1D;					// Capacity divided by door loading factor
-        running_cost_factor:            (445 + 170 * num_vehs_in_consist ) * RunningCostFactor();
-        purchase_running_cost_factor:   445 + 170 * num_vehs_in_consist;	
+        running_cost_factor:            (445 + 120 * num_vehs_in_consist ) * RunningCostFactor();
+        purchase_running_cost_factor:   (445 + 120) / 2;	
     }
     /*Multiple Unit Car*/
       livery_override(mu_car_ms){

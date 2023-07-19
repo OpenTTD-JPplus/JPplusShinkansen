@@ -193,6 +193,8 @@ item(FEAT_TRAINS, series_n700a) {
         additional_text:                string(STR_DESC_N700A_SERIES);
 		can_attach_wagon:				sw_n700a_series_attach_vehid;
 		start_stop:						sw_n700a_series_stop_start;
+		purchase_weight:                44;
+        purchase_power:                 409 * 4;
         /* Graphics */
         default:                        sw_n700a_series_graphics;
 		purchase:                       ss_n700a_series_buy;

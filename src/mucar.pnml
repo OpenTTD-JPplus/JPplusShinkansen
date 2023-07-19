@@ -80,7 +80,83 @@ switch(FEAT_TRAINS, SELF, sw_mucar_full_articulated_part, extra_callback_info1) 
 item(FEAT_TRAINS, mu_car_full) {
     /* Define properties first, make sure to set all of them */
     property {
-        name:                         string(MUCAR_FULL);
+        name:                           string(MUCAR_FULL);
+        introduction_date:              date(1800,1,1);
+        climates_available:             ALL_CLIMATES;
+        model_life:                     VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                   60;
+        loading_speed:                  0;
+        cost_factor:                    189;
+        running_cost_factor:            18;
+        speed:                          0 km/h;
+        power:                          0 hp;
+        cargo_capacity:                 1;
+        weight:                         0 ton;
+        tractive_effort_coefficient:    0.3;
+        air_drag_coefficient:           0;
+        reliability_decay:              20;
+        refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+        cargo_age_period:               185;
+        refit_cost:                     0;
+        track_type:                     SHINKANSEN;
+        ai_special_flag:                AI_FLAG_PASSENGER;
+        running_cost_base:              RUNNING_COST_ELECTRIC;
+        engine_class:                   ENGINE_CLASS_ELECTRIC;
+        visual_effect_and_powered:      visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+        sprite_id:                      SPRITE_ID_NEW_TRAIN;
+        dual_headed:                    0;
+        //length:                       8;
+        extra_power_per_wagon:          0;
+        bitmask_vehicle_info:           0;
+    }
+    /* Define graphics and callbacks
+     * Setting all callbacks is not needed, only define what is used */
+    graphics {
+		default:                        sw_mucar_full_graphics;                     
+        purchase:                       sw_buy_mucar_full;
+        additional_text:			    return string(MUCAR_FULL_DESC);
+        articulated_part:               sw_mucar_full_articulated_part;
+        length:                         sw_param_length; 
+        cargo_capacity:                 0;
+    }
+}
+
+
+spriteset (ss_mucar_mail_12_purchase,      "src/trains/dummy/mucarbuy_mail_12.png") {template_purchase (0, 0)}
+spriteset (ss_mucar_mail_10_purchase,      "src/trains/dummy/mucarbuy_mail_10.png") {template_purchase (0, 0)}
+
+spriteset (ss_mucar_mail_12,       	        "src/trains/dummy/mucar_mail_12.png") {template_12_standard(1,1)}
+spriteset (ss_mucar_mail_10,       	        "src/trains/dummy/mucar_mail_10.png") {template_10_standard(1,1)}
+
+switch (FEAT_TRAINS, SELF, sw_buy_mucar_mail, param_spritelength) {
+        1: ss_mucar_mail_10_purchase;		// Length 10
+        ss_mucar_mail_12_purchase;			// Length 12
+    }
+
+switch (FEAT_TRAINS, SELF, sw_graphics_mucar_mail, param_spritelength) {
+        1: ss_mucar_mail_10;		// Length 10
+        ss_mucar_mail_12;			// Length 12
+    }
+
+
+switch (FEAT_TRAINS, SELF, sw_mucar_mail_graphics, position_in_articulated_veh) {				
+		1:  sw_graphics_mucar_mail; 				
+		dummy_sprites;
+	}
+
+/* --- Articulated part callback  --- */
+switch(FEAT_TRAINS, SELF, sw_mucar_mail_articulated_part, extra_callback_info1) {
+	1: return mu_car_mail;
+    2: return mu_car_mail;
+    return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+
+if (param_dryellow == 1) {
+
+item(FEAT_TRAINS, mu_car_mail) {
+    /* Define properties first, make sure to set all of them */
+    property {
+        name:                         string(MUCAR_MAIL);
         introduction_date:            date(1800,1,1);
         climates_available:           ALL_CLIMATES;
         model_life:                   VEHICLE_NEVER_EXPIRES;
@@ -95,7 +171,7 @@ item(FEAT_TRAINS, mu_car_full) {
         tractive_effort_coefficient:  0.3;
         air_drag_coefficient:         0;
         reliability_decay:            20;
-        refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+        refittable_cargo_classes:     bitmask(CC_MAIL);
         cargo_age_period:             185;
         refit_cost:                   0;
         track_type:                   SHINKANSEN;
@@ -112,12 +188,13 @@ item(FEAT_TRAINS, mu_car_full) {
     /* Define graphics and callbacks
      * Setting all callbacks is not needed, only define what is used */
     graphics {
-		default:                        sw_mucar_full_graphics;                     
-        purchase:                       sw_buy_mucar_full;
-        additional_text:			    return string(MUCAR_FULL_DESC);
-        articulated_part:               sw_mucar_full_articulated_part;
+		default:                        sw_mucar_mail_graphics;                     
+        purchase:                       sw_buy_mucar_mail;
+        additional_text:			    return string(MUCAR_MAIL_DESC);
+        articulated_part:               sw_mucar_mail_articulated_part;
         length:                         sw_param_length;  
     }
+}
 }
 
 // End mucar
