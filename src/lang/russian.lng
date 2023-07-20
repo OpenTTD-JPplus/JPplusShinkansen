@@ -1,0 +1,215 @@
+##grflangid 0x07
+# This is the Russian language file
+# Guide: https://newgrf-specs.tt-wiki.net/wiki/NML:Language_files
+
+# GRF name and description definitions
+STR_GRF_NAME        :{TITLE} {VERSION}
+STR_GRF_DESC		:{WHITE}JP{RED}+{WHITE}Shinkansen{}{}JP{RED}+{WHITE}Shinkansen{BLACK} добавляет, как вы правильно поняли, Синкансены! Для использования необходимы высокоскоростные рельсы.{}Моды побратимы: {WHITE}JP{RED}+{WHITE}MUs {BLACK}, {WHITE}JP{RED}+ {WHITE}Engines & Wagons {BLACK}и {WHITE}JP{RED}+ {WHITE}Major Private Companies{}{}{BLACK}{COPYRIGHT}JP+Shinkansen{}Licence: GPLv2{}{BLACK}{}Код:{}{LTBLUE}KeepinItRail{}{}{BLACK}Спрайты:{}{GREEN}KeepinItRail & Azusa{}{}{BLACK}Перевод:{}{GREEN}freeaim (Японский){}Yozora (Русский){}{}{TINYFONT}{BLACK}Благодарность:{}{ORANGE}Emperor Jake{}Tinny{}Yozora{}Saya{}Erato{}Leon{}JapanSet3 Team{}{}{}{BLACK}{}
+
+# Parameters
+STR_NO                              :Нет
+STR_YES                             :Да
+STR_PARAM_NORMAL                    :Нормально
+STR_PARAM_VLOW                      :Очень низко
+STR_PARAM_LOW                       :Низко
+STR_PARAM_HIGH                      :Высоко
+STR_PARAM_VHIGH                     :Очень высоко
+STR_PARAM_NAME_BASECOSTMODBUY       :Стоимость покупки
+STR_PARAM_DESC_BASECOSTMODBUY       :Увеличить/Уменьшить стоимость покупки техники.
+STR_PARAM_NAME_BASECOSTMODRUN       :Стоимость эксплуатации
+STR_PARAM_DESC_BASECOSTMODRUN       :Увеличить/Уменьшить стоимости эксплуатации техники.
+STR_PARAM_NAME_BASECAPACITY         :Пассажировместимость
+STR_PARAM_DESC_BASECAPACITY         :Настраивает вместимость вагонов. Опция "Реальная" основана на реальных данных сидячих/стоячих мест и не оптимизирована для геймплея.
+STR_PARAM_NAME_JAPANSETDISABLE      :Убрать Синкансены из JapanSet3
+STR_PARAM_DESC_JAPANSETDISABLE      :Убирает Синкансены из JapanSet3, для избежания дупликатов.
+STR_PARAM_NAME_DECAY                :Степень старения груза
+STR_PARAM_DESC_DECAY                :Установите степень старения груза. При "Нормально" все поезда будут иметь одинаковую степень старения груза. При "Низко" и "Очень низко" степень старения зависит от типа используемого поезда. Использование регионального поезда на длинных дистанциях принесёт меньше прибыли, чем использование экспресса.
+
+STR_PARAM_REAL                      :Реальная вместимость (1x)
+STR_PARAM_1_50                      :Увеличенная для длинных спрайтов (1.5x)
+STR_PARAM_DOUBLE                    :Удвоенная (2x)
+STR_PARAM_1_25                      :Увеличенная для длинных спрайтов (1.25x)
+
+STR_PARAM_NAME_TRACKS               :Включить замену Синкансен путей
+STR_PARAM_DESC_TRACKS               :При отлючении JapanSet3 Синкансенов, исчезают JapanSet Синкансен пути. Этот параметр включает "замену" для Cинкансен путей. 
+
+STR_PARAM_NAME_FENCES               :Отключить заборы у "заменённых" Синкансен путей
+STR_PARAM_DESC_FENCES               :Отключить забор Синкансен путей. Касается только "заменённых" путей из этого мода.
+
+STR_PARAM_NAME_SPRITELENGTH         :Длина спрайтов Синкансенов
+STR_PARAM_DESC_SPRITELENGTH         :Выберите длину спрайтов.
+STR_PARAM_LENGTH_10                 :10/8 длина Синкансена
+STR_PARAM_LENGTH_12                 :12/8 длина Синкансена
+
+STR_PARAM_NAME_DRYELLOW             :Использование "Dr Yellow"
+STR_PARAM_DESC_DRYELLOW             :Выберите как "Dr Yellow" будет использоваться в игре. Диагностический (Не имеет функционала в игре), почтовый или пассажирский поезд.
+
+STR_PARAM_GIMMICK                   :Диагностический поезд (Стандарт)
+STR_PARAM_MAIL                      :Почтовый поезд
+STR_PARAM_PASSENGERS                :Пассажирский поезд
+
+# Error Messages
+GRF_OTTDVER                 : Версия OpenTTD устарела! Пожалуйста обновите игру для работы мода.
+STR_LENGTH_ERROR            : Добавьте больше MU вагонов (Меню вагонов)! Состав должен быть как минимум из четырёх (4) вагонов.
+
+# Mucar
+MU_UNIQUE                   : Возможно добавление только MU вагонов или поездов той же модели. 
+ONLY_ADD_MUCAR              : Возможно добавление только MU вагонов
+MUCAR_MINI                  :JP+ Mini-Shinkansen Car {WHITE}(MU){BLACK}
+MUCAR_FULL                  :JP+ Shinkansen Car {WHITE}(MU){BLACK}
+MUCAR_MAIL                  :JP+ Shinkansen Mail Car {WHITE}(MU){BLACK}
+MUCAR_MINI_DESC             :{BLACK}Совместимость: {GOLD}Синкансены 400 Серии, E3 Серии, E6 Серии и E8 Серии{}{BLUE}Используются как {GREEN}моторные и прицепные вагоны{BLUE} в формации Мини-Синкансенов.
+MUCAR_FULL_DESC             :{BLACK}Совместимость: {GOLD}Все полноразмерные Синкансены{}{BLUE}Используются как {GREEN}моторные и прицепные вагоны{BLUE} в формации Синкансенов.
+MUCAR_MAIL_DESC             :{BLACK}Совместимость: {GOLD}Синкансен "Dr Yellow"{}{BLUE}Используются как {GREEN}почтовые вагоны{BLUE} в формации Синкансена.
+
+
+# ########################
+# Not JR East 
+# ########################
+
+# 0 Series Shinkansen
+STR_NAME_0_SERIES           :Синкансен 0 Серии
+STR_DESC_0_SERIES           :{BLACK}Колея:{GOLD} Стандартная{}{BLACK}Использование: {SILVER}Экспресс Пассажиры{}{BLACK}Операторы: {WHITE}JNR{}{BLACK}MU Вагон: {GOLD} JP+ Shinkansen Car
+LV_0_SERIES_ORIGINAL        : 0 Серия {BLUE}Оригинальная Раскраска
+LV_0_SERIES_KODAMA          : 0 Серия {GREEN}Раскраска "Kodama"
+LV_0_SERIES_NOSE            : 0 Серия {BLUE}Оригинальная Раскраска {YELLOW}с/ подсвеченным носом
+
+
+# 100 Series Shinkansen
+STR_NAME_100_SERIES         :Синкансен 100 Серии
+STR_DESC_100_SERIES         :{BLACK}Колея:{GOLD} Стандартная{}{BLACK}Использование: {SILVER}Экспресс Пассажиры{}{BLACK}Операторы: {WHITE}JNR{}{BLACK}MU Вагон: {GOLD} JP+ Shinkansen Car
+LV_100_SERIES_X             : 200 Series {BLUE}X Модификация
+LV_100_SERIES_V             : 200 Series {BLUE}V Модификация
+LV_100_SERIES_KODAMA        : 200 Series {GREEN}Раскраска "Kodama" {GOLD}(230 km/h)
+
+# 300 Series Shinkansen
+STR_NAME_300_SERIES         :Синкансен 300 Серии
+STR_DESC_300_SERIES         :{BLACK}Колея:{GOLD} Стандартная{}{BLACK}Использование: {SILVER}Экспресс Пассажиры{}{BLACK}Операторы: {ORANGE}JR Central {BLACK}& {BLUE}JR West{}{BLACK}Раскраски: {SILVER}Оригинальная{}{BLACK}MU Вагон: {GOLD} JP+ Shinkansen Car
+
+# 500 Series Shinkansen
+STR_NAME_500_SERIES         :Синкансен 500 Серии
+STR_DESC_500_SERIES         :{BLACK}Колея:{GOLD} Стандартная{}{BLACK}Использование: {SILVER}Экспресс Пассажиры{}{BLACK}Операторы: {BLUE}JR West{}{BLACK}Раскраски: {SILVER}Оригинальная
+LV_500_SERIES               : 500 Серия {BLUE}Оригинальная раскраска
+
+# 700 Series Shinkansen
+STR_NAME_700_SERIES         :Синкансен 700 Серии
+STR_DESC_700_SERIES         :{BLACK}Колея:{GOLD} Стандартная{}{BLACK}Использование: {SILVER}Экспресс Пассажиры{}{BLACK}Операторы: {ORANGE}JR Central {BLACK}& {BLUE}JR West{}{BLACK}Раскраски: {BLUE}Оригинальная {BLACK}& {YELLOW}Hikari Rail Star {}{BLACK}MU Вагон: {GOLD} JP+ Shinkansen Car
+LV_700_SERIES_ORIGINAL      : 700 Series {BLUE}Оригинальная Раскраска
+LV_700_SERIES_HIKARI        : 700 Series {YELLOW}Hikari Rail Star Раскраска
+
+STR_NAME_923_SERIES         :Синкансен 923 Серии - {YELLOW}Doctor Yellow
+STR_DESC_923_SERIES         :{BLACK}Колея:{GOLD} Стандартная{}{BLACK}Использование: {SILVER}Экспресс Пассажиры{}{BLACK}Операторы: {ORANGE}JR Central {BLACK}& {BLUE}JR West{}{BLACK}Раскраски: {YELLOW}Doctor Yellow{}{BLACK}MU Вагон: {GOLD} JP+ Shinkansen Car
+STR_DESC_923_SERIES_MAIL    :{BLACK}Колея:{GOLD} Стандартная{}{BLACK}Использование: {SILVER}Экспресс Почта{}{BLACK}Операторы: {ORANGE}JR Central {BLACK}& {BLUE}JR West{}{BLACK}Раскраски: {YELLOW}Doctor Yellow{}{BLACK}MU Вагон: {GOLD} JP+ Shinkansen Mail Car
+STR_DESC_923_SERIES_GIMMICK :{BLACK}Колея:{GOLD} Стандартная{}{BLACK}Использование: {SILVER}Диагностический{}{BLACK}Операторы: {ORANGE}JR Central {BLACK}& {BLUE}JR West{}{BLACK}Раскраски: {YELLOW}Doctor Yellow{}{BLACK}MU Вагон: {GOLD} JP+ Shinkansen Car
+
+# N700 Series Shinkansen
+STR_NAME_N700_SERIES        :Синкансен N700 Серии
+STR_DESC_N700_SERIES        :{BLACK}Колея:{GOLD} Стандартная{}{BLACK}Использование: {SILVER}Экспресс Пассажиры{}{BLACK}Операторы: {ORANGE}JR Central {BLACK}, {BLUE}JR West {BLACK}& {RED}JR Kyushu{}{BLACK}Раскраски: {BLUE}Оригинальная {BLACK}(2007), {SILVER}Кюсю {BLACK}(2010){}{BLACK}MU Вагон: {GOLD} JP+ Shinkansen Car
+STR_NAME_N700A_SERIES       :Синкансен N700A Серии
+STR_DESC_N700A_SERIES       :{BLACK}Колея:{GOLD} Стандартная{}{BLACK}Использование: {SILVER}Экспресс Пассажиры{}{BLACK}Операторы: {ORANGE}JR Central {BLACK}& {BLUE}JR West{}{BLACK}Раскраски: {BLUE}Оригинальная {BLACK}{}{BLACK}MU Вагон: {GOLD} JP+ Shinkansen Car
+STR_NAME_N700S_SERIES       :Синкансен N700S Серии
+STR_DESC_N700S_SERIES       :{BLACK}Колея:{GOLD} Стандартная{}{BLACK}Использование: {SILVER}Экспресс Пассажиры{}{BLACK}Операторы: {ORANGE}JR Central {BLACK}, {BLUE}JR West {BLACK}& {RED}JR Kyushu{}{BLACK}Раскраски: {BLUE}Оригинальная {BLACK}& {RED}Kamome{}{BLACK}MU Вагон: {GOLD} JP+ Shinkansen Car
+
+LV_N700_SERIES_N700         : N700 Серия
+LV_N700_SERIES_N700A        : N700A Серия
+LV_N700_SERIES_N700S        : N700S Серия
+LV_N700_SERIES_KYUSHU       : N700 Серия {SILVER}Раскраска Кюсю
+LV_N700_SERIES_KAMOME       : N700S Series {RED}Раскраска "Kamome"
+
+# 800 Series Shinkansen
+STR_NAME_800_SERIES         :Синкансен 800 Серии
+STR_DESC_800_SERIES         :{BLACK}Колея:{GOLD} Стандартная{}{BLACK}Использование: {SILVER}Экспресс Пассажиры{}{BLACK}Операторы: {RED}JR Kyushu{}{BLACK}Раскраски: {SILVER}Оригинальная{}{BLACK}MU Вагон: {GOLD} JP+ Shinkansen Car
+
+# ########################
+# JR East
+# ########################
+
+# 200 Series Shinkansen
+STR_NAME_200_SERIES         :Синкансен 200 Серии
+STR_DESC_200_SERIES         :{BLACK}Колея:{GOLD} Стандартная{}{BLACK}Использование: {SILVER}Экспресс Пассажиры{}{BLACK}Операторы: {GREEN}JR East{}{BLACK}Раскраски: {SILVER}Оригинальная {BLACK}(1982){SILVER}Обновлённая {BLACK}(1992){}{BLACK}MU Вагон: {GOLD} JP+ Shinkansen Car
+STR_NAME_200_SERIES_SHARK   :Синкансен 200 Серии - "Sharknose"
+STR_DESC_200_SERIES_SHARK   :{BLACK}Колея:{GOLD} Стандартная{}{BLACK}Использование: {SILVER}Экспресс Пассажиры{}{BLACK}Операторы: {GREEN}JR East{}{BLACK}Раскраски: {SILVER}Sharknose {BLACK}(1990){}{BLACK}MU Вагон: {GOLD} JP+ Shinkansen Car
+
+LV_200_SERIES_ORIGINAL      : 200 Series {GREEN}Оригинальная Раскраска
+LV_200_SERIES_REFURB        : 200 Series {BLUE}Обновлённая Раскраска {GOLD}(240 km/h)
+
+# 400 Series Shinkansen
+STR_NAME_400_SERIES         :Синкансен 400 Серии
+STR_DESC_400_SERIES         :{BLACK}Колея:{GOLD} Стандартная{}{BLACK}Использование: {SILVER}Экспресс Пассажиры{}{BLACK}Операторы: {GREEN}JR East{}{BLACK}Раскраски: {SILVER}Оригинальная {BLACK}(1992){SILVER}Обновлённая {BLACK}(2002){}{BLACK}MU Вагон: {GOLD} JP+ Mini-Shinkansen Car
+LV_400_SERIES_ORIGINAL      : 400 Series Оригинальная Раскраска
+LV_400_SERIES_REFURB        : 400 Series Обновлённая
+
+# E1 Series Shinkansen
+STR_NAME_E1_SERIES          :Синкансен E1 Серии (MAX)
+STR_DESC_E1_SERIES          :{BLACK}Колея:{GOLD} Стандартная{}{BLACK}Использование: {SILVER}Экспресс Пассажиры{}{BLACK}Операторы: {GREEN}JR East{}{BLACK}Раскраски: {SILVER}Оригинальная {BLACK}(1994), {BLUE}Обновлённая {BLACK}(2004){}{BLACK}MU Вагон: {GOLD} JP+ Shinkansen Car
+LV_E1_SERIES_ORIGINAL       : E1 Series {SILVER}Оригинальная Раскраска
+LV_E1_SERIES_REFURB         : E1 Series {BLUE}Обновлённая Раскраска
+
+# E2 Series Shinkansen
+STR_NAME_E2_SERIES          :Синкансен E2 Серии
+STR_DESC_E2_SERIES          :{BLACK}Колея:{GOLD} Стандартная{}{BLACK}Использование: {SILVER}Экспресс Пассажиры{}{BLACK}Операторы: {GREEN}JR East{}{BLACK}Раскраски: {SILVER}8-car {BLACK}(1997), {SILVER}10-car {BLACK}(2002){}{BLACK}MU Вагон: {GOLD} JP+ Shinkansen Car
+LV_E2_SERIES_RED            : E2 Series {RED}Red Stripe
+LV_E2_SERIES_PINK           : E2 Series {CREAM}Magenta Stripe
+
+# E3 Series Shinkansen
+STR_NAME_E3_SERIES          :Синкансен E3 Серии
+STR_DESC_E3_SERIES          :{BLACK}Колея:{GOLD} Стандартная{}{BLACK}Использование: {SILVER}Экспресс Пассажиры{}{BLACK}Операторы: {GREEN}JR East{}{BLACK}Раскраски: {WHITE}R Set {BLACK}(1997) {SILVER}1000 Series {BLACK}(1999) {PURPLE}2000 Серия {BLACK}(2008){}{BLACK}MU Вагон: {GOLD} JP+ Mini-Shinkansen Car
+LV_E3_SERIES_R              : E3 Серия R Set
+LV_E3_SERIES_1000           : E3-1000 Серия
+LV_E3_SERIES_2000           : E3-2000 Серия
+LV_E3_SERIES_700_TOREIYU    : E3-700 Серия "Toreiyu"
+LV_E3_SERIES_700_GENBI      : E3-700 Серия "Genbi"
+
+# E4 Series Shinkansen (MAX)
+STR_NAME_E4_SERIES          :Синкансен E4 Серии (MAX)
+STR_DESC_E4_SERIES          :{BLACK}Колея:{GOLD} Стандартная{}{BLACK}Использование: {SILVER}Экспресс Пассажиры{}{BLACK}Операторы: {GREEN}JR East{}{BLACK}Раскраски: {YELLOW}Жёлтая полоса {BLACK}(1997), {CREAM}Розовая полоса {BLACK}(2016){}{BLACK}MU Вагон: {GOLD} JP+ Shinkansen Car
+LV_E4_SERIES_YELLOW         : E4 Серия MAX (Жёлтая полоса)
+LV_E4_SERIES_PINK           : E4 Серия MAX (Розовая полоса)
+
+# E5 Series Shinkansen
+STR_NAME_E5_SERIES          :Синкансен E5 Серии
+STR_DESC_E5_SERIES          :{BLACK}Колея:{GOLD} Стандартная{}{BLACK}Использование: {SILVER}Экспресс Пассажиры{}{BLACK}Операторы: {GREEN}JR East{}{BLACK}Раскраски: {GREEN}E5 {BLACK}(2011), {GREEN}H5 {BLACK}(2015){}{BLACK}MU Вагон: {GOLD} JP+ Shinkansen Car
+LV_E5_SERIES_E5             : {GREEN}E5 Серия
+LV_E5_SERIES_H5             : {PURPLE}H5 Серия
+
+# E6 Series Shinkansen
+STR_NAME_E6_SERIES          :Синкансен E6 Серии
+STR_DESC_E6_SERIES          :{BLACK}Колея:{GOLD} Стандартная{}{BLACK}Использование: {SILVER}Экспресс Пассажиры{}{BLACK}Операторы: {GREEN}JR East{}{BLACK}Раскраски: {RED}E6 {BLACK}(2013){}{BLACK}MU Вагон: {GOLD} JP+ Mini-Shinkansen Car
+
+# E5 & E6 Series Shinkansen
+STR_NAME_E5E6_SERIES        :Синкансены E5 & E6 Серии
+STR_DESC_E5E6_SERIES        :{BLACK}Колея:{GOLD} Стандартная{}{BLACK}Использование: {SILVER}Экспресс Пассажиры{}{BLACK}Операторы: {GREEN}JR East{}{BLACK}Раскраски: {GREEN}E5 {BLACK}(2013) или {GREEN}H5 {BLACK}(2016) с {RED}E6 {}{BLACK}Длина: {GOLD} 11.0 клеток
+LV_E5E6_SERIES_PINK         : E5 & E6 Series
+LV_E5E6_SERIES_PURPLE       : H5 & E6 Series
+
+# E7 Series Shinkansen
+STR_NAME_E7_SERIES          :Синкансен E7 Серии
+STR_DESC_E7_SERIES          :{BLACK}Колея:{GOLD} Стандартная{}{BLACK}Использование: {SILVER}Экспресс Пассажиры{}{BLACK}Операторы: {GREEN}JR East {BLACK}& {BLUE}JR West {}{BLACK}Раскраски: {BLUE}E7 {BLACK}(2014){BLUE}W7 {BLACK}(2014){}{BLACK}MU Вагон: {GOLD} JP+ Shinkansen Car
+LV_E7_SERIES_E7             : E7 Серия
+LV_E7_SERIES_W7             : W7 Серия
+
+# E8 Series Shinkansen
+STR_NAME_E8_SERIES          :Синкансен E8 Серии
+STR_DESC_E8_SERIES          :{BLACK}Колея:{GOLD} Стандартная{}{BLACK}Использование: {SILVER}Экспресс Пассажиры{}{BLACK}Операторы: {GREEN}JR East{}{BLACK}Раскраски: {PURPLE}E8 {BLACK}(2024){}{BLACK}MU Вагон: {GOLD} JP+ Mini-Shinkansen Car
+LV_E8_SERIES_ORIGINAL       : E8 Серия Оригинальная Раскраска
+
+# Livery
+LV_YEAR_DEP_LIVERY          : Хронологическая раскраска
+
+# ########################
+# Tracks
+# ########################
+
+STR_NAME_HSSN               :Shinkansen high speed railway
+STR_MENU_HSSN               :Shinkansen high speed line {LTBLUE}(electrified) {WHITE}
+STR_CAPT_HSSN               :New Shinkansen high speed electric Trains
+STR_TOOL_HSSN               :Shinkansen high speed railway Construction
+STR_AUTO_HSSN               :Shinkansen high Speed trains
+STR_NEWE_HSSN               :Standard Gauge Vehicle
+
+STR_NAME_MDSN               :Shinkansen modern high speed railway
+STR_MENU_MDSN               :Shinkansen modern high speed line {LTBLUE}(electrified) {WHITE}
+STR_CAPT_MDSN               :New Shinkansen high speed electric Trains
+STR_TOOL_MDSN               :Shinkansen modern high speed railway construction
+STR_AUTO_MDSN               :Shinkansen high Speed trains
+STR_NEWE_MDSN               :Standard Gauge Vehicle
