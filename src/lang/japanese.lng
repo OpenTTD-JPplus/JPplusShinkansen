@@ -30,28 +30,38 @@ STR_PARAM_1_50                      :ロングスプライト調整済み (1.5�
 STR_PARAM_DOUBLE                    :ダブル (2倍)
 STR_PARAM_1_25                      :ロングスプライト調整済み (1.25倍)
 
-STR_PARAM_NAME_TRACKS               :Enable replacement Shinkansen tracks
-STR_PARAM_DESC_TRACKS               :When JapanSet3 Shinkansen are disabled by the above parameter, this removes the Shinkansen tracks from JapanSet Tracks. This parameter enables 'replacement' Shinkansen tracks. 
+STR_PARAM_NAME_TRACKS               :置換用の新幹線線路を有効にする
+STR_PARAM_DESC_TRACKS               :上記パラメータで JapanSet3 新幹線を無効にすると、これによりJapanSet 線路から新幹線線路が削除されます。 このパラメータは、「置換用」の新幹線線路を有効にします。
 
-STR_PARAM_NAME_FENCES               :Disable replacement Shinkansen track fences
-STR_PARAM_DESC_FENCES               :Select whether fences appear on the replacement Shinkansen tracks. Only affects the 'replacement' Shinkansen track, not any other tracks or track sets.
+STR_PARAM_NAME_FENCES               :置換用の新幹線線路のフェンスを無効にする
+STR_PARAM_DESC_FENCES               :置き換えられた新幹線の線路にフェンスを表示するかどうかを選択します。 「置換用」の新幹線線路にのみ影響し、他の線路や線路セットには影響しません。
 
-STR_PARAM_NAME_SPRITELENGTH         :Length of full Shinkansen sprites
-STR_PARAM_DESC_SPRITELENGTH         :Choose the sprite length for full size Shinkansen
-STR_PARAM_LENGTH_10                 :10/8 length Shinkansen
-STR_PARAM_LENGTH_12                 :12/8 length Shinkansen
+STR_PARAM_NAME_SPRITELENGTH         :フル規格新幹線スプライトの長さ
+STR_PARAM_DESC_SPRITELENGTH         :フル規格新幹線のスプライトの長さを選択してください
+STR_PARAM_LENGTH_10                 :10/8長 新幹線
+STR_PARAM_LENGTH_12                 :12/8長 新幹線
+
+STR_PARAM_NAME_DRYELLOW             :ドクターイエローの役割
+STR_PARAM_DESC_DRYELLOW             :ドクターイエローの使用方法を選択します。軌道試験列車（貨物は積みません）、郵便列車、旅客列車からお選びください。
+
+STR_PARAM_GIMMICK                   :軌道試験列車（デフォルト）
+STR_PARAM_MAIL                      :郵便列車
+STR_PARAM_PASSENGERS                :旅客列車
 
 # Error Messages
 GRF_OTTDVER                 : この NewGRF を実行するために必要な OpenTTD バージョンを下回っています。 OpenTTD のバージョンを更新してください。
-STR_LENGTH_ERROR            : Add more Shinkansen Cars! Add more MU cars (Wagons menu) to have at least a four car set
+STR_LENGTH_ERROR            : 新幹線車両を追加してください!MU車両 (ワゴンメニュー) を追加して、少なくとも4両セットにしてください。
 
 # Mucar
-MU_UNIQUE                   : You can only attach MU cars or other EMUs of the same design.
-ONLY_ADD_MUCAR              : You can only attach MU cars
-MUCAR_MINI                  :JP+ Mini-Shinkansen Car {WHITE}(MU){BLACK}
-MUCAR_FULL                  :JP+ Shinkansen Car {WHITE}(MU){BLACK}
-MUCAR_MINI_DESC             :{BLACK}Compatibility: {GOLD}400 Series, E3 Series, E6 Series and E8 Series Shinkansen{}{BLUE}Used to represent  {GREEN}motor and trailer cars{BLUE} within a Mini-Shinkansen formation.
-MUCAR_FULL_DESC             :{BLACK}Compatibility: {GOLD}All Full Size Shinkansen{}{BLUE}Used to represent  {GREEN}motor and trailer cars{BLUE} within a Shinkansen formation.
+MU_UNIQUE                   : MU車両または同じデザインの他の車両のみ連結可能です。
+ONLY_ADD_MUCAR              : MU車両のみ連結可能です。
+MUCAR_MINI                  :JP+ ミニ新幹線車両 {WHITE}(MU){BLACK}
+MUCAR_FULL                  :JP+ 新幹線車両 {WHITE}(MU){BLACK}
+MUCAR_MAIL                  :JP+ 新幹線郵便車両 {WHITE}(MU){BLACK}
+MUCAR_MINI_DESC             :{BLACK}互換性: {GOLD}400系、E3系、E6系とE8系　新幹線{}{BLUE}ミニ新幹線の編成内の{GREEN}動力車と付随車{BLUE}を表すために使用されます。
+MUCAR_FULL_DESC             :{BLACK}互換性: {GOLD}すべてのフル規格新幹線{}{BLUE}新幹線の編成内の{GREEN}動力車と付随車{BLUE}を表すために使用されます。
+MUCAR_MAIL_DESC             :{BLACK}互換性: {GOLD}ドクターイエロー{}{BLUE}ドクターイエローの編成内の{GREEN}郵便車{BLUE}を表すために使用されます。
+
 
 # ########################
 # Not JR東日本 
@@ -59,7 +69,7 @@ MUCAR_FULL_DESC             :{BLACK}Compatibility: {GOLD}All Full Size Shinkanse
 
 # 0 Series Shinkansen
 STR_NAME_0_SERIES           :0系新幹線
-STR_DESC_0_SERIES           :{BLACK}軌間:{GOLD} 標準軌{}{BLACK}利用: {SILVER}急行旅客{}{BLACK}事業者: {WHITE}国鉄{}{BLACK}MU Car: {GOLD} JP+ Shinkansen Car
+STR_DESC_0_SERIES           :{BLACK}軌間:{GOLD} 標準軌{}{BLACK}利用: {SILVER}急行{}{BLACK}事業者: {WHITE}国鉄{}{BLACK}MU車両: {GOLD} JP+ 新幹線車両
 LV_0_SERIES_ORIGINAL        : 0系 {BLUE}オリジナル塗装
 LV_0_SERIES_KODAMA          : 0系 {GREEN}フレッシュグリーン塗装
 LV_0_SERIES_NOSE            : 0系 {BLUE}オリジナル塗装 {YELLOW}光前頭
@@ -67,33 +77,38 @@ LV_0_SERIES_NOSE            : 0系 {BLUE}オリジナル塗装 {YELLOW}光前頭
 
 # 100 Series Shinkansen
 STR_NAME_100_SERIES         :100系新幹線
-STR_DESC_100_SERIES         :{BLACK}軌間:{GOLD} 標準軌{}{BLACK}用途: {SILVER}急行旅客{}{BLACK}事業者: {WHITE}国鉄{}{BLACK}MU Car: {GOLD} JP+ Shinkansen Car
+STR_DESC_100_SERIES         :{BLACK}軌間:{GOLD} 標準軌{}{BLACK}用途: {SILVER}急行{}{BLACK}事業者: {WHITE}国鉄{}{BLACK}MU車両: {GOLD} JP+ 新幹線車両
 LV_100_SERIES_X             : 100系 {BLUE}X編成
 LV_100_SERIES_V             : 100系 {BLUE}V編成
 LV_100_SERIES_KODAMA        : 100系 {GREEN}フレッシュグリーン {GOLD}(230 km/h)
 
 # 300 Series Shinkansen
 STR_NAME_300_SERIES         :300系新幹線
-STR_DESC_300_SERIES         :{BLACK}軌間:{GOLD} 標準軌{}{BLACK}用途: {SILVER}急行旅客{}{BLACK}事業者: {ORANGE}JR東海 {BLACK}& {BLUE}JR西日本{}{BLACK}塗装: {SILVER}オリジナル{}{BLACK}MU Car: {GOLD} JP+ Shinkansen Car
+STR_DESC_300_SERIES         :{BLACK}軌間:{GOLD} 標準軌{}{BLACK}用途: {SILVER}急行{}{BLACK}事業者: {ORANGE}JR東海 {BLACK}& {BLUE}JR西日本{}{BLACK}塗装: {SILVER}オリジナル{}{BLACK}MU車両: {GOLD} JP+ 新幹線車両
 
 # 500 Series Shinkansen
 STR_NAME_500_SERIES         :500系新幹線
-STR_DESC_500_SERIES         :{BLACK}軌間:{GOLD} 標準軌{}{BLACK}用途: {SILVER}急行旅客{}{BLACK}事業者: {BLUE}JR西日本{}{BLACK}塗装: {SILVER}Original
+STR_DESC_500_SERIES         :{BLACK}軌間:{GOLD} 標準軌{}{BLACK}用途: {SILVER}急行{}{BLACK}事業者: {BLUE}JR西日本{}{BLACK}塗装: {SILVER}Original
 LV_500_SERIES               : 500系 {BLUE}オリジナル塗装
 
 # 700 Series Shinkansen
 STR_NAME_700_SERIES          :700系新幹線
-STR_DESC_700_SERIES          :{BLACK}軌間:{GOLD} 標準軌{}{BLACK}用途: {SILVER}急行旅客{}{BLACK}事業者: {ORANGE}JR東海 {BLACK}& {BLUE}JR西日本{}{BLACK}塗装: {BLUE}オリジナル {BLACK}& {YELLOW}ひかりレールスター {}{BLACK}MU Car: {GOLD} JP+ Shinkansen Car
+STR_DESC_700_SERIES          :{BLACK}軌間:{GOLD} 標準軌{}{BLACK}用途: {SILVER}急行{}{BLACK}事業者: {ORANGE}JR東海 {BLACK}& {BLUE}JR西日本{}{BLACK}塗装: {BLUE}オリジナル {BLACK}& {YELLOW}ひかりレールスター {}{BLACK}MU車両: {GOLD} JP+ 新幹線車両
 LV_700_SERIES_ORIGINAL       : 700系 {BLUE}オリジナル塗装
 LV_700_SERIES_HIKARI         : 700系 {YELLOW}ひかりレールスター塗装
 
+STR_NAME_923_SERIES         :923系新幹線 - {YELLOW}ドクターイエロー
+STR_DESC_923_SERIES         :{BLACK}軌間:{GOLD} 標準軌{}{BLACK}用途: {SILVER}急行{}{BLACK}事業者: {ORANGE}JR東海 {BLACK}& {BLUE}JR西日本{}{BLACK}塗装: {YELLOW}ドクターイエロー{}{BLACK}MU車両: {GOLD} JP+ 新幹線車両
+STR_DESC_923_SERIES_MAIL    :{BLACK}軌間:{GOLD} 標準軌{}{BLACK}用途: {SILVER}急行 (郵便物){}{BLACK}事業者: {ORANGE}JR東海 {BLACK}& {BLUE}JR西日本{}{BLACK}塗装: {YELLOW}ドクターイエロー{}{BLACK}MU車両: {GOLD} JP+ Shinkansen Mail Car
+STR_DESC_923_SERIES_GIMMICK :{BLACK}軌間:{GOLD} 標準軌{}{BLACK}用途: {SILVER}軌道検測{}{BLACK}事業者: {ORANGE}JR東海 {BLACK}& {BLUE}JR西日本{}{BLACK}塗装: {YELLOW}ドクターイエロー{}{BLACK}MU車両: {GOLD} JP+ 新幹線車両
+
 # N700 Series Shinkansen
 STR_NAME_N700_SERIES         :N700系新幹線
-STR_DESC_N700_SERIES         :{BLACK}軌間:{GOLD} 標準軌{}{BLACK}用途: {SILVER}急行旅客{}{BLACK}事業者: {ORANGE}JR東海 {BLACK}, {BLUE}JR西日本 {BLACK}& {RED}JR九州{}{BLACK}塗装: {BLUE}オリジナル {BLACK}(2007), {SILVER}九州 {BLACK}(2010){}{BLACK}MU Car: {GOLD} JP+ Shinkansen Car
+STR_DESC_N700_SERIES         :{BLACK}軌間:{GOLD} 標準軌{}{BLACK}用途: {SILVER}急行{}{BLACK}事業者: {ORANGE}JR東海 {BLACK}, {BLUE}JR西日本 {BLACK}& {RED}JR九州{}{BLACK}塗装: {BLUE}オリジナル {BLACK}(2007), {SILVER}九州 {BLACK}(2010){}{BLACK}MU車両: {GOLD} JP+ 新幹線車両
 STR_NAME_N700A_SERIES        :N700A系新幹線
-STR_DESC_N700A_SERIES        :{BLACK}軌間:{GOLD} 標準軌{}{BLACK}用途: {SILVER}急行旅客{}{BLACK}事業者: {ORANGE}JR東海 {BLACK}& {BLUE}JR西日本{}{BLACK}塗装: {BLUE}オリジナル {BLACK}{}{BLACK}MU Car: {GOLD} JP+ Shinkansen Car
+STR_DESC_N700A_SERIES        :{BLACK}軌間:{GOLD} 標準軌{}{BLACK}用途: {SILVER}急行{}{BLACK}事業者: {ORANGE}JR東海 {BLACK}& {BLUE}JR西日本{}{BLACK}塗装: {BLUE}オリジナル {BLACK}{}{BLACK}MU車両: {GOLD} JP+ 新幹線車両
 STR_NAME_N700S_SERIES        :N700S系新幹線
-STR_DESC_N700S_SERIES        :{BLACK}軌間:{GOLD} 標準軌{}{BLACK}用途: {SILVER}急行旅客{}{BLACK}事業者: {ORANGE}JR東海 {BLACK}, {BLUE}JR西日本 {BLACK}& {RED}JR九州{}{BLACK}塗装: {BLUE}オリジナル {BLACK}& {RED}かもめ{}{BLACK}MU Car: {GOLD} JP+ Shinkansen Car
+STR_DESC_N700S_SERIES        :{BLACK}軌間:{GOLD} 標準軌{}{BLACK}用途: {SILVER}急行{}{BLACK}事業者: {ORANGE}JR東海 {BLACK}, {BLUE}JR西日本 {BLACK}& {RED}JR九州{}{BLACK}塗装: {BLUE}オリジナル {BLACK}& {RED}かもめ{}{BLACK}MU車両: {GOLD} JP+ 新幹線車両
 
 LV_N700_SERIES_N700          : N700系
 LV_N700_SERIES_N700A         : N700A系
@@ -103,7 +118,7 @@ LV_N700_SERIES_KAMOME        : N700S系 {RED}かもめ塗装
 
 # 800 Series Shinkansen
 STR_NAME_800_SERIES         :800系新幹線
-STR_DESC_800_SERIES         :{BLACK}軌間:{GOLD} 標準軌{}{BLACK}用途: {SILVER}急行旅客{}{BLACK}事業者: {RED}JR九州{}{BLACK}塗装: {SILVER}オリジナル{}{BLACK}MU Car: {GOLD} JP+ Shinkansen Car
+STR_DESC_800_SERIES         :{BLACK}軌間:{GOLD} 標準軌{}{BLACK}用途: {SILVER}急行{}{BLACK}事業者: {RED}JR九州{}{BLACK}塗装: {SILVER}オリジナル{}{BLACK}MU車両: {GOLD} JP+ 新幹線車両
 
 # ########################
 # JR東日本
@@ -111,34 +126,34 @@ STR_DESC_800_SERIES         :{BLACK}軌間:{GOLD} 標準軌{}{BLACK}用途: {SIL
 
 # 200 Series Shinkansen
 STR_NAME_200_SERIES         :200系新幹線
-STR_DESC_200_SERIES         :{BLACK}軌間:{GOLD} 標準軌{}{BLACK}用途: {SILVER}急行旅客{}{BLACK}事業者: {GREEN}JR東日本{}{BLACK}塗装: {SILVER}オリジナル {BLACK}(1982){SILVER}リニューアル {BLACK}(1992){}{BLACK}MU Car: {GOLD} JP+ Shinkansen Car
+STR_DESC_200_SERIES         :{BLACK}軌間:{GOLD} 標準軌{}{BLACK}用途: {SILVER}急行{}{BLACK}事業者: {GREEN}JR東日本{}{BLACK}塗装: {SILVER}オリジナル {BLACK}(1982){SILVER}リニューアル {BLACK}(1992){}{BLACK}MU車両: {GOLD} JP+ 新幹線車両
 STR_NAME_200_SERIES_SHARK   :200系新幹線 - 'シャークノーズ'
-STR_DESC_200_SERIES_SHARK   :{BLACK}軌間:{GOLD} 標準軌{}{BLACK}用途: {SILVER}急行旅客{}{BLACK}事業者: {GREEN}JR東日本{}{BLACK}塗装: {SILVER}シャークノーズ {BLACK}(1990){}{BLACK}MU Car: {GOLD} JP+ Shinkansen Car
+STR_DESC_200_SERIES_SHARK   :{BLACK}軌間:{GOLD} 標準軌{}{BLACK}用途: {SILVER}急行{}{BLACK}事業者: {GREEN}JR東日本{}{BLACK}塗装: {SILVER}シャークノーズ {BLACK}(1990){}{BLACK}MU車両: {GOLD} JP+ 新幹線車両
 
 LV_200_SERIES_ORIGINAL      : 200系 {GREEN}オリジナル塗装
 LV_200_SERIES_REFURB        : 200系 {BLUE}リニューアル塗装 {GOLD}(240 km/h)
 
 # 400 Series Shinkansen
 STR_NAME_400_SERIES         :400系新幹線
-STR_DESC_400_SERIES         :{BLACK}軌間:{GOLD} 標準軌{}{BLACK}用途: {SILVER}急行旅客{}{BLACK}事業者: {GREEN}JR東日本{}{BLACK}塗装: {SILVER}オリジナル {BLACK}(1992){SILVER}リニューアル {BLACK}(2002){}{BLACK}MU Car: {GOLD} JP+ Mini-Shinkansen Car
+STR_DESC_400_SERIES         :{BLACK}軌間:{GOLD} 標準軌{}{BLACK}用途: {SILVER}急行{}{BLACK}事業者: {GREEN}JR東日本{}{BLACK}塗装: {SILVER}オリジナル {BLACK}(1992){SILVER}リニューアル {BLACK}(2002){}{BLACK}MU車両: {GOLD} JP+ ミニ新幹線車両
 LV_400_SERIES_ORIGINAL      : 400系 オリジナル塗装
 LV_400_SERIES_REFURB        : 400系 リニューアル塗装    
 
 # E1 Series Shinkansen
 STR_NAME_E1_SERIES          :E1系新幹線 (MAX)
-STR_DESC_E1_SERIES          :{BLACK}軌間:{GOLD} 標準軌{}{BLACK}用途: {SILVER}急行旅客{}{BLACK}事業者: {GREEN}JR東日本{}{BLACK}塗装: {SILVER}オリジナル {BLACK}(1994), {BLUE}リニューアル {BLACK}(2004){}{BLACK}MU Car: {GOLD} JP+ Shinkansen Car
+STR_DESC_E1_SERIES          :{BLACK}軌間:{GOLD} 標準軌{}{BLACK}用途: {SILVER}急行{}{BLACK}事業者: {GREEN}JR東日本{}{BLACK}塗装: {SILVER}オリジナル {BLACK}(1994), {BLUE}リニューアル {BLACK}(2004){}{BLACK}MU車両: {GOLD} JP+ 新幹線車両
 LV_E1_SERIES_ORIGINAL       : E1系 {SILVER}オリジナル塗装
 LV_E1_SERIES_REFURB         : E1系 {BLUE}リニューアル塗装
 
 # E2 Series Shinkansen
 STR_NAME_E2_SERIES          :E2系新幹線
-STR_DESC_E2_SERIES          :{BLACK}軌間:{GOLD} 標準軌{}{BLACK}用途: {SILVER}急行旅客{}{BLACK}事業者: {GREEN}JR東日本{}{BLACK}塗装: {SILVER}8両 {BLACK}(1997), {SILVER}10両 {BLACK}(2002){}{BLACK}MU Car: {GOLD} JP+ Shinkansen Car
+STR_DESC_E2_SERIES          :{BLACK}軌間:{GOLD} 標準軌{}{BLACK}用途: {SILVER}急行{}{BLACK}事業者: {GREEN}JR東日本{}{BLACK}塗装: {SILVER}8両 {BLACK}(1997), {SILVER}10両 {BLACK}(2002){}{BLACK}MU車両: {GOLD} JP+ 新幹線車両
 LV_E2_SERIES_RED            : E2系 {RED}赤帯
 LV_E2_SERIES_PINK           : E2系 {CREAM}ピンク帯
 
 # E3 Series Shinkansen
 STR_NAME_E3_SERIES          :E3系新幹線
-STR_DESC_E3_SERIES          :{BLACK}軌間:{GOLD} 標準軌{}{BLACK}用途: {SILVER}急行旅客{}{BLACK}事業者: {GREEN}JR東日本{}{BLACK}塗装: {WHITE}R編成 {BLACK}(1997) {SILVER}1000番台 {BLACK}(1999) {PURPLE}2000番台 {BLACK}(2008){}{BLACK}MU Car: {GOLD} JP+ Mini-Shinkansen Car
+STR_DESC_E3_SERIES          :{BLACK}軌間:{GOLD} 標準軌{}{BLACK}用途: {SILVER}急行{}{BLACK}事業者: {GREEN}JR東日本{}{BLACK}塗装: {WHITE}R編成 {BLACK}(1997) {SILVER}1000番台 {BLACK}(1999) {PURPLE}2000番台 {BLACK}(2008){}{BLACK}MU車両: {GOLD} JP+ ミニ新幹線車両
 LV_E3_SERIES_R              : E3系R編成
 LV_E3_SERIES_1000           : E3系1000番台
 LV_E3_SERIES_2000           : E3系2000番台
@@ -147,35 +162,35 @@ LV_E3_SERIES_700_GENBI      : E3系700番台 現美新幹線
 
 # E4 Series Shinkansen (MAX)
 STR_NAME_E4_SERIES          :E4系新幹線 (MAX)
-STR_DESC_E4_SERIES          :{BLACK}軌間:{GOLD} 標準軌{}{BLACK}用途: {SILVER}急行旅客{}{BLACK}事業者: {GREEN}JR東日本{}{BLACK}塗装: {YELLOW}黄色帯 {BLACK}(1997), {CREAM}ピンク帯 {BLACK}(2016){}{BLACK}MU Car: {GOLD} JP+ Shinkansen Car
+STR_DESC_E4_SERIES          :{BLACK}軌間:{GOLD} 標準軌{}{BLACK}用途: {SILVER}急行{}{BLACK}事業者: {GREEN}JR東日本{}{BLACK}塗装: {YELLOW}黄色帯 {BLACK}(1997), {CREAM}ピンク帯 {BLACK}(2016){}{BLACK}MU車両: {GOLD} JP+ 新幹線車両
 LV_E4_SERIES_YELLOW         : E4系 MAX (黄色帯)
 LV_E4_SERIES_PINK           : E4系 MAX (ピンク帯)
 
 # E5 Series Shinkansen
 STR_NAME_E5_SERIES          :E5系新幹線
-STR_DESC_E5_SERIES          :{BLACK}軌間:{GOLD} 標準軌{}{BLACK}用途: {SILVER}急行旅客{}{BLACK}事業者: {GREEN}JR東日本{}{BLACK}塗装: {GREEN}E5 {BLACK}(2011), {GREEN}H5 {BLACK}(2015){}{BLACK}MU Car: {GOLD} JP+ Shinkansen Car
+STR_DESC_E5_SERIES          :{BLACK}軌間:{GOLD} 標準軌{}{BLACK}用途: {SILVER}急行{}{BLACK}事業者: {GREEN}JR東日本{}{BLACK}塗装: {GREEN}E5 {BLACK}(2011), {GREEN}H5 {BLACK}(2015){}{BLACK}MU車両: {GOLD} JP+ 新幹線車両
 LV_E5_SERIES_E5             : {GREEN}E5系
 LV_E5_SERIES_H5             : {PURPLE}H5系
 
 # E6 Series Shinkansen
 STR_NAME_E6_SERIES          :E6系新幹線
-STR_DESC_E6_SERIES          :{BLACK}軌間:{GOLD} 標準軌{}{BLACK}用途: {SILVER}急行旅客{}{BLACK}事業者: {GREEN}JR東日本{}{BLACK}塗装: {RED}E6 {BLACK}(2013){}{BLACK}MU Car: {GOLD} JP+ Mini-Shinkansen Car
+STR_DESC_E6_SERIES          :{BLACK}軌間:{GOLD} 標準軌{}{BLACK}用途: {SILVER}急行{}{BLACK}事業者: {GREEN}JR東日本{}{BLACK}塗装: {RED}E6 {BLACK}(2013){}{BLACK}MU車両: {GOLD} JP+ ミニ新幹線車両
 
 # E5 & E6 Series Shinkansen
 STR_NAME_E5E6_SERIES        :E5 & E6系新幹線
-STR_DESC_E5E6_SERIES        :{BLACK}軌間:{GOLD} 標準軌{}{BLACK}用途: {SILVER}急行旅客{}{BLACK}事業者: {GREEN}JR東日本{}{BLACK}塗装: {GREEN}E5 {BLACK}(2013) or {GREEN}H5 {BLACK}(2016) with {RED}E6 {}{BLACK}長さ: {GOLD} 11.0 tiles
+STR_DESC_E5E6_SERIES        :{BLACK}軌間:{GOLD} 標準軌{}{BLACK}用途: {SILVER}急行{}{BLACK}事業者: {GREEN}JR東日本{}{BLACK}塗装: {GREEN}E5 {BLACK}(2013) or {GREEN}H5 {BLACK}(2016) with {RED}E6 {}{BLACK}長さ: {GOLD} 11.0 tiles
 LV_E5E6_SERIES_PINK         : E5 & E6系新幹線
 LV_E5E6_SERIES_PURPLE       : H5 & E6系新幹線
 
 # E7 Series Shinkansen
 STR_NAME_E7_SERIES          :E7系新幹線
-STR_DESC_E7_SERIES          :{BLACK}軌間:{GOLD} 標準軌{}{BLACK}用途: {SILVER}急行旅客{}{BLACK}事業者: {GREEN}JR東日本 {BLACK}& {BLUE}JR西日本 {}{BLACK}塗装: {BLUE}E7 {BLACK}(2014){BLUE}W7 {BLACK}(2014){}{BLACK}MU Car: {GOLD} JP+ Shinkansen Car
+STR_DESC_E7_SERIES          :{BLACK}軌間:{GOLD} 標準軌{}{BLACK}用途: {SILVER}急行{}{BLACK}事業者: {GREEN}JR東日本 {BLACK}& {BLUE}JR西日本 {}{BLACK}塗装: {BLUE}E7 {BLACK}(2014){BLUE}W7 {BLACK}(2014){}{BLACK}MU車両: {GOLD} JP+ 新幹線車両
 LV_E7_SERIES_E7             : E7系
 LV_E7_SERIES_W7             : W7系
 
 # E8 Series Shinkansen
 STR_NAME_E8_SERIES          :E8系新幹線
-STR_DESC_E8_SERIES          :{BLACK}軌間:{GOLD} 標準軌{}{BLACK}用途: {SILVER}急行旅客{}{BLACK}事業者: {GREEN}JR東日本{}{BLACK}塗装: {PURPLE}E8 {BLACK}(2024){}{BLACK}MU Car: {GOLD} JP+ Mini-Shinkansen Car
+STR_DESC_E8_SERIES          :{BLACK}軌間:{GOLD} 標準軌{}{BLACK}用途: {SILVER}急行{}{BLACK}事業者: {GREEN}JR東日本{}{BLACK}塗装: {PURPLE}E8 {BLACK}(2024){}{BLACK}MU車両: {GOLD} JP+ ミニ新幹線車両
 LV_E8_SERIES_ORIGINAL       : E7系 オリジナル
 
 # Livery
