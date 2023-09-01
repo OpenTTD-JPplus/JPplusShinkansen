@@ -7,8 +7,8 @@
 	grfid:					"KR03";
 	name:					string(STR_GRF_NAME);
 	desc:					string(STR_GRF_DESC);
-	version:				13;	// v0.3.3
-	min_compatible_version: 13;	// v0.3.3
+	version:				14;	// v0.3.4
+	min_compatible_version: 14;	// v0.3.4
 		//japanset3 removal
 		param 4 {
 			 param_japansetdisable {
@@ -825,6 +825,7 @@ item(FEAT_TRAINS, mu_car_full, 1112) {}
 item(FEAT_TRAINS, mu_car_mail, 1113) {}
 
 item(FEAT_TRAINS, series_0, 123) {}
+item(FEAT_TRAINS, series_922, 922) {}
 item(FEAT_TRAINS, series_100, 124) {}
 // 200 Series Shinkansen
 item(FEAT_TRAINS, series_200, 200) {}
@@ -859,11 +860,12 @@ sort(FEAT_TRAINS, [
 
 /* Not JR East */
 123,    // 0 Series Shinkansen
+922,    // 922 Series Shinkansen
 124,    // 100 Series Shinkansen
 300,    // 300 Series Shinkansen
 500,    // 500 Series Shinkansen
 700,    // 700 Series Shinkansen
-923,    // 923 Series
+923,    // 923 Series Shinkansen
 707,    // N700 Series Shinkansen
 708,    // N700A Series Shinkansen
 709,    // N700S Series Shinkansen
@@ -878,12 +880,8 @@ sort(FEAT_TRAINS, [
 2004,   // E4 Series Shinkansen (Max)
 2005,   // E5 Series Shinkansen
 2006,   // E6 Series Shinkansen
-2056,   // E5 & E6 Series Shinkansen
 2007,   // E7/W7 Series Shinkansen
 2008,   // E8 Series Shinkansen
-5555,   // Test E5 Series Shinkansen
-
-707,
 
 /*MU Cars*/
 mu_car_full,
@@ -1748,6 +1746,432 @@ item(FEAT_TRAINS, series_0) {
 }
 
 /* End 0 series */
+# 1 "JPplusShinkansen.pnml" 4
+# 1 "src/trains/0_series/922_series.pnml" 1
+/* Begin 923 Series */
+
+/* SUBTYPES */
+
+    // None
+
+/* GRAPHICS */
+
+    /* Purchase Menu */
+    spriteset (ss_922_series_buy_livery_12,	        	  "src/trains/dummy/purchase.png") {template_purchase(0, 0)}
+	spriteset (ss_922_series_buy_livery_10,	        	  "src/trains/dummy/purchase.png") {template_purchase(0, 0)}
+
+    alternative_sprites(ss_922_series_buy_livery_12,         ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/0_series/12/purchase_922_series.png") {template_purchase(0, 0)}
+	alternative_sprites(ss_922_series_buy_livery_10,         ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/0_series/12/purchase_922_series.png") {template_purchase(0, 0)}
+
+
+		switch (FEAT_TRAINS, SELF, ss_922_series_buy, param_spritelength) {
+			1: ss_922_series_buy_livery_10;					// Length 10
+			ss_922_series_buy_livery_12;						// Length 12
+		}
+
+    /* EMU Parts */
+
+    /* "CAB" */
+    spriteset(ss_922_series_cab_livery_12,             		"src/trains/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_922_series_cab_rev_livery_12,    		    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+
+	spriteset(ss_922_series_cab_livery_10,             		"src/trains/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_922_series_cab_rev_livery_10,    		    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+
+
+    // 922 Series
+    alternative_sprites(ss_922_series_cab_livery_12,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/0_series/12/922_series.png") {template_12_standard(1,1)}
+    alternative_sprites(ss_922_series_cab_rev_livery_12,     ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/0_series/12/922_series.png") {template_12_reversed(1,41)}
+	alternative_sprites(ss_922_series_cab_livery_10,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/0_series/10/922_series.png") {template_10_standard(1,1)}
+    alternative_sprites(ss_922_series_cab_rev_livery_10,     ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/0_series/10/922_series.png") {template_10_reversed(1,41)}		
+
+
+		switch (FEAT_TRAINS, SELF, ss_922_series_cab, param_spritelength) {
+			1: ss_922_series_cab_livery_10;					// Length 10
+			ss_922_series_cab_livery_12;						// Length 12
+		}
+
+		switch (FEAT_TRAINS, SELF, ss_922_series_cab_rev, param_spritelength) {
+			1: ss_922_series_cab_rev_livery_10;				// Length 10
+			ss_922_series_cab_rev_livery_12;					// Length 12
+		}
+
+    /* "CAB" w/ PANTOS*/
+    spriteset(ss_922_series_cabwp_livery_12,             	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_922_series_cabwp_rev_livery_12,    		    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+
+	spriteset(ss_922_series_cabwp_livery_10,             	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_922_series_cabwp_rev_livery_10,    		    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+
+    // 0 Series Original Strip Livery
+    alternative_sprites(ss_922_series_cabwp_livery_12,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/0_series/12/922_series.png") {template_12_standard(1,81)}
+    alternative_sprites(ss_922_series_cabwp_rev_livery_12,   ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/0_series/12/922_series.png") {template_12_reversed(1,121)}
+	alternative_sprites(ss_922_series_cabwp_livery_10,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/0_series/10/922_series.png") {template_10_standard(1,81)}
+    alternative_sprites(ss_922_series_cabwp_rev_livery_10,   ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/0_series/10/922_series.png") {template_10_reversed(1,121)}		
+
+		switch (FEAT_TRAINS, SELF, ss_922_series_cabwp, param_spritelength) {
+			1: ss_922_series_cabwp_livery_10;				// Length 10
+			ss_922_series_cabwp_livery_12;					// Length 12
+		}
+
+		switch (FEAT_TRAINS, SELF, ss_922_series_cabwp_rev, param_spritelength) {
+			1: ss_922_series_cabwp_rev_livery_10;			// Length 10
+			ss_922_series_cabwp_rev_livery_12;				// Length 12
+		}
+
+
+    /* COACH */
+    spriteset(ss_922_series_coach_livery_12,             	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_922_series_coach_rev_livery_12,    		    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+
+	spriteset(ss_922_series_coach_livery_10,             	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_922_series_coach_rev_livery_10,    		    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+
+    // 0 Series Original Strip Livery
+    alternative_sprites(ss_922_series_coach_livery_12,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/0_series/12/922_series.png") {template_12_standard(1,201)}
+    alternative_sprites(ss_922_series_coach_rev_livery_12,   ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/0_series/12/922_series.png") {template_12_reversed(1,201)}
+	alternative_sprites(ss_922_series_coach_livery_10,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/0_series/10/922_series.png") {template_10_standard(1,201)}
+    alternative_sprites(ss_922_series_coach_rev_livery_10,   ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/0_series/10/922_series.png") {template_10_reversed(1,201)}
+
+
+		switch (FEAT_TRAINS, SELF, ss_922_series_coach, param_spritelength) {
+			1: ss_922_series_coach_livery_10;				// Length 10
+			ss_922_series_coach_livery_12;					// Length 12
+		}
+
+		switch (FEAT_TRAINS, SELF, ss_922_series_coach_rev, param_spritelength) {
+			1: ss_922_series_coach_rev_livery_10;			// Length 10
+			ss_922_series_coach_rev_livery_12;				// Length 12
+		}
+
+    // PANTO COACH
+    spriteset(ss_922_series_panto_livery_12,          		"src/trains/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_922_series_panto_rev_livery_12, 		    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+
+	spriteset(ss_922_series_panto_livery_10,          		"src/trains/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_922_series_panto_rev_livery_10, 		    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+
+    // 0 Series Original Strip Livery
+    alternative_sprites(ss_922_series_panto_livery_12,       ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/0_series/12/922_series.png") {template_12_standard(1,161)}
+    alternative_sprites(ss_922_series_panto_rev_livery_12,   ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/0_series/12/922_series.png") {template_12_reversed(1,161)}
+	alternative_sprites(ss_922_series_panto_livery_10,       ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/0_series/10/922_series.png") {template_10_standard(1,161)}
+    alternative_sprites(ss_922_series_panto_rev_livery_10,   ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/0_series/10/922_series.png") {template_10_reversed(1,161)}	
+
+		switch (FEAT_TRAINS, SELF, ss_922_series_panto, param_spritelength) {
+			1: ss_922_series_panto_livery_10;				// Length 10
+			ss_922_series_panto_livery_12;					// Length 12
+		}
+
+		switch (FEAT_TRAINS, SELF, ss_922_series_panto_rev, param_spritelength) {
+			1: ss_922_series_panto_rev_livery_10;			// Length 10
+			ss_922_series_panto_rev_livery_12;				// Length 12
+		}
+
+/* LIVERIES */
+
+    // Single Livery
+
+
+/* FORMATIONS */
+
+switch (FEAT_TRAINS, SELF, sw_922_series_backwards, position_in_consist_from_end % 6) {				
+		4:  ss_922_series_panto_rev;
+		ss_922_series_coach_rev;				
+	}
+
+switch (FEAT_TRAINS, SELF, sw_922_series_forwards, position_in_consist % 6) {				
+		4:  ss_922_series_panto;
+		ss_922_series_coach;				
+	}
+
+switch (FEAT_TRAINS, PARENT, sw_922_series_midcars, vehicle_is_reversed) {				
+		0:  sw_922_series_forwards;
+		sw_922_series_backwards;				
+	}
+
+// Back Car Pantocheck
+switch (FEAT_TRAINS, PARENT, sw_922_series_back_evenreversecheck, vehicle_is_reversed) {				
+		0:  ss_922_series_cabwp_rev;
+		ss_922_series_cab_rev;				
+	}
+
+switch (FEAT_TRAINS, SELF, sw_922_series_back_oddevencheck, num_vehs_in_consist % 2) {				
+		0:  sw_922_series_back_evenreversecheck;
+		ss_922_series_cab_rev;				
+	}
+
+switch (FEAT_TRAINS, SELF, sw_922_series_back, position_in_consist_from_end) {				
+		1:  sw_922_series_back_oddevencheck;
+		sw_922_series_midcars;				
+	}
+
+// Front Car Pantocheck
+switch (FEAT_TRAINS, SELF, sw_922_series_front_oddevencheck, num_vehs_in_consist % 2) {				
+		1:  ss_922_series_cab;
+		ss_922_series_cabwp;				
+	}
+
+switch (FEAT_TRAINS, PARENT, sw_922_series_front_reversecheck, vehicle_is_reversed) {				
+		0:  ss_922_series_cab;
+		sw_922_series_front_oddevencheck;				
+	}
+
+switch (FEAT_TRAINS, SELF, sw_922_series_front, position_in_consist) {				
+		1:  sw_922_series_front_reversecheck;
+		sw_922_series_back;				
+	}
+
+// GRAPHICS
+switch (FEAT_TRAINS, SELF, sw_922_series_graphics, position_in_consist % 3) {				
+		1:  sw_922_series_front; 				
+		dummy_sprites;
+	}
+
+switch (FEAT_TRAINS, SELF, sw_922_series_articulated_part, extra_callback_info1) {
+		1 .. 2: return series_922;									
+		return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+	}
+
+/*---Coupling Switch---*/
+switch(FEAT_TRAINS, SELF, sw_922_series_attach_vehid, [vehicle_type_id == mu_car_full]) {
+ 0: return string(ONLY_ADD_MUCAR);
+}
+
+/*---Length Check---*/
+switch (FEAT_TRAINS, SELF, sw_922_series_stop_start, num_vehs_in_consist < 12) {				
+		1:  return string(STR_LENGTH_ERROR); 				
+		return CB_RESULT_NO_TEXT; 
+	}
+
+/*---Running Cost Factor---*/
+switch (FEAT_TRAINS, PARENT, sw_922_series_running_cost_factor, param_dryellow ) {				
+		1: (150 + 60 * NumberCarsInConsist() ) * RunningCostFactor();		// Mail
+		2: (300 + 125 * NumberCarsInConsist() ) * RunningCostFactor();		// Passengers
+		return 0;			
+	}
+
+/* SPEED */
+    switch (FEAT_TRAINS, SELF, sw_922_series_speed, current_year) {
+	    0..1986: return 210;                        // Until 1986, Speed = 210 km/h
+	    return 220;                                 // After 1986, Speed = 220 km/h
+    }
+
+if (param_dryellow == 0) { // GIMMICK
+
+item(FEAT_TRAINS, series_922) {
+	property {
+		/* Menu */
+        name: 							string(STR_NAME_922_SERIES);
+        sprite_id:                      SPRITE_ID_NEW_TRAIN; 		// required to enable new graphics
+        misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT);
+		running_cost_base:              RUNNING_COST_ELECTRIC;
+		engine_class:                   ENGINE_CLASS_ELECTRIC;
+        variant_group:					123;
+        /* Availability */
+		climates_available:             ALL_CLIMATES;
+		introduction_date:              date(1964,10,01);           // Date of launch
+		model_life:                     1987 - 1964;		        // Constructed until 1986, in service to 2008
+		vehicle_life:                   30;							// Same as JapanSet
+        track_type:                     SHINKANSEN;
+        extra_flags:					bitmask(VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW);
+		/* Cargo */
+        reliability_decay:              5;
+		refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+		refit_cost:                     0;
+		default_cargo_type:             PASS;
+        ai_special_flag:                AI_FLAG_PASSENGER;
+		cargo_capacity:                 1;							// 
+		loading_speed:                  50;                         // Changed by callback						
+		cargo_age_period:               278; 						// Default 185 x 1.5
+		/* Stats */
+        speed:                          211 km/h;                   // Changed by callback
+        power:                          8050 kW;	                // Changed by callback				
+		weight:                         1464 ton;                   // Changed by callback					
+		tractive_effort_coefficient:    0.3;                        // Standard
+		air_drag_coefficient:			0;
+	}
+	graphics {
+		/* Menu */
+        additional_text:                string(STR_DESC_922_SERIES_GIMMICK);
+        //cargo_subtype_text:             sw_922_series_year_dep_subtype_text;
+		can_attach_wagon:				sw_922_series_attach_vehid;
+		start_stop:						sw_922_series_stop_start;
+        purchase_weight:                61;
+        purchase_power:                 248 * 4;
+        /* Graphics */
+        default:                        sw_922_series_graphics;
+		purchase:                       ss_922_series_buy;
+		articulated_part:               sw_922_series_articulated_part;
+        visual_effect_and_powered:      sw_visual_effect_and_powered;
+		/* Stats */
+        length:                        	sw_param_length;
+        speed:							sw_922_series_speed;
+		weight:                         NumberCarsInConsist() * 61;
+        power:                          NumberCarsInConsist() * 248 * 4;	// 185 kW
+        cargo_capacity:                 28 * CapacityFactor();															
+		loading_speed:					28 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
+		cargo_age_period:				param_decay_express;
+        cost_factor:                    125;
+		running_cost_factor:            0;
+		purchase_running_cost_factor:   0;
+	}
+	/*Multiple Unit Car*/
+	
+      livery_override(mu_car_full){
+        default:                        sw_922_series_graphics;
+        cargo_capacity:                 0;
+        cargo_age_period:				param_decay_express;
+        loading_speed:					25;
+		articulated_part:				sw_mucar_full_articulated_part;
+		length:							sw_param_length;
+        running_cost_factor:            0;
+      }
+}}
+
+// MAIL
+if (param_dryellow == 1) {
+
+item(FEAT_TRAINS, series_922) {
+	property {
+		/* Menu */
+        name: 							string(STR_NAME_922_SERIES);
+        sprite_id:                      SPRITE_ID_NEW_TRAIN; 		// required to enable new graphics
+        misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT);
+		running_cost_base:              RUNNING_COST_ELECTRIC;
+		engine_class:                   ENGINE_CLASS_ELECTRIC;
+        variant_group:					123;
+        /* Availability */
+		climates_available:             ALL_CLIMATES;
+		introduction_date:              date(1964,10,01);           // Date of launch
+		model_life:                     1987 - 1964;		        // Constructed until 1986, in service to 2008
+		vehicle_life:                   30;							// Same as JapanSet
+        track_type:                     SHINKANSEN;
+        extra_flags:					bitmask(VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW);
+		/* Cargo */
+        reliability_decay:              5;
+		refittable_cargo_classes:       bitmask(CC_MAIL);
+		refit_cost:                     0;
+		default_cargo_type:             MAIL;
+		cargo_capacity:                 1;							// 
+		loading_speed:                  50;                         // Changed by callback						
+		cargo_age_period:               278; 						// Default 185 x 1.5
+		/* Stats */
+        speed:                          211 km/h;                   // Changed by callback
+        power:                          8050 kW;	                // Changed by callback				
+		weight:                         1464 ton;                   // Changed by callback					
+		tractive_effort_coefficient:    0.3;                        // Standard
+		air_drag_coefficient:			0;
+	}
+	graphics {
+		/* Menu */
+        additional_text:                string(STR_DESC_922_SERIES_MAIL);
+        //cargo_subtype_text:             sw_922_series_year_dep_subtype_text;
+		can_attach_wagon:				sw_922_series_attach_vehid;
+		start_stop:						sw_922_series_stop_start;
+        purchase_weight:                61;
+        purchase_power:                 248 * 4;
+        /* Graphics */
+        default:                        sw_922_series_graphics;
+		purchase:                       ss_922_series_buy;
+		articulated_part:               sw_922_series_articulated_part;
+        visual_effect_and_powered:      sw_visual_effect_and_powered;
+		/* Stats */
+        length:                        	sw_param_length;
+        speed:							sw_922_series_speed;
+		weight:                         NumberCarsInConsist() * 61;
+        power:                          NumberCarsInConsist() * 248 * 4;	// 185 kW
+        cargo_capacity:                 28 * CapacityFactor();															
+		loading_speed:					28 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
+		cargo_age_period:				param_decay_express;
+        cost_factor:                    125;
+		running_cost_factor:            sw_922_series_running_cost_factor;
+		purchase_running_cost_factor:   300 + 125 * NumberCarsInConsist();
+	}
+	/*Multiple Unit Car*/
+	
+      livery_override(mu_car_full){
+        default:                        sw_922_series_graphics;
+        cargo_capacity:                 40 * CapacityFactor();
+        cargo_age_period:				param_decay_express;
+        loading_speed:					40 * CapacityFactor() / param_loading_2D;
+		articulated_part:				sw_mucar_full_articulated_part;
+		length:							sw_param_length;
+      }
+}}
+
+// PASSENGERS
+if (param_dryellow == 2)  {
+
+item(FEAT_TRAINS, series_922) {
+	property {
+		/* Menu */
+        name: 							string(STR_NAME_922_SERIES);
+        sprite_id:                      SPRITE_ID_NEW_TRAIN; 		// required to enable new graphics
+        misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT);
+		running_cost_base:              RUNNING_COST_ELECTRIC;
+		engine_class:                   ENGINE_CLASS_ELECTRIC;
+        variant_group:					123;
+        /* Availability */
+		climates_available:             ALL_CLIMATES;
+		introduction_date:              date(1964,10,01);           // Date of launch
+		model_life:                     1987 - 1964;		        // Constructed until 1986, in service to 2008
+		vehicle_life:                   30;							// Same as JapanSet
+        track_type:                     SHINKANSEN;
+        extra_flags:					bitmask(VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW);
+		/* Cargo */
+        reliability_decay:              5;
+		refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+		refit_cost:                     0;
+		default_cargo_type:             PASS;
+        ai_special_flag:                AI_FLAG_PASSENGER;
+		cargo_capacity:                 1;							// 
+		loading_speed:                  50;                         // Changed by callback						
+		cargo_age_period:               278; 						// Default 185 x 1.5
+		/* Stats */
+        speed:                          211 km/h;                   // Changed by callback
+        power:                          8050 kW;	                // Changed by callback				
+		weight:                         1464 ton;                   // Changed by callback					
+		tractive_effort_coefficient:    0.3;                        // Standard
+		air_drag_coefficient:			0;
+	}
+	graphics {
+		/* Menu */
+        additional_text:                string(STR_DESC_922_SERIES);
+        //cargo_subtype_text:             sw_922_series_year_dep_subtype_text;
+		can_attach_wagon:				sw_922_series_attach_vehid;
+		start_stop:						sw_922_series_stop_start;
+        purchase_weight:                61;
+        purchase_power:                 248 * 4;
+        /* Graphics */
+        default:                        sw_922_series_graphics;
+		purchase:                       ss_922_series_buy;
+		articulated_part:               sw_922_series_articulated_part;
+        visual_effect_and_powered:      sw_visual_effect_and_powered;
+		/* Stats */
+        length:                        	sw_param_length;
+        speed:							sw_922_series_speed;
+		weight:                         NumberCarsInConsist() * 61;
+        power:                          NumberCarsInConsist() * 248 * 4;	// 185 kW
+        cargo_capacity:                 28 * CapacityFactor();															
+		loading_speed:					28 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
+		cargo_age_period:				param_decay_express;
+        cost_factor:                    125;
+		running_cost_factor:            sw_922_series_running_cost_factor;
+		purchase_running_cost_factor:   300 + 125 * NumberCarsInConsist();
+	}
+	/*Multiple Unit Car*/
+	
+      livery_override(mu_car_full){
+        default:                        sw_922_series_graphics;
+        cargo_capacity:                 28 * CapacityFactor();
+        cargo_age_period:				param_decay_express;
+        loading_speed:					28 * CapacityFactor() / param_loading_2D;
+		articulated_part:				sw_mucar_full_articulated_part;
+		length:							sw_param_length;
+      }
+}}
+
+/* End 922 series */
 # 1 "JPplusShinkansen.pnml" 4
 # 1 "src/trains/n700_series/n700_series.pnml" 1
 /* Begin N700 Series */
