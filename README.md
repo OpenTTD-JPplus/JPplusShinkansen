@@ -6,9 +6,9 @@ This is the sister set to 🚂[JP+ Engines & Wagons](https://github.com/EmperorJ
 
 ## Credits
 **Coding:** KeepinItRail <br>
-**Graphics:** KeepinItRail, Yozora & Azusa<br>
+**Graphics:** KeepinItRail, Yozora, Azusa & Erato<br>
 **Translations:** freeaim (Japanese)
-**Thanks to:** The JapanSet Team, Tinny, Emperor Jake, Erato, Saya
+**Thanks to:** The JapanSet Team, Tinny, Emperor Jake, Saya
 
 ## Features
 
@@ -33,7 +33,8 @@ This is the sister set to 🚂[JP+ Engines & Wagons](https://github.com/EmperorJ
 |![500 Series](/src/trains/500_series/12/purchase.png)| 500 Series | 1997 | N/A | 300 | 42t |
 |![700 Series](/src/trains/700_series/12/purchase.png)| 700 Series | 1999 | N/A | 285 | 44t |
 |![N700 Series](/src/trains/n700_series/12/buy_n700.png)| N700 Series | 2007 | N/A | 300|44t|
-|![800 Series](/src/trains/800_series/12/purchase.png)| 800 Series | 2004 | N/A | 260 | 44t
+|![800 Series](/src/trains/800_series/12/purchase.png)| 800 Series | 2004 | N/A | 260 | 44t |
+|![L0 Series](/src/trains/l0_series/12/purchase.png)| 300 Series | 2027 | N/A | 505 | 88t|
 
 ^ 210 km/h until 1986, 220 km/h thereafter
 

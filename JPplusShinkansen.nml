@@ -7,8 +7,8 @@
 	grfid:					"KR03";
 	name:					string(STR_GRF_NAME);
 	desc:					string(STR_GRF_DESC);
-	version:				14;	// v0.3.4
-	min_compatible_version: 14;	// v0.3.4
+	version:				40;	// v0.4.0
+	min_compatible_version: 40;	// v0.4.0
 		//japanset3 removal
 		param 4 {
 			 param_japansetdisable {
@@ -739,6 +739,7 @@ railtypetable {
 	ELRL,
 	SHINKANSEN: [SAAE, ELRL],
 	MINI_SHINKANSEN: [SAAE, ELRL],
+	SC_MAGLEV: [LCAI, LCAE, MGLV],
 }
 
 // End railtypetable
@@ -853,12 +854,15 @@ item(FEAT_TRAINS, series_e5e6, 2056) {}
 item(FEAT_TRAINS, series_e7, 2007) {}
 item(FEAT_TRAINS, series_e8, 2008) {}
 
+item(FEAT_TRAINS, series_l0, 125) {}
+
 item(FEAT_TRAINS, series_test_700, 707) {}
 
 // Sort the Order in the Purchase Menu below
 sort(FEAT_TRAINS, [
 
 /* Not JR East */
+125,    // L0 Series Shinkansen
 123,    // 0 Series Shinkansen
 922,    // 922 Series Shinkansen
 124,    // 100 Series Shinkansen
@@ -1024,6 +1028,81 @@ item(FEAT_TRAINS, mu_car_full) {
         purchase:                       sw_buy_mucar_full;
         additional_text:			    return string(MUCAR_FULL_DESC);
         articulated_part:               sw_mucar_full_articulated_part;
+        length:                         sw_param_length; 
+        cargo_capacity:                 0;
+    }
+}
+
+// MAGLEV
+
+spriteset (ss_mucar_maglev_12_purchase,      "src/trains/dummy/mucar_maglev_12_buy.png") {template_purchase (0, 0)}
+spriteset (ss_mucar_maglev_10_purchase,      "src/trains/dummy/mucar_maglev_10_buy.png") {template_purchase (0, 0)}
+
+spriteset (ss_mucar_maglev_12,       	     "src/trains/dummy/mucar_maglev_12.png") {template_12_standard(1,1)}
+spriteset (ss_mucar_maglev_10,       	     "src/trains/dummy/mucar_maglev_10.png") {template_10_standard(1,1)}
+
+switch (FEAT_TRAINS, SELF, sw_buy_mucar_maglev, param_spritelength) {
+        1: ss_mucar_maglev_10_purchase;		// Length 10
+        ss_mucar_maglev_12_purchase;			// Length 12
+    }
+
+switch (FEAT_TRAINS, SELF, sw_graphics_mucar_maglev, param_spritelength) {
+        1: ss_mucar_maglev_10;		// Length 10
+        ss_mucar_maglev_12;			// Length 12
+    }
+
+
+switch (FEAT_TRAINS, SELF, sw_mucar_maglev_graphics, position_in_articulated_veh) {				
+		1:  sw_graphics_mucar_maglev; 				
+		dummy_sprites;
+	}
+
+/* --- Articulated part callback  --- */
+switch(FEAT_TRAINS, SELF, sw_mucar_maglev_articulated_part, extra_callback_info1) {
+	1: return mu_car_maglev;
+    2: return mu_car_maglev;
+    return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+
+item(FEAT_TRAINS, mu_car_maglev) {
+    /* Define properties first, make sure to set all of them */
+    property {
+        name:                           string(MUCAR_MAGLEV);
+        introduction_date:              date(2027,1,1);
+        climates_available:             ALL_CLIMATES;
+        model_life:                     VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                   60;
+        loading_speed:                  0;
+        cost_factor:                    189;
+        running_cost_factor:            18;
+        speed:                          0 km/h;
+        power:                          0 hp;
+        cargo_capacity:                 1;
+        weight:                         0 ton;
+        tractive_effort_coefficient:    0.3;
+        air_drag_coefficient:           0;
+        reliability_decay:              20;
+        refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+        cargo_age_period:               185;
+        refit_cost:                     0;
+        track_type:                     SC_MAGLEV;
+        ai_special_flag:                AI_FLAG_PASSENGER;
+        running_cost_base:              RUNNING_COST_ELECTRIC;
+        engine_class:                   ENGINE_CLASS_ELECTRIC;
+        visual_effect_and_powered:      visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+        sprite_id:                      SPRITE_ID_NEW_TRAIN;
+        dual_headed:                    0;
+        //length:                       8;
+        extra_power_per_wagon:          0;
+        bitmask_vehicle_info:           0;
+    }
+    /* Define graphics and callbacks
+     * Setting all callbacks is not needed, only define what is used */
+    graphics {
+		default:                        sw_mucar_maglev_graphics;                     
+        purchase:                       sw_buy_mucar_maglev;
+        additional_text:			    return string(MUCAR_MAGLEV_DESC);
+        articulated_part:               sw_mucar_maglev_articulated_part;
         length:                         sw_param_length; 
         cargo_capacity:                 0;
     }
@@ -5702,6 +5781,185 @@ item(FEAT_TRAINS, series_800) {
 
 /* End 800 series */
 # 1 "JPplusShinkansen.pnml" 4
+# 1 "src/trains/l0_series/l0_series.pnml" 1
+/* Begin L0 Series */
+
+/* GRAPHICS */
+
+    // Purchase Menu
+    spriteset (ss_l0_series_buy_12,	        	    "src/trains/dummy/purchase.png") {template_purchase(0, 0)}
+	spriteset (ss_l0_series_buy_10,	        	    "src/trains/dummy/purchase.png") {template_purchase(0, 0)}
+    alternative_sprites(ss_l0_series_buy_12,           ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/l0_series/12/purchase_32bpp.png") {template_purchase(0, 0)}
+    alternative_sprites(ss_l0_series_buy_10,           ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/l0_series/12/purchase_32bpp.png") {template_purchase(0, 0)}
+
+		switch (FEAT_TRAINS, SELF, ss_l0_series_buy, param_spritelength) {
+			1: ss_l0_series_buy_10;					// Length 10
+			ss_l0_series_buy_12;						// Length 12
+		}
+
+    // "CAB"
+    spriteset(ss_l0_series_cab_12,             		"src/trains/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_l0_series_cab_rev_12,             	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_l0_series_cab_10,             		"src/trains/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_l0_series_cab_rev_10,             	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+
+    alternative_sprites(ss_l0_series_cab_12,     	    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/l0_series/12/l0950.png") {template_12_standard(1,1)}
+    alternative_sprites(ss_l0_series_cab_rev_12,       ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/l0_series/12/l0950.png") {template_12_reversed(1,41)}
+	alternative_sprites(ss_l0_series_cab_10,     	    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/l0_series/10/l0950.png") {template_10_standard(1,1)}
+    alternative_sprites(ss_l0_series_cab_rev_10,       ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/l0_series/10/l0950.png") {template_10_reversed(1,41)}	
+
+		switch (FEAT_TRAINS, SELF, ss_l0_series_cab, param_spritelength) {
+			1: ss_l0_series_cab_10;				// Length 10
+			ss_l0_series_cab_12;					// Length 12
+		}
+	
+		switch (FEAT_TRAINS, SELF, ss_l0_series_cab_rev, param_spritelength) {
+			1: ss_l0_series_cab_rev_10;			// Length 10
+			ss_l0_series_cab_rev_12;				// Length 12
+		}			
+
+    // COACH
+    spriteset(ss_l0_series_coach_12,             		"src/trains/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_l0_series_coach_rev_12,    		    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+	spriteset(ss_l0_series_coach_10,             		"src/trains/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_l0_series_coach_rev_10,    		    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+
+    alternative_sprites(ss_l0_series_coach_12,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/l0_series/12/l0950.png") {template_12_standard(1,121)}
+    alternative_sprites(ss_l0_series_coach_rev_12,     ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/l0_series/12/l0950.png") {template_12_reversed(1,121)}
+	alternative_sprites(ss_l0_series_coach_10,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/l0_series/10/l0950.png") {template_10_standard(1,121)}
+    alternative_sprites(ss_l0_series_coach_rev_10,     ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/l0_series/10/l0950.png") {template_10_reversed(1,121)}
+
+		switch (FEAT_TRAINS, SELF, ss_l0_series_coach, param_spritelength) {
+			1: ss_l0_series_coach_10;				// Length 10
+			ss_l0_series_coach_12;					// Length 12
+		}
+	
+		switch (FEAT_TRAINS, SELF, ss_l0_series_coach_rev, param_spritelength) {
+			1: ss_l0_series_coach_rev_10;			// Length 10
+			ss_l0_series_coach_rev_12;				// Length 12
+		}
+
+/* FORMATIONS */
+
+switch (FEAT_TRAINS, PARENT, sw_l0_series_midcars, vehicle_is_reversed) {				
+		0:  ss_l0_series_coach;
+		ss_l0_series_coach_rev;				
+	}
+
+switch (FEAT_TRAINS, SELF, sw_l0_series_back, position_in_consist_from_end) {				
+		1:  ss_l0_series_cab_rev;
+		sw_l0_series_midcars;				
+	}
+
+switch (FEAT_TRAINS, SELF, sw_l0_series_front, position_in_consist) {				
+		1:  ss_l0_series_cab;
+		sw_l0_series_back;				
+	}
+
+switch (FEAT_TRAINS, SELF, sw_l0_series_graphics, position_in_consist % 3) {				
+		1:  sw_l0_series_front; 				
+		dummy_sprites;
+	}
+
+switch (FEAT_TRAINS, SELF, sw_l0_series_articulated_part, extra_callback_info1) {
+		1 .. 2: return series_l0;									
+		return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+	}
+
+/*---Cargo Capacity---*/
+switch (FEAT_TRAINS, SELF, sw_l0_series_cargo_capacity_levels, position_in_consist == 1 || position_in_consist_from_end == 1 ) {				
+		1:  return 24 * CapacityFactor();		
+		return 60 * CapacityFactor();
+	}
+
+switch (FEAT_TRAINS, SELF, sw_l0_series_cargo_capacity, position_in_consist % 3) {				
+		1:  sw_l0_series_cargo_capacity_levels; 				
+		return 0;
+	}
+
+/*---Coupling Switch---*/
+switch(FEAT_TRAINS, SELF, sw_l0_series_attach_vehid, [vehicle_type_id == mu_car_maglev]) {
+ 0: return string(ONLY_ADD_MUCAR);
+}
+
+/*---Length Check---*/
+switch (FEAT_TRAINS, SELF, sw_l0_series_stop_start, num_vehs_in_consist < 12) {				
+		1:  return string(STR_LENGTH_ERROR); 				
+		return CB_RESULT_NO_TEXT; 
+	}
+
+item(FEAT_TRAINS, series_l0) {
+	property {
+		/* Menu */
+        name: 							string(STR_NAME_L0_SERIES);
+		sprite_id:                      SPRITE_ID_NEW_TRAIN; 		// required to enable new graphics
+        misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT);
+        running_cost_base:              RUNNING_COST_ELECTRIC;
+		engine_class:                   ENGINE_CLASS_ELECTRIC;
+        /* Availability */
+        climates_available:             ALL_CLIMATES;
+		introduction_date:              date(2027,01,01);
+		model_life:                     VEHICLE_NEVER_EXPIRES;
+		vehicle_life:                   30;							// 
+		track_type:                     SC_MAGLEV;
+        /* Cargo */
+        reliability_decay:              5;
+		refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+		refit_cost:                     0;
+		default_cargo_type:             PASS;
+        ai_special_flag:                AI_FLAG_PASSENGER;
+		cargo_capacity:                 1;							// 
+		loading_speed:                  50;							
+		cargo_age_period:               278; 						// 1.5 times normal for this expensive long-distance train
+		/* Stats */
+        speed:                          505 km/h;									
+		power:                          800*4*10 hp;            			
+		weight:                         25 tons;	                			
+		tractive_effort_coefficient:    0.3;
+		air_drag_coefficient:			0;
+	}
+	graphics {
+		/* Menu */
+        additional_text:                string(STR_DESC_L0_SERIES);
+        //cargo_subtype_text:             sw_l0_series_subtype_text;
+		can_attach_wagon:				sw_l0_series_attach_vehid;
+		start_stop:						sw_l0_series_stop_start;
+		purchase_weight:                25;
+        purchase_power:                 800 * 4;
+        /* Graphics */
+        default:                        sw_l0_series_graphics;
+		purchase:                       ss_l0_series_buy;
+		articulated_part:               sw_l0_series_articulated_part;
+		visual_effect_and_powered:      sw_visual_effect_and_powered;
+        /* Stats */
+        length:                         sw_param_length;
+        power:                          (( NumberCarsInConsist() / 2 ) + 2 ) * 400 * 4;	
+        weight:                         NumberCarsInConsist() * 25;									// https://linear-chuo-shinkansen.jr-central.co.jp/about/design/
+		cargo_capacity:                 sw_l0_series_cargo_capacity();
+		purchase_cargo_capacity:		60 / 3 * CapacityFactor() ;													
+		loading_speed:					28 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
+		cargo_age_period:				param_decay_express;
+		cost_factor:                    260;
+		running_cost_factor:            (600 + 250 * NumberCarsInConsist() ) * RunningCostFactor();
+		purchase_running_cost_factor:   600 + 250 * NumberCarsInConsist();	
+	}
+	/*Multiple Unit Car*/
+	
+      livery_override(mu_car_maglev){
+        default:                        sw_l0_series_graphics;
+        cargo_capacity:                 sw_l0_series_cargo_capacity;
+        cargo_age_period:				param_decay_express;
+        loading_speed:					28 * CapacityFactor() / param_loading_2D;
+		articulated_part:				sw_mucar_maglev_articulated_part;
+		length:							sw_param_length;
+		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
+		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
+        //running_cost_factor:            sw_l0_series_running_costs;
+      }
+}
+
+/* End L0 series */
+# 1 "JPplusShinkansen.pnml" 4
 
 /*---JR EAST TRAINS---*/
 # 1 "src/trains/200_series/200_series.pnml" 1
@@ -7598,7 +7856,6 @@ item(FEAT_TRAINS, series_e2) {
 /* End E2 series */
 # 1 "JPplusShinkansen.pnml" 4
 # 1 "src/trains/e3_series/e3_series.pnml" 1
-// Begin E3 Series
 
 /* SUBTYPES */
 
@@ -7660,27 +7917,44 @@ item(FEAT_TRAINS, series_e2) {
         // Cab with logo
         spriteset(ss_e3_series_cabyl_r,                           "src/trains/dummy/mucar.png") {template_8_standard(1,1)}
         spriteset(ss_e3_series_cabyl_rev_r,                       "src/trains/dummy/mucar.png") {template_8_standard(1,1)}
-        alternative_sprites(ss_e3_series_cabyl_r,                 ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_r.png") {template_8_standard(1,1)}
-        alternative_sprites(ss_e3_series_cabyl_rev_r,             ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_r.png") {template_8_standard(1,41)}
+        alternative_sprites(ss_e3_series_cabyl_r,                 ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_r.png") {template_8_standard(1,81)}
+        alternative_sprites(ss_e3_series_cabyl_rev_r,             ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_r.png") {template_8_standard(1,121)}
         
         // Coach
         spriteset(ss_e3_series_coach_r,                         "src/trains/dummy/mucar.png") {template_8_standard(1,1)}
         spriteset(ss_e3_series_coach_rev_r,                     "src/trains/dummy/mucar.png") {template_8_standard(1,1)}
-        alternative_sprites(ss_e3_series_coach_r,               ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_r.png") {template_8_standard(1,121)}
-        alternative_sprites(ss_e3_series_coach_rev_r,           ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_r.png") {template_8_reversed(1,121)}
+        alternative_sprites(ss_e3_series_coach_r,               ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_r.png") {template_8_standard(1,201)}
+        alternative_sprites(ss_e3_series_coach_rev_r,           ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_r.png") {template_8_reversed(1,201)}
 
-        // "Clogo" - coach with logo
+        // "Clogo" - coach with logo and panto
         spriteset(ss_e3_series_clogo_r,                         "src/trains/dummy/mucar.png") {template_8_standard(1,1)}
         spriteset(ss_e3_series_clogo_rev_r,                     "src/trains/dummy/mucar.png") {template_8_standard(1,1)}
-        alternative_sprites(ss_e3_series_clogo_r,               ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_r.png") {template_8_standard(1,121)}
-        alternative_sprites(ss_e3_series_clogo_rev_r,           ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_r.png") {template_8_reversed(1,121)}
+        alternative_sprites(ss_e3_series_clogo_r,               ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_r.png") {template_8_standard(1,241)}
+        alternative_sprites(ss_e3_series_clogo_rev_r,           ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_r.png") {template_8_reversed(1,241)}
 
         // Panto
-
         spriteset(ss_e3_series_panto_r,                         "src/trains/dummy/mucar.png") {template_8_standard(1,1)}
         spriteset(ss_e3_series_panto_rev_r,                     "src/trains/dummy/mucar.png") {template_8_standard(1,1)}
-        alternative_sprites(ss_e3_series_panto_r,               ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_r.png") {template_8_standard(1,81)}
-        alternative_sprites(ss_e3_series_panto_rev_r,           ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_r.png") {template_8_reversed(1,81)}
+        alternative_sprites(ss_e3_series_panto_r,               ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_r.png") {template_8_standard(1,161)}
+        alternative_sprites(ss_e3_series_panto_rev_r,           ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_r.png") {template_8_reversed(1,161)}
+
+        // Coach w/ raise
+        spriteset(ss_e3_series_corai_r,                         "src/trains/dummy/mucar.png") {template_8_standard(1,1)}
+        spriteset(ss_e3_series_corai_rev_r,                     "src/trains/dummy/mucar.png") {template_8_standard(1,1)}
+        alternative_sprites(ss_e3_series_corai_r,               ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_r.png") {template_8_standard(1,281)}
+        alternative_sprites(ss_e3_series_corai_rev_r,           ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_r.png") {template_8_reversed(1,281)}
+
+        // "Clogo" - coach with logo no panto
+        spriteset(ss_e3_series_clog2_r,                         "src/trains/dummy/mucar.png") {template_8_standard(1,1)}
+        spriteset(ss_e3_series_clog2_rev_r,                     "src/trains/dummy/mucar.png") {template_8_standard(1,1)}
+        alternative_sprites(ss_e3_series_clog2_r,               ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_r.png") {template_8_standard(1,321)}
+        alternative_sprites(ss_e3_series_clog2_rev_r,           ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_r.png") {template_8_reversed(1,321)}
+
+        // Coach w/ double raise
+        spriteset(ss_e3_series_c2rai_r,                         "src/trains/dummy/mucar.png") {template_8_standard(1,1)}
+        spriteset(ss_e3_series_c2rai_rev_r,                     "src/trains/dummy/mucar.png") {template_8_standard(1,1)}
+        alternative_sprites(ss_e3_series_c2rai_r,               ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_r.png") {template_8_standard(1,361)}
+        alternative_sprites(ss_e3_series_c2rai_rev_r,           ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_r.png") {template_8_reversed(1,361)}
 
     // E3-1000 Series
 
@@ -7688,31 +7962,38 @@ item(FEAT_TRAINS, series_e2) {
         spriteset(ss_e3_series_cabnl_1000,                      "src/trains/dummy/mucar.png") {template_8_standard(1,1)}
         spriteset(ss_e3_series_cabnl_rev_1000,                  "src/trains/dummy/mucar.png") {template_8_standard(1,1)}
         alternative_sprites(ss_e3_series_cabnl_1000,            ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_1000.png") {template_8_standard(1,1)}
-        alternative_sprites(ss_e3_series_cabnl_rev_1000,        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_1000.png") {template_8_reversed(1,41)}
+        alternative_sprites(ss_e3_series_cabnl_rev_1000,        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_1000.png") {template_8_standard(1,41)}
 
       // Cab with logo
         spriteset(ss_e3_series_cabyl_1000,                      "src/trains/dummy/mucar.png") {template_8_standard(1,1)}
         spriteset(ss_e3_series_cabyl_rev_1000,                  "src/trains/dummy/mucar.png") {template_8_standard(1,1)}
-        alternative_sprites(ss_e3_series_cabyl_1000,            ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_1000.png") {template_8_standard(1,1)}
-        alternative_sprites(ss_e3_series_cabyl_rev_1000,        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_1000.png") {template_8_reversed(1,41)}
+        alternative_sprites(ss_e3_series_cabyl_1000,            ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_1000.png") {template_8_standard(1,81)}
+        alternative_sprites(ss_e3_series_cabyl_rev_1000,        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_1000.png") {template_8_standard(1,121)}
 
       // Coach
         spriteset(ss_e3_series_coach_1000,                      "src/trains/dummy/mucar.png") {template_8_standard(1,1)}
         spriteset(ss_e3_series_coach_rev_1000,                  "src/trains/dummy/mucar.png") {template_8_standard(1,1)}
-        alternative_sprites(ss_e3_series_coach_1000,            ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_1000.png") {template_8_standard(1,121)}
-        alternative_sprites(ss_e3_series_coach_rev_1000,        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_1000.png") {template_8_reversed(1,121)}
+        alternative_sprites(ss_e3_series_coach_1000,            ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_1000.png") {template_8_standard(1,161)}
+        alternative_sprites(ss_e3_series_coach_rev_1000,        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_1000.png") {template_8_reversed(1,161)}
 
       // "Clogo" - coach with logo
         spriteset(ss_e3_series_clogo_1000,                      "src/trains/dummy/mucar.png") {template_8_standard(1,1)}
         spriteset(ss_e3_series_clogo_rev_1000,                  "src/trains/dummy/mucar.png") {template_8_standard(1,1)}
-        alternative_sprites(ss_e3_series_clogo_1000,            ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_1000.png") {template_8_standard(1,121)}
-        alternative_sprites(ss_e3_series_clogo_rev_1000,        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_1000.png") {template_8_reversed(1,121)}
+        alternative_sprites(ss_e3_series_clogo_1000,            ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_1000.png") {template_8_standard(1,241)}
+        alternative_sprites(ss_e3_series_clogo_rev_1000,        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_1000.png") {template_8_reversed(1,241)}
 
       // Panto
         spriteset(ss_e3_series_panto_1000,                      "src/trains/dummy/mucar.png") {template_8_standard(1,1)}
         spriteset(ss_e3_series_panto_rev_1000,                  "src/trains/dummy/mucar.png") {template_8_standard(1,1)}
-        alternative_sprites(ss_e3_series_panto_1000,            ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_1000.png") {template_8_standard(1,81)}
-        alternative_sprites(ss_e3_series_panto_rev_1000,        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_1000.png") {template_8_reversed(1,81)}
+        alternative_sprites(ss_e3_series_panto_1000,            ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_1000.png") {template_8_standard(1,201)}
+        alternative_sprites(ss_e3_series_panto_rev_1000,        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_1000.png") {template_8_reversed(1,201)}
+
+      // Coach w/ raise
+        spriteset(ss_e3_series_corai_1000,                      "src/trains/dummy/mucar.png") {template_8_standard(1,1)}
+        spriteset(ss_e3_series_corai_rev_1000,                  "src/trains/dummy/mucar.png") {template_8_standard(1,1)}
+        alternative_sprites(ss_e3_series_corai_1000,            ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_1000.png") {template_8_standard(1,281)}
+        alternative_sprites(ss_e3_series_corai_rev_1000,        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_1000.png") {template_8_reversed(1,281)}
+
 
     // E3-2000 Series
 
@@ -7725,26 +8006,32 @@ item(FEAT_TRAINS, series_e2) {
       // Cab with logo
         spriteset(ss_e3_series_cabyl_2000,                      "src/trains/dummy/mucar.png") {template_8_standard(1,1)}
         spriteset(ss_e3_series_cabyl_rev_2000,                  "src/trains/dummy/mucar.png") {template_8_standard(1,1)}
-        alternative_sprites(ss_e3_series_cabyl_2000,            ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_2000.png") {template_8_standard(1,1)}
-        alternative_sprites(ss_e3_series_cabyl_rev_2000,        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_2000.png") {template_8_standard(1,41)}
+        alternative_sprites(ss_e3_series_cabyl_2000,            ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_2000.png") {template_8_standard(1,81)}
+        alternative_sprites(ss_e3_series_cabyl_rev_2000,        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_2000.png") {template_8_standard(1,121)}
 
       // Coach
         spriteset(ss_e3_series_coach_2000,                      "src/trains/dummy/mucar.png") {template_8_standard(1,1)}
         spriteset(ss_e3_series_coach_rev_2000,                  "src/trains/dummy/mucar.png") {template_8_standard(1,1)}
-        alternative_sprites(ss_e3_series_coach_2000,            ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_2000.png") {template_8_standard(1,121)}
-        alternative_sprites(ss_e3_series_coach_rev_2000,        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_2000.png") {template_8_reversed(1,121)}
+        alternative_sprites(ss_e3_series_coach_2000,            ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_2000.png") {template_8_standard(1,201)}
+        alternative_sprites(ss_e3_series_coach_rev_2000,        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_2000.png") {template_8_reversed(1,201)}
 
       // "Clogo" - coach with logo
         spriteset(ss_e3_series_clogo_2000,                      "src/trains/dummy/mucar.png") {template_8_standard(1,1)}
         spriteset(ss_e3_series_clogo_rev_2000,                  "src/trains/dummy/mucar.png") {template_8_standard(1,1)}
-        alternative_sprites(ss_e3_series_clogo_2000,            ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_2000.png") {template_8_standard(1,121)}
-        alternative_sprites(ss_e3_series_clogo_rev_2000,        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_2000.png") {template_8_reversed(1,121)}
+        alternative_sprites(ss_e3_series_clogo_2000,            ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_2000.png") {template_8_standard(1,241)}
+        alternative_sprites(ss_e3_series_clogo_rev_2000,        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_2000.png") {template_8_reversed(1,241)}
 
       // Panto
         spriteset(ss_e3_series_panto_2000,                      "src/trains/dummy/mucar.png") {template_8_standard(1,1)}
         spriteset(ss_e3_series_panto_rev_2000,                  "src/trains/dummy/mucar.png") {template_8_standard(1,1)}
-        alternative_sprites(ss_e3_series_panto_2000,            ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_2000.png") {template_8_standard(1,81)}
-        alternative_sprites(ss_e3_series_panto_rev_2000,        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_2000.png") {template_8_reversed(1,81)}
+        alternative_sprites(ss_e3_series_panto_2000,            ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_2000.png") {template_8_standard(1,161)}
+        alternative_sprites(ss_e3_series_panto_rev_2000,        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_2000.png") {template_8_reversed(1,161)}
+
+      // Coach w/ raise
+        spriteset(ss_e3_series_corai_2000,                      "src/trains/dummy/mucar.png") {template_8_standard(1,1)}
+        spriteset(ss_e3_series_corai_rev_2000,                  "src/trains/dummy/mucar.png") {template_8_standard(1,1)}
+        alternative_sprites(ss_e3_series_corai_2000,            ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_2000.png") {template_8_standard(1,281)}
+        alternative_sprites(ss_e3_series_corai_rev_2000,        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_2000.png") {template_8_reversed(1,281)}
 
     // E3-700 Toreiyu Series
 
@@ -7766,7 +8053,7 @@ item(FEAT_TRAINS, series_e2) {
         alternative_sprites(ss_e3_series_clogo_700,             ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_700.png") {template_8_standard(1,161)}
         alternative_sprites(ss_e3_series_clogo_rev_700,         ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_700.png") {template_8_reversed(1,161)}
 
-      // Coach green going down
+      // Coach green going down OR Coach w/ raise
         spriteset(ss_e3_series_grndn_700,                       "src/trains/dummy/mucar.png") {template_8_standard(1,1)}
         spriteset(ss_e3_series_grndn_rev_700,                   "src/trains/dummy/mucar.png") {template_8_standard(1,1)}
         alternative_sprites(ss_e3_series_grndn_700,             ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_700.png") {template_8_standard(1,201)}
@@ -7973,132 +8260,258 @@ item(FEAT_TRAINS, series_e2) {
           sw_e3_series_panto_rev_year_dep;
         }
 
+      // Coach w/ raise
+        switch(FEAT_TRAINS, SELF, sw_e3_series_corai_year_dep, build_year) {
+          0..1998: ss_e3_series_corai_r;
+          1999..2007: ss_e3_series_corai_1000;
+          ss_e3_series_corai_2000;
+        }
 
-// Given not a first car, is it a 2nd or penultimate car?
+        switch(FEAT_TRAINS, PARENT, sw_e3_series_corai, cargo_subtype) {
+          1: ss_e3_series_corai_r;
+          2: ss_e3_series_corai_1000;
+          3: ss_e3_series_corai_2000;
+          4: ss_e3_series_grndn_700;
+          sw_e3_series_corai_year_dep;
+        }
 
+      // Coach w/ raise reversed
+        switch(FEAT_TRAINS, SELF, sw_e3_series_corai_rev_year_dep, build_year) {
+          0..1998: ss_e3_series_corai_rev_r;
+          1999..2007: ss_e3_series_corai_rev_1000;
+          ss_e3_series_corai_rev_2000;
+        }
 
+        switch(FEAT_TRAINS, PARENT, sw_e3_series_corai_rev, cargo_subtype) {
+          1: ss_e3_series_corai_rev_r;
+          2: ss_e3_series_corai_rev_1000;
+          3: ss_e3_series_corai_rev_2000;
+          4: ss_e3_series_grndn_rev_700;
+          sw_e3_series_corai_rev_year_dep;
+        }
 
-
-// UPDATE!!!!
+// Everything else
 switch (FEAT_TRAINS, PARENT, sw_e3_series_everything_else_coaches, vehicle_is_reversed ) {				
 		1:  sw_e3_series_coach_rev;
 		sw_e3_series_coach;				
 	}
 
-  switch (FEAT_TRAINS, SELF, sw_e3_series_toreiyu_reversed, position_in_consist_from_end - position_in_consist ) {				
-      -4: ss_e3_series_pantg_rev_700;
-      -3: ss_e3_series_pantg_rev_700;
-      -2: ss_e3_series_grndn_rev_700;
-      -1: ss_e3_series_grndn_rev_700;
-      0:  ss_e3_series_green_rev_700;
-      1:  ss_e3_series_grnup_rev_700; 
-      2:  ss_e3_series_grnup_rev_700;   
-      3:  ss_e3_series_coacg_rev_700;    
-      4:  ss_e3_series_coacg_rev_700;  
+// 6 CARS
+
+  switch (FEAT_TRAINS, SELF, sw_e3_series_6car_reversed, position_in_consist_from_end ) {				
+      2: ss_e3_series_c2rai_rev_r;           
+      3:  ss_e3_series_corai_rev_r;       
       sw_e3_series_coach_rev;			
     }
 
-  switch (FEAT_TRAINS, SELF, sw_e3_series_toreiyu_not_reversed, position_in_consist - position_in_consist_from_end ) {				
-      -4: ss_e3_series_pantg_700;
-      -3: ss_e3_series_pantg_700;
-      -2: ss_e3_series_grndn_700;
-      -1: ss_e3_series_grndn_700;
-      0:  ss_e3_series_green_700;
-      1:  ss_e3_series_grnup_700;
-      2:  ss_e3_series_grnup_700; 
-      3:  ss_e3_series_coacg_700;  
-      4:  ss_e3_series_coacg_700;  
+  switch (FEAT_TRAINS, SELF, sw_e3_series_6car_not_reversed, position_in_consist ) {				
+    2: ss_e3_series_c2rai_r;           
+    3:  ss_e3_series_corai_r;       
+    sw_e3_series_coach;			
+  }
+
+  switch (FEAT_TRAINS, PARENT, sw_e3_series_6car_reverse_check, vehicle_is_reversed ) {				
+    1:  sw_e3_series_6car_reversed;
+    sw_e3_series_6car_not_reversed;				
+  }
+
+// 7 CARS
+  switch (FEAT_TRAINS, SELF, sw_e3_series_7car_even_reversed, position_in_consist_from_end - position_in_consist ) {				
+      1: sw_e3_series_corai_rev;           
+      -1:  sw_e3_series_panto_rev;       
+      sw_e3_series_coach_rev;			
+    }
+
+  switch (FEAT_TRAINS, SELF, sw_e3_series_7car_even_not_reversed, position_in_consist - position_in_consist_from_end ) {				
+      1: sw_e3_series_corai;
+      -1:  sw_e3_series_panto;
       sw_e3_series_coach;			
     }
 
-  switch (FEAT_TRAINS, PARENT, sw_e3_series_toreiyu_oddeven_check, vehicle_is_reversed ) {				
+  switch (FEAT_TRAINS, SELF, sw_e3_series_7car_odd_reversed, position_in_consist_from_end - position_in_consist ) {				
+      2: sw_e3_series_corai_rev;        
+      0:  sw_e3_series_panto_rev;       
+      sw_e3_series_coach_rev;			
+    }
+
+  switch (FEAT_TRAINS, SELF, sw_e3_series_7car_odd_not_reversed, position_in_consist - position_in_consist_from_end ) {				
+      2: sw_e3_series_corai;
+      0:  sw_e3_series_panto;
+      sw_e3_series_coach;			
+    }
+
+  switch (FEAT_TRAINS, SELF, sw_e3_series_7car_oddeven_not_reversed, num_vehs_in_consist % 2) {				
+      0:  sw_e3_series_7car_even_not_reversed;       // Even
+      sw_e3_series_7car_odd_not_reversed;			
+    }
+
+  switch (FEAT_TRAINS, SELF, sw_e3_series_7car_oddeven_reversed, num_vehs_in_consist % 2) {				
+      0:  sw_e3_series_7car_even_reversed;       // Even
+      sw_e3_series_7car_odd_reversed;			
+    }
+
+  switch (FEAT_TRAINS, PARENT, sw_e3_series_7car_reverse_check, vehicle_is_reversed ) {				
+      1:  sw_e3_series_7car_oddeven_reversed;
+      sw_e3_series_7car_oddeven_not_reversed;				
+    }
+
+    // TOREIYU
+      switch (FEAT_TRAINS, SELF, sw_e3_series_toreiyu_reversed, position_in_consist_from_end - position_in_consist ) {				
+          -4: ss_e3_series_pantg_rev_700;
+          -3: ss_e3_series_pantg_rev_700;
+          -2: ss_e3_series_grndn_rev_700;
+          -1: ss_e3_series_grndn_rev_700;
+          0:  ss_e3_series_green_rev_700;
+          1:  ss_e3_series_grnup_rev_700; 
+          2:  ss_e3_series_grnup_rev_700;   
+          3:  ss_e3_series_coacg_rev_700;    
+          4:  ss_e3_series_coacg_rev_700;  
+          sw_e3_series_coach_rev;			
+        }
+
+      switch (FEAT_TRAINS, SELF, sw_e3_series_toreiyu_not_reversed, position_in_consist - position_in_consist_from_end ) {				
+          -4: ss_e3_series_pantg_700;
+          -3: ss_e3_series_pantg_700;
+          -2: ss_e3_series_grndn_700;
+          -1: ss_e3_series_grndn_700;
+          0:  ss_e3_series_green_700;
+          1:  ss_e3_series_grnup_700;
+          2:  ss_e3_series_grnup_700; 
+          3:  ss_e3_series_coacg_700;  
+          4:  ss_e3_series_coacg_700;  
+          sw_e3_series_coach;			
+        }
+
+  // ODD EVEN CHECK!!!
+
+  switch (FEAT_TRAINS, PARENT, sw_e3_series_toreiyu_reverse_check, vehicle_is_reversed ) {				
       1:  sw_e3_series_toreiyu_reversed;
       sw_e3_series_toreiyu_not_reversed;				
     }
 
-// Toreiyu 5 car check
+  // Toreiyu 5 car check
+    switch(FEAT_TRAINS, SELF, sw_e3_series_year_dep_reverse_check, build_year) {
+            0..1998: sw_e3_series_6car_reverse_check;
+            sw_e3_series_7car_reverse_check; 
+          }
 
-  switch (FEAT_TRAINS, SELF, sw_e3_series_toreiyu_length_5_check, num_vehs_in_consist == 5 ) {				
-      1:  sw_e3_series_everything_else_coaches;
-      sw_e3_series_toreiyu_oddeven_check;				
-    }
+    switch(FEAT_TRAINS, PARENT, sw_e3_series_midcar_subtype_check, cargo_subtype) {
+            0: sw_e3_series_year_dep_reverse_check;
+            1: sw_e3_series_6car_reverse_check;
+            2: sw_e3_series_7car_reverse_check;
+            3: sw_e3_series_7car_reverse_check; 
+            4: sw_e3_series_toreiyu_reverse_check;   // Toreiyu
+            sw_e3_series_everything_else_coaches;
+          }
+  
+  // Five Car Long check
 
-  switch(FEAT_TRAINS, PARENT, sw_e3_series_midcar_subtype_check, cargo_subtype) {
-          4: sw_e3_series_toreiyu_length_5_check;   // Toreiyu
-          sw_e3_series_everything_else_coaches;
-        }
+    switch (FEAT_TRAINS, SELF, sw_e3_series_length_5_check, num_vehs_in_consist == 5 ) {				
+        1:  sw_e3_series_everything_else_coaches;
+        sw_e3_series_midcar_subtype_check;			
+      }
 
+  // Second car checks
 
-// Second car checks
-  // Standard 2nd car checks
-  switch (FEAT_TRAINS, SELF, sw_e3_series_2nd_not_reversed, position_in_consist) {				
-      1:  sw_e3_series_clogo;     
-      sw_e3_series_panto;			
-    }
+    // Standard 2nd car checks
+    switch (FEAT_TRAINS, SELF, sw_e3_series_2nd_not_reversed, position_in_consist) {				
+        1:  sw_e3_series_clogo;     
+        sw_e3_series_panto;			
+      }
 
-  switch (FEAT_TRAINS, SELF, sw_e3_series_2nd_reversed, position_in_consist){				
-      1:  sw_e3_series_panto_rev;     
-      sw_e3_series_clogo_rev;		  
-    }
+    switch (FEAT_TRAINS, SELF, sw_e3_series_2nd_reversed, position_in_consist){				
+        1:  sw_e3_series_panto_rev;     
+        sw_e3_series_clogo_rev;		  
+      }
 
-  switch (FEAT_TRAINS, PARENT, sw_e3_series_2nd_car_reverse_check, vehicle_is_reversed) {				
-      1:  sw_e3_series_2nd_reversed;
-      sw_e3_series_2nd_not_reversed;				
-    }
+    switch (FEAT_TRAINS, PARENT, sw_e3_series_2nd_car_reverse_check, vehicle_is_reversed) {				
+        1:  sw_e3_series_2nd_reversed;
+        sw_e3_series_2nd_not_reversed;				
+      }
 
-  // Toreiyu 2nd car checks
-  switch (FEAT_TRAINS, SELF, sw_e3_series_toreiyu_2nd_not_reversed, position_in_consist) {				
-      1:  ss_e3_series_2ndco_700;     
-      ss_e3_series_pantl_700;			
-    }
+    // Toreiyu
+    switch (FEAT_TRAINS, SELF, sw_e3_series_toreiyu_2nd_not_reversed, position_in_consist) {				
+        1:  ss_e3_series_2ndco_700;     
+        ss_e3_series_pantl_700;			
+      }
 
-  switch (FEAT_TRAINS, SELF, sw_e3_series_toreiyu_2nd_reversed, position_in_consist){				
-      1:  ss_e3_series_pantl_rev_700;     
-      ss_e3_series_2ndco_rev_700;		  
-    }
+    switch (FEAT_TRAINS, SELF, sw_e3_series_toreiyu_2nd_reversed, position_in_consist){				
+        1:  ss_e3_series_pantl_rev_700;     
+        ss_e3_series_2ndco_rev_700;		  
+      }
 
-  switch (FEAT_TRAINS, PARENT, sw_e3_series_toreiyu_2nd_car_reverse_check, vehicle_is_reversed) {				
-      1:  sw_e3_series_toreiyu_2nd_reversed;
-      sw_e3_series_toreiyu_2nd_not_reversed;				
-    }
+    switch (FEAT_TRAINS, PARENT, sw_e3_series_toreiyu_2nd_car_reverse_check, vehicle_is_reversed) {				
+        1:  sw_e3_series_toreiyu_2nd_reversed;
+        sw_e3_series_toreiyu_2nd_not_reversed;				
+      }
 
-  switch (FEAT_TRAINS, SELF, sw_e3_series_toreiyu_5_or_6_check, num_vehs_in_consist == 6 || num_vehs_in_consist == 7 ) {				
-      1:  sw_e3_series_2nd_car_reverse_check;
-      sw_e3_series_toreiyu_2nd_car_reverse_check;				
-    }
+    switch (FEAT_TRAINS, SELF, sw_e3_series_toreiyu_5_or_6_check, num_vehs_in_consist == 6 || num_vehs_in_consist == 7 ) {				
+        1:  sw_e3_series_2nd_car_reverse_check;
+        sw_e3_series_toreiyu_2nd_car_reverse_check;				
+      }
 
-  switch(FEAT_TRAINS, PARENT, sw_e3_series_2nd_car_subtype_check, cargo_subtype) {
-          4: sw_e3_series_toreiyu_5_or_6_check;   // Toreiyu
-          sw_e3_series_2nd_car_reverse_check;
-        }
+    // 6car (R Set)
+    switch (FEAT_TRAINS, SELF, sw_e3_series_6car_2nd_not_reversed, position_in_consist) {				
+        1:  ss_e3_series_clog2_r;     
+        ss_e3_series_panto_r;			
+      }
 
-  switch (FEAT_TRAINS, SELF, sw_e3_series_2nd_car_checks, position_in_consist == 1 || position_in_consist_from_end == 1 ) {				
-      1:  sw_e3_series_2nd_car_subtype_check;
-      sw_e3_series_midcar_subtype_check;				
-    }
+    switch (FEAT_TRAINS, SELF, sw_e3_series_6car_2nd_reversed, position_in_consist){				
+        1:  ss_e3_series_panto_rev_r;     
+        ss_e3_series_clog2_rev_r;		  
+      }
 
-// First car checks
+    switch (FEAT_TRAINS, PARENT, sw_e3_series_6car_2nd_car_reverse_check, vehicle_is_reversed) {				
+        1:  sw_e3_series_6car_2nd_reversed;
+        sw_e3_series_6car_2nd_not_reversed;				
+      }
 
-  switch (FEAT_TRAINS, SELF, sw_e3_series_cab_not_reversed, position_in_consist) {				
-      0:  sw_e3_series_cabnl;     
-      sw_e3_series_cabyl_rev;			
-    }
+    switch (FEAT_TRAINS, SELF, sw_e3_series_2nd_car_check_for_6car, num_vehs_in_consist == 4 || num_vehs_in_consist == 5) {				
+        1:  sw_e3_series_6car_2nd_car_reverse_check;      // 4 or 5 cars, so choose bespoke sprites
+        sw_e3_series_2nd_car_reverse_check;				        // > 5 cars, so standard chain
+      }
 
-  switch (FEAT_TRAINS, SELF, sw_e3_series_cab_reversed, position_in_consist){				
-      0:  sw_e3_series_cabyl;     
-      sw_e3_series_cabnl_rev;		  
-    }
+    // Which cargo subtype
+    switch(FEAT_TRAINS, SELF, sw_e3_series_year_dep_2nd_car_check, build_year) {
+            0..1998: sw_e3_series_2nd_car_check_for_6car; // R Set
+            sw_e3_series_2nd_car_reverse_check;           // Not R Set, so send to standard chain
+          }
 
-  switch (FEAT_TRAINS, PARENT, sw_e3_series_front_cab_checks, vehicle_is_reversed) {				
-      1:  sw_e3_series_cab_reversed;
-      sw_e3_series_cab_not_reversed;				
-    }
+    switch(FEAT_TRAINS, PARENT, sw_e3_series_2nd_car_subtype_check, cargo_subtype) {
+            0: sw_e3_series_year_dep_2nd_car_check;       // R Set til '98
+            1: sw_e3_series_2nd_car_check_for_6car;       // R Set
+            4: sw_e3_series_toreiyu_5_or_6_check;         // Toreiyu
+            sw_e3_series_2nd_car_reverse_check;
+          }
+    // Identify the 2nd cars
+    switch (FEAT_TRAINS, SELF, sw_e3_series_2nd_car_checks, position_in_consist == 1 || position_in_consist_from_end == 1 ) {				
+        1:  sw_e3_series_2nd_car_subtype_check;
+        sw_e3_series_length_5_check;
+        //sw_e3_series_midcar_subtype_check;				
+      }
 
-// Is it a cab car?
-switch (FEAT_TRAINS, SELF, sw_e3_series_graphics, position_in_consist == 0 || position_in_consist_from_end == 0) {				
-		1:  sw_e3_series_front_cab_checks;
-		sw_e3_series_2nd_car_checks;				
-	}
+  // First car checks
+
+    switch (FEAT_TRAINS, SELF, sw_e3_series_cab_not_reversed, position_in_consist) {				
+        0:  sw_e3_series_cabnl;     
+        sw_e3_series_cabyl_rev;			
+      }
+
+    switch (FEAT_TRAINS, SELF, sw_e3_series_cab_reversed, position_in_consist){				
+        0:  sw_e3_series_cabyl;     
+        sw_e3_series_cabnl_rev;		  
+      }
+
+    switch (FEAT_TRAINS, PARENT, sw_e3_series_front_cab_checks, vehicle_is_reversed) {				
+        1:  sw_e3_series_cab_reversed;
+        sw_e3_series_cab_not_reversed;				
+      }
+
+    // Is it a cab car?
+    switch (FEAT_TRAINS, SELF, sw_e3_series_graphics, position_in_consist == 0 || position_in_consist_from_end == 0) {				
+        1:  sw_e3_series_front_cab_checks;
+        sw_e3_series_2nd_car_checks;				
+      }
 
 
 /*---END OF SECTION---*/
@@ -8169,8 +8582,6 @@ item(FEAT_TRAINS, series_e3) {
         //running_cost_factor:            120;
       }
 }
-
-// End e3_series
 # 1 "JPplusShinkansen.pnml" 4
 # 1 "src/trains/e4_series/e4_series.pnml" 1
 /* Begin E4 Series */
