@@ -51,57 +51,27 @@ switch (FEAT_TRAINS, PARENT, sw_e5e6_series_graphics, vehicle_is_reversed ) {
 		sw_e5e6_series_backwards;
 	}
 
-switch (FEAT_TRAINS, SELF, sw_e5e6_series_articulated_part, extra_callback_info1) {
-		1 .. 36: return series_e5e6;									
+switch (FEAT_TRAINS, SELF, sw_e5e6_series_articulated_part_12, extra_callback_info1) {
+		1 .. 88: return series_e5e6;									
 		return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
 	}
+
+switch (FEAT_TRAINS, SELF, sw_e5e6_series_articulated_part_10, extra_callback_info1) {
+		1 .. 78: return series_e5e6;									
+		return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+	}
+
+switch (FEAT_TRAINS, SELF, sw_e5e6_series_articulated_part, param_spritelength) {
+        1: sw_e5e6_series_articulated_part_10;		    // Length 10
+        sw_e5e6_series_articulated_part_12;				// Length 12
+    }
+
 
 /*---Coupling Switch---*/
 switch(FEAT_TRAINS, SELF, sw_e5e6_series_attach_vehid, [vehicle_type_id == series_e5e6]) {
  0: return string(MU_UNIQUE);
 }
 
-/*---Length Check---*/
-switch (FEAT_TRAINS, SELF, sw_e5e6_series_stop_start, num_vehs_in_consist < 12) {				
-		1:  return string(STR_LENGTH_ERROR); 				
-		return CB_RESULT_NO_TEXT; 
-	}
-
-/* LENGTH*/
-switch (FEAT_TRAINS, SELF, sw_e5e6_series_length_backwards, position_in_consist_from_end) {				
-		0:  return 1;		// First part of 1
-		2..3:  return 1;	// Between 1 and 2
-		5..6:  return 1;	// Between 2 and 3
-		8..9:  return 1;	// Between 3 and 4
-		11..12: return 1;	// Between 4 and 5
-		14..15: return 1;	// Between 5 and 6
-		17..18: return 1;	// Between 6 and 7
-		20..21: return 1;	// Between 7 and 8
-		23..24: return 1;	// Between 8 and 9
-		26..27: return 1;	// Between 9 and 10
-		29: return 1;		// Last part of 10	
-		return 8;
-	}
-
-switch (FEAT_TRAINS, SELF, sw_e5e6_series_length, position_in_consist) {				
-		0:  return 1;		// First part of 1
-		2..3:  return 1;	// Between 1 and 2
-		5..6:  return 1;	// Between 2 and 3
-		8..9:  return 1;	// Between 3 and 4
-		11..12: return 1;	// Between 4 and 5
-		14..15: return 1;	// Between 5 and 6
-		17..18: return 1;	// Between 6 and 7
-		20..21: return 1;	// Between 7 and 8
-		23..24: return 1;	// Between 8 and 9
-		26..27: return 1;	// Between 9 and 10
-		29: return 1;		// Last part of 10	
-		return 8;
-	}
-
-switch (FEAT_TRAINS, PARENT, sw_e5e6_series_length, vehicle_is_reversed ) {				
-		0:  sw_e5e6_series_length_forwards; 				
-		sw_e5e6_series_length_backwards;
-	}
 
 item(FEAT_TRAINS, series_e5e6) {
 	property {
@@ -139,14 +109,14 @@ item(FEAT_TRAINS, series_e5e6) {
 		additional_text:                string(STR_DESC_E5E6_SERIES);
 		//cargo_subtype_text:             sw_e5e6_series_year_dep_subtype_text;
 		can_attach_wagon:				sw_e5e6_series_attach_vehid;
-		start_stop:						sw_e5e6_series_stop_start;
+		//start_stop:						sw_e5e6_series_stop_start;
 		/* Graphics */
 		default:                        sw_e5e6_series_graphics;
 		purchase:                       ss_buy_e5e6_series_pink_livery_12;
 		articulated_part:               sw_e5e6_series_articulated_part;	
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
 		/* Stats */
-		length:                         sw_e5e6_series_length;
+		length:                         2;
 		cargo_capacity:                 25 * CapacityFactor();
 		loading_speed:					25 * CapacityFactor() / param_loading_2D;
 		cargo_age_period:				param_decay_express;
