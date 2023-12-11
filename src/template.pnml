@@ -86,11 +86,11 @@ template template_10_standard(x, y) {
     [ x,		y,		8,		36,		-3,			-18]
     [ x+16,		y,		26,		29,		-18,		-19]
     [ x+54,		y,		40,		16,		-20,		-12]
-    [ x+110,	y,		26,		29,		-10,		-19]
+    [ x+110,	y,		26,		29,		-12,		-22]
     [ x+148,	y,		8,		36,		-3,			-18]
     [ x+164,	y,		26,		29,		-18,		-19]
     [ x+202,	y,		40,		16,		-20,		-12]
-    [ x+258,	y,		26,		29,		-10,		-19]
+    [ x+258,	y,		26,		29,		-12,		-22]
 }
 
 template template_10_reversed(x, y) {
@@ -100,39 +100,215 @@ template template_10_reversed(x, y) {
     [ x+148,	y,		8,		36,		-3,			-18]
     [ x+164,	y,		26,		29,		-18,		-19]
     [ x+202,	y,		40,		16,		-20,		-12]
-    [ x+258,	y,		26,		29,		-10,		-19]
+    [ x+258,	y,		26,		29,		-12,		-22]
     [ x,		y,		8,		36,		-3,			-18]
     [ x+16,		y,		26,		29,		-18,		-19]
     [ x+54,		y,		40,		16,		-20,		-12]
-    [ x+110,	y,		26,		29,		-10,		-19]
+    [ x+110,	y,		26,		29,		-12,		-22]
 }
 
+/* 888888888888888888888888888888888888888888888888888888 */
+
+
+// Not Reversed
 template template_8_standard(x, y) {
     //left_x, upper_y, width, height, offset_x, offset_y
 	//							more negative to shift left
 	//											more negative to shift up
-    [ x,		y,		8,		36,		-3,			-18]
-    [ x+20,		y,		22,		27,		-15,		-19]
+    [ x,		y,		8,		36,		-3,			-20]
+    [ x+20,		y,		22,		27,		-14,		-19]
     [ x+62,		y,		32,		16,		-16,		-12]
-    [ x+114,	y,		22,		27,		-08,		-20]
-    [ x+148,	y,		8,		36,		-3,			-18]
-    [ x+168,	y,		22,		27,		-15,		-19]
+    [ x+114,	y,		22,		27,		-8, 		-20]
+    [ x+148,	y,		8,		36,		-3,			-20]
+    [ x+168,	y,		22,		27,		-14,		-19]
     [ x+210,	y,		32,		16,		-16,		-12]
-    [ x+262,	y,		22,		27,		-08,		-20]
+    [ x+262,	y,		22,		27,		-8,		    -20]
 }
 
 template template_8_reversed(x, y) {
     //left_x, upper_y, width, height, offset_x, offset_y
 	//							more negative to shift left
 	//											more negative to shift up
-    [ x+148,	y,		8,		36,		-3,			-18]
-    [ x+168,	y,		22,		27,		-15,		-19]
+    [ x+148,	y,		8,		36,		-3,			-20]
+    [ x+168,	y,		22,		27,		-14,		-19]
     [ x+210,	y,		32,		16,		-16,		-12]
-    [ x+262,	y,		22,		27,		-08,		-20]
-    [ x,		y,		8,		36,		-3,			-18]
-    [ x+20,		y,		22,		27,		-15,		-19]
+    [ x+262,	y,		22,		27,		-8, 		-20]
+    [ x,		y,		8,		36,		-3,			-20]
+    [ x+20,		y,		22,		27,		-14,		-19]
     [ x+62,		y,		32,		16,		-16,		-12]
-    [ x+114,	y,		22,		27,		-08,		-20]
+    [ x+114,	y,		22,		27,		-8,	    	-20]
+}
+
+
+template template_2_standard(x, y) {
+    //left_x, upper_y, width, height, offset_x, offset_y
+	//							more negative to shift left
+	//											more negative to shift up
+    [ x,		y,		8,		16,		-3,			-14]		// |
+    [ x+16,		y,		10,		16,		-6,		-12]		// /
+    [ x+54,		y,		8,		16,		6,		-12]	// >
+    [ x+110,	y,		10,		16,		8,			-7]		// \
+    [ x+148,	y,		8,		16,		-3,			-4]		// |
+    [ x+164,	y,		10,		16,		-16,		-7]		// /
+    [ x+202,	y,		8,		16,		-14,		-12]	// <
+    [ x+258,	y,		10,		16,		-2,		-12]		// \
+}
+
+template template_2_cab_rev_standard(x, y) {
+    //left_x, upper_y, width, height, offset_x, offset_y
+	//							more negative to shift left
+	//											more negative to shift up
+    [ x+148,	y,		8,		16,		-3,			-14]		// V
+    [ x+164,	y,		10,		16,		-6,		-12]		// /
+    [ x+202,	y,		8,		16,		6,		-12]	// <
+    [ x+258,	y,		10,		16,		8,			-7]		// \
+	[ x,		y,		8,		16,		-3,			-4]		// /\
+    [ x+16,		y,		10,		16,		-16,		-7]		// /
+    [ x+54,		y,		8,		16,		-14,		-12]	// >
+    [ x+110,	y,		10,		16,		-2,		-12]		// \
+    
+}
+
+template template_2_reversed(x, y) {
+    //left_x, upper_y, width, height, offset_x, offset_y
+	//							more negative to shift left
+	//											more negative to shift up
+    [ x+148,	y,		8,		16,		-3,			-12]
+    [ x+164,	y,		10,		16,		-6,			-12]
+    [ x+202,	y,		8,		16,		6,			-12]
+    [ x+258,	y,		10,		16,		8,			-7]
+	[ x,		y,		8,		16,		-3,			-6]
+    [ x+16,		y,		10,		16,		-16,		-7]
+    [ x+54,		y,		8,		16,		-14,		-12]	
+    [ x+110,	y,		10,		16,		-2,			-12]
+   
+}
+
+template template_2_cab_rev_reversed(x, y) {
+    //left_x, upper_y, width, height, offset_x, offset_y
+	//							more negative to shift left
+	//											more negative to shift up
+	[ x,		y,		8,		16,		-3,			-12]
+    [ x+16,		y,		10,		16,		-6,			-12]
+    [ x+54,		y,		8,		16,		6,			-12]
+    [ x+110,	y,		10,		16,		8,			-7]
+	[ x+148,	y,		8,		16,		-3,			-6]
+    [ x+164,	y,		10,		16,		-16,		-7]
+    [ x+202,	y,		8,		16,		-14,		-12]
+    [ x+258,	y,		10,		16,		-2,			-12]
+}
+
+template template_10_on_2_standard(x, y) {
+    //left_x, upper_y, width, height, offset_x, offset_y
+	//							more negative to shift left
+	//											more negative to shift up
+    [ x,		y,		8,		36,		-3,			-22]
+    [ x+16,		y,		26,		29,		-18,		-19]
+    [ x+54,		y,		40,		16,		-18,		-12]
+    [ x+110,	y,		26,		29,		-4,			-18]
+    [ x+148,	y,		8,		36,		-3,			-20]
+    [ x+164,	y,		26,		29,		-20,		-18]
+    [ x+202,	y,		40,		16,		-22,		-12]
+    [ x+258,	y,		26,		29,		-6,			-19]
+}
+
+template template_10_on_2_cab_rev_standard(x, y) {
+    //left_x, upper_y, width, height, offset_x, offset_y
+	//							more negative to shift left
+	//											more negative to shift up
+    [ x+148,	y,		8,		36,		-3,			-22]
+    [ x+164,	y,		26,		29,		-18,		-19]
+    [ x+202,	y,		40,		16,		-18,		-12]
+    [ x+258,	y,		26,		29,		-4,			-18]
+    [ x,		y,		8,		36,		-3,			-20]
+    [ x+16,		y,		26,		29,		-20,		-18]
+    [ x+54,		y,		40,		16,		-22,		-12]
+    [ x+110,	y,		26,		29,		-6,			-19]
+}
+
+
+template template_10_on_2_reversed(x, y) {
+    //left_x, upper_y, width, height, offset_x, offset_y
+	//							more negative to shift left
+	//											more negative to shift up
+    [ x+148,	y,		8,		36,		-3,			-20]
+    [ x+164,	y,		26,		29,		-18,		-19]
+    [ x+202,	y,		40,		16,		-18,		-12]
+    [ x+258,	y,		26,		29,		-4,			-18]
+    [ x,		y,		8,		36,		-3,			-20]
+    [ x+16,		y,		26,		29,		-20,		-18]
+    [ x+54,		y,		40,		16,		-22,		-12]
+    [ x+110,	y,		26,		29,		-6,			-19]
+}
+
+template template_10_on_2_cab_rev_reversed(x, y) {
+    //left_x, upper_y, width, height, offset_x, offset_y
+	//							more negative to shift left
+	//											more negative to shift up
+    [ x,		y,		8,		36,		-3,			-20]
+    [ x+16,		y,		26,		29,		-18,		-19]
+    [ x+54,		y,		40,		16,		-18,		-12]
+    [ x+110,	y,		26,		29,		-4,			-18]
+    [ x+148,	y,		8,		36,		-3,			-20]
+    [ x+164,	y,		26,		29,		-20,		-18]
+    [ x+202,	y,		40,		16,		-22,		-12]
+    [ x+258,	y,		26,		29,		-6,			-19]
+}
+
+template template_8_on_2_standard(x, y) {
+    //left_x, upper_y, width, height, offset_x, offset_y
+	//							more negative to shift left
+	//											more negative to shift up
+    [ x,		y,		8,		36,		-3,			-22]
+    [ x+20,		y,		22,		27,		-18,		-17]
+    [ x+62,		y,		32,		16,		-18,		-12]
+    [ x+114,	y,		22,		27,		-4,			-18]
+    [ x+148,	y,		8,		36,		-3,			-24]
+    [ x+168,	y,		22,		27,		-16,		-18]
+    [ x+210,	y,		32,		16,		-14,		-12]
+    [ x+262,	y,		22,		27,		-2,			-17]
+}
+
+template template_8_on_2_cab_rev_standard(x, y) {
+    //left_x, upper_y, width, height, offset_x, offset_y
+	//							more negative to shift left
+	//											more negative to shift up
+    [ x+148,	y,		8,		36,		-3,			-22]
+    [ x+168,	y,		22,		27,		-18,		-17]
+    [ x+210,	y,		32,		16,		-18,		-12]
+    [ x+262,	y,		22,		27,		-4,			-18]
+    [ x,		y,		8,		36,		-3,			-24]
+    [ x+20,		y,		22,		27,		-16,		-18]
+    [ x+62,		y,		32,		16,		-14,		-12]
+    [ x+114,	y,		22,		27,		-2,			-17]
+}
+
+template template_8_on_2_reversed(x, y) {
+    //left_x, upper_y, width, height, offset_x, offset_y
+	//							more negative to shift left
+	//											more negative to shift up
+    [ x+148,	y,		8,		36,		-3,			-20]
+    [ x+168,	y,		22,		27,		-18,		-17]
+    [ x+210,	y,		32,		16,		-16,		-12]
+    [ x+262,	y,		22,		27,		-4,			-18]
+    [ x,		y,		8,		36,		-3,			-24]
+    [ x+20,		y,		22,		27,		-16,		-18]
+    [ x+62,		y,		32,		16,		-14,		-12]
+    [ x+114,	y,		22,		27,		-2,			-17]
+}
+
+template template_8_on_2_cab_rev_reversed(x, y) {
+    //left_x, upper_y, width, height, offset_x, offset_y
+	//							more negative to shift left
+	//											more negative to shift up
+    [ x,		y,		8,		36,		-3,			-20]
+    [ x+20,		y,		22,		27,		-18,		-17]
+    [ x+62,		y,		32,		16,		-16,		-12]
+    [ x+114,	y,		22,		27,		-4,			-18]
+    [ x+148,	y,		8,		36,		-3,			-24]
+    [ x+168,	y,		22,		27,		-16,		-18]
+    [ x+210,	y,		32,		16,		-14,		-12]
+    [ x+262,	y,		22,		27,		-2,			-17]
 }
 
 /* TRACKS */

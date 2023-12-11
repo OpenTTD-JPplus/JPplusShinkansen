@@ -1,19 +1,19 @@
 /* Begin E5+E6 Series */
 
-#include "src/trains/e5e6_series/pnml/e5_10_on_2_sprites.pnml"
 #include "src/trains/e5e6_series/pnml/e5_miniparts.pnml"
 #include "src/trains/e5e6_series/pnml/e6_miniparts.pnml"
+#include "src/trains/e5e6_series/pnml/e6_10_on_2_sprites.pnml"
 
 	spriteset (ss_buy_e5e6_series_pink_livery_12,	        		"src/trains/dummy/purchase.png") {template_purchase(0, 0)}
 	alternative_sprites(ss_buy_e5e6_series_pink_livery_12,   		ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e5e6_series/buy_e5e6.png") {template_purchase(0, 0)}
 
 switch (FEAT_TRAINS, SELF, sw_e5e6_series_backwards_10, position_in_consist_from_end ) {				
 		// 1 Cab
-		0:  ss_e5_series_cabrb_mp1_10_check;
-		1:  ss_e5_series_cabrb_mp2_10_check;
-		2:  ss_e5_series_cabrb_mp3_10_check;
-		3:  ss_e5_series_cabrb_mp4_10_check;
-		4:  ss_e5_series_cabrb_mp5_10_check;
+		0:  ss_e5_series_cabbk_rev_mp1_10_check;
+		1:  ss_e5_series_cabbk_rev_mp2_10_check;
+		2:  ss_e5_series_cabbk_rev_mp3_10_check;
+		3:  ss_e5_series_cabbk_rev_mp4_10_check;
+		4:  ss_e5_series_cabbk_rev_mp5_10_check;
 		// 2 Coach 
 		5:  ss_e5_series_coach_rev_mp1_10_check;
 		6:  ss_e5_series_coach_rev_mp2_10_check;
@@ -21,11 +21,11 @@ switch (FEAT_TRAINS, SELF, sw_e5e6_series_backwards_10, position_in_consist_from
 		8:  ss_e5_series_coach_rev_mp4_10_check;
 		9:  ss_e5_series_coach_rev_mp5_10_check;
 		// 3 Coach
-		10: ss_e5_series_pant3_rev_mp1_10_check;
-		11: ss_e5_series_pant3_rev_mp2_10_check;
-		12: ss_e5_series_pant3_rev_mp3_10_check;
-		13: ss_e5_series_pant3_rev_mp4_10_check;
-		14: ss_e5_series_pant3_rev_mp5_10_check;
+		10: ss_e5_series_coach_rev_mp1_10_check;
+		11: ss_e5_series_coach_rev_mp2_10_check;
+		12: ss_e5_series_coach_rev_mp3_10_check;
+		13: ss_e5_series_coach_rev_mp4_10_check;
+		14: ss_e5_series_coach_rev_mp5_10_check;
 		// 4 Panto
 		15: ss_e5_series_coach_rev_mp1_10_check;
 		16: ss_e5_series_coach_rev_mp2_10_check;
@@ -51,11 +51,11 @@ switch (FEAT_TRAINS, SELF, sw_e5e6_series_backwards_10, position_in_consist_from
 		33: ss_e5_series_coach_rev_mp4_10_check;
 		34: ss_e5_series_coach_rev_mp5_10_check;
 		// 8 Coach
-		35: ss_e5_series_pant8_rev_mp1_10_check;
-		36: ss_e5_series_pant8_rev_mp2_10_check;
-		37: ss_e5_series_pant8_rev_mp3_10_check;
-		38: ss_e5_series_pant8_rev_mp4_10_check;
-		39: ss_e5_series_pant8_rev_mp5_10_check;
+		35: ss_e5_series_coach_rev_mp1_10_check;
+		36: ss_e5_series_coach_rev_mp2_10_check;
+		37: ss_e5_series_coach_rev_mp3_10_check;
+		38: ss_e5_series_coach_rev_mp4_10_check;
+		39: ss_e5_series_coach_rev_mp5_10_check;
 		// 9 Coach
 		40: ss_e5_series_coach_rev_mp1_10_check;
 		41: ss_e5_series_coach_rev_mp2_10_check;
@@ -63,22 +63,22 @@ switch (FEAT_TRAINS, SELF, sw_e5e6_series_backwards_10, position_in_consist_from
 		43: ss_e5_series_coach_rev_mp4_10_check;
 		44: ss_e5_series_coach_rev_mp5_10_check;
 		// 10 Cab
-		45: ss_e5_series_cabyb_mp1_10_check;
-		46: ss_e5_series_cabyb_mp2_10_check;
-		47: ss_e5_series_cabyb_mp3_10_check;
-		48: ss_e5_series_cabyb_mp4_10_check;
-		49: ss_e5_series_cabyb_mp5_10_check;
+		45: ss_e5_series_cabbk_mp1_10_check;
+		46: ss_e5_series_cabbk_mp2_10_check;
+		47: ss_e5_series_cabbk_mp3_10_check;
+		48: ss_e5_series_cabbk_mp4_10_check;
+		49: ss_e5_series_cabbk_mp5_10_check;
 		// E6 Series
 		// 1 Cab
-		50: ss_e6_series_cabrb_mp1_10_check;
-		51: ss_e6_series_cabrb_mp2_10_check;
-		52: ss_e6_series_cabrb_mp3_10_check;
-		53: ss_e6_series_cabrb_mp4_10_check;
-		// 2 Panto
-		54: ss_e6_series_pant2_rev_mp1_10_check;
-		55: ss_e6_series_pant2_rev_mp2_10_check;
-		56: ss_e6_series_pant2_rev_mp3_10_check;
-		57: ss_e6_series_pant2_rev_mp4_10_check;
+		50: ss_e6_series_cabbk_rev_mp1_10_check;
+		51: ss_e6_series_cabbk_rev_mp2_10_check;
+		52: ss_e6_series_cabbk_rev_mp3_10_check;
+		53: ss_e6_series_cabbk_rev_mp4_10_check;
+		// 2 Coach
+		54: ss_e6_series_coach_rev_mp1_10_check;
+		55: ss_e6_series_coach_rev_mp2_10_check;
+		56: ss_e6_series_coach_rev_mp3_10_check;
+		57: ss_e6_series_coach_rev_mp4_10_check;
 		// 3 Coach
 		58: ss_e6_series_coach_rev_mp1_10_check;
 		59: ss_e6_series_coach_rev_mp2_10_check;
@@ -94,25 +94,25 @@ switch (FEAT_TRAINS, SELF, sw_e5e6_series_backwards_10, position_in_consist_from
 		67: ss_e6_series_coach_rev_mp2_10_check;
 		68: ss_e6_series_coach_rev_mp3_10_check;
 		69: ss_e6_series_coach_rev_mp4_10_check;
-		// 6 Panto
-		70: ss_e6_series_pant6_rev_mp1_10_check;
-		71: ss_e6_series_pant6_rev_mp2_10_check;
-		72: ss_e6_series_pant6_rev_mp3_10_check;
-		73: ss_e6_series_pant6_rev_mp4_10_check;
+		// 6 Coach
+		70: ss_e6_series_coach_rev_mp1_10_check;
+		71: ss_e6_series_coach_rev_mp2_10_check;
+		72: ss_e6_series_coach_rev_mp3_10_check;
+		73: ss_e6_series_coach_rev_mp4_10_check;
 		// 7 Cab
-		74: ss_e6_series_cabyb_mp1_10_check;
-		75: ss_e6_series_cabyb_mp2_10_check;
-		76: ss_e6_series_cabyb_mp3_10_check;
-		77: ss_e6_series_cabyb_mp4_10_check;
+		74: ss_e6_series_cabbk_mp1_10_check;
+		75: ss_e6_series_cabbk_mp2_10_check;
+		76: ss_e6_series_cabbk_mp3_10_check;
+		77: ss_e6_series_cabbk_mp4_10_check;
 		sw_e4_series_cab_pink_livery;			
 	}
 
 switch (FEAT_TRAINS, SELF, sw_e5e6_series_forwards_10, position_in_consist ) {				
-		0:  ss_e5_series_cabyf_mp1_10_check;
-		1:  ss_e5_series_cabyf_mp2_10_check;
-		2:  ss_e5_series_cabyf_mp3_10_check;
-		3:  ss_e5_series_cabyf_mp4_10_check;
-		4:  ss_e5_series_cabyf_mp5_10_check;
+		0:  ss_e5_series_cab_mp1_10_check;
+		1:  ss_e5_series_cab_mp2_10_check;
+		2:  ss_e5_series_cab_mp3_10_check;
+		3:  ss_e5_series_cab_mp4_10_check;
+		4:  ss_e5_series_cab_mp5_10_check;
 		// 2 Coach 
 		5:  ss_e5_series_coach_mp1_10_check;
 		6:  ss_e5_series_coach_mp2_10_check;
@@ -120,11 +120,11 @@ switch (FEAT_TRAINS, SELF, sw_e5e6_series_forwards_10, position_in_consist ) {
 		8:  ss_e5_series_coach_mp4_10_check;
 		9:  ss_e5_series_coach_mp5_10_check;
 		// 3 Coach
-		10: ss_e5_series_pant3_mp1_10_check;
-		11: ss_e5_series_pant3_mp2_10_check;
-		12: ss_e5_series_pant3_mp3_10_check;
-		13: ss_e5_series_pant3_mp4_10_check;
-		14: ss_e5_series_pant3_mp5_10_check;
+		10: ss_e5_series_coach_mp1_10_check;
+		11: ss_e5_series_coach_mp2_10_check;
+		12: ss_e5_series_coach_mp3_10_check;
+		13: ss_e5_series_coach_mp4_10_check;
+		14: ss_e5_series_coach_mp5_10_check;
 		// 4 Panto
 		15: ss_e5_series_coach_mp1_10_check;
 		16: ss_e5_series_coach_mp2_10_check;
@@ -150,11 +150,11 @@ switch (FEAT_TRAINS, SELF, sw_e5e6_series_forwards_10, position_in_consist ) {
 		33: ss_e5_series_coach_mp4_10_check;
 		34: ss_e5_series_coach_mp5_10_check;
 		// 8 Coach
-		35: ss_e5_series_pant8_mp1_10_check;
-		36: ss_e5_series_pant8_mp2_10_check;
-		37: ss_e5_series_pant8_mp3_10_check;
-		38: ss_e5_series_pant8_mp4_10_check;
-		39: ss_e5_series_pant8_mp5_10_check;
+		35: ss_e5_series_coach_mp1_10_check;
+		36: ss_e5_series_coach_mp2_10_check;
+		37: ss_e5_series_coach_mp3_10_check;
+		38: ss_e5_series_coach_mp4_10_check;
+		39: ss_e5_series_coach_mp5_10_check;
 		// 9 Coach
 		40: ss_e5_series_coach_mp1_10_check;
 		41: ss_e5_series_coach_mp2_10_check;
@@ -162,22 +162,22 @@ switch (FEAT_TRAINS, SELF, sw_e5e6_series_forwards_10, position_in_consist ) {
 		43: ss_e5_series_coach_mp4_10_check;
 		44: ss_e5_series_coach_mp5_10_check;
 		// 10 Cab
-		45: ss_e5_series_cabrf_mp1_10_check;
-		46: ss_e5_series_cabrf_mp2_10_check;
-		47: ss_e5_series_cabrf_mp3_10_check;
-		48: ss_e5_series_cabrf_mp4_10_check;
-		49: ss_e5_series_cabrf_mp5_10_check;
+		45: ss_e5_series_cab_rev_mp1_10_check;
+		46: ss_e5_series_cab_rev_mp2_10_check;
+		47: ss_e5_series_cab_rev_mp3_10_check;
+		48: ss_e5_series_cab_rev_mp4_10_check;
+		49: ss_e5_series_cab_rev_mp5_10_check;
 		// E6 Series
 		// 1 Cab
-		50: ss_e6_series_cabyf_mp1_10_check;
-		51: ss_e6_series_cabyf_mp2_10_check;
-		52: ss_e6_series_cabyf_mp3_10_check;
-		53: ss_e6_series_cabyf_mp4_10_check;
-		// 2 Panto
-		54: ss_e6_series_pant2_mp1_10_check;
-		55: ss_e6_series_pant2_mp2_10_check;
-		56: ss_e6_series_pant2_mp3_10_check;
-		57: ss_e6_series_pant2_mp4_10_check;
+		50: ss_e6_series_cab_mp1_10_check;
+		51: ss_e6_series_cab_mp2_10_check;
+		52: ss_e6_series_cab_mp3_10_check;
+		53: ss_e6_series_cab_mp4_10_check;
+		// 2 Coach
+		54: ss_e6_series_coach_mp1_10_check;
+		55: ss_e6_series_coach_mp2_10_check;
+		56: ss_e6_series_coach_mp3_10_check;
+		57: ss_e6_series_coach_mp4_10_check;
 		// 3 Coach
 		58: ss_e6_series_coach_mp1_10_check;
 		59: ss_e6_series_coach_mp2_10_check;
@@ -193,16 +193,16 @@ switch (FEAT_TRAINS, SELF, sw_e5e6_series_forwards_10, position_in_consist ) {
 		67: ss_e6_series_coach_mp2_10_check;
 		68: ss_e6_series_coach_mp3_10_check;
 		69: ss_e6_series_coach_mp4_10_check;
-		// 6 Panto
-		70: ss_e6_series_pant6_mp1_10_check;
-		71: ss_e6_series_pant6_mp2_10_check;
-		72: ss_e6_series_pant6_mp3_10_check;
-		73: ss_e6_series_pant6_mp4_10_check;
+		// 6 Coach
+		70: ss_e6_series_coach_mp1_10_check;
+		71: ss_e6_series_coach_mp2_10_check;
+		72: ss_e6_series_coach_mp3_10_check;
+		73: ss_e6_series_coach_mp4_10_check;
 		// 7 Cab
-		74: ss_e6_series_cabrf_mp1_10_check;
-		75: ss_e6_series_cabrf_mp2_10_check;
-		76: ss_e6_series_cabrf_mp3_10_check;
-		77: ss_e6_series_cabrf_mp4_10_check;
+		74: ss_e6_series_cab_rev_mp1_10_check;
+		75: ss_e6_series_cab_rev_mp2_10_check;
+		76: ss_e6_series_cab_rev_mp3_10_check;
+		77: ss_e6_series_cab_rev_mp4_10_check;
 		sw_e4_series_cab_pink_livery;			
 	}
 
@@ -217,13 +217,13 @@ switch (FEAT_TRAINS, SELF, sw_e5e6_series_backwards_12, position_in_consist_from
 		43: ss_e5_series_coach;
 		49: ss_e5_series_coach;
 		55: ss_e5_series_cab_rev;
-		61: ss_e6_series_cabrb;
-		65: ss_e6_series_coach;
-		69: ss_e6_series_coach;
-		73: ss_e6_series_coach;
-		77: ss_e6_series_coach;
-		81: ss_e6_series_coach;
-		85: ss_e6_series_cabyb;
+		61: spriteset_e6_series_front_std;
+		65: spriteset_e6_series_mid_std;
+		69: spriteset_e6_series_mid_std;
+		73: spriteset_e6_series_mid_std;
+		77: spriteset_e6_series_mid_std;
+		81: spriteset_e6_series_mid_std;
+		85: spriteset_e6_series_revflip_front_std;
 		dummy_sprites;			
 	}			
 
@@ -238,14 +238,14 @@ switch (FEAT_TRAINS, SELF, sw_e5e6_series_forwards_12, position_in_consist ) {
 		43: ss_e5_series_coach;
 		49: ss_e5_series_coach;
 		55: ss_e5_series_cab_rev;
-		61: ss_e6_series_cabrb;
-		65: ss_e6_series_coach;
-		69: ss_e6_series_coach;
-		73: ss_e6_series_coach;
-		77: ss_e6_series_coach;
-		81: ss_e6_series_coach;
-		85: ss_e6_series_cabyb;
-		dummy_sprites;				
+		61: spriteset_e6_series_front_std;
+		65: spriteset_e6_series_mid_std;
+		69: spriteset_e6_series_mid_std;
+		73: spriteset_e6_series_mid_std;
+		77: spriteset_e6_series_mid_std;
+		81: spriteset_e6_series_mid_std;
+		85: spriteset_e6_series_revflip_front_std;
+		dummy_sprites;			
 	}
 
 switch (FEAT_TRAINS, SELF, sw_e5e6_series_backwards, param_spritelength) {

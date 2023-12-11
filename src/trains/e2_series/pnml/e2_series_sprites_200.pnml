@@ -4,7 +4,7 @@
     // "CAB01"
     spriteset(ss_e2_series_cab01_200_livery_12,                 "src/trains/dummy/empty.png") {template_dummy(0,0)}
     spriteset(ss_e2_series_cab01_rev_200_livery_12,             "src/trains/dummy/empty.png") {template_dummy(0,0)}
-    spriteset(ss_e2_series_cab01_200_livery_10,             	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_e2_series_cab01_200_livery_10,             	  "src/trains/dummy/empty.png") {template_dummy(0,0)}
     spriteset(ss_e2_series_cab01_rev_200_livery_10,             "src/trains/dummy/empty.png") {template_dummy(0,0)}
 
     alternative_sprites(ss_e2_series_cab01_200_livery_12,       ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e2_series/12/200_series_livery.png") {template_12_standard(1,1)}
@@ -25,34 +25,34 @@
     // "CAB10"
     spriteset(ss_e2_series_cab10_200_livery_12,                 "src/trains/dummy/empty.png") {template_dummy(0,0)}
     spriteset(ss_e2_series_cab10_rev_200_livery_12,             "src/trains/dummy/empty.png") {template_dummy(0,0)}
-    spriteset(ss_e2_series_cab10_200_livery_10,             	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_e2_series_cab10_200_livery_10,             	  "src/trains/dummy/empty.png") {template_dummy(0,0)}
     spriteset(ss_e2_series_cab10_rev_200_livery_10,             "src/trains/dummy/empty.png") {template_dummy(0,0)}
 
     alternative_sprites(ss_e2_series_cab10_200_livery_12,       ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e2_series/12/200_series_livery.png") {template_12_standard(1,81)}
     alternative_sprites(ss_e2_series_cab10_rev_200_livery_12,   ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e2_series/12/200_series_livery.png") {template_12_reversed(1,121)}
     alternative_sprites(ss_e2_series_cab10_200_livery_10,       ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e2_series/10/200_series_livery.png") {template_10_standard(1,81)}
-    alternative_sprites(ss_e2_series_cab10_rev_200_livery_10,   ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e2_series/10/200_series_livery.png") {template_10_reversed(1,121)}
+    alternative_sprites(ss_e2_series_cab10_rev_200_livery_10,   ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e2_series/10/200_series_livery.png") {template_10_reversed(1,161)}
 
-        switch (FEAT_TRAINS, SELF, sw_e2_series_200_cab10, param_spritelength) {
-			1: ss_e2_series_cab10_200_livery_10;			    // Length 10
-			ss_e2_series_cab10_200_livery_12;					// Length 12
+      switch (FEAT_TRAINS, SELF, sw_e2_series_200_cab10, param_spritelength) {
+			1: ss_e2_series_cab10_200_livery_10;			                // Length 10
+			ss_e2_series_cab10_200_livery_12;					                // Length 12
 		}
 
-        switch (FEAT_TRAINS, SELF, sw_e2_series_200_cab10_rev, param_spritelength) {
-			1: ss_e2_series_cab10_rev_200_livery_10;			// Length 10
-			ss_e2_series_cab10_rev_200_livery_12;				// Length 12
+      switch (FEAT_TRAINS, SELF, sw_e2_series_200_cab10_rev, param_spritelength) {
+			1: ss_e2_series_cab10_rev_200_livery_10;			            // Length 10
+			ss_e2_series_cab10_rev_200_livery_12;				              // Length 12
 		}
 
     // "COAC2"
     spriteset(ss_e2_series_coac2_200_livery_12,                 "src/trains/dummy/empty.png") {template_dummy(0,0)}
     spriteset(ss_e2_series_coac2_rev_200_livery_12,             "src/trains/dummy/empty.png") {template_dummy(0,0)}
-    spriteset(ss_e2_series_coac2_200_livery_10,             	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_e2_series_coac2_200_livery_10,             	  "src/trains/dummy/empty.png") {template_dummy(0,0)}
     spriteset(ss_e2_series_coac2_rev_200_livery_10,             "src/trains/dummy/empty.png") {template_dummy(0,0)}
 
     alternative_sprites(ss_e2_series_coac2_200_livery_12,       ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e2_series/12/200_series_livery.png") {template_12_standard(1,161)}
     alternative_sprites(ss_e2_series_coac2_rev_200_livery_12,   ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e2_series/12/200_series_livery.png") {template_12_reversed(1,161)}
-    alternative_sprites(ss_e2_series_coac2_200_livery_10,       ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e2_series/10/200_series_livery.png") {template_10_standard(1,161)}
-    alternative_sprites(ss_e2_series_coac2_rev_200_livery_10,   ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e2_series/10/200_series_livery.png") {template_10_reversed(1,161)}
+    alternative_sprites(ss_e2_series_coac2_200_livery_10,       ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e2_series/10/200_series_livery.png") {template_10_standard(1,201)}
+    alternative_sprites(ss_e2_series_coac2_rev_200_livery_10,   ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e2_series/10/200_series_livery.png") {template_10_reversed(1,201)}
 
         switch (FEAT_TRAINS, SELF, sw_e2_series_200_coac2, param_spritelength) {
 			1: ss_e2_series_coac2_200_livery_10;			    // Length 10
@@ -72,8 +72,8 @@
 
     alternative_sprites(ss_e2_series_coac3_200_livery_12,       ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e2_series/12/200_series_livery.png") {template_12_standard(1,201)}
     alternative_sprites(ss_e2_series_coac3_rev_200_livery_12,   ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e2_series/12/200_series_livery.png") {template_12_reversed(1,201)}
-    alternative_sprites(ss_e2_series_coac3_200_livery_10,       ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e2_series/10/200_series_livery.png") {template_10_standard(1,201)}
-    alternative_sprites(ss_e2_series_coac3_rev_200_livery_10,    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e2_series/10/200_series_livery.png") {template_10_reversed(1,201)}
+    alternative_sprites(ss_e2_series_coac3_200_livery_10,       ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e2_series/10/200_series_livery.png") {template_10_standard(1,241)}
+    alternative_sprites(ss_e2_series_coac3_rev_200_livery_10,   ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e2_series/10/200_series_livery.png") {template_10_reversed(1,241)}
 
         switch (FEAT_TRAINS, SELF, sw_e2_series_200_coac3, param_spritelength) {
 			1: ss_e2_series_coac3_200_livery_10;			    // Length 10
@@ -93,8 +93,8 @@
 
     alternative_sprites(ss_e2_series_coac4_200_livery_12,       ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e2_series/12/200_series_livery.png") {template_12_standard(1,241)}
     alternative_sprites(ss_e2_series_coac4_rev_200_livery_12,   ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e2_series/12/200_series_livery.png") {template_12_reversed(1,241)}
-    alternative_sprites(ss_e2_series_coac4_200_livery_10,       ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e2_series/10/200_series_livery.png") {template_10_standard(1,241)}
-    alternative_sprites(ss_e2_series_coac4_rev_200_livery_10,    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e2_series/10/200_series_livery.png") {template_10_reversed(1,241)}
+    alternative_sprites(ss_e2_series_coac4_200_livery_10,       ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e2_series/10/200_series_livery.png") {template_10_standard(1,281)}
+    alternative_sprites(ss_e2_series_coac4_rev_200_livery_10,    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e2_series/10/200_series_livery.png") {template_10_reversed(1,281)}
 
         switch (FEAT_TRAINS, SELF, sw_e2_series_200_coac4, param_spritelength) {
 			1: ss_e2_series_coac4_200_livery_10;			    // Length 10
@@ -109,13 +109,13 @@
     // "PANTO"
     spriteset(ss_e2_series_panto_200_livery_12,                 "src/trains/dummy/empty.png") {template_dummy(0,0)}
     spriteset(ss_e2_series_panto_rev_200_livery_12,             "src/trains/dummy/empty.png") {template_dummy(0,0)}
-    spriteset(ss_e2_series_panto_200_livery_10,             	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_e2_series_panto_200_livery_10,             	  "src/trains/dummy/empty.png") {template_dummy(0,0)}
     spriteset(ss_e2_series_panto_rev_200_livery_10,             "src/trains/dummy/empty.png") {template_dummy(0,0)}
 
     alternative_sprites(ss_e2_series_panto_200_livery_12,       ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e2_series/12/200_series_livery.png") {template_12_standard(1,281)}
     alternative_sprites(ss_e2_series_panto_rev_200_livery_12,   ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e2_series/12/200_series_livery.png") {template_12_reversed(1,281)}
-    alternative_sprites(ss_e2_series_panto_200_livery_10,       ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e2_series/10/200_series_livery.png") {template_10_standard(1,281)}
-    alternative_sprites(ss_e2_series_panto_rev_200_livery_10,    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e2_series/10/200_series_livery.png") {template_10_reversed(1,281)}
+    alternative_sprites(ss_e2_series_panto_200_livery_10,       ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e2_series/10/200_series_livery.png") {template_10_standard(1,321)}
+    alternative_sprites(ss_e2_series_panto_rev_200_livery_10,   ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e2_series/10/200_series_livery.png") {template_10_reversed(1,321)}
 
         switch (FEAT_TRAINS, SELF, sw_e2_series_200_panto, param_spritelength) {
 			1: ss_e2_series_panto_200_livery_10;			    // Length 10
@@ -130,13 +130,13 @@
     // "COAC6"
     spriteset(ss_e2_series_coac6_200_livery_12,                 "src/trains/dummy/empty.png") {template_dummy(0,0)}
     spriteset(ss_e2_series_coac6_rev_200_livery_12,             "src/trains/dummy/empty.png") {template_dummy(0,0)}
-    spriteset(ss_e2_series_coac6_200_livery_10,             	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+    spriteset(ss_e2_series_coac6_200_livery_10,             	  "src/trains/dummy/empty.png") {template_dummy(0,0)}
     spriteset(ss_e2_series_coac6_rev_200_livery_10,             "src/trains/dummy/empty.png") {template_dummy(0,0)}
 
     alternative_sprites(ss_e2_series_coac6_200_livery_12,       ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e2_series/12/200_series_livery.png") {template_12_standard(1,321)}
     alternative_sprites(ss_e2_series_coac6_rev_200_livery_12,   ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e2_series/12/200_series_livery.png") {template_12_reversed(1,321)}
-    alternative_sprites(ss_e2_series_coac6_200_livery_10,       ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e2_series/10/200_series_livery.png") {template_10_standard(1,321)}
-    alternative_sprites(ss_e2_series_coac6_rev_200_livery_10,    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e2_series/10/200_series_livery.png") {template_10_reversed(1,321)}
+    alternative_sprites(ss_e2_series_coac6_200_livery_10,       ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e2_series/10/200_series_livery.png") {template_10_standard(1,361)}
+    alternative_sprites(ss_e2_series_coac6_rev_200_livery_10,   ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e2_series/10/200_series_livery.png") {template_10_reversed(1,361)}
 
         switch (FEAT_TRAINS, SELF, sw_e2_series_200_coac6, param_spritelength) {
 			1: ss_e2_series_coac6_200_livery_10;			    // Length 10
@@ -220,28 +220,28 @@
     switch (FEAT_TRAINS, SELF, sw_e2_series_200_irl_backwards, position_in_consist_from_end % 30) {				
 			1:  sw_e2_series_200_cab01_rev;
 			4:  sw_e2_series_200_coac2_rev;
-            7:  sw_e2_series_200_coac3_rev;	
-            10: sw_e2_series_200_coac4_rev;
-            13: sw_e2_series_200_panto_rev;
-            16: sw_e2_series_200_coac6_rev;
-            19: sw_e2_series_200_panto_rev;
-            22: sw_e2_series_200_coac4_rev;
-            25: sw_e2_series_200_coac3_rev;
-            28:	sw_e2_series_200_cab10;
-            dummy_sprites;
+      7:  sw_e2_series_200_coac3_rev;	
+      10: sw_e2_series_200_coac4_rev;
+      13: sw_e2_series_200_panto_rev;
+      16: sw_e2_series_200_coac6_rev;
+      19: sw_e2_series_200_panto_rev;
+      22: sw_e2_series_200_coac4_rev;
+      25: sw_e2_series_200_coac3_rev;
+      28:	sw_e2_series_200_cab10;
+      dummy_sprites;
 		}
     switch (FEAT_TRAINS, SELF, sw_e2_series_200_irl_forwards, position_in_consist % 30 ) {				
 			1:  sw_e2_series_200_cab01;
 			4:  sw_e2_series_200_coac2;
-            7:  sw_e2_series_200_coac3;	
-            10: sw_e2_series_200_coac4;
-            13: sw_e2_series_200_panto;
-            16: sw_e2_series_200_coac6;
-            19: sw_e2_series_200_panto;
-            22: sw_e2_series_200_coac4;
-            25: sw_e2_series_200_coac3;
-            28:	sw_e2_series_200_cab10_rev;
-            dummy_sprites;
+      7:  sw_e2_series_200_coac3;	
+      10: sw_e2_series_200_coac4;
+      13: sw_e2_series_200_panto;
+      16: sw_e2_series_200_coac6;
+      19: sw_e2_series_200_panto;
+      22: sw_e2_series_200_coac4;
+      25: sw_e2_series_200_coac3;
+      28:	sw_e2_series_200_cab10_rev;
+      dummy_sprites;
 		}
 
     // Reversed?
@@ -263,7 +263,7 @@
     // Check Length - IRL vs Other
     switch (FEAT_TRAINS, SELF, sw_e2_series_200_non_cabs, num_vehs_in_consist ) {				
 			1..29:  sw_e2_series_200_short;
-            30: sw_e2_series_200_irl;
+      30: sw_e2_series_200_irl;
 			sw_e2_series_200_long;				
 		}
 
