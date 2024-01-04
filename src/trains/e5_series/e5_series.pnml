@@ -248,9 +248,13 @@
 
 /* FORMATION */
 	// Panto positions going backwards
+	switch (FEAT_TRAINS, SELF, sw_e5_series_backwards_length_large_pantos, position_in_consist_from_end == 7) {				
+			1:  ss_e5_series_panto_rev;
+			ss_e5_series_panto;				
+		}
 	switch (FEAT_TRAINS, SELF, sw_e5_series_backwards_length_large, (position_in_consist == 10) || (position_in_consist_from_end == 7 )) {				
 			0:  ss_e5_series_coach_rev;
-			ss_e5_series_panto_rev;				
+			sw_e5_series_backwards_length_large_pantos;				
 		}
 	switch (FEAT_TRAINS, SELF, sw_e5_series_backwards_length_small, (position_in_consist == position_in_consist_from_end ) || (position_in_consist - 3 == position_in_consist_from_end) ) {				
 			0:  ss_e5_series_coach_rev;
@@ -261,9 +265,13 @@
 			sw_e5_series_backwards_length_small;				
 		}
 	// Panto positions going forwards
+	switch (FEAT_TRAINS, SELF, sw_e5_series_forwards_length_large_pantos, position_in_consist == 7) {				
+			1:  ss_e5_series_panto;
+			ss_e5_series_panto_rev;				
+		}
 	switch (FEAT_TRAINS, SELF, sw_e5_series_forwards_length_large, (position_in_consist == 7) || (position_in_consist_from_end == 10 )) {				
 			0:  ss_e5_series_coach;
-			ss_e5_series_panto;				
+			sw_e5_series_forwards_length_large_pantos;				
 		}
 	switch (FEAT_TRAINS, SELF, sw_e5_series_forwards_length_small, (position_in_consist == position_in_consist_from_end ) || (position_in_consist - 3 == position_in_consist_from_end) ) {				
 			0:  ss_e5_series_coach;

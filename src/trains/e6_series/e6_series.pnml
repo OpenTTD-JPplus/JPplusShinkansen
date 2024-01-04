@@ -4,7 +4,7 @@
 
 // Purchase Sprites
   spriteset (spriteset_e6_series_purchase,	        	  "src/trains/dummy/purchase.png") {tmpl_purchase_dh(0, 0)}
-  alternative_sprites(spriteset_e6_series_purchase,     ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e6_series/purchase.png") {tmpl_purchase_dh_32bpp(0, 0)}
+  alternative_sprites(spriteset_e6_series_purchase,     ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e6_series/purchase.png") {template_purchase(0, 0)}
     
 // Cab 
   spriteset(ss_e6_series_cabyf,                       "src/trains/dummy/mucar.png") {template_8_standard(1,1)}
@@ -13,9 +13,9 @@
   spriteset(ss_e6_series_cabrf,                       "src/trains/dummy/mucar.png") {template_8_standard(1,1)}
   
   alternative_sprites(ss_e6_series_cabyf,             ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e6_series/e6.png") {template_8_standard(1,1)}
-  alternative_sprites(ss_e6_series_cabrb,             ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e6_series/e6.png") {template_8_standard(1,41)}
+  alternative_sprites(ss_e6_series_cabrb,             ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e6_series/e6.png") {template_8_reversed(1,41)}
   alternative_sprites(ss_e6_series_cabyb,             ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e6_series/e6.png") {template_8_standard(1,81)}
-  alternative_sprites(ss_e6_series_cabrf,             ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e6_series/e6.png") {template_8_standard(1,121)}
+  alternative_sprites(ss_e6_series_cabrf,             ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e6_series/e6.png") {template_8_reversed(1,121)}
 
 // Coach
   spriteset(ss_e6_series_coach,                       "src/trains/dummy/mucar.png") {template_8_standard(1,1)}
