@@ -1,0 +1,65 @@
+/* Midcars */
+
+    // Midcars going backwards
+    switch (FEAT_TRAINS, SELF, sw_200_series_original_backwards, position_in_consist_from_end % 36) {				
+            4:  sw_200_series_pantob;
+            10: sw_200_series_pantob;
+            16: sw_200_series_pantob;
+            22: sw_200_series_pantob;
+            28: sw_200_series_pantob;
+            34: sw_200_series_pantob;
+            sw_200_series_coachb;				
+        }
+
+    // Midcars going forwards
+    switch (FEAT_TRAINS, SELF, sw_200_series_original_forwards, position_in_consist % 36) {				
+            4:  sw_200_series_pantof;
+            10: sw_200_series_pantof;
+            16: sw_200_series_pantof;
+            22: sw_200_series_pantof;
+            28: sw_200_series_pantof;
+            34: sw_200_series_pantof;
+            sw_200_series_coachf;				
+        }
+
+    // Is vehicle reversed?
+    switch (FEAT_TRAINS, PARENT, sw_200_series_original_midcars, vehicle_is_reversed) {				
+            0:  sw_200_series_original_forwards;
+            sw_200_series_original_backwards;				
+        }
+
+/* Cab selection */
+
+    // Rear cab
+    switch (FEAT_TRAINS, PARENT, sw_200_series_original_rear_not_reversed, num_vehs_in_consist % 2) {				
+            1:  sw_200_series_original_cab03f;                  // Odd
+            sw_200_series_original_cab02f;		                // Even		
+        }
+
+    switch (FEAT_TRAINS, PARENT, sw_200_series_original_rear, vehicle_is_reversed) {				
+            1:  sw_200_series_original_cab01b;                  // Must be cab01	
+            sw_200_series_original_rear_not_reversed;           // Not reversed - so choose odd or even	
+        }
+
+    // Lead cab
+    switch (FEAT_TRAINS, PARENT, sw_200_series_original_lead_reversed, num_vehs_in_consist % 2) {				
+            1:  sw_200_series_original_cab03b;                  // Odd
+            sw_200_series_original_cab02b;		                // Even		
+        }
+    
+    switch (FEAT_TRAINS, PARENT, sw_200_series_original_lead, vehicle_is_reversed) {				
+            1:  sw_200_series_original_lead_reversed;           // Reversed - so choose odd or even lead
+            sw_200_series_original_cab01f;                      // Must be cab01	
+        }
+
+
+/* Find the cabs */
+    switch (FEAT_TRAINS, SELF, sw_200_series_original_lead_or_rear, position_in_consist) {				
+            1:  sw_200_series_original_lead;
+            sw_200_series_original_rear;				
+        }
+    
+    switch (FEAT_TRAINS, SELF, sw_200_series_original_ends, position_in_consist == 1 || position_in_consist_from_end == 1) {				
+            1:  sw_200_series_original_lead_or_rear;
+            sw_200_series_original_midcars;				
+        }

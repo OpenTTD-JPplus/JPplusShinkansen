@@ -1,18 +1,5 @@
 /* Begin 200 Series Sharknose */
 
-/* GRAPHICS */
-
-	/* Purchase Menu */
-	spriteset (ss_200_series_buy_sharknose_livery_12,	        	"src/trains/dummy/purchase.png") {template_purchase(0, 0)}
-	spriteset (ss_200_series_buy_sharknose_livery_10,	        	"src/trains/dummy/purchase.png") {template_purchase(0, 0)}
-
-	alternative_sprites(ss_200_series_buy_sharknose_livery_12,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/12/purchase_sharknose.png") {template_purchase(0, 0)}
-	alternative_sprites(ss_200_series_buy_sharknose_livery_10,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/12/purchase_sharknose.png") {template_purchase(0, 0)}
-
-		switch (FEAT_TRAINS, SELF, ss_200_series_buy_sharknose_livery, param_spritelength) {
-			1: ss_200_series_buy_sharknose_livery_10;				// Length 10
-			ss_200_series_buy_sharknose_livery_12;					// Length 12
-		}
 
 	/* EMU Parts */
 
@@ -187,99 +174,5 @@ switch (FEAT_TRAINS, SELF, sw_200_series_sharknose_front, position_in_consist) {
 		sw_200_series_sharknose_back;				
 	}
 
-// GRAPHICS
-switch (FEAT_TRAINS, SELF, sw_200_series_sharknose_graphics, position_in_consist % 3) {				
-		1:  sw_200_series_sharknose_front; 				
-		dummy_sprites;
-	}
-
-switch (FEAT_TRAINS, SELF, sw_200_series_sharknose_articulated_part, extra_callback_info1) {
-		1 .. 2: return series_200_sharknose;									
-		return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
-	}
-
-/*---Coupling Switch---*/
-switch(FEAT_TRAINS, SELF, sw_200_series_sharknose_attach_vehid, [vehicle_type_id == mu_car_full]) {
- 0: return string(ONLY_ADD_MUCAR);
-}
-
-/*---Length Check---*/
-switch (FEAT_TRAINS, SELF, sw_200_series_sharknose_stop_start, num_vehs_in_consist < 12) {				
-		1:  return string(STR_LENGTH_ERROR); 				
-		return CB_RESULT_NO_TEXT; 
-	}
-
-item(FEAT_TRAINS, series_200_sharknose) {
-	property {
-		/* Menu */
-		name: 							string(STR_NAME_200_SERIES_SHARK);
-		sprite_id:                      SPRITE_ID_NEW_TRAIN; 		// required to enable new graphics
-		misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT);
-		running_cost_base:              RUNNING_COST_ELECTRIC;
-		engine_class:                   ENGINE_CLASS_ELECTRIC;
-		variant_group:					200;
-		/* Availability */
-		climates_available:             ALL_CLIMATES;
-		introduction_date:              date(1990,03,01);           // Date of launch
-		model_life:                     34;		                    // Until 2008
-		vehicle_life:                   30;							// 
-		track_type:                     SHINKANSEN;
-		extra_flags:					bitmask(VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW);
-		/* Cargo */
-		reliability_decay:              5;
-		refittable_cargo_classes:       bitmask(CC_PASSENGERS);
-		refit_cost:                     0;
-		default_cargo_type:             PASS;
-		ai_special_flag:                AI_FLAG_PASSENGER;
-		cargo_capacity:                 1;							// Changed by callback
-		loading_speed:                  50;							
-		cargo_age_period:               278; 						// 1.5 times normal for this expensive long-distance train
-		/* Stats */
-		speed:                          240 km/h;                   
-		power:                          8050 kW;					// Changed by callback
-		weight:                         1464 ton;                   // Changed by callback					
-		tractive_effort_coefficient:    0.3;
-		air_drag_coefficient:			0;
-	}
-	graphics {
-		/* Menu */
-		additional_text:                string(STR_DESC_200_SERIES_SHARK);
-		//cargo_subtype_text:             sw_200_series_sharknose_year_dep_subtype_text;
-		can_attach_wagon:				sw_200_series_sharknose_attach_vehid;
-		start_stop:						sw_200_series_sharknose_stop_start;
-		purchase_weight:                58;
-        purchase_power:                 308 * 4;
-		/* Graphics */
-		default:                        sw_200_series_sharknose_graphics;
-		purchase:                       ss_200_series_buy_sharknose_livery;
-		articulated_part:               sw_200_series_sharknose_articulated_part;
-		visual_effect_and_powered:      sw_visual_effect_and_powered;
-		/* Stats */
-		length:                         sw_param_length;
-        power:							NumberCarsInConsist() * 308 * 4 ;		// 230 kW
-		weight:							NumberCarsInConsist() * 58;
-        //speed:						240 km/h;
-		cargo_capacity:                 26 * CapacityFactor();										// 1230 capacity / (16 cars * 3 parts) is approx 26						
-		loading_speed:					26 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
-		cargo_age_period:				param_decay_express;
-		cost_factor:                    130;
-		running_cost_factor:            (295 + 125 * NumberCarsInConsist() ) * RunningCostFactor();
-		purchase_running_cost_factor:   295 + 125 * NumberCarsInConsist();
-		
-	}
-	/*Multiple Unit Car*/
-	
-      livery_override(mu_car_full){
-        default:                        sw_200_series_sharknose_graphics;
-        cargo_capacity:                 26 * CapacityFactor();	
-        cargo_age_period:				param_decay_express;
-        loading_speed:                  26 * CapacityFactor() / param_loading_2D;
-		articulated_part:				sw_mucar_full_articulated_part;
-		length:							sw_param_length;
-		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
-		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
-        //running_cost_factor:            sw_200_series_sharknose_running_costs;
-      }
-}
 
 /* End 200 Series Sharknose*/

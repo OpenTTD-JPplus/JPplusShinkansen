@@ -1,0 +1,57 @@
+/* 2dec1 */
+
+// FORWARDS
+
+// 200 Series Sharknose
+spriteset(ss_200_series_sharknose_2dec1f_12,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
+spriteset(ss_200_series_sharknose_2dec1f_10,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
+alternative_sprites(ss_200_series_sharknose_2dec1f_12,          ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/12/sharknose.png") {template_12_standard(1,161)}
+alternative_sprites(ss_200_series_sharknose_2dec1f_10,	        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/10/sharknose.png") {template_10_standard(1,161)}		
+
+switch (FEAT_TRAINS, SELF, sw_200_series_sharknose_2dec1f, param_spritelength) {
+	1: ss_200_series_sharknose_2dec1f_10;				        // Length 10
+	ss_200_series_sharknose_2dec1f_12;				            // Length 12
+}
+
+// 200 Series Sharknose 2cc
+spriteset(ss_200_series_sharknose_2dec1f_2cc_12,             	"src/trains/200_series/12/sharknose_2cc.png") {template_12_standard(1,161)}
+spriteset(ss_200_series_sharknose_2dec1f_2cc_10,             	"src/trains/200_series/10/sharknose_2cc.png") {template_10_standard(1,161)}
+
+switch (FEAT_TRAINS, SELF, sw_200_series_sharknose_2dec1f_2cc, param_spritelength) {
+	1: ss_200_series_sharknose_2dec1f_2cc_10;					// Length 10
+	ss_200_series_sharknose_2dec1f_2cc_12;						// Length 12
+}
+
+// Subtype Selection
+switch(FEAT_TRAINS, PARENT, sw_200_series_2dec1f, cargo_subtype) {
+        1: sw_200_series_sharknose_2dec1f_2cc;
+        sw_200_series_sharknose_2dec1f;
+    }
+
+// BACKWARDS
+
+// 200 Series Sharknose
+spriteset(ss_200_series_sharknose_2dec1b_12,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
+spriteset(ss_200_series_sharknose_2dec1b_10,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
+alternative_sprites(ss_200_series_sharknose_2dec1b_12,          ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/12/sharknose.png") {template_12_reversed(1,161)}
+alternative_sprites(ss_200_series_sharknose_2dec1b_10,	        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/10/sharknose.png") {template_10_reversed(1,161)}		
+
+switch (FEAT_TRAINS, SELF, sw_200_series_sharknose_2dec1b, param_spritelength) {
+	1: ss_200_series_sharknose_2dec1b_10;				        // Length 10
+	ss_200_series_sharknose_2dec1b_12;				            // Length 12
+}
+
+// 200 Series Sharknose 2cc
+spriteset(ss_200_series_sharknose_2dec1b_2cc_12,             	"src/trains/200_series/12/sharknose_2cc.png") {template_12_reversed(1,161)}
+spriteset(ss_200_series_sharknose_2dec1b_2cc_10,             	"src/trains/200_series/10/sharknose_2cc.png") {template_10_reversed(1,161)}
+
+switch (FEAT_TRAINS, SELF, sw_200_series_sharknose_2dec1b_2cc, param_spritelength) {
+	1: ss_200_series_sharknose_2dec1b_2cc_10;					// Length 10
+	ss_200_series_sharknose_2dec1b_2cc_12;						// Length 12
+}
+
+// Subtype Selection
+switch(FEAT_TRAINS, PARENT, sw_200_series_2dec1b, cargo_subtype) {
+        1: sw_200_series_sharknose_2dec1b_2cc;
+        sw_200_series_sharknose_2dec1b;
+    }

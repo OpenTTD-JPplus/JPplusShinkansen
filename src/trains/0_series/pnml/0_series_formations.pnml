@@ -1,0 +1,51 @@
+/* Midcars */
+
+switch (FEAT_TRAINS, SELF, sw_0_series_backwards, position_in_consist_from_end % 6) {				
+		4:  sw_0_series_pantob;
+		sw_0_series_coachb;				
+	}
+
+switch (FEAT_TRAINS, SELF, sw_0_series_forwards, position_in_consist % 6) {				
+		4:  sw_0_series_pantof;
+		sw_0_series_coachf;				
+	}
+
+switch (FEAT_TRAINS, PARENT, sw_0_series_midcars, vehicle_is_reversed) {				
+		0:  sw_0_series_forwards;
+		sw_0_series_backwards;				
+	}
+
+/* Cab selection */
+
+    // Rear cab
+    switch (FEAT_TRAINS, PARENT, sw_0_series_rear_not_reversed, num_vehs_in_consist % 2) {				
+            1:  sw_0_series_cab03f;                 // Odd
+            sw_0_series_cab02f;		                // Even		
+        }
+
+    switch (FEAT_TRAINS, PARENT, sw_0_series_rear, vehicle_is_reversed) {				
+            1:  sw_0_series_cab01b;                 // Must be cab01	
+            sw_0_series_rear_not_reversed;          // Not reversed - so choose odd or even	
+        }
+
+    // Lead cab
+    switch (FEAT_TRAINS, PARENT, sw_0_series_lead_reversed, num_vehs_in_consist % 2) {				
+            1:  sw_0_series_cab03b;                 // Odd
+            sw_0_series_cab02b;		                // Even		
+        }
+    
+    switch (FEAT_TRAINS, PARENT, sw_0_series_lead, vehicle_is_reversed) {				
+            1:  sw_0_series_lead_reversed;          // Reversed - so choose odd or even lead
+            sw_0_series_cab01f;                     // Must be cab01	
+        }
+
+/* Find the cabs */
+    switch (FEAT_TRAINS, SELF, sw_0_series_lead_or_rear, position_in_consist) {				
+            1:  sw_0_series_lead;
+            sw_0_series_rear;				
+        }
+    
+    switch (FEAT_TRAINS, SELF, sw_0_series_ends, position_in_consist == 1 || position_in_consist_from_end == 1) {				
+            1:  sw_0_series_lead_or_rear;
+            sw_0_series_midcars;				
+        }

@@ -65,6 +65,20 @@ template template_12_standard(x, y) {
     [ x+258,	y,		30,		29,		-10,		-19]
 }
 
+template template_12_cab_rev_standard(x, y) {
+    //left_x, upper_y, width, height, offset_x, offset_y
+	//							more negative to shift left
+	//											more negative to shift up
+    [ x+148,	y,		8,		36,		-3,			-18]
+    [ x+164,	y,		30,		29,		-18,		-19]
+    [ x+202,	y,		48,		16,		-24,		-12]
+    [ x+258,	y,		30,		29,		-10,		-19]
+    [ x,		y,		8,		36,		-3,			-18]
+    [ x+16,		y,		30,		29,		-18,		-19]
+    [ x+54,		y,		48,		16,		-24,		-12]
+    [ x+110,	y,		30,		29,		-10,		-19]
+}
+
 template template_12_reversed(x, y) {
     //left_x, upper_y, width, height, offset_x, offset_y
 	//							more negative to shift left
@@ -79,18 +93,47 @@ template template_12_reversed(x, y) {
     [ x+110,	y,		30,		29,		-10,		-19]
 }
 
+template template_12_cab_rev_reversed(x, y) {
+    //left_x, upper_y, width, height, offset_x, offset_y
+	//							more negative to shift left
+	//											more negative to shift up
+    [ x,		y,		8,		36,		-3,			-18]
+    [ x+16,		y,		30,		29,		-18,		-19]
+    [ x+54,		y,		48,		16,		-24,		-12]
+    [ x+110,	y,		30,		29,		-10,		-19]
+    [ x+148,	y,		8,		36,		-3,			-18]
+    [ x+164,	y,		30,		29,		-18,		-19]
+    [ x+202,	y,		48,		16,		-24,		-12]
+    [ x+258,	y,		30,		29,		-10,		-19]
+}
+
+
 template template_10_standard(x, y) {
     //left_x, upper_y, width, height, offset_x, offset_y
 	//							more negative to shift left
 	//											more negative to shift up
     [ x,		y,		8,		36,		-3,			-18]
-    [ x+16,		y,		26,		29,		-18,		-19]
+    [ x+16,		y,		26,		29,		-22,		-17]
     [ x+54,		y,		40,		16,		-20,		-12]
-    [ x+110,	y,		26,		29,		-12,		-22]
+    [ x+110,	y,		26,		29,		-6,		    -19]
     [ x+148,	y,		8,		36,		-3,			-18]
-    [ x+164,	y,		26,		29,		-18,		-19]
+    [ x+164,	y,		26,		29,		-20,		-18]
     [ x+202,	y,		40,		16,		-20,		-12]
-    [ x+258,	y,		26,		29,		-12,		-22]
+    [ x+258,	y,		26,		29,		-6,		    -19]
+}
+
+template template_10_cab_rev_standard(x, y) {
+    //left_x, upper_y, width, height, offset_x, offset_y
+	//							more negative to shift left
+	//											more negative to shift up
+    [ x+148,	y,		8,		36,		-3,			-18]
+    [ x+164,	y,		26,		29,		-22,		-17]
+    [ x+202,	y,		40,		16,		-20,		-12]
+    [ x+258,	y,		26,		29,		-6,		    -19]
+    [ x,    	y,		8,		36,		-3,			-18]
+    [ x+16, 	y,		26,		29,		-20,		-18]
+    [ x+54, 	y,		40,		16,		-20,		-12]
+    [ x+110,	y,		26,		29,		-6,		    -19]
 }
 
 template template_10_reversed(x, y) {
@@ -98,13 +141,27 @@ template template_10_reversed(x, y) {
 	//							more negative to shift left
 	//											more negative to shift up
     [ x+148,	y,		8,		36,		-3,			-18]
-    [ x+164,	y,		26,		29,		-18,		-19]
+    [ x+164,	y,		26,		29,		-24,		-16]
     [ x+202,	y,		40,		16,		-20,		-12]
-    [ x+258,	y,		26,		29,		-12,		-22]
+    [ x+258,	y,		26,		29,		-6,		    -19]
+    [ x,    	y,		8,		36,		-3,			-18]
+    [ x+16, 	y,		26,		29,		-22,		-17]
+    [ x+54, 	y,		40,		16,		-20,		-12]
+    [ x+110,	y,		26,		29,		-6,		    -19]
+}
+
+template template_10_cab_rev_reversed(x, y) {
+    //left_x, upper_y, width, height, offset_x, offset_y
+	//							more negative to shift left
+	//											more negative to shift up
     [ x,		y,		8,		36,		-3,			-18]
-    [ x+16,		y,		26,		29,		-18,		-19]
+    [ x+16,		y,		26,		29,		-24,		-16]
     [ x+54,		y,		40,		16,		-20,		-12]
-    [ x+110,	y,		26,		29,		-12,		-22]
+    [ x+110,	y,		26,		29,		-6,		    -19]
+    [ x+148,	y,		8,		36,		-3,			-18]
+    [ x+164,	y,		26,		29,		-22,		-17]
+    [ x+202,	y,		40,		16,		-20,		-12]
+    [ x+258,	y,		26,		29,		-6,		    -19]
 }
 
 /* 888888888888888888888888888888888888888888888888888888 */
