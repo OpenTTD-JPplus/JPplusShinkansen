@@ -1,0 +1,146 @@
+
+/* Smaller size */
+    // Backwards
+    switch (FEAT_TRAINS, SELF, sw_500_series_short_backwards, position_in_consist ) {				
+		4:  sw_500_series_pant7b;
+		7:  sw_500_series_coac6b;
+		10: sw_500_series_coac5b;
+		13: sw_500_series_coac4b;
+		16: sw_500_series_coac3b;
+        19: sw_500_series_pant2b;
+		dummy_sprites;			
+	}
+
+    // Forwards
+    switch (FEAT_TRAINS, SELF, sw_500_series_short_forwards, position_in_consist_from_end ) {				
+		4:  sw_500_series_pant7f;
+		7:  sw_500_series_coac6f;
+		10: sw_500_series_coac5f;
+		13: sw_500_series_coac4f;
+		16: sw_500_series_coac3f;
+        19: sw_500_series_pant2f;
+		dummy_sprites;			
+	}
+
+    // Direction
+    switch (FEAT_TRAINS, PARENT, sw_500_series_short, vehicle_is_reversed) {				
+            1:  sw_500_series_short_backwards;          // backwards
+            sw_500_series_short_forwards;               // forwards
+        }
+
+/* Longer with penultimate pantos */
+    // Coach cars
+        // Backwards
+        switch (FEAT_TRAINS, SELF, sw_500_series_ppa_coachcar_backwards, (position_in_consist_from_end - 6) % 12 ) {				
+                    1:  sw_500_series_coac3b;
+                    4:  sw_500_series_coac4b;
+                    7:  sw_500_series_coac5b;
+                    10: sw_500_series_coac6b;
+                    dummy_sprites;				
+                }
+
+        // Forwards
+        switch (FEAT_TRAINS, SELF, sw_500_series_ppa_coachcar_forwards, (position_in_consist - 6) % 12 ) {				
+                    1:  sw_500_series_coac3f;
+                    4:  sw_500_series_coac4f;
+                    7:  sw_500_series_coac5f;
+                    10: sw_500_series_coac6f;
+                    dummy_sprites;				
+                }
+
+        switch (FEAT_TRAINS, PARENT, sw_500_series_ppa_coachcar, vehicle_is_reversed) {				
+                    1:  sw_500_series_ppa_coachcar_backwards;                   
+                    sw_500_series_ppa_coachcar_forwards;                       	
+                }
+
+    // Panto cars
+        // Rear panto
+        switch (FEAT_TRAINS, PARENT, sw_500_series_rear_panto, vehicle_is_reversed) {				
+                1:  sw_500_series_pant2b;                  
+                sw_500_series_pant7f;                      
+            }
+        
+        // Lead panto
+        switch (FEAT_TRAINS, PARENT, sw_500_series_lead_panto, vehicle_is_reversed) {				
+                1:  sw_500_series_pant7b;                   
+                sw_500_series_pant2f;                       	
+            }
+
+        switch (FEAT_TRAINS, SELF, sw_500_series_ppa_pantocar, position_in_consist) {				
+                4:  sw_500_series_lead_panto;
+                sw_500_series_rear_panto;				
+            }
+    
+    // Panto or Coach?
+    switch (FEAT_TRAINS, SELF, sw_500_series_panto_penultimate_all, position_in_consist == 4 || position_in_consist_from_end == 4) {				
+            1:  sw_500_series_ppa_pantocar;
+            sw_500_series_ppa_coachcar;				
+        }
+
+/* Longer adjustable pantos */
+    // Backwards
+        switch (FEAT_TRAINS, SELF, sw_500_series_long_stable_state_backwards_pantos, position_in_consist_from_end == 13 ) {				
+                1:  sw_500_series_pant2b;
+                sw_500_series_pant7b;				
+            }
+
+        switch (FEAT_TRAINS, SELF, sw_500_series_long_stable_state_backwards, position_in_consist_from_end == 13 || position_in_consist == 10 ) {				
+                1:  sw_500_series_long_stable_state_backwards_pantos;
+                sw_500_series_coac3b;				
+            }
+    
+    // Forwards
+        switch (FEAT_TRAINS, SELF, sw_500_series_long_stable_state_forwards_pantos, position_in_consist == 13 ) {				
+                1:  sw_500_series_pant2f;
+                sw_500_series_pant7f;				
+            }
+
+        switch (FEAT_TRAINS, SELF, sw_500_series_long_stable_state_forwards, position_in_consist == 13 || position_in_consist_from_end == 10 ) {				
+                1:  sw_500_series_long_stable_state_forwards_pantos;
+                sw_500_series_coac3f;				
+            }
+
+    switch (FEAT_TRAINS, PARENT, sw_500_series_long_stable_state, vehicle_is_reversed) {				
+            1:  sw_500_series_long_stable_state_backwards;
+            sw_500_series_long_stable_state_forwards;			
+        }
+
+/* Midcar subtype */
+    switch (FEAT_TRAINS, SELF, sw_500_series_panto_adj, num_vehs_in_consist ) {				
+			1..45:  sw_500_series_panto_penultimate_all;
+			sw_500_series_long_stable_state;				
+		}
+
+    switch (FEAT_TRAINS, PARENT, sw_500_series_long, cargo_subtype ) {				
+			0..1:  sw_500_series_panto_adj;
+			sw_500_series_panto_penultimate_all;				
+		}
+
+    switch (FEAT_TRAINS, SELF, sw_500_series_midcars, num_vehs_in_consist ) {				
+			1..24:  sw_500_series_short;
+			sw_500_series_long;				
+		}
+
+/* Cab selection */
+    // Rear cab
+    switch (FEAT_TRAINS, PARENT, sw_500_series_rear, vehicle_is_reversed) {				
+            1:  sw_500_series_cab01b;                   // cab01	
+            sw_500_series_cab02f;                       // cab02
+        }
+
+    // Lead cab
+    switch (FEAT_TRAINS, PARENT, sw_500_series_lead, vehicle_is_reversed) {				
+            1:  sw_500_series_cab02b;                   // cab02
+            sw_500_series_cab01f;                       // cab01	
+        }
+
+/* Find the cabs */
+    switch (FEAT_TRAINS, SELF, sw_500_series_lead_or_rear, position_in_consist) {				
+            1:  sw_500_series_lead;
+            sw_500_series_rear;				
+        }
+    
+    switch (FEAT_TRAINS, SELF, sw_500_series_ends, position_in_consist == 1 || position_in_consist_from_end == 1) {				
+            1:  sw_500_series_lead_or_rear;
+            sw_500_series_midcars;				
+        }
