@@ -3715,13 +3715,15 @@ item(FEAT_TRAINS, series_n700s) {
 /* End N700S series */
 # 1 "JPplusShinkansen.pnml" 4
 # 1 "src/trains/700_series/700_series.pnml" 1
-/* Begin 700 Series */
 
+# 1 "src/trains/700_series/pnml/700_series_menu.pnml" 1
 /* SUBTYPES */
 
     switch(FEAT_TRAINS, SELF, sw_700_series_subtype_text, cargo_subtype) {
 	    0: return string(LV_700_SERIES_ORIGINAL);
-        1: return string(LV_700_SERIES_HIKARI);
+        1: return string(LV_700_SERIES_ORIGINAL_2CC);
+        2: return string(LV_700_SERIES_HIKARI);
+        3: return string(LV_700_SERIES_HIKARI_2CC);
         return CB_RESULT_NO_TEXT;
         }
 
@@ -3737,242 +3739,626 @@ item(FEAT_TRAINS, series_n700s) {
 			1: ss_700_series_buy_10;								// Length 10
 			ss_700_series_buy_12;									// Length 12
 		}
+# 1 "src/trains/700_series/700_series.pnml" 2
+# 1 "src/trains/700_series/pnml/sprites/700_series_cab01.pnml" 1
+/* cab01 */
 
-    /* EMU Parts */
+// FORWARDS
 
-    /* "CAB" */
-    spriteset(ss_700_series_cab_original_livery_12,             	"src/trains/dummy/empty.png") {template_dummy(0,0)}
-    spriteset(ss_700_series_cab_rev_original_livery_12,             "src/trains/dummy/empty.png") {template_dummy(0,0)}
-    spriteset(ss_700_series_cab_hikari_livery_12,             		"src/trains/dummy/empty.png") {template_dummy(0,0)}
-    spriteset(ss_700_series_cab_rev_hikari_livery_12,             	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+// 700 Series Original
+spriteset(ss_700_series_cab01f_original_12,          	    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+spriteset(ss_700_series_cab01f_original_10,          	    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+alternative_sprites(ss_700_series_cab01f_original_12,       ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/12/original.png") {template_12_standard(1,1)}
+alternative_sprites(ss_700_series_cab01f_original_10,	    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/10/original.png") {template_10_standard(1,1)}		
 
-	spriteset(ss_700_series_cab_original_livery_10,             	"src/trains/dummy/empty.png") {template_dummy(0,0)}
-    spriteset(ss_700_series_cab_rev_original_livery_10,             "src/trains/dummy/empty.png") {template_dummy(0,0)}
-    spriteset(ss_700_series_cab_hikari_livery_10,             		"src/trains/dummy/empty.png") {template_dummy(0,0)}
-    spriteset(ss_700_series_cab_rev_hikari_livery_10,             	"src/trains/dummy/empty.png") {template_dummy(0,0)}
+switch (FEAT_TRAINS, SELF, sw_700_series_cab01f_original, param_spritelength) {
+	1: ss_700_series_cab01f_original_10;				    // Length 10
+	ss_700_series_cab01f_original_12;				        // Length 12
+}
 
-    // 700 Series Original Strip Livery
-    alternative_sprites(ss_700_series_cab_original_livery_12,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/12/original.png") {template_12_standard(1,1)}
-    alternative_sprites(ss_700_series_cab_rev_original_livery_12,  	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/12/original.png") {template_12_reversed(1,41)}
-	alternative_sprites(ss_700_series_cab_original_livery_10,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/10/original.png") {template_10_standard(1,1)}
-    alternative_sprites(ss_700_series_cab_rev_original_livery_10,  	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/10/original.png") {template_10_reversed(1,41)}		
+// 700 Series 2cc
+spriteset(ss_700_series_cab01f_original_2cc_12,             "src/trains/700_series/12/original_2cc.png") {template_12_standard(1,1)}
+spriteset(ss_700_series_cab01f_original_2cc_10,             "src/trains/700_series/10/original_2cc.png") {template_10_standard(1,1)}
 
-    // 700 Series Hikari Strip Livery
-    alternative_sprites(ss_700_series_cab_hikari_livery_12,        	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/12/hikari.png") {template_12_standard(1,1)}
-    alternative_sprites(ss_700_series_cab_rev_hikari_livery_12,     ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/12/hikari.png") {template_12_reversed(1,41)}
-	alternative_sprites(ss_700_series_cab_hikari_livery_10,        	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/10/hikari.png") {template_10_standard(1,1)}
-    alternative_sprites(ss_700_series_cab_rev_hikari_livery_10,     ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/10/hikari.png") {template_10_reversed(1,41)}
+switch (FEAT_TRAINS, SELF, sw_700_series_cab01f_original_2cc, param_spritelength) {
+	1: ss_700_series_cab01f_original_2cc_10;				 // Length 10
+	ss_700_series_cab01f_original_2cc_12;					 // Length 12
+}
 
-		switch (FEAT_TRAINS, SELF, ss_700_series_cab_original_livery, param_spritelength) {
-			1: ss_700_series_cab_original_livery_10;				// Length 10
-			ss_700_series_cab_original_livery_12;					// Length 12
-		}
+// 700 Series Hikari Rail Star
+spriteset(ss_700_series_cab01f_hikari_12,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
+spriteset(ss_700_series_cab01f_hikari_10,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
+alternative_sprites(ss_700_series_cab01f_hikari_12,         ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/12/hikari.png") {template_12_standard(1,1)}
+alternative_sprites(ss_700_series_cab01f_hikari_10,	        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/10/hikari.png") {template_10_standard(1,1)}		
 
-		switch (FEAT_TRAINS, SELF, ss_700_series_cab_rev_original_livery, param_spritelength) {
-			1: ss_700_series_cab_rev_original_livery_10;			// Length 10
-			ss_700_series_cab_rev_original_livery_12;				// Length 12
-		}
+switch (FEAT_TRAINS, SELF, sw_700_series_cab01f_hikari, param_spritelength) {
+	1: ss_700_series_cab01f_hikari_10;				        // Length 10
+	ss_700_series_cab01f_hikari_12;				            // Length 12
+}
 
-		switch (FEAT_TRAINS, SELF, ss_700_series_cab_hikari_livery, param_spritelength) {
-			1: ss_700_series_cab_hikari_livery_10;					// Length 10
-			ss_700_series_cab_hikari_livery_12;						// Length 12
-		}
+// 700 Series Hikari Rail Star cc
+spriteset(ss_700_series_cab01f_hikari_2cc_12,             	"src/trains/700_series/12/hikari_2cc.png") {template_12_standard(1,1)}
+spriteset(ss_700_series_cab01f_hikari_2cc_10,             	"src/trains/700_series/10/hikari_2cc.png") {template_10_standard(1,1)}
 
-		switch (FEAT_TRAINS, SELF, ss_700_series_cab_rev_hikari_livery, param_spritelength) {
-			1: ss_700_series_cab_rev_hikari_livery_10;				// Length 10
-			ss_700_series_cab_rev_hikari_livery_12;					// Length 12
-		}
+switch (FEAT_TRAINS, SELF, sw_700_series_cab01f_hikari_2cc, param_spritelength) {
+	1: ss_700_series_cab01f_hikari_2cc_10;				     // Length 10
+	ss_700_series_cab01f_hikari_2cc_12;					     // Length 12
+}
 
-    /* COACH */
-    spriteset(ss_700_series_coach_original_livery_12,             	"src/trains/dummy/empty.png") {template_dummy(0,0)}
-    spriteset(ss_700_series_coach_rev_original_livery_12,    		"src/trains/dummy/empty.png") {template_dummy(0,0)}
-    spriteset(ss_700_series_coach_hikari_livery_12,             	"src/trains/dummy/empty.png") {template_dummy(0,0)}
-    spriteset(ss_700_series_coach_rev_hikari_livery_12,    		    "src/trains/dummy/empty.png") {template_dummy(0,0)}
-
-	spriteset(ss_700_series_coach_original_livery_10,             	"src/trains/dummy/empty.png") {template_dummy(0,0)}
-    spriteset(ss_700_series_coach_rev_original_livery_10,    		"src/trains/dummy/empty.png") {template_dummy(0,0)}
-    spriteset(ss_700_series_coach_hikari_livery_10,             	"src/trains/dummy/empty.png") {template_dummy(0,0)}
-    spriteset(ss_700_series_coach_rev_hikari_livery_10,    		    "src/trains/dummy/empty.png") {template_dummy(0,0)}
-
-    // 700 Series Original Strip Livery
-    alternative_sprites(ss_700_series_coach_original_livery_12,     ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/12/original.png") {template_12_standard(1,121)}
-    alternative_sprites(ss_700_series_coach_rev_original_livery_12, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/12/original.png") {template_12_reversed(1,121)}
-	alternative_sprites(ss_700_series_coach_original_livery_10,     ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/10/original.png") {template_10_standard(1,121)}
-    alternative_sprites(ss_700_series_coach_rev_original_livery_10, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/10/original.png") {template_10_reversed(1,121)}
-
-    // 700 Series Hikari Strip Livery
-    alternative_sprites(ss_700_series_coach_hikari_livery_12,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/12/hikari.png") {template_12_standard(1,121)}
-    alternative_sprites(ss_700_series_coach_rev_hikari_livery_12,  	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/12/hikari.png") {template_12_reversed(1,121)}
-	alternative_sprites(ss_700_series_coach_hikari_livery_10,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/10/hikari.png") {template_10_standard(1,121)}
-    alternative_sprites(ss_700_series_coach_rev_hikari_livery_10,  	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/10/hikari.png") {template_10_reversed(1,121)}	
-
-		switch (FEAT_TRAINS, SELF, ss_700_series_coach_original_livery, param_spritelength) {
-			1: ss_700_series_coach_original_livery_10;				// Length 10
-			ss_700_series_coach_original_livery_12;					// Length 12
-		}
-
-		switch (FEAT_TRAINS, SELF, ss_700_series_coach_rev_original_livery, param_spritelength) {
-			1: ss_700_series_coach_rev_original_livery_10;			// Length 10
-			ss_700_series_coach_rev_original_livery_12;				// Length 12
-		}
-
-		switch (FEAT_TRAINS, SELF, ss_700_series_coach_hikari_livery, param_spritelength) {
-			1: ss_700_series_coach_hikari_livery_10;				// Length 10
-			ss_700_series_coach_hikari_livery_12;					// Length 12
-		}
-
-		switch (FEAT_TRAINS, SELF, ss_700_series_coach_rev_hikari_livery, param_spritelength) {
-			1: ss_700_series_coach_rev_hikari_livery_10;			// Length 10
-			ss_700_series_coach_rev_hikari_livery_12;				// Length 12
-		}
-
-    /* PANTO */
-    spriteset(ss_700_series_panto_original_livery_12,          		"src/trains/dummy/empty.png") {template_dummy(0,0)}
-    spriteset(ss_700_series_panto_rev_original_livery_12, 		    "src/trains/dummy/empty.png") {template_dummy(0,0)}
-    spriteset(ss_700_series_panto_hikari_livery_12,          		"src/trains/dummy/empty.png") {template_dummy(0,0)}
-    spriteset(ss_700_series_panto_rev_hikari_livery_12, 		    "src/trains/dummy/empty.png") {template_dummy(0,0)}
-
-	spriteset(ss_700_series_panto_original_livery_10,          		"src/trains/dummy/empty.png") {template_dummy(0,0)}
-    spriteset(ss_700_series_panto_rev_original_livery_10, 		    "src/trains/dummy/empty.png") {template_dummy(0,0)}
-    spriteset(ss_700_series_panto_hikari_livery_10,          		"src/trains/dummy/empty.png") {template_dummy(0,0)}
-    spriteset(ss_700_series_panto_rev_hikari_livery_10, 		    "src/trains/dummy/empty.png") {template_dummy(0,0)}
-
-    // 700 Series Original Strip Livery
-    alternative_sprites(ss_700_series_panto_original_livery_12,     ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/12/original.png") {template_12_standard(1,81)}
-    alternative_sprites(ss_700_series_panto_rev_original_livery_12, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/12/original.png") {template_12_reversed(1,81)}
-	alternative_sprites(ss_700_series_panto_original_livery_10,     ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/10/original.png") {template_10_standard(1,81)}
-    alternative_sprites(ss_700_series_panto_rev_original_livery_10, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/10/original.png") {template_10_reversed(1,81)}	
-
-    // 700 Series Hikari Strip Livery
-    alternative_sprites(ss_700_series_panto_hikari_livery_12,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/12/hikari.png") {template_12_standard(1,81)}
-    alternative_sprites(ss_700_series_panto_rev_hikari_livery_12,   ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/12/hikari.png") {template_12_reversed(1,81)}
-	alternative_sprites(ss_700_series_panto_hikari_livery_10,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/10/hikari.png") {template_10_standard(1,81)}
-    alternative_sprites(ss_700_series_panto_rev_hikari_livery_10,   ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/10/hikari.png") {template_10_reversed(1,81)}		
-
-		switch (FEAT_TRAINS, SELF, ss_700_series_panto_original_livery, param_spritelength) {
-			1: ss_700_series_panto_original_livery_10;				// Length 10
-			ss_700_series_panto_original_livery_12;					// Length 12
-		}
-
-		switch (FEAT_TRAINS, SELF, ss_700_series_panto_rev_original_livery, param_spritelength) {
-			1: ss_700_series_panto_rev_original_livery_10;			// Length 10
-			ss_700_series_panto_rev_original_livery_12;				// Length 12
-		}
-
-		switch (FEAT_TRAINS, SELF, ss_700_series_panto_hikari_livery, param_spritelength) {
-			1: ss_700_series_panto_hikari_livery_10;				// Length 10
-			ss_700_series_panto_hikari_livery_12;					// Length 12
-		}
-
-		switch (FEAT_TRAINS, SELF, ss_700_series_panto_rev_hikari_livery, param_spritelength) {
-			1: ss_700_series_panto_rev_hikari_livery_10;			// Length 10
-			ss_700_series_panto_rev_hikari_livery_12;				// Length 12
-		}
-
-/* LIVERIES */
-
-  	// CAB
-
-    switch(FEAT_TRAINS, PARENT, ss_700_series_cab, cargo_subtype) {
-        1: ss_700_series_cab_hikari_livery;
-        ss_700_series_cab_original_livery;
+// Subtype Selection
+switch(FEAT_TRAINS, PARENT, sw_700_series_cab01f, cargo_subtype) {
+        1: sw_700_series_cab01f_original_2cc;
+        2: sw_700_series_cab01f_hikari;
+        3: sw_700_series_cab01f_hikari_2cc;
+        sw_700_series_cab01f_original;
     }
 
-    switch(FEAT_TRAINS, PARENT, ss_700_series_cab_rev, cargo_subtype) {
-        1: ss_700_series_cab_rev_hikari_livery;
-        ss_700_series_cab_rev_original_livery;
+// BACKWARDS
+
+// 700 Series Original
+spriteset(ss_700_series_cab01b_original_12,          	    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+spriteset(ss_700_series_cab01b_original_10,          	    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+alternative_sprites(ss_700_series_cab01b_original_12,       ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/12/original.png") {template_12_reversed(1,41)}
+alternative_sprites(ss_700_series_cab01b_original_10,	    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/10/original.png") {template_10_reversed(1,41)}		
+
+switch (FEAT_TRAINS, SELF, sw_700_series_cab01b_original, param_spritelength) {
+	1: ss_700_series_cab01b_original_10;				    // Length 10
+	ss_700_series_cab01b_original_12;				        // Length 12
+}
+
+// 700 Series Original 2cc
+spriteset(ss_700_series_cab01b_original_2cc_12,             "src/trains/700_series/12/original_2cc.png") {template_12_reversed(1,41)}
+spriteset(ss_700_series_cab01b_original_2cc_10,             "src/trains/700_series/10/original_2cc.png") {template_10_reversed(1,41)}
+
+switch (FEAT_TRAINS, SELF, sw_700_series_cab01b_original_2cc, param_spritelength) {
+	1: ss_700_series_cab01b_original_2cc_10;				 // Length 10
+	ss_700_series_cab01b_original_2cc_12;					 // Length 12
+}
+
+// 700 Series Type EVA
+spriteset(ss_700_series_cab01b_hikari_12,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
+spriteset(ss_700_series_cab01b_hikari_10,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
+alternative_sprites(ss_700_series_cab01b_hikari_12,         ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/12/hikari.png") {template_12_reversed(1,41)}
+alternative_sprites(ss_700_series_cab01b_hikari_10,	        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/10/hikari.png") {template_10_reversed(1,41)}		
+
+switch (FEAT_TRAINS, SELF, sw_700_series_cab01b_hikari, param_spritelength) {
+	1: ss_700_series_cab01b_hikari_10;				            // Length 10
+	ss_700_series_cab01b_hikari_12;				            // Length 12
+}
+
+// 700 Series Hikari 2cc
+spriteset(ss_700_series_cab01b_hikari_2cc_12,             "src/trains/700_series/12/hikari_2cc.png") {template_12_reversed(1,41)}
+spriteset(ss_700_series_cab01b_hikari_2cc_10,             "src/trains/700_series/10/hikari_2cc.png") {template_10_reversed(1,41)}
+
+switch (FEAT_TRAINS, SELF, sw_700_series_cab01b_hikari_2cc, param_spritelength) {
+	1: ss_700_series_cab01b_hikari_2cc_10;				 // Length 10
+	ss_700_series_cab01b_hikari_2cc_12;					 // Length 12
+}
+
+// Subtype Selection
+switch(FEAT_TRAINS, PARENT, sw_700_series_cab01b, cargo_subtype) {
+        1: sw_700_series_cab01b_original_2cc;
+        2: sw_700_series_cab01b_hikari;
+        3: sw_700_series_cab01b_hikari_2cc;
+        sw_700_series_cab01b_original;
+    }
+# 1 "src/trains/700_series/700_series.pnml" 2
+# 1 "src/trains/700_series/pnml/sprites/700_series_cab02.pnml" 1
+/* cab02 */
+
+// FORWARDS
+
+// 700 Series Original
+spriteset(ss_700_series_cab02f_original_12,          	    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+spriteset(ss_700_series_cab02f_original_10,          	    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+alternative_sprites(ss_700_series_cab02f_original_12,       ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/12/original.png") {template_12_cab_rev_standard(1,41)}
+alternative_sprites(ss_700_series_cab02f_original_10,	    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/10/original.png") {template_10_cab_rev_standard(1,41)}		
+
+switch (FEAT_TRAINS, SELF, sw_700_series_cab02f_original, param_spritelength) {
+	1: ss_700_series_cab02f_original_10;				    // Length 10
+	ss_700_series_cab02f_original_12;				        // Length 12
+}
+
+// 700 Series 2cc
+spriteset(ss_700_series_cab02f_original_2cc_12,             "src/trains/700_series/12/original_2cc.png") {template_12_cab_rev_standard(1,41)}
+spriteset(ss_700_series_cab02f_original_2cc_10,             "src/trains/700_series/10/original_2cc.png") {template_10_cab_rev_standard(1,41)}
+
+switch (FEAT_TRAINS, SELF, sw_700_series_cab02f_original_2cc, param_spritelength) {
+	1: ss_700_series_cab02f_original_2cc_10;				 // Length 10
+	ss_700_series_cab02f_original_2cc_12;					 // Length 12
+}
+
+// 700 Series Hikari Rail Star
+spriteset(ss_700_series_cab02f_hikari_12,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
+spriteset(ss_700_series_cab02f_hikari_10,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
+alternative_sprites(ss_700_series_cab02f_hikari_12,         ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/12/hikari.png") {template_12_cab_rev_standard(1,41)}
+alternative_sprites(ss_700_series_cab02f_hikari_10,	        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/10/hikari.png") {template_10_cab_rev_standard(1,41)}		
+
+switch (FEAT_TRAINS, SELF, sw_700_series_cab02f_hikari, param_spritelength) {
+	1: ss_700_series_cab02f_hikari_10;				        // Length 10
+	ss_700_series_cab02f_hikari_12;				            // Length 12
+}
+
+// 700 Series Hikari Rail Star cc
+spriteset(ss_700_series_cab02f_hikari_2cc_12,             	"src/trains/700_series/12/hikari_2cc.png") {template_12_cab_rev_standard(1,41)}
+spriteset(ss_700_series_cab02f_hikari_2cc_10,             	"src/trains/700_series/10/hikari_2cc.png") {template_10_cab_rev_standard(1,41)}
+
+switch (FEAT_TRAINS, SELF, sw_700_series_cab02f_hikari_2cc, param_spritelength) {
+	1: ss_700_series_cab02f_hikari_2cc_10;				     // Length 10
+	ss_700_series_cab02f_hikari_2cc_12;					     // Length 12
+}
+
+// Subtype Selection
+switch(FEAT_TRAINS, PARENT, sw_700_series_cab02f, cargo_subtype) {
+        1: sw_700_series_cab02f_original_2cc;
+        2: sw_700_series_cab02f_hikari;
+        3: sw_700_series_cab02f_hikari_2cc;
+        sw_700_series_cab02f_original;
     }
 
-    // COACH
+// BACKWARDS
 
-    switch(FEAT_TRAINS, PARENT, ss_700_series_coach, cargo_subtype) {
-        1: ss_700_series_coach_hikari_livery;
-        ss_700_series_coach_original_livery;
+// 700 Series Original
+spriteset(ss_700_series_cab02b_original_12,          	    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+spriteset(ss_700_series_cab02b_original_10,          	    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+alternative_sprites(ss_700_series_cab02b_original_12,       ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/12/original.png") {template_12_cab_rev_reversed(1,1)}
+alternative_sprites(ss_700_series_cab02b_original_10,	    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/10/original.png") {template_10_cab_rev_reversed(1,1)}		
+
+switch (FEAT_TRAINS, SELF, sw_700_series_cab02b_original, param_spritelength) {
+	1: ss_700_series_cab02b_original_10;				    // Length 10
+	ss_700_series_cab02b_original_12;				        // Length 12
+}
+
+// 700 Series Original 2cc
+spriteset(ss_700_series_cab02b_original_2cc_12,             "src/trains/700_series/12/original_2cc.png") {template_12_cab_rev_reversed(1,1)}
+spriteset(ss_700_series_cab02b_original_2cc_10,             "src/trains/700_series/10/original_2cc.png") {template_10_cab_rev_reversed(1,1)}
+
+switch (FEAT_TRAINS, SELF, sw_700_series_cab02b_original_2cc, param_spritelength) {
+	1: ss_700_series_cab02b_original_2cc_10;				 // Length 10
+	ss_700_series_cab02b_original_2cc_12;					 // Length 12
+}
+
+// 700 Series Type EVA
+spriteset(ss_700_series_cab02b_hikari_12,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
+spriteset(ss_700_series_cab02b_hikari_10,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
+alternative_sprites(ss_700_series_cab02b_hikari_12,         ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/12/hikari.png") {template_12_cab_rev_reversed(1,1)}
+alternative_sprites(ss_700_series_cab02b_hikari_10,	        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/10/hikari.png") {template_10_cab_rev_reversed(1,1)}		
+
+switch (FEAT_TRAINS, SELF, sw_700_series_cab02b_hikari, param_spritelength) {
+	1: ss_700_series_cab02b_hikari_10;				            // Length 10
+	ss_700_series_cab02b_hikari_12;				            // Length 12
+}
+
+// 700 Series Hikari 2cc
+spriteset(ss_700_series_cab02b_hikari_2cc_12,             "src/trains/700_series/12/hikari_2cc.png") {template_12_cab_rev_reversed(1,1)}
+spriteset(ss_700_series_cab02b_hikari_2cc_10,             "src/trains/700_series/10/hikari_2cc.png") {template_10_cab_rev_reversed(1,1)}
+
+switch (FEAT_TRAINS, SELF, sw_700_series_cab02b_hikari_2cc, param_spritelength) {
+	1: ss_700_series_cab02b_hikari_2cc_10;				 // Length 10
+	ss_700_series_cab02b_hikari_2cc_12;					 // Length 12
+}
+
+// Subtype Selection
+switch(FEAT_TRAINS, PARENT, sw_700_series_cab02b, cargo_subtype) {
+        1: sw_700_series_cab02b_original_2cc;
+        2: sw_700_series_cab02b_hikari;
+        3: sw_700_series_cab02b_hikari_2cc;
+        sw_700_series_cab02b_original;
+    }
+# 1 "src/trains/700_series/700_series.pnml" 2
+# 1 "src/trains/700_series/pnml/sprites/700_series_coach.pnml" 1
+/* coach */
+
+// FORWARDS
+
+// 700 Series Original
+spriteset(ss_700_series_coachf_original_12,          	    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+spriteset(ss_700_series_coachf_original_10,          	    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+alternative_sprites(ss_700_series_coachf_original_12,       ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/12/original.png") {template_12_standard(1,121)}
+alternative_sprites(ss_700_series_coachf_original_10,	    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/10/original.png") {template_10_standard(1,121)}		
+
+switch (FEAT_TRAINS, SELF, sw_700_series_coachf_original, param_spritelength) {
+	1: ss_700_series_coachf_original_10;				    // Length 10
+	ss_700_series_coachf_original_12;				        // Length 12
+}
+
+// 700 Series 2cc
+spriteset(ss_700_series_coachf_original_2cc_12,             "src/trains/700_series/12/original_2cc.png") {template_12_standard(1,121)}
+spriteset(ss_700_series_coachf_original_2cc_10,             "src/trains/700_series/10/original_2cc.png") {template_10_standard(1,121)}
+
+switch (FEAT_TRAINS, SELF, sw_700_series_coachf_original_2cc, param_spritelength) {
+	1: ss_700_series_coachf_original_2cc_10;				 // Length 10
+	ss_700_series_coachf_original_2cc_12;					 // Length 12
+}
+
+// 700 Series Hikari Rail Star
+spriteset(ss_700_series_coachf_hikari_12,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
+spriteset(ss_700_series_coachf_hikari_10,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
+alternative_sprites(ss_700_series_coachf_hikari_12,         ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/12/hikari.png") {template_12_standard(1,121)}
+alternative_sprites(ss_700_series_coachf_hikari_10,	        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/10/hikari.png") {template_10_standard(1,121)}		
+
+switch (FEAT_TRAINS, SELF, sw_700_series_coachf_hikari, param_spritelength) {
+	1: ss_700_series_coachf_hikari_10;				        // Length 10
+	ss_700_series_coachf_hikari_12;				            // Length 12
+}
+
+// 700 Series Hikari Rail Star cc
+spriteset(ss_700_series_coachf_hikari_2cc_12,             	"src/trains/700_series/12/hikari_2cc.png") {template_12_standard(1,121)}
+spriteset(ss_700_series_coachf_hikari_2cc_10,             	"src/trains/700_series/10/hikari_2cc.png") {template_10_standard(1,121)}
+
+switch (FEAT_TRAINS, SELF, sw_700_series_coachf_hikari_2cc, param_spritelength) {
+	1: ss_700_series_coachf_hikari_2cc_10;				     // Length 10
+	ss_700_series_coachf_hikari_2cc_12;					     // Length 12
+}
+
+// Subtype Selection
+switch(FEAT_TRAINS, PARENT, sw_700_series_coachf, cargo_subtype) {
+        1: sw_700_series_coachf_original_2cc;
+        2: sw_700_series_coachf_hikari;
+        3: sw_700_series_coachf_hikari_2cc;
+        sw_700_series_coachf_original;
     }
 
-    switch(FEAT_TRAINS, PARENT, ss_700_series_coach_rev, cargo_subtype) {
-        1: ss_700_series_coach_rev_hikari_livery;
-        ss_700_series_coach_rev_original_livery;
+// BACKWARDS
+
+// 700 Series Original
+spriteset(ss_700_series_coachb_original_12,          	    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+spriteset(ss_700_series_coachb_original_10,          	    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+alternative_sprites(ss_700_series_coachb_original_12,       ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/12/original.png") {template_12_reversed(1,121)}
+alternative_sprites(ss_700_series_coachb_original_10,	    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/10/original.png") {template_10_reversed(1,121)}		
+
+switch (FEAT_TRAINS, SELF, sw_700_series_coachb_original, param_spritelength) {
+	1: ss_700_series_coachb_original_10;				    // Length 10
+	ss_700_series_coachb_original_12;				        // Length 12
+}
+
+// 700 Series Original 2cc
+spriteset(ss_700_series_coachb_original_2cc_12,             "src/trains/700_series/12/original_2cc.png") {template_12_reversed(1,121)}
+spriteset(ss_700_series_coachb_original_2cc_10,             "src/trains/700_series/10/original_2cc.png") {template_10_reversed(1,121)}
+
+switch (FEAT_TRAINS, SELF, sw_700_series_coachb_original_2cc, param_spritelength) {
+	1: ss_700_series_coachb_original_2cc_10;				 // Length 10
+	ss_700_series_coachb_original_2cc_12;					 // Length 12
+}
+
+// 700 Series Type EVA
+spriteset(ss_700_series_coachb_hikari_12,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
+spriteset(ss_700_series_coachb_hikari_10,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
+alternative_sprites(ss_700_series_coachb_hikari_12,         ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/12/hikari.png") {template_12_reversed(1,121)}
+alternative_sprites(ss_700_series_coachb_hikari_10,	        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/10/hikari.png") {template_10_reversed(1,121)}		
+
+switch (FEAT_TRAINS, SELF, sw_700_series_coachb_hikari, param_spritelength) {
+	1: ss_700_series_coachb_hikari_10;				            // Length 10
+	ss_700_series_coachb_hikari_12;				            // Length 12
+}
+
+// 700 Series Hikari 2cc
+spriteset(ss_700_series_coachb_hikari_2cc_12,             "src/trains/700_series/12/hikari_2cc.png") {template_12_reversed(1,121)}
+spriteset(ss_700_series_coachb_hikari_2cc_10,             "src/trains/700_series/10/hikari_2cc.png") {template_10_reversed(1,121)}
+
+switch (FEAT_TRAINS, SELF, sw_700_series_coachb_hikari_2cc, param_spritelength) {
+	1: ss_700_series_coachb_hikari_2cc_10;				 // Length 10
+	ss_700_series_coachb_hikari_2cc_12;					 // Length 12
+}
+
+// Subtype Selection
+switch(FEAT_TRAINS, PARENT, sw_700_series_coachb, cargo_subtype) {
+        1: sw_700_series_coachb_original_2cc;
+        2: sw_700_series_coachb_hikari;
+        3: sw_700_series_coachb_hikari_2cc;
+        sw_700_series_coachb_original;
+    }
+# 1 "src/trains/700_series/700_series.pnml" 2
+# 1 "src/trains/700_series/pnml/sprites/700_series_pant1.pnml" 1
+/* pant1 */
+
+// FORWARDS
+
+// 700 Series Original
+spriteset(ss_700_series_pant1f_original_12,          	    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+spriteset(ss_700_series_pant1f_original_10,          	    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+alternative_sprites(ss_700_series_pant1f_original_12,       ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/12/original.png") {template_12_standard(1,81)}
+alternative_sprites(ss_700_series_pant1f_original_10,	    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/10/original.png") {template_10_standard(1,81)}		
+
+switch (FEAT_TRAINS, SELF, sw_700_series_pant1f_original, param_spritelength) {
+	1: ss_700_series_pant1f_original_10;				    // Length 10
+	ss_700_series_pant1f_original_12;				        // Length 12
+}
+
+// 700 Series 2cc
+spriteset(ss_700_series_pant1f_original_2cc_12,             "src/trains/700_series/12/original_2cc.png") {template_12_standard(1,81)}
+spriteset(ss_700_series_pant1f_original_2cc_10,             "src/trains/700_series/10/original_2cc.png") {template_10_standard(1,81)}
+
+switch (FEAT_TRAINS, SELF, sw_700_series_pant1f_original_2cc, param_spritelength) {
+	1: ss_700_series_pant1f_original_2cc_10;				 // Length 10
+	ss_700_series_pant1f_original_2cc_12;					 // Length 12
+}
+
+// 700 Series Hikari Rail Star
+spriteset(ss_700_series_pant1f_hikari_12,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
+spriteset(ss_700_series_pant1f_hikari_10,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
+alternative_sprites(ss_700_series_pant1f_hikari_12,         ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/12/hikari.png") {template_12_standard(1,81)}
+alternative_sprites(ss_700_series_pant1f_hikari_10,	        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/10/hikari.png") {template_10_standard(1,81)}		
+
+switch (FEAT_TRAINS, SELF, sw_700_series_pant1f_hikari, param_spritelength) {
+	1: ss_700_series_pant1f_hikari_10;				        // Length 10
+	ss_700_series_pant1f_hikari_12;				            // Length 12
+}
+
+// 700 Series Hikari Rail Star cc
+spriteset(ss_700_series_pant1f_hikari_2cc_12,             	"src/trains/700_series/12/hikari_2cc.png") {template_12_standard(1,81)}
+spriteset(ss_700_series_pant1f_hikari_2cc_10,             	"src/trains/700_series/10/hikari_2cc.png") {template_10_standard(1,81)}
+
+switch (FEAT_TRAINS, SELF, sw_700_series_pant1f_hikari_2cc, param_spritelength) {
+	1: ss_700_series_pant1f_hikari_2cc_10;				     // Length 10
+	ss_700_series_pant1f_hikari_2cc_12;					     // Length 12
+}
+
+// Subtype Selection
+switch(FEAT_TRAINS, PARENT, sw_700_series_pant1f, cargo_subtype) {
+        1: sw_700_series_pant1f_original_2cc;
+        2: sw_700_series_pant1f_hikari;
+        3: sw_700_series_pant1f_hikari_2cc;
+        sw_700_series_pant1f_original;
     }
 
-    // PANTO
+// BACKWARDS
 
-    switch(FEAT_TRAINS, PARENT, ss_700_series_panto, cargo_subtype) {
-        1: ss_700_series_panto_hikari_livery;
-        ss_700_series_panto_original_livery;
+// 700 Series Original
+spriteset(ss_700_series_pant1b_original_12,          	    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+spriteset(ss_700_series_pant1b_original_10,          	    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+alternative_sprites(ss_700_series_pant1b_original_12,       ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/12/original.png") {template_12_reversed(1,81)}
+alternative_sprites(ss_700_series_pant1b_original_10,	    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/10/original.png") {template_10_reversed(1,81)}		
+
+switch (FEAT_TRAINS, SELF, sw_700_series_pant1b_original, param_spritelength) {
+	1: ss_700_series_pant1b_original_10;				    // Length 10
+	ss_700_series_pant1b_original_12;				        // Length 12
+}
+
+// 700 Series Original 2cc
+spriteset(ss_700_series_pant1b_original_2cc_12,             "src/trains/700_series/12/original_2cc.png") {template_12_reversed(1,81)}
+spriteset(ss_700_series_pant1b_original_2cc_10,             "src/trains/700_series/10/original_2cc.png") {template_10_reversed(1,81)}
+
+switch (FEAT_TRAINS, SELF, sw_700_series_pant1b_original_2cc, param_spritelength) {
+	1: ss_700_series_pant1b_original_2cc_10;				 // Length 10
+	ss_700_series_pant1b_original_2cc_12;					 // Length 12
+}
+
+// 700 Series Type EVA
+spriteset(ss_700_series_pant1b_hikari_12,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
+spriteset(ss_700_series_pant1b_hikari_10,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
+alternative_sprites(ss_700_series_pant1b_hikari_12,         ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/12/hikari.png") {template_12_reversed(1,81)}
+alternative_sprites(ss_700_series_pant1b_hikari_10,	        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/10/hikari.png") {template_10_reversed(1,81)}		
+
+switch (FEAT_TRAINS, SELF, sw_700_series_pant1b_hikari, param_spritelength) {
+	1: ss_700_series_pant1b_hikari_10;				            // Length 10
+	ss_700_series_pant1b_hikari_12;				            // Length 12
+}
+
+// 700 Series Hikari 2cc
+spriteset(ss_700_series_pant1b_hikari_2cc_12,             "src/trains/700_series/12/hikari_2cc.png") {template_12_reversed(1,81)}
+spriteset(ss_700_series_pant1b_hikari_2cc_10,             "src/trains/700_series/10/hikari_2cc.png") {template_10_reversed(1,81)}
+
+switch (FEAT_TRAINS, SELF, sw_700_series_pant1b_hikari_2cc, param_spritelength) {
+	1: ss_700_series_pant1b_hikari_2cc_10;				 // Length 10
+	ss_700_series_pant1b_hikari_2cc_12;					 // Length 12
+}
+
+// Subtype Selection
+switch(FEAT_TRAINS, PARENT, sw_700_series_pant1b, cargo_subtype) {
+        1: sw_700_series_pant1b_original_2cc;
+        2: sw_700_series_pant1b_hikari;
+        3: sw_700_series_pant1b_hikari_2cc;
+        sw_700_series_pant1b_original;
+    }
+# 1 "src/trains/700_series/700_series.pnml" 2
+# 1 "src/trains/700_series/pnml/sprites/700_series_pant2.pnml" 1
+/* pant2 */
+
+// FORWARDS
+
+// 700 Series Original
+spriteset(ss_700_series_pant2f_original_12,          	    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+spriteset(ss_700_series_pant2f_original_10,          	    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+alternative_sprites(ss_700_series_pant2f_original_12,       ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/12/original.png") {template_12_cab_rev_standard(1,81)}
+alternative_sprites(ss_700_series_pant2f_original_10,	    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/10/original.png") {template_10_cab_rev_standard(1,81)}		
+
+switch (FEAT_TRAINS, SELF, sw_700_series_pant2f_original, param_spritelength) {
+	1: ss_700_series_pant2f_original_10;				    // Length 10
+	ss_700_series_pant2f_original_12;				        // Length 12
+}
+
+// 700 Series 2cc
+spriteset(ss_700_series_pant2f_original_2cc_12,             "src/trains/700_series/12/original_2cc.png") {template_12_cab_rev_standard(1,81)}
+spriteset(ss_700_series_pant2f_original_2cc_10,             "src/trains/700_series/10/original_2cc.png") {template_10_cab_rev_standard(1,81)}
+
+switch (FEAT_TRAINS, SELF, sw_700_series_pant2f_original_2cc, param_spritelength) {
+	1: ss_700_series_pant2f_original_2cc_10;				 // Length 10
+	ss_700_series_pant2f_original_2cc_12;					 // Length 12
+}
+
+// 700 Series Hikari Rail Star
+spriteset(ss_700_series_pant2f_hikari_12,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
+spriteset(ss_700_series_pant2f_hikari_10,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
+alternative_sprites(ss_700_series_pant2f_hikari_12,         ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/12/hikari.png") {template_12_cab_rev_standard(1,81)}
+alternative_sprites(ss_700_series_pant2f_hikari_10,	        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/10/hikari.png") {template_10_cab_rev_standard(1,81)}		
+
+switch (FEAT_TRAINS, SELF, sw_700_series_pant2f_hikari, param_spritelength) {
+	1: ss_700_series_pant2f_hikari_10;				        // Length 10
+	ss_700_series_pant2f_hikari_12;				            // Length 12
+}
+
+// 700 Series Hikari Rail Star cc
+spriteset(ss_700_series_pant2f_hikari_2cc_12,             	"src/trains/700_series/12/hikari_2cc.png") {template_12_cab_rev_standard(1,81)}
+spriteset(ss_700_series_pant2f_hikari_2cc_10,             	"src/trains/700_series/10/hikari_2cc.png") {template_10_cab_rev_standard(1,81)}
+
+switch (FEAT_TRAINS, SELF, sw_700_series_pant2f_hikari_2cc, param_spritelength) {
+	1: ss_700_series_pant2f_hikari_2cc_10;				     // Length 10
+	ss_700_series_pant2f_hikari_2cc_12;					     // Length 12
+}
+
+// Subtype Selection
+switch(FEAT_TRAINS, PARENT, sw_700_series_pant2f, cargo_subtype) {
+        1: sw_700_series_pant2f_original_2cc;
+        2: sw_700_series_pant2f_hikari;
+        3: sw_700_series_pant2f_hikari_2cc;
+        sw_700_series_pant2f_original;
     }
 
-    switch(FEAT_TRAINS, PARENT, ss_700_series_panto_rev, cargo_subtype) {
-        1: ss_700_series_panto_rev_hikari_livery;
-        ss_700_series_panto_rev_original_livery;
+// BACKWARDS
+
+// 700 Series Original
+spriteset(ss_700_series_pant2b_original_12,          	    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+spriteset(ss_700_series_pant2b_original_10,          	    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+alternative_sprites(ss_700_series_pant2b_original_12,       ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/12/original.png") {template_12_cab_rev_reversed(1,81)}
+alternative_sprites(ss_700_series_pant2b_original_10,	    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/10/original.png") {template_10_cab_rev_reversed(1,81)}		
+
+switch (FEAT_TRAINS, SELF, sw_700_series_pant2b_original, param_spritelength) {
+	1: ss_700_series_pant2b_original_10;				    // Length 10
+	ss_700_series_pant2b_original_12;				        // Length 12
+}
+
+// 700 Series Original 2cc
+spriteset(ss_700_series_pant2b_original_2cc_12,             "src/trains/700_series/12/original_2cc.png") {template_12_cab_rev_reversed(1,81)}
+spriteset(ss_700_series_pant2b_original_2cc_10,             "src/trains/700_series/10/original_2cc.png") {template_10_cab_rev_reversed(1,81)}
+
+switch (FEAT_TRAINS, SELF, sw_700_series_pant2b_original_2cc, param_spritelength) {
+	1: ss_700_series_pant2b_original_2cc_10;				 // Length 10
+	ss_700_series_pant2b_original_2cc_12;					 // Length 12
+}
+
+// 700 Series Type EVA
+spriteset(ss_700_series_pant2b_hikari_12,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
+spriteset(ss_700_series_pant2b_hikari_10,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
+alternative_sprites(ss_700_series_pant2b_hikari_12,         ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/12/hikari.png") {template_12_cab_rev_reversed(1,81)}
+alternative_sprites(ss_700_series_pant2b_hikari_10,	        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/10/hikari.png") {template_10_cab_rev_reversed(1,81)}		
+
+switch (FEAT_TRAINS, SELF, sw_700_series_pant2b_hikari, param_spritelength) {
+	1: ss_700_series_pant2b_hikari_10;				            // Length 10
+	ss_700_series_pant2b_hikari_12;				            // Length 12
+}
+
+// 700 Series Hikari 2cc
+spriteset(ss_700_series_pant2b_hikari_2cc_12,             "src/trains/700_series/12/hikari_2cc.png") {template_12_cab_rev_reversed(1,81)}
+spriteset(ss_700_series_pant2b_hikari_2cc_10,             "src/trains/700_series/10/hikari_2cc.png") {template_10_cab_rev_reversed(1,81)}
+
+switch (FEAT_TRAINS, SELF, sw_700_series_pant2b_hikari_2cc, param_spritelength) {
+	1: ss_700_series_pant2b_hikari_2cc_10;				 // Length 10
+	ss_700_series_pant2b_hikari_2cc_12;					 // Length 12
+}
+
+// Subtype Selection
+switch(FEAT_TRAINS, PARENT, sw_700_series_pant2b, cargo_subtype) {
+        1: sw_700_series_pant2b_original_2cc;
+        2: sw_700_series_pant2b_hikari;
+        3: sw_700_series_pant2b_hikari_2cc;
+        sw_700_series_pant2b_original;
     }
+# 1 "src/trains/700_series/700_series.pnml" 2
+# 1 "src/trains/700_series/pnml/700_series_formations.pnml" 1
 
+/* Midcars */
+    // coaches    
+        switch (FEAT_TRAINS, PARENT, sw_700_series_coaches, vehicle_is_reversed) {				
+                1:  sw_700_series_coachb;
+                sw_700_series_coachf;			
+            }
 
-/* FORMATIONS */
+    /* long */
+        switch (FEAT_TRAINS, SELF, sw_700_series_long_panto_backwards, position_in_consist_from_end == 13 ) {				
+                1:  sw_700_series_pant1b;
+                sw_700_series_pant2b;				
+            }
 
-// Forwards
-switch (FEAT_TRAINS, SELF, sw_700_series_forwards_5th_and_4_from_end, position_in_consist == 13 || position_in_consist_from_end  == 10) {				
-		0:  ss_700_series_coach;
-		ss_700_series_panto;				
-	}
+        switch (FEAT_TRAINS, SELF, sw_700_series_long_panto_forwards, position_in_consist == 13 ) {				
+                1:  sw_700_series_pant1f;
+                sw_700_series_pant2f;				
+            }
+        
+        switch (FEAT_TRAINS, PARENT, sw_700_series_long_panto_positions, vehicle_is_reversed) {				
+                1:  sw_700_series_long_panto_backwards;
+                sw_700_series_long_panto_forwards;			
+            }
 
-switch (FEAT_TRAINS, SELF, sw_700_series_forwards_2nd_and_penultimate, position_in_consist == 4 || position_in_consist_from_end  == 4) {				
-		0:  ss_700_series_coach;
-		ss_700_series_panto;				
-	}
+        switch (FEAT_TRAINS, SELF, sw_700_series_long, position_in_consist == 13 || position_in_consist_from_end == 13) {				
+                1:  sw_700_series_long_panto_positions;
+                sw_700_series_coaches;				
+            }
 
-switch (FEAT_TRAINS, SELF, sw_700_series_forwards_panto_in_middle, (position_in_consist == position_in_consist_from_end ) || (position_in_consist - 3 == position_in_consist_from_end)) {				
-		0:  ss_700_series_coach;
-		ss_700_series_panto;				
-	}
+    /* penultimate pantos */
+        switch (FEAT_TRAINS, SELF, sw_700_series_penultimate_panto_backwards, position_in_consist_from_end == 4 ) {				
+                1:  sw_700_series_pant1b;
+                sw_700_series_pant2b;				
+            }
 
-switch (FEAT_TRAINS, SELF, sw_700_series_forwards, num_vehs_in_consist ) {				
-		0..21:  sw_700_series_forwards_panto_in_middle;
-		22..24: sw_700_series_forwards_2nd_and_penultimate;
-        25..35: sw_700_series_forwards_panto_in_middle;
-        sw_700_series_forwards_5th_and_4_from_end;
-	}
+        switch (FEAT_TRAINS, SELF, sw_700_series_penultimate_panto_forwards, position_in_consist == 4 ) {				
+                1:  sw_700_series_pant1f;
+                sw_700_series_pant2f;				
+            }
+        
+        switch (FEAT_TRAINS, PARENT, sw_700_series_penultimate_panto_positions, vehicle_is_reversed) {				
+                1:  sw_700_series_penultimate_panto_backwards;
+                sw_700_series_penultimate_panto_forwards;			
+            }
 
-// Backwards
-switch (FEAT_TRAINS, SELF, sw_700_series_backwards_5th_and_4_from_end, position_in_consist == 10 || position_in_consist_from_end  == 13) {				
-		0:  ss_700_series_coach_rev;
-		ss_700_series_panto_rev;				
-	}
+        switch (FEAT_TRAINS, SELF, sw_700_series_penultimate_pantos, position_in_consist == 4 || position_in_consist_from_end == 4) {				
+                1:  sw_700_series_penultimate_panto_positions;
+                sw_700_series_coaches;				
+            }
 
-switch (FEAT_TRAINS, SELF, sw_700_series_backwards_2nd_and_penultimate, position_in_consist == 4 || position_in_consist_from_end  == 4) {				
-		0:  ss_700_series_coach_rev;
-		ss_700_series_panto_rev;				
-	}
+    /* panto_in_middle */
+        // Backwards
+        switch (FEAT_TRAINS, SELF, sw_700_series_panto_in_middle_backwards, (position_in_consist == position_in_consist_from_end ) || (position_in_consist - 3 == position_in_consist_from_end)) {				
+                0:  sw_700_series_coachb;
+                sw_700_series_pant1b;
+            }
 
-switch (FEAT_TRAINS, SELF, sw_700_series_backwards_panto_in_middle, (position_in_consist == position_in_consist_from_end ) || (position_in_consist - 3 == position_in_consist_from_end)) {				
-		0:  ss_700_series_coach_rev;
-		ss_700_series_panto_rev;				
-	}
+        // Forwards
+        switch (FEAT_TRAINS, SELF, sw_700_series_panto_in_middle_forwards, (position_in_consist == position_in_consist_from_end ) || (position_in_consist - 3 == position_in_consist_from_end)) {				
+                0:  sw_700_series_coachf;
+                sw_700_series_pant1f;				
+            }
 
-switch (FEAT_TRAINS, SELF, sw_700_series_backwards, num_vehs_in_consist ) {				
-		0..21:  sw_700_series_backwards_panto_in_middle;
-		22..24: sw_700_series_backwards_2nd_and_penultimate;
-        25..35: sw_700_series_backwards_panto_in_middle;
-        sw_700_series_backwards_5th_and_4_from_end;
-	}
+        switch (FEAT_TRAINS, PARENT, sw_700_series_panto_in_middle, vehicle_is_reversed) {				
+                1:  sw_700_series_panto_in_middle_backwards;
+                sw_700_series_panto_in_middle_forwards;				
+            }
 
-switch (FEAT_TRAINS, PARENT, sw_700_series_midcars, vehicle_is_reversed) {				
-		0:  sw_700_series_forwards;
-		sw_700_series_backwards;				
-	}
+    /* Midcar selection */
+    switch (FEAT_TRAINS, SELF, sw_700_series_midcars, num_vehs_in_consist ) {				
+			1..21:  sw_700_series_panto_in_middle;
+            22..39:  sw_700_series_penultimate_pantos;
+			sw_700_series_long;				
+		}
 
-switch (FEAT_TRAINS, SELF, sw_700_series_back, position_in_consist_from_end) {				
-		1:  ss_700_series_cab_rev;
-		sw_700_series_midcars;				
-	}
+/* Cab selection */
+    // Rear cab
+    switch (FEAT_TRAINS, PARENT, sw_700_series_rear, vehicle_is_reversed) {				
+            1:  sw_700_series_cab01b;                   // cab01	
+            sw_700_series_cab02f;                       // cab02
+        }
 
-switch (FEAT_TRAINS, SELF, sw_700_series_front, position_in_consist) {				
-		1:  ss_700_series_cab;
-		sw_700_series_back;				
-	}
+    // Lead cab
+    switch (FEAT_TRAINS, PARENT, sw_700_series_lead, vehicle_is_reversed) {				
+            1:  sw_700_series_cab02b;                   // cab02
+            sw_700_series_cab01f;                       // cab01	
+        }
+
+/* Find the cabs */
+    switch (FEAT_TRAINS, SELF, sw_700_series_lead_or_rear, position_in_consist) {				
+            1:  sw_700_series_lead;
+            sw_700_series_rear;				
+        }
+    
+    switch (FEAT_TRAINS, SELF, sw_700_series_ends, position_in_consist == 1 || position_in_consist_from_end == 1) {				
+            1:  sw_700_series_lead_or_rear;
+            sw_700_series_midcars;				
+        }
+# 1 "src/trains/700_series/700_series.pnml" 2
+# 1 "src/trains/700_series/pnml/700_series_item.pnml" 1
 
 switch (FEAT_TRAINS, SELF, sw_700_series_graphics, position_in_consist % 3) {				
-		1:  sw_700_series_front; 				
+		1:  sw_700_series_ends; 				
 		dummy_sprites;
 	}
 
@@ -4060,8 +4446,8 @@ item(FEAT_TRAINS, series_700) {
         //running_cost_factor:            sw_700_series_running_costs;
       }
 }
+# 1 "src/trains/700_series/700_series.pnml" 2
 
-/* End 700 series */
 # 1 "JPplusShinkansen.pnml" 4
 # 1 "src/trains/700_series/923_series.pnml" 1
 /* Begin 923 Series */
