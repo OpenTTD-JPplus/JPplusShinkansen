@@ -1,0 +1,90 @@
+// Sprites or Dummy Sprites
+switch (FEAT_TRAINS, SELF, sw_500_series_graphics, position_in_consist % 3) {				
+	    1:  sw_500_series_ends; 				
+	    dummy_sprites;
+	}
+// Articulation
+switch (FEAT_TRAINS, SELF, sw_500_series_articulated_part, extra_callback_info1) {
+		1 .. 2: return series_500;									
+		return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+	}
+
+/*---Coupling Switch---*/
+switch(FEAT_TRAINS, SELF, sw_500_series_attach_vehid, [vehicle_type_id == mu_car_full]) {
+        0: return string(ONLY_ADD_MUCAR);
+    }
+
+/*---Length Check---*/
+switch (FEAT_TRAINS, SELF, sw_500_series_stop_start, num_vehs_in_consist < 12) {				
+		1:  return string(STR_LENGTH_ERROR); 				
+		return CB_RESULT_NO_TEXT; 
+	}
+
+item(FEAT_TRAINS, series_500) {
+	property {
+		/* Menu */
+		name: 							string(STR_NAME_500_SERIES);
+		sprite_id:                      SPRITE_ID_NEW_TRAIN; 		// required to enable new graphics
+		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT);
+		running_cost_base:              RUNNING_COST_ELECTRIC;
+		engine_class:                   ENGINE_CLASS_ELECTRIC;
+		/* Availability */
+		climates_available:             ALL_CLIMATES;
+		introduction_date:              date(1997,03,01);
+		model_life:                     VEHICLE_NEVER_EXPIRES;		//
+		vehicle_life:                   30;							// 
+		track_type:                     SHINKANSEN;
+		/* Cargo */
+		reliability_decay:              5;
+		refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+		refit_cost:                     0;
+		default_cargo_type:             PASS;
+		ai_special_flag:                AI_FLAG_PASSENGER;
+		cargo_capacity:                 1;							// 
+		loading_speed:                  50;							
+		cargo_age_period:               278; 						// 1.5 times normal for this expensive long-distance train
+		/* Stats */
+		speed:                          301 km/h;				
+		power:                          18240 kW;	                // Changed by callback		
+		weight:                         42*16 tons;	                // Changed by callback			
+		tractive_effort_coefficient:    0.3;                        // Standard
+		air_drag_coefficient:			0;
+	}
+	graphics {
+		/* Menu */
+		additional_text:                string(STR_DESC_500_SERIES);
+		cargo_subtype_text:             sw_500_series_subtype_text;
+		can_attach_wagon:				sw_500_series_attach_vehid;
+		start_stop:						sw_500_series_stop_start;
+		purchase_weight:                42;
+        purchase_power:                 382 * 4;
+		/* Graphics */
+		default:                        sw_500_series_graphics;
+		purchase:                       ss_500_series_buy;
+		articulated_part:               sw_500_series_articulated_part;
+		visual_effect_and_powered:      sw_visual_effect_and_powered;
+		/* Stats */
+		length:                         sw_param_length;
+		weight:							NumberCarsInConsist() * 42;
+		power:							NumberCarsInConsist() * 382 * 4;	// 285 kW
+		cargo_capacity:                 28 * CapacityFactor();															
+		loading_speed:					28 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
+		cargo_age_period:				param_decay_express;
+		cost_factor:                    145;
+		running_cost_factor:            (303 + 127 * NumberCarsInConsist() ) * RunningCostFactor();
+		purchase_running_cost_factor:   303 + 127 * NumberCarsInConsist();	
+	}
+	/*Multiple Unit Car*/
+	
+      livery_override(mu_car_full){
+        default:                        sw_500_series_graphics;
+        cargo_capacity:                 28 * CapacityFactor();
+        cargo_age_period:				param_decay_express;
+        loading_speed:					28 * CapacityFactor() / param_loading_2D;
+		articulated_part:				sw_mucar_full_articulated_part;
+		length:							sw_param_length;
+		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
+		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
+        //running_cost_factor:            sw_500_series_running_costs;
+      }
+}

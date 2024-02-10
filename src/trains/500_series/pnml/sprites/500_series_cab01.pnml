@@ -1,0 +1,105 @@
+/* cab01 */
+
+// FORWARDS
+
+// 500 Series Original
+spriteset(ss_500_series_cab01f_original_12,          	    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+spriteset(ss_500_series_cab01f_original_10,          	    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+alternative_sprites(ss_500_series_cab01f_original_12,       ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/500_series/12/500_series.png") {template_12_standard(1,1)}
+alternative_sprites(ss_500_series_cab01f_original_10,	    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/500_series/10/500_series.png") {template_10_standard(1,1)}		
+
+switch (FEAT_TRAINS, SELF, sw_500_series_cab01f_original, param_spritelength) {
+	1: ss_500_series_cab01f_original_10;				    // Length 10
+	ss_500_series_cab01f_original_12;				        // Length 12
+}
+
+// 500 Series 2cc
+spriteset(ss_500_series_cab01f_2cc_12,             	        "src/trains/500_series/12/500_series_2cc.png") {template_12_standard(1,1)}
+spriteset(ss_500_series_cab01f_2cc_10,             	        "src/trains/500_series/10/500_series_2cc.png") {template_10_standard(1,1)}
+
+switch (FEAT_TRAINS, SELF, sw_500_series_cab01f_2cc, param_spritelength) {
+	1: ss_500_series_cab01f_2cc_10;				            // Length 10
+	ss_500_series_cab01f_2cc_12;					        // Length 12
+}
+
+// 500 Series Type EVA
+spriteset(ss_500_series_cab01f_eva_12,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
+spriteset(ss_500_series_cab01f_eva_10,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
+alternative_sprites(ss_500_series_cab01f_eva_12,            ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/500_series/12/500_series_eva.png") {template_12_standard(1,1)}
+alternative_sprites(ss_500_series_cab01f_eva_10,	        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/500_series/10/500_series_eva.png") {template_10_standard(1,1)}		
+
+switch (FEAT_TRAINS, SELF, sw_500_series_cab01f_eva, param_spritelength) {
+	1: ss_500_series_cab01f_eva_10;				            // Length 10
+	ss_500_series_cab01f_eva_12;				            // Length 12
+}
+
+// 500 Series Hello Kitty
+spriteset(ss_500_series_cab01f_kitty_12,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
+spriteset(ss_500_series_cab01f_kitty_10,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
+alternative_sprites(ss_500_series_cab01f_kitty_12,          ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/500_series/12/500_series_hk.png") {template_12_standard(1,1)}
+alternative_sprites(ss_500_series_cab01f_kitty_10,	        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/500_series/10/500_series_hk.png") {template_10_standard(1,1)}		
+
+switch (FEAT_TRAINS, SELF, sw_500_series_cab01f_kitty, param_spritelength) {
+	1: ss_500_series_cab01f_kitty_10;				        // Length 10
+	ss_500_series_cab01f_kitty_12;				            // Length 12
+}
+
+// Subtype Selection
+switch(FEAT_TRAINS, PARENT, sw_500_series_cab01f, cargo_subtype) {
+        1: sw_500_series_cab01f_2cc;
+        2: sw_500_series_cab01f_eva;
+        3: sw_500_series_cab01f_kitty;
+        sw_500_series_cab01f_original;
+    }
+
+// BACKWARDS
+
+// 500 Series Original
+spriteset(ss_500_series_cab01b_original_12,          	    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+spriteset(ss_500_series_cab01b_original_10,          	    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+alternative_sprites(ss_500_series_cab01b_original_12,       ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/500_series/12/500_series.png") {template_12_reversed(1,41)}
+alternative_sprites(ss_500_series_cab01b_original_10,	    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/500_series/10/500_series.png") {template_10_reversed(1,41)}		
+
+switch (FEAT_TRAINS, SELF, sw_500_series_cab01b_original, param_spritelength) {
+	1: ss_500_series_cab01b_original_10;				    // Length 10
+	ss_500_series_cab01b_original_12;				        // Length 12
+}
+
+// 500 Series 2cc
+spriteset(ss_500_series_cab01b_2cc_12,             	        "src/trains/500_series/12/500_series_2cc.png") {template_12_reversed(1,41)}
+spriteset(ss_500_series_cab01b_2cc_10,             	        "src/trains/500_series/10/500_series_2cc.png") {template_10_reversed(1,41)}
+
+switch (FEAT_TRAINS, SELF, sw_500_series_cab01b_2cc, param_spritelength) {
+	1: ss_500_series_cab01b_2cc_10;				 	        // Length 10
+	ss_500_series_cab01b_2cc_12;					        // Length 12
+}
+
+// 500 Series Type EVA
+spriteset(ss_500_series_cab01b_eva_12,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
+spriteset(ss_500_series_cab01b_eva_10,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
+alternative_sprites(ss_500_series_cab01b_eva_12,            ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/500_series/12/500_series_eva.png") {template_12_reversed(1,41)}
+alternative_sprites(ss_500_series_cab01b_eva_10,	        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/500_series/10/500_series_eva.png") {template_10_reversed(1,41)}		
+
+switch (FEAT_TRAINS, SELF, sw_500_series_cab01b_eva, param_spritelength) {
+	1: ss_500_series_cab01b_eva_10;				            // Length 10
+	ss_500_series_cab01b_eva_12;				            // Length 12
+}
+
+// 500 Series Type Hello Kitty
+spriteset(ss_500_series_cab01b_kitty_12,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
+spriteset(ss_500_series_cab01b_kitty_10,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
+alternative_sprites(ss_500_series_cab01b_kitty_12,          ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/500_series/12/500_series_hk.png") {template_12_reversed(1,41)}
+alternative_sprites(ss_500_series_cab01b_kitty_10,	        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/500_series/10/500_series_hk.png") {template_10_reversed(1,41)}		
+
+switch (FEAT_TRAINS, SELF, sw_500_series_cab01b_kitty, param_spritelength) {
+	1: ss_500_series_cab01b_kitty_10;				        // Length 10
+	ss_500_series_cab01b_kitty_12;				            // Length 12
+}
+
+// Subtype Selection
+switch(FEAT_TRAINS, PARENT, sw_500_series_cab01b, cargo_subtype) {
+        1: sw_500_series_cab01b_2cc;
+        2: sw_500_series_cab01b_eva;
+        3: sw_500_series_cab01b_kitty;
+        sw_500_series_cab01b_original;
+    }
