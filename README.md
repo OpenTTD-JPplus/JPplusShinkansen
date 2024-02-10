@@ -7,7 +7,7 @@ This is the sister set to 🚂[JP+ Engines & Wagons](https://github.com/EmperorJ
 ## Credits
 **Coding:** KeepinItRail <br>
 **Graphics:** KeepinItRail, Yozora, Azusa & Erato<br>
-**Translations:** freeaim (Japanese)
+**Translations:** freeaim (Japanese), CoconutKR (Korean)
 **Thanks to:** The JapanSet Team, Tinny, Emperor Jake, Saya
 
 ## Features
