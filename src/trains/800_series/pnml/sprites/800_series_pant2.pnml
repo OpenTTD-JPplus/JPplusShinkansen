@@ -1,0 +1,57 @@
+/* pant2 */
+
+// FORWARDS
+
+// 800 Series
+spriteset(ss_800_series_pant2f_12,          	            "src/trains/dummy/empty.png") {template_dummy(0,0)}
+spriteset(ss_800_series_pant2f_10,          	            "src/trains/dummy/empty.png") {template_dummy(0,0)}
+alternative_sprites(ss_800_series_pant2f_12,                ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/800_series/12/800_series.png") {template_12_cab_rev_standard(1,81)}
+alternative_sprites(ss_800_series_pant2f_10,	            ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/800_series/10/800_series.png") {template_10_cab_rev_standard(1,81)}		
+
+switch (FEAT_TRAINS, SELF, sw_800_series_pant2f_irl, param_spritelength) {
+	1: ss_800_series_pant2f_10;				                // Length 10
+	ss_800_series_pant2f_12;				                // Length 12
+}
+
+// 800 Series 2cc
+spriteset(ss_800_series_pant2f_2cc_12,             	        "src/trains/800_series/12/800_series_2cc.png") {template_12_cab_rev_standard(1,81)}
+spriteset(ss_800_series_pant2f_2cc_10,             	        "src/trains/800_series/10/800_series_2cc.png") {template_10_cab_rev_standard(1,81)}
+
+switch (FEAT_TRAINS, SELF, sw_800_series_pant2f_2cc, param_spritelength) {
+	1: ss_800_series_pant2f_2cc_10;				            // Length 10
+	ss_800_series_pant2f_2cc_12;					        // Length 12
+}
+
+// Subtype Selection
+switch(FEAT_TRAINS, PARENT, sw_800_series_pant2f, cargo_subtype) {
+        1: sw_800_series_pant2f_2cc;
+        sw_800_series_pant2f_irl;
+    }
+
+// BACKWARDS
+
+// 800 Series
+spriteset(ss_800_series_pant2b_12,          	            "src/trains/dummy/empty.png") {template_dummy(0,0)}
+spriteset(ss_800_series_pant2b_10,          	            "src/trains/dummy/empty.png") {template_dummy(0,0)}
+alternative_sprites(ss_800_series_pant2b_12,                ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/800_series/12/800_series.png") {template_12_cab_rev_reversed(1,81)}
+alternative_sprites(ss_800_series_pant2b_10,	            ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/800_series/10/800_series.png") {template_10_cab_rev_reversed(1,81)}		
+
+switch (FEAT_TRAINS, SELF, sw_800_series_pant2b_irl, param_spritelength) {
+	1: ss_800_series_pant2b_10;				                // Length 10
+	ss_800_series_pant2b_12;				                // Length 12
+}
+
+// 800 Series 2cc
+spriteset(ss_800_series_pant2b_2cc_12,             	        "src/trains/800_series/12/800_series_2cc.png") {template_12_cab_rev_reversed(1,81)}
+spriteset(ss_800_series_pant2b_2cc_10,             	        "src/trains/800_series/10/800_series_2cc.png") {template_10_cab_rev_reversed(1,81)}
+
+switch (FEAT_TRAINS, SELF, sw_800_series_pant2b_2cc, param_spritelength) {
+	1: ss_800_series_pant2b_2cc_10;				 	        // Length 10
+	ss_800_series_pant2b_2cc_12;					        // Length 12
+}
+
+// Subtype Selection
+switch(FEAT_TRAINS, PARENT, sw_800_series_pant2b, cargo_subtype) {
+        1: sw_800_series_pant2b_2cc;
+        sw_800_series_pant2b_irl;
+    }

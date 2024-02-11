@@ -1,0 +1,19 @@
+/* Subtypes */
+
+	switch(FEAT_TRAINS, SELF, sw_800_series_subtype_text, cargo_subtype) {
+		0: return string(LV_800_SERIES);                            // Sharknose
+		1: return string(LV_800_SERIES_2CC);                        // Sharknose 2cc
+		return CB_RESULT_NO_TEXT;
+		}
+
+/* Purchase Menu */
+
+    spriteset (ss_800_series_buy_12,	      		"src/trains/dummy/purchase.png") {template_purchase(0, 0)}
+	spriteset (ss_800_series_buy_10,	      		"src/trains/dummy/purchase.png") {template_purchase(0, 0)}
+    alternative_sprites(ss_800_series_buy_12,       ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/800_series/12/purchase.png") {template_purchase(0, 0)}
+	alternative_sprites(ss_800_series_buy_10,       ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/800_series/12/purchase.png") {template_purchase(0, 0)}
+
+		switch (FEAT_TRAINS, SELF, ss_800_series_buy, param_spritelength) {
+			1: ss_800_series_buy_10;				// Length 10
+			ss_800_series_buy_12;					// Length 12
+		}
