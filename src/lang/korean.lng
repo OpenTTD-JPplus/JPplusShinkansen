@@ -1,0 +1,239 @@
+##grflangid 0x3A
+# This is the Korean language file
+# Guide: https://newgrf-specs.tt-wiki.net/wiki/NML:Language_files
+
+# GRF name and description definitions
+STR_GRF_NAME        :{TITLE} {VERSION}
+STR_GRF_DESC		:{WHITE}JP{RED}+{WHITE}신칸센{}{}JP{RED}+{WHITE}신칸센{BLACK}은 짐작하셨겠지만, 신칸센에 초점을 맞췄습니다! 신칸센는 고속 선로가 필요합니다. {}자매 세트로는 {WHITE}JP{RED}+{WHITE}MUs {BLACK}, {WHITE}JP{RED}+ {WHITE}Engines & Wagons {BLACK}and {WHITE}JP{RED}+ {WHITE}Major Private Companies{}{}{BLACK}{COPYRIGHT}JP+신칸센{}라이선스: GPLv2{}{BLACK}{}Coded By{}{LTBLUE}KeepinItRail{}{}{BLACK}Sprites By{}{GREEN}KeepinItRail, Yozora, Azusa & Erato{}{}{BLACK}Translations By{}{GREEN}freeaim (Japanese){}Yozora (Russian){}CoconutKR(Korean){}{}{TINYFONT}{BLACK}Thanks To{}{ORANGE}Emperor Jake{}Tinny{}Saya{}Leon{}JapanSet3 Team{}{}{}{BLACK}{}
+
+# Parameters
+STR_NO                              :아니오
+STR_YES                             :예
+STR_PARAM_NORMAL                    :보통
+STR_PARAM_VLOW                      :매우 낮음
+STR_PARAM_LOW                       :낮음
+STR_PARAM_HIGH                      :높음
+STR_PARAM_VHIGH                     :매우 높음
+STR_PARAM_NAME_BASECOSTMODBUY       :구매 비용
+STR_PARAM_DESC_BASECOSTMODBUY       :차량 구매 비용을 늘리거나 줄입니다.
+STR_PARAM_NAME_BASECOSTMODRUN       :운영 비용
+STR_PARAM_DESC_BASECOSTMODRUN       :차량의 운영 비용을 늘리거나 줄입니다.
+STR_PARAM_NAME_BASECAPACITY         :승객 수송량
+STR_PARAM_DESC_BASECAPACITY         :승객 수송량을 조정합니다. 현실적 설정은 실제 좌석수 자료를 기반으로 하며 다른 세트나 게임 플레이에 균형을 이루지 않습니다.
+STR_PARAM_NAME_JAPANSETDISABLE      :JapanSet3 신칸센 제거
+STR_PARAM_DESC_JAPANSETDISABLE      :JapanSet3에 중복된 신칸센을 제거합니다.
+STR_PARAM_NAME_DECAY                :화물 감소 속도
+STR_PARAM_DESC_DECAY                :화물 감소 속도를 설정합니다. "일반" 모드에서는 모든 열차의 감소율이 동일합니다. "낮음" 및 "매우 낮은" 화물 감소율은 사용되는 열차 유형에 따라 다릅니다. 장거리 통근열차를 이용하면 급행열차를 이용하는 것보다 수입이 적습니다.
+
+STR_PARAM_REAL                      :실제 세계 수송량 (1배)
+STR_PARAM_1_50                      :긴 스프라이트 조정 (1.5배)
+STR_PARAM_DOUBLE                    :더블 (2배)
+STR_PARAM_1_25                      :긴 스프라이트 조정 (1.25배)
+
+STR_PARAM_NAME_TRACKS               :대체 신칸센 선로 활성화
+STR_PARAM_DESC_TRACKS               :JapanSet3 신칸센이 위 매개변수에 의해 비활성화되면 JapanSet 트랙에서 신칸센 트랙이 제거됩니다. 이 매개변수는 대체 신칸센 선로를 활성화합니다.
+
+STR_PARAM_NAME_FENCES               :대체 신칸센 선로 울타리 비활성화
+STR_PARAM_DESC_FENCES               :대체 신칸센 선로에 울타리를 표시할지 여부를 선택합니다. 대체 신칸센 선로에만 영향을 미치며 다른 선로나 선로 세트에는 영향을 미치지 않습니다.
+
+STR_PARAM_NAME_SPRITELENGTH         :전체 신칸센 스프라이트의 길이
+STR_PARAM_DESC_SPRITELENGTH         :전체 신칸센 스프라이트의 길이를 선택합니다.
+STR_PARAM_LENGTH_10                 :10/8 길이 신칸센
+STR_PARAM_LENGTH_12                 :12/8 길이 신칸센
+
+STR_PARAM_NAME_DRYELLOW             :닥터 옐로우 역할 조정
+STR_PARAM_DESC_DRYELLOW             :닥터 옐로우의 역할을 선택합니다. 선로 검측 열차(화물없음), 우편열차, 여객열차 중 하나를 선택할수 있습니다.
+
+STR_PARAM_GIMMICK                   :선로 검측 열차 (기본값)
+STR_PARAM_MAIL                      :우편 열차
+STR_PARAM_PASSENGERS                :여객 열차
+
+# Error Messages
+GRF_OTTDVER                 : 이 NewGRF를 실행하는데 필요한 OpenTTD 버전보다 낮습니다. OpenTTD 버전을 업데이트 하십시오.
+STR_LENGTH_ERROR            : 신칸센 객차를 추가하세요! 객차를 더 추가하여 최소 4량을 연결해야 합니다.
+
+# Mucar
+MU_UNIQUE                   : 동차 혹은 동일한 외형의 전동차만 연결 할 수 있습니다
+ONLY_ADD_MUCAR              : 동차만 연결 할 수 있습니다
+MUCAR_MINI                  :JP+ 미니 신칸센 승객 수송 차량 {WHITE}(동차){BLACK}
+MUCAR_FULL                  :JP+ 신칸센 승객 수송 차량 {WHITE}(동차){BLACK}
+MUCAR_MAIL                  :JP+ 신칸센 우편 수송 차량 {WHITE}(동차){BLACK}
+MUCAR_MAGLEV                :JP+ 신칸센 자기부상 승객 수송 차량 {WHITE}(동차){BLACK}
+MUCAR_MINI_DESC             :{BLACK}연결 가능한 열차: {GOLD}400계, E3계, E6계, E8계 신칸센{}{BLUE}미니 신칸센을 구성할 때 {GREEN}동력 객차{BLUE}로 사용 됩니다.
+MUCAR_FULL_DESC             :{BLACK}연결 가능한 열차: {GOLD}풀 사이즈 신칸센{}{BLUE}신칸센을 구성할 때 {GREEN}동력 객차{BLUE}로 사용 됩니다.
+MUCAR_MAIL_DESC             :{BLACK}연결 가능한 열차: {GOLD}닥터 옐로우 신칸센{}{BLUE}신칸센 구성할 때 {GREEN}우편차{BLUE}로 사용 됩니다.
+MUCAR_MAGLEV_DESC           :{BLACK}연결 가능한 열차: {GOLD}자기부상 신칸센
+
+# ########################
+# Not JR East 
+# ########################
+
+# 0 Series Shinkansen
+STR_NAME_0_SERIES           :신칸센 0계
+STR_DESC_0_SERIES           :{BLACK}궤간:{GOLD} 표준궤{}{BLACK}용도: {SILVER}특급 여객{}{BLACK}운용사: {WHITE}JNR 일본국유철도{}{BLACK}동차: {GOLD} JP+ 신칸센 승객 수송 차량
+LV_0_SERIES_ORIGINAL        : 0계 {BLUE}기본 도색
+LV_0_SERIES_KODAMA          : 0계 {GREEN}코다마 도색
+LV_0_SERIES_ORIGINAL_2CC    : 0계 {BLUE}회사 색상 도색
+LV_0_SERIES_NOSE            : 0계 {BLUE}기본 도색 {YELLOW}빛나는 선두부
+
+STR_NAME_922_SERIES         :신칸센 922계 - {YELLOW}닥터 옐로우
+STR_DESC_922_SERIES         :{BLACK}궤간:{GOLD} 표준궤{}{BLACK}용도: {SILVER}특급 여객{}{BLACK}운용사: {ORANGE}JR 도카이 {BLACK}& {BLUE}JR 서일본{}{BLACK}도색: {YELLOW}닥터 옐로우{}{BLACK}동차: {GOLD} JP+ 신칸센 승객 수송 차량
+STR_DESC_922_SERIES_MAIL    :{BLACK}궤간:{GOLD} 표준궤{}{BLACK}용도: {SILVER}특급 우편{}{BLACK}운용사: {ORANGE}JR 도카이 {BLACK}& {BLUE}JR 서일본{}{BLACK}도색: {YELLOW}닥터 옐로우{}{BLACK}동차: {GOLD} JP+ 신칸센 우편 수송 차량
+STR_DESC_922_SERIES_GIMMICK :{BLACK}궤간:{GOLD} 표준궤{}{BLACK}용도: {SILVER}선로 검측{}{BLACK}운용사: {ORANGE}JR 도카이 {BLACK}& {BLUE}JR 서일본{}{BLACK}도색: {YELLOW}닥터 옐로우{}{BLACK}동차: {GOLD} JP+ 신칸센 승객 수송 차량
+
+# 100 Series Shinkansen
+STR_NAME_100_SERIES         :신칸센 100계
+STR_DESC_100_SERIES         :{BLACK}궤간:{GOLD} 표준궤{}{BLACK}용도: {SILVER}특급 여객{}{BLACK}운용사: {WHITE}JNR 일본국유철도{}{BLACK}동차: {GOLD} JP+ 신칸센 승객 수송 차량
+LV_100_SERIES_X             : 100계 {BLUE}X 편성
+LV_100_SERIES_X_2CC         : 100계 {BLUE}X 편성 (회사 색상)
+LV_100_SERIES_V             : 100계 {BLUE}V 편성
+LV_100_SERIES_V_2CC         : 100계 {BLUE}V 편성 (회사 색상)
+LV_100_SERIES_KODAMA        : 100계 {GREEN}코다마 도색 {GOLD}(230 km/h)
+
+# 300 Series Shinkansen
+STR_NAME_300_SERIES         :신칸센 300계
+STR_DESC_300_SERIES         :{BLACK}궤간:{GOLD} 표준궤{}{BLACK}용도: {SILVER}특급 여객{}{BLACK}운용사: {ORANGE}JR 도카이 {BLACK}& {BLUE}JR 서일본{}{BLACK}도색: {SILVER}기본 도색 {BLACK}& {BLUE}회사 색상 도색{}{BLACK}동차: {GOLD} JP+ 신칸센 승객 수송 차량
+LV_300_SERIES               : 300계 {BLUE}기본 도색
+LV_300_SERIES_2CC           : 300계 {BLUE}회사 색상 도색
+
+# 500 Series Shinkansen
+STR_NAME_500_SERIES         :신칸센 500계
+STR_DESC_500_SERIES         :{BLACK}궤간:{GOLD} 표준궤{}{BLACK}용도: {SILVER}특급 여객{}{BLACK}운용사: {BLUE}JR 서일본{}{BLACK}도색: {BLUE}기본 도색 {BLACK}, {PURPLE}TYPE EVA 도색 {BLACK}& {CREAM}헬로키티 도색{}{BLACK}동차: {GOLD} JP+ 신칸센 승객 수송 차량
+LV_500_SERIES               : 500계 {BLUE}기본 도색
+LV_500_SERIES_2CC           : 500계 {BLUE}회사 색상 도색
+LV_500_SERIES_HK            : 500계 {CREAM}헬로키티 도색
+LV_500_SERIES_EVA           : 500계 {PURPLE}TYPE EVA 도색
+
+# 700 Series Shinkansen
+STR_NAME_700_SERIES         :신칸센 700계
+STR_DESC_700_SERIES         :{BLACK}궤간:{GOLD} 표준궤{}{BLACK}용도: {SILVER}특급 여객{}{BLACK}운용사: {ORANGE}JR 도카이 {BLACK}& {BLUE}JR 서일본{}{BLACK}도색: {BLUE}기본 {BLACK}& {YELLOW}히카리 레일스타 {}{BLACK}동차: {GOLD} JP+ 신칸센 승객 수송 차량
+LV_700_SERIES_ORIGINAL      : 700계 {BLUE}기본 도색
+LV_700_SERIES_ORIGINAL_2CC  : 700계 {BLUE}기본 도색 (회사 색상)
+LV_700_SERIES_HIKARI        : 700계 {YELLOW}히카리 레일스타 도색
+LV_700_SERIES_HIKARI_2CC    : 700계 {YELLOW}히카리 레일스타 도색 (회사 색상)
+
+STR_NAME_923_SERIES         :신칸센 923계 - {YELLOW}닥터 옐로우
+STR_DESC_923_SERIES         :{BLACK}궤간:{GOLD} 표준궤{}{BLACK}용도: {SILVER}특급 여객{}{BLACK}운용사: {ORANGE}JR 도카이 {BLACK}& {BLUE}JR 서일본{}{BLACK}도색: {YELLOW}닥터 옐로우{}{BLACK}동차: {GOLD} JP+ 신칸센 승객 수송 차량
+STR_DESC_923_SERIES_MAIL    :{BLACK}궤간:{GOLD} 표준궤{}{BLACK}용도: {SILVER}특급 우편{}{BLACK}운용사: {ORANGE}JR 도카이 {BLACK}& {BLUE}JR 서일본{}{BLACK}도색: {YELLOW}닥터 옐로우{}{BLACK}동차: {GOLD} JP+ 신칸센 우편 수송 차량
+STR_DESC_923_SERIES_GIMMICK :{BLACK}궤간:{GOLD} 표준궤{}{BLACK}용도: {SILVER}선로 검측{}{BLACK}운용사: {ORANGE}JR 도카이 {BLACK}& {BLUE}JR 서일본{}{BLACK}도색: {YELLOW}닥터 옐로우{}{BLACK}동차: {GOLD} JP+ 신칸센 승객 수송 차량
+
+# N700 Series Shinkansen
+STR_NAME_N700_SERIES        :신칸센 N700계
+STR_DESC_N700_SERIES        :{BLACK}궤간:{GOLD} 표준궤{}{BLACK}용도: {SILVER}특급 여객{}{BLACK}운용사: {ORANGE}JR 도카이 {BLACK}, {BLUE}JR 서일본 {BLACK}& {RED}JR 큐슈{}{BLACK}도색: {BLUE}기본 도색 {BLACK}(2007), {SILVER}큐슈 도색 {BLACK}(2010){}{BLACK}동차: {GOLD} JP+ 신칸센 승객 수송 차량
+STR_NAME_N700A_SERIES       :신칸센 N700A계
+STR_DESC_N700A_SERIES       :{BLACK}궤간:{GOLD} 표준궤{}{BLACK}용도: {SILVER}특급 여객{}{BLACK}운용사: {ORANGE}JR 도카이 {BLACK}& {BLUE}JR 서일본{}{BLACK}도색: {BLUE}기본 도색 {BLACK}{}{BLACK}동차: {GOLD} JP+ 신칸센 승객 수송 차량
+STR_NAME_N700S_SERIES       :신칸센 N700S계
+STR_DESC_N700S_SERIES       :{BLACK}궤간:{GOLD} 표준궤{}{BLACK}용도: {SILVER}특급 여객{}{BLACK}운용사: {ORANGE}JR 도카이 {BLACK}, {BLUE}JR 서일본 {BLACK}& {RED}JR 큐슈{}{BLACK}도샛: {BLUE}기본 도색 {BLACK}& {RED}카모메 도색{}{BLACK}동차: {GOLD} JP+ 신칸센 승객 수송 차량
+
+LV_N700_SERIES_N700         : N700계
+LV_N700_SERIES_N700A        : N700A계
+LV_N700_SERIES_N700S        : N700S계
+LV_N700_SERIES_KYUSHU       : N700계 {SILVER}큐슈 도색
+LV_N700_SERIES_KAMOME       : N700S계 {RED}카모메 도색          
+
+# 800 Series Shinkansen
+STR_NAME_800_SERIES         :신칸센 800계
+STR_DESC_800_SERIES         :{BLACK}궤간:{GOLD} 표준궤{}{BLACK}용도: {SILVER}특급 여객{}{BLACK}운용사: {RED}JR 큐슈{}{BLACK}도색: {SILVER}기본 도색{}{BLACK}동차: {GOLD} JP+ 신칸센 승객 수송 차량
+
+# L0 Series Shinkansen
+STR_NAME_L0_SERIES         :신칸센 L0계
+STR_DESC_L0_SERIES         :{BLACK}궤간:{GOLD} 표준궤{}{BLACK}용도: {SILVER}특급 여객{}{BLACK}운용사: {ORANGE}JR 도카이{}{BLACK}도색: {SILVER}기본 도색{}{BLACK}동차: {GOLD} JP+ 신칸센 승객 수송 차량
+
+
+
+# ########################
+# JR East
+# ########################
+
+# 200 Series Shinkansen
+STR_NAME_200_SERIES         :신칸센 200계
+STR_DESC_200_SERIES         :{BLACK}궤간:{GOLD} 표준궤{}{BLACK}용도: {SILVER}특급 여객{}{BLACK}운용사: {GREEN}JR 동일본{}{BLACK}도색: {SILVER}기본 도색 {BLACK}(1982){SILVER}리뉴얼 도색 {BLACK}(1992){}{BLACK}동차: {GOLD} JP+ 신칸센 승객 수송 차량
+STR_NAME_200_SERIES_SHARK   :신칸센 200계 - '샤크노즈'
+STR_DESC_200_SERIES_SHARK   :{BLACK}궤간:{GOLD} 표준궤{}{BLACK}용도: {SILVER}특급 여갹{}{BLACK}운용사: {GREEN}JR 동일본{}{BLACK}도색: {SILVER}샤크노즈 {BLACK}(1990){}{BLACK}동차: {GOLD} JP+ 신칸센 승객 수송 차량
+
+LV_200_SERIES_ORIGINAL      : 200계 {GREEN}기본 도색
+LV_200_SERIES_ORIGINAL_2CC  : 200계 {GREEN}회사 색상 도색
+LV_200_SERIES_REFURB        : 200계 {BLUE}리뉴얼 도색 {GOLD}(240 km/h)
+
+# 400 Series Shinkansen
+STR_NAME_400_SERIES         :신칸센 400계
+STR_DESC_400_SERIES         :{BLACK}궤간:{GOLD} 표준궤{}{BLACK}용도: {SILVER}특급 여객{}{BLACK}운용사: {GREEN}JR 동일본{}{BLACK}도색: {SILVER}기본 도색 {BLACK}(1992){SILVER}리뉴얼 도색 {BLACK}(2002){}{BLACK}동차: {GOLD} JP+ 미니 신칸센 승객 수송 차량
+LV_400_SERIES_ORIGINAL      : 400계 기본 도색
+LV_400_SERIES_REFURB        : 400계 리뉴얼 도색
+
+# E1 Series Shinkansen
+STR_NAME_E1_SERIES          :신칸센 E1계 (MAX)
+STR_DESC_E1_SERIES          :{BLACK}궤간:{GOLD} 표준궤{}{BLACK}용도: {SILVER}특급 여객{}{BLACK}운용사: {GREEN}JR 동일본{}{BLACK}도색: {SILVER}기본 도색 {BLACK}(1994), {BLUE}리뉴얼 도색 {BLACK}(2004){}{BLACK}동차: {GOLD} JP+ 신칸센 승객 수송 차량
+LV_E1_SERIES_ORIGINAL       : E1계 {SILVER}기본 도색
+LV_E1_SERIES_REFURB         : E1계 {BLUE}리뉴얼 도색
+
+# E2 Series Shinkansen
+STR_NAME_E2_SERIES          :신칸센 E2계
+STR_DESC_E2_SERIES          :{BLACK}궤간:{GOLD} 표준궤{}{BLACK}용도: {SILVER}특급 여객{}{BLACK}운용사: {GREEN}JR 동일본{}{BLACK}도색: {SILVER}8량 편성 {BLACK}(1997), {SILVER}10량 편성 {BLACK}(2002){}{BLACK}동차: {GOLD} JP+ 신칸센 승객 수송 차량
+LV_E2_SERIES_RED            : E2계 {RED}적색 띠 도색
+LV_E2_SERIES_PINK           : E2계 {CREAM}자주색 띠 도색
+LV_E2_SERIES_200            : E2계 {GREEN}200계 기념 도색
+
+# E3 Series Shinkansen
+STR_NAME_E3_SERIES          :신칸센 E3계
+STR_DESC_E3_SERIES          :{BLACK}궤간:{GOLD} 표준궤{}{BLACK}용도: {SILVER}특급 여객{}{BLACK}운용사: {GREEN}JR 동일본{}{BLACK}도색: {WHITE}R 편성 {BLACK}(1997) {SILVER}1000번대 도색 {BLACK}(1999) {PURPLE}2000번대 도색 {BLACK}(2008) {GREEN}토레이유 도색 {BLACK} (2014){}{BLACK}동차: {GOLD} JP+ 미니 신칸센 승객 수송 차량
+LV_E3_SERIES_R              : {WHITE}E3계 R 편성 도색
+LV_E3_SERIES_1000           : {SILVER}E3-1000번대 도색
+LV_E3_SERIES_2000           : {PURPLE}E3-2000번대 도색
+LV_E3_SERIES_700_TOREIYU    : {LTBLUE}E3-700{WHITE}번대 {GREEN}"토레이유"
+LV_E3_SERIES_700_GENBI      : E3-700번대 "겐비"
+
+# E4 Series Shinkansen (MAX)
+STR_NAME_E4_SERIES          :신칸센 E4계 (MAX)
+STR_DESC_E4_SERIES          :{BLACK}궤간:{GOLD} 표준궤{}{BLACK}용도: {SILVER}특급 여객{}{BLACK}운용사: {GREEN}JR 동일본{}{BLACK}도색: {YELLOW}노랑 띠 도색 {BLACK}(1997), {CREAM}분홍 띠 도색{BLACK}(2016){}{BLACK}동차: {GOLD} JP+ 신칸센 승객 수송 차량
+LV_E4_SERIES_YELLOW         : E4계 MAX (노랑 띠 도색)
+LV_E4_SERIES_PINK           : E4계 MAX (분홍 띠 도색)
+
+# E5 Series Shinkansen
+STR_NAME_E5_SERIES          :신칸센 E5계
+STR_DESC_E5_SERIES          :{BLACK}궤간:{GOLD} 표준궤{}{BLACK}용도: {SILVER}특급 여객{}{BLACK}운용사: {GREEN}JR 동일본{}{BLACK}도색: {GREEN}E5 {BLACK}(2011), {GREEN}H5 {BLACK}(2015){}{BLACK}동차: {GOLD} JP+ 신칸센 승객 수송 차량
+LV_E5_SERIES_E5             : {GREEN}E5계
+LV_E5_SERIES_H5             : {PURPLE}H5계
+
+# E6 Series Shinkansen
+STR_NAME_E6_SERIES          :신칸센 E6계
+STR_DESC_E6_SERIES          :{BLACK}궤간:{GOLD} 표준궤{}{BLACK}용도: {SILVER}특급 여객{}{BLACK}운용사: {GREEN}JR 동일본{}{BLACK}도색: {RED}E6 {BLACK}(2013){}{BLACK}동차: {GOLD} JP+ 미니 신칸센 승객 수송 차량
+
+# E5 & E6 Series Shinkansen
+STR_NAME_E5E6_SERIES        :신칸센 E5 & E6계
+STR_DESC_E5E6_SERIES_10     :{BLACK}궤간:{GOLD} 표준궤{}{BLACK}용도: {SILVER}특급 여객{}{BLACK}운용사: {GREEN}JR 동일본{}{BLACK}도색: {GREEN}E5 {BLACK} 혹은 {GREEN}H5{BLACK}와 중련된 {RED}E6 {}{BLACK}길이: {GOLD} 9.8칸
+STR_DESC_E5E6_SERIES_12     :{BLACK}궤간:{GOLD} 표준궤{}{BLACK}용도: {SILVER}특급 여객{}{BLACK}운용사: {GREEN}JR 동일본{}{BLACK}도색: {GREEN}E5 {BLACK} 혹은 {GREEN}H5{BLACK}와 중련된 {RED}E6 {}{BLACK}길이: {GOLD} 11.0캰
+LV_E5E6_SERIES_E5           : E5 & E6계
+LV_E5E6_SERIES_H5           : H5 & E6계
+
+# E7 Series Shinkansen
+STR_NAME_E7_SERIES          :신칸센 E7계
+STR_DESC_E7_SERIES          :{BLACK}궤간:{GOLD} 표준궤{}{BLACK}용도: {SILVER}특급 여객{}{BLACK}운용사: {GREEN}JR 동일본 {BLACK}& {BLUE}JR 서일본 {}{BLACK}도색: {BLUE}E7 {BLACK}(2014){BLUE}W7 {BLACK}(2014){}{BLACK}동차: {GOLD} JP+ 신칸센 승객 수송 차량
+LV_E7_SERIES_E7             : E7계
+LV_E7_SERIES_W7             : W7계
+
+# E8 Series Shinkansen
+STR_NAME_E8_SERIES          :신칸센 E8계
+STR_DESC_E8_SERIES          :{BLACK}궤간:{GOLD} 표준궤{}{BLACK}용도: {SILVER}특급 여객{}{BLACK}운용사: {GREEN}JR 동일본{}{BLACK}도색: {PURPLE}E8 {BLACK}(2024){}{BLACK}동차: {GOLD} JP+ 미니 신칸센 승객 수송 차량
+LV_E8_SERIES_ORIGINAL       : E8계 기본 도색
+
+# Livery
+LV_YEAR_DEP_LIVERY          : 연도 기반 도색
+
+# ########################
+# Tracks
+# ########################
+
+STR_NAME_HSSN               :신칸센 고속선 선로
+STR_MENU_HSSN               :신칸센 고속선 선로 {LTBLUE}(전철화) {WHITE}
+STR_CAPT_HSSN               :새로운 신칸센 고속열차
+STR_TOOL_HSSN               :신칸센 고속선 선로 건설
+STR_AUTO_HSSN               :신칸센 고속열차
+STR_NEWE_HSSN               :표준궤 차량
+
+STR_NAME_MDSN               :신칸센 현대 고속선 선로
+STR_MENU_MDSN               :신칸센 현대 고속선 선로 {LTBLUE}(전철화) {WHITE}
+STR_CAPT_MDSN               :새로운 신칸센 고속열차
+STR_TOOL_MDSN               :신칸센 현대 고속선 선로 건설
+STR_AUTO_MDSN               :신칸센 고속열차
+STR_NEWE_MDSN               :표준궤 차량
