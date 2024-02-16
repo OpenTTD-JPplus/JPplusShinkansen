@@ -1,0 +1,81 @@
+/* cab02 */
+
+// FORWARDS
+
+// N700 Series Original
+spriteset(ss_n700_series_cab02f_original_12,          	    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+spriteset(ss_n700_series_cab02f_original_10,          	    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+alternative_sprites(ss_n700_series_cab02f_original_12,      ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/12/n700.png") {template_12_cab_rev_standard(1,41)}
+alternative_sprites(ss_n700_series_cab02f_original_10,	    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/10/n700.png") {template_10_cab_rev_standard(1,41)}		
+
+switch (FEAT_TRAINS, SELF, sw_n700_series_cab02f_original, param_spritelength) {
+	1: ss_n700_series_cab02f_original_10;				    // Length 10
+	ss_n700_series_cab02f_original_12;				        // Length 12
+}
+
+// N700 Series 2cc
+spriteset(ss_n700_series_cab02f_original_2cc_12,            "src/trains/n700_series/12/n700_2cc.png") {template_12_cab_rev_standard(1,41)}
+spriteset(ss_n700_series_cab02f_original_2cc_10,            "src/trains/n700_series/10/n700_2cc.png") {template_10_cab_rev_standard(1,41)}
+
+switch (FEAT_TRAINS, SELF, sw_n700_series_cab02f_original_2cc, param_spritelength) {
+	1: ss_n700_series_cab02f_original_2cc_10;				 // Length 10
+	ss_n700_series_cab02f_original_2cc_12;					 // Length 12
+}
+
+// N700 Series Kyushu Rail Star
+spriteset(ss_n700_series_cab02f_kyushu_12,          	    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+spriteset(ss_n700_series_cab02f_kyushu_10,          	    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+alternative_sprites(ss_n700_series_cab02f_kyushu_12,        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/12/kyushu.png") {template_12_cab_rev_standard(1,41)}
+alternative_sprites(ss_n700_series_cab02f_kyushu_10,	    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/10/kyushu.png") {template_10_cab_rev_standard(1,41)}		
+
+switch (FEAT_TRAINS, SELF, sw_n700_series_cab02f_kyushu, param_spritelength) {
+	1: ss_n700_series_cab02f_kyushu_10;				        // Length 10
+	ss_n700_series_cab02f_kyushu_12;				        // Length 12
+}
+
+// Subtype Selection
+switch(FEAT_TRAINS, PARENT, sw_n700_series_cab02f, cargo_subtype) {
+        1: sw_n700_series_cab02f_original_2cc;
+        2: sw_n700_series_cab02f_kyushu;
+        sw_n700_series_cab02f_original;
+    }
+
+// BACKWARDS
+
+// N700 Series Original
+spriteset(ss_n700_series_cab02b_original_12,          	    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+spriteset(ss_n700_series_cab02b_original_10,          	    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+alternative_sprites(ss_n700_series_cab02b_original_12,      ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/12/n700.png") {template_12_cab_rev_reversed(1,1)}
+alternative_sprites(ss_n700_series_cab02b_original_10,	    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/10/n700.png") {template_10_cab_rev_reversed(1,1)}		
+
+switch (FEAT_TRAINS, SELF, sw_n700_series_cab02b_original, param_spritelength) {
+	1: ss_n700_series_cab02b_original_10;				    // Length 10
+	ss_n700_series_cab02b_original_12;				        // Length 12
+}
+
+// N700 Series Original 2cc
+spriteset(ss_n700_series_cab02b_original_2cc_12,            "src/trains/n700_series/12/n700_2cc.png") {template_12_cab_rev_reversed(1,1)}
+spriteset(ss_n700_series_cab02b_original_2cc_10,            "src/trains/n700_series/10/n700_2cc.png") {template_10_cab_rev_reversed(1,1)}
+
+switch (FEAT_TRAINS, SELF, sw_n700_series_cab02b_original_2cc, param_spritelength) {
+	1: ss_n700_series_cab02b_original_2cc_10;				 // Length 10
+	ss_n700_series_cab02b_original_2cc_12;					 // Length 12
+}
+
+// N700 Series Kyushu
+spriteset(ss_n700_series_cab02b_kyushu_12,          	    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+spriteset(ss_n700_series_cab02b_kyushu_10,          	    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+alternative_sprites(ss_n700_series_cab02b_kyushu_12,         ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/12/kyushu.png") {template_12_cab_rev_reversed(1,1)}
+alternative_sprites(ss_n700_series_cab02b_kyushu_10,	     ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/10/kyushu.png") {template_10_cab_rev_reversed(1,1)}		
+
+switch (FEAT_TRAINS, SELF, sw_n700_series_cab02b_kyushu, param_spritelength) {
+	1: ss_n700_series_cab02b_kyushu_10;				        // Length 10
+	ss_n700_series_cab02b_kyushu_12;				        // Length 12
+}
+
+// Subtype Selection
+switch(FEAT_TRAINS, PARENT, sw_n700_series_cab02b, cargo_subtype) {
+        1: sw_n700_series_cab02b_original_2cc;
+        2: sw_n700_series_cab02b_kyushu;
+        sw_n700_series_cab02b_original;
+    }

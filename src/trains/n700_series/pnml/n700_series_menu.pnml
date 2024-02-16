@@ -1,0 +1,11 @@
+/* Purchase Menu */
+    spriteset (ss_n700_series_buy,	        			"src/trains/dummy/purchase.png") {template_purchase(0, 0)}
+    alternative_sprites(ss_n700_series_buy,     		ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/12/buy_n700.png") {template_purchase(0, 0)}
+
+/*---Cargo Subtype Menu---*/
+    switch(FEAT_TRAINS, SELF, sw_n700_series_subtype_text, cargo_subtype) {
+            0: return string(LV_N700_SERIES_N700);          	// N700
+            1: return string(LV_N700_SERIES_N700_2CC);          // 2cc
+            2: return string(LV_N700_SERIES_KYUSHU);          	// Kyushu
+            return CB_RESULT_NO_TEXT;
+            }

@@ -1,0 +1,98 @@
+
+/* Midcars */
+    // coaches    
+        switch (FEAT_TRAINS, PARENT, sw_n700a_series_coaches, vehicle_is_reversed) {				
+                1:  sw_n700_series_coachb;
+                sw_n700_series_coachf;			
+            }
+
+    /* long */
+        switch (FEAT_TRAINS, SELF, sw_n700a_series_long_panto_backwards, position_in_consist_from_end == 13 ) {				
+                1:  sw_n700_series_pant1b;
+                sw_n700_series_pant2b;				
+            }
+
+        switch (FEAT_TRAINS, SELF, sw_n700a_series_long_panto_forwards, position_in_consist == 13 ) {				
+                1:  sw_n700_series_pant1f;
+                sw_n700_series_pant2f;				
+            }
+        
+        switch (FEAT_TRAINS, PARENT, sw_n700a_series_long_panto_positions, vehicle_is_reversed) {				
+                1:  sw_n700a_series_long_panto_backwards;
+                sw_n700a_series_long_panto_forwards;			
+            }
+
+        switch (FEAT_TRAINS, SELF, sw_n700a_series_long, position_in_consist == 13 || position_in_consist_from_end == 13) {				
+                1:  sw_n700a_series_long_panto_positions;
+                sw_n700a_series_coaches;				
+            }
+
+    /* penultimate pantos */
+        switch (FEAT_TRAINS, SELF, sw_n700a_series_penultimate_panto_backwards, position_in_consist_from_end == 4 ) {				
+                1:  sw_n700_series_pant1b;
+                sw_n700_series_pant2b;				
+            }
+
+        switch (FEAT_TRAINS, SELF, sw_n700a_series_penultimate_panto_forwards, position_in_consist == 4 ) {				
+                1:  sw_n700_series_pant1f;
+                sw_n700_series_pant2f;				
+            }
+        
+        switch (FEAT_TRAINS, PARENT, sw_n700a_series_penultimate_panto_positions, vehicle_is_reversed) {				
+                1:  sw_n700a_series_penultimate_panto_backwards;
+                sw_n700a_series_penultimate_panto_forwards;			
+            }
+
+        switch (FEAT_TRAINS, SELF, sw_n700a_series_penultimate_pantos, position_in_consist == 4 || position_in_consist_from_end == 4) {				
+                1:  sw_n700a_series_penultimate_panto_positions;
+                sw_n700a_series_coaches;				
+            }
+
+    /* panto_in_middle */
+        // Backwards
+        switch (FEAT_TRAINS, SELF, sw_n700a_series_panto_in_middle_backwards, (position_in_consist == position_in_consist_from_end ) || (position_in_consist - 3 == position_in_consist_from_end)) {				
+                0:  sw_n700_series_coachb;
+                sw_n700_series_pant1b;
+            }
+
+        // Forwards
+        switch (FEAT_TRAINS, SELF, sw_n700a_series_panto_in_middle_forwards, (position_in_consist == position_in_consist_from_end ) || (position_in_consist - 3 == position_in_consist_from_end)) {				
+                0:  sw_n700_series_coachf;
+                sw_n700_series_pant1f;				
+            }
+
+        switch (FEAT_TRAINS, PARENT, sw_n700a_series_panto_in_middle, vehicle_is_reversed) {				
+                1:  sw_n700a_series_panto_in_middle_backwards;
+                sw_n700a_series_panto_in_middle_forwards;				
+            }
+
+    /* Midcar selection */
+    switch (FEAT_TRAINS, SELF, sw_n700a_series_midcars, num_vehs_in_consist ) {				
+			1..21:  sw_n700a_series_panto_in_middle;
+            22..39:  sw_n700a_series_penultimate_pantos;
+			sw_n700a_series_long;				
+		}
+
+/* Cab selection */
+    // Rear cab
+    switch (FEAT_TRAINS, PARENT, sw_n700a_series_rear, vehicle_is_reversed) {				
+            1:  sw_n700_series_caba1b;                   // cab01	
+            sw_n700_series_caba2f;                       // cab02
+        }
+
+    // Lead cab
+    switch (FEAT_TRAINS, PARENT, sw_n700a_series_lead, vehicle_is_reversed) {				
+            1:  sw_n700_series_caba2b;                   // cab02
+            sw_n700_series_caba1f;                       // cab01	
+        }
+
+/* Find the cabs */
+    switch (FEAT_TRAINS, SELF, sw_n700a_series_lead_or_rear, position_in_consist) {				
+            1:  sw_n700a_series_lead;
+            sw_n700a_series_rear;				
+        }
+    
+    switch (FEAT_TRAINS, SELF, sw_n700a_series_ends, position_in_consist == 1 || position_in_consist_from_end == 1) {				
+            1:  sw_n700a_series_lead_or_rear;
+            sw_n700a_series_midcars;				
+        }
