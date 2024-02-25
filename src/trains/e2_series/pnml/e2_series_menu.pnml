@@ -1,0 +1,37 @@
+/* SUBTYPES */
+
+    switch(FEAT_TRAINS, SELF, sw_e2_series_subtype_text, cargo_subtype) {
+        0: return string(LV_YEAR_DEP_LIVERY);
+        1: return string(LV_E2_SERIES_RED);
+        2: return string(LV_E2_SERIES_PINK);
+        3: return string(LV_E2_SERIES_200);
+        4: return string(LV_E2_SERIES_2CC);
+        return CB_RESULT_NO_TEXT;
+        }
+
+/* Purchase Menu */
+    spriteset (ss_e2_series_buy_red_12,	        	            "src/trains/dummy/purchase.png") {template_purchase(0, 0)}
+    spriteset (ss_e2_series_buy_red_10,	        	            "src/trains/dummy/purchase.png") {template_purchase(0, 0)}
+    alternative_sprites(ss_e2_series_buy_red_12,                ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e2_series/12/buy_red.png") {template_purchase(0, 0)}
+    alternative_sprites(ss_e2_series_buy_red_10,                ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e2_series/12/buy_red.png") {template_purchase(0, 0)}
+
+    spriteset (ss_e2_series_buy_pink_12,	        	        "src/trains/dummy/purchase.png") {template_purchase(0, 0)}
+    spriteset (ss_e2_series_buy_pink_10,	        	        "src/trains/dummy/purchase.png") {template_purchase(0, 0)}
+    alternative_sprites(ss_e2_series_buy_pink_12,               ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e2_series/12/buy_pink.png") {template_purchase(0, 0)}
+    alternative_sprites(ss_e2_series_buy_pink_10,               ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e2_series/12/buy_pink.png") {template_purchase(0, 0)}
+
+        switch (FEAT_TRAINS, SELF, ss_e2_series_buy_red, param_spritelength) {
+			1: ss_e2_series_buy_red_10;						    // Length 10
+			ss_e2_series_buy_red_12;						    // Length 12
+		}
+
+		switch (FEAT_TRAINS, SELF, ss_e2_series_buy_pink, param_spritelength) {
+			1: ss_e2_series_buy_pink_10;					    // Length 10
+			ss_e2_series_buy_pink_12;						    // Length 12
+		}
+
+        switch(FEAT_TRAINS, SELF, sw_e2_series_buy, build_year) {
+            0..2001: ss_e2_series_buy_red;
+            2002..9999: ss_e2_series_buy_pink;
+            ss_e2_series_buy_red;
+        }
