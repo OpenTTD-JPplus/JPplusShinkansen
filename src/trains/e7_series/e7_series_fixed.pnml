@@ -6,6 +6,9 @@
 #include "src/trains/e7_series/e7_series_stats.pnml"
 #include "src/trains/e7_series/e7_series_formation.pnml"
 
+/* End E7 series */
+
+
 item(FEAT_TRAINS, series_e7) {
 	property {
 		/* Menu */
@@ -58,5 +61,3 @@ item(FEAT_TRAINS, series_e7) {
 		purchase_running_cost_factor:   running_cost_e7_series * 12;		
 	}
 }
-
-/* End E7 series */

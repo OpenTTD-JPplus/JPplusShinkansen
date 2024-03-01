@@ -1,0 +1,12 @@
+/* SUBTYPES */
+
+    switch(FEAT_TRAINS, SELF, sw_e7_series_subtype_text, cargo_subtype) {
+        0: return string(LV_E7_SERIES_E7);
+	    1: return string(LV_E7_SERIES_W7);
+        2: return string(LV_E7_SERIES_2CC);
+        return CB_RESULT_NO_TEXT;
+        }
+
+/* Purchase Menu */
+    spriteset (sw_e7_series_buy,	        	    "src/trains/dummy/purchase.png")           {template_purchase(0, 0)}
+    alternative_sprites(sw_e7_series_buy,           ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,     "src/trains/e7_series/12/purchase.png") {template_purchase(0, 0)}
