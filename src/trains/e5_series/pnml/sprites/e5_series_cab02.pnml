@@ -1,0 +1,62 @@
+/* cab02 */
+
+// FORWARDS
+
+// E5 Series Pink Stripe
+spriteset(ss_e5_series_cab02f_pink_12,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
+spriteset(ss_e5_series_cab02f_pink_10,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
+alternative_sprites(ss_e5_series_cab02f_pink_12,            ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e5_series/12/e5pink.png") {template_12_cab_rev_standard(1,41)}
+alternative_sprites(ss_e5_series_cab02f_pink_10,	        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e5_series/10/e5pink.png") {template_10_cab_rev_standard(1,41)}		
+
+switch (FEAT_TRAINS, SELF, sw_e5_series_cab02f_pink, param_spritelength) {
+	1: ss_e5_series_cab02f_pink_10;				            // Length 10
+	ss_e5_series_cab02f_pink_12;				            // Length 12
+}
+
+// H5 Series Purple Stripe
+spriteset(ss_e5_series_cab02f_purple_12,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
+spriteset(ss_e5_series_cab02f_purple_10,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
+alternative_sprites(ss_e5_series_cab02f_purple_12,          ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e5_series/12/h5purple.png") {template_12_cab_rev_standard(1,41)}
+alternative_sprites(ss_e5_series_cab02f_purple_10,	        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e5_series/10/h5purple.png") {template_10_cab_rev_standard(1,41)}		
+
+switch (FEAT_TRAINS, SELF, sw_e5_series_cab02f_purple, param_spritelength) {
+	1: ss_e5_series_cab02f_purple_10;				        // Length 10
+	ss_e5_series_cab02f_purple_12;				            // Length 12
+}
+
+// Subtype Selection
+
+switch(FEAT_TRAINS, PARENT, sw_e5_series_cab02f, cargo_subtype) {
+        1: sw_e5_series_cab02f_purple;
+        sw_e5_series_cab02f_pink;
+    }
+
+// BACKWARDS
+
+// E5 Series Pink Stripe
+spriteset(ss_e5_series_cab02b_pink_12,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
+spriteset(ss_e5_series_cab02b_pink_10,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
+alternative_sprites(ss_e5_series_cab02b_pink_12,            ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e5_series/12/e5pink.png") {template_12_cab_rev_reversed(1,1)}
+alternative_sprites(ss_e5_series_cab02b_pink_10,	        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e5_series/10/e5pink.png") {template_10_cab_rev_reversed(1,1)}		
+
+switch (FEAT_TRAINS, SELF, sw_e5_series_cab02b_pink, param_spritelength) {
+	1: ss_e5_series_cab02b_pink_10;				            // Length 10
+	ss_e5_series_cab02b_pink_12;				            // Length 12
+}
+
+// H5 Series Purple Stripe
+spriteset(ss_e5_series_cab02b_purple_12,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
+spriteset(ss_e5_series_cab02b_purple_10,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
+alternative_sprites(ss_e5_series_cab02b_purple_12,          ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e5_series/12/h5purple.png") {template_12_cab_rev_reversed(1,1)}
+alternative_sprites(ss_e5_series_cab02b_purple_10,	        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e5_series/10/h5purple.png") {template_10_cab_rev_reversed(1,1)}		
+
+switch (FEAT_TRAINS, SELF, sw_e5_series_cab02b_purple, param_spritelength) {
+	1: ss_e5_series_cab02b_purple_10;				        // Length 10
+	ss_e5_series_cab02b_purple_12;				            // Length 12
+}
+
+// Subtype Selection
+switch(FEAT_TRAINS, PARENT, sw_e5_series_cab02b, cargo_subtype) {
+        1: sw_e5_series_cab02b_purple;
+        sw_e5_series_cab02b_pink;
+    }
