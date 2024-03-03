@@ -49,7 +49,7 @@ template tmpl_purchase_dh_32bpp (x, y) {
 
 /* EMU Templates */
 
-// STANDARD
+/* 1212121212121212121212121212121212121212121212121212 */
 
 template template_12_standard(x, y) {
     //left_x, upper_y, width, height, offset_x, offset_y
@@ -107,6 +107,7 @@ template template_12_cab_rev_reversed(x, y) {
     [ x+258,	y,		30,		29,		-10,		-19]
 }
 
+/* 10101010101010101010101010101010101010101010101010 */
 
 template template_10_standard(x, y) {
     //left_x, upper_y, width, height, offset_x, offset_y
@@ -182,6 +183,20 @@ template template_8_standard(x, y) {
     [ x+262,	y,		22,		27,		-8,		    -20]
 }
 
+template template_8_cab_rev_standard(x, y) {
+    //left_x, upper_y, width, height, offset_x, offset_y
+	//							more negative to shift left
+	//											more negative to shift up
+    [ x+148,	y,		8,		36,		-3,			-20]
+    [ x+168,	y,		22,		27,		-14,		-19]
+    [ x+210,	y,		32,		16,		-16,		-12]
+    [ x+262,	y,		22,		27,		-8, 		-20]
+    [ x,	    y,		8,		36,		-3,			-20]
+    [ x+20,	    y,		22,		27,		-14,		-19]
+    [ x+62,	    y,		32,		16,		-16,		-12]
+    [ x+114,	y,		22,		27,		-8,		    -20]
+}
+
 template template_8_reversed(x, y) {
     //left_x, upper_y, width, height, offset_x, offset_y
 	//							more negative to shift left
@@ -196,6 +211,19 @@ template template_8_reversed(x, y) {
     [ x+114,	y,		22,		27,		-8,	    	-20]
 }
 
+template template_8_cab_rev_reversed(x, y) {
+    //left_x, upper_y, width, height, offset_x, offset_y
+	//							more negative to shift left
+	//											more negative to shift up
+    [ x,	    y,		8,		36,		-3,			-20]
+    [ x+20,	    y,		22,		27,		-14,		-19]
+    [ x+62,	    y,		32,		16,		-16,		-12]
+    [ x+114,	y,		22,		27,		-8, 		-20]
+    [ x+148,	y,		8,		36,		-3,			-20]
+    [ x+168,	y,		22,		27,		-14,		-19]
+    [ x+210,	y,		32,		16,		-16,		-12]
+    [ x+262,	y,		22,		27,		-8,	    	-20]
+}
 
 template template_2_standard(x, y) {
     //left_x, upper_y, width, height, offset_x, offset_y

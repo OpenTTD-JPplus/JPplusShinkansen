@@ -9,6 +9,7 @@ item(FEAT_TRAINS, mu_car_ms) {
     /* Define properties first, make sure to set all of them */
     property {
         name:                         string(MUCAR_MINI);
+        misc_flags:                   bitmask(TRAIN_FLAG_2CC);
         introduction_date:            date(1800,1,1);
         climates_available:           ALL_CLIMATES;
         model_life:                   VEHICLE_NEVER_EXPIRES;

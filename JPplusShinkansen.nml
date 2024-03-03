@@ -201,7 +201,7 @@ template tmpl_purchase_dh_32bpp (x, y) {
 
 /* EMU Templates */
 
-// STANDARD
+/* 1212121212121212121212121212121212121212121212121212 */
 
 template template_12_standard(x, y) {
     //left_x, upper_y, width, height, offset_x, offset_y
@@ -259,6 +259,7 @@ template template_12_cab_rev_reversed(x, y) {
     [ x+258,	y,		30,		29,		-10,		-19]
 }
 
+/* 10101010101010101010101010101010101010101010101010 */
 
 template template_10_standard(x, y) {
     //left_x, upper_y, width, height, offset_x, offset_y
@@ -334,6 +335,20 @@ template template_8_standard(x, y) {
     [ x+262,	y,		22,		27,		-8,		    -20]
 }
 
+template template_8_cab_rev_standard(x, y) {
+    //left_x, upper_y, width, height, offset_x, offset_y
+	//							more negative to shift left
+	//											more negative to shift up
+    [ x+148,	y,		8,		36,		-3,			-20]
+    [ x+168,	y,		22,		27,		-14,		-19]
+    [ x+210,	y,		32,		16,		-16,		-12]
+    [ x+262,	y,		22,		27,		-8, 		-20]
+    [ x,	    y,		8,		36,		-3,			-20]
+    [ x+20,	    y,		22,		27,		-14,		-19]
+    [ x+62,	    y,		32,		16,		-16,		-12]
+    [ x+114,	y,		22,		27,		-8,		    -20]
+}
+
 template template_8_reversed(x, y) {
     //left_x, upper_y, width, height, offset_x, offset_y
 	//							more negative to shift left
@@ -348,6 +363,19 @@ template template_8_reversed(x, y) {
     [ x+114,	y,		22,		27,		-8,	    	-20]
 }
 
+template template_8_cab_rev_reversed(x, y) {
+    //left_x, upper_y, width, height, offset_x, offset_y
+	//							more negative to shift left
+	//											more negative to shift up
+    [ x,	    y,		8,		36,		-3,			-20]
+    [ x+20,	    y,		22,		27,		-14,		-19]
+    [ x+62,	    y,		32,		16,		-16,		-12]
+    [ x+114,	y,		22,		27,		-8, 		-20]
+    [ x+148,	y,		8,		36,		-3,			-20]
+    [ x+168,	y,		22,		27,		-14,		-19]
+    [ x+210,	y,		32,		16,		-16,		-12]
+    [ x+262,	y,		22,		27,		-8,	    	-20]
+}
 
 template template_2_standard(x, y) {
     //left_x, upper_y, width, height, offset_x, offset_y
@@ -1212,6 +1240,7 @@ item(FEAT_TRAINS, mu_car_ms) {
     /* Define properties first, make sure to set all of them */
     property {
         name:                         string(MUCAR_MINI);
+        misc_flags:                   bitmask(TRAIN_FLAG_2CC);
         introduction_date:            date(1800,1,1);
         climates_available:           ALL_CLIMATES;
         model_life:                   VEHICLE_NEVER_EXPIRES;
@@ -14518,184 +14547,260 @@ item(FEAT_TRAINS, series_e7) {
 # 1 "src/trains/e7_series/e7_series.pnml" 2
 # 1 "JPplusShinkansen.pnml" 4
 # 1 "src/trains/e8_series/e8_series.pnml" 1
-// Begin E8_series
 
-/* GRAPHICS */
+# 1 "src/trains/e8_series/pnml/e8_series_menu.pnml" 1
+/* Subtypes */
 
-    // Purchase Sprites
-        spriteset (spriteset_e8_series_purchase,	        	    "src/trains/dummy/purchase.png") {tmpl_purchase_dh(0, 0)}
+	switch(FEAT_TRAINS, SELF, sw_e8_series_subtype_text, cargo_subtype) {
+		0: return string(LV_E8_SERIES_ORIGINAL);                     
+		1: return string(LV_E8_SERIES_2CC);                      
+		return CB_RESULT_NO_TEXT;
+		}
+
+/* Purchase Sprites */
+        spriteset (spriteset_e8_series_purchase,	        	"src/trains/dummy/purchase.png") {tmpl_purchase_dh(0, 0)}
         alternative_sprites(spriteset_e8_series_purchase,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e8_series/purchase.png") {tmpl_purchase_dh_32bpp(0, 0)}
+# 1 "src/trains/e8_series/e8_series.pnml" 2
+# 1 "src/trains/e8_series/pnml/sprites/e8_series_cab01.pnml" 1
+/* cab01 */
 
-    // E8 Series
-        spriteset(ss_e8_series_cab_original,                    "src/trains/dummy/mucar.png") {template_8_standard(1,1)}
-        spriteset(ss_e8_series_cab_rev_original,                "src/trains/dummy/mucar.png") {template_8_standard(1,1)}
-        spriteset(ss_e8_series_coach_original,                  "src/trains/dummy/mucar.png") {template_8_standard(1,1)}
-        spriteset(ss_e8_series_coach_rev_original,              "src/trains/dummy/mucar.png") {template_8_standard(1,1)}
-        spriteset(ss_e8_series_panto_original,                  "src/trains/dummy/mucar.png") {template_8_standard(1,1)}
-        spriteset(ss_e8_series_panto_rev_original,              "src/trains/dummy/mucar.png") {template_8_standard(1,1)}
+// FORWARDS
 
-        alternative_sprites(ss_e8_series_cab_original,          ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e8_series/e8_series.png") {template_8_standard(1,1)}
-        alternative_sprites(ss_e8_series_cab_rev_original,      ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e8_series/e8_series.png") {template_8_standard(1,41)}
-        alternative_sprites(ss_e8_series_coach_original,        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e8_series/e8_series.png") {template_8_standard(1,121)}
-        alternative_sprites(ss_e8_series_coach_rev_original,    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e8_series/e8_series.png") {template_8_reversed(1,121)}
-        alternative_sprites(ss_e8_series_panto_original,        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e8_series/e8_series.png") {template_8_standard(1,81)}
-        alternative_sprites(ss_e8_series_panto_rev_original,    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e8_series/e8_series.png") {template_8_reversed(1,81)}
+// E8 Series
+spriteset(ss_e8_series_cab01f,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
+alternative_sprites(ss_e8_series_cab01f,            ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e8_series/e8_series.png") {template_8_standard(1,1)}	
 
-/* LIVERIES */
+// E8 Series 2cc
+spriteset(ss_e8_series_cab01f_2cc,                  "src/trains/e8_series/e8_2cc.png") {template_8_standard(1,1)}
 
-    // Cab Livery (Yelow Lights)
-    switch(FEAT_TRAINS, SELF, sw_e8_series_gfx_cab_livery, [STORE_TEMP(position_in_consist_from_end-position_in_consist, 0x10F), var[0x61, 0, 0x0000FFFF, 0xF2]]){
-        0 : ss_e8_series_cab_original;
-    }
-    // Cab Reversed Livery (Red lights)
-    switch(FEAT_TRAINS, SELF, sw_e8_series_gfx_cab_rev_livery, [STORE_TEMP(position_in_consist_from_end-position_in_consist, 0x10F), var[0x61, 0, 0x0000FFFF, 0xF2]]){
-        0 : ss_e8_series_cab_rev_original;
-    }
-    // Coach Livery
-    switch(FEAT_TRAINS, SELF, sw_e8_series_gfx_coach_livery, [STORE_TEMP(position_in_consist_from_end-position_in_consist, 0x10F), var[0x61, 0, 0x0000FFFF, 0xF2]]){
-        0 : ss_e8_series_coach_original;
-    }
-    // Coach Reversed Livery
-    switch(FEAT_TRAINS, SELF, sw_e8_series_gfx_coach_rev_livery, [STORE_TEMP(position_in_consist_from_end-position_in_consist, 0x10F), var[0x61, 0, 0x0000FFFF, 0xF2]]){
-        0 : ss_e8_series_coach_rev_original;
-    }
-    // Panto Livery
-    switch(FEAT_TRAINS, SELF, sw_e8_series_gfx_panto_livery, [STORE_TEMP(position_in_consist_from_end-position_in_consist, 0x10F), var[0x61, 0, 0x0000FFFF, 0xF2]]){
-        0 : ss_e8_series_panto_original;
-    }
-    // Panto Reversed Livery
-    switch(FEAT_TRAINS, SELF, sw_e8_series_gfx_panto_rev_livery, [STORE_TEMP(position_in_consist_from_end-position_in_consist, 0x10F), var[0x61, 0, 0x0000FFFF, 0xF2]]){
-        0 : ss_e8_series_panto_rev_original;
-
+// Subtype Selection
+switch(FEAT_TRAINS, PARENT, sw_e8_series_cab01f, cargo_subtype) {
+        1: ss_e8_series_cab01f_2cc;
+        ss_e8_series_cab01f;
     }
 
-/* COACH and PANTO flipping */
+// BACKWARDS
 
-    // Check if Coach is flipped
-    switch(FEAT_TRAINS, SELF, sw_e8_series_gfx_coach_flippedcheck, vehicle_is_flipped) {
-        1 : sw_e8_series_gfx_coach_livery;
-        default : sw_e8_series_gfx_coach_rev_livery;
+// E8 Series
+spriteset(ss_e8_series_cab01b,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
+alternative_sprites(ss_e8_series_cab01b,            ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e8_series/e8_series.png") {template_8_reversed(1,41)}
+
+// E8 Series 2cc
+spriteset(ss_e8_series_cab01b_2cc,             	    "src/trains/e8_series/e8_2cc.png") {template_8_reversed(1,41)}
+
+// Subtype Selection
+switch(FEAT_TRAINS, PARENT, sw_e8_series_cab01b, cargo_subtype) {
+        1: ss_e8_series_cab01b_2cc;
+        ss_e8_series_cab01b;
     }
-    // Check if Panto is flipped
-    switch(FEAT_TRAINS, SELF, sw_e8_series_gfx_panto_flippedcheck, vehicle_is_flipped) {
-        1 : sw_e8_series_gfx_panto_livery;
-    default : sw_e8_series_gfx_panto_rev_livery;
+# 1 "src/trains/e8_series/e8_series.pnml" 2
+# 1 "src/trains/e8_series/pnml/sprites/e8_series_cab02.pnml" 1
+/* cab02 */
+
+// FORWARDS
+
+// E8 Series
+spriteset(ss_e8_series_cab02f,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
+alternative_sprites(ss_e8_series_cab02f,            ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e8_series/e8_series.png") {template_8_cab_rev_standard(1,41)}	
+
+// E8 Series 2cc
+spriteset(ss_e8_series_cab02f_2cc,                  "src/trains/e8_series/e8_2cc.png") {template_8_cab_rev_standard(1,41)}
+
+// Subtype Selection
+switch(FEAT_TRAINS, PARENT, sw_e8_series_cab02f, cargo_subtype) {
+        1: ss_e8_series_cab02f_2cc;
+        ss_e8_series_cab02f;
     }
 
-/* PANTOGRAPH CHECKS */
+// BACKWARDS
 
-switch(FEAT_TRAINS, SELF, sw_e8_series_gfx_rev_pantograph_pos_original_sw1, [STORE_TEMP(position_in_consist_from_end-position_in_consist, 0x10F), var[0x61, 0, 0x000000FF, 0x41]]){
- 0 : sw_e8_series_gfx_panto_flippedcheck;
- default : sw_e8_series_gfx_coach_flippedcheck;
-}
-switch(FEAT_TRAINS, SELF, sw_e8_series_gfx_rev_pantograph_pos_original_sw2, [STORE_TEMP(position_in_consist_from_end-position_in_consist, 0x10F), var[0x61, 0, 0x000000FF, 0x41]%10]){
- 1 : sw_e8_series_gfx_panto_flippedcheck;
- //4 : sw_e8_series_gfx_panto_flippedcheck;
- 7 : sw_e8_series_gfx_panto_flippedcheck;
- default : sw_e8_series_gfx_coach_flippedcheck;
-}
+// E8 Series
+spriteset(ss_e8_series_cab02b,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
+alternative_sprites(ss_e8_series_cab02b,            ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e8_series/e8_series.png") {template_8_cab_rev_reversed(1,1)}
 
-switch(FEAT_TRAINS, SELF, sw_e8_series_gfx_rev_pantograph_pos_original, [STORE_TEMP(position_in_consist_from_end-position_in_consist, 0x10F), var[0x61, 16, 0x000000FF, 0x41]]){
-  0..2 : sw_e8_series_gfx_rev_pantograph_pos_original_sw1;
-  default : sw_e8_series_gfx_rev_pantograph_pos_original_sw2;
-}
+// E8 Series 2cc
+spriteset(ss_e8_series_cab02b_2cc,             	    "src/trains/e8_series/e8_2cc.png") {template_8_cab_rev_reversed(1,1)}
 
-switch(FEAT_TRAINS,SELF, sw_e8_series_gfx_rev_pantograph_pos, [STORE_TEMP(position_in_consist_from_end-position_in_consist, 0x10F), var[0x61, 0, 0x0000FFFF, 0xF2]]){
-0 : sw_e8_series_gfx_rev_pantograph_pos_original;
-}
+// Subtype Selection
+switch(FEAT_TRAINS, PARENT, sw_e8_series_cab02b, cargo_subtype) {
+        1: ss_e8_series_cab02b_2cc;
+        ss_e8_series_cab02b;
+    }
+# 1 "src/trains/e8_series/e8_series.pnml" 2
+# 1 "src/trains/e8_series/pnml/sprites/e8_series_coach.pnml" 1
+/* coach */
 
-switch(FEAT_TRAINS, SELF, sw_e8_series_gfx_rev_frontback_nomucars,
-[STORE_TEMP(position_in_consist_from_end-position_in_consist-1, 0x10F), var[0x61, 0, 0x000000FF, 0x41]%2]){
- 1 : sw_e8_series_gfx_cab_rev_livery;
- 0 : sw_e8_series_gfx_cab_livery;
-}
-switch(FEAT_TRAINS, SELF, sw_e8_series_gfx_rev_frontback_aftermucars,
-[STORE_TEMP(position_in_consist_from_end-position_in_consist-1, 0x10F), var[0x61, 0, 0x000000FF, 0x41]%2]){
- 1 : sw_e8_series_gfx_cab_livery;
- 0 : sw_e8_series_gfx_cab_rev_livery;
-}
-switch(FEAT_TRAINS, SELF, sw_e8_series_gfx_rev_frontback_mucarcheck,
-[STORE_TEMP(position_in_consist_from_end-position_in_consist, 0x10F),STORE_TEMP(var[0x61, 0, 0x000000FF, 0x41],0),
-STORE_TEMP((position_in_consist_from_end-position_in_consist-1)-LOAD_TEMP(0), 0x10F),
-var[0x61, 0, 0x0000FFFF, 0xC6]]){
- 1111 : sw_e8_series_gfx_rev_frontback_aftermucars;         // From above switch
- default : sw_e8_series_gfx_rev_frontback_nomucars;         // From above switch
-}
-switch(FEAT_TRAINS, SELF, sw_e8_series_gfx_rev_frontback_sameid,
-[STORE_TEMP(position_in_consist_from_end-position_in_consist+1, 0x10F), var[0x61, 0, 0x0000FFFF, 0xC6]]){
- 2008 : sw_e8_series_gfx_rev_frontback_mucarcheck;
- 1111 : sw_e8_series_gfx_cab_rev_livery;
- default : sw_e8_series_gfx_cab_livery;
-}
-switch(FEAT_TRAINS, SELF, sw_e8_series_gfx_rev_frontback,
-[STORE_TEMP(position_in_consist_from_end-position_in_consist-1, 0x10F), var[0x61, 0, 0x0000FFFF, 0xC6]]){
- 2008 : sw_e8_series_gfx_rev_frontback_sameid;
- 1111 : sw_e8_series_gfx_cab_livery;
- default : sw_e8_series_gfx_cab_rev_livery;
-}
-switch(FEAT_TRAINS, SELF, sw_e8_series_gfx_rev_idcheck, [STORE_TEMP(position_in_consist_from_end-position_in_consist, 0x10F), var[0x61, 0, 0x0000FFFF, 0xC6]]){
- 1111 : sw_e8_series_gfx_rev_pantograph_pos;        
- 2008 : sw_e8_series_gfx_rev_frontback;
-}
-/*---END OF SECTION---*/
-/*---GFX: Pantograph Positions---*/
-switch(FEAT_TRAINS, SELF, sw_e8_series_gfx_pantograph_pos_original_sw1, position_in_vehid_chain){
- 0 : ss_e8_series_panto_original;
- default : ss_e8_series_coach_original;
-}
-switch(FEAT_TRAINS, SELF, sw_e8_series_gfx_pantograph_pos_original_sw2, position_in_vehid_chain%10){
- 1 : ss_e8_series_panto_original;
- //4 : ss_e8_series_panto_original;
- 7 : ss_e8_series_panto_original;
- default : ss_e8_series_coach_original;
-}
+// FORWARDS
 
-switch(FEAT_TRAINS, SELF, sw_e8_series_gfx_pantograph_pos_original, num_vehs_in_vehid_chain){
-  0..2 : sw_e8_series_gfx_pantograph_pos_original_sw1;
-  default : sw_e8_series_gfx_pantograph_pos_original_sw2;
-}
+// E8 Series
+spriteset(ss_e8_series_coachf,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
+alternative_sprites(ss_e8_series_coachf,            ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e8_series/e8_series.png") {template_8_standard(1,121)}	
 
-/*---END OF SECTION---*/
-/*---GFX: Front/Back Cab Car Switches---*/
+// E8 Series 2cc
+spriteset(ss_e8_series_coachf_2cc,                  "src/trains/e8_series/e8_2cc.png") {template_8_standard(1,121)}
 
-// Original Set
-switch(FEAT_TRAINS, SELF, sw_e8_series_gfx_cab_flipcheck_original, vehicle_is_flipped){
- 0: ss_e8_series_cab_original;                             // Cab
- default: ss_e8_series_cab_rev_original;                   // Cab Reversed
-}
-switch(FEAT_TRAINS, PARENT, sw_e8_series_gfx_cab_original, vehicle_is_reversed){
- 0: sw_e8_series_gfx_cab_flipcheck_original;               // Above switch
- default: sw_e8_series_gfx_rev_idcheck;             // 
-}
+// Subtype Selection
+switch(FEAT_TRAINS, PARENT, sw_e8_series_coachf, cargo_subtype) {
+        1: ss_e8_series_coachf_2cc;
+        ss_e8_series_coachf;
+    }
+
+// BACKWARDS
+
+// E8 Series
+spriteset(ss_e8_series_coachb,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
+alternative_sprites(ss_e8_series_coachb,            ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e8_series/e8_series.png") {template_8_reversed(1,121)}
+
+// E8 Series 2cc
+spriteset(ss_e8_series_coachb_2cc,             	    "src/trains/e8_series/e8_2cc.png") {template_8_reversed(1,121)}
+
+// Subtype Selection
+switch(FEAT_TRAINS, PARENT, sw_e8_series_coachb, cargo_subtype) {
+        1: ss_e8_series_coachb_2cc;
+        ss_e8_series_coachb;
+    }
+# 1 "src/trains/e8_series/e8_series.pnml" 2
+# 1 "src/trains/e8_series/pnml/sprites/e8_series_pant1.pnml" 1
+/* pant1 */
+
+// FORWARDS
+
+// E8 Series
+spriteset(ss_e8_series_pant1f,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
+alternative_sprites(ss_e8_series_pant1f,            ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e8_series/e8_series.png") {template_8_standard(1,81)}	
+
+// E8 Series 2cc
+spriteset(ss_e8_series_pant1f_2cc,                  "src/trains/e8_series/e8_2cc.png") {template_8_standard(1,81)}
+
+// Subtype Selection
+switch(FEAT_TRAINS, PARENT, sw_e8_series_pant1f, cargo_subtype) {
+        1: ss_e8_series_pant1f_2cc;
+        ss_e8_series_pant1f;
+    }
+
+// BACKWARDS
+
+// E8 Series
+spriteset(ss_e8_series_pant1b,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
+alternative_sprites(ss_e8_series_pant1b,            ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e8_series/e8_series.png") {template_8_reversed(1,81)}
+
+// E8 Series 2cc
+spriteset(ss_e8_series_pant1b_2cc,             	    "src/trains/e8_series/e8_2cc.png") {template_8_reversed(1,81)}
+
+// Subtype Selection
+switch(FEAT_TRAINS, PARENT, sw_e8_series_pant1b, cargo_subtype) {
+        1: ss_e8_series_pant1b_2cc;
+        ss_e8_series_pant1b;
+    }
+# 1 "src/trains/e8_series/e8_series.pnml" 2
+# 1 "src/trains/e8_series/pnml/sprites/e8_series_pant2.pnml" 1
+/* pant2 */
+
+// FORWARDS
+
+// E8 Series
+spriteset(ss_e8_series_pant2f,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
+alternative_sprites(ss_e8_series_pant2f,            ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e8_series/e8_series.png") {template_8_cab_rev_standard(1,81)}	
+
+// E8 Series 2cc
+spriteset(ss_e8_series_pant2f_2cc,                  "src/trains/e8_series/e8_2cc.png") {template_8_cab_rev_standard(1,81)}
+
+// Subtype Selection
+switch(FEAT_TRAINS, PARENT, sw_e8_series_pant2f, cargo_subtype) {
+        1: ss_e8_series_pant2f_2cc;
+        ss_e8_series_pant2f;
+    }
+
+// BACKWARDS
+
+// E8 Series
+spriteset(ss_e8_series_pant2b,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
+alternative_sprites(ss_e8_series_pant2b,            ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e8_series/e8_series.png") {template_8_cab_rev_reversed(1,81)}
+
+// E8 Series 2cc
+spriteset(ss_e8_series_pant2b_2cc,             	    "src/trains/e8_series/e8_2cc.png") {template_8_cab_rev_reversed(1,81)}
+
+// Subtype Selection
+switch(FEAT_TRAINS, PARENT, sw_e8_series_pant2b, cargo_subtype) {
+        1: ss_e8_series_pant2b_2cc;
+        ss_e8_series_pant2b;
+    }
+# 1 "src/trains/e8_series/e8_series.pnml" 2
+# 1 "src/trains/e8_series/pnml/e8_series_formations.pnml" 1
+
+/* Midcars */
+    // Backwards
+        // Penultipantos
+        switch (FEAT_TRAINS, SELF, sw_e8_series_pantos_large_backwards, position_in_consist_from_end ) {
+                1:  sw_e8_series_pant1b;
+                sw_e8_series_pant2b;				
+            }
+        switch (FEAT_TRAINS, SELF, sw_e8_series_backwards_length_large, (position_in_consist == 1) || (position_in_consist_from_end == 1 )) {				
+                1:  sw_e8_series_pantos_large_backwards;
+                sw_e8_series_coachb;			
+            }
+        // Panto in Middle
+        switch (FEAT_TRAINS, SELF, sw_e8_series_backwards_length_small, (position_in_consist == position_in_consist_from_end ) || (position_in_consist - 1 == position_in_consist_from_end) ) {				
+                0:  sw_e8_series_coachb;
+                sw_e8_series_pant1b;				
+            }
+	switch (FEAT_TRAINS, SELF, sw_e8_series_backwards_length, num_vehs_in_consist < 7 ) {				
+			0:  sw_e8_series_backwards_length_large;
+			sw_e8_series_backwards_length_small;				
+		}
+	// Forwards
+        // Penultipantos
+        switch (FEAT_TRAINS, SELF, sw_e8_series_pantos_large_forwards, position_in_consist ) {				
+                1:  sw_e8_series_pant1f;
+                sw_e8_series_pant2f;				
+            }
+
+        switch (FEAT_TRAINS, SELF, sw_e8_series_forwards_length_large, (position_in_consist == 1) || (position_in_consist_from_end == 1 )) {				
+                1:  sw_e8_series_pantos_large_forwards;
+                sw_e8_series_coachf;		
+            }
+        // Panto in Middle
+        switch (FEAT_TRAINS, SELF, sw_e8_series_forwards_length_small, (position_in_consist == position_in_consist_from_end ) || (position_in_consist - 1 == position_in_consist_from_end) ) {				
+                0:  sw_e8_series_coachf;
+                sw_e8_series_pant1f;				
+            }
+	switch (FEAT_TRAINS, SELF, sw_e8_series_forwards_length, num_vehs_in_consist < 7 ) {				
+			0:  sw_e8_series_forwards_length_large;
+			sw_e8_series_forwards_length_small;				
+		}
+
+	switch (FEAT_TRAINS, PARENT, sw_e8_series_midcars, vehicle_is_reversed) {				
+			0:  sw_e8_series_forwards_length;
+			sw_e8_series_backwards_length;				
+		}
+
+/* Cab selection */
+    // Rear cab
+    switch (FEAT_TRAINS, PARENT, sw_e8_series_rear, vehicle_is_reversed) {				
+            1:  sw_e8_series_cab01b;                   // cab01	
+            sw_e8_series_cab02f;                       // cab02
+        }
+
+    // Lead cab
+    switch (FEAT_TRAINS, PARENT, sw_e8_series_lead, vehicle_is_reversed) {				
+            1:  sw_e8_series_cab02b;                   // cab02
+            sw_e8_series_cab01f;                       // cab01	
+        }
+
+/* Find the cabs */
+    switch (FEAT_TRAINS, SELF, sw_e8_series_lead_or_rear, position_in_consist) {				
+            0:  sw_e8_series_lead;
+            sw_e8_series_rear;				
+        }
+    
+    switch (FEAT_TRAINS, SELF, sw_e8_series_graphics, position_in_consist == 0 || position_in_consist_from_end == 0 ) {				
+            1:  sw_e8_series_lead_or_rear;
+            sw_e8_series_midcars;				
+        }
+# 1 "src/trains/e8_series/e8_series.pnml" 2
+# 1 "src/trains/e8_series/pnml/e8_series_item.pnml" 1
 
 
-/*---END OF SECTION---*/
-/*---GFX: Middle Car Switches---*/
-switch(FEAT_TRAINS, PARENT, sw_e8_series_gfx_mucar_revcheck_mid_original, vehicle_is_reversed){
- 0: sw_e8_series_gfx_pantograph_pos_original;
- default: sw_e8_series_gfx_rev_idcheck;
-}
-
-/*---END OF SECTION---*/
-/*---GFX: Livery Refitting Switches---*/
-switch(FEAT_TRAINS, SELF, sw_e8_series_gfx_mucar,  cargo_subtype) {
-0 : sw_e8_series_gfx_mucar_revcheck_mid_original;
-}
-switch(FEAT_TRAINS, SELF, sw_e8_series_gfx_main,  cargo_subtype) {
-0 : sw_e8_series_gfx_cab_original;
-}
-/*---END OF SECTION---*/
-/*---GFX: Livery Menu Switches---*/
-/*
-switch(FEAT_TRAINS, SELF, sw_e8_series_subtypetext_mucar, cargo_subtype) {
-0 : string(LV_E8_SERIES_ORIGINAL);
-}
-switch(FEAT_TRAINS, SELF, sw_e8_series_subtypetext_main, cargo_subtype) {
-0 : string(LV_E8_SERIES_ORIGINAL);
-}
-*/
-/*---END OF SECTION---*/
-/*---Coupling Switch---*/
 switch(FEAT_TRAINS, SELF, sw_e8_series_attach_vehid, [vehicle_type_id == series_e8 || vehicle_type_id == mu_car_ms]) {
  0: return string(MU_UNIQUE);
 }
@@ -14719,11 +14824,11 @@ item(FEAT_TRAINS, series_e8) {
         climates_available:             ALL_CLIMATES;
         ai_special_flag:                AI_FLAG_PASSENGER;
         sprite_id:                      SPRITE_ID_NEW_TRAIN;
-        misc_flags:                     bitmask(TRAIN_FLAG_MU);
+        misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_2CC);
         refittable_cargo_classes:       bitmask(CC_PASSENGERS);
         non_refittable_cargo_classes:   bitmask();
         refit_cost:                     0;
-        dual_headed:                    1;
+        //dual_headed:                    1;
         ai_engine_rank:                 0;
         running_cost_base:              RUNNING_COST_ELECTRIC;
         engine_class:                   ENGINE_CLASS_ELECTRIC;
@@ -14735,27 +14840,27 @@ item(FEAT_TRAINS, series_e8) {
     }
     /*Graphics and Callbacks*/
       graphics {
-        default:                        sw_e8_series_gfx_main;
-	      purchase:                       spriteset_e8_series_purchase;
-		    additional_text:	              return string(STR_DESC_E8_SERIES);
-        //cargo_subtype_text:             sw_e8_series_subtypetext_main;
-        cargo_age_period:				        param_decay_express;
-        can_attach_wagon:			          sw_e8_series_attach_vehid;
+        default:                        sw_e8_series_graphics;
+	    purchase:                       spriteset_e8_series_purchase;
+		additional_text:	            return string(STR_DESC_E8_SERIES);
+        cargo_subtype_text:             sw_e8_series_subtype_text;
+        cargo_age_period:				param_decay_express;
+        can_attach_wagon:			    sw_e8_series_attach_vehid;
         //start_stop:                   ;
         purchase_weight:                42 / 2;
         purchase_power:                 400 * 4;
         /* Stats */
         power:                          max (num_vehs_in_consist - 2 , 0 ) * 400 * 4;
         cargo_capacity:                 48 * CapacityFactor();										        // 338 capacity / 7 cars  is approx 48						
-		    loading_speed:					        48 * CapacityFactor() / param_loading_1D;					// Capacity divided by door loading factor
+		loading_speed:					48 * CapacityFactor() / param_loading_1D;					// Capacity divided by door loading factor
         running_cost_factor:            (445 + 130 * num_vehs_in_consist ) * RunningCostFactor();
         purchase_running_cost_factor:   (445 + 130) / 2; 	
     }
     /*Multiple Unit Car*/
       livery_override(mu_car_ms){
-        default:                        sw_e8_series_gfx_mucar;
+        default:                        sw_e8_series_graphics;
         cargo_capacity:                 48 * CapacityFactor();
-        cargo_age_period:				        param_decay_express;
+        cargo_age_period:				param_decay_express;
         loading_speed:                  48 * CapacityFactor() / param_loading_1D;
         //cargo_subtype_text:             sw_e8_series_subtypetext_mucar;
         //power:                        // Apply power in graphics block to calculate power based on number of motorised cars correctly
@@ -14763,8 +14868,7 @@ item(FEAT_TRAINS, series_e8) {
         //running_cost_factor:            120;
       }
 }
-
-// End E8_series
+# 1 "src/trains/e8_series/e8_series.pnml" 2
 # 1 "JPplusShinkansen.pnml" 4
 
 # 1 "src/trains/e5e6_series/e5e6_series.pnml" 1

@@ -1,0 +1,31 @@
+/* cab01 */
+
+// FORWARDS
+
+// E8 Series
+spriteset(ss_e8_series_cab01f,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
+alternative_sprites(ss_e8_series_cab01f,            ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e8_series/e8_series.png") {template_8_standard(1,1)}	
+
+// E8 Series 2cc
+spriteset(ss_e8_series_cab01f_2cc,                  "src/trains/e8_series/e8_2cc.png") {template_8_standard(1,1)}
+
+// Subtype Selection
+switch(FEAT_TRAINS, PARENT, sw_e8_series_cab01f, cargo_subtype) {
+        1: ss_e8_series_cab01f_2cc;
+        ss_e8_series_cab01f;
+    }
+
+// BACKWARDS
+
+// E8 Series
+spriteset(ss_e8_series_cab01b,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
+alternative_sprites(ss_e8_series_cab01b,            ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e8_series/e8_series.png") {template_8_reversed(1,41)}
+
+// E8 Series 2cc
+spriteset(ss_e8_series_cab01b_2cc,             	    "src/trains/e8_series/e8_2cc.png") {template_8_reversed(1,41)}
+
+// Subtype Selection
+switch(FEAT_TRAINS, PARENT, sw_e8_series_cab01b, cargo_subtype) {
+        1: ss_e8_series_cab01b_2cc;
+        ss_e8_series_cab01b;
+    }
