@@ -14641,7 +14641,7 @@ item(FEAT_TRAINS, series_e7) {
 
 /* Purchase Sprites */
         spriteset (spriteset_e8_series_purchase,	        	"src/trains/dummy/purchase.png") {tmpl_purchase_dh(0, 0)}
-        alternative_sprites(spriteset_e8_series_purchase,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e8_series/purchase.png") {tmpl_purchase_dh_32bpp(0, 0)}
+        alternative_sprites(spriteset_e8_series_purchase,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e8_series/purchase.png") {template_purchase(0, 0)}
 # 1 "src/trains/e8_series/e8_series.pnml" 2
 # 1 "src/trains/e8_series/pnml/sprites/e8_series_cab01.pnml" 1
 /* cab01 */
