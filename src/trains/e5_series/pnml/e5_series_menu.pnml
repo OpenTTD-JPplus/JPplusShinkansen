@@ -2,6 +2,7 @@
 	switch(FEAT_TRAINS, SELF, sw_e5_series_subtype_text, cargo_subtype) {
 		0: return string(LV_E5_SERIES_E5);
 		1: return string(LV_E5_SERIES_H5);
+		2: return string(LV_E5_SERIES_2CC);
 		return CB_RESULT_NO_TEXT;
 		}
 
