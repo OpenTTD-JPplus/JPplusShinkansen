@@ -1,0 +1,73 @@
+/*---Coupling Switch---*/
+switch(FEAT_TRAINS, SELF, sw_e6_series_attach_vehid, [vehicle_type_id == series_e6 || vehicle_type_id == mu_car_ms]) {
+ 0: return string(MU_UNIQUE);
+}
+/*---END OF SECTION---*/
+
+item(FEAT_TRAINS, series_e6, 2006) {
+    property {
+        name:                           string(STR_NAME_E6_SERIES);
+        introduction_date:              date(2013,03,16);
+        model_life:                     VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                   24;
+        reliability_decay:              23;
+
+        cargo_capacity:                 50;
+        loading_speed:                  20;
+        cost_factor:                    175;
+        running_cost_factor:            120;
+
+        speed:                          321 km/h;
+        track_type:                     MINI_SHINKANSEN;
+        power:                          400 * 4 hp;
+        weight:                         42 ton;
+
+        climates_available:             ALL_CLIMATES;
+        ai_special_flag:                AI_FLAG_PASSENGER;
+        sprite_id:                      SPRITE_ID_NEW_TRAIN;
+        misc_flags:                     bitmask(TRAIN_FLAG_MU);
+        refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes:   bitmask();
+        refit_cost:                     0;
+        //dual_headed:                    1;
+        ai_engine_rank:                 0;
+
+        running_cost_base:              RUNNING_COST_ELECTRIC;
+        engine_class:                   ENGINE_CLASS_ELECTRIC;
+        visual_effect_and_powered:      visual_effect_and_powered(VISUAL_EFFECT_ELECTRIC, 4, ENABLE_WAGON_POWER);
+
+        tractive_effort_coefficient:    0.3;
+        air_drag_coefficient:           0;
+        bitmask_vehicle_info:           0;
+        length:                         8;
+    }
+    /*Graphics and Callbacks*/
+      graphics {
+        default:                        sw_e6_series_graphics;
+		purchase:                       spriteset_e6_series_purchase;
+		additional_text:	            return string(STR_DESC_E6_SERIES);
+        cargo_subtype_text:             sw_e6_series_subtype_text;
+        can_attach_wagon:			    sw_e6_series_attach_vehid;
+        //start_stop:                   ;
+        purchase_weight:                42 / 2;
+        purchase_power:                 400 * 4;
+        /* Stats */
+        power:                          max (num_vehs_in_consist - 2 , 0 ) * 400 * 4;
+        cargo_capacity:                 48 * CapacityFactor();										        // 338 capacity / 7 cars  is approx 48						
+		loading_speed:					48 * CapacityFactor() / param_loading_1D;					// Capacity divided by door loading factor
+        cargo_age_period:				param_decay_express;
+        running_cost_factor:            (450 + 127 * num_vehs_in_consist ) * RunningCostFactor();
+        purchase_running_cost_factor:   (450 + 127) / 2;
+    }
+    /*Multiple Unit Car*/
+      livery_override(mu_car_ms){
+        default:                        sw_e6_series_graphics;
+        cargo_capacity:                 48 * CapacityFactor();
+        cargo_age_period:				param_decay_express;
+        loading_speed:                  48 * CapacityFactor() / param_loading_1D;
+        //cargo_subtype_text:           sw_e6_series_subtypetext_mucar;
+        //power:                        // Apply power in graphics block to calculate power based on number of motorised cars correctly
+        weight:                         42;
+        //running_cost_factor:            120;
+      }
+}
