@@ -1,0 +1,258 @@
+// Miniparts panto
+	// Forwards
+		// E5
+		spriteset(ss_e5_series_pantof_mp1_12_pink,             		"src/trains/dummy/empty.png") {template_dummy(0,0)}
+		spriteset(ss_e5_series_pantof_mp2_12_pink,             		"src/trains/dummy/empty.png") {template_dummy(0,0)}
+		spriteset(ss_e5_series_pantof_mp3_12_pink,             		"src/trains/dummy/empty.png") {template_dummy(0,0)}
+		spriteset(ss_e5_series_pantof_mp4_12_pink,             		"src/trains/dummy/empty.png") {template_dummy(0,0)}
+		spriteset(ss_e5_series_pantof_mp5_12_pink,             		"src/trains/dummy/empty.png") {template_dummy(0,0)}
+        spriteset(ss_e5_series_pantof_mp6_12_pink,             		"src/trains/dummy/empty.png") {template_dummy(0,0)}
+
+		//  1 2 3 4 5 6
+		alternative_sprites(ss_e5_series_pantof_mp1_12_pink,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e5_series/12/e5_miniparts.png")  {template_2_standard(1,601)}
+		alternative_sprites(ss_e5_series_pantof_mp2_12_pink,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e5_series/12/e5_miniparts.png")  {template_2_standard(1,621)}
+		alternative_sprites(ss_e5_series_pantof_mp3_12_pink,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e5_series/12/e5_miniparts.png")  {template_2_standard(1,641)}	
+		alternative_sprites(ss_e5_series_pantof_mp4_12_pink,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e5_series/12/e5_miniparts.png")  {template_2_standard(1,661)}	
+		alternative_sprites(ss_e5_series_pantof_mp5_12_pink,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e5_series/12/e5_miniparts.png")  {template_2_standard(1,681)}	
+        alternative_sprites(ss_e5_series_pantof_mp6_12_pink,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e5_series/12/e5_miniparts.png")  {template_2_standard(1,701)}	
+
+		// H5
+		spriteset(ss_e5_series_pantof_mp1_12_purp,             		"src/trains/dummy/empty.png") {template_dummy(0,0)}
+		spriteset(ss_e5_series_pantof_mp2_12_purp,             		"src/trains/dummy/empty.png") {template_dummy(0,0)}
+		spriteset(ss_e5_series_pantof_mp3_12_purp,             		"src/trains/dummy/empty.png") {template_dummy(0,0)}
+		spriteset(ss_e5_series_pantof_mp4_12_purp,             		"src/trains/dummy/empty.png") {template_dummy(0,0)}
+		spriteset(ss_e5_series_pantof_mp5_12_purp,             		"src/trains/dummy/empty.png") {template_dummy(0,0)}
+        spriteset(ss_e5_series_pantof_mp6_12_purp,             		"src/trains/dummy/empty.png") {template_dummy(0,0)}
+
+		//  1 2 3 4 5 6
+		alternative_sprites(ss_e5_series_pantof_mp1_12_purp,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e5_series/12/h5_miniparts.png")  {template_2_standard(1,601)}
+		alternative_sprites(ss_e5_series_pantof_mp2_12_purp,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e5_series/12/h5_miniparts.png")  {template_2_standard(1,621)}
+		alternative_sprites(ss_e5_series_pantof_mp3_12_purp,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e5_series/12/h5_miniparts.png")  {template_2_standard(1,641)}	
+		alternative_sprites(ss_e5_series_pantof_mp4_12_purp,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e5_series/12/h5_miniparts.png")  {template_2_standard(1,661)}	
+		alternative_sprites(ss_e5_series_pantof_mp5_12_purp,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e5_series/12/h5_miniparts.png")  {template_2_standard(1,681)}	
+        alternative_sprites(ss_e5_series_pantof_mp6_12_purp,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e5_series/12/h5_miniparts.png")  {template_2_standard(1,701)}	
+
+		// 2cc
+		spriteset(ss_e5_series_pantof_mp1_12_2cc,             		"src/trains/e5_series/12/e5_miniparts_2cc.png")  {template_2_standard(1,601)}
+		spriteset(ss_e5_series_pantof_mp2_12_2cc,             		"src/trains/e5_series/12/e5_miniparts_2cc.png")  {template_2_standard(1,621)}
+		spriteset(ss_e5_series_pantof_mp3_12_2cc,             		"src/trains/e5_series/12/e5_miniparts_2cc.png")  {template_2_standard(1,641)}
+		spriteset(ss_e5_series_pantof_mp4_12_2cc,             		"src/trains/e5_series/12/e5_miniparts_2cc.png")  {template_2_standard(1,661)}
+		spriteset(ss_e5_series_pantof_mp5_12_2cc,             		"src/trains/e5_series/12/e5_miniparts_2cc.png")  {template_2_standard(1,681)}
+        spriteset(ss_e5_series_pantof_mp6_12_2cc,             		"src/trains/e5_series/12/e5_miniparts_2cc.png")  {template_2_standard(1,701)}
+
+		switch(FEAT_TRAINS, PARENT, sw_e5_series_pantof_mp1_12, cargo_subtype) {
+			0: ss_e5_series_pantof_mp1_12_pink;
+			1: ss_e5_series_pantof_mp1_12_purp;
+			2: ss_e5_series_pantof_mp1_12_2cc;
+		}
+
+		switch(FEAT_TRAINS, PARENT, sw_e5_series_pantof_mp2_12, cargo_subtype) {
+			0: ss_e5_series_pantof_mp2_12_pink;
+			1: ss_e5_series_pantof_mp2_12_purp;
+			2: ss_e5_series_pantof_mp2_12_2cc;
+		}
+
+		switch(FEAT_TRAINS, PARENT, sw_e5_series_pantof_mp3_12, cargo_subtype) {
+			0: ss_e5_series_pantof_mp3_12_pink;
+			1: ss_e5_series_pantof_mp3_12_purp;
+			2: ss_e5_series_pantof_mp3_12_2cc;
+		}
+
+		switch(FEAT_TRAINS, PARENT, sw_e5_series_pantof_mp4_12, cargo_subtype) {
+			0: ss_e5_series_pantof_mp4_12_pink;
+			1: ss_e5_series_pantof_mp4_12_purp;
+			2: ss_e5_series_pantof_mp4_12_2cc;
+		}
+
+		switch(FEAT_TRAINS, PARENT, sw_e5_series_pantof_mp5_12, cargo_subtype) {
+			0: ss_e5_series_pantof_mp5_12_pink;
+			1: ss_e5_series_pantof_mp5_12_purp;
+			2: ss_e5_series_pantof_mp5_12_2cc;
+		}
+
+        switch(FEAT_TRAINS, PARENT, sw_e5_series_pantof_mp6_12, cargo_subtype) {
+			0: ss_e5_series_pantof_mp6_12_pink;
+			1: ss_e5_series_pantof_mp6_12_purp;
+			2: ss_e5_series_pantof_mp6_12_2cc;
+		}
+
+
+	// Backwards
+		// E5
+		spriteset(ss_e5_series_pantob_mp1_12_pink,             		"src/trains/dummy/empty.png") {template_dummy(0,0)}
+		spriteset(ss_e5_series_pantob_mp2_12_pink,             		"src/trains/dummy/empty.png") {template_dummy(0,0)}
+		spriteset(ss_e5_series_pantob_mp3_12_pink,             		"src/trains/dummy/empty.png") {template_dummy(0,0)}
+		spriteset(ss_e5_series_pantob_mp4_12_pink,             		"src/trains/dummy/empty.png") {template_dummy(0,0)}
+		spriteset(ss_e5_series_pantob_mp5_12_pink,             		"src/trains/dummy/empty.png") {template_dummy(0,0)}
+        spriteset(ss_e5_series_pantob_mp6_12_pink,             		"src/trains/dummy/empty.png") {template_dummy(0,0)}
+
+		// 1 2 3 4 5 6
+		alternative_sprites(ss_e5_series_pantob_mp1_12_pink,    	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e5_series/12/e5_miniparts.png")  {template_2_reversed(1,601)}
+		alternative_sprites(ss_e5_series_pantob_mp2_12_pink,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e5_series/12/e5_miniparts.png")  {template_2_reversed(1,621)}
+		alternative_sprites(ss_e5_series_pantob_mp3_12_pink,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e5_series/12/e5_miniparts.png")  {template_2_reversed(1,641)}	
+		alternative_sprites(ss_e5_series_pantob_mp4_12_pink,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e5_series/12/e5_miniparts.png")  {template_2_reversed(1,661)}	
+		alternative_sprites(ss_e5_series_pantob_mp5_12_pink,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e5_series/12/e5_miniparts.png")  {template_2_reversed(1,681)}	
+        alternative_sprites(ss_e5_series_pantob_mp6_12_pink,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e5_series/12/e5_miniparts.png")  {template_2_reversed(1,701)}	
+
+		// H5
+		spriteset(ss_e5_series_pantob_mp1_12_purp,             		"src/trains/dummy/empty.png") {template_dummy(0,0)}
+		spriteset(ss_e5_series_pantob_mp2_12_purp,             		"src/trains/dummy/empty.png") {template_dummy(0,0)}
+		spriteset(ss_e5_series_pantob_mp3_12_purp,             		"src/trains/dummy/empty.png") {template_dummy(0,0)}
+		spriteset(ss_e5_series_pantob_mp4_12_purp,             		"src/trains/dummy/empty.png") {template_dummy(0,0)}
+		spriteset(ss_e5_series_pantob_mp5_12_purp,             		"src/trains/dummy/empty.png") {template_dummy(0,0)}
+        spriteset(ss_e5_series_pantob_mp6_12_purp,             		"src/trains/dummy/empty.png") {template_dummy(0,0)}
+
+		// 1 2 3 4 5 6
+		alternative_sprites(ss_e5_series_pantob_mp1_12_purp,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e5_series/12/h5_miniparts.png")  {template_2_reversed(1,601)}
+		alternative_sprites(ss_e5_series_pantob_mp2_12_purp,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e5_series/12/h5_miniparts.png")  {template_2_reversed(1,621)}
+		alternative_sprites(ss_e5_series_pantob_mp3_12_purp,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e5_series/12/h5_miniparts.png")  {template_2_reversed(1,641)}	
+		alternative_sprites(ss_e5_series_pantob_mp4_12_purp,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e5_series/12/h5_miniparts.png")  {template_2_reversed(1,661)}	
+		alternative_sprites(ss_e5_series_pantob_mp5_12_purp,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e5_series/12/h5_miniparts.png")  {template_2_reversed(1,681)}	
+        alternative_sprites(ss_e5_series_pantob_mp6_12_purp,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e5_series/12/h5_miniparts.png")  {template_2_reversed(1,701)}	
+
+		// 2cc
+		spriteset(ss_e5_series_pantob_mp1_12_2cc,             		"src/trains/e5_series/12/e5_miniparts_2cc.png")  {template_2_reversed(1,601)}
+		spriteset(ss_e5_series_pantob_mp2_12_2cc,             		"src/trains/e5_series/12/e5_miniparts_2cc.png")  {template_2_reversed(1,621)}
+		spriteset(ss_e5_series_pantob_mp3_12_2cc,             		"src/trains/e5_series/12/e5_miniparts_2cc.png")  {template_2_reversed(1,641)}
+		spriteset(ss_e5_series_pantob_mp4_12_2cc,             		"src/trains/e5_series/12/e5_miniparts_2cc.png")  {template_2_reversed(1,661)}
+		spriteset(ss_e5_series_pantob_mp5_12_2cc,             		"src/trains/e5_series/12/e5_miniparts_2cc.png")  {template_2_reversed(1,681)}
+        spriteset(ss_e5_series_pantob_mp6_12_2cc,             		"src/trains/e5_series/12/e5_miniparts_2cc.png")  {template_2_reversed(1,701)}
+
+		switch(FEAT_TRAINS, PARENT, sw_e5_series_pantob_mp1_12, cargo_subtype) {
+			0: ss_e5_series_pantob_mp1_12_pink;
+			1: ss_e5_series_pantob_mp1_12_purp;
+			2: ss_e5_series_pantob_mp1_12_2cc;
+		}
+
+		switch(FEAT_TRAINS, PARENT, sw_e5_series_pantob_mp2_12, cargo_subtype) {
+			0: ss_e5_series_pantob_mp2_12_pink;
+			1: ss_e5_series_pantob_mp2_12_purp;
+			2: ss_e5_series_pantob_mp2_12_2cc;
+		}
+
+		switch(FEAT_TRAINS, PARENT, sw_e5_series_pantob_mp3_12, cargo_subtype) {
+			0: ss_e5_series_pantob_mp3_12_pink;
+			1: ss_e5_series_pantob_mp3_12_purp;
+			2: ss_e5_series_pantob_mp3_12_2cc;
+		}
+
+		switch(FEAT_TRAINS, PARENT, sw_e5_series_pantob_mp4_12, cargo_subtype) {
+			0: ss_e5_series_pantob_mp4_12_pink;
+			1: ss_e5_series_pantob_mp4_12_purp;
+			2: ss_e5_series_pantob_mp4_12_2cc;
+		}
+
+		switch(FEAT_TRAINS, PARENT, sw_e5_series_pantob_mp5_12, cargo_subtype) {
+			0: ss_e5_series_pantob_mp5_12_pink;
+			1: ss_e5_series_pantob_mp5_12_purp;
+			2: ss_e5_series_pantob_mp5_12_2cc;
+		}
+
+        switch(FEAT_TRAINS, PARENT, sw_e5_series_pantob_mp6_12, cargo_subtype) {
+			0: ss_e5_series_pantob_mp6_12_pink;
+			1: ss_e5_series_pantob_mp6_12_purp;
+			2: ss_e5_series_pantob_mp6_12_2cc;
+		}
+
+// 12 on 2
+    // Forwards
+        // Pink
+        spriteset(ss_e5_series_pantof_12on2_pink,               "src/trains/dummy/empty.png") {template_dummy(0,0)}
+        alternative_sprites(ss_e5_series_pantof_12on2_pink,     ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e5_series/12/e5pink.png")  {template_12_on_2_standard(1,121)}
+        
+        // Purple
+        spriteset(ss_e5_series_pantof_12on2_purp,               "src/trains/dummy/empty.png") {template_dummy(0,0)}
+        alternative_sprites(ss_e5_series_pantof_12on2_purp,     ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e5_series/12/h5purple.png")  {template_12_on_2_standard(1,121)}
+        
+        // 2cc
+        spriteset(ss_e5_series_pantof_12on2_2cc,             	"src/trains/e5_series/12/e5_2cc.png") {template_12_on_2_standard(1,121)}
+
+        // Subtype Selection
+        switch(FEAT_TRAINS, PARENT, sw_e5_series_pantof_12on2, cargo_subtype) {
+                1: ss_e5_series_pantof_12on2_purp;
+                2: ss_e5_series_pantof_12on2_2cc;
+                ss_e5_series_pantof_12on2_pink;
+            }
+
+    // Backwards
+        // Pink
+	    spriteset(ss_e5_series_pantob_12on2_pink,               "src/trains/dummy/empty.png") {template_dummy(0,0)}
+	    alternative_sprites(ss_e5_series_pantob_12on2_pink,     ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e5_series/12/e5pink.png")  {template_12_on_2_reversed(1,121)}
+
+        // Purp
+	    spriteset(ss_e5_series_pantob_12on2_purp,               "src/trains/dummy/empty.png") {template_dummy(0,0)}
+	    alternative_sprites(ss_e5_series_pantob_12on2_purp,     ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e5_series/12/h5purple.png")  {template_12_on_2_reversed(1,121)}
+
+        // 2cc
+	    spriteset(ss_e5_series_pantob_12on2_2cc,                "src/trains/e5_series/12/e5_2cc.png")  {template_12_on_2_reversed(1,121)}
+
+        // Subtype Selection
+        switch(FEAT_TRAINS, PARENT, sw_e5_series_pantob_12on2, cargo_subtype) {
+                1: ss_e5_series_pantob_12on2_purp;
+                2: ss_e5_series_pantob_12on2_2cc;
+                ss_e5_series_pantob_12on2_pink;
+            }
+
+// Choose length
+	// Forwards
+		switch (FEAT_TRAINS, SELF, sw_e5_series_pantof_mp1_12_check, other_veh_curv_info(5) == 0 && other_veh_curv_info(1) == 0 && other_veh_z_offset(4) == 0 && other_veh_z_offset(1) == 0 ) {
+				1: sw_e5_series_pantof_mp1_12;		   
+				dummy_sprites;			
+			}
+
+		switch (FEAT_TRAINS, SELF, sw_e5_series_pantof_mp2_12_check, other_veh_curv_info(4) == 0 && other_veh_curv_info(-1) == 0 && other_veh_z_offset(4) == 0 && other_veh_z_offset(-1) == 0 ) {
+				1: sw_e5_series_pantof_mp2_12;		   
+				sw_e5_series_pantof_12on2; 
+			}
+
+		switch (FEAT_TRAINS, SELF, sw_e5_series_pantof_mp3_12_check, other_veh_curv_info(3) == 0 && other_veh_curv_info(-2) == 0 && other_veh_z_offset(3) == 0 && other_veh_z_offset(-2) == 0 ) {
+				1: sw_e5_series_pantof_mp3_12;		   
+				dummy_sprites;			
+			}
+
+		switch (FEAT_TRAINS, SELF, sw_e5_series_pantof_mp4_12_check, other_veh_curv_info(2) == 0 && other_veh_curv_info(-3) == 0 && other_veh_z_offset(2) == 0 && other_veh_z_offset(-3) == 0 ) {
+				1: sw_e5_series_pantof_mp4_12;		   
+				dummy_sprites;						
+			}
+
+		switch (FEAT_TRAINS, SELF, sw_e5_series_pantof_mp5_12_check, other_veh_curv_info(1) == 0 && other_veh_curv_info(-4) == 0 && other_veh_z_offset(1) == 0 && other_veh_z_offset(-4) == 0 ) {
+				1: sw_e5_series_pantof_mp5_12;		   
+				dummy_sprites;					
+			}
+
+        switch (FEAT_TRAINS, SELF, sw_e5_series_pantof_mp6_12_check, other_veh_curv_info(-1) == 0 && other_veh_curv_info(-5) == 0 && other_veh_z_offset(-1) == 0 && other_veh_z_offset(-5) == 0 ) {
+				1: sw_e5_series_pantof_mp6_12;		   
+				dummy_sprites;					
+			}
+	
+	// Backwards
+		switch (FEAT_TRAINS, SELF, sw_e5_series_pantob_mp1_12_check, other_veh_curv_info(1) == 0 && other_veh_curv_info(5) == 0 && other_veh_z_offset(1) == 0 && other_veh_z_offset(5) == 0 ) {
+				1: sw_e5_series_pantob_mp1_12;		   
+				dummy_sprites;				
+			}
+
+		switch (FEAT_TRAINS, SELF, sw_e5_series_pantob_mp2_12_check, other_veh_curv_info(-1) == 0 && other_veh_curv_info(4) == 0 && other_veh_z_offset(-1) == 0 && other_veh_z_offset(4) == 0 ) {
+				1: sw_e5_series_pantob_mp2_12;		   
+				sw_e5_series_pantob_12on2;			
+			}
+
+		switch (FEAT_TRAINS, SELF, sw_e5_series_pantob_mp3_12_check, other_veh_curv_info(-2) == 0 && other_veh_curv_info(3) == 0 && other_veh_z_offset(-2) == 0 && other_veh_z_offset(3) == 0 ) {
+				1: sw_e5_series_pantob_mp3_12;		   
+				dummy_sprites;					
+			}
+
+		switch (FEAT_TRAINS, SELF, sw_e5_series_pantob_mp4_12_check, other_veh_curv_info(-3) == 0 && other_veh_curv_info(2) == 0 && other_veh_z_offset(-3) == 0 && other_veh_z_offset(2) == 0 ) {
+				1: sw_e5_series_pantob_mp4_12;		   
+				dummy_sprites;						
+			}
+
+		switch (FEAT_TRAINS, SELF, sw_e5_series_pantob_mp5_12_check, other_veh_curv_info(-4) == 0 && other_veh_curv_info(1) == 0 && other_veh_z_offset(-4) == 0 && other_veh_z_offset(1) == 0 ) {
+				1: sw_e5_series_pantob_mp5_12;		   
+				dummy_sprites;				
+			}
+			
+        switch (FEAT_TRAINS, SELF, sw_e5_series_pantob_mp6_12_check, other_veh_curv_info(-5) == 0 && other_veh_curv_info(-1) == 0 && other_veh_z_offset(-5) == 0 && other_veh_z_offset(-1) == 0 ) {
+				1: sw_e5_series_pantob_mp6_12;		   
+				dummy_sprites;				
+			}
+			

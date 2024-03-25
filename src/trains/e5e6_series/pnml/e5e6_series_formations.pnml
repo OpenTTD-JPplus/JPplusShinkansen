@@ -1,0 +1,433 @@
+
+switch (FEAT_TRAINS, SELF, sw_e5e6_series_backwards_10, position_in_consist_from_end ) {				
+		// 1 Cab
+		0:  sw_e5_series_cab01b_mp1_10_check;
+		1:  sw_e5_series_cab01b_mp2_10_check;
+		2:  sw_e5_series_cab01b_mp3_10_check;
+		3:  sw_e5_series_cab01b_mp4_10_check;
+		4:  sw_e5_series_cab01b_mp5_10_check;
+		// 2 Coach 
+		5:  sw_e5_series_coachb_mp1_10_check;
+		6:  sw_e5_series_coachb_mp2_10_check;
+		7:  sw_e5_series_coachb_mp3_10_check;
+		8:  sw_e5_series_coachb_mp4_10_check;
+		9:  sw_e5_series_coachb_mp5_10_check;
+		// 3 Coach
+		10: sw_e5_series_pantob_mp1_10_check;
+		11: sw_e5_series_pantob_mp2_10_check;
+		12: sw_e5_series_pantob_mp3_10_check;
+		13: sw_e5_series_pantob_mp4_10_check;
+		14: sw_e5_series_pantob_mp5_10_check;
+		// 4 Panto
+		15: sw_e5_series_coachb_mp1_10_check;
+		16: sw_e5_series_coachb_mp2_10_check;
+		17: sw_e5_series_coachb_mp3_10_check;
+		18: sw_e5_series_coachb_mp4_10_check;
+		19: sw_e5_series_coachb_mp5_10_check;
+		// 5 Coach
+		20: sw_e5_series_coachb_mp1_10_check;
+		21: sw_e5_series_coachb_mp2_10_check;
+		22: sw_e5_series_coachb_mp3_10_check;
+		23: sw_e5_series_coachb_mp4_10_check;
+		24: sw_e5_series_coachb_mp5_10_check;
+		// 6 Coach
+		25: sw_e5_series_coachb_mp1_10_check;
+		26: sw_e5_series_coachb_mp2_10_check;
+		27: sw_e5_series_coachb_mp3_10_check;
+		28: sw_e5_series_coachb_mp4_10_check;
+		29: sw_e5_series_coachb_mp5_10_check;
+		// 7 Coach
+		30: sw_e5_series_coachb_mp1_10_check;
+		31: sw_e5_series_coachb_mp2_10_check;
+		32: sw_e5_series_coachb_mp3_10_check;
+		33: sw_e5_series_coachb_mp4_10_check;
+		34: sw_e5_series_coachb_mp5_10_check;
+		// 8 Coach
+		35: sw_e5_series_pantob_mp1_10_check;
+		36: sw_e5_series_pantob_mp2_10_check;
+		37: sw_e5_series_pantob_mp3_10_check;
+		38: sw_e5_series_pantob_mp4_10_check;
+		39: sw_e5_series_pantob_mp5_10_check;
+		// 9 Coach
+		40: sw_e5_series_coachb_mp1_10_check;
+		41: sw_e5_series_coachb_mp2_10_check;
+		42: sw_e5_series_coachb_mp3_10_check;
+		43: sw_e5_series_coachb_mp4_10_check;
+		44: sw_e5_series_coachb_mp5_10_check;
+		// 10 Cab
+		45: sw_e5_series_cab02b_mp1_10_check;
+		46: sw_e5_series_cab02b_mp2_10_check;
+		47: sw_e5_series_cab02b_mp3_10_check;
+		48: sw_e5_series_cab02b_mp4_10_check;
+		49: sw_e5_series_cab02b_mp5_10_check;
+		// E6 Series
+		// 1 Cab
+		50: sw_e6_series_cab01b_mp1_check;
+		51: sw_e6_series_cab01b_mp2_check;
+		52: sw_e6_series_cab01b_mp3_check;
+		53: sw_e6_series_cab01b_mp4_check;
+		// 2 Panto
+		54: sw_e6_series_pant2b_mp1_check;
+		55: sw_e6_series_pant2b_mp2_check;
+		56: sw_e6_series_pant2b_mp3_check;
+		57: sw_e6_series_pant2b_mp4_check;
+		// 3 Coach
+		58: sw_e6_series_coachb_mp1_check;
+		59: sw_e6_series_coachb_mp2_check;
+		60: sw_e6_series_coachb_mp3_check;
+		61: sw_e6_series_coachb_mp4_check;
+		// 4 Coach
+		62: sw_e6_series_coachb_mp1_check;
+		63: sw_e6_series_coachb_mp2_check;
+		64: sw_e6_series_coachb_mp3_check;
+		65: sw_e6_series_coachb_mp4_check;
+		// 5 Coach
+		66: sw_e6_series_coachb_mp1_check;
+		67: sw_e6_series_coachb_mp2_check;
+		68: sw_e6_series_coachb_mp3_check;
+		69: sw_e6_series_coachb_mp4_check;
+		// 6 Panto
+		70: sw_e6_series_pant6b_mp1_check;
+		71: sw_e6_series_pant6b_mp2_check;
+		72: sw_e6_series_pant6b_mp3_check;
+		73: sw_e6_series_pant6b_mp4_check;
+		// 7 Cab
+		74: sw_e6_series_cab02b_mp1_check;
+		75: sw_e6_series_cab02b_mp2_check;
+		76: sw_e6_series_cab02b_mp3_check;
+		77: sw_e6_series_cab02b_mp4_check;
+		dummy_sprites;			
+	}
+
+switch (FEAT_TRAINS, SELF, sw_e5e6_series_forwards_10, position_in_consist ) {				
+		0:  sw_e5_series_cab01f_mp1_10_check;
+		1:  sw_e5_series_cab01f_mp2_10_check;
+		2:  sw_e5_series_cab01f_mp3_10_check;
+		3:  sw_e5_series_cab01f_mp4_10_check;
+		4:  sw_e5_series_cab01f_mp5_10_check;
+		// 2 Coach 
+		5:  sw_e5_series_coachf_mp1_10_check;
+		6:  sw_e5_series_coachf_mp2_10_check;
+		7:  sw_e5_series_coachf_mp3_10_check;
+		8:  sw_e5_series_coachf_mp4_10_check;
+		9:  sw_e5_series_coachf_mp5_10_check;
+		// 3 Coach
+		10: sw_e5_series_pantof_mp1_10_check;
+		11: sw_e5_series_pantof_mp2_10_check;
+		12: sw_e5_series_pantof_mp3_10_check;
+		13: sw_e5_series_pantof_mp4_10_check;
+		14: sw_e5_series_pantof_mp5_10_check;
+		// 4 Panto
+		15: sw_e5_series_coachf_mp1_10_check;
+		16: sw_e5_series_coachf_mp2_10_check;
+		17: sw_e5_series_coachf_mp3_10_check;
+		18: sw_e5_series_coachf_mp4_10_check;
+		19: sw_e5_series_coachf_mp5_10_check;
+		// 5 Coach
+		20: sw_e5_series_coachf_mp1_10_check;
+		21: sw_e5_series_coachf_mp2_10_check;
+		22: sw_e5_series_coachf_mp3_10_check;
+		23: sw_e5_series_coachf_mp4_10_check;
+		24: sw_e5_series_coachf_mp5_10_check;
+		// 6 Coach
+		25: sw_e5_series_coachf_mp1_10_check;
+		26: sw_e5_series_coachf_mp2_10_check;
+		27: sw_e5_series_coachf_mp3_10_check;
+		28: sw_e5_series_coachf_mp4_10_check;
+		29: sw_e5_series_coachf_mp5_10_check;
+		// 7 Coach
+		30: sw_e5_series_coachf_mp1_10_check;
+		31: sw_e5_series_coachf_mp2_10_check;
+		32: sw_e5_series_coachf_mp3_10_check;
+		33: sw_e5_series_coachf_mp4_10_check;
+		34: sw_e5_series_coachf_mp5_10_check;
+		// 8 Coach
+		35: sw_e5_series_pantof_mp1_10_check;
+		36: sw_e5_series_pantof_mp2_10_check;
+		37: sw_e5_series_pantof_mp3_10_check;
+		38: sw_e5_series_pantof_mp4_10_check;
+		39: sw_e5_series_pantof_mp5_10_check;
+		// 9 Coach
+		40: sw_e5_series_coachf_mp1_10_check;
+		41: sw_e5_series_coachf_mp2_10_check;
+		42: sw_e5_series_coachf_mp3_10_check;
+		43: sw_e5_series_coachf_mp4_10_check;
+		44: sw_e5_series_coachf_mp5_10_check;
+		// 10 Cab
+		45: sw_e5_series_cab02f_mp1_10_check;
+		46: sw_e5_series_cab02f_mp2_10_check;
+		47: sw_e5_series_cab02f_mp3_10_check;
+		48: sw_e5_series_cab02f_mp4_10_check;
+		49: sw_e5_series_cab02f_mp5_10_check;
+		// E6 Series
+		// 1 Cab
+		50: sw_e6_series_cab01f_mp1_check;
+		51: sw_e6_series_cab01f_mp2_check;
+		52: sw_e6_series_cab01f_mp3_check;
+		53: sw_e6_series_cab01f_mp4_check;
+		// 2 Panto
+		54: sw_e6_series_pant2f_mp1_check;
+		55: sw_e6_series_pant2f_mp2_check;
+		56: sw_e6_series_pant2f_mp3_check;
+		57: sw_e6_series_pant2f_mp4_check;
+		// 3 Coach
+		58: sw_e6_series_coachf_mp1_check;
+		59: sw_e6_series_coachf_mp2_check;
+		60: sw_e6_series_coachf_mp3_check;
+		61: sw_e6_series_coachf_mp4_check;
+		// 4 Coach
+		62: sw_e6_series_coachf_mp1_check;
+		63: sw_e6_series_coachf_mp2_check;
+		64: sw_e6_series_coachf_mp3_check;
+		65: sw_e6_series_coachf_mp4_check;
+		// 5 Coach
+		66: sw_e6_series_coachf_mp1_check;
+		67: sw_e6_series_coachf_mp2_check;
+		68: sw_e6_series_coachf_mp3_check;
+		69: sw_e6_series_coachf_mp4_check;
+		// 6 Panto
+		70: sw_e6_series_pant6f_mp1_check;
+		71: sw_e6_series_pant6f_mp2_check;
+		72: sw_e6_series_pant6f_mp3_check;
+		73: sw_e6_series_pant6f_mp4_check;
+		// 7 Cab
+		74: sw_e6_series_cab02f_mp1_check;
+		75: sw_e6_series_cab02f_mp2_check;
+		76: sw_e6_series_cab02f_mp3_check;
+		77: sw_e6_series_cab02f_mp4_check;
+		dummy_sprites;				
+	}
+
+switch (FEAT_TRAINS, SELF, sw_e5e6_series_backwards_12, position_in_consist_from_end ) {				
+		// 1 Cab
+		0:  sw_e5_series_cab01b_mp1_12_check;
+		1:  sw_e5_series_cab01b_mp2_12_check;
+		2:  sw_e5_series_cab01b_mp3_12_check;
+		3:  sw_e5_series_cab01b_mp4_12_check;
+		4:  sw_e5_series_cab01b_mp5_12_check;
+		5:  sw_e5_series_cab01b_mp6_12_check;
+		// 2 Coach 
+		6:  sw_e5_series_coachb_mp1_12_check;
+		7:  sw_e5_series_coachb_mp2_12_check;
+		8:  sw_e5_series_coachb_mp3_12_check;
+		9:  sw_e5_series_coachb_mp4_12_check;
+		10: sw_e5_series_coachb_mp5_12_check;
+		11: sw_e5_series_coachb_mp6_12_check;
+		// 3 Coach
+		12: sw_e5_series_pantob_mp1_12_check;
+		13: sw_e5_series_pantob_mp2_12_check;
+		14: sw_e5_series_pantob_mp3_12_check;
+		15: sw_e5_series_pantob_mp4_12_check;
+		16: sw_e5_series_pantob_mp5_12_check;
+		17: sw_e5_series_pantob_mp6_12_check;
+		// 4 Panto
+		18: sw_e5_series_coachb_mp1_12_check;
+		19: sw_e5_series_coachb_mp2_12_check;
+		20: sw_e5_series_coachb_mp3_12_check;
+		21: sw_e5_series_coachb_mp4_12_check;
+		22: sw_e5_series_coachb_mp5_12_check;
+		23: sw_e5_series_coachb_mp6_12_check;
+		// 5 Coach
+		24: sw_e5_series_coachb_mp1_12_check;
+		25: sw_e5_series_coachb_mp2_12_check;
+		26: sw_e5_series_coachb_mp3_12_check;
+		27: sw_e5_series_coachb_mp4_12_check;
+		28: sw_e5_series_coachb_mp5_12_check;
+		29: sw_e5_series_coachb_mp6_12_check;
+		// 6 Coach
+		30: sw_e5_series_coachb_mp1_12_check;
+		31: sw_e5_series_coachb_mp2_12_check;
+		32: sw_e5_series_coachb_mp3_12_check;
+		33: sw_e5_series_coachb_mp4_12_check;
+		34: sw_e5_series_coachb_mp5_12_check;
+		35: sw_e5_series_coachb_mp6_12_check;
+		// 7 Coach
+		36: sw_e5_series_coachb_mp1_12_check;
+		37: sw_e5_series_coachb_mp2_12_check;
+		38: sw_e5_series_coachb_mp3_12_check;
+		39: sw_e5_series_coachb_mp4_12_check;
+		40: sw_e5_series_coachb_mp5_12_check;
+		41: sw_e5_series_coachb_mp6_12_check;
+		// 8 Coach
+		42: sw_e5_series_pantob_mp1_12_check;
+		43: sw_e5_series_pantob_mp2_12_check;
+		44: sw_e5_series_pantob_mp3_12_check;
+		45: sw_e5_series_pantob_mp4_12_check;
+		46: sw_e5_series_pantob_mp5_12_check;
+		47: sw_e5_series_pantob_mp6_12_check;
+		// 9 Coach
+		48: sw_e5_series_coachb_mp1_12_check;
+		49: sw_e5_series_coachb_mp2_12_check;
+		50: sw_e5_series_coachb_mp3_12_check;
+		51: sw_e5_series_coachb_mp4_12_check;
+		52: sw_e5_series_coachb_mp5_12_check;
+		53: sw_e5_series_coachb_mp6_12_check;
+		// 10 Cab
+		54: sw_e5_series_cab02b_mp1_12_check;
+		55: sw_e5_series_cab02b_mp2_12_check;
+		56: sw_e5_series_cab02b_mp3_12_check;
+		57: sw_e5_series_cab02b_mp4_12_check;
+		58: sw_e5_series_cab02b_mp5_12_check;
+		59: sw_e5_series_cab02b_mp6_12_check;
+		// E6 Series
+		// 1 Cab
+		60: sw_e6_series_cab01b_mp1_check;
+		61: sw_e6_series_cab01b_mp2_check;
+		62: sw_e6_series_cab01b_mp3_check;
+		63: sw_e6_series_cab01b_mp4_check;
+		// 2 Panto
+		64: sw_e6_series_pant2b_mp1_check;
+		65: sw_e6_series_pant2b_mp2_check;
+		66: sw_e6_series_pant2b_mp3_check;
+		67: sw_e6_series_pant2b_mp4_check;
+		// 3 Coach
+		68: sw_e6_series_coachb_mp1_check;
+		69: sw_e6_series_coachb_mp2_check;
+		70: sw_e6_series_coachb_mp3_check;
+		71: sw_e6_series_coachb_mp4_check;
+		// 4 Coach
+		72: sw_e6_series_coachb_mp1_check;
+		73: sw_e6_series_coachb_mp2_check;
+		74: sw_e6_series_coachb_mp3_check;
+		75: sw_e6_series_coachb_mp4_check;
+		// 5 Coach
+		76: sw_e6_series_coachb_mp1_check;
+		77: sw_e6_series_coachb_mp2_check;
+		78: sw_e6_series_coachb_mp3_check;
+		79: sw_e6_series_coachb_mp4_check;
+		// 6 Panto
+		80: sw_e6_series_pant6b_mp1_check;
+		81: sw_e6_series_pant6b_mp2_check;
+		82: sw_e6_series_pant6b_mp3_check;
+		83: sw_e6_series_pant6b_mp4_check;
+		// 7 Cab
+		84: sw_e6_series_cab02b_mp1_check;
+		85: sw_e6_series_cab02b_mp2_check;
+		86: sw_e6_series_cab02b_mp3_check;
+		87: sw_e6_series_cab02b_mp4_check;
+		dummy_sprites;				
+	}		
+
+switch (FEAT_TRAINS, SELF, sw_e5e6_series_forwards_12, position_in_consist ) {				
+		0:  sw_e5_series_cab01f_mp1_12_check;
+		1:  sw_e5_series_cab01f_mp2_12_check;
+		2:  sw_e5_series_cab01f_mp3_12_check;
+		3:  sw_e5_series_cab01f_mp4_12_check;
+		4:  sw_e5_series_cab01f_mp5_12_check;
+		5:  sw_e5_series_cab01f_mp6_12_check;
+		// 2 Coach 
+		6:  sw_e5_series_coachf_mp1_12_check;
+		7:  sw_e5_series_coachf_mp2_12_check;
+		8:  sw_e5_series_coachf_mp3_12_check;
+		9:  sw_e5_series_coachf_mp4_12_check;
+		10: sw_e5_series_coachf_mp5_12_check;
+		11: sw_e5_series_coachf_mp6_12_check;
+		// 3 Coach
+		12: sw_e5_series_pantof_mp1_12_check;
+		13: sw_e5_series_pantof_mp2_12_check;
+		14: sw_e5_series_pantof_mp3_12_check;
+		15: sw_e5_series_pantof_mp4_12_check;
+		16: sw_e5_series_pantof_mp5_12_check;
+		17: sw_e5_series_pantof_mp6_12_check;
+		// 4 Panto
+		18: sw_e5_series_coachf_mp1_12_check;
+		19: sw_e5_series_coachf_mp2_12_check;
+		20: sw_e5_series_coachf_mp3_12_check;
+		21: sw_e5_series_coachf_mp4_12_check;
+		22: sw_e5_series_coachf_mp5_12_check;
+		23: sw_e5_series_coachf_mp6_12_check;
+		// 5 Coach
+		24: sw_e5_series_coachf_mp1_12_check;
+		25: sw_e5_series_coachf_mp2_12_check;
+		26: sw_e5_series_coachf_mp3_12_check;
+		27: sw_e5_series_coachf_mp4_12_check;
+		28: sw_e5_series_coachf_mp5_12_check;
+		29: sw_e5_series_coachf_mp6_12_check;
+		// 6 Coach
+		30: sw_e5_series_coachf_mp1_12_check;
+		31: sw_e5_series_coachf_mp2_12_check;
+		32: sw_e5_series_coachf_mp3_12_check;
+		33: sw_e5_series_coachf_mp4_12_check;
+		34: sw_e5_series_coachf_mp5_12_check;
+		35: sw_e5_series_coachf_mp6_12_check;
+		// 7 Coach
+		36: sw_e5_series_coachf_mp1_12_check;
+		37: sw_e5_series_coachf_mp2_12_check;
+		38: sw_e5_series_coachf_mp3_12_check;
+		39: sw_e5_series_coachf_mp4_12_check;
+		40: sw_e5_series_coachf_mp5_12_check;
+		41: sw_e5_series_coachf_mp6_12_check;
+		// 8 Coach
+		42: sw_e5_series_pantof_mp1_12_check;
+		43: sw_e5_series_pantof_mp2_12_check;
+		44: sw_e5_series_pantof_mp3_12_check;
+		45: sw_e5_series_pantof_mp4_12_check;
+		46: sw_e5_series_pantof_mp5_12_check;
+		47: sw_e5_series_pantof_mp6_12_check;
+		// 9 Coach
+		48: sw_e5_series_coachf_mp1_12_check;
+		49: sw_e5_series_coachf_mp2_12_check;
+		50: sw_e5_series_coachf_mp3_12_check;
+		51: sw_e5_series_coachf_mp4_12_check;
+		52: sw_e5_series_coachf_mp5_12_check;
+		53: sw_e5_series_coachf_mp6_12_check;
+		// 10 Cab
+		54: sw_e5_series_cab02f_mp1_12_check;
+		55: sw_e5_series_cab02f_mp2_12_check;
+		56: sw_e5_series_cab02f_mp3_12_check;
+		57: sw_e5_series_cab02f_mp4_12_check;
+		58: sw_e5_series_cab02f_mp5_12_check;
+		59: sw_e5_series_cab02f_mp6_12_check;
+		// E6 Series
+		// 1 Cab
+		60: sw_e6_series_cab01f_mp1_check;
+		61: sw_e6_series_cab01f_mp2_check;
+		62: sw_e6_series_cab01f_mp3_check;
+		63: sw_e6_series_cab01f_mp4_check;
+		// 2 Panto
+		64: sw_e6_series_pant2f_mp1_check;
+		65: sw_e6_series_pant2f_mp2_check;
+		66: sw_e6_series_pant2f_mp3_check;
+		67: sw_e6_series_pant2f_mp4_check;
+		// 3 Coach
+		68: sw_e6_series_coachf_mp1_check;
+		69: sw_e6_series_coachf_mp2_check;
+		70: sw_e6_series_coachf_mp3_check;
+		71: sw_e6_series_coachf_mp4_check;
+		// 4 Coach
+		72: sw_e6_series_coachf_mp1_check;
+		73: sw_e6_series_coachf_mp2_check;
+		74: sw_e6_series_coachf_mp3_check;
+		75: sw_e6_series_coachf_mp4_check;
+		// 5 Coach
+		76: sw_e6_series_coachf_mp1_check;
+		77: sw_e6_series_coachf_mp2_check;
+		78: sw_e6_series_coachf_mp3_check;
+		79: sw_e6_series_coachf_mp4_check;
+		// 6 Panto
+		80: sw_e6_series_pant6f_mp1_check;
+		81: sw_e6_series_pant6f_mp2_check;
+		82: sw_e6_series_pant6f_mp3_check;
+		83: sw_e6_series_pant6f_mp4_check;
+		// 7 Cab
+		84: sw_e6_series_cab02f_mp1_check;
+		85: sw_e6_series_cab02f_mp2_check;
+		86: sw_e6_series_cab02f_mp3_check;
+		87: sw_e6_series_cab02f_mp4_check;
+		dummy_sprites;					
+	}
+
+switch (FEAT_TRAINS, SELF, sw_e5e6_series_backwards, param_spritelength) {
+        1: sw_e5e6_series_backwards_10;		    	// Length 10
+        sw_e5e6_series_backwards_12;				// Length 12
+    }
+
+switch (FEAT_TRAINS, SELF, sw_e5e6_series_forwards, param_spritelength) {
+        1: sw_e5e6_series_forwards_10;		    // Length 10
+        sw_e5e6_series_forwards_12;				// Length 12
+    }
+
+switch (FEAT_TRAINS, PARENT, sw_e5e6_series_graphics, vehicle_is_reversed ) {				
+		0:  sw_e5e6_series_forwards; 				
+		sw_e5e6_series_backwards;
+	}
