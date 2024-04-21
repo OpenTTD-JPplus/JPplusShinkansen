@@ -1,0 +1,69 @@
+
+/*---Coupling Switch---*/
+    switch(FEAT_TRAINS, SELF, sw_400_series_attach_vehid, [vehicle_type_id == series_400 || vehicle_type_id == mu_car_ms]) {
+        0: return string(MU_UNIQUE);
+    }
+/*---END OF SECTION---*/
+
+item(FEAT_TRAINS, series_400) {
+    property {
+        name:                           string(STR_NAME_400_SERIES);
+        introduction_date:              date(1992,07,01);
+        model_life:                     28;                             // In service until 2010,04,18
+        vehicle_life:                   38;
+        reliability_decay:              21;
+        cargo_capacity:                 50;
+        loading_speed:                  20;
+        cost_factor:                    175;
+        running_cost_factor:            120;
+        speed:                          240 km/h;
+        track_type:                     MINI_SHINKANSEN;
+        power:                          4 * 280 hp;
+        weight:                         42 ton;
+        climates_available:             ALL_CLIMATES;
+        ai_special_flag:                AI_FLAG_PASSENGER;
+        sprite_id:                      SPRITE_ID_NEW_TRAIN;
+        misc_flags:                     bitmask(TRAIN_FLAG_MU);
+        refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes:   bitmask();
+        refit_cost:                     0;
+        //dual_headed:                    1;
+        ai_engine_rank:                 0;
+        running_cost_base:              RUNNING_COST_ELECTRIC;
+        engine_class:                   ENGINE_CLASS_ELECTRIC;
+        visual_effect_and_powered:      visual_effect_and_powered(VISUAL_EFFECT_ELECTRIC, 4, ENABLE_WAGON_POWER);
+        tractive_effort_coefficient:    0.3;
+        air_drag_coefficient:           0;
+        bitmask_vehicle_info:           0;
+        length:                         8;
+    }
+    /*Graphics and Callbacks*/
+      graphics {
+        default:                        sw_400_series_graphics;
+	    purchase:                       spriteset_400_series_purchase;
+		additional_text:	            return string(STR_DESC_400_SERIES);
+        cargo_subtype_text:             sw_400_series_subtypetext;
+        can_attach_wagon:			    sw_400_series_attach_vehid;
+        //start_stop:                   ;
+        purchase_weight:                42 / 2;
+        purchase_power:                 282 * 4;
+        /* Stats */
+        power:                          max (num_vehs_in_consist - 1 , 0 ) * 282 * 4;               // 210 kW = 282 hp
+        weight:                         42 * num_vehs_in_consist;
+        cargo_capacity:                 57 * CapacityFactor();							            // 399 / 7 = 57					
+		loading_speed:					57 * CapacityFactor() / param_loading_1D;					// Capacity divided by door loading factor
+        running_cost_factor:            (445 + 125 * num_vehs_in_consist ) * RunningCostFactor();
+        purchase_running_cost_factor:   (445 + 125 ) / 2;	
+    }
+    /*Multiple Unit Car*/
+      livery_override(mu_car_ms){
+        default:                        sw_400_series_graphics;
+        cargo_capacity:                 57 * CapacityFactor();	
+        cargo_age_period:				param_decay_express;
+        loading_speed:                  57 * CapacityFactor() / param_loading_1D;
+        cargo_subtype_text:             sw_400_series_subtypetext;
+        //power:                          4 * 280;
+        //weight:                         42;
+        //running_cost_factor:            120;
+      }
+}

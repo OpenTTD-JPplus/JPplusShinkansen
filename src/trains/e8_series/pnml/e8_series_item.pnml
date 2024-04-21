@@ -40,8 +40,8 @@ item(FEAT_TRAINS, series_e8) {
     /*Graphics and Callbacks*/
       graphics {
         default:                        sw_e8_series_graphics;
-	    purchase:                       spriteset_e8_series_purchase;
-		additional_text:	            return string(STR_DESC_E8_SERIES);
+	      purchase:                       spriteset_e8_series_purchase;
+		    additional_text:	            return string(STR_DESC_E8_SERIES);
         cargo_subtype_text:             sw_e8_series_subtype_text;
         cargo_age_period:				param_decay_express;
         can_attach_wagon:			    sw_e8_series_attach_vehid;
@@ -50,8 +50,9 @@ item(FEAT_TRAINS, series_e8) {
         purchase_power:                 400 * 4;
         /* Stats */
         power:                          max (num_vehs_in_consist - 2 , 0 ) * 400 * 4;
+        weight:                         42 * num_vehs_in_consist;
         cargo_capacity:                 48 * CapacityFactor();										        // 338 capacity / 7 cars  is approx 48						
-		loading_speed:					48 * CapacityFactor() / param_loading_1D;					// Capacity divided by door loading factor
+		    loading_speed:					        48 * CapacityFactor() / param_loading_1D;					// Capacity divided by door loading factor
         running_cost_factor:            (445 + 130 * num_vehs_in_consist ) * RunningCostFactor();
         purchase_running_cost_factor:   (445 + 130) / 2; 	
     }
@@ -63,7 +64,7 @@ item(FEAT_TRAINS, series_e8) {
         loading_speed:                  48 * CapacityFactor() / param_loading_1D;
         //cargo_subtype_text:             sw_e8_series_subtypetext_mucar;
         //power:                        // Apply power in graphics block to calculate power based on number of motorised cars correctly
-        weight:                         42;
+        //weight:                         42;
         //running_cost_factor:            120;
       }
 }

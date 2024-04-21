@@ -1,0 +1,63 @@
+
+/* Midcars */
+    // Backwards
+        // Two and Four
+        switch (FEAT_TRAINS, SELF, sw_400_series_backwards_length_large, position_in_consist_from_end ) {				
+                2:  sw_400_series_pantob;
+                4:  sw_400_series_pantob;
+                sw_400_series_coachb;			
+            }
+        // Panto in Middle
+        switch (FEAT_TRAINS, SELF, sw_400_series_backwards_length_small, (position_in_consist == position_in_consist_from_end ) || (position_in_consist - 1 == position_in_consist_from_end) ) {				
+                0:  sw_400_series_coachb;
+                sw_400_series_pantob;				
+            }
+	switch (FEAT_TRAINS, SELF, sw_400_series_backwards_length, num_vehs_in_consist < 7 ) {				
+			0:  sw_400_series_backwards_length_large;
+			sw_400_series_backwards_length_small;				
+		}
+	// Forwards
+        // Two and Four
+        switch (FEAT_TRAINS, SELF, sw_400_series_forwards_length_large, position_in_consist ) {				
+                2:  sw_400_series_pantof;
+                4:  sw_400_series_pantof;
+                sw_400_series_coachf;		
+            }
+        // Panto in Middle
+        switch (FEAT_TRAINS, SELF, sw_400_series_forwards_length_small, (position_in_consist == position_in_consist_from_end ) || (position_in_consist - 1 == position_in_consist_from_end) ) {				
+                0:  sw_400_series_coachf;
+                sw_400_series_pantof;				
+            }
+	switch (FEAT_TRAINS, SELF, sw_400_series_forwards_length, num_vehs_in_consist < 7 ) {				
+			0:  sw_400_series_forwards_length_large;
+			sw_400_series_forwards_length_small;				
+		}
+
+	switch (FEAT_TRAINS, PARENT, sw_400_series_midcars, vehicle_is_reversed) {				
+			0:  sw_400_series_forwards_length;
+			sw_400_series_backwards_length;				
+		}
+
+/* Cab selection */
+    // Rear cab
+    switch (FEAT_TRAINS, PARENT, sw_400_series_rear, vehicle_is_reversed) {				
+            1:  sw_400_series_cab01b;                   // cab01	
+            sw_400_series_cab02f;                       // cab02
+        }
+
+    // Lead cab
+    switch (FEAT_TRAINS, PARENT, sw_400_series_lead, vehicle_is_reversed) {				
+            1:  sw_400_series_cab02b;                   // cab02
+            sw_400_series_cab01f;                       // cab01	
+        }
+
+/* Find the cabs */
+    switch (FEAT_TRAINS, SELF, sw_400_series_lead_or_rear, position_in_consist) {				
+            0:  sw_400_series_lead;
+            sw_400_series_rear;				
+        }
+    
+    switch (FEAT_TRAINS, SELF, sw_400_series_graphics, position_in_consist == 0 || position_in_consist_from_end == 0 ) {				
+            1:  sw_400_series_lead_or_rear;
+            sw_400_series_midcars;				
+        }

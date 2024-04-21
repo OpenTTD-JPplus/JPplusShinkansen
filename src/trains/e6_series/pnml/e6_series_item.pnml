@@ -44,18 +44,19 @@ item(FEAT_TRAINS, series_e6, 2006) {
     /*Graphics and Callbacks*/
       graphics {
         default:                        sw_e6_series_graphics;
-		purchase:                       spriteset_e6_series_purchase;
-		additional_text:	            return string(STR_DESC_E6_SERIES);
+		    purchase:                       spriteset_e6_series_purchase;
+		    additional_text:	              return string(STR_DESC_E6_SERIES);
         cargo_subtype_text:             sw_e6_series_subtype_text;
-        can_attach_wagon:			    sw_e6_series_attach_vehid;
+        can_attach_wagon:			          sw_e6_series_attach_vehid;
         //start_stop:                   ;
         purchase_weight:                42 / 2;
         purchase_power:                 400 * 4;
         /* Stats */
         power:                          max (num_vehs_in_consist - 2 , 0 ) * 400 * 4;
+        weight:                         42 * num_vehs_in_consist;
         cargo_capacity:                 48 * CapacityFactor();										        // 338 capacity / 7 cars  is approx 48						
-		loading_speed:					48 * CapacityFactor() / param_loading_1D;					// Capacity divided by door loading factor
-        cargo_age_period:				param_decay_express;
+		    loading_speed:					        48 * CapacityFactor() / param_loading_1D;					// Capacity divided by door loading factor
+        cargo_age_period:				        param_decay_express;
         running_cost_factor:            (450 + 127 * num_vehs_in_consist ) * RunningCostFactor();
         purchase_running_cost_factor:   (450 + 127) / 2;
     }
@@ -63,11 +64,11 @@ item(FEAT_TRAINS, series_e6, 2006) {
       livery_override(mu_car_ms){
         default:                        sw_e6_series_graphics;
         cargo_capacity:                 48 * CapacityFactor();
-        cargo_age_period:				param_decay_express;
+        cargo_age_period:				        param_decay_express;
         loading_speed:                  48 * CapacityFactor() / param_loading_1D;
         //cargo_subtype_text:           sw_e6_series_subtypetext_mucar;
         //power:                        // Apply power in graphics block to calculate power based on number of motorised cars correctly
-        weight:                         42;
+        //weight:                         42;
         //running_cost_factor:            120;
       }
 }

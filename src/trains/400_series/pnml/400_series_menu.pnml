@@ -1,0 +1,11 @@
+/* SUBTYPES */
+  switch(FEAT_TRAINS, SELF, sw_400_series_subtypetext, cargo_subtype) {
+    0 : string(LV_400_SERIES_ORIGINAL);
+    1 : string(LV_400_SERIES_ORIGINAL_2CC);
+    2 : string(LV_400_SERIES_REFURB);
+    3 : string(LV_400_SERIES_REFURB_2CC);
+  }
+
+/* PURCHASE SPRITES */
+    spriteset (spriteset_400_series_purchase,	        	"src/trains/dummy/purchase.png") {tmpl_purchase_dh(0, 0)}
+    alternative_sprites(spriteset_400_series_purchase,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/400_series/buy_400.png") {template_purchase(0, 0)}

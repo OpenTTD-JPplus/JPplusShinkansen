@@ -1,0 +1,49 @@
+/* cab02 */
+
+// FORWARDS
+
+// 400 Series Original
+spriteset(ss_400_series_cab02f_original,                "src/trains/dummy/empty.png") {template_dummy(0,0)}
+alternative_sprites(ss_400_series_cab02f_original,      ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/400_series/original_32.png") {template_8_cab_rev_standard(1,41)}	
+
+// 400 Series Original 2cc
+spriteset(ss_400_series_cab02f_original_2cc,            "src/trains/400_series/original_2cc.png") {template_8_cab_rev_standard(1,41)}
+
+// 400 Series Refurb
+spriteset(ss_400_series_cab02f_refurb,          	    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+alternative_sprites(ss_400_series_cab02f_refurb,        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/400_series/refurb_32.png") {template_8_cab_rev_standard(1,41)}	
+
+// 400 Series Refurb 2cc
+spriteset(ss_400_series_cab02f_refurb_2cc,              "src/trains/400_series/refurb_2cc.png") {template_8_cab_rev_standard(1,41)}
+
+// Subtype Selection
+switch(FEAT_TRAINS, PARENT, sw_400_series_cab02f, cargo_subtype) {
+        1: ss_400_series_cab02f_original_2cc;
+        2: ss_400_series_cab02f_refurb;
+        3: ss_400_series_cab02f_refurb_2cc;
+        ss_400_series_cab02f_original;
+    }
+
+// BACKWARDS
+
+// 400 Series Original
+spriteset(ss_400_series_cab02b_original,          	    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+alternative_sprites(ss_400_series_cab02b_original,      ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/400_series/original_32.png") {template_8_cab_rev_reversed(1,1)}
+
+// 400 Series Original 2cc
+spriteset(ss_400_series_cab02b_original_2cc,            "src/trains/400_series/original_2cc.png") {template_8_cab_rev_reversed(1,1)}
+
+// 400 Series Refurb
+spriteset(ss_400_series_cab02b_refurb,          	    "src/trains/dummy/empty.png") {template_dummy(0,0)}
+alternative_sprites(ss_400_series_cab02b_refurb,        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/400_series/refurb_32.png") {template_8_cab_rev_reversed(1,1)}
+
+// 400 Series Refurb 2cc
+spriteset(ss_400_series_cab02b_refurb_2cc,              "src/trains/400_series/refurb_2cc.png") {template_8_cab_rev_reversed(1,1)}
+
+// Subtype Selection
+switch(FEAT_TRAINS, PARENT, sw_400_series_cab02b, cargo_subtype) {
+        1: ss_400_series_cab02b_original_2cc;
+        2: ss_400_series_cab02b_refurb;
+        3: ss_400_series_cab02b_refurb_2cc;
+        ss_400_series_cab02b_original;
+    }
