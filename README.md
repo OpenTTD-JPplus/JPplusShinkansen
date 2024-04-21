@@ -34,7 +34,7 @@ This is the sister set to 🚂[JP+ Engines & Wagons](https://github.com/EmperorJ
 |![700 Series](/src/trains/700_series/12/purchase.png)| 700 Series | 1999 | N/A | 285 | 44t |
 |![N700 Series](/src/trains/n700_series/12/buy_n700.png)| N700 Series | 2007 | N/A | 300|44t|
 |![800 Series](/src/trains/800_series/12/purchase.png)| 800 Series | 2004 | N/A | 260 | 44t |
-|![L0 Series](/src/trains/l0_series/12/purchase.png)| 300 Series | 2027 | N/A | 505 | 88t|
+|![L0 Series](/src/trains/l0_series/12/purchase_32bpp.png)| L0 Series | 2027 | N/A | 505 | 88t|
 
 ^ 210 km/h until 1986, 220 km/h thereafter
 
