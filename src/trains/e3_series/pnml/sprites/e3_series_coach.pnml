@@ -1,0 +1,91 @@
+/* coach */
+
+// FORWARDS
+
+// 400 Series R
+spriteset(ss_e3_series_coachf_r,                        "src/trains/dummy/empty.png") {template_dummy(0,0)}
+alternative_sprites(ss_e3_series_coachf_r,              ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_r.png") {template_8_standard(1,201)}	
+
+// 400 Series R 2cc
+spriteset(ss_e3_series_coachf_r_2cc,                    "src/trains/e3_series/e3_r_2cc.png") {template_8_standard(1,201)}
+
+// 400 Series 1000
+spriteset(ss_e3_series_coachf_1000,                     "src/trains/dummy/empty.png") {template_dummy(0,0)}
+alternative_sprites(ss_e3_series_coachf_1000,           ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_1000.png") {template_8_standard(1,161)}	
+
+// 400 Series 1000 2cc
+spriteset(ss_e3_series_coachf_1000_2cc,                 "src/trains/e3_series/e3_1000_2cc.png") {template_8_standard(1,161)}
+
+// 400 Series 2000
+spriteset(ss_e3_series_coachf_2000,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
+alternative_sprites(ss_e3_series_coachf_2000,           ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_2000.png") {template_8_standard(1,201)}	
+
+// 400 Series 2000 2cc
+spriteset(ss_e3_series_coachf_2000_2cc,                 "src/trains/e3_series/e3_2000_2cc.png") {template_8_standard(1,201)}
+
+// 400 Series Toreiyu "All white coach"
+spriteset(ss_e3_series_coachf_700,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
+alternative_sprites(ss_e3_series_coachf_700,            ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_700.png") {template_8_standard(1,321)}	
+
+// Subtype Selection
+switch(FEAT_TRAINS, SELF, sw_e3_series_coachf_yeardep, build_year) {
+          0..1998:      ss_e3_series_coachf_r;
+          1999..2007:   ss_e3_series_coachf_1000;
+          ss_e3_series_coachf_2000;
+        }
+
+switch(FEAT_TRAINS, PARENT, sw_e3_series_coachf, cargo_subtype) {
+        1: ss_e3_series_coachf_r;
+        2: ss_e3_series_coachf_r_2cc;
+        3: ss_e3_series_coachf_1000;
+        4: ss_e3_series_coachf_1000_2cc;
+        5: ss_e3_series_coachf_2000;
+        6: ss_e3_series_coachf_2000_2cc;
+        7: ss_e3_series_coachf_700;
+        sw_e3_series_coachf_yeardep;
+    }
+
+// BACKWARDS
+
+// 400 Series R
+spriteset(ss_e3_series_coachb_r,                        "src/trains/dummy/empty.png") {template_dummy(0,0)}
+alternative_sprites(ss_e3_series_coachb_r,              ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_r.png") {template_8_reversed(1,201)}	
+
+// 400 Series R 2cc
+spriteset(ss_e3_series_coachb_r_2cc,                    "src/trains/e3_series/e3_r_2cc.png") {template_8_reversed(1,201)}
+
+// 400 Series 1000
+spriteset(ss_e3_series_coachb_1000,                     "src/trains/dummy/empty.png") {template_dummy(0,0)}
+alternative_sprites(ss_e3_series_coachb_1000,           ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_1000.png") {template_8_reversed(1,161)}	
+
+// 400 Series 1000 2cc
+spriteset(ss_e3_series_coachb_1000_2cc,                 "src/trains/e3_series/e3_1000_2cc.png") {template_8_reversed(1,161)}
+
+// 400 Series 2000
+spriteset(ss_e3_series_coachb_2000,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
+alternative_sprites(ss_e3_series_coachb_2000,           ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_2000.png") {template_8_reversed(1,201)}	
+
+// 400 Series 2000 2cc
+spriteset(ss_e3_series_coachb_2000_2cc,                 "src/trains/e3_series/e3_2000_2cc.png") {template_8_reversed(1,201)}
+
+// 400 Series Toreiyu "All white coach"
+spriteset(ss_e3_series_coachb_700,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
+alternative_sprites(ss_e3_series_coachb_700,            ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_700.png") {template_8_reversed(1,321)}	
+
+// Subtype Selection
+switch(FEAT_TRAINS, SELF, sw_e3_series_coachb_yeardep, build_year) {
+          0..1998:      ss_e3_series_coachb_r;
+          1999..2007:   ss_e3_series_coachb_1000;
+          ss_e3_series_coachb_2000;
+        }
+
+switch(FEAT_TRAINS, PARENT, sw_e3_series_coachb, cargo_subtype) {
+        1: ss_e3_series_coachb_r;
+        2: ss_e3_series_coachb_r_2cc;
+        3: ss_e3_series_coachb_1000;
+        4: ss_e3_series_coachb_1000_2cc;
+        5: ss_e3_series_coachb_2000;
+        6: ss_e3_series_coachb_2000_2cc;
+        7: ss_e3_series_coachb_700;
+        sw_e3_series_coachb_yeardep;
+    }

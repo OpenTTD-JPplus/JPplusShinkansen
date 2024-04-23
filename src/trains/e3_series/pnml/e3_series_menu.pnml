@@ -1,0 +1,57 @@
+/* SUBTYPES */
+
+	// Pre 1997 subtype text
+	switch(FEAT_TRAINS, SELF, sw_e3_series_1997_livery_subtype_text, cargo_subtype) {
+		0: return string(LV_YEAR_DEP_LIVERY);
+		1: return string(LV_E3_SERIES_R);
+        2: return string(LV_E3_SERIES_R_2CC);
+		return CB_RESULT_NO_TEXT;
+		}
+
+	// Post 1999 subtype text
+	switch(FEAT_TRAINS, SELF, sw_e3_series_1999_livery_subtype_text, cargo_subtype) {
+		0: return string(LV_YEAR_DEP_LIVERY);
+		1: return string(LV_E3_SERIES_R);
+        2: return string(LV_E3_SERIES_R_2CC);
+		3: return string(LV_E3_SERIES_1000);
+        4: return string(LV_E3_SERIES_1000_2CC);
+		return CB_RESULT_NO_TEXT;
+		}
+
+  // Post 2008 subtype text
+	switch(FEAT_TRAINS, SELF, sw_e3_series_2008_livery_subtype_text, cargo_subtype) {
+		0: return string(LV_YEAR_DEP_LIVERY);
+		1: return string(LV_E3_SERIES_R);
+        2: return string(LV_E3_SERIES_R_2CC);
+		3: return string(LV_E3_SERIES_1000);
+        4: return string(LV_E3_SERIES_1000_2CC);
+        5: return string(LV_E3_SERIES_2000);
+        6: return string(LV_E3_SERIES_2000_2CC);
+		return CB_RESULT_NO_TEXT;
+		}
+
+  // Post 2014 subtype text
+	switch(FEAT_TRAINS, SELF, sw_e3_series_2014_livery_subtype_text, cargo_subtype) {
+		0: return string(LV_YEAR_DEP_LIVERY);
+		1: return string(LV_E3_SERIES_R);
+        2: return string(LV_E3_SERIES_R_2CC);
+		3: return string(LV_E3_SERIES_1000);
+        4: return string(LV_E3_SERIES_1000_2CC);
+        5: return string(LV_E3_SERIES_2000);
+        6: return string(LV_E3_SERIES_2000_2CC);
+        7: return string(LV_E3_SERIES_700_TOREIYU);
+		return CB_RESULT_NO_TEXT;
+		}
+
+	switch(FEAT_TRAINS, SELF, sw_e3_series_year_dep_subtype_text, current_year) {
+		0..1998: sw_e3_series_1997_livery_subtype_text;
+        1999..2007: sw_e3_series_1999_livery_subtype_text;
+        2008..2013: sw_e3_series_2008_livery_subtype_text;
+		sw_e3_series_2014_livery_subtype_text;
+	}
+
+/* GRAPHICS */
+
+    // Purchase Sprites
+        spriteset (spriteset_e3_series_purchase,	        	    "src/trains/dummy/purchase.png") {tmpl_purchase_dh(0, 0)}
+        alternative_sprites(spriteset_e3_series_purchase,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/buy_e3_r.png") {template_purchase(0, 0)}

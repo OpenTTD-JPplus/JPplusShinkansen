@@ -1,0 +1,43 @@
+// R Set 
+        
+        // "Clogo" - coach with logo no panto
+        spriteset(ss_e3_series_clog2f_r,                        "src/trains/dummy/mucar.png") {template_8_standard(1,1)}
+        spriteset(ss_e3_series_clog2b_r,                        "src/trains/dummy/mucar.png") {template_8_standard(1,1)}
+        alternative_sprites(ss_e3_series_clog2f_r,              ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_r.png") {template_8_standard(1,321)}
+        alternative_sprites(ss_e3_series_clog2b_r,              ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_r.png") {template_8_reversed(1,321)}
+
+        // Coach w/ double raise
+        spriteset(ss_e3_series_c2raif_r,                        "src/trains/dummy/mucar.png") {template_8_standard(1,1)}
+        spriteset(ss_e3_series_c2raib_r,                        "src/trains/dummy/mucar.png") {template_8_standard(1,1)}
+        alternative_sprites(ss_e3_series_c2raif_r,              ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_r.png") {template_8_standard(1,361)}
+        alternative_sprites(ss_e3_series_c2raib_r,              ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/e3_r.png") {template_8_reversed(1,361)}
+
+// R Set 2cc
+
+        // "Clogo" - coach with logo no panto
+        spriteset(ss_e3_series_clog2f_r_2cc,                    "src/trains/e3_series/e3_r_2cc.png") {template_8_standard(1,321)}
+        spriteset(ss_e3_series_clog2b_r_2cc,                    "src/trains/e3_series/e3_r_2cc.png") {template_8_reversed(1,321)}
+
+        // Coach w/ double raise
+        spriteset(ss_e3_series_c2raif_r_2cc,                    "src/trains/e3_series/e3_r_2cc.png") {template_8_standard(1,361)}
+        spriteset(ss_e3_series_c2raib_r_2cc,                    "src/trains/e3_series/e3_r_2cc.png") {template_8_reversed(1,361)}
+
+        switch(FEAT_TRAINS, PARENT, sw_e3_series_clog2f, cargo_subtype) {
+                1: ss_e3_series_clog2f_r;
+                2: ss_e3_series_clog2f_r_2cc;
+        }
+
+        switch(FEAT_TRAINS, PARENT, sw_e3_series_clog2b, cargo_subtype) {
+                1: ss_e3_series_clog2b_r;
+                2: ss_e3_series_clog2b_r_2cc;
+        }
+
+        switch(FEAT_TRAINS, PARENT, sw_e3_series_c2raif, cargo_subtype) {
+                1: ss_e3_series_c2raif_r;
+                2: ss_e3_series_c2raif_r_2cc;
+        }
+
+        switch(FEAT_TRAINS, PARENT, sw_e3_series_c2raib, cargo_subtype) {
+                1: ss_e3_series_c2raib_r;
+                2: ss_e3_series_c2raib_r_2cc;
+        }

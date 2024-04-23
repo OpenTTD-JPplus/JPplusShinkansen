@@ -1,0 +1,222 @@
+// Everything else
+switch (FEAT_TRAINS, PARENT, sw_e3_series_everything_else_coaches, vehicle_is_reversed ) {				
+		1:  sw_e3_series_coachb;
+		sw_e3_series_coachf;				
+	}
+
+// 6 CARS
+
+  switch (FEAT_TRAINS, SELF, sw_e3_series_6car_reversed, position_in_consist_from_end ) {				
+      2: sw_e3_series_c2raib;           
+      3: sw_e3_series_coraib;       
+      sw_e3_series_coachb;			
+    }
+
+  switch (FEAT_TRAINS, SELF, sw_e3_series_6car_not_reversed, position_in_consist ) {				
+    2: sw_e3_series_c2raif;           
+    3: sw_e3_series_coraif;       
+    sw_e3_series_coachf;			
+  }
+
+  switch (FEAT_TRAINS, PARENT, sw_e3_series_6car_reverse_check, vehicle_is_reversed ) {				
+    1:  sw_e3_series_6car_reversed;
+    sw_e3_series_6car_not_reversed;				
+  }
+
+// 7 CARS
+  switch (FEAT_TRAINS, SELF, sw_e3_series_7car_even_reversed, position_in_consist_from_end - position_in_consist ) {				
+      1: sw_e3_series_coraib;           
+      -1:  sw_e3_series_pantob;       
+      sw_e3_series_coachb;			
+    }
+
+  switch (FEAT_TRAINS, SELF, sw_e3_series_7car_even_not_reversed, position_in_consist - position_in_consist_from_end ) {				
+      1: sw_e3_series_coraif;
+      -1:  sw_e3_series_pantof;
+      sw_e3_series_coachf;			
+    }
+
+  switch (FEAT_TRAINS, SELF, sw_e3_series_7car_odd_reversed, position_in_consist_from_end - position_in_consist ) {				
+      2: sw_e3_series_coraib;        
+      0:  sw_e3_series_pantob;       
+      sw_e3_series_coachb;			
+    }
+
+  switch (FEAT_TRAINS, SELF, sw_e3_series_7car_odd_not_reversed, position_in_consist - position_in_consist_from_end ) {				
+      2: sw_e3_series_coraif;
+      0:  sw_e3_series_pantof;
+      sw_e3_series_coachf;			
+    }
+
+  switch (FEAT_TRAINS, SELF, sw_e3_series_7car_oddeven_not_reversed, num_vehs_in_consist % 2) {				
+      0:  sw_e3_series_7car_even_not_reversed;       // Even
+      sw_e3_series_7car_odd_not_reversed;			
+    }
+
+  switch (FEAT_TRAINS, SELF, sw_e3_series_7car_oddeven_reversed, num_vehs_in_consist % 2) {				
+      0:  sw_e3_series_7car_even_reversed;       // Even
+      sw_e3_series_7car_odd_reversed;			
+    }
+
+  switch (FEAT_TRAINS, PARENT, sw_e3_series_7car_reverse_check, vehicle_is_reversed ) {				
+      1:  sw_e3_series_7car_oddeven_reversed;
+      sw_e3_series_7car_oddeven_not_reversed;				
+    }
+
+    // TOREIYU
+      switch (FEAT_TRAINS, SELF, sw_e3_series_toreiyu_reversed, position_in_consist_from_end - position_in_consist ) {				
+          -4: ss_e3_series_pantgb_700;
+          -3: ss_e3_series_pantgb_700;
+          -2: ss_e3_series_grndnb_700;
+          -1: ss_e3_series_grndnb_700;
+          0:  ss_e3_series_greenb_700;
+          1:  ss_e3_series_grnupb_700; 
+          2:  ss_e3_series_grnupb_700;   
+          3:  ss_e3_series_coacgb_700;    
+          4:  ss_e3_series_coacgb_700;  
+          sw_e3_series_coachb;			
+        }
+
+      switch (FEAT_TRAINS, SELF, sw_e3_series_toreiyu_not_reversed, position_in_consist - position_in_consist_from_end ) {				
+          -4: ss_e3_series_pantgf_700;
+          -3: ss_e3_series_pantgf_700;
+          -2: ss_e3_series_grndnf_700;
+          -1: ss_e3_series_grndnf_700;
+          0:  ss_e3_series_greenf_700;
+          1:  ss_e3_series_grnupf_700;
+          2:  ss_e3_series_grnupf_700; 
+          3:  ss_e3_series_coacgf_700;  
+          4:  ss_e3_series_coacgf_700;  
+          sw_e3_series_coachf;			
+        }
+
+  // ODD EVEN CHECK!!!
+
+  switch (FEAT_TRAINS, PARENT, sw_e3_series_toreiyu_reverse_check, vehicle_is_reversed ) {				
+      1:  sw_e3_series_toreiyu_reversed;
+      sw_e3_series_toreiyu_not_reversed;				
+    }
+
+  // Toreiyu 5 car check
+    switch(FEAT_TRAINS, SELF, sw_e3_series_year_dep_reverse_check, build_year) {
+            0..1998: sw_e3_series_6car_reverse_check;
+            sw_e3_series_7car_reverse_check; 
+          }
+
+    switch(FEAT_TRAINS, PARENT, sw_e3_series_midcar_subtype_check, cargo_subtype) {
+            0: sw_e3_series_year_dep_reverse_check;
+            1..2: sw_e3_series_6car_reverse_check;
+            3..6: sw_e3_series_7car_reverse_check;
+            7: sw_e3_series_toreiyu_reverse_check;   // Toreiyu
+            sw_e3_series_everything_else_coaches;
+          }
+  
+  // Five Car Long check
+
+    switch (FEAT_TRAINS, SELF, sw_e3_series_length_5_check, num_vehs_in_consist == 5 ) {				
+        1:  sw_e3_series_everything_else_coaches;
+        sw_e3_series_midcar_subtype_check;			
+      }
+
+  // Second car checks
+
+    // Standard 2nd car checks
+    switch (FEAT_TRAINS, SELF, sw_e3_series_2nd_not_reversed, position_in_consist) {				
+        1:  sw_e3_series_clogof;     
+        sw_e3_series_pantof;			
+      }
+
+    switch (FEAT_TRAINS, SELF, sw_e3_series_2nd_reversed, position_in_consist){				
+        1:  sw_e3_series_pantob;     
+        sw_e3_series_clogob;		  
+      }
+
+    switch (FEAT_TRAINS, PARENT, sw_e3_series_2nd_car_reverse_check, vehicle_is_reversed) {				
+        1:  sw_e3_series_2nd_reversed;
+        sw_e3_series_2nd_not_reversed;				
+      }
+
+    // Toreiyu
+    switch (FEAT_TRAINS, SELF, sw_e3_series_toreiyu_2nd_not_reversed, position_in_consist) {				
+        1:  ss_e3_series_2ndcof_700;     
+        ss_e3_series_pantlf_700;			
+      }
+
+    switch (FEAT_TRAINS, SELF, sw_e3_series_toreiyu_2nd_reversed, position_in_consist){				
+        1:  ss_e3_series_pantlb_700;     
+        ss_e3_series_2ndcob_700;		  
+      }
+
+    switch (FEAT_TRAINS, PARENT, sw_e3_series_toreiyu_2nd_car_reverse_check, vehicle_is_reversed) {				
+        1:  sw_e3_series_toreiyu_2nd_reversed;
+        sw_e3_series_toreiyu_2nd_not_reversed;				
+      }
+
+    switch (FEAT_TRAINS, SELF, sw_e3_series_toreiyu_5_or_6_check, num_vehs_in_consist == 6 || num_vehs_in_consist == 7 ) {				
+        1:  sw_e3_series_2nd_car_reverse_check;
+        sw_e3_series_toreiyu_2nd_car_reverse_check;				
+      }
+
+    // 6car (R Set)
+    switch (FEAT_TRAINS, SELF, sw_e3_series_6car_2nd_not_reversed, position_in_consist) {				
+        1:  sw_e3_series_clog2f;     
+        sw_e3_series_pantof;			
+      }
+
+    switch (FEAT_TRAINS, SELF, sw_e3_series_6car_2nd_reversed, position_in_consist){				
+        1:  sw_e3_series_pantob;     
+        sw_e3_series_clog2b;		  
+      }
+
+    switch (FEAT_TRAINS, PARENT, sw_e3_series_6car_2nd_car_reverse_check, vehicle_is_reversed) {				
+        1:  sw_e3_series_6car_2nd_reversed;
+        sw_e3_series_6car_2nd_not_reversed;				
+      }
+
+    switch (FEAT_TRAINS, SELF, sw_e3_series_2nd_car_check_for_6car, num_vehs_in_consist == 4 || num_vehs_in_consist == 5) {				
+        1:  sw_e3_series_6car_2nd_car_reverse_check;      // 4 or 5 cars, so choose bespoke sprites
+        sw_e3_series_2nd_car_reverse_check;				        // > 5 cars, so standard chain
+      }
+
+    // Which cargo subtype
+    switch(FEAT_TRAINS, SELF, sw_e3_series_year_dep_2nd_car_check, build_year) {
+            0..1998: sw_e3_series_2nd_car_check_for_6car; // R Set
+            sw_e3_series_2nd_car_reverse_check;           // Not R Set, so send to standard chain
+          }
+
+    switch(FEAT_TRAINS, PARENT, sw_e3_series_2nd_car_subtype_check, cargo_subtype) {
+            0: sw_e3_series_year_dep_2nd_car_check;       // R Set til '98
+            1..2: sw_e3_series_2nd_car_check_for_6car;    // R Set
+            7: sw_e3_series_toreiyu_5_or_6_check;         // Toreiyu
+            sw_e3_series_2nd_car_reverse_check;
+          }
+    // Identify the 2nd cars
+    switch (FEAT_TRAINS, SELF, sw_e3_series_2nd_car_checks, position_in_consist == 1 || position_in_consist_from_end == 1 ) {				
+        1:  sw_e3_series_2nd_car_subtype_check;
+        sw_e3_series_length_5_check;
+        //sw_e3_series_midcar_subtype_check;				
+      }
+
+/* Cab selection */
+    // Rear cab
+    switch (FEAT_TRAINS, PARENT, sw_e3_series_rear, vehicle_is_reversed) {				
+            1:  sw_e3_series_cab01b;                   // cab01	
+            sw_e3_series_cab02f;                       // cab02
+        }
+
+    // Lead cab
+    switch (FEAT_TRAINS, PARENT, sw_e3_series_lead, vehicle_is_reversed) {				
+            1:  sw_e3_series_cab02b;                   // cab02
+            sw_e3_series_cab01f;                       // cab01	
+        }
+
+/* Find the cabs */
+    switch (FEAT_TRAINS, SELF, sw_e3_series_lead_or_rear, position_in_consist) {				
+            0:  sw_e3_series_lead;
+            sw_e3_series_rear;				
+        }
+    
+    switch (FEAT_TRAINS, SELF, sw_e3_series_graphics, position_in_consist == 0 || position_in_consist_from_end == 0 ) {				
+            1:  sw_e3_series_lead_or_rear;
+            sw_e3_series_2nd_car_checks;				
+        }
