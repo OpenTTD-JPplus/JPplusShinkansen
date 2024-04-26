@@ -1,0 +1,86 @@
+
+
+
+/*
+switch (FEAT_TRAINS, SELF, sw_e5e6_series_plus2_articulated_part_12, extra_callback_info1) {
+		1 .. 103: return series_e5e6_plus2;									
+		return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+	}
+*/
+switch (FEAT_TRAINS, SELF, sw_e5e6_series_plus2_articulated_part_10, extra_callback_info1) {
+		1 .. 95: return series_e5e6_plus2;									
+		return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+	}
+/*
+switch (FEAT_TRAINS, SELF, sw_e5e6_series_plus2_articulated_part, param_spritelength) {
+        1: sw_e5e6_series_plus2_articulated_part_10;		    // Length 10
+        sw_e5e6_series_plus2_articulated_part_12;				// Length 12
+    }
+*/
+/*---Coupling Switch---*/
+switch(FEAT_TRAINS, SELF, sw_e5e6_series_plus2_attach_vehid, [vehicle_type_id == series_test_700]) {
+ 		0: return string(COUPLE_CANT_JOIN);
+	}
+
+// Description
+switch (FEAT_TRAINS, SELF, sw_e5e6_series_plus2_additional_text, param_spritelength) {
+        1: string(STR_DESC_E5E6_SERIES_P2_10);		   	 		// Length 10
+        string(STR_DESC_E5E6_SERIES_P2_12);				    	// Length 12
+    }
+
+if (param_spritelength == 1) {
+
+item(FEAT_TRAINS, series_e5e6_plus2) {
+	property {
+		/* Menu */
+		name: 							string(STR_NAME_E5E6_SERIES);
+		sprite_id:                      SPRITE_ID_NEW_TRAIN; 		// required to enable new graphics
+		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
+		running_cost_base:              RUNNING_COST_ELECTRIC;
+		engine_class:                   ENGINE_CLASS_ELECTRIC;
+		variant_group:					2005;
+		/* Availability */
+		climates_available:             ALL_CLIMATES;
+		introduction_date:              date(2011,03,05); 
+		model_life:                     VEHICLE_NEVER_EXPIRES;		
+		vehicle_life:                   30;							// 
+		track_type:                     SHINKANSEN;
+		/* Cargo */
+		reliability_decay:              5;
+		refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+		refit_cost:                     0;
+		default_cargo_type:             PASS;
+		ai_special_flag:                AI_FLAG_PASSENGER;
+		cargo_capacity:                 1;							// 
+		loading_speed:                  50;							
+		cargo_age_period:               278; 						// 1.5 times normal for this expensive long-distance train
+		/* Stats */
+		speed:                          321 km/h;					// Operational Top Speed
+		power:                          (8064 + 12864) hp;			// Agreed to https://en.wikipedia.org/wiki/E5_and_H5_Series_Shinkansen
+		weight:                         (453 + 306) tons;					// Agreed to https://en.wikipedia.org/wiki/E5_and_H5_Series_Shinkansen
+		tractive_effort_coefficient:    0.3;
+		air_drag_coefficient:			0;
+	}
+	graphics {
+		/* Menu */
+		additional_text:                sw_e5e6_series_plus2_additional_text;
+		cargo_subtype_text:             sw_e5e6_series_subtype_text;
+		can_attach_wagon:				sw_e5e6_series_plus2_attach_vehid;
+		//start_stop:						sw_e5e6_series_stop_start;
+		/* Graphics */
+		default:                        sw_e5e6_series_plus2_graphics;
+		purchase:                       ss_buy_e5e6_series_pink_livery_12;
+		articulated_part:               sw_e5e6_series_plus2_articulated_part_10;	
+		visual_effect_and_powered:      sw_visual_effect_and_powered;
+		/* Stats */
+		length:                         2;
+		cargo_capacity:                 25 * CapacityFactor();
+		loading_speed:					25 * CapacityFactor() / param_loading_2D;
+		cargo_age_period:				param_decay_express;
+		cost_factor:                    144;
+		running_cost_factor:            (298 + 127 * NumberCarsInConsist() ) * RunningCostFactor();
+		purchase_running_cost_factor:   298 + 127 * NumberCarsInConsist();	
+	}
+}
+
+}
