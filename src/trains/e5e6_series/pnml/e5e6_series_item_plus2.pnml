@@ -56,8 +56,8 @@ item(FEAT_TRAINS, series_e5e6_plus2) {
 		cargo_age_period:               278; 						// 1.5 times normal for this expensive long-distance train
 		/* Stats */
 		speed:                          321 km/h;					// Operational Top Speed
-		power:                          (8064 + 12864) hp;			// Agreed to https://en.wikipedia.org/wiki/E5_and_H5_Series_Shinkansen
-		weight:                         (453 + 306) tons;					// Agreed to https://en.wikipedia.org/wiki/E5_and_H5_Series_Shinkansen
+		power:                          (16080 + 11256) hp;			// Agreed to https://en.wikipedia.org/wiki/E5_and_H5_Series_Shinkansen
+		weight:                         (544 + 394) tons;			// Agreed to https://en.wikipedia.org/wiki/E5_and_H5_Series_Shinkansen
 		tractive_effort_coefficient:    0.3;
 		air_drag_coefficient:			0;
 	}
@@ -74,12 +74,12 @@ item(FEAT_TRAINS, series_e5e6_plus2) {
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
 		/* Stats */
 		length:                         2;
-		cargo_capacity:                 25 * CapacityFactor();
-		loading_speed:					25 * CapacityFactor() / param_loading_2D;
+		cargo_capacity:                 15 * CapacityFactor();
+		loading_speed:					15 * CapacityFactor() / param_loading_2D;
 		cargo_age_period:				param_decay_express;
 		cost_factor:                    144;
-		running_cost_factor:            (298 + 127 * NumberCarsInConsist() ) * RunningCostFactor();
-		purchase_running_cost_factor:   298 + 127 * NumberCarsInConsist();	
+		running_cost_factor:            (298 + 127 * 21 ) * RunningCostFactor();
+		purchase_running_cost_factor:   298 + 127 * 21;	
 	}
 }
 

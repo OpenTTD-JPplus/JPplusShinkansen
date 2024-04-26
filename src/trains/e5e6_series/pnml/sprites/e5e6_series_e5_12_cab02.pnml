@@ -196,32 +196,32 @@
 
 // Choose Length
 	// Forwards
-		switch (FEAT_TRAINS, SELF, sw_e5_series_cab02f_mp1_12_check, other_veh_curv_info(-5) == 0 && other_veh_curv_info(-1) == 0 && other_veh_z_offset(-5) == 0 && other_veh_z_offset(-1) == 0 ) {
+		switch (FEAT_TRAINS, SELF, sw_e5_series_cab02f_mp1_12_check, other_veh_curv_info(5) == 0 && other_veh_curv_info(1) == 0 && other_veh_z_offset(5) == 0 && other_veh_z_offset(1) == 0 ) {
 				1: sw_e5_series_cab02f_mp1_12;		   
 				dummy_sprites;				
 			}
 
-		switch (FEAT_TRAINS, SELF, sw_e5_series_cab02f_mp2_12_check, other_veh_curv_info(-4) == 0 && other_veh_curv_info(1) == 0 && other_veh_z_offset(-4) == 0 && other_veh_z_offset(1) == 0 ) {
+		switch (FEAT_TRAINS, SELF, sw_e5_series_cab02f_mp2_12_check, other_veh_curv_info(4) == 0 && other_veh_curv_info(-1) == 0 && other_veh_z_offset(4) == 0 && other_veh_z_offset(-1) == 0 ) {
 				1: sw_e5_series_cab02f_mp2_12;		   
 				dummy_sprites;				
 			}
 
-		switch (FEAT_TRAINS, SELF, sw_e5_series_cab02f_mp3_12_check, other_veh_curv_info(-3) == 0 && other_veh_curv_info(2) == 0 && other_veh_z_offset(-3) == 0 && other_veh_z_offset(2) == 0 ) {
+		switch (FEAT_TRAINS, SELF, sw_e5_series_cab02f_mp3_12_check, other_veh_curv_info(3) == 0 && other_veh_curv_info(-2) == 0 && other_veh_z_offset(3) == 0 && other_veh_z_offset(-2) == 0 ) {
 				1: sw_e5_series_cab02f_mp3_12;		   
-				dummy_sprites;				
+				sw_e5_series_cab02f_12on2;				
 			}
 
-		switch (FEAT_TRAINS, SELF, sw_e5_series_cab02f_mp4_12_check, other_veh_curv_info(-2) == 0 && other_veh_curv_info(3) == 0 && other_veh_z_offset(-2) == 0 && other_veh_z_offset(3) == 0 ) {
+		switch (FEAT_TRAINS, SELF, sw_e5_series_cab02f_mp4_12_check, other_veh_curv_info(2) == 0 && other_veh_curv_info(-3) == 0 && other_veh_z_offset(2) == 0 && other_veh_z_offset(-3) == 0 ) {
 				1: sw_e5_series_cab02f_mp4_12;		   
-				sw_e5_series_cab02f_12on2;							
+				dummy_sprites;							
 			}
 
-		switch (FEAT_TRAINS, SELF, sw_e5_series_cab02f_mp5_12_check, other_veh_curv_info(-1) == 0 && other_veh_curv_info(4) == 0 && other_veh_z_offset(-1) == 0 && other_veh_z_offset(4) == 0 ) {
+		switch (FEAT_TRAINS, SELF, sw_e5_series_cab02f_mp5_12_check, other_veh_curv_info(1) == 0 && other_veh_curv_info(-4) == 0 && other_veh_z_offset(1) == 0 && other_veh_z_offset(-4) == 0 ) {
 				1: sw_e5_series_cab02f_mp5_12;		   
 				dummy_sprites;				
 			}
 
-        switch (FEAT_TRAINS, SELF, sw_e5_series_cab02f_mp6_12_check, other_veh_curv_info(1) == 0 && other_veh_curv_info(5) == 0 && other_veh_z_offset(1) == 0 && other_veh_z_offset(5) == 0 ) {
+        switch (FEAT_TRAINS, SELF, sw_e5_series_cab02f_mp6_12_check, other_veh_curv_info(-1) == 0 && other_veh_curv_info(-5) == 0 && other_veh_z_offset(-1) == 0 && other_veh_z_offset(-5) == 0 ) {
 				1: sw_e5_series_cab02f_mp6_12;		   
 				dummy_sprites;				
 			}
@@ -239,12 +239,12 @@
 
 		switch (FEAT_TRAINS, SELF, sw_e5_series_cab02b_mp3_12_check, other_veh_curv_info(-3) == 0 && other_veh_curv_info(2) == 0 && other_veh_z_offset(-3) == 0 && other_veh_z_offset(2) == 0 ) {
 				1: sw_e5_series_cab02b_mp3_12;		   
-				dummy_sprites;					
+				sw_e5_series_cab02b_12on2;					
 			}
 
 		switch (FEAT_TRAINS, SELF, sw_e5_series_cab02b_mp4_12_check, other_veh_curv_info(-2) == 0 && other_veh_curv_info(3) == 0 && other_veh_z_offset(-2) == 0 && other_veh_z_offset(3) == 0 ) {
 				1: sw_e5_series_cab02b_mp4_12;		   
-				sw_e5_series_cab02b_12on2; 						
+				dummy_sprites;						
 			}
 
 		switch (FEAT_TRAINS, SELF, sw_e5_series_cab02b_mp5_12_check, other_veh_curv_info(-1) == 0 && other_veh_curv_info(4) == 0 && other_veh_z_offset(-1) == 0 && other_veh_z_offset(4) == 0 ) {
