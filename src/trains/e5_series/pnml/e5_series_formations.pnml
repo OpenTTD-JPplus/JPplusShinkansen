@@ -5,7 +5,7 @@
             sw_e5_series_coachb;
 							
 		}
-	switch (FEAT_TRAINS, SELF, sw_e5_series_backwards_length_small, (position_in_consist == position_in_consist_from_end ) || (position_in_consist - 3 == position_in_consist_from_end) ) {				
+	switch (FEAT_TRAINS, SELF, sw_e5_series_backwards_length_small, (position_in_consist == position_in_consist_from_end ) || (position_in_consist_from_end - 3 == position_in_consist) ) {				
 			0:  sw_e5_series_coachb;
 			sw_e5_series_pantob;				
 		}
