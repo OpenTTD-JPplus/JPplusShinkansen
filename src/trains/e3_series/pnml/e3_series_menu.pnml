@@ -53,5 +53,17 @@
 /* GRAPHICS */
 
     // Purchase Sprites
-        spriteset (spriteset_e3_series_purchase,	        	    "src/trains/dummy/purchase.png") {tmpl_purchase_dh(0, 0)}
-        alternative_sprites(spriteset_e3_series_purchase,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/buy_e3_r.png") {template_purchase(0, 0)}
+        spriteset (spriteset_e3_series_purchase_r,	        	"src/trains/dummy/purchase.png") {tmpl_purchase_dh(0, 0)}
+        alternative_sprites(spriteset_e3_series_purchase_r,     ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/buy_e3_r.png") {template_purchase(0, 0)}
+
+		spriteset (spriteset_e3_series_purchase_1000,	       	"src/trains/dummy/purchase.png") {tmpl_purchase_dh(0, 0)}
+        alternative_sprites(spriteset_e3_series_purchase_1000,  ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/buy_e3_1000.png") {template_purchase(0, 0)}
+
+		spriteset (spriteset_e3_series_purchase_2000,	        "src/trains/dummy/purchase.png") {tmpl_purchase_dh(0, 0)}
+        alternative_sprites(spriteset_e3_series_purchase_2000,  ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/buy_e3_2000.png") {template_purchase(0, 0)}
+
+		switch(FEAT_TRAINS, SELF, sw_e3_series_purchase, current_year) {
+		0..1998: spriteset_e3_series_purchase_r;
+        1999..2007: spriteset_e3_series_purchase_1000;
+		spriteset_e3_series_purchase_2000;
+	}

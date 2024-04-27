@@ -7,8 +7,8 @@
 	grfid:					"KR03";
 	name:					string(STR_GRF_NAME);
 	desc:					string(STR_GRF_DESC);
-	version:				43;	// v0.4.3
-	min_compatible_version: 43;	// v0.4.3
+	version:				50;	// v0.5.0
+	min_compatible_version: 50;	// v0.5.0
 		//japanset3 removal
 		param 4 {
 			 param_japansetdisable {
@@ -38,6 +38,54 @@
 					bit:  0;
 					def_value: 0;
 			 }
+		}
+		//sprite length
+		param 7 {
+				param_spritelength {
+						type: int;
+						name: string(STR_PARAM_NAME_SPRITELENGTH);
+						desc: string(STR_PARAM_DESC_SPRITELENGTH);
+						min_value: 0;
+						max_value: 1;
+						def_value: 1;
+						names: {
+												0: string(STR_PARAM_LENGTH_12);
+												1: string(STR_PARAM_LENGTH_10);
+						};
+				}
+		}
+		//pax capacity
+		param 2 {
+				param_basecapacity {
+						type: int;
+						name: string(STR_PARAM_NAME_BASECAPACITY);
+						desc: string(STR_PARAM_DESC_BASECAPACITY);
+						min_value: 0;
+						max_value: 3;
+						def_value: 0;
+						names: {
+												0: string(STR_PARAM_REAL);
+												1: string(STR_PARAM_1_25);
+												2: string(STR_PARAM_1_50);
+												3: string(STR_PARAM_DOUBLE);
+						};
+				}
+		}
+		// Doctor Yellow Usage
+		param 8 {
+				param_dryellow {
+						type: int;
+						name: string(STR_PARAM_NAME_DRYELLOW);
+						desc: string(STR_PARAM_DESC_DRYELLOW);
+						min_value: 0;
+						max_value: 2;
+						def_value: 0;
+						names: {
+												0: string(STR_PARAM_GIMMICK);
+												1: string(STR_PARAM_MAIL);
+												2: string(STR_PARAM_PASSENGERS);
+						};
+				}
 		}
 		//basecosts
 		param 0 {
@@ -73,23 +121,6 @@
 						};
 				}
 		}
-		//pax capacity
-		param 2 {
-				param_basecapacity {
-						type: int;
-						name: string(STR_PARAM_NAME_BASECAPACITY);
-						desc: string(STR_PARAM_DESC_BASECAPACITY);
-						min_value: 0;
-						max_value: 3;
-						def_value: 0;
-						names: {
-												0: string(STR_PARAM_REAL);
-												1: string(STR_PARAM_1_25);
-												2: string(STR_PARAM_1_50);
-												3: string(STR_PARAM_DOUBLE);
-						};
-				}
-		}
 		//cargo decay
 		param 5 {
 			 param_cargodecay {
@@ -107,38 +138,6 @@
 			 
 			}	
 		}
-		//sprite length
-		param 7 {
-				param_spritelength {
-						type: int;
-						name: string(STR_PARAM_NAME_SPRITELENGTH);
-						desc: string(STR_PARAM_DESC_SPRITELENGTH);
-						min_value: 0;
-						max_value: 1;
-						def_value: 1;
-						names: {
-												0: string(STR_PARAM_LENGTH_12);
-												1: string(STR_PARAM_LENGTH_10);
-						};
-				}
-		}
-		// Doctor Yellow Usage
-		param 8 {
-				param_dryellow {
-						type: int;
-						name: string(STR_PARAM_NAME_DRYELLOW);
-						desc: string(STR_PARAM_DESC_DRYELLOW);
-						min_value: 0;
-						max_value: 2;
-						def_value: 0;
-						names: {
-												0: string(STR_PARAM_GIMMICK);
-												1: string(STR_PARAM_MAIL);
-												2: string(STR_PARAM_PASSENGERS);
-						};
-				}
-		}
-
 }
 
 // Cargo table
@@ -12371,8 +12370,20 @@ item(FEAT_TRAINS, series_e2) {
 /* GRAPHICS */
 
     // Purchase Sprites
-        spriteset (spriteset_e3_series_purchase,	        	    "src/trains/dummy/purchase.png") {tmpl_purchase_dh(0, 0)}
-        alternative_sprites(spriteset_e3_series_purchase,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/buy_e3_r.png") {template_purchase(0, 0)}
+        spriteset (spriteset_e3_series_purchase_r,	        	"src/trains/dummy/purchase.png") {tmpl_purchase_dh(0, 0)}
+        alternative_sprites(spriteset_e3_series_purchase_r,     ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/buy_e3_r.png") {template_purchase(0, 0)}
+
+		spriteset (spriteset_e3_series_purchase_1000,	       	"src/trains/dummy/purchase.png") {tmpl_purchase_dh(0, 0)}
+        alternative_sprites(spriteset_e3_series_purchase_1000,  ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/buy_e3_1000.png") {template_purchase(0, 0)}
+
+		spriteset (spriteset_e3_series_purchase_2000,	        "src/trains/dummy/purchase.png") {tmpl_purchase_dh(0, 0)}
+        alternative_sprites(spriteset_e3_series_purchase_2000,  ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/buy_e3_2000.png") {template_purchase(0, 0)}
+
+		switch(FEAT_TRAINS, SELF, sw_e3_series_purchase, current_year) {
+		0..1998: spriteset_e3_series_purchase_r;
+        1999..2007: spriteset_e3_series_purchase_1000;
+		spriteset_e3_series_purchase_2000;
+	}
 # 1 "src/trains/e3_series/e3_series.pnml" 2
 # 1 "src/trains/e3_series/pnml/sprites/e3_series_cab01.pnml" 1
 /* cab01 */
@@ -13031,6 +13042,31 @@ switch (FEAT_TRAINS, PARENT, sw_e3_series_everything_else_coaches, vehicle_is_re
 
 // 6 CARS
 
+  switch (FEAT_TRAINS, SELF, sw_e3_series_6car_irl_reversed, position_in_consist_from_end % 6) {				
+          0: sw_e3_series_cab01b;
+          1: sw_e3_series_clogob;
+          2: sw_e3_series_c2raib;           
+          3: sw_e3_series_coraib;
+          4: sw_e3_series_pantob;
+          5: sw_e3_series_cab02b; 
+          sw_e3_series_coachb;			
+        }
+
+  switch (FEAT_TRAINS, SELF, sw_e3_series_6car_irl_not_reversed, position_in_consist % 6 ) {				
+          0: sw_e3_series_cab01f;
+          1: sw_e3_series_clogof;
+          2: sw_e3_series_c2raif;           
+          3: sw_e3_series_coraif;
+          4: sw_e3_series_pantof;
+          5: sw_e3_series_cab02f; 
+          sw_e3_series_coachf;			
+        }
+
+  switch (FEAT_TRAINS, PARENT, sw_e3_series_6car_irl_reverse_check, vehicle_is_reversed ) {				
+    1:  sw_e3_series_6car_irl_reversed;
+    sw_e3_series_6car_irl_not_reversed;				
+  }
+  
   switch (FEAT_TRAINS, SELF, sw_e3_series_6car_reversed, position_in_consist_from_end ) {				
       2: sw_e3_series_c2raib;           
       3: sw_e3_series_coraib;       
@@ -13048,47 +13084,84 @@ switch (FEAT_TRAINS, PARENT, sw_e3_series_everything_else_coaches, vehicle_is_re
     sw_e3_series_6car_not_reversed;				
   }
 
+  switch (FEAT_TRAINS, SELF, sw_e3_series_6car_length_check, num_vehs_in_consist % 6 ) {				
+    0:  sw_e3_series_6car_irl_reverse_check;
+    sw_e3_series_6car_reverse_check;				
+  }
+
 // 7 CARS
-  switch (FEAT_TRAINS, SELF, sw_e3_series_7car_even_reversed, position_in_consist_from_end - position_in_consist ) {				
-      1: sw_e3_series_coraib;           
-      -1:  sw_e3_series_pantob;       
-      sw_e3_series_coachb;			
+  // IRL coupling
+    switch (FEAT_TRAINS, SELF, sw_e3_series_7car_irl_reversed, position_in_consist_from_end % 7 ) {				
+          0: sw_e3_series_cab01b;
+          1: sw_e3_series_clogob;      
+          3: sw_e3_series_pantob;
+          4: sw_e3_series_coraib;
+          5: sw_e3_series_pantob;
+          6: sw_e3_series_cab02b; 
+          sw_e3_series_coachb;			
+        }
+    
+    switch (FEAT_TRAINS, SELF, sw_e3_series_7car_irl_not_reversed, position_in_consist % 7 ) {				
+          0: sw_e3_series_cab01f;
+          1: sw_e3_series_clogof;      
+          3: sw_e3_series_pantof;
+          4: sw_e3_series_coraif;
+          5: sw_e3_series_pantof;
+          6: sw_e3_series_cab02f; 
+          sw_e3_series_coachf;			
+        }
+    
+    switch (FEAT_TRAINS, PARENT, sw_e3_series_7car_irl_reverse_check, vehicle_is_reversed ) {				
+      1:  sw_e3_series_7car_irl_reversed;
+      sw_e3_series_7car_irl_not_reversed;				
     }
 
-  switch (FEAT_TRAINS, SELF, sw_e3_series_7car_even_not_reversed, position_in_consist - position_in_consist_from_end ) {				
-      1: sw_e3_series_coraif;
-      -1:  sw_e3_series_pantof;
-      sw_e3_series_coachf;			
-    }
+  // Standard
+    switch (FEAT_TRAINS, SELF, sw_e3_series_7car_even_reversed, position_in_consist_from_end - position_in_consist ) {				
+        1: sw_e3_series_coraib;           
+        -1:  sw_e3_series_pantob;       
+        sw_e3_series_coachb;			
+      }
 
-  switch (FEAT_TRAINS, SELF, sw_e3_series_7car_odd_reversed, position_in_consist_from_end - position_in_consist ) {				
-      2: sw_e3_series_coraib;        
-      0:  sw_e3_series_pantob;       
-      sw_e3_series_coachb;			
-    }
+    switch (FEAT_TRAINS, SELF, sw_e3_series_7car_even_not_reversed, position_in_consist - position_in_consist_from_end ) {				
+        1: sw_e3_series_coraif;
+        -1:  sw_e3_series_pantof;
+        sw_e3_series_coachf;			
+      }
 
-  switch (FEAT_TRAINS, SELF, sw_e3_series_7car_odd_not_reversed, position_in_consist - position_in_consist_from_end ) {				
-      2: sw_e3_series_coraif;
-      0:  sw_e3_series_pantof;
-      sw_e3_series_coachf;			
-    }
+    switch (FEAT_TRAINS, SELF, sw_e3_series_7car_odd_reversed, position_in_consist_from_end - position_in_consist ) {				
+        2: sw_e3_series_coraib;        
+        0:  sw_e3_series_pantob;       
+        sw_e3_series_coachb;			
+      }
 
-  switch (FEAT_TRAINS, SELF, sw_e3_series_7car_oddeven_not_reversed, num_vehs_in_consist % 2) {				
-      0:  sw_e3_series_7car_even_not_reversed;       // Even
-      sw_e3_series_7car_odd_not_reversed;			
-    }
+    switch (FEAT_TRAINS, SELF, sw_e3_series_7car_odd_not_reversed, position_in_consist - position_in_consist_from_end ) {				
+        2: sw_e3_series_coraif;
+        0:  sw_e3_series_pantof;
+        sw_e3_series_coachf;			
+      }
 
-  switch (FEAT_TRAINS, SELF, sw_e3_series_7car_oddeven_reversed, num_vehs_in_consist % 2) {				
-      0:  sw_e3_series_7car_even_reversed;       // Even
-      sw_e3_series_7car_odd_reversed;			
-    }
+    switch (FEAT_TRAINS, SELF, sw_e3_series_7car_oddeven_not_reversed, num_vehs_in_consist % 2) {				
+        0:  sw_e3_series_7car_even_not_reversed;       // Even
+        sw_e3_series_7car_odd_not_reversed;			
+      }
+
+    switch (FEAT_TRAINS, SELF, sw_e3_series_7car_oddeven_reversed, num_vehs_in_consist % 2) {				
+        0:  sw_e3_series_7car_even_reversed;       // Even
+        sw_e3_series_7car_odd_reversed;			
+      }
 
   switch (FEAT_TRAINS, PARENT, sw_e3_series_7car_reverse_check, vehicle_is_reversed ) {				
       1:  sw_e3_series_7car_oddeven_reversed;
       sw_e3_series_7car_oddeven_not_reversed;				
     }
 
-    // TOREIYU
+  switch (FEAT_TRAINS, SELF, sw_e3_series_7car_length_check, num_vehs_in_consist % 7 ) {				
+      0:  sw_e3_series_7car_irl_reverse_check;
+      sw_e3_series_7car_reverse_check;				
+    }
+
+// TOREIYU
       switch (FEAT_TRAINS, SELF, sw_e3_series_toreiyu_reversed, position_in_consist_from_end - position_in_consist ) {				
           -4: ss_e3_series_pantgb_700;
           -3: ss_e3_series_pantgb_700;
@@ -13124,14 +13197,14 @@ switch (FEAT_TRAINS, PARENT, sw_e3_series_everything_else_coaches, vehicle_is_re
 
   // Toreiyu 5 car check
     switch(FEAT_TRAINS, SELF, sw_e3_series_year_dep_reverse_check, build_year) {
-            0..1998: sw_e3_series_6car_reverse_check;
-            sw_e3_series_7car_reverse_check; 
+            0..1998: sw_e3_series_6car_length_check;
+            sw_e3_series_7car_length_check; 
           }
 
     switch(FEAT_TRAINS, PARENT, sw_e3_series_midcar_subtype_check, cargo_subtype) {
             0: sw_e3_series_year_dep_reverse_check;
-            1..2: sw_e3_series_6car_reverse_check;
-            3..6: sw_e3_series_7car_reverse_check;
+            1..2: sw_e3_series_6car_length_check;
+            3..6: sw_e3_series_7car_length_check;
             7: sw_e3_series_toreiyu_reverse_check;   // Toreiyu
             sw_e3_series_everything_else_coaches;
           }
@@ -13288,8 +13361,8 @@ item(FEAT_TRAINS, series_e3) {
     /*Graphics and Callbacks*/
       graphics {
         default:                        sw_e3_series_graphics;
-	    purchase:                       spriteset_e3_series_purchase;
-		additional_text:	              return string(STR_DESC_E3_SERIES);
+	      purchase:                       sw_e3_series_purchase;
+		    additional_text:	              return string(STR_DESC_E3_SERIES);
         cargo_subtype_text:             sw_e3_series_year_dep_subtype_text;
         can_attach_wagon:			          sw_e3_series_attach_vehid;
         //start_stop:                   ;
@@ -13299,7 +13372,7 @@ item(FEAT_TRAINS, series_e3) {
         power:                          max (num_vehs_in_consist - 2 , 0 ) * 400 * 4;     // 300 kW = 400 hp
         weight:                         43 * num_vehs_in_consist;
         cargo_capacity:                 56 * CapacityFactor();										        // Average 338/6, 402/7, 394/7 = 56  					
-		loading_speed:					        56 * CapacityFactor() / param_loading_1D;					// Capacity divided by door loading factor
+		    loading_speed:					        56 * CapacityFactor() / param_loading_1D;					// Capacity divided by door loading factor
         running_cost_factor:            (445 + 120 * num_vehs_in_consist ) * RunningCostFactor();
         purchase_running_cost_factor:   (445 + 120) / 2;	
     }
