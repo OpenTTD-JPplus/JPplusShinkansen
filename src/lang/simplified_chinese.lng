@@ -1,233 +1,272 @@
 ##grflangid 0x56
-# This is the Chinese language file
+##plural 1
 # Guide: https://newgrf-specs.tt-wiki.net/wiki/NML:Language_files
 
+# #######################
+# JP+ Shinkansen SIMPLIFIED CHINESE TRANSLATION NOTES
+# 翻译时请尽量在中西文中间加入空格，以便于在不同语言之间的切换。
+# 请尽量使用中文标点符号。
+# 对于某些列车型号或涂装，可以加入日文原名。
+# 请保证译文自然流畅。即使使用机翻也请校对过后再提交。
+# #######################
+
 # GRF name and description definitions
-STR_GRF_NAME        :{TITLE} {VERSION}
-STR_GRF_DESC		:{WHITE}JP{RED}+{WHITE}Shinkansen{}{}JP{RED}+{WHITE}Shinkansen{BLACK} focuses on, you guessed it, Shinkansen! Trains require high speed rail tracks.{}Sister set to {WHITE}JP{RED}+{WHITE}MUs {BLACK}, {WHITE}JP{RED}+ {WHITE}Engines & Wagons {BLACK}and {WHITE}JP{RED}+ {WHITE}Metro{}{}{BLACK}{COPYRIGHT}JP+Shinkansen{}Licence: GPLv2{}{BLACK}{}Coded By{}{LTBLUE}KeepinItRail{}{}{BLACK}Sprites By{}{GREEN}KeepinItRail{}{TINYFONT}{BLACK}Thanks To{}{ORANGE}Emperor Jake{}Tinny{}Azusa{}Saya{}Erato{}JapanSet3 Team{}{}{}{BLACK}{}
+STR_GRF_NAME        :JP+ 新干线 {VERSION}
+STR_GRF_DESC        :{WHITE}JP{RED}+{WHITE} 新干线{}{}JP{RED}+{WHITE}新干线{BLACK}专门做的就是，您应该已经门儿清了，新干线！本包中的列车需要高速铁道。{}本包是{WHITE}JP{RED}+{WHITE} 动车组（{WHITE}JP{RED}+{WHITE} MUs）{BLACK}、{WHITE}JP{RED}+ {WHITE}机车与车厢{BLACK}与{WHITE}JP{RED}+ {WHITE}主要私铁（{WHITE}JP{RED}+{WHITE} Major Private Companies）{BLACK}的姊妹拓展包。{}{}{BLACK}{COPYRIGHT}JP+ 新干线{}许可证：GPLv2{}{BLACK}{}程序：{}{LTBLUE}KeepinItRail{}{}{BLACK}图像：{}{GREEN}KeepinItRail, Yozora, Azusa, Erato{}{}{BLACK}翻译：{}{GREEN}freeaim (Japanese){}Yozora (Russian){}CoconutKR (Korean){}{}{TINYFONT}{BLACK}特别感谢：{}{ORANGE}Emperor Jake{}Tinny{}Saya{}Leon{}JapanSet3 Team{}{}{}{BLACK}{}
 
 # Parameters
-STR_NO                              :No
-STR_YES                             :Yes
-STR_PARAM_NORMAL                    :Normal
-STR_PARAM_VLOW                      :Very low
-STR_PARAM_LOW                       :Low
-STR_PARAM_HIGH                      :High
-STR_PARAM_VHIGH                     :Very high
-STR_PARAM_NAME_BASECOSTMODBUY       :Purchase costs
-STR_PARAM_DESC_BASECOSTMODBUY       :Increase/Decrease the purchase costs of vehicles.
-STR_PARAM_NAME_BASECOSTMODRUN       :Running costs
-STR_PARAM_DESC_BASECOSTMODRUN       :Increase/Decrease the running costs of vehicles.
-STR_PARAM_NAME_BASECAPACITY         :Passenger capacities
-STR_PARAM_DESC_BASECAPACITY         :Adjusts passenger capacities. Realistic option is based on real-world data for seating/standing capacity and is not balanced against other sets or gameplay.
-STR_PARAM_NAME_JAPANSETDISABLE      :JapanSet3 Shinkansen removal 
-STR_PARAM_DESC_JAPANSETDISABLE      :Removes duplicate Shinkasen found in JapanSet3.
-STR_PARAM_NAME_DECAY                :Cargo decay rate
-STR_PARAM_DESC_DECAY                :Set the rate of cargo decay. In "normal" mode all trains have the same decay rate. In "low" and "very low" cargo decay rates depend on the type of train used. Using a commuter train over long distances would earn less than using an express train.
+STR_NO                              :否
+STR_YES                             :是
+STR_PARAM_NORMAL                    :普通
+STR_PARAM_VLOW                      :非常低
+STR_PARAM_LOW                       :低
+STR_PARAM_HIGH                      :高
+STR_PARAM_VHIGH                     :非常高
+STR_PARAM_NAME_BASECOSTMODBUY       :购买费用
+STR_PARAM_DESC_BASECOSTMODBUY       :改变载具购置成本。
+STR_PARAM_NAME_BASECOSTMODRUN       :运行费用
+STR_PARAM_DESC_BASECOSTMODRUN       :改变载具运行成本。
+STR_PARAM_NAME_BASECAPACITY         :旅客容量
+STR_PARAM_DESC_BASECAPACITY         :调整旅客容量。“真实”是基于现实中的新干线列车的容量，且没有考虑游戏平衡。
+STR_PARAM_NAME_JAPANSETDISABLE      :移除 JapanSet3 新干线
+STR_PARAM_DESC_JAPANSETDISABLE      :禁用 JapanSet3 新干线列车；游戏中出现的所有新干线列车将为 JP+ 新干线列车。
+STR_PARAM_NAME_DECAY                :货物保鲜度
+STR_PARAM_DESC_DECAY                :设置货物保鲜度。在“正常”模式下，所有火车具有相同的保鲜度。在使用“低”和“非常低”时货物保鲜度取决于使用的火车类型，此时在较长距离下使用通勤列车将比使用快速列车赚取更少。
 
-STR_PARAM_REAL                      :Real World Capacities (1x)
-STR_PARAM_1_50                      :Long Sprite Adjusted (1.5x)
-STR_PARAM_DOUBLE                    :Double (2x)
-STR_PARAM_1_25                      :Long Sprite Adjusted (1.25x)
+STR_PARAM_REAL                      :真实（1x）
+STR_PARAM_1_50                      :长图像优化（1.5x）
+STR_PARAM_DOUBLE                    :双倍（2x）
+STR_PARAM_1_25                      :长图像优化（1.25x）
 
-STR_PARAM_NAME_TRACKS               :Enable replacement Shinkansen tracks
-STR_PARAM_DESC_TRACKS               :When JapanSet3 Shinkansen are disabled by the above parameter, this removes the Shinkansen tracks from JapanSet Tracks. This parameter enables 'replacement' Shinkansen tracks. 
+STR_PARAM_NAME_TRACKS               :启用内置新干线轨道
+STR_PARAM_DESC_TRACKS               :移除 JapanSet Tracks 的新干线轨道并启用本包内置的新干线轨道。
 
-STR_PARAM_NAME_FENCES               :Disable replacement Shinkansen track fences
-STR_PARAM_DESC_FENCES               :Select whether fences appear on the replacement Shinkansen tracks. Only affects the 'replacement' Shinkansen track, not any other tracks or track sets.
+STR_PARAM_NAME_FENCES               :禁用新干线轨道栅栏
+STR_PARAM_DESC_FENCES               :控制当启用内置新干线轨道时，是否显示轨道栅栏。请注意，此参数仅在启用内置新干线轨道时有效。
 
-STR_PARAM_NAME_SPRITELENGTH         :Length of full Shinkansen sprites
-STR_PARAM_DESC_SPRITELENGTH         :Choose the sprite length for full size Shinkansen
-STR_PARAM_LENGTH_10                 :10/8 length Shinkansen
-STR_PARAM_LENGTH_12                 :12/8 length Shinkansen
+STR_PARAM_NAME_SPRITELENGTH         :全尺寸新干线贴图
+STR_PARAM_DESC_SPRITELENGTH         :控制全尺寸新干线贴图长度。
+STR_PARAM_LENGTH_10                 :较短（10/8）
+STR_PARAM_LENGTH_12                 :较长（12/8）
+
+STR_PARAM_NAME_DRYELLOW             :{PUSH_COLOUR}{YELLOW}黄医生{POP_COLOUR}作用
+STR_PARAM_DESC_DRYELLOW             :选择如何使用“黄医生”。
+
+STR_PARAM_GIMMICK                   :轨道测试车（默认）
+STR_PARAM_MAIL                      :邮政列车
+STR_PARAM_PASSENGERS                :旅客列车
 
 # Error Messages
-GRF_OTTDVER                 : You are below the required OpenTTD version to run this NewGRF. Please update your version of OpenTTD.
-STR_LENGTH_ERROR            : Add more Shinkansen Cars! Add more MU cars (Wagons menu) to have at least a four car set
+GRF_OTTDVER                 :你的 OpenTTD 版本不支持此 GRF。请升级到更高版本。
+STR_LENGTH_ERROR            :需要增加更多新干线车厢！从购买菜单中购买更多的新干线车厢，并保证一列车中至少有四个车厢。
+COUPLE_CANT_JOIN            :不能添加到重联新干线！
 
 # Mucar
-MU_UNIQUE                   : You can only attach MU cars or other EMUs of the same design.
-ONLY_ADD_MUCAR              : You can only attach MU cars
-MUCAR_MINI                  :JP+ Mini-Shinkansen Car {WHITE}(MU){BLACK}
-MUCAR_FULL                  :JP+ Shinkansen Car {WHITE}(MU){BLACK}
-MUCAR_MINI_DESC             :{BLACK}Compatibility: {GOLD}400 Series, E3 Series, E6 Series and E8 Series Shinkansen{}{BLUE}Used to represent  {GREEN}motor and trailer cars{BLUE} within a Mini-Shinkansen formation.
-MUCAR_FULL_DESC             :{BLACK}Compatibility: {GOLD}All Full Size Shinkansen{}{BLUE}Used to represent  {GREEN}motor and trailer cars{BLUE} within a Shinkansen formation.
+MU_UNIQUE                   :你只能添加新干线车厢或重联新干线列车
+ONLY_ADD_MUCAR              :你只能添加新干线车厢
+MUCAR_MINI                  :JP+ 迷你新干线车厢{WHITE}（动车组）{BLACK}
+MUCAR_FULL                  :JP+ 新干线车厢{WHITE}（动车组）{BLACK}
+MUCAR_MAIL                  :JP+ 新干线邮车{WHITE}（动车组）{BLACK}
+MUCAR_MAGLEV                :JP+ 新干线磁悬浮车厢{WHITE}（动车组）{BLACK}
+MUCAR_MINI_DESC             :{BLACK}兼容性：{GOLD}400、E3、E6 与 E8 系新干线{}{BLUE}作为迷你新干线编成中的{GREEN}动车与拖车。
+MUCAR_FULL_DESC             :{BLACK}兼容性：{GOLD}所有全尺寸新干线{}{BLUE}作为新干线编成中的{GREEN}动车与拖车。
+MUCAR_MAIL_DESC             :{BLACK}兼容性：{GOLD}黄医生新干线{}{BLUE}作为新干线编成中的{GREEN}动车与拖车。
+MUCAR_MAGLEV_DESC           :{BLACK}兼容性：{GOLD}磁悬浮新干线
 
 # ########################
-# Not JR East 
+# Not JR东日本
 # ########################
 
-# 0 Series Shinkansen
-STR_NAME_0_SERIES           :0 Series Shinkansen
-STR_DESC_0_SERIES           :{BLACK}Gauge:{GOLD} Standard{}{BLACK}Usage: {SILVER}Express Passengers{}{BLACK}Operators: {WHITE}JNR{}{BLACK}MU Car: {GOLD} JP+ Shinkansen Car
-LV_0_SERIES_ORIGINAL        : 0 Series {BLUE}Original Livery
-LV_0_SERIES_KODAMA          : 0 Series {GREEN}Kodama Livery
-LV_0_SERIES_NOSE            : 0 Series {BLUE}Original Livery {YELLOW}w/ Illuminated Nose
-LV_0_SERIES_ORIGINAL_2CC    : 0 Series {BLUE}2CC
+# 0 系新干线
+STR_NAME_0_SERIES           :0 系新干线
+STR_DESC_0_SERIES           :{BLACK}轨距：{GOLD}标准{}{BLACK}用途：{SILVER}快速旅客{}{BLACK}铁道会社：{WHITE}日本国有铁道{}{BLACK}动车组车厢：{GOLD}JP+ 新干线车厢
+LV_0_SERIES_ORIGINAL        : 0 系{BLUE}原色涂装
+LV_0_SERIES_KODAMA          : 0 系{GREEN}回声号（こだま）涂装
+LV_0_SERIES_ORIGINAL_2CC    : 0 系{BLUE}公司颜色
+LV_0_SERIES_NOSE            : 0 系{BLUE}原色涂装{YELLOW}，带发光车头
 
-# 100 Series Shinkansen
-STR_NAME_100_SERIES         :100 Series Shinkansen
-STR_DESC_100_SERIES         :{BLACK}Gauge:{GOLD} Standard{}{BLACK}Usage: {SILVER}Express Passengers{}{BLACK}Operators: {WHITE}JNR{}{BLACK}MU Car: {GOLD} JP+ Shinkansen Car
-LV_100_SERIES_X             : 100 Series {BLUE}X Set
-LV_100_SERIES_X_2CC         : 100 Series {BLUE}X Set (2cc)
-LV_100_SERIES_V             : 100 Series {BLUE}V Set
-LV_100_SERIES_V_2CC         : 100 Series {BLUE}V Set (2cc)
-LV_100_SERIES_KODAMA        : 100 Series {GREEN}Kodama Livery {GOLD}(230 km/h)
+STR_NAME_922_SERIES         :922 系新干线 - {YELLOW}黄医生
+STR_DESC_922_SERIES         :{BLACK}轨距：{GOLD}标准{}{BLACK}用途：{SILVER}快速旅客{}{BLACK}铁道会社：{ORANGE}JR东海{BLACK}与{BLUE}JR西日本{}{BLACK}涂装：{YELLOW}黄医生{}{BLACK}动车组车厢：{GOLD}JP+ 新干线车厢
+STR_DESC_922_SERIES_MAIL    :{BLACK}轨距：{GOLD}标准{}{BLACK}用途：{SILVER}快速邮件{}{BLACK}铁道会社：{ORANGE}JR东海{BLACK}与{BLUE}JR西日本{}{BLACK}涂装：{YELLOW}黄医生{}{BLACK}动车组车厢：{GOLD}JP+ 新干线邮车
+STR_DESC_922_SERIES_GIMMICK :{BLACK}轨距：{GOLD}标准{}{BLACK}用途：{SILVER}轨道检测{}{BLACK}铁道会社：{ORANGE}JR东海{BLACK}与{BLUE}JR西日本{}{BLACK}涂装：{YELLOW}黄医生{}{BLACK}动车组车厢：{GOLD}JP+ 新干线车厢
 
-# 300 Series Shinkansen
-STR_NAME_300_SERIES         :300 Series Shinkansen
-STR_DESC_300_SERIES         :{BLACK}Gauge:{GOLD} Standard{}{BLACK}Usage: {SILVER}Express Passengers{}{BLACK}Operators: {ORANGE}JR Central {BLACK}& {BLUE}JR West{}{BLACK}Liveries: {SILVER}Original{}{BLACK}MU Car: {GOLD} JP+ Shinkansen Car
-LV_300_SERIES               : 300 Series {BLUE}Original Livery
-LV_300_SERIES_2CC           : 300 Series {BLUE}2cc
+# 100 系新干线
+STR_NAME_100_SERIES         :100 系新干线
+STR_DESC_100_SERIES         :{BLACK}轨距：{GOLD}标准{}{BLACK}用途：{SILVER}快速旅客{}{BLACK}铁道会社：{WHITE}日本国有铁道{}{BLACK}动车组车厢：{GOLD}JP+ 新干线车厢
+LV_100_SERIES_X             : 100 系 {BLUE}X 编成
+LV_100_SERIES_X_2CC         : 100 系 {BLUE}X 编成，公司颜色
+LV_100_SERIES_V             : 100 系 {BLUE}V 编成
+LV_100_SERIES_V_2CC         : 100 系 {BLUE}V 编成，公司颜色
+LV_100_SERIES_KODAMA        : 100 系 {GREEN}回声号（こだま）涂装{GOLD}（230 千米/时）
 
-# 500 Series Shinkansen
-STR_NAME_500_SERIES         :500 Series Shinkansen
-STR_DESC_500_SERIES         :{BLACK}Gauge:{GOLD} Standard{}{BLACK}Usage: {SILVER}Express Passengers{}{BLACK}Operators: {BLUE}JR West{}{BLACK}Liveries: {SILVER}Original
-LV_500_SERIES               : 500 Series {BLUE}Original Livery
-LV_500_SERIES_2CC           : 500 Series {BLUE}2cc
-LV_500_SERIES_HK            : 500 Series {CREAM}Hello Kitty Livery
-LV_500_SERIES_EVA           : 500 Series {PURPLE}TYPE EVA Livery
+# 300 系新干线
+STR_NAME_300_SERIES         :300 系新干线
+STR_DESC_300_SERIES         :{BLACK}轨距：{GOLD}标准{}{BLACK}用途：{SILVER}快速旅客{}{BLACK}铁道会社：{ORANGE}JR东海{BLACK}与{BLUE}JR西日本{}{BLACK}涂装：{SILVER}原色{BLACK}与{BLUE}公司颜色{}{BLACK}动车组车厢：{GOLD}JP+ 新干线车厢
+LV_300_SERIES               : 300 系{BLUE}原色涂装
+LV_300_SERIES_2CC           : 300 系{BLUE}公司颜色
 
-# 700 Series Shinkansen
-STR_NAME_700_SERIES          :700 Series Shinkansen
-STR_DESC_700_SERIES          :{BLACK}Gauge:{GOLD} Standard{}{BLACK}Usage: {SILVER}Express Passengers{}{BLACK}Operators: {ORANGE}JR Central {BLACK}& {BLUE}JR West{}{BLACK}Liveries: {BLUE}Original {BLACK}& {YELLOW}Hikari Rail Star {}{BLACK}MU Car: {GOLD} JP+ Shinkansen Car
-LV_700_SERIES_ORIGINAL      : 700 Series {BLUE}Original Livery
-LV_700_SERIES_ORIGINAL_2CC  : 700 Series {BLUE}Original (2cc)
-LV_700_SERIES_HIKARI        : 700 Series {YELLOW}Hikari Rail Star Livery
-LV_700_SERIES_HIKARI_2CC    : 700 Series {YELLOW}Hikari Rail Star (2cc)
-# N700 Series Shinkansen
-STR_NAME_N700_SERIES         :N700 Series Shinkansen
-STR_DESC_N700_SERIES         :{BLACK}Gauge:{GOLD} Standard{}{BLACK}Usage: {SILVER}Express Passengers{}{BLACK}Operators: {ORANGE}JR Central {BLACK}, {BLUE}JR West {BLACK}& {RED}JR Kyushu{}{BLACK}Liveries: {BLUE}Original {BLACK}(2007), {SILVER}Kyushu {BLACK}(2010){}{BLACK}MU Car: {GOLD} JP+ Shinkansen Car
-STR_NAME_N700A_SERIES        :N700A Series Shinkansen
-STR_DESC_N700A_SERIES        :{BLACK}Gauge:{GOLD} Standard{}{BLACK}Usage: {SILVER}Express Passengers{}{BLACK}Operators: {ORANGE}JR Central {BLACK}& {BLUE}JR West{}{BLACK}Liveries: {BLUE}Original {BLACK}{}{BLACK}MU Car: {GOLD} JP+ Shinkansen Car
-STR_NAME_N700S_SERIES        :N700S Series Shinkansen
-STR_DESC_N700S_SERIES        :{BLACK}Gauge:{GOLD} Standard{}{BLACK}Usage: {SILVER}Express Passengers{}{BLACK}Operators: {ORANGE}JR Central {BLACK}, {BLUE}JR West {BLACK}& {RED}JR Kyushu{}{BLACK}Liveries: {BLUE}Original {BLACK}& {RED}Kamome{}{BLACK}MU Car: {GOLD} JP+ Shinkansen Car
+# 500 系新干线
+STR_NAME_500_SERIES         :500 系新干线
+STR_DESC_500_SERIES         :{BLACK}轨距：{GOLD}标准{}{BLACK}用途：{SILVER}快速旅客{}{BLACK}铁道会社：{BLUE}JR西日本{}{BLACK}涂装：{BLUE}原色{BLACK}、{PURPLE}TYPE EVA {BLACK}与{CREAM} Hello Kitty{}{BLACK}动车组车厢：{GOLD}JP+ 新干线车厢
+LV_500_SERIES               : 500 系{BLUE}原色涂装
+LV_500_SERIES_2CC           : 500 系{GOLD}公司颜色
+LV_500_SERIES_HK            : 500 系{CREAM} Hello Kitty 涂装
+LV_500_SERIES_EVA           : 500 系{PURPLE} TYPE EVA 涂装
 
-LV_N700_SERIES_N700         : N700 Series
-LV_N700_SERIES_N700_2CC     : N700 Series {GOLD}2cc
-LV_N700_SERIES_N700A        : N700A Series
-LV_N700_SERIES_N700A_2CC    : N700A Series {GOLD}2cc
-LV_N700_SERIES_N700S        : N700S Series
-LV_N700_SERIES_N700S_2CC    : N700S Series {GOLD}2cc
-LV_N700_SERIES_KYUSHU       : N700 Series {SILVER}Kyushu Livery
-LV_N700_SERIES_KAMOME       : N700S Series {RED}Kamome Livery    
-LV_N700_SERIES_KAMOME_2CC   : N700S Series {GOLD}Kamome 2cc       
+# 700 系新干线
+STR_NAME_700_SERIES         :700 系新干线
+STR_DESC_700_SERIES         :{BLACK}轨距：{GOLD}标准{}{BLACK}用途：{SILVER}快速旅客{}{BLACK}铁道会社：{ORANGE}JR东海{BLACK}与{BLUE}JR西日本{}{BLACK}涂装：{BLUE}原色{BLACK}与{YELLOW}光号铁路之星{}{BLACK}动车组车厢：{GOLD}JP+ 新干线车厢
+LV_700_SERIES_ORIGINAL      : 700 系{BLUE}原色涂装
+LV_700_SERIES_ORIGINAL_2CC  : 700 系{BLUE}原色涂装，公司颜色
+LV_700_SERIES_HIKARI        : 700 系{YELLOW}光号铁路之星涂装（ひかりレールスター）
+LV_700_SERIES_HIKARI_2CC    : 700 系{YELLOW}光号铁路之星，公司颜色
 
-# 800 Series Shinkansen
-STR_NAME_800_SERIES         :800 Series Shinkansen
-STR_DESC_800_SERIES         :{BLACK}Gauge:{GOLD} Standard{}{BLACK}Usage: {SILVER}Express Passengers{}{BLACK}Operators: {RED}JR Kyushu{}{BLACK}Liveries: {SILVER}Original{}{BLACK}MU Car: {GOLD} JP+ Shinkansen Car
-LV_800_SERIES               : 800 Series {RED}Original Livery
-LV_800_SERIES_2CC           : 800 Series {BLUE}2cc
+STR_NAME_923_SERIES         :923 系新干线 - {YELLOW}黄医生
+STR_DESC_923_SERIES         :{BLACK}轨距：{GOLD}标准{}{BLACK}用途：{SILVER}快速旅客{}{BLACK}铁道会社：{ORANGE}JR东海{BLACK}与{BLUE}JR西日本{}{BLACK}涂装：{YELLOW}黄医生{}{BLACK}动车组车厢：{GOLD}JP+ 新干线车厢
+STR_DESC_923_SERIES_MAIL    :{BLACK}轨距：{GOLD}标准{}{BLACK}用途：{SILVER}快速邮件{}{BLACK}铁道会社：{ORANGE}JR东海{BLACK}与{BLUE}JR西日本{}{BLACK}涂装：{YELLOW}黄医生{}{BLACK}动车组车厢：{GOLD}JP+ 新干线邮车
+STR_DESC_923_SERIES_GIMMICK :{BLACK}轨距：{GOLD}标准{}{BLACK}用途：{SILVER}轨道检测{}{BLACK}铁道会社：{ORANGE}JR东海{BLACK}与{BLUE}JR西日本{}{BLACK}涂装：{YELLOW}黄医生{}{BLACK}动车组车厢：{GOLD}JP+ 新干线车厢
 
-# L0 Series Shinkansen
-STR_NAME_L0_SERIES         :L0 Series Shinkansen
-STR_DESC_L0_SERIES         :{BLACK}Gauge:{GOLD} Standard{}{BLACK}Usage: {SILVER}Express Passengers{}{BLACK}Operators: {ORANGE}JR Central{}{BLACK}Liveries: {SILVER}Original{}{BLACK}MU Car: {GOLD} JP+ Shinkansen Car
-LV_L0_SERIES               : L0 Series {BLUE}Original Livery
-LV_L0_SERIES_2CC           : L0 Series {BLUE}2cc
+# N700 系新干线
+STR_NAME_N700_SERIES        :N700 系新干线
+STR_NAME_N700A_SERIES       :N700A 系新干线
+STR_NAME_N700S_SERIES       :N700S 系新干线
+STR_DESC_N700_SERIES        :{BLACK}轨距：{GOLD}标准{}{BLACK}用途：{SILVER}快速旅客{}{BLACK}铁道会社：{ORANGE}JR东海{BLACK}、{BLUE}JR西日本{BLACK}与{RED}JR九州{}{BLACK}涂装：{BLUE}原色{BLACK}（2007）、{SILVER}九州{BLACK}（2010）{}{BLACK}动车组车厢：{GOLD}JP+ 新干线车厢
+STR_DESC_N700A_SERIES       :{BLACK}轨距：{GOLD}标准{}{BLACK}用途：{SILVER}快速旅客{}{BLACK}铁道会社：{ORANGE}JR东海{BLACK}与{BLUE}JR西日本{}{BLACK}涂装：{BLUE}原色{BLACK}{}{BLACK}动车组车厢：{GOLD}JP+ 新干线车厢
+STR_DESC_N700S_SERIES       :{BLACK}轨距：{GOLD}标准{}{BLACK}用途：{SILVER}快速旅客{}{BLACK}铁道会社：{ORANGE}JR东海{BLACK}、{BLUE}JR西日本{BLACK}与{RED}JR九州{}{BLACK}涂装：{BLUE}原色{BLACK}与{RED}鸥{}{BLACK}动车组车厢：{GOLD}JP+ 新干线车厢
+
+LV_N700_SERIES_N700         : N700 系
+LV_N700_SERIES_N700_2CC     : N700 系{GOLD}公司颜色
+LV_N700_SERIES_N700A        : N700A 系
+LV_N700_SERIES_N700A_2CC    : N700A 系{GOLD}公司颜色
+LV_N700_SERIES_N700S        : N700S 系
+LV_N700_SERIES_N700S_2CC    : N700S 系{GOLD}公司颜色
+LV_N700_SERIES_KYUSHU       : N700 系{SILVER}九州涂装
+LV_N700_SERIES_KAMOME       : N700S 系{RED}鸥（かもめ）
+LV_N700_SERIES_KAMOME_2CC   : N700S 系{GOLD}鸥，公司颜色
+
+# 800 系新干线
+STR_NAME_800_SERIES         :800 系新干线
+STR_DESC_800_SERIES         :{BLACK}轨距：{GOLD}标准{}{BLACK}用途：{SILVER}快速旅客{}{BLACK}铁道会社：{RED}JR九州{}{BLACK}涂装：{SILVER}原色{}{BLACK}动车组车厢：{GOLD}JP+ 新干线车厢
+LV_800_SERIES               : 800 系{RED}原色涂装
+LV_800_SERIES_2CC           : 800 系{BLUE}公司颜色
+
+# L0 系新干线
+STR_NAME_L0_SERIES          :L0 系新干线
+STR_DESC_L0_SERIES          :{BLACK}轨距：{GOLD}标准{}{BLACK}用途：{SILVER}快速旅客{}{BLACK}铁道会社：{ORANGE}JR东海{}{BLACK}涂装：{SILVER}原色{}{BLACK}动车组车厢：{GOLD}JP+ 新干线车厢
+LV_L0_SERIES                : L0 系{BLUE}原色涂装
+LV_L0_SERIES_2CC            : L0 系{BLUE}公司颜色
 
 # ########################
-# JR East
+# JR东日本
 # ########################
 
-# 200 Series Shinkansen
-STR_NAME_200_SERIES         :200 Series Shinkansen
-STR_DESC_200_SERIES         :{BLACK}Gauge:{GOLD} Standard{}{BLACK}Usage: {SILVER}Express Passengers{}{BLACK}Operators: {GREEN}JR East{}{BLACK}Liveries: {SILVER}Original {BLACK}(1982){SILVER}Refurbished {BLACK}(1992){}{BLACK}MU Car: {GOLD} JP+ Shinkansen Car
-STR_NAME_200_SERIES_SHARK   :200 Series Shinkansen - 'Sharknose'
-STR_DESC_200_SERIES_SHARK   :{BLACK}Gauge:{GOLD} Standard{}{BLACK}Usage: {SILVER}Express Passengers{}{BLACK}Operators: {GREEN}JR East{}{BLACK}Liveries: {SILVER}Sharknose {BLACK}(1990){}{BLACK}MU Car: {GOLD} JP+ Shinkansen Car
+# 200 系新干线
+STR_NAME_200_SERIES         :200 系新干线
+STR_NAME_200_SERIES_SHARK   :200 系新干线 - “鲨鱼头”
+STR_NAME_200_SERIES_275     :200 系新干线（朝日）
+STR_DESC_200_SERIES         :{BLACK}轨距：{GOLD}标准{}{BLACK}用途：{SILVER}快速旅客{}{BLACK}铁道会社：{GREEN}JR东日本{}{BLACK}涂装：{SILVER}原色{BLACK}（1982）、{SILVER}翻新{BLACK}（1982）{}{BLACK}动车组车厢：{GOLD}JP+ 新干线车厢
+STR_DESC_200_SERIES_SHARK   :{BLACK}轨距：{GOLD}标准{}{BLACK}用途：{SILVER}快速旅客{}{BLACK}铁道会社：{GREEN}JR东日本{}{BLACK}涂装：{SILVER}鲨鱼头{BLACK}（1990）{}{BLACK}动车组车厢：{GOLD}JP+ 新干线车厢
+STR_DESC_200_SERIES_275     :{BLACK}轨距：{GOLD}标准{}{BLACK}用途：{SILVER}快速旅客{}{BLACK}铁道会社：{GREEN}JR东日本{}{BLACK}涂装：{SILVER}朝日{BLACK}（1990）{}{BLACK}动车组车厢：{GOLD}JP+ 新干线车厢
 
-LV_200_SERIES_ORIGINAL      : 200 Series {GREEN}Original Livery
-LV_200_SERIES_ORIGINAL_2CC  : 200 Series {GREEN}2CC Livery
-LV_200_SERIES_REFURB        : 200 Series {BLUE}Refurbished Livery {GOLD}(240 km/h)
+LV_200_SERIES_ORIGINAL      : 200 系{GREEN}原色涂装
+LV_200_SERIES_ORIGINAL_2CC  : 200 系{GREEN}公司颜色
+LV_200_SERIES_REFURB        : 200 系{BLUE}翻新涂装{GOLD}（240千米/时）
 
-# 400 Series Shinkansen
-STR_NAME_400_SERIES         :400 Series Shinkansen
-STR_DESC_400_SERIES         :{BLACK}Gauge:{GOLD} Standard{}{BLACK}Usage: {SILVER}Express Passengers{}{BLACK}Operators: {GREEN}JR East{}{BLACK}Liveries: {SILVER}Original {BLACK}(1992){SILVER}Refurbished {BLACK}(2002){}{BLACK}MU Car: {GOLD} JP+ Mini-Shinkansen Car
-LV_400_SERIES_ORIGINAL      : 400 Series Original
-LV_400_SERIES_REFURB        : 400 Series Refurbished
+# 400 系新干线
+STR_NAME_400_SERIES         :400 系新干线
+STR_DESC_400_SERIES         :{BLACK}轨距：{GOLD}标准{}{BLACK}用途：{SILVER}快速旅客{}{BLACK}铁道会社：{GREEN}JR东日本{}{BLACK}涂装：{SILVER}原色{BLACK}（1992）、{SILVER}翻新{BLACK}（2002）{}{BLACK}动车组车厢：{GOLD}JP+ 迷你新干线车厢
+LV_400_SERIES_ORIGINAL      : 400 系原色涂装
+LV_400_SERIES_ORIGINAL_2CC  : 400 系原色涂装，公司颜色
+LV_400_SERIES_REFURB        : 400 系翻新涂装
+LV_400_SERIES_REFURB_2CC    : 400 系翻新涂装，公司颜色
 
-# E1 Series Shinkansen
-STR_NAME_E1_SERIES          :E1 Series Shinkansen (MAX)
-STR_DESC_E1_SERIES          :{BLACK}Gauge:{GOLD} Standard{}{BLACK}Usage: {SILVER}Express Passengers{}{BLACK}Operators: {GREEN}JR East{}{BLACK}Liveries: {SILVER}Original {BLACK}(1994), {BLUE}Refurb {BLACK}(2004){}{BLACK}MU Car: {GOLD} JP+ Shinkansen Car
-LV_E1_SERIES_ORIGINAL       : E1 Series {SILVER}Original Livery
-LV_E1_SERIES_REFURB         : E1 Series {BLUE}Refurbished Livery
-LV_E1_SERIES_2CC            : E1 Series {GOLD}2cc
+# E1 系新干线
+STR_NAME_E1_SERIES          :E1 系新干线（MAX）
+STR_DESC_E1_SERIES          :{BLACK}轨距：{GOLD}标准{}{BLACK}用途：{SILVER}快速旅客{}{BLACK}铁道会社：{GREEN}JR东日本{}{BLACK}涂装：{SILVER}原色{BLACK}（1994）、{BLUE}翻新{BLACK}（2004）{}{BLACK}动车组车厢：{GOLD}JP+ 新干线车厢
+LV_E1_SERIES_ORIGINAL       : E1 系{SILVER}原色涂装
+LV_E1_SERIES_REFURB         : E1 系{BLUE}翻新涂装
+LV_E1_SERIES_2CC            : E1 系{GOLD}公司颜色
 
-# E2 Series Shinkansen
-STR_NAME_E2_SERIES          :E2 Series Shinkansen
-STR_DESC_E2_SERIES          :{BLACK}Gauge:{GOLD} Standard{}{BLACK}Usage: {SILVER}Express Passengers{}{BLACK}Operators: {GREEN}JR East{}{BLACK}Liveries: {SILVER}8-car {BLACK}(1997), {SILVER}10-car {BLACK}(2002){}{BLACK}MU Car: {GOLD} JP+ Shinkansen Car
-LV_E2_SERIES_RED            : E2 Series {RED}Red Stripe
-LV_E2_SERIES_PINK           : E2 Series {CREAM}Magenta Stripe
-LV_E2_SERIES_200            : E2 Series {GREEN}200 Series Commerative Livery
-LV_E2_SERIES_2CC            : E2 Series {GOLD}2cc
+# E2 系新干线
+STR_NAME_E2_SERIES          :E2 系新干线
+STR_DESC_E2_SERIES          :{BLACK}轨距：{GOLD}标准{}{BLACK}用途：{SILVER}快速旅客{}{BLACK}铁道会社：{GREEN}JR东日本{}{BLACK}涂装：{SILVER}8 车编成{BLACK}（1997）、{SILVER}10 车编成{BLACK}（2002）{}{BLACK}动车组车厢：{GOLD}JP+ 新干线车厢
+LV_E2_SERIES_RED            : E2 系{RED}红带
+LV_E2_SERIES_PINK           : E2 系{CREAM}粉带
+LV_E2_SERIES_200            : E2 系{GREEN} 200 系纪念涂装
+LV_E2_SERIES_2CC            : E2 系{GOLD}公司颜色
 
-# E3 Series Shinkansen
-STR_NAME_E3_SERIES          :E3 Series Shinkansen
-STR_DESC_E3_SERIES          :{BLACK}Gauge:{GOLD} Standard{}{BLACK}Usage: {SILVER}Express Passengers{}{BLACK}Operators: {GREEN}JR East{}{BLACK}Liveries: {WHITE}R Set {BLACK}(1997) {SILVER}1000 Series {BLACK}(1999) {PURPLE}2000 Series {BLACK}(2008){}{BLACK}MU Car: {GOLD} JP+ Mini-Shinkansen Car
-LV_E3_SERIES_R              : E3 Series R Set
-LV_E3_SERIES_1000           : E3-1000 Series
-LV_E3_SERIES_2000           : E3-2000 Series
-LV_E3_SERIES_700_TOREIYU    : E3-700 Series Toreiyu
-LV_E3_SERIES_700_GENBI      : E3-700 Series Genbi
+# E3 系新干线
+STR_NAME_E3_SERIES          :E3 系新干线
+STR_DESC_E3_SERIES          :{BLACK}轨距：{GOLD}标准{}{BLACK}用途：{SILVER}快速旅客{}{BLACK}铁道会社：{GREEN}JR东日本{}{BLACK}涂装：{WHITE}R 编成{BLACK}（1997）、{SILVER}1000 系{BLACK}（1999）、{PURPLE}2000 系{BLACK}（2008）、{GREEN}とれいゆ{BLACK}（Toreiyu，2014）{}{BLACK}动车组车厢：{GOLD}JP+ 迷你新干线车厢
+LV_E3_SERIES_R              : {WHITE}E3 系 R 编成
+LV_E3_SERIES_R_2CC          : {WHITE}E3 系 R 编成，{GOLD}公司颜色
+LV_E3_SERIES_1000           : {SILVER}E3-1000 系
+LV_E3_SERIES_1000_2CC       : {SILVER}E3-1000 系{GOLD}公司颜色
+LV_E3_SERIES_2000           : {PURPLE}E3-2000 系
+LV_E3_SERIES_2000_2CC       : {PURPLE}E3-2000 系{GOLD}公司颜色
+LV_E3_SERIES_700_TOREIYU    : {LTBLUE}E3-700 {WHITE}系{GREEN}とれいゆ（Toreiyu）
+LV_E3_SERIES_700_GENBI      : E3-700 系现美新干线（GENBI SHINKANSEN）
 
-# E4 Series Shinkansen (MAX)
-STR_NAME_E4_SERIES          :E4 Series Shinkansen (MAX)
-STR_DESC_E4_SERIES          :{BLACK}Gauge:{GOLD} Standard{}{BLACK}Usage: {SILVER}Express Passengers{}{BLACK}Operators: {GREEN}JR East{}{BLACK}Liveries: {YELLOW}Yellow Strip {BLACK}, {CREAM}Pink Stripe {BLACK}& {GOLD}2cc{}{BLACK}MU Car: {GOLD} JP+ Shinkansen Car
-LV_E4_SERIES_YELLOW         : E4 Series MAX {YELLOW}(Yellow stripe)
-LV_E4_SERIES_PINK           : E4 Series MAX {CREAM}(Pink stripe)
-LV_E4_SERIES_2CC            : E4 Series MAX {GOLD}(2cc)
+# E4 系新干线（MAX）
+STR_NAME_E4_SERIES          :E4 系新干线（MAX）
+STR_DESC_E4_SERIES          :{BLACK}轨距：{GOLD}标准{}{BLACK}用途：{SILVER}快速旅客{}{BLACK}铁道会社：{GREEN}JR东日本{}{BLACK}涂装：{YELLOW}黄色条纹{BLACK}、{CREAM}粉色条纹{BLACK}与{GOLD}公司颜色{}{BLACK}动车组车厢：{GOLD}JP+ 新干线车厢
+LV_E4_SERIES_YELLOW         : E4 系 MAX {YELLOW}黄色条纹
+LV_E4_SERIES_PINK           : E4 系 MAX {CREAM}粉色条纹
+LV_E4_SERIES_2CC            : E4 系 MAX {GOLD}公司颜色
 
-# E5 Series Shinkansen
-STR_NAME_E5_SERIES          :E5 Series Shinkansen
-STR_DESC_E5_SERIES          :{BLACK}Gauge:{GOLD} Standard{}{BLACK}Usage: {SILVER}Express Passengers{}{BLACK}Operators: {GREEN}JR East{}{BLACK}Liveries: {GREEN}E5 {BLACK}(2011), {GREEN}H5 {BLACK}(2015){}{BLACK}MU Car: {GOLD} JP+ Shinkansen Car
-LV_E5_SERIES_E5             : {GREEN}E5 Series
-LV_E5_SERIES_H5             : {PURPLE}H5 Series
+# E5 系新干线
+STR_NAME_E5_SERIES          :E5 系新干线
+STR_DESC_E5_SERIES          :{BLACK}轨距：{GOLD}标准{}{BLACK}用途：{SILVER}快速旅客{}{BLACK}铁道会社：{GREEN}JR东日本{}{BLACK}涂装：{GREEN}E5{BLACK}（2011）、{GREEN}H5{BLACK}（2015）{}{BLACK}动车组车厢：{GOLD}JP+ 新干线车厢
+LV_E5_SERIES_E5             : {GREEN}E5 系
+LV_E5_SERIES_H5             : {PURPLE}H5 系
+LV_E5_SERIES_2CC            : {GOLD}E5 系公司颜色
 
-# E6 Series Shinkansen
-STR_NAME_E6_SERIES          :E6 Series Shinkansen
-STR_DESC_E6_SERIES          :{BLACK}Gauge:{GOLD} Standard{}{BLACK}Usage: {SILVER}Express Passengers{}{BLACK}Operators: {GREEN}JR East{}{BLACK}Liveries: {RED}E6 {BLACK}(2013){}{BLACK}MU Car: {GOLD} JP+ Mini-Shinkansen Car
-LV_E6_SERIES_ORIGINAL       : {RED} E6 Series
-LV_E6_SERIES_2CC            : {GOLD}E6 2cc
+# E6 系新干线
+STR_NAME_E6_SERIES          :E6 系新干线
+STR_DESC_E6_SERIES          :{BLACK}轨距：{GOLD}标准{}{BLACK}用途：{SILVER}快速旅客{}{BLACK}铁道会社：{GREEN}JR东日本{}{BLACK}涂装：{RED}E6{BLACK}（2013）{}{BLACK}动车组车厢：{GOLD}JP+ 迷你新干线车厢
+LV_E6_SERIES_ORIGINAL       : E6 系原色涂装
+LV_E6_SERIES_2CC            : E6 系{GOLD}公司颜色
 
-# E5 & E6 Series Shinkansen
-STR_NAME_E5E6_SERIES        :E5 & E6 Series Shinkansen
-STR_DESC_E5E6_SERIES_IRL_10 :{BLACK}Gauge:{GOLD} Standard{}{BLACK}Usage: {SILVER}Express Passengers{}{BLACK}Operators: {GREEN}JR East{}{BLACK}Liveries: {GREEN}E5 {BLACK} or {GREEN}H5 {BLACK} with {RED}E6 {}{BLACK}Length(s): {GOLD} 9.8 tiles
-STR_DESC_E5E6_SERIES_IRL_12 :{BLACK}Gauge:{GOLD} Standard{}{BLACK}Usage: {SILVER}Express Passengers{}{BLACK}Operators: {GREEN}JR East{}{BLACK}Liveries: {GREEN}E5 {BLACK} or {GREEN}H5 {BLACK} with {RED}E6 {}{BLACK}Length(s): {GOLD} 11.0 tiles
-STR_DESC_E5E6_SERIES_P2_10  :{BLACK}Gauge:{GOLD} Standard{}{BLACK}Usage: {SILVER}Express Passengers{}{BLACK}Operators: {GREEN}JR East{}{BLACK}Liveries: {GREEN}E5 {BLACK} or {GREEN}H5 {BLACK} with {RED}E6 {}{BLACK}Length(s): {GOLD} 12.0 tiles
-STR_DESC_E5E6_SERIES_P2_12  :{BLACK}Gauge:{GOLD} Standard{}{BLACK}Usage: {SILVER}Express Passengers{}{BLACK}Operators: {GREEN}JR East{}{BLACK}Liveries: {GREEN}E5 {BLACK} or {GREEN}H5 {BLACK} with {RED}E6 {}{BLACK}Length(s): {GOLD} 13.0 tiles
-LV_E5E6_SERIES_E5           : E5 & E6 Series
-LV_E5E6_SERIES_H5           : H5 & E6 Series
-LV_E5E6_SERIES_2CC          : E5 & E6 Series {GOLD}(2cc)
+# E5 与E6 系新干线
+STR_NAME_E5E6_SERIES        :E5 与 E6 系新干线
+STR_DESC_E5E6_SERIES_IRL_10 :{BLACK}轨距：{GOLD}标准{}{BLACK}用途：{SILVER}快速旅客{}{BLACK}铁道会社：{GREEN}JR东日本{}{BLACK}涂装：{GREEN}E5 {BLACK}或{GREEN}H5 {BLACK}与 {RED}E6{}{BLACK}长度：{GOLD}9.8 格
+STR_DESC_E5E6_SERIES_IRL_12 :{BLACK}轨距：{GOLD}标准{}{BLACK}用途：{SILVER}快速旅客{}{BLACK}铁道会社：{GREEN}JR东日本{}{BLACK}涂装：{GREEN}E5 {BLACK}或{GREEN}H5 {BLACK}与 {RED}E6{}{BLACK}长度：{GOLD}11.0 格
+STR_DESC_E5E6_SERIES_P2_10  :{BLACK}轨距：{GOLD}标准{}{BLACK}用途：{SILVER}快速旅客{}{BLACK}铁道会社：{GREEN}JR东日本{}{BLACK}涂装：{GREEN}E5 {BLACK}或{GREEN}H5 {BLACK}与 {RED}E6{}{BLACK}长度：{GOLD}12.0 格
+STR_DESC_E5E6_SERIES_P2_12  :{BLACK}轨距：{GOLD}标准{}{BLACK}用途：{SILVER}快速旅客{}{BLACK}铁道会社：{GREEN}JR东日本{}{BLACK}涂装：{GREEN}E5 {BLACK}或{GREEN}H5 {BLACK}与 {RED}E6{}{BLACK}长度：{GOLD}13.0 格
+LV_E5E6_SERIES_E5           : E5 与 E6 系
+LV_E5E6_SERIES_H5           : H5 与 E6 系
+LV_E5E6_SERIES_2CC          : E5 与 E6 系{GOLD}公司颜色
 
-# E7 Series Shinkansen
-STR_NAME_E7_SERIES          :E7 Series Shinkansen
-STR_DESC_E7_SERIES          :{BLACK}Gauge:{GOLD} Standard{}{BLACK}Usage: {SILVER}Express Passengers{}{BLACK}Operators: {GREEN}JR East {BLACK}& {BLUE}JR West {}{BLACK}Liveries: {BLUE}E7 {BLACK}(2014){BLUE}W7 {BLACK}(2014){}{BLACK}MU Car: {GOLD} JP+ Shinkansen Car
-LV_E7_SERIES_E7             : E7 Series
-LV_E7_SERIES_W7             : W7 Series
-LV_E7_SERIES_2CC            : E7 Series {GOLD}2cc
+# E7 系新干线
+STR_NAME_E7_SERIES          :E7 系新干线
+STR_DESC_E7_SERIES          :{BLACK}轨距：{GOLD}标准{}{BLACK}用途：{SILVER}快速旅客{}{BLACK}铁道会社：{GREEN}JR东日本 {BLACK}与{BLUE}JR西日本{}{BLACK}涂装：{BLUE}E7{BLACK}（2014）、{BLUE}W7{BLACK}（2014）{}{BLACK}动车组车厢：{GOLD}JP+ 新干线车厢
+LV_E7_SERIES_E7             : E7 系
+LV_E7_SERIES_W7             : W7 系
+LV_E7_SERIES_2CC            : E7 系{GOLD}公司颜色
 
-# E8 Series Shinkansen
-STR_NAME_E8_SERIES          :E8 Series Shinkansen
-STR_DESC_E8_SERIES          :{BLACK}Gauge:{GOLD} Standard{}{BLACK}Usage: {SILVER}Express Passengers{}{BLACK}Operators: {GREEN}JR East{}{BLACK}Liveries: {PURPLE}E8 {BLACK}(2024){}{BLACK}MU Car: {GOLD} JP+ Mini-Shinkansen Car
-LV_E8_SERIES_ORIGINAL       : E8 Series Original
-LV_E8_SERIES_2CC            : E8 Series {GOLD}2cc
+# E8 系新干线
+STR_NAME_E8_SERIES          :E8 系新干线
+STR_DESC_E8_SERIES          :{BLACK}轨距：{GOLD}标准{}{BLACK}用途：{SILVER}快速旅客{}{BLACK}铁道会社：{GREEN}JR东日本{}{BLACK}涂装：{PURPLE}E8 {BLACK}（2024）{}{BLACK}动车组车厢：{GOLD}JP+ 迷你新干线车厢
+LV_E8_SERIES_ORIGINAL       : E8 系原色涂装
+LV_E8_SERIES_2CC            : E8 系{GOLD}公司颜色
 
 # Livery
-LV_YEAR_DEP_LIVERY          : Year Dependent Livery
+LV_YEAR_DEP_LIVERY          : 随年份变化
 
 # ########################
 # Tracks
 # ########################
 
-STR_NAME_HSSN               :Shinkansen high speed railway
-STR_MENU_HSSN               :Shinkansen high speed line {LTBLUE}(electrified) {WHITE}
-STR_CAPT_HSSN               :New Shinkansen high speed electric Trains
-STR_TOOL_HSSN               :Shinkansen high speed railway Construction
-STR_AUTO_HSSN               :Shinkansen high Speed trains
-STR_NEWE_HSSN               :Standard Gauge Vehicle
+STR_NAME_HSSN               :新干线现代高速铁路
+STR_MENU_HSSN               :新干线现代高速线路{LTBLUE}（电气化）{WHITE}
+STR_CAPT_HSSN               :新新干线高速电气化列车
+STR_TOOL_HSSN               :新干线现代高速铁路建设
+STR_AUTO_HSSN               :新干线高速列车
+STR_NEWE_HSSN               :标准轨距车辆
 
-STR_NAME_MDSN               :Shinkansen modern high speed railway
-STR_MENU_MDSN               :Shinkansen modern high speed line {LTBLUE}(electrified) {WHITE}
-STR_CAPT_MDSN               :New Shinkansen high speed electric Trains
-STR_TOOL_MDSN               :Shinkansen modern high speed railway construction
-STR_AUTO_MDSN               :Shinkansen high Speed trains
-STR_NEWE_MDSN               :Standard Gauge Vehicle
+STR_NAME_MDSN               :新干线现代高速铁路
+STR_MENU_MDSN               :新干线现代高速线路{LTBLUE}（电气化）{WHITE}
+STR_CAPT_MDSN               :新新干线高速电气化列车
+STR_TOOL_MDSN               :新干线现代高速铁路建设
+STR_AUTO_MDSN               :新干线高速列车
+STR_NEWE_MDSN               :标准轨距车辆
