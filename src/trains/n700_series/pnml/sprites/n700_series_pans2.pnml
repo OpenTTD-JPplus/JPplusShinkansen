@@ -5,8 +5,8 @@
 // N700 Series Original
 spriteset(ss_n700_series_pans2f_original_12,          	    "src/trains/dummy/empty.png") {template_dummy(0,0)}
 spriteset(ss_n700_series_pans2f_original_10,          	    "src/trains/dummy/empty.png") {template_dummy(0,0)}
-alternative_sprites(ss_n700_series_pans2f_original_12,      ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/12/n700s.png") {template_12_cab_rev_standard(1,121)}
-alternative_sprites(ss_n700_series_pans2f_original_10,	    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/10/n700s.png") {template_10_cab_rev_standard(1,121)}		
+alternative_sprites(ss_n700_series_pans2f_original_12,      ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/12/n700s.png") {template_12_cab_rev_standard(1,81)}
+alternative_sprites(ss_n700_series_pans2f_original_10,	    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/10/n700s.png") {template_10_cab_rev_standard(1,81)}		
 
 switch (FEAT_TRAINS, SELF, sw_n700_series_pans2f_original, param_spritelength) {
 	1: ss_n700_series_pans2f_original_10;				    // Length 10
@@ -14,8 +14,8 @@ switch (FEAT_TRAINS, SELF, sw_n700_series_pans2f_original, param_spritelength) {
 }
 
 // N700 Series 2cc
-spriteset(ss_n700_series_pans2f_original_2cc_12,            "src/trains/n700_series/12/n700s_2cc.png") {template_12_cab_rev_standard(1,121)}
-spriteset(ss_n700_series_pans2f_original_2cc_10,            "src/trains/n700_series/10/n700s_2cc.png") {template_10_cab_rev_standard(1,121)}
+spriteset(ss_n700_series_pans2f_original_2cc_12,            "src/trains/n700_series/12/n700s_2cc.png") {template_12_cab_rev_standard(1,81)}
+spriteset(ss_n700_series_pans2f_original_2cc_10,            "src/trains/n700_series/10/n700s_2cc.png") {template_10_cab_rev_standard(1,81)}
 
 switch (FEAT_TRAINS, SELF, sw_n700_series_pans2f_original_2cc, param_spritelength) {
 	1: ss_n700_series_pans2f_original_2cc_10;				 // Length 10
@@ -25,8 +25,8 @@ switch (FEAT_TRAINS, SELF, sw_n700_series_pans2f_original_2cc, param_spritelengt
 // N700 Series Kamome
 spriteset(ss_n700_series_pans2f_kamome_12,          	    "src/trains/dummy/empty.png") {template_dummy(0,0)}
 spriteset(ss_n700_series_pans2f_kamome_10,          	    "src/trains/dummy/empty.png") {template_dummy(0,0)}
-alternative_sprites(ss_n700_series_pans2f_kamome_12,        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/12/kamome.png") {template_12_cab_rev_standard(1,121)}
-alternative_sprites(ss_n700_series_pans2f_kamome_10,	    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/10/kamome.png") {template_10_cab_rev_standard(1,121)}		
+alternative_sprites(ss_n700_series_pans2f_kamome_12,        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/12/kamome.png") {template_12_cab_rev_standard(1,81)}
+alternative_sprites(ss_n700_series_pans2f_kamome_10,	    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/10/kamome.png") {template_10_cab_rev_standard(1,81)}		
 
 switch (FEAT_TRAINS, SELF, sw_n700_series_pans2f_kamome, param_spritelength) {
 	1: ss_n700_series_pans2f_kamome_10;				        // Length 10
@@ -34,8 +34,8 @@ switch (FEAT_TRAINS, SELF, sw_n700_series_pans2f_kamome, param_spritelength) {
 }
 
 // N700 Series Kamome 2cc
-spriteset(ss_n700_series_pans2f_kamome_2cc_12,              "src/trains/n700_series/12/kamome_2cc.png") {template_12_cab_rev_standard(1,121)}
-spriteset(ss_n700_series_pans2f_kamome_2cc_10,              "src/trains/n700_series/10/kamome_2cc.png") {template_10_cab_rev_standard(1,121)}
+spriteset(ss_n700_series_pans2f_kamome_2cc_12,              "src/trains/n700_series/12/kamome_2cc.png") {template_12_cab_rev_standard(1,81)}
+spriteset(ss_n700_series_pans2f_kamome_2cc_10,              "src/trains/n700_series/10/kamome_2cc.png") {template_10_cab_rev_standard(1,81)}
 
 switch (FEAT_TRAINS, SELF, sw_n700_series_pans2f_kamome_2cc, param_spritelength) {
 	1: ss_n700_series_pans2f_kamome_2cc_10;				    // Length 10
