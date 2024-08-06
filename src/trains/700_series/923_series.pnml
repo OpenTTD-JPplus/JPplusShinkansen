@@ -43,10 +43,10 @@
 	spriteset(ss_923_series_cabwp_10,             		"src/trains/dummy/empty.png") {template_dummy(0,0)}
 	spriteset(ss_923_series_cabwp_rev_10,    		   	"src/trains/dummy/empty.png") {template_dummy(0,0)}
 
-	alternative_sprites(ss_923_series_cabwp_12,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/12/923_series.png") {template_12_standard(1,81)}
-	alternative_sprites(ss_923_series_cabwp_rev_12,   	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/12/923_series.png") {template_12_reversed(1,121)}	
-	alternative_sprites(ss_923_series_cabwp_10,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/10/923_series.png") {template_10_standard(1,81)}
-	alternative_sprites(ss_923_series_cabwp_rev_10,   	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/10/923_series.png") {template_10_reversed(1,121)}	
+	alternative_sprites(ss_923_series_cabwp_12,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/12/923_series.png") {template_12_cab_rev_reversed(1,81)}
+	alternative_sprites(ss_923_series_cabwp_rev_12,   	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/12/923_series.png") {template_12_cab_rev_standard(1,121)}	
+	alternative_sprites(ss_923_series_cabwp_10,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/10/923_series.png") {template_10_cab_rev_reversed(1,81)}
+	alternative_sprites(ss_923_series_cabwp_rev_10,   	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/10/923_series.png") {template_10_cab_rev_standard(1,121)}	
 
 		switch (FEAT_TRAINS, SELF, ss_923_series_cabwp, param_spritelength) {
 			1: ss_923_series_cabwp_10;					// Length 10
