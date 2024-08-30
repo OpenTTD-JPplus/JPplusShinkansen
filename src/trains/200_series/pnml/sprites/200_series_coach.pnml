@@ -69,8 +69,8 @@ alternative_sprites(ss_200_series_coachb_refurb_12,  	ZOOM_LEVEL_NORMAL, BIT_DEP
 alternative_sprites(ss_200_series_coachb_refurb_10,	    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/10/refurb.png") {template_10_reversed(1,201)}		
 
 switch (FEAT_TRAINS, SELF, sw_200_series_coachb_refurb, param_spritelength) {
-	1: ss_200_series_coachb_10;				            // Length 10
-	ss_200_series_coachb_12;				            // Length 12
+	1: ss_200_series_coachb_refurb_10;				    // Length 10
+	ss_200_series_coachb_refurb_12;				        // Length 12
 }
 
 // Subtype Selection
