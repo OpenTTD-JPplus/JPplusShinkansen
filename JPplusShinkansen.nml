@@ -9726,8 +9726,8 @@ alternative_sprites(ss_200_series_pantof_refurb_12,     ZOOM_LEVEL_NORMAL, BIT_D
 alternative_sprites(ss_200_series_pantof_refurb_10,	    ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/10/refurb.png") {template_10_standard(1,161)}		
 
 switch (FEAT_TRAINS, SELF, sw_200_series_pantof_refurb, param_spritelength) {
-	1: ss_200_series_pantof_10;				            // Length 10
-	ss_200_series_pantof_12;				            // Length 12
+	1: ss_200_series_pantof_refurb_10;				    // Length 10
+	ss_200_series_pantof_refurb_12;				        // Length 12
 }
 
 // Subtype Selection
