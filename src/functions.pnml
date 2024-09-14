@@ -1,4 +1,3 @@
-/* Begin Functions */
 
 switch (FEAT_TRAINS, PARENT, func_is_reversed, vehicle_is_reversed) {return;}
 
@@ -66,4 +65,16 @@ switch (FEAT_TRAINS, SELF, sw_param_length, param_spritelength) {
         sw_length_2_8_2;			// Length 12
     }
 
-/* End Functions */ 
+// Return 1 if a cab
+    switch(FEAT_TRAINS, SELF, IsCab, 
+            position_in_consist == 0 || 
+            position_in_consist == 1 || 
+            position_in_consist == 2 || 
+            position_in_consist_from_end == 0 ||
+            position_in_consist_from_end == 1 ||
+            position_in_consist_from_end == 2
+        ) {return;}
+
+// Return Car Number
+    switch(FEAT_TRAINS, SELF, CarNumber, ( position_in_consist + 3 ) / 3 ) {return;}
+    switch(FEAT_TRAINS, SELF, CarNumberFromEnd, ( position_in_consist_from_end + 3 ) / 3 ) {return;}

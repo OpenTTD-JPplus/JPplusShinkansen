@@ -2,8 +2,19 @@
 	grfid:					"KR03";
 	name:					string(STR_GRF_NAME);
 	desc:					string(STR_GRF_DESC);
-	version:				51;	// v0.5.1
-	min_compatible_version: 51;	// v0.5.1
+	version:				52;	// v0.5.2
+	min_compatible_version: 52;	// v0.5.2
+		// Hide logo
+		param 3 {
+        	param_hide_logo {
+				type: bool;
+				name: string(STR_PARAM_HIDE_LOGO);
+				desc: string(STR_PARAM_HIDE_LOGO);
+				bit: 0;
+				def_value: 1;
+            }
+        }
+		
 		//japanset3 removal
 		param 4 {
 			 param_japansetdisable {
