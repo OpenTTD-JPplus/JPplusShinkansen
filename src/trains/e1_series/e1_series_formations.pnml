@@ -1,0 +1,64 @@
+
+/* Forwards */
+
+    switch (FEAT_TRAINS, SELF, sw_e1_series_forwards_panto_in_middle, CarNumberFromEnd() - CarNumber() ) {				
+            0..1:  sw_e1_series_pantof;
+            sw_e1_series_coachf;  				
+        }
+
+    switch (FEAT_TRAINS, SELF, sw_e1_series_forwards_6th_and_3_from_end, CarNumber() == 6 || CarNumberFromEnd()  == 3) {				
+            0:  sw_e1_series_coachf;
+            sw_e1_series_pantof;				
+        }
+
+    switch (FEAT_TRAINS, SELF, sw_e1_series_forwards, num_vehs_in_consist ) {				
+            0..35:  sw_e1_series_forwards_panto_in_middle;
+               sw_e1_series_forwards_6th_and_3_from_end;				
+        }
+
+/* Backwards */
+
+    switch (FEAT_TRAINS, SELF, sw_e1_series_backwards_panto_in_middle, CarNumber() - CarNumberFromEnd() ) {				
+            0..1:  sw_e1_series_pantob;
+            sw_e1_series_coachb;  				
+        }
+
+    switch (FEAT_TRAINS, SELF, sw_e1_series_backwards_6th_and_3_from_end, CarNumberFromEnd() == 6 || CarNumber()  == 3) {				
+            0:  sw_e1_series_coachb;
+            sw_e1_series_pantob;				
+        }
+
+    switch (FEAT_TRAINS, SELF, sw_e1_series_backwards, num_vehs_in_consist ) {				
+            0..35:  sw_e1_series_backwards_panto_in_middle;
+               sw_e1_series_backwards_6th_and_3_from_end;				
+        }
+
+/* Forwards or Backwards */
+    switch (FEAT_TRAINS, PARENT, sw_e1_series_midcars, vehicle_is_reversed) {				
+            0:  sw_e1_series_forwards;
+            sw_e1_series_backwards;				
+        }
+
+/* Cab selection */
+
+/* Find the cabs */
+
+    switch (FEAT_TRAINS, PARENT, sw_e1_series_rear, vehicle_is_reversed) {				
+            1: sw_e1_series_cab01b;
+            sw_e1_series_cab02f;
+        }
+
+    switch (FEAT_TRAINS, PARENT, sw_e1_series_lead, vehicle_is_reversed) {				
+            1: sw_e1_series_cab02b;
+            sw_e1_series_cab01f;
+        }
+
+    switch (FEAT_TRAINS, SELF, sw_e1_series_cabs, position_in_consist) {				
+            0..2: sw_e1_series_lead;
+            sw_e1_series_rear;
+        }
+    
+    switch (FEAT_TRAINS, SELF, sw_e1_series_graphics, IsCab() ) {				
+            1:  sw_e1_series_cabs;
+            sw_e1_series_midcars;	
+        }
