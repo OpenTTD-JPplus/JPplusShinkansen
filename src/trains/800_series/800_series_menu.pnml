@@ -1,0 +1,16 @@
+/* Subtypes */
+
+	switch(FEAT_TRAINS, SELF, sw_800_series_subtype_text, cargo_subtype) {
+		0: return string(LV_800_SERIES);                            
+		1: return string(LV_800_SERIES_2CC); 
+		return CB_RESULT_NO_TEXT;
+		}
+
+/* Purchase Menu */
+    spriteset (ss_800_series_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/800_series/800_series.png") {template_purchase(233, 1)}
+
+    switch(FEAT_TRAINS, SELF, sw_800_series_purchase, [ 
+        STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+            0: logo_jrkyushu; 
+            1: ss_800_series_buy;
+        }

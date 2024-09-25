@@ -1,0 +1,73 @@
+// Forwards
+
+    switch (FEAT_TRAINS, SELF, sw_800_series_forwards_pick_panto, CarNumber() == 2 ) {				
+            1:  sw_800_series_pantof;	
+            sw_800_series_pantob;		
+        }
+    
+    switch (FEAT_TRAINS, SELF, sw_800_series_forwards_penultimates, CarNumber() == 2 || CarNumberFromEnd()  == 2 ) {				
+            1:  sw_800_series_forwards_pick_panto;	
+            sw_800_series_coachf;		
+        }
+
+    switch (FEAT_TRAINS, SELF, sw_800_series_forwards_panto_in_middle, CarNumberFromEnd() - CarNumber() ) {				
+            0..1:  sw_800_series_pantof;
+            sw_800_series_coachf;				
+        }
+
+    switch (FEAT_TRAINS, SELF, sw_800_series_forwards, num_vehs_in_consist ) {				
+            0..17:  sw_800_series_forwards_panto_in_middle;
+            sw_800_series_forwards_penultimates;
+        }
+
+// Backwards
+
+    switch (FEAT_TRAINS, SELF, sw_800_series_backwards_pick_panto, CarNumberFromEnd() == 2 ) {				
+            1:  sw_800_series_pantob;	
+            sw_800_series_pantof;		
+        }
+    
+    switch (FEAT_TRAINS, SELF, sw_800_series_backwards_penultimates, CarNumberFromEnd() == 2 || CarNumber()  == 2 ) {				
+            1:  sw_800_series_backwards_pick_panto;
+            sw_800_series_coachb;				
+        }
+
+    switch (FEAT_TRAINS, SELF, sw_800_series_backwards_panto_in_middle, CarNumber() - CarNumberFromEnd() ) {				
+            0..1:  sw_800_series_pantob;
+            sw_800_series_coachb;
+        }
+
+    switch (FEAT_TRAINS, SELF, sw_800_series_backwards, num_vehs_in_consist ) {				
+            0..17:  sw_800_series_backwards_panto_in_middle;
+            sw_800_series_backwards_penultimates;
+        }
+
+/* Forwards or Backwards */
+    switch (FEAT_TRAINS, PARENT, sw_800_series_midcars, vehicle_is_reversed) {				
+            0:  sw_800_series_forwards;
+            sw_800_series_backwards;				
+        }
+
+/* Cab selection */
+
+/* Find the cabs */
+
+    switch (FEAT_TRAINS, PARENT, sw_800_series_rear, vehicle_is_reversed) {				
+            1: sw_800_series_cab01b;
+            sw_800_series_cab02f;
+        }
+
+    switch (FEAT_TRAINS, PARENT, sw_800_series_lead, vehicle_is_reversed) {				
+            1: sw_800_series_cab02b;
+            sw_800_series_cab01f;
+        }
+
+    switch (FEAT_TRAINS, SELF, sw_800_series_cabs, position_in_consist) {				
+            0..2: sw_800_series_lead;
+            sw_800_series_rear;
+        }
+    
+    switch (FEAT_TRAINS, SELF, sw_800_series_graphics, IsCab() ) {				
+            1:  sw_800_series_cabs;
+            sw_800_series_midcars;	
+        }
