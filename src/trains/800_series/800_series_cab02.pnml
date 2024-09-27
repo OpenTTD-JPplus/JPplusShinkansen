@@ -113,11 +113,11 @@
 		switch(FEAT_TRAINS, PARENT, ss_mid_800_series_cab02b_mask, cargo_subtype) {1:ss_mid_800_series_cab02b_2cc; }
 		switch(FEAT_TRAINS, PARENT, ss_std_800_series_cab02b_mask, cargo_subtype) {1:ss_std_800_series_cab02b_2cc; }
 		
-		switch(FEAT_TRAINS, SELF, sw_800_series_cab02b_mid_longsprite, other_veh_curv_info(1) == 0 && other_veh_curv_info(-1) == 0 && other_veh_z_offset(1) == 0 && other_veh_z_offset(-1) == 0 ) {
+		switch(FEAT_TRAINS, SELF, sw_800_series_cab02b_mid_longsprite, HideLongSprite() ) {
 					0: ss_std_800_series_cab02b_irl;		   	
 				}
 
-		switch(FEAT_TRAINS, SELF, sw_800_series_cab02b_std_longsprite, other_veh_curv_info(1) == 0 && other_veh_curv_info(-1) == 0 && other_veh_z_offset(1) == 0 && other_veh_z_offset(-1) == 0 ) {
+		switch(FEAT_TRAINS, SELF, sw_800_series_cab02b_std_longsprite, HideLongSprite() ) {
 					0: ss_std_800_series_cab02b_mask;		   	
 				}
 

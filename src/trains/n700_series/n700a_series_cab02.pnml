@@ -1,0 +1,105 @@
+
+/* cab02 */
+
+// Sprites
+
+	// Base
+
+	// 10/8
+	spriteset(ss_std_n700a_series_cab02f_irl, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/n700a.png") {tmpl_10_cab_std(1,51)}
+	spriteset(ss_std_n700a_series_cab02b_irl, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/n700a.png") {tmpl_10_cab_rev(1,1)}
+
+	// Front
+	spriteset(ss_frt_n700a_series_cab02f_irl, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/n700a.png") {tmpl_cab_frt_std(1,51)}
+	spriteset(ss_frt_n700a_series_cab02b_irl, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/n700a.png") {tmpl_cab_frt_rev(1,1)}
+	// Mid
+	spriteset(ss_mid_n700a_series_cab02f_irl, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/n700a.png") {tmpl_cab_mid_std(1,51)}
+	spriteset(ss_mid_n700a_series_cab02b_irl, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/n700a.png") {tmpl_cab_mid_rev(1,1)}
+	// Back
+	spriteset(ss_bck_n700a_series_cab02f_irl, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/n700a.png") {tmpl_cab_bck_std(1,51)}
+	spriteset(ss_bck_n700a_series_cab02b_irl, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/n700a.png") {tmpl_cab_bck_rev(1,1)}
+
+// Sprite Selection
+
+	// Forwards
+
+		// Front	
+		switch(FEAT_TRAINS, SELF, sw_n700a_series_cab02f_frt_stack, [ 
+			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+				0: ss_frt_n700_series_cab02f_irl;       	// N700 base for Front
+                1: ss_frt_n700_series_cab02f_mask;		    // 2cc mask for Front
+                2: ss_frt_n700a_series_cab02f_irl;          // N700A mask for Front     
+			}
+
+		switch(FEAT_TRAINS, SELF, sw_n700a_series_cab02f_frt_longsprite, PrevPartSame() ) { 1: sw_n700a_series_cab02f_frt_stack; dummy_sprites; }
+
+		// Mid
+		switch(FEAT_TRAINS, SELF, sw_n700a_series_cab02f_mid_longsprite, HideLongSprite() ) { 0: ss_std_n700a_series_cab02f_irl; }
+
+		switch(FEAT_TRAINS, SELF, sw_n700a_series_cab02f_mid_stack, [ 
+			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+				0: ss_mid_n700_series_cab02f_irl;       	// N700 base for Mid
+                1: ss_mid_n700_series_cab02f_mask;		    // 2cc mask for Mid
+                2: ss_mid_n700a_series_cab02f_irl;       	// N700A mask for Mid
+                3: sw_n700_series_cab02f_mid_longsprite;	// N700 base Long Sprite for Corners and Hills
+				4: sw_n700_series_cab02f_std_longsprite;	// 2cc mask Long Sprite for Corners and Hills
+				5: sw_n700a_series_cab02f_mid_longsprite;   // N700A Long Sprite mask for Mid
+			}
+
+		// Back
+		switch(FEAT_TRAINS, SELF, sw_n700a_series_cab02f_bck_stack, [ 
+			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+				0: ss_bck_n700_series_cab02f_irl;       	// N700 base for Back
+				1: ss_bck_n700_series_cab02f_mask;		    // Mask for Back
+                2: ss_bck_n700a_series_cab02f_irl;          // N700A mask for Back
+			}
+
+		switch(FEAT_TRAINS, SELF, sw_n700a_series_cab02f_bck_longsprite, NextPartSame() ) { 1: sw_n700a_series_cab02f_bck_stack; dummy_sprites; }
+
+		switch (FEAT_TRAINS, SELF, sw_n700a_series_cab02f, position_in_consist_from_end % 3 ) {				
+            0: sw_n700a_series_cab02f_frt_longsprite;
+            1: sw_n700a_series_cab02f_mid_stack;
+            2: sw_n700a_series_cab02f_bck_longsprite;
+        }
+
+	// Backwards
+
+		// Front
+		switch(FEAT_TRAINS, SELF, sw_n700a_series_cab02b_frt_stack, [ 
+			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+				0: ss_frt_n700_series_cab02b_irl;       	// N700 base for Front
+                1: ss_frt_n700_series_cab02b_mask;		    // 2cc mask for Front
+                2: ss_frt_n700a_series_cab02b_irl;          // N700A mask for Front  
+			}
+
+		switch(FEAT_TRAINS, SELF, sw_n700a_series_cab02b_frt_longsprite, NextPartSame() ) { 1: sw_n700a_series_cab02b_frt_stack; dummy_sprites; }
+
+		// Mid
+		switch(FEAT_TRAINS, SELF, sw_n700a_series_cab02b_mid_longsprite, HideLongSprite() ) { 0: ss_std_n700a_series_cab02b_irl; }
+
+		switch(FEAT_TRAINS, SELF, sw_n700a_series_cab02b_mid_stack, [ 
+			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+				0: ss_mid_n700_series_cab02b_irl;       	// N700 base for Mid
+                1: ss_mid_n700_series_cab02b_mask;		    // 2cc mask for Mid
+                2: ss_mid_n700a_series_cab02b_irl;       	// N700A mask for Mid
+                3: sw_n700_series_cab02b_mid_longsprite;	// N700 base Long Sprite for Corners and Hills
+				4: sw_n700_series_cab02b_std_longsprite;	// 2cc mask Long Sprite for Corners and Hills
+				5: sw_n700a_series_cab02b_mid_longsprite;   // N700A Long Sprite mask for Mid
+			}
+
+		// Back
+		switch(FEAT_TRAINS, SELF, sw_n700a_series_cab02b_bck_stack, [ 
+			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+				0: ss_bck_n700_series_cab02b_irl;       	// N700 base for Back
+				1: ss_bck_n700_series_cab02b_mask;		    // Mask for Back
+                2: ss_bck_n700a_series_cab02b_irl;          // N700A mask for Back
+			}
+
+		switch(FEAT_TRAINS, SELF, sw_n700a_series_cab02b_bck_longsprite, PrevPartSame() ) { 1: sw_n700a_series_cab02b_bck_stack; dummy_sprites; }
+
+		switch (FEAT_TRAINS, SELF, sw_n700a_series_cab02b, position_in_consist % 3 ) {				
+            0: sw_n700a_series_cab02b_frt_longsprite;
+            1: sw_n700a_series_cab02b_mid_stack;
+            2: sw_n700a_series_cab02b_bck_longsprite;
+        }
+		

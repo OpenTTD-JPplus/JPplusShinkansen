@@ -1,0 +1,11 @@
+
+// N700
+
+    spriteset(ss_std_n700_series_pantof_ptg, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/n700_pantos.png") {tmpl_10_std(1,101)}
+	spriteset(ss_std_n700_series_pantob_ptg, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/n700_pantos.png") {tmpl_10_rev(1,101)}
+
+	switch(FEAT_TRAINS, SELF, panto_longsprite_n700_f, HideLongSprite() ) { 0: ss_std_n700_series_pantof_ptg; }
+	switch(FEAT_TRAINS, SELF, panto_longsprite_n700_b, HideLongSprite() ) { 0: ss_std_n700_series_pantob_ptg; }
+
+	spriteset(panto_midsprite_n700_f, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/n700_pantos.png") {tmpl_mid_std(1,101)}
+	spriteset(panto_midsprite_n700_b, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/n700_pantos.png") {tmpl_mid_rev(1,101)}

@@ -78,3 +78,21 @@ switch (FEAT_TRAINS, SELF, sw_param_length, param_spritelength) {
 // Return Car Number
     switch(FEAT_TRAINS, SELF, CarNumber, ( position_in_consist + 3 ) / 3 ) {return;}
     switch(FEAT_TRAINS, SELF, CarNumberFromEnd, ( position_in_consist_from_end + 3 ) / 3 ) {return;}
+
+// Min Length Check
+    switch (FEAT_TRAINS, SELF, sw_stop_start_full_length_4, num_vehs_in_consist < 12) {				
+		1:  return string(STR_LENGTH_ERROR); 				
+		return CB_RESULT_NO_TEXT; 
+	}
+
+// Attach Mucar Full
+    switch(FEAT_TRAINS, SELF, sw_attach_mu_car_full, [vehicle_type_id == mu_car_full]) {
+        0: return string(ONLY_ADD_MUCAR);
+    }
+
+// Mid Check
+    switch(FEAT_TRAINS, SELF, HideLongSprite, other_veh_curv_info(1) == 0 && other_veh_curv_info(-1) == 0 && other_veh_z_offset(1) == 0 && other_veh_z_offset(-1) == 0 ) {return;}
+
+// Front Check
+    switch(FEAT_TRAINS, SELF, NextPartSame, other_veh_curv_info(1) == 0 && other_veh_z_offset(1) == 0 && other_veh_z_offset(2) == 0 ) {return;}
+    switch(FEAT_TRAINS, SELF, PrevPartSame, other_veh_curv_info(-1) == 0 && other_veh_z_offset(-1) == 0 && other_veh_z_offset(-2) == 0 ) {return;}

@@ -82,7 +82,7 @@
 				1: ss_bck_800_series_cab01f_mask;		// Mask for Front
 			}
 
-		switch(FEAT_TRAINS, SELF, sw_800_series_cab01f_bck_longsprite, other_veh_curv_info(-1) == 0 && other_veh_z_offset(-1) == 0 ) {
+		switch(FEAT_TRAINS, SELF, sw_800_series_cab01f_bck_longsprite, other_veh_curv_info(-1) == 0 && other_veh_z_offset(-1) == 0 && other_veh_z_offset(-2) == 0 ) {
 				1: sw_800_series_cab01f_bck_stack;
 					dummy_sprites;		   	
 			}
@@ -138,7 +138,7 @@
 				1: ss_bck_800_series_cab01b_mask;		// Mask for Front
 			}
 
-		switch(FEAT_TRAINS, SELF, sw_800_series_cab01b_bck_longsprite, other_veh_curv_info(1) == 0 && other_veh_z_offset(1) == 0 ) {
+		switch(FEAT_TRAINS, SELF, sw_800_series_cab01b_bck_longsprite, other_veh_curv_info(1) == 0 && other_veh_z_offset(1) == 0 && other_veh_z_offset(2) == 0 ) {
 				1: sw_800_series_cab01b_bck_stack;
 					dummy_sprites;		   	
 			}

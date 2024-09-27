@@ -1,0 +1,225 @@
+
+
+switch (FEAT_TRAINS, SELF, sw_n700_series_articulated_part, extra_callback_info1) {
+		1 .. 2: return series_n700;									
+		return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+	}
+
+item(FEAT_TRAINS, series_n700) {
+	property {
+		/* Menu */
+        name: 							string(STR_NAME_N700_SERIES);
+        sprite_id:                      SPRITE_ID_NEW_TRAIN; 		// required to enable new graphics
+		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
+        running_cost_base:              RUNNING_COST_ELECTRIC;
+		engine_class:                   ENGINE_CLASS_ELECTRIC;
+        /* Availability */
+        climates_available:             ALL_CLIMATES;
+		introduction_date:              date(2007,07,01);
+		model_life:                     VEHICLE_NEVER_EXPIRES;		//
+		vehicle_life:                   30;							// 
+		track_type:                     SHINKANSEN;
+        /* Cargo */
+        reliability_decay:              5;
+		refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+		refit_cost:                     0;
+		default_cargo_type:             PASS;
+		ai_special_flag:                AI_FLAG_PASSENGER;
+        cargo_capacity:                 1;							// 
+		loading_speed:                  50;							
+		cargo_age_period:               278; 						// Default 185 x 1.5
+		/* Stats */
+		speed:                          301 km/h;				    // Overwritten by callback
+    	power:                          22900 kW;					// Overwritten by callback
+		weight:                         648 tons;					// Overwritten by callback
+		tractive_effort_coefficient:    0.3;
+
+	}
+	graphics {
+		/* Menu */
+        additional_text:                string(STR_DESC_N700_SERIES);
+        cargo_subtype_text:             sw_n700_series_subtype_text;
+		can_attach_wagon:				sw_attach_mu_car_full;
+		start_stop:						sw_stop_start_full_length_4;
+        purchase_weight:                44;
+        purchase_power:                 409 * 4;
+        /* Graphics */
+        default:                        sw_n700_series_graphics;
+		purchase:                       sw_n700_series_purchase;
+		articulated_part:               sw_n700_series_articulated_part;
+		visual_effect_and_powered:      sw_visual_effect_and_powered;
+        /* Stats */
+        length:                         sw_param_length;
+        weight:                         NumberCarsInConsist() * 44;
+        power:                         	max (( NumberCarsInConsist() - 2 ) , 0 )* 409 * 4;
+		cargo_capacity:                 28 * CapacityFactor();															
+		loading_speed:					28 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
+		cost_factor:                    138;
+		running_cost_factor:            (300 + 125 * NumberCarsInConsist() ) * RunningCostFactor();
+		purchase_running_cost_factor:   300 + 125 * NumberCarsInConsist();
+	}
+	/*Multiple Unit Car*/
+	
+      livery_override(mu_car_full){
+        default:                        sw_n700_series_graphics;
+        cargo_capacity:                 28 * CapacityFactor();	
+        cargo_age_period:				param_decay_express;
+        loading_speed:                  28 * CapacityFactor() / param_loading_2D;
+		articulated_part:				sw_mucar_full_articulated_part;
+		length:							sw_param_length;
+		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
+		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
+        //running_cost_factor:            sw_n700_series_running_costs;
+      }
+}
+
+switch (FEAT_TRAINS, SELF, sw_n700a_series_articulated_part, extra_callback_info1) {
+		1 .. 2: return series_n700a;									
+		return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+	}
+
+item(FEAT_TRAINS, series_n700a) {
+	property {
+		/* Menu */
+        name: 							string(STR_NAME_N700A_SERIES);
+        sprite_id:                      SPRITE_ID_NEW_TRAIN; 		// required to enable new graphics
+		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
+        running_cost_base:              RUNNING_COST_ELECTRIC;
+		engine_class:                   ENGINE_CLASS_ELECTRIC;
+		variant_group:					707;
+        /* Availability */
+        climates_available:             ALL_CLIMATES;
+		introduction_date:              date(2013,02,08);
+		model_life:                     VEHICLE_NEVER_EXPIRES;		//
+		vehicle_life:                   30;							// 
+		track_type:                     SHINKANSEN;
+		extra_flags:					bitmask(VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW);
+        /* Cargo */
+        reliability_decay:              5;
+		refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+		refit_cost:                     0;
+		default_cargo_type:             PASS;
+		ai_special_flag:                AI_FLAG_PASSENGER;
+        cargo_capacity:                 1;							// 
+		loading_speed:                  50;							
+		cargo_age_period:               278; 						// Default 185 x 1.5
+		/* Stats */
+		speed:                          301 km/h;				    // Overwritten by callback
+    	power:                          22900 kW;					// Overwritten by callback
+		weight:                         648 tons;					// Overwritten by callback
+		tractive_effort_coefficient:    0.3;
+
+	}
+	graphics {
+		/* Menu */
+        additional_text:                string(STR_DESC_N700A_SERIES);
+		cargo_subtype_text:             sw_n700a_series_subtype_text;
+		can_attach_wagon:				sw_attach_mu_car_full;
+		start_stop:						sw_stop_start_full_length_4;
+		purchase_weight:                44;
+        purchase_power:                 409 * 4;
+        /* Graphics */
+        default:                        sw_n700a_series_graphics;
+		purchase:                       sw_n700a_series_purchase;
+		articulated_part:               sw_n700a_series_articulated_part;
+		visual_effect_and_powered:      sw_visual_effect_and_powered;
+        /* Stats */
+        length:                         sw_param_length;
+        weight:                         NumberCarsInConsist() * 44;
+        power:                         	max (( NumberCarsInConsist() - 2 ) , 0 )* 409 * 4;
+		cargo_capacity:                 28 * CapacityFactor();															
+		loading_speed:					28 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
+		cost_factor:                    138;
+		running_cost_factor:            (300 + 125 * NumberCarsInConsist() ) * RunningCostFactor();
+		purchase_running_cost_factor:   300 + 125 * NumberCarsInConsist();
+	}
+	/*Multiple Unit Car*/
+	
+      livery_override(mu_car_full){
+        default:                        sw_n700a_series_graphics;
+        cargo_capacity:                 28 * CapacityFactor();	
+        cargo_age_period:				param_decay_express;
+        loading_speed:                  28 * CapacityFactor() / param_loading_2D;
+		articulated_part:				sw_mucar_full_articulated_part;
+		length:							sw_param_length;
+		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
+		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
+        //running_cost_factor:            sw_n700a_series_running_costs;
+      }
+}
+
+
+switch (FEAT_TRAINS, SELF, sw_n700s_series_articulated_part, extra_callback_info1) {
+		1 .. 2: return series_n700s;									
+		return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+	}
+
+item(FEAT_TRAINS, series_n700s) {
+	property {
+		/* Menu */
+        name: 							string(STR_NAME_N700S_SERIES);
+        sprite_id:                      SPRITE_ID_NEW_TRAIN; 		// required to enable new graphics
+		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
+        running_cost_base:              RUNNING_COST_ELECTRIC;
+		engine_class:                   ENGINE_CLASS_ELECTRIC;
+		variant_group:					707;
+        /* Availability */
+        climates_available:             ALL_CLIMATES;
+		introduction_date:              date(2020,07,01);
+		model_life:                     VEHICLE_NEVER_EXPIRES;		//
+		vehicle_life:                   30;							// 
+		track_type:                     SHINKANSEN;
+		extra_flags:					bitmask(VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW);
+        /* Cargo */
+        reliability_decay:              5;
+		refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+		refit_cost:                     0;
+		default_cargo_type:             PASS;
+		ai_special_flag:                AI_FLAG_PASSENGER;
+        cargo_capacity:                 1;							// 
+		loading_speed:                  50;							
+		cargo_age_period:               278; 						// Default 185 x 1.5
+		/* Stats */
+		speed:                          360 km/h;				    // Overwritten by callback
+    	power:                          22900 kW;					// Overwritten by callback
+		weight:                         648 tons;					// Overwritten by callback
+		tractive_effort_coefficient:    0.3;
+
+	}
+	graphics {
+		/* Menu */
+        additional_text:                string(STR_DESC_N700S_SERIES);
+		cargo_subtype_text:             sw_n700s_series_subtype_text;
+		can_attach_wagon:				sw_attach_mu_car_full;
+		start_stop:						sw_stop_start_full_length_4;
+		purchase_weight:                44;
+        purchase_power:                 409 * 4;
+        /* Graphics */
+        default:                        sw_n700s_series_graphics;
+		purchase:                       sw_n700s_series_purchase;
+		articulated_part:               sw_n700s_series_articulated_part;
+		visual_effect_and_powered:      sw_visual_effect_and_powered;
+        /* Stats */
+        length:                         sw_param_length;
+        weight:                         NumberCarsInConsist() * 44;
+        power:                         	max (( NumberCarsInConsist() - 2 ) , 0 )* 409 * 4;
+		cargo_capacity:                 28 * CapacityFactor();															
+		loading_speed:					28 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
+		cost_factor:                    138;
+		running_cost_factor:            (300 + 125 * NumberCarsInConsist() ) * RunningCostFactor();
+		purchase_running_cost_factor:   300 + 125 * NumberCarsInConsist();
+	}
+	/*Multiple Unit Car*/
+	
+      livery_override(mu_car_full){
+        default:                        sw_n700s_series_graphics;
+        cargo_capacity:                 28 * CapacityFactor();	
+        cargo_age_period:				param_decay_express;
+        loading_speed:                  28 * CapacityFactor() / param_loading_2D;
+		articulated_part:				sw_mucar_full_articulated_part;
+		length:							sw_param_length;
+		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
+		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
+        //running_cost_factor:            sw_n700s_series_running_costs;
+      }
+}

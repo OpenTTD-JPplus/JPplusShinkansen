@@ -1,0 +1,202 @@
+
+// Kamome Formations
+
+
+
+// Forwards
+
+     switch (FEAT_TRAINS, SELF, sw_n700_series_forwards_pick_panto_long, CarNumber() == 5 ) {				
+            1:  sw_n700_series_pantof;	
+            sw_n700_series_pantob;		
+        }
+    
+    switch (FEAT_TRAINS, SELF, sw_n700_series_forwards_long, CarNumber() == 5 || CarNumberFromEnd()  == 5 ) {				
+            1:  sw_n700_series_forwards_pick_panto_long;	
+            sw_n700_series_coachf;		
+        }
+    
+    switch (FEAT_TRAINS, SELF, sw_n700_series_forwards_pick_panto, CarNumber() == 2 ) {				
+            1:  sw_n700_series_pantof;	
+            sw_n700_series_pantob;		
+        }
+    
+    switch (FEAT_TRAINS, SELF, sw_n700_series_forwards_penultimates, CarNumber() == 2 || CarNumberFromEnd()  == 2 ) {				
+            1:  sw_n700_series_forwards_pick_panto;	
+            sw_n700_series_coachf;		
+        }
+
+    switch (FEAT_TRAINS, SELF, sw_n700_series_forwards_panto_in_middle, CarNumberFromEnd() - CarNumber() ) {				
+            0..1:  sw_n700_series_pantof;
+            sw_n700_series_coachf;				
+        }
+
+    switch (FEAT_TRAINS, SELF, sw_n700_series_forwards, num_vehs_in_consist ) {				
+            0..17:  sw_n700_series_forwards_panto_in_middle;
+            18..39: sw_n700_series_forwards_penultimates;
+            sw_n700_series_forwards_long;
+        }
+
+// Backwards
+
+    switch (FEAT_TRAINS, SELF, sw_n700_series_backwards_pick_panto_long, CarNumberFromEnd() == 5 ) {				
+            1:  sw_n700_series_pantob;	
+            sw_n700_series_pantof;		
+        }
+    
+    switch (FEAT_TRAINS, SELF, sw_n700_series_backwards_long, CarNumber() == 5 || CarNumberFromEnd()  == 5 ) {				
+            1:  sw_n700_series_backwards_pick_panto_long;	
+            sw_n700_series_coachb;		
+        }
+    
+    switch (FEAT_TRAINS, SELF, sw_n700_series_backwards_pick_panto, CarNumberFromEnd() == 2 ) {				
+            1:  sw_n700_series_pantob;	
+            sw_n700_series_pantof;		
+        }
+    
+    switch (FEAT_TRAINS, SELF, sw_n700_series_backwards_penultimates, CarNumberFromEnd() == 2 || CarNumber()  == 2 ) {				
+            1:  sw_n700_series_backwards_pick_panto;
+            sw_n700_series_coachb;				
+        }
+
+    switch (FEAT_TRAINS, SELF, sw_n700_series_backwards_panto_in_middle, CarNumber() - CarNumberFromEnd() ) {				
+            0..1:  sw_n700_series_pantob;
+            sw_n700_series_coachb;
+        }
+
+    switch (FEAT_TRAINS, SELF, sw_n700_series_backwards, num_vehs_in_consist ) {				
+            0..17: sw_n700_series_backwards_panto_in_middle;
+            18..39: sw_n700_series_backwards_penultimates;
+            sw_n700_series_backwards_long;
+        }
+
+/* Forwards or Backwards */
+    switch (FEAT_TRAINS, PARENT, sw_n700_series_midcars, vehicle_is_reversed) {				
+            0:  sw_n700_series_forwards;
+            sw_n700_series_backwards;				
+        }
+
+/* Kamome Special Case */
+
+    // Forwards
+
+        switch (FEAT_TRAINS, SELF, sw_n700s_series_kamome_forwards_pick_panto, CarNumber() == 2 ) {				
+                1:  sw_n700s_series_pantof;	
+                sw_n700s_series_pantob;		
+            }
+        
+        switch (FEAT_TRAINS, SELF, sw_n700s_series_kamome_forwards_penultimates, CarNumberFromEnd() == 2 || CarNumber()  == 2 ) {				
+                1:  sw_n700s_series_kamome_forwards_pick_panto;
+                sw_n700s_series_coachf;				
+            }
+
+        switch (FEAT_TRAINS, SELF, sw_n700s_series_kamome_forwards_panto_in_middle, CarNumber() - CarNumberFromEnd() ) {				
+                0..1:  sw_n700s_series_pantof;
+                sw_n700s_series_coachf;
+            }
+
+        switch (FEAT_TRAINS, SELF, sw_n700s_series_kamome_forwards, num_vehs_in_consist ) {				
+                0..14: sw_n700s_series_kamome_forwards_panto_in_middle;
+                sw_n700s_series_kamome_forwards_penultimates;
+            }
+
+
+    // Backwards
+
+        switch (FEAT_TRAINS, SELF, sw_n700s_series_kamome_backwards_pick_panto, CarNumberFromEnd() == 2 ) {				
+                1:  sw_n700s_series_pantob;	
+                sw_n700s_series_pantof;		
+            }
+        
+        switch (FEAT_TRAINS, SELF, sw_n700s_series_kamome_backwards_penultimates, CarNumberFromEnd() == 2 || CarNumber()  == 2 ) {				
+                1:  sw_n700s_series_kamome_backwards_pick_panto;
+                sw_n700s_series_coachb;				
+            }
+
+        switch (FEAT_TRAINS, SELF, sw_n700s_series_kamome_backwards_panto_in_middle, CarNumber() - CarNumberFromEnd() ) {				
+                0..1:  sw_n700s_series_pantob;
+                sw_n700s_series_coachb;
+            }
+
+        switch (FEAT_TRAINS, SELF, sw_n700s_series_kamome_backwards, num_vehs_in_consist ) {				
+                0..14: sw_n700s_series_kamome_backwards_panto_in_middle;
+                sw_n700s_series_kamome_backwards_penultimates;
+            }
+
+
+        switch (FEAT_TRAINS, PARENT, sw_n700s_series_kamome_midcars, vehicle_is_reversed) {				
+                0:  sw_n700s_series_kamome_forwards;
+                sw_n700s_series_kamome_backwards;				
+            }
+                
+        switch (FEAT_TRAINS, PARENT, sw_n700s_series_midcars, cargo_subtype ) {				
+                0..1:  sw_n700_series_midcars;	
+                sw_n700s_series_kamome_midcars;	
+            }
+
+/* Cab selection */
+
+    /* N700 */
+
+    switch (FEAT_TRAINS, PARENT, sw_n700_series_rear, vehicle_is_reversed) {				
+            1: sw_n700_series_cab01b;
+            sw_n700_series_cab02f;
+        }
+
+    switch (FEAT_TRAINS, PARENT, sw_n700_series_lead, vehicle_is_reversed) {				
+            1: sw_n700_series_cab02b;
+            sw_n700_series_cab01f;
+        }
+
+    switch (FEAT_TRAINS, SELF, sw_n700_series_cabs, position_in_consist) {				
+            0..2: sw_n700_series_lead;
+            sw_n700_series_rear;
+        }
+    
+    switch (FEAT_TRAINS, SELF, sw_n700_series_graphics, IsCab() ) {				
+            1:  sw_n700_series_cabs;
+            sw_n700_series_midcars;	
+        }
+
+    /* N700A */
+
+    switch (FEAT_TRAINS, PARENT, sw_n700a_series_rear, vehicle_is_reversed) {				
+            1: sw_n700a_series_cab01b;
+            sw_n700a_series_cab02f;
+        }
+
+    switch (FEAT_TRAINS, PARENT, sw_n700a_series_lead, vehicle_is_reversed) {				
+            1: sw_n700a_series_cab02b;
+            sw_n700a_series_cab01f;
+        }
+
+    switch (FEAT_TRAINS, SELF, sw_n700a_series_cabs, position_in_consist) {				
+            0..2: sw_n700a_series_lead;
+            sw_n700a_series_rear;
+        }
+    
+    switch (FEAT_TRAINS, SELF, sw_n700a_series_graphics, IsCab() ) {				
+            1:  sw_n700a_series_cabs;
+            sw_n700_series_midcars;	
+        }
+
+    /* N700S */
+
+    switch (FEAT_TRAINS, PARENT, sw_n700s_series_rear, vehicle_is_reversed) {				
+            1: sw_n700s_series_cab01b;
+            sw_n700s_series_cab02f;
+        }
+
+    switch (FEAT_TRAINS, PARENT, sw_n700s_series_lead, vehicle_is_reversed) {				
+            1: sw_n700s_series_cab02b;
+            sw_n700s_series_cab01f;
+        }
+
+    switch (FEAT_TRAINS, SELF, sw_n700s_series_cabs, position_in_consist) {				
+            0..2: sw_n700s_series_lead;
+            sw_n700s_series_rear;
+        }
+    
+    switch (FEAT_TRAINS, SELF, sw_n700s_series_graphics, IsCab() ) {				
+            1:  sw_n700s_series_cabs;
+            sw_n700s_series_midcars;	
+        }

@@ -1,0 +1,58 @@
+
+/*---Cargo Subtype Menu---*/
+
+    switch(FEAT_TRAINS, SELF, sw_n700_series_subtype_text, cargo_subtype) {
+        0: return string(LV_N700_SERIES_N700);          	// N700
+        1: return string(LV_N700_SERIES_N700_2CC);          // 2cc
+        2: return string(LV_N700_SERIES_KYUSHU);          	// Kyushu
+        return CB_RESULT_NO_TEXT;
+        }
+
+/* Purchase Menu */
+
+    spriteset (ss_n700_series_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/n700.png") {template_purchase(233, 1)}
+
+    switch(FEAT_TRAINS, SELF, sw_n700_series_purchase, [ 
+        STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+            0: logo_jrwestcentral; 
+            1: ss_n700_series_buy;
+        }
+
+/* Subtypes */
+
+	switch(FEAT_TRAINS, SELF, sw_n700a_series_subtype_text, cargo_subtype) {
+		0: return string(LV_N700_SERIES_N700A);                            
+		1: return string(LV_N700_SERIES_N700A_2CC);                      
+		return CB_RESULT_NO_TEXT;
+		}
+
+/* Purchase Menu */
+
+    spriteset (ss_n700a_series_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/n700a.png") {template_purchase(233, 1)}
+
+    switch(FEAT_TRAINS, SELF, sw_n700a_series_purchase, [ 
+        STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+            0: logo_jrwestcentral;
+            1: ss_n700_series_buy; 
+            2: ss_n700a_series_buy;
+        }
+
+/*---Cargo Subtype Menu---*/
+    switch(FEAT_TRAINS, SELF, sw_n700s_series_subtype_text, cargo_subtype) {
+            0: return string(LV_N700_SERIES_N700S);          	// N700
+            1: return string(LV_N700_SERIES_N700S_2CC);         // 2cc
+		    2: return string(LV_N700_SERIES_KAMOME);          	// Kamome
+            3: return string(LV_N700_SERIES_KAMOME_2CC);        // Kamome 2cc
+            return CB_RESULT_NO_TEXT;
+            }
+
+/* Purchase Menu */
+
+    spriteset (ss_n700s_series_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/n700s.png") {template_purchase(233, 1)}
+
+    switch(FEAT_TRAINS, SELF, sw_n700s_series_purchase, [ 
+        STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+            0: logo_jrwestcentral;
+            1: ss_n700_series_buy; 
+            2: ss_n700s_series_buy;
+        }
