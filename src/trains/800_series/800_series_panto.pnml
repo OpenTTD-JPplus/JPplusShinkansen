@@ -58,22 +58,14 @@
 				1: ss_frt_800_series_pantof_mask;		// Mask for Front
 			}
 
-		switch(FEAT_TRAINS, SELF, sw_800_series_pantof_frt_longsprite, other_veh_curv_info(1) == 0 && other_veh_z_offset(1) == 0 && other_veh_z_offset(2) == 0 ) {
-				1: sw_800_series_pantof_frt_stack;
-					dummy_sprites;		   	
-			}
+		switch(FEAT_TRAINS, SELF, sw_800_series_pantof_frt_longsprite, NextPartSame() ) { 1: sw_800_series_pantof_frt_stack; dummy_sprites; }
 
 		// Mid
 		switch(FEAT_TRAINS, PARENT, ss_mid_800_series_pantof_mask, cargo_subtype) {1:ss_mid_800_series_pantof_2cc; }
 		switch(FEAT_TRAINS, PARENT, ss_std_800_series_pantof_mask, cargo_subtype) {1:ss_std_800_series_pantof_2cc; }
 		
-		switch(FEAT_TRAINS, SELF, sw_800_series_pantof_mid_longsprite, other_veh_curv_info(1) == 0 && other_veh_curv_info(-1) == 0 && other_veh_z_offset(1) == 0 && other_veh_z_offset(-1) == 0 ) {
-					0: ss_std_800_series_pantof_irl;		   	
-				}
-
-		switch(FEAT_TRAINS, SELF, sw_800_series_pantof_std_longsprite, other_veh_curv_info(1) == 0 && other_veh_curv_info(-1) == 0 && other_veh_z_offset(1) == 0 && other_veh_z_offset(-1) == 0 ) {
-					0: ss_std_800_series_pantof_mask;		   	
-				}
+		switch(FEAT_TRAINS, SELF, sw_800_series_pantof_mid_longsprite, HideLongSprite() ) { 0: ss_std_800_series_pantof_irl; }
+		switch(FEAT_TRAINS, SELF, sw_800_series_pantof_std_longsprite, HideLongSprite() ) { 0: ss_std_800_series_pantof_mask; }
 
 		switch(FEAT_TRAINS, SELF, sw_800_series_pantof_mid_stack, [ 
 			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
@@ -94,10 +86,7 @@
 				1: ss_bck_800_series_pantof_mask;		// Mask for Front
 			}
 
-		switch(FEAT_TRAINS, SELF, sw_800_series_pantof_bck_longsprite, other_veh_curv_info(-1) == 0 && other_veh_z_offset(-1) == 0 ) {
-				1: sw_800_series_pantof_bck_stack;
-					dummy_sprites;		   	
-			}
+		switch(FEAT_TRAINS, SELF, sw_800_series_pantof_bck_longsprite, PrevPartSame() ) { 1: sw_800_series_pantof_bck_stack; dummy_sprites;	}
 
 		switch (FEAT_TRAINS, SELF, sw_800_series_pantof, position_in_consist % 3 ) {				
             0: sw_800_series_pantof_frt_longsprite;
@@ -116,20 +105,17 @@
 				1: ss_frt_800_series_pantob_mask;		// Mask for Front
 			}
 
-		switch(FEAT_TRAINS, SELF, sw_800_series_pantob_frt_longsprite, other_veh_curv_info(-1) == 0 && other_veh_z_offset(-1) == 0 && other_veh_z_offset(-2) == 0 ) {
-				1: sw_800_series_pantob_frt_stack;
-					dummy_sprites;		   	
-			}
+		switch(FEAT_TRAINS, SELF, sw_800_series_pantob_frt_longsprite, PrevPartSame() ) { 1: sw_800_series_pantob_frt_stack; dummy_sprites; }
 
 		// Mid
 		switch(FEAT_TRAINS, PARENT, ss_mid_800_series_pantob_mask, cargo_subtype) {1:ss_mid_800_series_pantob_2cc; }
 		switch(FEAT_TRAINS, PARENT, ss_std_800_series_pantob_mask, cargo_subtype) {1:ss_std_800_series_pantob_2cc; }
 		
-		switch(FEAT_TRAINS, SELF, sw_800_series_pantob_mid_longsprite, other_veh_curv_info(1) == 0 && other_veh_curv_info(-1) == 0 && other_veh_z_offset(1) == 0 && other_veh_z_offset(-1) == 0 ) {
+		switch(FEAT_TRAINS, SELF, sw_800_series_pantob_mid_longsprite, HideLongSprite() ) {
 					0: ss_std_800_series_pantob_irl;		   	
 				}
 
-		switch(FEAT_TRAINS, SELF, sw_800_series_pantob_std_longsprite, other_veh_curv_info(1) == 0 && other_veh_curv_info(-1) == 0 && other_veh_z_offset(1) == 0 && other_veh_z_offset(-1) == 0 ) {
+		switch(FEAT_TRAINS, SELF, sw_800_series_pantob_std_longsprite, HideLongSprite() ) {
 					0: ss_std_800_series_pantob_mask;		   	
 				}
 
@@ -152,10 +138,7 @@
 				1: ss_bck_800_series_pantob_mask;		// Mask for Front
 			}
 
-		switch(FEAT_TRAINS, SELF, sw_800_series_pantob_bck_longsprite, other_veh_curv_info(1) == 0 && other_veh_z_offset(1) == 0 ) {
-				1: sw_800_series_pantob_bck_stack;
-					dummy_sprites;		   	
-			}
+		switch(FEAT_TRAINS, SELF, sw_800_series_pantob_bck_longsprite, NextPartSame() ) { 1: sw_800_series_pantob_bck_stack; dummy_sprites; }
 
 		switch (FEAT_TRAINS, SELF, sw_800_series_pantob, position_in_consist_from_end % 3 ) {				
             0: sw_800_series_pantob_frt_longsprite;
