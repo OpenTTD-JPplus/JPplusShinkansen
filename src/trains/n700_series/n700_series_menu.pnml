@@ -10,7 +10,7 @@
 
 /* Purchase Menu */
 
-    spriteset (ss_n700_series_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/n700.png") {template_purchase(233, 1)}
+    spriteset (ss_n700_series_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700.png") {template_purchase(233, 1)}
 
     switch(FEAT_TRAINS, SELF, sw_n700_series_purchase, [ 
         STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
@@ -28,7 +28,7 @@
 
 /* Purchase Menu */
 
-    spriteset (ss_n700a_series_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/n700a.png") {template_purchase(233, 1)}
+    spriteset (ss_n700a_series_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700a.png") {template_purchase(233, 1)}
 
     switch(FEAT_TRAINS, SELF, sw_n700a_series_purchase, [ 
         STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
@@ -48,7 +48,7 @@
 
 /* Purchase Menu */
 
-    spriteset (ss_n700s_series_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/n700s.png") {template_purchase(233, 1)}
+    spriteset (ss_n700s_series_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700s.png") {template_purchase(233, 1)}
 
     switch(FEAT_TRAINS, SELF, sw_n700s_series_purchase, [ 
         STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 

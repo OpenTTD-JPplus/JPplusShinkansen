@@ -1,0 +1,296 @@
+
+
+switch (FEAT_TRAINS, SELF, sw_700_series_articulated_part, extra_callback_info1) {
+		1 .. 2: return series_700;									
+		return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+	}
+
+item(FEAT_TRAINS, series_700) {
+	property {
+		/* Menu */
+        name: 							string(STR_NAME_700_SERIES);
+        sprite_id:                      SPRITE_ID_NEW_TRAIN; 		// required to enable new graphics
+		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
+		running_cost_base:              RUNNING_COST_ELECTRIC;
+		engine_class:                   ENGINE_CLASS_ELECTRIC;
+		/* Availability */
+        climates_available:             ALL_CLIMATES;
+		introduction_date:              date(1999,03,13);
+		model_life:                     VEHICLE_NEVER_EXPIRES;		//
+		vehicle_life:                   30;							// 
+		track_type:                     SHINKANSEN;
+        /* Cargo */
+        reliability_decay:              5;
+		refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+		refit_cost:                     0;
+		default_cargo_type:             PASS;
+		ai_special_flag:                AI_FLAG_PASSENGER;
+        cargo_capacity:                 1;							// 
+		loading_speed:                  50;							
+		cargo_age_period:               278; 						// 1.5 times normal for this expensive long-distance train
+		/* Stats */
+        speed:                          286 km/h;				    // Operational Top Speed
+		power:                          8050 kW;					// Overwritten by callback
+		weight:                         648 tons;					// Overwritten by callback
+		tractive_effort_coefficient:    0.3;
+		air_drag_coefficient:			0;
+	}
+	graphics {
+		/* Menu */
+        additional_text:                string(STR_DESC_700_SERIES);
+		cargo_subtype_text:             sw_700_series_subtype_text;
+        can_attach_wagon:				sw_attach_mu_car_full;
+		start_stop:						sw_stop_start_full_length_4;
+		purchase_weight:                44;
+        purchase_power:                 369 * 4;
+        /* Graphics */
+        default:                        sw_700_series_graphics;
+		purchase:                       sw_700_series_purchase;
+		articulated_part:               sw_700_series_articulated_part;
+		visual_effect_and_powered:      sw_visual_effect_and_powered;
+        /* Stats */
+        length:                         sw_param_length;
+        weight:                         NumberCarsInConsist() * 44;
+        power:                          max ( NumberCarsInConsist() - 2 , 0 ) * 369 * 4;	// 275 kW
+		cargo_capacity:                 28 * CapacityFactor();															
+		loading_speed:					28 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
+		cargo_age_period:				param_decay_express;
+		cost_factor:                    134;
+		running_cost_factor:            (310 + 48 * NumberCarsInConsist() ) * RunningCostFactor();
+		purchase_running_cost_factor:   310 + 48 * NumberCarsInConsist();
+	}
+	/*Multiple Unit Car*/
+	
+      livery_override(mu_car_full){
+        default:                        sw_700_series_graphics;
+        cargo_capacity:                 28 * CapacityFactor();
+        cargo_age_period:				param_decay_express;
+        loading_speed:					28 * CapacityFactor() / param_loading_2D;
+		articulated_part:				sw_mucar_full_articulated_part;
+		length:							sw_param_length;
+		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
+		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
+        //running_cost_factor:            sw_700_series_running_costs;
+      }
+}
+
+/* DR YELLOW 923 SERIES */
+
+	switch (FEAT_TRAINS, SELF, sw_923_series_articulated_part, extra_callback_info1) {
+		1 .. 2: return series_923;									
+		return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+		}
+
+	/*---Running Cost Factor---*/
+	switch (FEAT_TRAINS, PARENT, sw_923_series_running_cost_factor, param_dryellow ) {				
+		1: (150 + 60 * NumberCarsInConsist() ) * RunningCostFactor();		// Mail
+		2: (295 + 125 * NumberCarsInConsist() ) * RunningCostFactor();		// Passengers
+		return 0;			
+	}
+
+
+	if (param_dryellow == 0) { // GIMMICK
+
+	item(FEAT_TRAINS, series_923) {
+		property {
+			/* Menu */
+			name: 							string(STR_NAME_923_SERIES);
+			sprite_id:                      SPRITE_ID_NEW_TRAIN; 		// required to enable new graphics
+			misc_flags:                      bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
+			running_cost_base:              RUNNING_COST_ELECTRIC;
+			engine_class:                   ENGINE_CLASS_ELECTRIC;
+			variant_group:					700;
+			/* Availability */
+			climates_available:             ALL_CLIMATES;
+			introduction_date:              date(2000,03,01);           // Date of launch
+			model_life:                     VEHICLE_NEVER_EXPIRES;		                    
+			vehicle_life:                   30;							// 
+			track_type:                     SHINKANSEN;
+			extra_flags:					bitmask(VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW);
+			/* Cargo */
+			reliability_decay:              5;
+			refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+			refit_cost:                     0;
+			cargo_capacity:                 1;							// Changed by callback
+			loading_speed:                  50;							
+			cargo_age_period:               278; 						// 1.5 times normal for this expensive long-distance train
+			/* Stats */
+			speed:                          286 km/h;                   
+			power:                          8050 kW;					// Changed by callback
+			weight:                         648 ton;                   // Changed by callback					
+			tractive_effort_coefficient:    0.3;
+			air_drag_coefficient:			0;
+		}
+		graphics {
+			/* Menu */
+			additional_text:                string(STR_DESC_923_SERIES_GIMMICK);
+			//cargo_subtype_text:             sw_923_series_year_dep_subtype_text;
+			can_attach_wagon:				sw_attach_mu_car_full;
+			start_stop:						sw_stop_start_full_length_4;
+			purchase_weight:                44;
+			purchase_power:                 369 * 4;
+			/* Graphics */
+			default:                        sw_923_series_graphics;
+			purchase:                      	sw_923_series_purchase;
+			articulated_part:               sw_923_series_articulated_part;
+			visual_effect_and_powered:      sw_visual_effect_and_powered;
+			/* Stats */
+			length:                         sw_param_length;
+			power:							max ( NumberCarsInConsist() - 2 , 0 ) * 369 * 4;
+			weight:							NumberCarsInConsist() * 44;
+			//speed:						285 km/h;
+			cargo_capacity:                 0;										// Nil capacity									
+			loading_speed:					25;	
+			cargo_age_period:				param_decay_express;
+			cost_factor:                    130;
+			running_cost_factor:            0;
+			purchase_running_cost_factor:   0;
+
+		}    
+		livery_override(mu_car_full){
+			default:                        sw_923_series_graphics;
+			cargo_capacity:                 0;	
+			cargo_age_period:				param_decay_express;
+			loading_speed:                  25;
+			articulated_part:				sw_mucar_full_articulated_part;
+			length:							sw_param_length;
+			running_cost_factor:            0;
+		}
+	}}
+
+	// MAIL
+	if (param_dryellow == 1) {
+
+	item(FEAT_TRAINS, series_923) {
+		property {
+			/* Menu */
+			name: 							string(STR_NAME_923_SERIES);
+			sprite_id:                      SPRITE_ID_NEW_TRAIN; 		// required to enable new graphics
+			misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
+			running_cost_base:              RUNNING_COST_ELECTRIC;
+			engine_class:                   ENGINE_CLASS_ELECTRIC;
+			variant_group:					700;
+			/* Availability */
+			climates_available:             ALL_CLIMATES;
+			introduction_date:              date(2000,03,01);           // Date of launch
+			model_life:                     VEHICLE_NEVER_EXPIRES;	                    
+			vehicle_life:                   30;							// 
+			track_type:                     SHINKANSEN;
+			extra_flags:					bitmask(VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW);
+			/* Cargo */
+			reliability_decay:              5;
+			refittable_cargo_classes:       bitmask(CC_MAIL);
+			default_cargo_type:             MAIL;
+			//refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+			refit_cost:                     0;
+			cargo_capacity:                 1;							// Changed by callback
+			loading_speed:                  50;							
+			cargo_age_period:               278; 						// 1.5 times normal for this expensive long-distance train
+			/* Stats */
+			speed:                          240 km/h;                   
+			power:                          8050 kW;					// Changed by callback
+			weight:                         1464 ton;                   // Changed by callback					
+			tractive_effort_coefficient:    0.3;
+			air_drag_coefficient:			0;
+		}
+		graphics {
+			/* Menu */
+			additional_text:                string(STR_DESC_923_SERIES_MAIL);
+			//cargo_subtype_text:             sw_923_series_year_dep_subtype_text;
+			can_attach_wagon:				sw_attach_mu_car_mail;
+			start_stop:						sw_stop_start_full_length_4;
+			/* Graphics */
+			default:                        sw_923_series_graphics;
+			purchase:                      	sw_923_series_purchase;
+			articulated_part:               sw_923_series_articulated_part;
+			visual_effect_and_powered:      sw_visual_effect_and_powered;
+			/* Stats */
+			length:                         sw_param_length;
+			power:							max ( NumberCarsInConsist() - 2 , 0 ) * 369 * 4;
+			weight:							NumberCarsInConsist() * 44;
+			//speed:						240 km/h;
+			cargo_capacity:                 40 * CapacityFactor();											
+			loading_speed:					40 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
+			cargo_age_period:				param_decay_express;
+			cost_factor:                    130;
+			running_cost_factor:            sw_923_series_running_cost_factor;
+			purchase_running_cost_factor:   295 + 125 * NumberCarsInConsist();
+		}
+		livery_override(mu_car_mail){
+			default:                        sw_923_series_graphics;
+			cargo_capacity:                 40 * CapacityFactor();		
+			cargo_age_period:				param_decay_express;
+			loading_speed:                  40 * CapacityFactor() / param_loading_2D;
+			articulated_part:				sw_mucar_full_articulated_part;
+			length:							sw_param_length;		
+		}
+	}}
+
+	// PASSENGERS
+	if (param_dryellow == 2)  {
+
+	item(FEAT_TRAINS, series_923) {
+			property {
+			/* Menu */
+			name: 							string(STR_NAME_923_SERIES);
+			sprite_id:                      SPRITE_ID_NEW_TRAIN; 		// required to enable new graphics
+			misc_flags:                      bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
+			running_cost_base:              RUNNING_COST_ELECTRIC;
+			engine_class:                   ENGINE_CLASS_ELECTRIC;
+			variant_group:					700;
+			/* Availability */
+			climates_available:             ALL_CLIMATES;
+			introduction_date:              date(2000,03,01);           // Date of launch
+			model_life:                     VEHICLE_NEVER_EXPIRES;	                    
+			vehicle_life:                   30;							// 
+			track_type:                     SHINKANSEN;
+			extra_flags:					bitmask(VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW);
+			/* Cargo */
+			reliability_decay:              5;
+			refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+			default_cargo_type:             PASS;
+			ai_special_flag:                AI_FLAG_PASSENGER;
+			//refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+			refit_cost:                     0;
+			cargo_capacity:                 1;							// Changed by callback
+			loading_speed:                  50;							
+			cargo_age_period:               278; 						// 1.5 times normal for this expensive long-distance train
+			/* Stats */
+			speed:                          240 km/h;                   
+			power:                          8050 kW;					// Changed by callback
+			weight:                         1464 ton;                   // Changed by callback					
+			tractive_effort_coefficient:    0.3;
+			air_drag_coefficient:			0;
+		}
+		graphics {
+			/* Menu */
+			additional_text:                string(STR_DESC_923_SERIES);
+			//cargo_subtype_text:             sw_923_series_year_dep_subtype_text;
+			can_attach_wagon:				sw_attach_mu_car_full;
+			start_stop:						sw_stop_start_full_length_4;
+			/* Graphics */
+			default:                        sw_923_series_graphics;
+			purchase:                      	sw_923_series_purchase;
+			articulated_part:               sw_923_series_articulated_part;
+			visual_effect_and_powered:      sw_visual_effect_and_powered;
+			/* Stats */
+			length:                         sw_param_length;
+			power:							max ( NumberCarsInConsist() - 2 , 0 ) * 369 * 4;
+			weight:							NumberCarsInConsist() * 44;
+			//speed:						240 km/h;
+			cargo_capacity:                	26 * CapacityFactor();											
+			loading_speed:					26 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
+			cargo_age_period:				param_decay_express;
+			cost_factor:                    130;
+			running_cost_factor:            sw_923_series_running_cost_factor;
+			purchase_running_cost_factor:   295 + 125 * NumberCarsInConsist();
+		}
+		livery_override(mu_car_full){
+			default:                        sw_923_series_graphics;
+			cargo_capacity:                 26 * CapacityFactor();	
+			cargo_age_period:				param_decay_express;
+			loading_speed:                  26 * CapacityFactor() / param_loading_2D;
+			articulated_part:				sw_mucar_full_articulated_part;
+			length:							sw_param_length;
+		}
+	}}

@@ -1,0 +1,94 @@
+
+// Forwards
+     switch (FEAT_TRAINS, SELF, sw_700_series_forwards_long_pick_panto, CarNumber() == 5 ) {				
+            1:  sw_700_series_pantof;	
+            sw_700_series_pantob;		
+        }
+
+    switch (FEAT_TRAINS, SELF, sw_700_series_forwards_long, CarNumber() == 5 || CarNumberFromEnd()  == 5 ) {					
+            1:  sw_700_series_forwards_long_pick_panto;
+            sw_700_series_coachf;				
+        }
+
+    switch (FEAT_TRAINS, SELF, sw_700_series_forwards_penultimate_pick_panto, CarNumber() == 2 ) {				
+            1:  sw_700_series_pantof;	
+            sw_700_series_pantob;		
+        }
+
+    switch (FEAT_TRAINS, SELF, sw_700_series_forwards_penultimate_pantos, CarNumberFromEnd() == 2 || CarNumber()  == 2 ) {				
+            1:  sw_700_series_forwards_penultimate_pick_panto;
+            sw_700_series_coachf;				
+        }
+
+    switch (FEAT_TRAINS, SELF, sw_700_series_forwards_panto_in_middle, CarNumberFromEnd() - CarNumber() ) {				
+            0..1:  sw_700_series_pantof;
+            sw_700_series_coachf;           				
+        }
+
+    switch (FEAT_TRAINS, SELF, sw_700_series_forwards, num_vehs_in_consist ) {				
+            0..21:  sw_700_series_forwards_panto_in_middle;
+            22..39: sw_700_series_forwards_penultimate_pantos;
+            sw_700_series_forwards_long;
+        }
+
+// Backwards
+    switch (FEAT_TRAINS, SELF, sw_700_series_backwards_long_pick_panto, CarNumberFromEnd() == 5 ) {				
+            1:  sw_700_series_pantob;	
+            sw_700_series_pantof;		
+        }
+    
+    switch (FEAT_TRAINS, SELF, sw_700_series_backwards_long, CarNumberFromEnd() == 5 || CarNumber()  == 5 ) {					
+            1:  sw_700_series_backwards_long_pick_panto;
+            sw_700_series_coachb;				
+        }
+
+    switch (FEAT_TRAINS, SELF, sw_700_series_backwards_penultimate_pick_panto, CarNumberFromEnd() == 2 ) {				
+            1:  sw_700_series_pantob;	
+            sw_700_series_pantof;		
+        }
+
+    switch (FEAT_TRAINS, SELF, sw_700_series_backwards_penultimate_pantos, CarNumberFromEnd() == 2 || CarNumber()  == 2 ) {				
+            1:  sw_700_series_backwards_penultimate_pick_panto;
+            sw_700_series_coachb;				
+        }
+
+    switch (FEAT_TRAINS, SELF, sw_700_series_backwards_panto_in_middle, CarNumber() - CarNumberFromEnd() ) {				
+            0..1:  sw_700_series_pantob;
+            sw_700_series_coachb;
+        }
+
+    switch (FEAT_TRAINS, SELF, sw_700_series_backwards, num_vehs_in_consist ) {				
+            0..21:  sw_700_series_backwards_panto_in_middle;
+            22..39: sw_700_series_backwards_penultimate_pantos;
+            sw_700_series_backwards_long;
+        }
+
+/* Forwards or Backwards */
+    switch (FEAT_TRAINS, PARENT, sw_700_series_midcars, vehicle_is_reversed) {				
+            0:  sw_700_series_forwards;
+            sw_700_series_backwards;				
+        }
+
+/* Cab selection */
+
+/* Find the cabs */
+
+    switch (FEAT_TRAINS, PARENT, sw_700_series_rear, vehicle_is_reversed) {				
+            1: sw_700_series_cab01b;
+            sw_700_series_cab02f;
+        }
+
+    switch (FEAT_TRAINS, PARENT, sw_700_series_lead, vehicle_is_reversed) {				
+            1: sw_700_series_cab02b;
+            sw_700_series_cab01f;
+        }
+
+    switch (FEAT_TRAINS, SELF, sw_700_series_cabs, position_in_consist) {				
+            0..2: sw_700_series_lead;
+            sw_700_series_rear;
+        }
+    
+    switch (FEAT_TRAINS, SELF, sw_700_series_graphics, IsCab() ) {				
+            1:  sw_700_series_cabs;
+            sw_700_series_midcars;	
+        }

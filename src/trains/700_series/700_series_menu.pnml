@@ -1,0 +1,29 @@
+/* SUBTYPES */
+
+    switch(FEAT_TRAINS, SELF, sw_700_series_subtype_text, cargo_subtype) {
+	    0: return string(LV_700_SERIES_ORIGINAL);
+        1: return string(LV_700_SERIES_ORIGINAL_2CC);
+        2: return string(LV_700_SERIES_HIKARI);
+        3: return string(LV_700_SERIES_HIKARI_2CC);
+        return CB_RESULT_NO_TEXT;
+        }
+
+/* PURCHASE */
+
+    spriteset (ss_700_series_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/gfx/700_series.png") {template_purchase(233, 1)}
+
+    switch(FEAT_TRAINS, SELF, sw_700_series_purchase, [ 
+        STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+            0: logo_jrwestcentral; 
+            1: ss_700_series_buy;
+        }
+
+/* DR YELLOW PURCHASE */
+
+    spriteset (ss_923_series_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/gfx/923_series.png") {template_purchase(233, 1)}
+
+    switch(FEAT_TRAINS, SELF, sw_923_series_purchase, [ 
+        STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+            0: logo_jrwestcentral; 
+            1: ss_923_series_buy;
+        }

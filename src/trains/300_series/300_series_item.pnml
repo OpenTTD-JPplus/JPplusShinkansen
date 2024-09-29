@@ -4,18 +4,6 @@ switch (FEAT_TRAINS, SELF, sw_300_series_articulated_part, extra_callback_info1)
 		return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
 	}
 
-/*---Coupling Switch---*/
-switch(FEAT_TRAINS, SELF, sw_300_series_attach_vehid, [vehicle_type_id == mu_car_full]) {
- 0: return string(ONLY_ADD_MUCAR);
-}
-
-/*---Length Check---*/
-switch (FEAT_TRAINS, SELF, sw_300_series_stop_start, num_vehs_in_consist < 12) {				
-		1:  return string(STR_LENGTH_ERROR); 				
-		return CB_RESULT_NO_TEXT; 
-	}
-
-
 item(FEAT_TRAINS, series_300) {
 	property {
 		/* Menu */
@@ -50,8 +38,8 @@ item(FEAT_TRAINS, series_300) {
 		/* Menu */
         additional_text:                string(STR_DESC_300_SERIES);
         cargo_subtype_text:             sw_300_series_subtype_text;
-		can_attach_wagon:				sw_300_series_attach_vehid;
-		start_stop:						sw_300_series_stop_start;
+		can_attach_wagon:				sw_attach_mu_car_full;
+		start_stop:						sw_stop_start_full_length_4;
 		purchase_weight:                44;
         purchase_power:                 402 * 4;
         /* Graphics */

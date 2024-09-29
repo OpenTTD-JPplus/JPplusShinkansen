@@ -9,8 +9,8 @@
 		}
 
 /* Purchase Menu */
-    spriteset (ss_e1_series_irl_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e1_series/e1_series_irl.png") {template_purchase(233, 1)}
-    spriteset (ss_e1_series_rfb_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e1_series/e1_series_rfb.png") {template_purchase(233, 1)}
+    spriteset (ss_e1_series_irl_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e1_series/gfx/e1_series_irl.png") {template_purchase(233, 1)}
+    spriteset (ss_e1_series_rfb_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e1_series/gfx/e1_series_rfb.png") {template_purchase(233, 1)}
 
     
     switch(FEAT_TRAINS, SELF, sw_e1_series_year_dep_purchase, current_year) {
