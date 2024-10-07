@@ -94,6 +94,10 @@ switch (FEAT_TRAINS, SELF, sw_param_length, param_spritelength) {
 		0: return string(ONLY_ADD_MUCAR);
 	}
 
+    switch(FEAT_TRAINS, SELF, sw_attach_mu_car_maglev, [vehicle_type_id == mu_car_maglev]) {
+        0: return string(ONLY_ADD_MUCAR);
+    }
+
 
 // Mid Check
     switch(FEAT_TRAINS, SELF, HideLongSprite, other_veh_curv_info(1) == 0 && other_veh_curv_info(-1) == 0 && other_veh_z_offset(1) == 0 && other_veh_z_offset(-1) == 0 ) {return;}

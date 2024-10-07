@@ -7,6 +7,7 @@ shinkansen = {
     "n700_series"  : "n700",
     "800_series"  : "800_series",
     "e1_series"   : "e1_series_irl",
+    "l0_series"   : "l0_series",
 }
 
 area = (267, 1, 306, 15)
