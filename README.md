@@ -2,7 +2,7 @@
 
 Welcome to 🇯🇵🚅 **JP+Shinkansen!** 🚅🇯🇵
 
-This is the sister set to 🚂[JP+ Engines & Wagons](https://github.com/EmperorJake/JPengines)🚂 , 🚆[JP+ Multiple Units](https://github.com/Tintinfan/JPplusSet)🚆 and 🚇[JP+ Major Private Companies](https://github.com/Yozora3/JPplusPrivate)🚇, adding the world's first High Speed Rail Network's iconic trains.
+This is the sister set to 🚂[JP+ Engines & Wagons](https://github.com/EmperorJake/JPengines)🚂 , 🚆[JP+ Multiple Units](https://github.com/Tintinfan/JPplusSet)🚆 and 🚇[JP+ Major Private](https://github.com/Yozora3/JPplusPrivate)🚇, adding the world's first High Speed Rail Network's iconic trains.
 
 ## Credits
 **Coding:** KeepinItRail\
@@ -13,13 +13,10 @@ This is the sister set to 🚂[JP+ Engines & Wagons](https://github.com/EmperorJ
 ## Features
 
 * Long Sprites for 'full Shinkansen' - choose different liveries via the Cargo Subtype Menu
-* Normal Length Sprites for Mini-Shinkansen
+* Normal (8/8) Length Sprites for Mini-Shinkansen
 * Real World Stats were possible (or approximations when not known)
 * Parameters for;
-    * Full length Shinkansen size - Choose between 10/8 or 12/8
     * Disabling JapanSet Shinkansen
-    * Enabling Shinkansen Tracks (to counteract the previous parameter which disables JapanSet Shinkansen tracks)
-    * Disabling Shinkansen Track Fences
     * Capacity Levels
     * Usage of Doctor Yellow Shinkansen
 
