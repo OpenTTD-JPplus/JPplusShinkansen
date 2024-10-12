@@ -1,0 +1,125 @@
+
+/* coac6 */
+
+// Sprites
+
+    // 200 Series Livery
+
+	// 10/8
+	spriteset(ss_std_e2_series_coac6f_200, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e2_series/gfx/e2_series_200.png") {tmpl_10_std(1,301)}
+	spriteset(ss_std_e2_series_coac6b_200, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e2_series/gfx/e2_series_200.png") {tmpl_10_rev(1,301)}
+
+	// Front
+	spriteset(ss_frt_e2_series_coac6f_200, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e2_series/gfx/e2_series_200.png") {tmpl_frt_std(1,301)}
+	spriteset(ss_frt_e2_series_coac6b_200, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e2_series/gfx/e2_series_200.png") {tmpl_frt_rev(1,301)}
+	// Mid
+	spriteset(ss_mid_e2_series_coac6f_200, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e2_series/gfx/e2_series_200.png") {tmpl_mid_std(1,301)}
+	spriteset(ss_mid_e2_series_coac6b_200, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e2_series/gfx/e2_series_200.png") {tmpl_mid_rev(1,301)}
+	// Back
+	spriteset(ss_bck_e2_series_coac6f_200, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e2_series/gfx/e2_series_200.png") {tmpl_bck_std(1,301)}
+	spriteset(ss_bck_e2_series_coac6b_200, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e2_series/gfx/e2_series_200.png") {tmpl_bck_rev(1,301)}
+
+
+// Sprite Selection
+
+	// Forwards
+
+		// Front
+		switch(FEAT_TRAINS, PARENT, ss_frt_e2_series_coac6f_mask, cargo_subtype) {3:ss_frt_e2_series_coac6f_200; }
+		
+		switch(FEAT_TRAINS, SELF, sw_e2_series_coac6f_frt_stack, [ 
+			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+				0: ss_frt_e2_series_coac2f_red;       	    // Base for Front
+				1: ss_frt_e2_series_coac6f_mask;		    // Masks for Front
+			}
+
+		switch(FEAT_TRAINS, SELF, sw_e2_series_coac6f_frt_longsprite, NextPartSame() ) { 1: sw_e2_series_coac6f_frt_stack; dummy_sprites; }
+
+		/* MID */
+
+        // Mid Parts
+		    switch(FEAT_TRAINS, PARENT, ss_mid_e2_series_coac6f_mask, cargo_subtype) {3:ss_mid_e2_series_coac6f_200; }
+		
+        // Mid LongSprite
+            // Masks
+                switch(FEAT_TRAINS, PARENT, sw_std_e2_series_coac6f_mask, cargo_subtype) {3:ss_std_e2_series_coac6f_200; }
+                
+                switch(FEAT_TRAINS, SELF, longsprite_e2_series_coac6f_mask, HideLongSprite() ) { 0: sw_std_e2_series_coac6f_mask; }     
+            
+		switch(FEAT_TRAINS, SELF, sw_e2_series_coac6f_mid_stack, [ 
+			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+				// Parts
+                0: ss_mid_e2_series_coac2f_red;       	    // Base for Mid
+                1: ss_mid_e2_series_coac6f_mask;		    // Masks for Mid
+                // Long Sprite
+				2: longsprite_e2_series_coac2f_red;	        // Base for LongSprite
+				3: longsprite_e2_series_coac6f_mask;        // Masks for LongSprite
+			}
+
+		// Back
+        switch(FEAT_TRAINS, PARENT, ss_bck_e2_series_coac6f_mask, cargo_subtype) {3:ss_bck_e2_series_coac6f_200; }
+		
+		switch(FEAT_TRAINS, SELF, sw_e2_series_coac6f_bck_stack, [ 
+			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+				0: ss_bck_e2_series_coac2f_red;       	    // Base for Back
+				1: ss_bck_e2_series_coac6f_mask;		    // Masks for Back
+			}
+
+		switch(FEAT_TRAINS, SELF, sw_e2_series_coac6f_bck_longsprite, PrevPartSame() ) { 1: sw_e2_series_coac6f_bck_stack; dummy_sprites; }
+
+		switch (FEAT_TRAINS, SELF, sw_e2_series_coac6f, position_in_consist % 3 ) {				
+            0: sw_e2_series_coac6f_frt_longsprite;
+            1: sw_e2_series_coac6f_mid_stack;
+            2: sw_e2_series_coac6f_bck_longsprite;
+        }
+
+	// Backwards
+
+        // Front
+		switch(FEAT_TRAINS, PARENT, ss_frt_e2_series_coac6b_mask, cargo_subtype) {3:ss_frt_e2_series_coac6b_200; }
+		
+		switch(FEAT_TRAINS, SELF, sw_e2_series_coac6b_frt_stack, [ 
+			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+				0: ss_frt_e2_series_coac2b_red;       	    // Base for Front
+				1: ss_frt_e2_series_coac6b_mask;		    // Masks for Front
+			}
+
+		switch(FEAT_TRAINS, SELF, sw_e2_series_coac6b_frt_longsprite, PrevPartSame() ) { 1: sw_e2_series_coac6b_frt_stack; dummy_sprites; }
+
+		/* MID */
+
+        // Mid Parts
+		    switch(FEAT_TRAINS, PARENT, ss_mid_e2_series_coac6b_mask, cargo_subtype) {3:ss_mid_e2_series_coac6b_200; }
+		
+        // Mid LongSprite
+            // Masks
+                switch(FEAT_TRAINS, PARENT, sw_std_e2_series_coac6b_mask, cargo_subtype) {3:ss_std_e2_series_coac6b_200; }
+                
+                switch(FEAT_TRAINS, SELF, longsprite_e2_series_coac6b_mask, HideLongSprite() ) { 0: sw_std_e2_series_coac6b_mask; }     
+            
+		switch(FEAT_TRAINS, SELF, sw_e2_series_coac6b_mid_stack, [ 
+			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+				// Parts
+                0: ss_mid_e2_series_coac2b_red;       	    // Base for Mid
+                1: ss_mid_e2_series_coac6b_mask;		    // Masks for Mid
+                // Long Sprite
+				2: longsprite_e2_series_coac2b_red;	        // Base for LongSprite
+				3: longsprite_e2_series_coac6b_mask;        // Masks for LongSprite
+			}
+
+		// Back
+        switch(FEAT_TRAINS, PARENT, ss_bck_e2_series_coac6b_mask, cargo_subtype) {3:ss_bck_e2_series_coac6b_200; }
+		
+		switch(FEAT_TRAINS, SELF, sw_e2_series_coac6b_bck_stack, [ 
+			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+				0: ss_bck_e2_series_coac2b_red;       	    // Base for Back
+				1: ss_bck_e2_series_coac6b_mask;		    // Masks for Back
+			}
+
+		switch(FEAT_TRAINS, SELF, sw_e2_series_coac6b_bck_longsprite, NextPartSame() ) { 1: sw_e2_series_coac6b_bck_stack; dummy_sprites; }
+
+		switch (FEAT_TRAINS, SELF, sw_e2_series_coac6b, position_in_consist_from_end % 3 ) {				
+            0: sw_e2_series_coac6b_frt_longsprite;
+            1: sw_e2_series_coac6b_mid_stack;
+            2: sw_e2_series_coac6b_bck_longsprite;
+        }

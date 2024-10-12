@@ -1,0 +1,26 @@
+
+/* SUBTYPES */
+
+    switch(FEAT_TRAINS, SELF, sw_e2_series_subtype_text, cargo_subtype) {
+        0: return string(LV_YEAR_DEP_LIVERY);
+        1: return string(LV_E2_SERIES_RED);
+        2: return string(LV_E2_SERIES_PINK);
+        3: return string(LV_E2_SERIES_200);
+        4: return string(LV_E2_SERIES_2CC);
+        return CB_RESULT_NO_TEXT;
+        }
+
+/* Purchase Menu */
+
+    spriteset (ss_e2_series_red_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e2_series/gfx/e2_series_red.png") {template_purchase(233, 1)}
+    spriteset (ss_e2_series_pnk_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e2_series/gfx/e2_series_pnk.png") {template_purchase(233, 1)}
+
+    
+    switch(FEAT_TRAINS, SELF, sw_e2_series_year_dep_purchase, build_year) {2002..9999: ss_e2_series_pnk_buy;}
+    
+    switch(FEAT_TRAINS, SELF, sw_e2_series_purchase, [ 
+        STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+            0: logo_jreast; 
+            1: ss_e2_series_red_buy;
+            2: sw_e2_series_year_dep_purchase;
+        }
