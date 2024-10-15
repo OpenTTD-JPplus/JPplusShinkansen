@@ -39,7 +39,7 @@ This is the sister set to 🚂[JP+ Engines & Wagons](https://github.com/EmperorJ
 
 | | Shinkansen | Release | End Year  | Speed (km/h) | Weight per car |
 | --- | --- | --- | --- |--- | --- |
-|![200 Series](/src/trains/200_series/12/purchase_original_jre.png)| 200 Series | 1982 | 2008 | 210~ | 58t
+|![200 Series](/src/purchase/200_series.png)| 200 Series | 1982 | 2008 | 210~ | 58t
 |![400 Series](/src/trains/400_series/buy_400.png)| 400 Series | 1992 | 2010 | 240 | 42t
 |![E1 Series](/src/purchase/e1_series.png)| E1 Series | 1994 | 2012 | 240 | 58t
 |![E2 Series](/src/purchase/e2_series.png)| E2 Series | 1997 | N/A | 275 | 46t

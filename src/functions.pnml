@@ -105,3 +105,8 @@ switch (FEAT_TRAINS, SELF, sw_param_length, param_spritelength) {
 // Front Check
     switch(FEAT_TRAINS, SELF, NextPartSame, other_veh_curv_info(1) == 0 && other_veh_z_offset(1) == 0 && other_veh_z_offset(2) == 0 ) {return;}
     switch(FEAT_TRAINS, SELF, PrevPartSame, other_veh_curv_info(-1) == 0 && other_veh_z_offset(-1) == 0 && other_veh_z_offset(-2) == 0 ) {return;}
+
+// Pantos on Evens
+    switch(FEAT_TRAINS, SELF, PantoOnCabEvenConsist, num_vehs_in_consist % 2 == 0 ) {return;}
+    switch(FEAT_TRAINS, SELF, EvenCarForward, CarNumber() % 2 == 0 ) {return;}
+    switch(FEAT_TRAINS, SELF, EvenCarBackward, CarNumberFromEnd() % 2 == 0 ) {return;}

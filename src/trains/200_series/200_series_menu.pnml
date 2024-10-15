@@ -1,0 +1,46 @@
+
+/* SUBTYPES */
+
+    // Roundnose
+    switch(FEAT_TRAINS, SELF, sw_200_series_roundnose_subtype_text, cargo_subtype) {
+	    0: return string(LV_200_SERIES_ORIGINAL);       // Roundnose
+        1: return string(LV_200_SERIES_ORIGINAL_2CC);   // Roundnose 2cc
+        2: return string(LV_200_SERIES_REFURB);         // Refurb
+        return CB_RESULT_NO_TEXT;
+        }
+
+    // Sharknose
+    switch(FEAT_TRAINS, SELF, sw_200_series_sharknose_subtype_text, cargo_subtype) {
+        0: return string(LV_200_SERIES_ORIGINAL);       // Sharknose
+        1: return string(LV_200_SERIES_ORIGINAL_2CC);   // Sharknose 2cc
+        return CB_RESULT_NO_TEXT;
+        }
+
+    // 275
+    switch(FEAT_TRAINS, SELF, sw_200_series_275_subtype_text, cargo_subtype) {
+        0: return string(LV_200_SERIES_ORIGINAL);       // 275
+        1: return string(LV_200_SERIES_ORIGINAL_2CC);   // 275 2cc
+        return CB_RESULT_NO_TEXT;
+        }
+
+
+/* PURCHASE */
+
+    // Sharknose
+        spriteset (ss_200_series_sharknose_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/gfx/200_series_sharknose.png") {template_purchase(233, 1)}
+
+        switch(FEAT_TRAINS, SELF, sw_200_series_sharknose_purchase, [ 
+            STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+                0: logo_jreast; 
+                1: ss_200_series_sharknose_buy;
+            }
+    
+    // Roundnose
+        spriteset (ss_200_series_roundnose_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/gfx/200_series_roundnose.png") {template_purchase(233, 1)}
+
+        switch(FEAT_TRAINS, SELF, sw_200_series_roundnose_purchase, [ 
+            STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+                0: logo_jreast; 
+                1: ss_200_series_sharknose_buy;
+                2: ss_200_series_roundnose_buy;
+            }
