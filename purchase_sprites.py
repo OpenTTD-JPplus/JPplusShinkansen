@@ -10,9 +10,13 @@ shinkansen = {
     "l0_series"   : "l0_series",
     "e2_series"   : "e2_series_red",
     "200_series"   : "200_series_roundnose",
+    "e6_series"   : "e6_series",
+    "e3_series"   : "e3_r",
+    "400_series"   : "400_series",
+    "e8_series"   : "e8_series",
 }
 
-area = (267, 1, 306, 15)
+area = (267, 1, 307, 16)
 
 for s in shinkansen:
 

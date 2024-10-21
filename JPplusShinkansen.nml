@@ -12654,9 +12654,14 @@ item(FEAT_TRAINS, series_200_275) {
     3 : string(LV_400_SERIES_REFURB_2CC);
   }
 
-/* PURCHASE SPRITES */
-    spriteset (spriteset_400_series_purchase,	        	"src/trains/dummy/purchase.png") {tmpl_purchase_dh(0, 0)}
-    alternative_sprites(spriteset_400_series_purchase,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/400_series/buy_400.png") {template_purchase(0, 0)}
+/* Purchase Menu */
+    spriteset (ss_400_series_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/400_series/gfx/400_series.png") {template_purchase(233, 1)}
+
+    switch(FEAT_TRAINS, SELF, sw_400_series_purchase, [ 
+        STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+            0: logo_jreast; 
+            1: ss_400_series_buy;
+        }
 # 1 "src/trains/400_series/400_series.pnml" 2
 # 1 "src/trains/400_series/pnml/sprites/400_series_cab01.pnml" 1
 /* cab01 */
@@ -12953,7 +12958,7 @@ item(FEAT_TRAINS, series_400) {
         climates_available:             ALL_CLIMATES;
         ai_special_flag:                AI_FLAG_PASSENGER;
         sprite_id:                      SPRITE_ID_NEW_TRAIN;
-        misc_flags:                     bitmask(TRAIN_FLAG_MU);
+        misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_SPRITE_STACK);
         refittable_cargo_classes:       bitmask(CC_PASSENGERS);
         non_refittable_cargo_classes:   bitmask();
         refit_cost:                     0;
@@ -12970,7 +12975,7 @@ item(FEAT_TRAINS, series_400) {
     /*Graphics and Callbacks*/
       graphics {
         default:                        sw_400_series_graphics;
-	    purchase:                       spriteset_400_series_purchase;
+	    purchase:                       sw_400_series_purchase;
 		additional_text:	            return string(STR_DESC_400_SERIES);
         cargo_subtype_text:             sw_400_series_subtypetext;
         can_attach_wagon:			    sw_400_series_attach_vehid;
@@ -15219,23 +15224,22 @@ item(FEAT_TRAINS, series_e2) {
 		sw_e3_series_2014_livery_subtype_text;
 	}
 
-/* GRAPHICS */
+/* Purchase Menu */
+    spriteset (ss_e3_series_r_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/gfx/e3_r.png") {template_purchase(233, 1)}
+	spriteset (ss_e3_series_1000_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/gfx/e3_1000.png") {template_purchase(233, 1)}
+	spriteset (ss_e3_series_2000_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/gfx/e3_2000.png") {template_purchase(233, 1)}
 
-    // Purchase Sprites
-        spriteset (spriteset_e3_series_purchase_r,	        	"src/trains/dummy/purchase.png") {tmpl_purchase_dh(0, 0)}
-        alternative_sprites(spriteset_e3_series_purchase_r,     ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/buy_e3_r.png") {template_purchase(0, 0)}
-
-		spriteset (spriteset_e3_series_purchase_1000,	       	"src/trains/dummy/purchase.png") {tmpl_purchase_dh(0, 0)}
-        alternative_sprites(spriteset_e3_series_purchase_1000,  ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/buy_e3_1000.png") {template_purchase(0, 0)}
-
-		spriteset (spriteset_e3_series_purchase_2000,	        "src/trains/dummy/purchase.png") {tmpl_purchase_dh(0, 0)}
-        alternative_sprites(spriteset_e3_series_purchase_2000,  ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/buy_e3_2000.png") {template_purchase(0, 0)}
-
-		switch(FEAT_TRAINS, SELF, sw_e3_series_purchase, current_year) {
-		0..1998: spriteset_e3_series_purchase_r;
-        1999..2007: spriteset_e3_series_purchase_1000;
-		spriteset_e3_series_purchase_2000;
+    switch(FEAT_TRAINS, SELF, ss_e3_series_buy, current_year) {
+		0..1998: ss_e3_series_r_buy;
+        1999..2007: ss_e3_series_1000_buy;
+		ss_e3_series_2000_buy;
 	}
+
+	switch(FEAT_TRAINS, SELF, sw_e3_series_purchase, [ 
+        STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+            0: logo_jreast; 
+            1: ss_e3_series_buy;
+        }
 # 1 "src/trains/e3_series/e3_series.pnml" 2
 # 1 "src/trains/e3_series/pnml/sprites/e3_series_cab01.pnml" 1
 /* cab01 */
@@ -16196,7 +16200,7 @@ item(FEAT_TRAINS, series_e3) {
         climates_available:             ALL_CLIMATES;
         ai_special_flag:                AI_FLAG_PASSENGER;
         sprite_id:                      SPRITE_ID_NEW_TRAIN;
-        misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_2CC);
+        misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK);
         refittable_cargo_classes:       bitmask(CC_PASSENGERS);
         non_refittable_cargo_classes:   bitmask();
         refit_cost:                     0;
@@ -17374,10 +17378,14 @@ item(FEAT_TRAINS, series_e5) {
 		return CB_RESULT_NO_TEXT;
 		}
 
-/* Purchase Sprites */
-    spriteset (spriteset_e6_series_purchase,	        	  "src/trains/dummy/purchase.png") {tmpl_purchase_dh(0, 0)}
-    alternative_sprites(spriteset_e6_series_purchase,     ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e6_series/purchase.png") {template_purchase(0, 0)}
-    
+/* Purchase Menu */
+    spriteset (ss_e6_series_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e6_series/gfx/e6_series.png") {template_purchase(233, 1)}
+
+    switch(FEAT_TRAINS, SELF, sw_e6_series_purchase, [ 
+        STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+            0: logo_jreast; 
+            1: ss_e6_series_buy;
+        }
 # 1 "src/trains/e6_series/e6_series.pnml" 2
 # 1 "src/trains/e6_series/pnml/sprites/e6_series_cab01.pnml" 1
 /* cab01 */
@@ -17644,7 +17652,7 @@ item(FEAT_TRAINS, series_e6, 2006) {
         climates_available:             ALL_CLIMATES;
         ai_special_flag:                AI_FLAG_PASSENGER;
         sprite_id:                      SPRITE_ID_NEW_TRAIN;
-        misc_flags:                     bitmask(TRAIN_FLAG_MU);
+        misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_SPRITE_STACK);
         refittable_cargo_classes:       bitmask(CC_PASSENGERS);
         non_refittable_cargo_classes:   bitmask();
         refit_cost:                     0;
@@ -17663,7 +17671,7 @@ item(FEAT_TRAINS, series_e6, 2006) {
     /*Graphics and Callbacks*/
       graphics {
         default:                        sw_e6_series_graphics;
-		    purchase:                       spriteset_e6_series_purchase;
+		    purchase:                       sw_e6_series_purchase;
 		    additional_text:	              return string(STR_DESC_E6_SERIES);
         cargo_subtype_text:             sw_e6_series_subtype_text;
         can_attach_wagon:			          sw_e6_series_attach_vehid;
@@ -18108,9 +18116,14 @@ item(FEAT_TRAINS, series_e7) {
 		return CB_RESULT_NO_TEXT;
 		}
 
-/* Purchase Sprites */
-        spriteset (spriteset_e8_series_purchase,	        	"src/trains/dummy/purchase.png") {tmpl_purchase_dh(0, 0)}
-        alternative_sprites(spriteset_e8_series_purchase,     	ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e8_series/purchase.png") {template_purchase(0, 0)}
+/* Purchase Menu */
+    spriteset (ss_e8_series_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e8_series/gfx/e8_series.png") {template_purchase(233, 1)}
+
+    switch(FEAT_TRAINS, SELF, sw_e8_series_purchase, [ 
+        STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+            0: logo_jreast; 
+            1: ss_e8_series_buy;
+        }
 # 1 "src/trains/e8_series/e8_series.pnml" 2
 # 1 "src/trains/e8_series/pnml/sprites/e8_series_cab01.pnml" 1
 /* cab01 */
@@ -18375,7 +18388,7 @@ item(FEAT_TRAINS, series_e8) {
         climates_available:             ALL_CLIMATES;
         ai_special_flag:                AI_FLAG_PASSENGER;
         sprite_id:                      SPRITE_ID_NEW_TRAIN;
-        misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_2CC);
+        misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK);
         refittable_cargo_classes:       bitmask(CC_PASSENGERS);
         non_refittable_cargo_classes:   bitmask();
         refit_cost:                     0;
@@ -18392,11 +18405,11 @@ item(FEAT_TRAINS, series_e8) {
     /*Graphics and Callbacks*/
       graphics {
         default:                        sw_e8_series_graphics;
-	      purchase:                       spriteset_e8_series_purchase;
-		    additional_text:	            return string(STR_DESC_E8_SERIES);
+	      purchase:                       sw_e8_series_purchase;
+		    additional_text:	              return string(STR_DESC_E8_SERIES);
         cargo_subtype_text:             sw_e8_series_subtype_text;
-        cargo_age_period:				param_decay_express;
-        can_attach_wagon:			    sw_e8_series_attach_vehid;
+        cargo_age_period:				        param_decay_express;
+        can_attach_wagon:			          sw_e8_series_attach_vehid;
         //start_stop:                   ;
         purchase_weight:                42 / 2;
         purchase_power:                 400 * 4;

@@ -25,7 +25,7 @@ item(FEAT_TRAINS, series_e6, 2006) {
         climates_available:             ALL_CLIMATES;
         ai_special_flag:                AI_FLAG_PASSENGER;
         sprite_id:                      SPRITE_ID_NEW_TRAIN;
-        misc_flags:                     bitmask(TRAIN_FLAG_MU);
+        misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_SPRITE_STACK);
         refittable_cargo_classes:       bitmask(CC_PASSENGERS);
         non_refittable_cargo_classes:   bitmask();
         refit_cost:                     0;
@@ -44,7 +44,7 @@ item(FEAT_TRAINS, series_e6, 2006) {
     /*Graphics and Callbacks*/
       graphics {
         default:                        sw_e6_series_graphics;
-		    purchase:                       spriteset_e6_series_purchase;
+		    purchase:                       sw_e6_series_purchase;
 		    additional_text:	              return string(STR_DESC_E6_SERIES);
         cargo_subtype_text:             sw_e6_series_subtype_text;
         can_attach_wagon:			          sw_e6_series_attach_vehid;

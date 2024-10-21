@@ -23,7 +23,7 @@ item(FEAT_TRAINS, series_400) {
         climates_available:             ALL_CLIMATES;
         ai_special_flag:                AI_FLAG_PASSENGER;
         sprite_id:                      SPRITE_ID_NEW_TRAIN;
-        misc_flags:                     bitmask(TRAIN_FLAG_MU);
+        misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_SPRITE_STACK);
         refittable_cargo_classes:       bitmask(CC_PASSENGERS);
         non_refittable_cargo_classes:   bitmask();
         refit_cost:                     0;
@@ -40,7 +40,7 @@ item(FEAT_TRAINS, series_400) {
     /*Graphics and Callbacks*/
       graphics {
         default:                        sw_400_series_graphics;
-	    purchase:                       spriteset_400_series_purchase;
+	    purchase:                       sw_400_series_purchase;
 		additional_text:	            return string(STR_DESC_400_SERIES);
         cargo_subtype_text:             sw_400_series_subtypetext;
         can_attach_wagon:			    sw_400_series_attach_vehid;
