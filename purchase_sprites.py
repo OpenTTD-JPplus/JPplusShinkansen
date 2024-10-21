@@ -1,5 +1,7 @@
 from PIL import Image
 
+# Purchase Sprites
+
 shinkansen = {
     "300_series"  : "300_series",
     "500_series"  : "500_series",
@@ -14,6 +16,7 @@ shinkansen = {
     "e3_series"   : "e3_r",
     "400_series"   : "400_series",
     "e8_series"   : "e8_series",
+    "100_series"   : "100_series_irl",
 }
 
 area = (267, 1, 307, 16)
@@ -24,3 +27,26 @@ for s in shinkansen:
     
     purchase_sprite = img.crop(area)
     purchase_sprite.save("src/purchase/" + s + ".png")
+
+# Sprites
+
+shinkansen = {
+    "100_series" : {
+        "100_series_irl" : 5,
+        "100_series_2cc" : 5,
+        "100_series_kodama" : 3,
+    },
+    "300_series" : {
+        "300_series" : 4,
+        "300_series_2cc" : 4,
+    },
+}
+
+for s in shinkansen:
+    for c in shinkansen[s]:
+        r = shinkansen[s][c]
+        area = (0, 0, 309, r * 50 + 1 )
+        img = Image.open("src/trains/" + s +"/gfx/" + c + ".png")
+        sprite = img.crop(area)
+        sprite.save("src/trains/" + s +"/gfx/" + c + ".png")
+        

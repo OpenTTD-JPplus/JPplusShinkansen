@@ -1,0 +1,63 @@
+
+/* Subtypes */
+
+	// From 1985 to 1988
+	switch(FEAT_TRAINS, SELF, sw_100_series_1985_subtype_text, cargo_subtype) {
+		0: return string(LV_YEAR_DEP_LIVERY);       // Year Dependent Livery
+		1: return string(LV_100_SERIES_X);          // X
+		2: return string(LV_100_SERIES_X_2CC);      // X 2cc
+		return CB_RESULT_NO_TEXT;
+		}
+
+	// From 1988 to 2000 - introduction of V set with more double decker cars
+	switch(FEAT_TRAINS, SELF, sw_100_series_1988_subtype_text, cargo_subtype) {
+		0: return string(LV_YEAR_DEP_LIVERY);       // Year Dependent Livery
+		1: return string(LV_100_SERIES_X);          // X
+		2: return string(LV_100_SERIES_X_2CC);      // X 2cc
+		3: return string(LV_100_SERIES_V);          // V set with bilevel
+		4: return string(LV_100_SERIES_V_2CC);      // V set with bilevel 2cc
+		return CB_RESULT_NO_TEXT;
+		}
+
+	// From 2000 onwards - introduction of Kodama Livery
+	switch(FEAT_TRAINS, SELF, sw_100_series_2000_subtype_text, cargo_subtype) {
+		0: return string(LV_YEAR_DEP_LIVERY);       // Year Dependent Livery
+		1: return string(LV_100_SERIES_X);          // X
+		2: return string(LV_100_SERIES_X_2CC);      // X 2cc
+		3: return string(LV_100_SERIES_V);          // V set with bilevel
+		4: return string(LV_100_SERIES_V_2CC);      // V set with bilevel 2cc
+		5: return string(LV_100_SERIES_KODAMA);     // 8-car ser with Kodama livery 
+		return CB_RESULT_NO_TEXT;
+		}
+
+	// SUBTYPE MENU over time
+	switch(FEAT_TRAINS, SELF, sw_100_series_year_dep_subtype_text, current_year) {
+		0..1987: sw_100_series_1985_subtype_text;
+		1988..1999: sw_100_series_1988_subtype_text;
+		sw_100_series_2000_subtype_text;
+	}
+
+/* Purchase Menu */
+
+    spriteset (ss_100_series_irl_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/100_series/gfx/100_series_irl.png") {template_purchase(233, 1)}
+    spriteset (ss_100_series_kodama_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/100_series/gfx/100_series_kodama.png") {template_purchase(233, 1)}
+    
+
+    switch(FEAT_TRAINS, SELF, logo_100_series_year_dep, current_year) {
+			0..1986:    logo_jnr;                           // JNR (Original Livery)
+			1987..1988: logo_jrcentral;                     // JR Central (Original Livery)
+			1989..1999: logo_jrwestcentral;                 // JR Central & West (Original Livery)
+			2000..2001: logo_jrwestcentral;                 // JR Central & West (Kodama Livery)
+			            logo_jrwest;                        // JR West (Kodama Livery)
+		}
+
+    switch(FEAT_TRAINS, SELF, sw_100_series_year_dep_purchase, current_year) {
+			2000..9999: ss_100_series_kodama_buy;           // Kodama Period
+		}
+
+    switch(FEAT_TRAINS, SELF, sw_100_series_purchase, [ 
+        STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+            0: logo_100_series_year_dep; 
+            1: ss_100_series_irl_buy;
+            2: sw_100_series_year_dep_purchase;
+        }
