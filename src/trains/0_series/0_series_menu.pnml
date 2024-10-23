@@ -1,0 +1,53 @@
+
+/* SUBTYPES */
+
+    // From 1964 to 2002
+    switch(FEAT_TRAINS, SELF, sw_0_series_1964_subtype_text, cargo_subtype) {
+        0: return string(LV_YEAR_DEP_LIVERY);
+	    1: return string(LV_0_SERIES_ORIGINAL);
+        2: return string(LV_0_SERIES_NOSE);
+        3: return string(LV_0_SERIES_ORIGINAL_2CC);
+        4: return string(LV_0_SERIES_NOSE_2CC);
+        return CB_RESULT_NO_TEXT;
+        }
+
+    // Note - there is a purchase sprite change in 1987 (JNR -> JR)
+    
+    // From 2002 onwards - introduction of Kodama Livery
+    switch(FEAT_TRAINS, SELF, sw_0_series_2002_subtype_text, cargo_subtype) {
+        0: return string(LV_YEAR_DEP_LIVERY);
+	    1: return string(LV_0_SERIES_ORIGINAL);
+        2: return string(LV_0_SERIES_NOSE);
+        3: return string(LV_0_SERIES_ORIGINAL_2CC);
+        4: return string(LV_0_SERIES_NOSE_2CC);
+        5: return string(LV_0_SERIES_KODAMA);
+        return CB_RESULT_NO_TEXT;
+        }
+    
+    // Cargo Subtype List
+    switch(FEAT_TRAINS, SELF, sw_0_series_year_dep_subtype_text, current_year) {
+        0..2001: sw_0_series_1964_subtype_text;
+        sw_0_series_2002_subtype_text;
+    }
+
+/* Purchase Menu */
+
+    spriteset (ss_0_series_irl_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/0_series/gfx/0_series_irl.png") {template_purchase(233, 1)}
+    spriteset (ss_922_series_irl_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/0_series/gfx/922_series.png") {template_purchase(233, 1)}
+
+    switch(FEAT_TRAINS, SELF, logo_0_series_year_dep, current_year) {
+			0..1986: logo_jnr;                  // JNR (Original Livery)
+			logo_jrwestcentral;                 // JR Central & West (Kodama Livery)
+		}
+
+    switch(FEAT_TRAINS, SELF, sw_0_series_purchase, [ 
+        STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+            0: logo_0_series_year_dep; 
+            1: ss_0_series_irl_buy;
+        }
+
+    switch(FEAT_TRAINS, SELF, sw_922_series_purchase, [ 
+        STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+            0: logo_0_series_year_dep; 
+            1: ss_922_series_irl_buy;
+        }

@@ -17,6 +17,7 @@ shinkansen = {
     "400_series"   : "400_series",
     "e8_series"   : "e8_series",
     "100_series"   : "100_series_irl",
+    "0_series"   : "0_series_irl",
 }
 
 area = (267, 1, 307, 16)
@@ -31,6 +32,13 @@ for s in shinkansen:
 # Sprites
 
 shinkansen = {
+    "0_series" : {
+        "0_series_irl" : 3,
+        "0_series_2cc" : 3,
+        "0_series_kodama" : 3,
+        "0_series_nose" : 2,
+        "922_series" : 3,
+    },
     "100_series" : {
         "100_series_irl" : 5,
         "100_series_2cc" : 5,

@@ -1,22 +1,7 @@
-switch (FEAT_TRAINS, SELF, sw_0_series_graphics, position_in_consist % 3) {				
-		1:  sw_0_series_ends; 				
-		dummy_sprites;
-	}
 
 switch (FEAT_TRAINS, SELF, sw_0_series_articulated_part, extra_callback_info1) {
 		1 .. 2: return series_0;									
 		return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
-	}
-
-/*---Coupling Switch---*/
-switch(FEAT_TRAINS, SELF, sw_0_series_attach_vehid, [vehicle_type_id == mu_car_full]) {
- 0: return string(ONLY_ADD_MUCAR);
-}
-
-/*---Length Check---*/
-switch (FEAT_TRAINS, SELF, sw_0_series_stop_start, num_vehs_in_consist < 12) {				
-		1:  return string(STR_LENGTH_ERROR); 				
-		return CB_RESULT_NO_TEXT; 
 	}
 
 /* SPEED */
@@ -30,7 +15,7 @@ item(FEAT_TRAINS, series_0) {
 		/* Menu */
         name: 							string(STR_NAME_0_SERIES);
         sprite_id:                      SPRITE_ID_NEW_TRAIN; 		// required to enable new graphics
-        misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_2CC);
+        misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK);
 		running_cost_base:              RUNNING_COST_ELECTRIC;
 		engine_class:                   ENGINE_CLASS_ELECTRIC;
         /* Availability */
@@ -59,13 +44,13 @@ item(FEAT_TRAINS, series_0) {
 		/* Menu */
         additional_text:                string(STR_DESC_0_SERIES);
         cargo_subtype_text:             sw_0_series_year_dep_subtype_text;
-		can_attach_wagon:				sw_0_series_attach_vehid;
-		start_stop:						sw_0_series_stop_start;
+		can_attach_wagon:				sw_attach_mu_car_full;
+		start_stop:						sw_stop_start_full_length_4;
         purchase_weight:                61;
         purchase_power:                 248 * 4;
         /* Graphics */
         default:                        sw_0_series_graphics;
-		purchase:                       sw_0_series_year_dep_purchase;
+		purchase:                       sw_0_series_purchase;
 		articulated_part:               sw_0_series_articulated_part;
         visual_effect_and_powered:      sw_visual_effect_and_powered;
 		/* Stats */
