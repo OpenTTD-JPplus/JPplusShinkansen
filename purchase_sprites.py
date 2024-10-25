@@ -18,6 +18,7 @@ shinkansen = {
     "e8_series"   : "e8_series",
     "100_series"   : "100_series_irl",
     "0_series"   : "0_series_irl",
+    "e4_series"   : "e4_series_yellow",
 }
 
 area = (267, 1, 307, 16)
@@ -47,6 +48,11 @@ shinkansen = {
     "300_series" : {
         "300_series" : 4,
         "300_series_2cc" : 4,
+    },
+    "e4_series" : {
+        "e4_series_yellow" : 3,
+        "e4_series_pink" : 3,
+        "e4_series_2cc" : 3,
     },
 }
 

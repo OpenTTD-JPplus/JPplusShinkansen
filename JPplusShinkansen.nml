@@ -1436,6 +1436,18 @@ switch(FEAT_TRAINS, SELF, logo_jnr, param_hide_logo) {1:sprite_logo_jnr;}
 	spriteset(panto_midsprite_500_f, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/500_series/gfx/500_series_pantos.png") {tmpl_mid_std(1,101)}
 	spriteset(panto_midsprite_500_b, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/500_series/gfx/500_series_pantos.png") {tmpl_mid_rev(1,101)}
 
+// E1 Series
+
+	spriteset(ss_std_e1_series_pantof_ptg, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e1_series/gfx/e1_series_pantos.png") {tmpl_10_std(1,101)}
+	spriteset(ss_std_e1_series_pantob_ptg, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e1_series/gfx/e1_series_pantos.png") {tmpl_10_rev(1,101)}
+
+	switch(FEAT_TRAINS, SELF, panto_longsprite_e1_f, HideLongSprite() ) { 0: ss_std_e1_series_pantof_ptg; }
+	switch(FEAT_TRAINS, SELF, panto_longsprite_e1_b, HideLongSprite() ) { 0: ss_std_e1_series_pantob_ptg; }
+
+	spriteset(panto_midsprite_e1_f, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e1_series/gfx/e1_series_pantos.png") {tmpl_mid_std(1,101)}
+	spriteset(panto_midsprite_e1_b, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e1_series/gfx/e1_series_pantos.png") {tmpl_mid_rev(1,101)}
+
+
 // E2 Series
 
 	spriteset(ss_std_e2_series_pantof_ptg, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e2_series/gfx/e2_series_pantos.png") {tmpl_10_std(1,101)}
@@ -14195,6 +14207,9 @@ item(FEAT_TRAINS, series_400) {
 				1: ss_mid_e1_series_pantof_mask;		// Mask for Mid
 				2: sw_e1_series_pantof_mid_longsprite;	// Long Sprite for Corners and Hills
 				3: sw_e1_series_pantof_std_longsprite;
+				// Pantos
+                4: panto_midsprite_e1_f;
+                5: panto_longsprite_e1_f;
 			}
 
 		// Back
@@ -14245,6 +14260,9 @@ item(FEAT_TRAINS, series_400) {
 				1: ss_mid_e1_series_pantob_mask;		// Mask for Mid
 				2: sw_e1_series_pantob_mid_longsprite;	// Long Sprite for Corners and Hills
 				3: sw_e1_series_pantob_std_longsprite;
+				// Pantos
+                4: panto_midsprite_e1_b;
+                5: panto_longsprite_e1_b;
 			}
 
 		// Back
@@ -16854,7 +16872,8 @@ item(FEAT_TRAINS, series_e3) {
 # 1 "JPplusShinkansen.pnml" 4
 # 1 "src/trains/e4_series/e4_series.pnml" 1
 
-# 1 "src/trains/e4_series/pnml/e4_series_menu.pnml" 1
+# 1 "src/trains/e4_series/e4_series_menu.pnml" 1
+
 /* SUBTYPES */ 
 
 	switch(FEAT_TRAINS, SELF, sw_e4_series_subtype_text, cargo_subtype) {
@@ -16866,526 +16885,746 @@ item(FEAT_TRAINS, series_e3) {
 		}
 
 /* Purchase Menu */
-    spriteset (ss_e4_series_buy_yellow_livery_12, 					"src/trains/dummy/purchase.png") {template_purchase(0, 0)}
-    spriteset (ss_e4_series_buy_pink_livery_12, 					"src/trains/dummy/purchase.png") {template_purchase(0, 0)}
 
-	spriteset (ss_e4_series_buy_yellow_livery_10, 					"src/trains/dummy/purchase.png") {template_purchase(0, 0)}
-    spriteset (ss_e4_series_buy_pink_livery_10, 					"src/trains/dummy/purchase.png") {template_purchase(0, 0)}
+    spriteset (ss_e4_series_yel_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_yellow.png") {template_purchase(233, 1)}
+    spriteset (ss_e4_series_pnk_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_pink.png") {template_purchase(233, 1)}
 
-    alternative_sprites(ss_e4_series_buy_yellow_livery_12, 			ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/12/purchase_yellow.png") {template_purchase(0, 0)}
-    alternative_sprites(ss_e4_series_buy_pink_livery_12,    		ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/12/purchase_pink.png")   {template_purchase(0, 0)}
-
-	alternative_sprites(ss_e4_series_buy_yellow_livery_10, 			ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/12/purchase_yellow.png") {template_purchase(0, 0)}
-    alternative_sprites(ss_e4_series_buy_pink_livery_10,    		ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/12/purchase_pink.png")   {template_purchase(0, 0)}
-
-		switch (FEAT_TRAINS, SELF, sw_e4_series_buy_pink_livery, param_spritelength) {
-			1: ss_e4_series_buy_pink_livery_10;						// Length 10
-			ss_e4_series_buy_pink_livery_12;						// Length 12
-		}
-
-		switch (FEAT_TRAINS, SELF, sw_e4_series_buy_yellow_livery, param_spritelength) {
-			1: ss_e4_series_buy_yellow_livery_10;					// Length 10
-			ss_e4_series_buy_yellow_livery_12;						// Length 12
-		}
-
-		switch(FEAT_TRAINS, SELF, sw_e4_series_year_dep_purchase, current_year) {
-			0..2014: sw_e4_series_buy_yellow_livery;
-			sw_e4_series_buy_pink_livery;
-		}
+    switch(FEAT_TRAINS, SELF, sw_e4_series_year_dep_purchase, current_year) {2015..9999: ss_e4_series_pnk_buy; }
+    
+    switch(FEAT_TRAINS, SELF, sw_e4_series_purchase, [ 
+        STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+            0: logo_jreast;
+            1: ss_e4_series_yel_buy;
+            2: sw_e4_series_year_dep_purchase;
+        }
 # 1 "src/trains/e4_series/e4_series.pnml" 2
-# 1 "src/trains/e4_series/pnml/sprites/e4_series_cab01.pnml" 1
+# 1 "src/trains/e4_series/e4_series_cab01.pnml" 1
+
 /* cab01 */
 
-// FORWARDS
-
-// E4 Series Yellow Stripe
-spriteset(ss_e4_series_cab01f_yellow_12,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
-spriteset(ss_e4_series_cab01f_yellow_10,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
-alternative_sprites(ss_e4_series_cab01f_yellow_12,          ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/12/e4y.png") {template_12_standard(1,1)}
-alternative_sprites(ss_e4_series_cab01f_yellow_10,	        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/10/e4y.png") {template_10_standard(1,1)}		
-
-switch (FEAT_TRAINS, SELF, sw_e4_series_cab01f_yellow, param_spritelength) {
-	1: ss_e4_series_cab01f_yellow_10;				        // Length 10
-	ss_e4_series_cab01f_yellow_12;				            // Length 12
-}
-
-// E4 Series Pink Stripe
-spriteset(ss_e4_series_cab01f_pink_12,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
-spriteset(ss_e4_series_cab01f_pink_10,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
-alternative_sprites(ss_e4_series_cab01f_pink_12,            ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/12/e4p.png") {template_12_standard(1,1)}
-alternative_sprites(ss_e4_series_cab01f_pink_10,	        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/10/e4p.png") {template_10_standard(1,1)}		
-
-switch (FEAT_TRAINS, SELF, sw_e4_series_cab01f_pink, param_spritelength) {
-	1: ss_e4_series_cab01f_pink_10;				            // Length 10
-	ss_e4_series_cab01f_pink_12;				            // Length 12
-}
-
-// E4 Series 2cc
-spriteset(ss_e4_series_cab01f_2cc_12,             	        "src/trains/e4_series/12/e4_2cc.png") {template_12_standard(1,1)}
-spriteset(ss_e4_series_cab01f_2cc_10,             	        "src/trains/e4_series/10/e4_2cc.png") {template_10_standard(1,1)}
-
-switch (FEAT_TRAINS, SELF, sw_e4_series_cab01f_2cc, param_spritelength) {
-	1: ss_e4_series_cab01f_2cc_10;				            // Length 10
-	ss_e4_series_cab01f_2cc_12;					            // Length 12
-}
-
-// Subtype Selection
-switch(FEAT_TRAINS, SELF, sw_e4_series_cab01f_year_dep_livery, build_year) {
-        0..2014: sw_e4_series_cab01f_yellow;
-        sw_e4_series_cab01f_pink;
-    }
-
-switch(FEAT_TRAINS, PARENT, sw_e4_series_cab01f, cargo_subtype) {
-        1: sw_e4_series_cab01f_yellow;
-        2: sw_e4_series_cab01f_pink;
-        3: sw_e4_series_cab01f_2cc;
-        sw_e4_series_cab01f_year_dep_livery;
-    }
-
-// BACKWARDS
-
-// E4 Series Yellow Stripe
-spriteset(ss_e4_series_cab01b_yellow_12,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
-spriteset(ss_e4_series_cab01b_yellow_10,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
-alternative_sprites(ss_e4_series_cab01b_yellow_12,          ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/12/e4y.png") {template_12_reversed(1,41)}
-alternative_sprites(ss_e4_series_cab01b_yellow_10,	        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/10/e4y.png") {template_10_reversed(1,41)}		
-
-switch (FEAT_TRAINS, SELF, sw_e4_series_cab01b_yellow, param_spritelength) {
-	1: ss_e4_series_cab01b_yellow_10;				        // Length 10
-	ss_e4_series_cab01b_yellow_12;				            // Length 12
-}
-
-// E4 Series Pink Stripe
-spriteset(ss_e4_series_cab01b_pink_12,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
-spriteset(ss_e4_series_cab01b_pink_10,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
-alternative_sprites(ss_e4_series_cab01b_pink_12,            ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/12/e4p.png") {template_12_reversed(1,41)}
-alternative_sprites(ss_e4_series_cab01b_pink_10,	        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/10/e4p.png") {template_10_reversed(1,41)}		
-
-switch (FEAT_TRAINS, SELF, sw_e4_series_cab01b_pink, param_spritelength) {
-	1: ss_e4_series_cab01b_pink_10;				            // Length 10
-	ss_e4_series_cab01b_pink_12;				            // Length 12
-}
-
-// E4 Series 2cc
-spriteset(ss_e4_series_cab01b_2cc_12,             	        "src/trains/e4_series/12/e4_2cc.png") {template_12_reversed(1,41)}
-spriteset(ss_e4_series_cab01b_2cc_10,             	        "src/trains/e4_series/10/e4_2cc.png") {template_10_reversed(1,41)}
-
-switch (FEAT_TRAINS, SELF, sw_e4_series_cab01b_2cc, param_spritelength) {
-	1: ss_e4_series_cab01b_2cc_10;				 	        // Length 10
-	ss_e4_series_cab01b_2cc_12;					            // Length 12
-}
-
-// Subtype Selection
-switch(FEAT_TRAINS, SELF, sw_e4_series_cab01b_year_dep_livery, build_year) {
-        0..2014: sw_e4_series_cab01b_yellow;
-        sw_e4_series_cab01b_pink;
-    }
-
-switch(FEAT_TRAINS, PARENT, sw_e4_series_cab01b, cargo_subtype) {
-        1: sw_e4_series_cab01b_yellow;
-        2: sw_e4_series_cab01b_pink;
-        3: sw_e4_series_cab01b_2cc;
-        sw_e4_series_cab01b_year_dep_livery;
-    }
-# 1 "src/trains/e4_series/e4_series.pnml" 2
-# 1 "src/trains/e4_series/pnml/sprites/e4_series_cab02.pnml" 1
-/* cab02 */
-
-// FORWARDS
-
-// E4 Series Yellow Stripe
-spriteset(ss_e4_series_cab02f_yellow_12,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
-spriteset(ss_e4_series_cab02f_yellow_10,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
-alternative_sprites(ss_e4_series_cab02f_yellow_12,          ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/12/e4y.png") {template_12_cab_rev_standard(1,41)}
-alternative_sprites(ss_e4_series_cab02f_yellow_10,	        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/10/e4y.png") {template_10_cab_rev_standard(1,41)}		
-
-switch (FEAT_TRAINS, SELF, sw_e4_series_cab02f_yellow, param_spritelength) {
-	1: ss_e4_series_cab02f_yellow_10;				        // Length 10
-	ss_e4_series_cab02f_yellow_12;				            // Length 12
-}
-
-// E4 Series Pink Stripe
-spriteset(ss_e4_series_cab02f_pink_12,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
-spriteset(ss_e4_series_cab02f_pink_10,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
-alternative_sprites(ss_e4_series_cab02f_pink_12,            ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/12/e4p.png") {template_12_cab_rev_standard(1,41)}
-alternative_sprites(ss_e4_series_cab02f_pink_10,	        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/10/e4p.png") {template_10_cab_rev_standard(1,41)}		
-
-switch (FEAT_TRAINS, SELF, sw_e4_series_cab02f_pink, param_spritelength) {
-	1: ss_e4_series_cab02f_pink_10;				            // Length 10
-	ss_e4_series_cab02f_pink_12;				            // Length 12
-}
-
-// E4 Series 2cc
-spriteset(ss_e4_series_cab02f_2cc_12,             	        "src/trains/e4_series/12/e4_2cc.png") {template_12_cab_rev_standard(1,41)}
-spriteset(ss_e4_series_cab02f_2cc_10,             	        "src/trains/e4_series/10/e4_2cc.png") {template_10_cab_rev_standard(1,41)}
-
-switch (FEAT_TRAINS, SELF, sw_e4_series_cab02f_2cc, param_spritelength) {
-	1: ss_e4_series_cab02f_2cc_10;				            // Length 10
-	ss_e4_series_cab02f_2cc_12;					            // Length 12
-}
-
-// Subtype Selection
-switch(FEAT_TRAINS, SELF, sw_e4_series_cab02f_year_dep_livery, build_year) {
-        0..2014: sw_e4_series_cab02f_yellow;
-        sw_e4_series_cab02f_pink;
-    }
-
-switch(FEAT_TRAINS, PARENT, sw_e4_series_cab02f, cargo_subtype) {
-        1: sw_e4_series_cab02f_yellow;
-        2: sw_e4_series_cab02f_pink;
-        3: sw_e4_series_cab02f_2cc;
-        sw_e4_series_cab02f_year_dep_livery;
-    }
-
-// BACKWARDS
-
-// E4 Series Yellow Stripe
-spriteset(ss_e4_series_cab02b_yellow_12,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
-spriteset(ss_e4_series_cab02b_yellow_10,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
-alternative_sprites(ss_e4_series_cab02b_yellow_12,          ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/12/e4y.png") {template_12_cab_rev_reversed(1,1)}
-alternative_sprites(ss_e4_series_cab02b_yellow_10,	        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/10/e4y.png") {template_10_cab_rev_reversed(1,1)}		
-
-switch (FEAT_TRAINS, SELF, sw_e4_series_cab02b_yellow, param_spritelength) {
-	1: ss_e4_series_cab02b_yellow_10;				        // Length 10
-	ss_e4_series_cab02b_yellow_12;				            // Length 12
-}
-
-// E4 Series Pink Stripe
-spriteset(ss_e4_series_cab02b_pink_12,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
-spriteset(ss_e4_series_cab02b_pink_10,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
-alternative_sprites(ss_e4_series_cab02b_pink_12,            ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/12/e4p.png") {template_12_cab_rev_reversed(1,1)}
-alternative_sprites(ss_e4_series_cab02b_pink_10,	        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/10/e4p.png") {template_10_cab_rev_reversed(1,1)}		
-
-switch (FEAT_TRAINS, SELF, sw_e4_series_cab02b_pink, param_spritelength) {
-	1: ss_e4_series_cab02b_pink_10;				            // Length 10
-	ss_e4_series_cab02b_pink_12;				            // Length 12
-}
-
-// E4 Series 2cc
-spriteset(ss_e4_series_cab02b_2cc_12,             	        "src/trains/e4_series/12/e4_2cc.png") {template_12_cab_rev_reversed(1,1)}
-spriteset(ss_e4_series_cab02b_2cc_10,             	        "src/trains/e4_series/10/e4_2cc.png") {template_10_cab_rev_reversed(1,1)}
-
-switch (FEAT_TRAINS, SELF, sw_e4_series_cab02b_2cc, param_spritelength) {
-	1: ss_e4_series_cab02b_2cc_10;				 	        // Length 10
-	ss_e4_series_cab02b_2cc_12;					            // Length 12
-}
-
-// Subtype Selection
-switch(FEAT_TRAINS, SELF, sw_e4_series_cab02b_year_dep_livery, build_year) {
-        0..2014: sw_e4_series_cab02b_yellow;
-        sw_e4_series_cab02b_pink;
-    }
-
-switch(FEAT_TRAINS, PARENT, sw_e4_series_cab02b, cargo_subtype) {
-        1: sw_e4_series_cab02b_yellow;
-        2: sw_e4_series_cab02b_pink;
-        3: sw_e4_series_cab02b_2cc;
-        sw_e4_series_cab02b_year_dep_livery;
-    }
-# 1 "src/trains/e4_series/e4_series.pnml" 2
-# 1 "src/trains/e4_series/pnml/sprites/e4_series_coach.pnml" 1
-/* coach */
-
-// FORWARDS
-
-// E4 Series Yellow Stripe
-spriteset(ss_e4_series_coachf_yellow_12,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
-spriteset(ss_e4_series_coachf_yellow_10,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
-alternative_sprites(ss_e4_series_coachf_yellow_12,          ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/12/e4y.png") {template_12_standard(1,121)}
-alternative_sprites(ss_e4_series_coachf_yellow_10,	        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/10/e4y.png") {template_10_standard(1,121)}		
-
-switch (FEAT_TRAINS, SELF, sw_e4_series_coachf_yellow, param_spritelength) {
-	1: ss_e4_series_coachf_yellow_10;				        // Length 10
-	ss_e4_series_coachf_yellow_12;				            // Length 12
-}
-
-// E4 Series Pink Stripe
-spriteset(ss_e4_series_coachf_pink_12,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
-spriteset(ss_e4_series_coachf_pink_10,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
-alternative_sprites(ss_e4_series_coachf_pink_12,            ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/12/e4p.png") {template_12_standard(1,121)}
-alternative_sprites(ss_e4_series_coachf_pink_10,	        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/10/e4p.png") {template_10_standard(1,121)}		
-
-switch (FEAT_TRAINS, SELF, sw_e4_series_coachf_pink, param_spritelength) {
-	1: ss_e4_series_coachf_pink_10;				            // Length 10
-	ss_e4_series_coachf_pink_12;				            // Length 12
-}
-
-// E4 Series 2cc
-spriteset(ss_e4_series_coachf_2cc_12,             	        "src/trains/e4_series/12/e4_2cc.png") {template_12_standard(1,121)}
-spriteset(ss_e4_series_coachf_2cc_10,             	        "src/trains/e4_series/10/e4_2cc.png") {template_10_standard(1,121)}
-
-switch (FEAT_TRAINS, SELF, sw_e4_series_coachf_2cc, param_spritelength) {
-	1: ss_e4_series_coachf_2cc_10;				            // Length 10
-	ss_e4_series_coachf_2cc_12;					            // Length 12
-}
-
-// Subtype Selection
-switch(FEAT_TRAINS, SELF, sw_e4_series_coachf_year_dep_livery, build_year) {
-        0..2014: sw_e4_series_coachf_yellow;
-        sw_e4_series_coachf_pink;
-    }
-
-switch(FEAT_TRAINS, PARENT, sw_e4_series_coachf, cargo_subtype) {
-        1: sw_e4_series_coachf_yellow;
-        2: sw_e4_series_coachf_pink;
-        3: sw_e4_series_coachf_2cc;
-        sw_e4_series_coachf_year_dep_livery;
-    }
-
-// BACKWARDS
-
-// E4 Series Yellow Stripe
-spriteset(ss_e4_series_coachb_yellow_12,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
-spriteset(ss_e4_series_coachb_yellow_10,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
-alternative_sprites(ss_e4_series_coachb_yellow_12,          ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/12/e4y.png") {template_12_reversed(1,121)}
-alternative_sprites(ss_e4_series_coachb_yellow_10,	        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/10/e4y.png") {template_10_reversed(1,121)}		
-
-switch (FEAT_TRAINS, SELF, sw_e4_series_coachb_yellow, param_spritelength) {
-	1: ss_e4_series_coachb_yellow_10;				        // Length 10
-	ss_e4_series_coachb_yellow_12;				            // Length 12
-}
-
-// E4 Series Pink Stripe
-spriteset(ss_e4_series_coachb_pink_12,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
-spriteset(ss_e4_series_coachb_pink_10,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
-alternative_sprites(ss_e4_series_coachb_pink_12,            ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/12/e4p.png") {template_12_reversed(1,121)}
-alternative_sprites(ss_e4_series_coachb_pink_10,	        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/10/e4p.png") {template_10_reversed(1,121)}		
-
-switch (FEAT_TRAINS, SELF, sw_e4_series_coachb_pink, param_spritelength) {
-	1: ss_e4_series_coachb_pink_10;				            // Length 10
-	ss_e4_series_coachb_pink_12;				            // Length 12
-}
-
-// E4 Series 2cc
-spriteset(ss_e4_series_coachb_2cc_12,             	        "src/trains/e4_series/12/e4_2cc.png") {template_12_reversed(1,121)}
-spriteset(ss_e4_series_coachb_2cc_10,             	        "src/trains/e4_series/10/e4_2cc.png") {template_10_reversed(1,121)}
-
-switch (FEAT_TRAINS, SELF, sw_e4_series_coachb_2cc, param_spritelength) {
-	1: ss_e4_series_coachb_2cc_10;				 	        // Length 10
-	ss_e4_series_coachb_2cc_12;					            // Length 12
-}
-
-// Subtype Selection
-switch(FEAT_TRAINS, SELF, sw_e4_series_coachb_year_dep_livery, build_year) {
-        0..2014: sw_e4_series_coachb_yellow;
-        sw_e4_series_coachb_pink;
-    }
-
-switch(FEAT_TRAINS, PARENT, sw_e4_series_coachb, cargo_subtype) {
-        1: sw_e4_series_coachb_yellow;
-        2: sw_e4_series_coachb_pink;
-        3: sw_e4_series_coachb_2cc;
-        sw_e4_series_coachb_year_dep_livery;
-    }
-# 1 "src/trains/e4_series/e4_series.pnml" 2
-# 1 "src/trains/e4_series/pnml/sprites/e4_series_panto.pnml" 1
-/* panto */
-
-// FORWARDS
-
-// E4 Series Yellow Stripe
-spriteset(ss_e4_series_pantof_yellow_12,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
-spriteset(ss_e4_series_pantof_yellow_10,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
-alternative_sprites(ss_e4_series_pantof_yellow_12,          ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/12/e4y.png") {template_12_standard(1,81)}
-alternative_sprites(ss_e4_series_pantof_yellow_10,	        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/10/e4y.png") {template_10_standard(1,81)}		
-
-switch (FEAT_TRAINS, SELF, sw_e4_series_pantof_yellow, param_spritelength) {
-	1: ss_e4_series_pantof_yellow_10;				        // Length 10
-	ss_e4_series_pantof_yellow_12;				            // Length 12
-}
-
-// E4 Series Pink Stripe
-spriteset(ss_e4_series_pantof_pink_12,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
-spriteset(ss_e4_series_pantof_pink_10,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
-alternative_sprites(ss_e4_series_pantof_pink_12,            ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/12/e4p.png") {template_12_standard(1,81)}
-alternative_sprites(ss_e4_series_pantof_pink_10,	        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/10/e4p.png") {template_10_standard(1,81)}		
-
-switch (FEAT_TRAINS, SELF, sw_e4_series_pantof_pink, param_spritelength) {
-	1: ss_e4_series_pantof_pink_10;				            // Length 10
-	ss_e4_series_pantof_pink_12;				            // Length 12
-}
-
-// E4 Series 2cc
-spriteset(ss_e4_series_pantof_2cc_12,             	        "src/trains/e4_series/12/e4_2cc.png") {template_12_standard(1,81)}
-spriteset(ss_e4_series_pantof_2cc_10,             	        "src/trains/e4_series/10/e4_2cc.png") {template_10_standard(1,81)}
-
-switch (FEAT_TRAINS, SELF, sw_e4_series_pantof_2cc, param_spritelength) {
-	1: ss_e4_series_pantof_2cc_10;				            // Length 10
-	ss_e4_series_pantof_2cc_12;					            // Length 12
-}
-
-// Subtype Selection
-switch(FEAT_TRAINS, SELF, sw_e4_series_pantof_year_dep_livery, build_year) {
-        0..2014: sw_e4_series_pantof_yellow;
-        sw_e4_series_pantof_pink;
-    }
-
-switch(FEAT_TRAINS, PARENT, sw_e4_series_pantof, cargo_subtype) {
-        1: sw_e4_series_pantof_yellow;
-        2: sw_e4_series_pantof_pink;
-        3: sw_e4_series_pantof_2cc;
-        sw_e4_series_pantof_year_dep_livery;
-    }
-
-// BACKWARDS
-
-// E4 Series Yellow Stripe
-spriteset(ss_e4_series_pantob_yellow_12,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
-spriteset(ss_e4_series_pantob_yellow_10,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
-alternative_sprites(ss_e4_series_pantob_yellow_12,          ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/12/e4y.png") {template_12_reversed(1,81)}
-alternative_sprites(ss_e4_series_pantob_yellow_10,	        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/10/e4y.png") {template_10_reversed(1,81)}		
-
-switch (FEAT_TRAINS, SELF, sw_e4_series_pantob_yellow, param_spritelength) {
-	1: ss_e4_series_pantob_yellow_10;				        // Length 10
-	ss_e4_series_pantob_yellow_12;				            // Length 12
-}
-
-// E4 Series Pink Stripe
-spriteset(ss_e4_series_pantob_pink_12,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
-spriteset(ss_e4_series_pantob_pink_10,          	        "src/trains/dummy/empty.png") {template_dummy(0,0)}
-alternative_sprites(ss_e4_series_pantob_pink_12,            ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/12/e4p.png") {template_12_reversed(1,81)}
-alternative_sprites(ss_e4_series_pantob_pink_10,	        ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/10/e4p.png") {template_10_reversed(1,81)}		
-
-switch (FEAT_TRAINS, SELF, sw_e4_series_pantob_pink, param_spritelength) {
-	1: ss_e4_series_pantob_pink_10;				            // Length 10
-	ss_e4_series_pantob_pink_12;				            // Length 12
-}
-
-// E4 Series 2cc
-spriteset(ss_e4_series_pantob_2cc_12,             	        "src/trains/e4_series/12/e4_2cc.png") {template_12_reversed(1,81)}
-spriteset(ss_e4_series_pantob_2cc_10,             	        "src/trains/e4_series/10/e4_2cc.png") {template_10_reversed(1,81)}
-
-switch (FEAT_TRAINS, SELF, sw_e4_series_pantob_2cc, param_spritelength) {
-	1: ss_e4_series_pantob_2cc_10;				 	        // Length 10
-	ss_e4_series_pantob_2cc_12;					            // Length 12
-}
-
-// Subtype Selection
-switch(FEAT_TRAINS, SELF, sw_e4_series_pantob_year_dep_livery, build_year) {
-        0..2014: sw_e4_series_pantob_yellow;
-        sw_e4_series_pantob_pink;
-    }
-
-switch(FEAT_TRAINS, PARENT, sw_e4_series_pantob, cargo_subtype) {
-        1: sw_e4_series_pantob_yellow;
-        2: sw_e4_series_pantob_pink;
-        3: sw_e4_series_pantob_2cc;
-        sw_e4_series_pantob_year_dep_livery;
-    }
-# 1 "src/trains/e4_series/e4_series.pnml" 2
-# 1 "src/trains/e4_series/pnml/e4_series_formations.pnml" 1
-// Panto car positions when reversed
-switch (FEAT_TRAINS, SELF, sw_e4_series_backwards_special, position_in_consist_from_end % 48) {				
-		10: sw_e4_series_pantob;
-		16: sw_e4_series_pantob;
-		22: sw_e4_series_cab02b;
-		25: sw_e4_series_cab01b;
-		34: sw_e4_series_pantob;
-		40: sw_e4_series_pantob;
-		sw_e4_series_coachb;				
-	}	
-
-// Panto car positions
-switch (FEAT_TRAINS, SELF, sw_e4_series_forwards_special, position_in_consist % 48) {				
-		10: sw_e4_series_pantof;
-		16: sw_e4_series_pantof;
-		22: sw_e4_series_cab02f;
-		25: sw_e4_series_cab01f;
-		34: sw_e4_series_pantof;
-		40: sw_e4_series_pantof;
-		sw_e4_series_coachf;				
-	}
-
-/* Length checks- */
-
-	switch (FEAT_TRAINS, SELF, sw_e4_series_forwards_length_large, (position_in_consist == 10) || (position_in_consist_from_end == 7 )) {				
-			0:  sw_e4_series_coachf;
-			sw_e4_series_pantof;				
-		}
-	switch (FEAT_TRAINS, SELF, sw_e4_series_forwards_length_small, (position_in_consist == position_in_consist_from_end ) || (position_in_consist - 3 == position_in_consist_from_end) ) {				
-			0:  sw_e4_series_coachf;
-			sw_e4_series_pantof;				
-		}
-
-	switch (FEAT_TRAINS, SELF, sw_e4_series_forwards_length, num_vehs_in_consist < 24 ) {				
-				0:  sw_e4_series_forwards_length_large;
-				sw_e4_series_forwards_length_small;				
+// Sprites
+
+	// Base
+
+	// 10/8
+	spriteset(ss_std_e4_series_cab01f_yel, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_yellow.png") {tmpl_10_std(1,1)}
+	spriteset(ss_std_e4_series_cab01b_yel, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_yellow.png") {tmpl_10_rev(1,51)}
+
+	// Front
+	spriteset(ss_frt_e4_series_cab01f_yel, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_yellow.png") {tmpl_frt_std(1,1)}
+	spriteset(ss_frt_e4_series_cab01b_yel, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_yellow.png") {tmpl_frt_rev(1,51)}
+	// Mid
+	spriteset(ss_mid_e4_series_cab01f_yel, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_yellow.png") {tmpl_mid_std(1,1)}
+	spriteset(ss_mid_e4_series_cab01b_yel, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_yellow.png") {tmpl_mid_rev(1,51)}
+	// Back
+	spriteset(ss_bck_e4_series_cab01f_yel, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_yellow.png") {tmpl_bck_std(1,1)}
+	spriteset(ss_bck_e4_series_cab01b_yel, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_yellow.png") {tmpl_bck_rev(1,51)}
+
+    // Refurb
+
+	// 10/8
+	spriteset(ss_std_e4_series_cab01f_pnk, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_pink.png") {tmpl_10_std(1,1)}
+	spriteset(ss_std_e4_series_cab01b_pnk, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_pink.png") {tmpl_10_rev(1,51)}
+
+	// Front
+	spriteset(ss_frt_e4_series_cab01f_pnk, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_pink.png") {tmpl_frt_std(1,1)}
+	spriteset(ss_frt_e4_series_cab01b_pnk, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_pink.png") {tmpl_frt_rev(1,51)}
+	// Mid
+	spriteset(ss_mid_e4_series_cab01f_pnk, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_pink.png") {tmpl_mid_std(1,1)}
+	spriteset(ss_mid_e4_series_cab01b_pnk, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_pink.png") {tmpl_mid_rev(1,51)}
+	// Back
+	spriteset(ss_bck_e4_series_cab01f_pnk, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_pink.png") {tmpl_bck_std(1,1)}
+	spriteset(ss_bck_e4_series_cab01b_pnk, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_pink.png") {tmpl_bck_rev(1,51)}
+
+	// 2cc Mask
+
+	// 10/8
+	spriteset(ss_std_e4_series_cab01f_2cc, "src/trains/e4_series/gfx/e4_series_2cc.png") {tmpl_10_std(1,1)}
+	spriteset(ss_std_e4_series_cab01b_2cc, "src/trains/e4_series/gfx/e4_series_2cc.png") {tmpl_10_rev(1,51)}
+
+	// Front
+	spriteset(ss_frt_e4_series_cab01f_2cc, "src/trains/e4_series/gfx/e4_series_2cc.png") {tmpl_frt_std(1,1)}
+	spriteset(ss_frt_e4_series_cab01b_2cc, "src/trains/e4_series/gfx/e4_series_2cc.png") {tmpl_frt_rev(1,51)}
+	// Mid
+	spriteset(ss_mid_e4_series_cab01f_2cc, "src/trains/e4_series/gfx/e4_series_2cc.png") {tmpl_mid_std(1,1)}
+	spriteset(ss_mid_e4_series_cab01b_2cc, "src/trains/e4_series/gfx/e4_series_2cc.png") {tmpl_mid_rev(1,51)}
+	// Back
+	spriteset(ss_bck_e4_series_cab01f_2cc, "src/trains/e4_series/gfx/e4_series_2cc.png") {tmpl_bck_std(1,1)}
+	spriteset(ss_bck_e4_series_cab01b_2cc, "src/trains/e4_series/gfx/e4_series_2cc.png") {tmpl_bck_rev(1,51)}
+
+// Sprite Selection
+
+    // Forwards
+
+		// Front
+		switch(FEAT_TRAINS, SELF, ss_frt_e4_series_cab01f_yeardep, build_year) {0..2014: ss_frt_e4_series_cab01f_yel; ss_frt_e4_series_cab01f_pnk; }
+        switch(FEAT_TRAINS, PARENT, ss_frt_e4_series_cab01f_mask, cargo_subtype) {0:ss_frt_e4_series_cab01f_yeardep; 1:ss_frt_e4_series_cab01f_yel; 2:ss_frt_e4_series_cab01f_pnk; 3:ss_frt_e4_series_cab01f_2cc; }
+		
+		switch(FEAT_TRAINS, SELF, sw_e4_series_cab01f_frt_stack, [ 
+			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+				0: ss_frt_e4_series_cab01f_yel;       	// Base for Front
+				1: ss_frt_e4_series_cab01f_mask;		// Mask for Front
 			}
 
-	switch (FEAT_TRAINS, SELF, sw_e4_series_forwards, num_vehs_in_consist == 48) {				
-			0:  sw_e4_series_forwards_length;
-			sw_e4_series_forwards_special;				
-		}
+		switch(FEAT_TRAINS, SELF, sw_e4_series_cab01f_frt_longsprite, NextPartSame() ) { 1: sw_e4_series_cab01f_frt_stack; dummy_sprites; }
 
-	switch (FEAT_TRAINS, SELF, sw_e4_series_backwards_length_large, (position_in_consist == 7) || (position_in_consist_from_end == 10 )) {				
-			0:  sw_e4_series_coachb;
-			sw_e4_series_pantob;				
-		}
-	switch (FEAT_TRAINS, SELF, sw_e4_series_backwards_length_small, (position_in_consist == position_in_consist_from_end ) || (position_in_consist - 3 == position_in_consist_from_end) ) {				
-			0:  sw_e4_series_coachb;
-			sw_e4_series_pantob;				
-		}
+		// Mid
+		switch(FEAT_TRAINS, SELF, ss_mid_e4_series_cab01f_yeardep, build_year) {0..2014: ss_mid_e4_series_cab01f_yel; ss_mid_e4_series_cab01f_pnk; }
+        switch(FEAT_TRAINS, PARENT, ss_mid_e4_series_cab01f_mask, cargo_subtype) {0:ss_mid_e4_series_cab01f_yeardep; 1:ss_mid_e4_series_cab01f_yel; 2:ss_mid_e4_series_cab01f_pnk; 3:ss_mid_e4_series_cab01f_2cc; }
+		
+        switch(FEAT_TRAINS, SELF, ss_std_e4_series_cab01f_yeardep, build_year) {0..2014: ss_std_e4_series_cab01f_yel; ss_std_e4_series_cab01f_pnk; }
+        switch(FEAT_TRAINS, PARENT, ss_std_e4_series_cab01f_mask, cargo_subtype) {0:ss_std_e4_series_cab01f_yeardep; 1:ss_std_e4_series_cab01f_yel; 2:ss_std_e4_series_cab01f_pnk; 3:ss_std_e4_series_cab01f_2cc; }
+			
+		switch(FEAT_TRAINS, SELF, sw_e4_series_cab01f_mid_longsprite, HideLongSprite()) { 0: ss_std_e4_series_cab01f_yel; }
+		switch(FEAT_TRAINS, SELF, sw_e4_series_cab01f_std_longsprite, HideLongSprite()) { 0: ss_std_e4_series_cab01f_mask; }
 
-	switch (FEAT_TRAINS, SELF, sw_e4_series_backwards_length, num_vehs_in_consist < 24 ) {				
-			0:  sw_e4_series_backwards_length_large;
-			sw_e4_series_backwards_length_small;				
-		}
+		switch(FEAT_TRAINS, SELF, sw_e4_series_cab01f_mid_stack, [ 
+			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+				0: ss_mid_e4_series_cab01f_yel;       	// Base for Mid
+				1: ss_mid_e4_series_cab01f_mask;		// Mask for Mid
+				2: sw_e4_series_cab01f_mid_longsprite;	// Long Sprite for Corners and Hills
+				3: sw_e4_series_cab01f_std_longsprite;
+			}
 
-	switch (FEAT_TRAINS, SELF, sw_e4_series_backwards, num_vehs_in_consist == 48) {				
-			0:  sw_e4_series_backwards_length;
-			sw_e4_series_backwards_special;				
-		}
+		// Back
+		switch(FEAT_TRAINS, SELF, ss_bck_e4_series_cab01f_yeardep, build_year) {0..2014: ss_bck_e4_series_cab01f_yel; ss_bck_e4_series_cab01f_pnk; }
+        switch(FEAT_TRAINS, PARENT, ss_bck_e4_series_cab01f_mask, cargo_subtype) {0:ss_bck_e4_series_cab01f_yeardep; 1:ss_bck_e4_series_cab01f_yel; 2:ss_bck_e4_series_cab01f_pnk; 3:ss_bck_e4_series_cab01f_2cc; }
+		
+		switch(FEAT_TRAINS, SELF, sw_e4_series_cab01f_bck_stack, [ 
+			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+				0: ss_bck_e4_series_cab01f_yel;       	// Base for Front
+				1: ss_bck_e4_series_cab01f_mask;		// Mask for Front
+			}
 
-// Is the Shinkansen reversed?
-switch (FEAT_TRAINS, PARENT, sw_e4_series_midcars, vehicle_is_reversed) {				
-		0:  sw_e4_series_forwards;
-		sw_e4_series_backwards;				
-	}
+		switch(FEAT_TRAINS, SELF, sw_e4_series_cab01f_bck_longsprite, PrevPartSame() ) { 1: sw_e4_series_cab01f_bck_stack; dummy_sprites; }
 
-/* Cab selection */
-    // Rear cab
-    switch (FEAT_TRAINS, PARENT, sw_e4_series_rear, vehicle_is_reversed) {				
-            1:  sw_e4_series_cab01b;                   // cab01	
-            sw_e4_series_cab02f;                       // cab02
+		switch (FEAT_TRAINS, SELF, sw_e4_series_cab01f, position_in_consist % 3 ) {				
+            0: sw_e4_series_cab01f_frt_longsprite;
+            1: sw_e4_series_cab01f_mid_stack;
+            2: sw_e4_series_cab01f_bck_longsprite;
         }
 
-    // Lead cab
-    switch (FEAT_TRAINS, PARENT, sw_e4_series_lead, vehicle_is_reversed) {				
-            1:  sw_e4_series_cab02b;                   // cab02
-            sw_e4_series_cab01f;                       // cab01	
-        }
+    // Backwards
 
-/* Find the cabs */
-    switch (FEAT_TRAINS, SELF, sw_e4_series_lead_or_rear, position_in_consist) {				
-            1:  sw_e4_series_lead;
-            sw_e4_series_rear;				
-        }
-    
-    switch (FEAT_TRAINS, SELF, sw_e4_series_ends, position_in_consist == 1 || position_in_consist_from_end == 1) {				
-            1:  sw_e4_series_lead_or_rear;
-            sw_e4_series_midcars;				
+        // Front
+		switch(FEAT_TRAINS, SELF, ss_frt_e4_series_cab01b_yeardep, build_year) {0..2014: ss_frt_e4_series_cab01b_yel; ss_frt_e4_series_cab01b_pnk; }
+        switch(FEAT_TRAINS, PARENT, ss_frt_e4_series_cab01b_mask, cargo_subtype) {0:ss_frt_e4_series_cab01b_yeardep; 1:ss_frt_e4_series_cab01b_yel; 2:ss_frt_e4_series_cab01b_pnk; 3:ss_frt_e4_series_cab01b_2cc; }
+		
+		switch(FEAT_TRAINS, SELF, sw_e4_series_cab01b_frt_stack, [ 
+			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+				0: ss_frt_e4_series_cab01b_yel;       	// Base for Front
+				1: ss_frt_e4_series_cab01b_mask;		// Mask for Front
+			}
+
+		switch(FEAT_TRAINS, SELF, sw_e4_series_cab01b_frt_longsprite, PrevPartSame() ) { 1: sw_e4_series_cab01b_frt_stack; dummy_sprites; }
+
+		// Mid
+		switch(FEAT_TRAINS, SELF, ss_mid_e4_series_cab01b_yeardep, build_year) {0..2014: ss_mid_e4_series_cab01b_yel; ss_mid_e4_series_cab01b_pnk; }
+        switch(FEAT_TRAINS, PARENT, ss_mid_e4_series_cab01b_mask, cargo_subtype) {0:ss_mid_e4_series_cab01b_yeardep; 1:ss_mid_e4_series_cab01b_yel; 2:ss_mid_e4_series_cab01b_pnk; 3:ss_mid_e4_series_cab01b_2cc; }
+		
+        switch(FEAT_TRAINS, SELF, ss_std_e4_series_cab01b_yeardep, build_year) {0..2014: ss_std_e4_series_cab01b_yel; ss_std_e4_series_cab01b_pnk; }
+        switch(FEAT_TRAINS, PARENT, ss_std_e4_series_cab01b_mask, cargo_subtype) {0:ss_std_e4_series_cab01b_yeardep; 1:ss_std_e4_series_cab01b_yel; 2:ss_std_e4_series_cab01b_pnk; 3:ss_std_e4_series_cab01b_2cc; }
+			
+		switch(FEAT_TRAINS, SELF, sw_e4_series_cab01b_mid_longsprite, HideLongSprite() ) { 0: ss_std_e4_series_cab01b_yel; }
+		switch(FEAT_TRAINS, SELF, sw_e4_series_cab01b_std_longsprite, HideLongSprite() ) { 0: ss_std_e4_series_cab01b_mask; }
+
+		switch(FEAT_TRAINS, SELF, sw_e4_series_cab01b_mid_stack, [ 
+			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+				0: ss_mid_e4_series_cab01b_yel;       	// Base for Mid
+				1: ss_mid_e4_series_cab01b_mask;		// Mask for Mid
+				2: sw_e4_series_cab01b_mid_longsprite;	// Long Sprite for Corners and Hills
+				3: sw_e4_series_cab01b_std_longsprite;
+			}
+
+		// Back
+		switch(FEAT_TRAINS, SELF, ss_bck_e4_series_cab01b_yeardep, build_year) {0..2014: ss_bck_e4_series_cab01b_yel; ss_bck_e4_series_cab01b_pnk; }
+        switch(FEAT_TRAINS, PARENT, ss_bck_e4_series_cab01b_mask, cargo_subtype) {0:ss_bck_e4_series_cab01b_yeardep; 1:ss_bck_e4_series_cab01b_yel; 2:ss_bck_e4_series_cab01b_pnk; 3:ss_bck_e4_series_cab01b_2cc; }
+		
+		switch(FEAT_TRAINS, SELF, sw_e4_series_cab01b_bck_stack, [ 
+			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+				0: ss_bck_e4_series_cab01b_yel;       	// Base for Front
+				1: ss_bck_e4_series_cab01b_mask;		// Mask for Front
+			}
+
+		switch(FEAT_TRAINS, SELF, sw_e4_series_cab01b_bck_longsprite, NextPartSame() ) { 1: sw_e4_series_cab01b_bck_stack; dummy_sprites; }
+
+		switch (FEAT_TRAINS, SELF, sw_e4_series_cab01b, position_in_consist_from_end % 3 ) {				
+            0: sw_e4_series_cab01b_frt_longsprite;
+            1: sw_e4_series_cab01b_mid_stack;
+            2: sw_e4_series_cab01b_bck_longsprite;
         }
 # 1 "src/trains/e4_series/e4_series.pnml" 2
-# 1 "src/trains/e4_series/pnml/e4_series_item.pnml" 1
-switch (FEAT_TRAINS, SELF, sw_e4_series_graphics, position_in_consist % 3) {				
-		1:  sw_e4_series_ends; 				
-		dummy_sprites;
-	}
+# 1 "src/trains/e4_series/e4_series_cab02.pnml" 1
+
+/* cab02 */
+
+// Sprites
+
+	// Base
+
+	// 10/8
+	spriteset(ss_std_e4_series_cab02f_yel, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_yellow.png") {tmpl_10_cab_std(1,51)}
+	spriteset(ss_std_e4_series_cab02b_yel, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_yellow.png") {tmpl_10_cab_rev(1,1)}
+
+	// Front
+	spriteset(ss_frt_e4_series_cab02f_yel, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_yellow.png") {tmpl_cab_frt_std(1,51)}
+	spriteset(ss_frt_e4_series_cab02b_yel, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_yellow.png") {tmpl_cab_frt_rev(1,1)}
+	// Mid
+	spriteset(ss_mid_e4_series_cab02f_yel, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_yellow.png") {tmpl_cab_mid_std(1,51)}
+	spriteset(ss_mid_e4_series_cab02b_yel, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_yellow.png") {tmpl_cab_mid_rev(1,1)}
+	// Back
+	spriteset(ss_bck_e4_series_cab02f_yel, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_yellow.png") {tmpl_cab_bck_std(1,51)}
+	spriteset(ss_bck_e4_series_cab02b_yel, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_yellow.png") {tmpl_cab_bck_rev(1,1)}
+
+    // Refurb
+
+	// 10/8
+	spriteset(ss_std_e4_series_cab02f_pnk, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_pink.png") {tmpl_10_cab_std(1,51)}
+	spriteset(ss_std_e4_series_cab02b_pnk, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_pink.png") {tmpl_10_cab_rev(1,1)}
+
+	// Front
+	spriteset(ss_frt_e4_series_cab02f_pnk, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_pink.png") {tmpl_cab_frt_std(1,51)}
+	spriteset(ss_frt_e4_series_cab02b_pnk, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_pink.png") {tmpl_cab_frt_rev(1,1)}
+	// Mid
+	spriteset(ss_mid_e4_series_cab02f_pnk, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_pink.png") {tmpl_cab_mid_std(1,51)}
+	spriteset(ss_mid_e4_series_cab02b_pnk, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_pink.png") {tmpl_cab_mid_rev(1,1)}
+	// Back
+	spriteset(ss_bck_e4_series_cab02f_pnk, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_pink.png") {tmpl_cab_bck_std(1,51)}
+	spriteset(ss_bck_e4_series_cab02b_pnk, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_pink.png") {tmpl_cab_bck_rev(1,1)}
+
+	// 2cc Mask
+
+	// 10/8
+	spriteset(ss_std_e4_series_cab02f_2cc, "src/trains/e4_series/gfx/e4_series_2cc.png") {tmpl_10_cab_std(1,51)}
+	spriteset(ss_std_e4_series_cab02b_2cc, "src/trains/e4_series/gfx/e4_series_2cc.png") {tmpl_10_cab_rev(1,1)}
+
+	// Front
+	spriteset(ss_frt_e4_series_cab02f_2cc, "src/trains/e4_series/gfx/e4_series_2cc.png") {tmpl_cab_frt_std(1,51)}
+	spriteset(ss_frt_e4_series_cab02b_2cc, "src/trains/e4_series/gfx/e4_series_2cc.png") {tmpl_cab_frt_rev(1,1)}
+	// Mid
+	spriteset(ss_mid_e4_series_cab02f_2cc, "src/trains/e4_series/gfx/e4_series_2cc.png") {tmpl_cab_mid_std(1,51)}
+	spriteset(ss_mid_e4_series_cab02b_2cc, "src/trains/e4_series/gfx/e4_series_2cc.png") {tmpl_cab_mid_rev(1,1)}
+	// Back
+	spriteset(ss_bck_e4_series_cab02f_2cc, "src/trains/e4_series/gfx/e4_series_2cc.png") {tmpl_cab_bck_std(1,51)}
+	spriteset(ss_bck_e4_series_cab02b_2cc, "src/trains/e4_series/gfx/e4_series_2cc.png") {tmpl_cab_bck_rev(1,1)}
+
+// Sprite Selection
+
+    // Forwards
+
+		// Front
+		switch(FEAT_TRAINS, SELF, ss_frt_e4_series_cab02f_yeardep, build_year) {0..2014: ss_frt_e4_series_cab02f_yel; ss_frt_e4_series_cab02f_pnk; }
+        switch(FEAT_TRAINS, PARENT, ss_frt_e4_series_cab02f_mask, cargo_subtype) {0:ss_frt_e4_series_cab02f_yeardep; 1:ss_frt_e4_series_cab02f_yel; 2:ss_frt_e4_series_cab02f_pnk; 3:ss_frt_e4_series_cab02f_2cc; }
+		
+		switch(FEAT_TRAINS, SELF, sw_e4_series_cab02f_frt_stack, [ 
+			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+				0: ss_frt_e4_series_cab02f_yel;       	// Base for Front
+				1: ss_frt_e4_series_cab02f_mask;		// Mask for Front
+			}
+
+		switch(FEAT_TRAINS, SELF, sw_e4_series_cab02f_frt_longsprite, PrevPartSame() ) { 1: sw_e4_series_cab02f_frt_stack; dummy_sprites; }
+
+		// Mid
+		switch(FEAT_TRAINS, SELF, ss_mid_e4_series_cab02f_yeardep, build_year) {0..2014: ss_mid_e4_series_cab02f_yel; ss_mid_e4_series_cab02f_pnk; }
+        switch(FEAT_TRAINS, PARENT, ss_mid_e4_series_cab02f_mask, cargo_subtype) {0:ss_mid_e4_series_cab02f_yeardep; 1:ss_mid_e4_series_cab02f_yel; 2:ss_mid_e4_series_cab02f_pnk; 3:ss_mid_e4_series_cab02f_2cc; }
+		
+        switch(FEAT_TRAINS, SELF, ss_std_e4_series_cab02f_yeardep, build_year) {0..2014: ss_std_e4_series_cab02f_yel; ss_std_e4_series_cab02f_pnk; }
+        switch(FEAT_TRAINS, PARENT, ss_std_e4_series_cab02f_mask, cargo_subtype) {0:ss_std_e4_series_cab02f_yeardep; 1:ss_std_e4_series_cab02f_yel; 2:ss_std_e4_series_cab02f_pnk; 3:ss_std_e4_series_cab02f_2cc; }
+			
+		switch(FEAT_TRAINS, SELF, sw_e4_series_cab02f_mid_longsprite, HideLongSprite()) { 0: ss_std_e4_series_cab02f_yel; }
+		switch(FEAT_TRAINS, SELF, sw_e4_series_cab02f_std_longsprite, HideLongSprite()) { 0: ss_std_e4_series_cab02f_mask; }
+
+		switch(FEAT_TRAINS, SELF, sw_e4_series_cab02f_mid_stack, [ 
+			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+				0: ss_mid_e4_series_cab02f_yel;       	// Base for Mid
+				1: ss_mid_e4_series_cab02f_mask;		// Mask for Mid
+				2: sw_e4_series_cab02f_mid_longsprite;	// Long Sprite for Corners and Hills
+				3: sw_e4_series_cab02f_std_longsprite;
+			}
+
+		// Back
+		switch(FEAT_TRAINS, SELF, ss_bck_e4_series_cab02f_yeardep, build_year) {0..2014: ss_bck_e4_series_cab02f_yel; ss_bck_e4_series_cab02f_pnk; }
+        switch(FEAT_TRAINS, PARENT, ss_bck_e4_series_cab02f_mask, cargo_subtype) {0:ss_bck_e4_series_cab02f_yeardep; 1:ss_bck_e4_series_cab02f_yel; 2:ss_bck_e4_series_cab02f_pnk; 3:ss_bck_e4_series_cab02f_2cc; }
+		
+		switch(FEAT_TRAINS, SELF, sw_e4_series_cab02f_bck_stack, [ 
+			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+				0: ss_bck_e4_series_cab02f_yel;       	// Base for Front
+				1: ss_bck_e4_series_cab02f_mask;		// Mask for Front
+			}
+
+		switch(FEAT_TRAINS, SELF, sw_e4_series_cab02f_bck_longsprite, NextPartSame() ) { 1: sw_e4_series_cab02f_bck_stack; dummy_sprites; }
+
+		switch (FEAT_TRAINS, SELF, sw_e4_series_cab02f, position_in_consist_from_end % 3 ) {				
+            0: sw_e4_series_cab02f_frt_longsprite;
+            1: sw_e4_series_cab02f_mid_stack;
+            2: sw_e4_series_cab02f_bck_longsprite;
+        }
+
+    // Backwards
+
+        // Front
+		switch(FEAT_TRAINS, SELF, ss_frt_e4_series_cab02b_yeardep, build_year) {0..2014: ss_frt_e4_series_cab02b_yel; ss_frt_e4_series_cab02b_pnk; }
+        switch(FEAT_TRAINS, PARENT, ss_frt_e4_series_cab02b_mask, cargo_subtype) {0:ss_frt_e4_series_cab02b_yeardep; 1:ss_frt_e4_series_cab02b_yel; 2:ss_frt_e4_series_cab02b_pnk; 3:ss_frt_e4_series_cab02b_2cc; }
+		
+		switch(FEAT_TRAINS, SELF, sw_e4_series_cab02b_frt_stack, [ 
+			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+				0: ss_frt_e4_series_cab02b_yel;       	// Base for Front
+				1: ss_frt_e4_series_cab02b_mask;		// Mask for Front
+			}
+
+		switch(FEAT_TRAINS, SELF, sw_e4_series_cab02b_frt_longsprite, NextPartSame() ) { 1: sw_e4_series_cab02b_frt_stack; dummy_sprites; }
+
+		// Mid
+		switch(FEAT_TRAINS, SELF, ss_mid_e4_series_cab02b_yeardep, build_year) {0..2014: ss_mid_e4_series_cab02b_yel; ss_mid_e4_series_cab02b_pnk; }
+        switch(FEAT_TRAINS, PARENT, ss_mid_e4_series_cab02b_mask, cargo_subtype) {0:ss_mid_e4_series_cab02b_yeardep; 1:ss_mid_e4_series_cab02b_yel; 2:ss_mid_e4_series_cab02b_pnk; 3:ss_mid_e4_series_cab02b_2cc; }
+		
+        switch(FEAT_TRAINS, SELF, ss_std_e4_series_cab02b_yeardep, build_year) {0..2014: ss_std_e4_series_cab02b_yel; ss_std_e4_series_cab02b_pnk; }
+        switch(FEAT_TRAINS, PARENT, ss_std_e4_series_cab02b_mask, cargo_subtype) {0:ss_std_e4_series_cab02b_yeardep; 1:ss_std_e4_series_cab02b_yel; 2:ss_std_e4_series_cab02b_pnk; 3:ss_std_e4_series_cab02b_2cc; }
+			
+		switch(FEAT_TRAINS, SELF, sw_e4_series_cab02b_mid_longsprite, HideLongSprite() ) { 0: ss_std_e4_series_cab02b_yel; }
+		switch(FEAT_TRAINS, SELF, sw_e4_series_cab02b_std_longsprite, HideLongSprite() ) { 0: ss_std_e4_series_cab02b_mask; }
+
+		switch(FEAT_TRAINS, SELF, sw_e4_series_cab02b_mid_stack, [ 
+			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+				0: ss_mid_e4_series_cab02b_yel;       	// Base for Mid
+				1: ss_mid_e4_series_cab02b_mask;		// Mask for Mid
+				2: sw_e4_series_cab02b_mid_longsprite;	// Long Sprite for Corners and Hills
+				3: sw_e4_series_cab02b_std_longsprite;
+			}
+
+		// Back
+		switch(FEAT_TRAINS, SELF, ss_bck_e4_series_cab02b_yeardep, build_year) {0..2014: ss_bck_e4_series_cab02b_yel; ss_bck_e4_series_cab02b_pnk; }
+        switch(FEAT_TRAINS, PARENT, ss_bck_e4_series_cab02b_mask, cargo_subtype) {0:ss_bck_e4_series_cab02b_yeardep; 1:ss_bck_e4_series_cab02b_yel; 2:ss_bck_e4_series_cab02b_pnk; 3:ss_bck_e4_series_cab02b_2cc; }
+		
+		switch(FEAT_TRAINS, SELF, sw_e4_series_cab02b_bck_stack, [ 
+			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+				0: ss_bck_e4_series_cab02b_yel;       	// Base for Front
+				1: ss_bck_e4_series_cab02b_mask;		// Mask for Front
+			}
+
+		switch(FEAT_TRAINS, SELF, sw_e4_series_cab02b_bck_longsprite, PrevPartSame() ) { 1: sw_e4_series_cab02b_bck_stack; dummy_sprites; }
+
+		switch (FEAT_TRAINS, SELF, sw_e4_series_cab02b, position_in_consist % 3 ) {				
+            0: sw_e4_series_cab02b_frt_longsprite;
+            1: sw_e4_series_cab02b_mid_stack;
+            2: sw_e4_series_cab02b_bck_longsprite;
+        }
+# 1 "src/trains/e4_series/e4_series.pnml" 2
+# 1 "src/trains/e4_series/e4_series_coach.pnml" 1
+
+/* coach */
+
+// Sprites
+
+	// Base
+
+	// 10/8
+	spriteset(ss_std_e4_series_coachf_yel, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_yellow.png") {tmpl_10_std(1,101)}
+	spriteset(ss_std_e4_series_coachb_yel, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_yellow.png") {tmpl_10_rev(1,101)}
+
+	// Front
+	spriteset(ss_frt_e4_series_coachf_yel, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_yellow.png") {tmpl_frt_std(1,101)}
+	spriteset(ss_frt_e4_series_coachb_yel, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_yellow.png") {tmpl_frt_rev(1,101)}
+	// Mid
+	spriteset(ss_mid_e4_series_coachf_yel, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_yellow.png") {tmpl_mid_std(1,101)}
+	spriteset(ss_mid_e4_series_coachb_yel, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_yellow.png") {tmpl_mid_rev(1,101)}
+	// Back
+	spriteset(ss_bck_e4_series_coachf_yel, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_yellow.png") {tmpl_bck_std(1,101)}
+	spriteset(ss_bck_e4_series_coachb_yel, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_yellow.png") {tmpl_bck_rev(1,101)}
+
+    // Refurb
+
+	// 10/8
+	spriteset(ss_std_e4_series_coachf_pnk, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_pink.png") {tmpl_10_std(1,101)}
+	spriteset(ss_std_e4_series_coachb_pnk, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_pink.png") {tmpl_10_rev(1,101)}
+
+	// Front
+	spriteset(ss_frt_e4_series_coachf_pnk, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_pink.png") {tmpl_frt_std(1,101)}
+	spriteset(ss_frt_e4_series_coachb_pnk, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_pink.png") {tmpl_frt_rev(1,101)}
+	// Mid
+	spriteset(ss_mid_e4_series_coachf_pnk, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_pink.png") {tmpl_mid_std(1,101)}
+	spriteset(ss_mid_e4_series_coachb_pnk, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_pink.png") {tmpl_mid_rev(1,101)}
+	// Back
+	spriteset(ss_bck_e4_series_coachf_pnk, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_pink.png") {tmpl_bck_std(1,101)}
+	spriteset(ss_bck_e4_series_coachb_pnk, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_pink.png") {tmpl_bck_rev(1,101)}
+
+	// 2cc Mask
+
+	// 10/8
+	spriteset(ss_std_e4_series_coachf_2cc, "src/trains/e4_series/gfx/e4_series_2cc.png") {tmpl_10_std(1,101)}
+	spriteset(ss_std_e4_series_coachb_2cc, "src/trains/e4_series/gfx/e4_series_2cc.png") {tmpl_10_rev(1,101)}
+
+	// Front
+	spriteset(ss_frt_e4_series_coachf_2cc, "src/trains/e4_series/gfx/e4_series_2cc.png") {tmpl_frt_std(1,101)}
+	spriteset(ss_frt_e4_series_coachb_2cc, "src/trains/e4_series/gfx/e4_series_2cc.png") {tmpl_frt_rev(1,101)}
+	// Mid
+	spriteset(ss_mid_e4_series_coachf_2cc, "src/trains/e4_series/gfx/e4_series_2cc.png") {tmpl_mid_std(1,101)}
+	spriteset(ss_mid_e4_series_coachb_2cc, "src/trains/e4_series/gfx/e4_series_2cc.png") {tmpl_mid_rev(1,101)}
+	// Back
+	spriteset(ss_bck_e4_series_coachf_2cc, "src/trains/e4_series/gfx/e4_series_2cc.png") {tmpl_bck_std(1,101)}
+	spriteset(ss_bck_e4_series_coachb_2cc, "src/trains/e4_series/gfx/e4_series_2cc.png") {tmpl_bck_rev(1,101)}
+
+// Sprite Selection
+
+    // Forwards
+
+		// Front
+		switch(FEAT_TRAINS, SELF, ss_frt_e4_series_coachf_yeardep, build_year) {0..2014: ss_frt_e4_series_coachf_yel; ss_frt_e4_series_coachf_pnk; }
+        switch(FEAT_TRAINS, PARENT, ss_frt_e4_series_coachf_mask, cargo_subtype) {0:ss_frt_e4_series_coachf_yeardep; 1:ss_frt_e4_series_coachf_yel; 2:ss_frt_e4_series_coachf_pnk; 3:ss_frt_e4_series_coachf_2cc; }
+		
+		switch(FEAT_TRAINS, SELF, sw_e4_series_coachf_frt_stack, [ 
+			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+				0: ss_frt_e4_series_coachf_yel;       	// Base for Front
+				1: ss_frt_e4_series_coachf_mask;		// Mask for Front
+			}
+
+		switch(FEAT_TRAINS, SELF, sw_e4_series_coachf_frt_longsprite, NextPartSame() ) { 1: sw_e4_series_coachf_frt_stack; dummy_sprites; }
+
+		// Mid
+		switch(FEAT_TRAINS, SELF, ss_mid_e4_series_coachf_yeardep, build_year) {0..2014: ss_mid_e4_series_coachf_yel; ss_mid_e4_series_coachf_pnk; }
+        switch(FEAT_TRAINS, PARENT, ss_mid_e4_series_coachf_mask, cargo_subtype) {0:ss_mid_e4_series_coachf_yeardep; 1:ss_mid_e4_series_coachf_yel; 2:ss_mid_e4_series_coachf_pnk; 3:ss_mid_e4_series_coachf_2cc; }
+		
+        switch(FEAT_TRAINS, SELF, ss_std_e4_series_coachf_yeardep, build_year) {0..2014: ss_std_e4_series_coachf_yel; ss_std_e4_series_coachf_pnk; }
+        switch(FEAT_TRAINS, PARENT, ss_std_e4_series_coachf_mask, cargo_subtype) {0:ss_std_e4_series_coachf_yeardep; 1:ss_std_e4_series_coachf_yel; 2:ss_std_e4_series_coachf_pnk; 3:ss_std_e4_series_coachf_2cc; }
+			
+		switch(FEAT_TRAINS, SELF, sw_e4_series_coachf_mid_longsprite, HideLongSprite()) { 0: ss_std_e4_series_coachf_yel; }
+		switch(FEAT_TRAINS, SELF, sw_e4_series_coachf_std_longsprite, HideLongSprite()) { 0: ss_std_e4_series_coachf_mask; }
+
+		switch(FEAT_TRAINS, SELF, sw_e4_series_coachf_mid_stack, [ 
+			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+				0: ss_mid_e4_series_coachf_yel;       	// Base for Mid
+				1: ss_mid_e4_series_coachf_mask;		// Mask for Mid
+				2: sw_e4_series_coachf_mid_longsprite;	// Long Sprite for Corners and Hills
+				3: sw_e4_series_coachf_std_longsprite;
+			}
+
+		// Back
+		switch(FEAT_TRAINS, SELF, ss_bck_e4_series_coachf_yeardep, build_year) {0..2014: ss_bck_e4_series_coachf_yel; ss_bck_e4_series_coachf_pnk; }
+        switch(FEAT_TRAINS, PARENT, ss_bck_e4_series_coachf_mask, cargo_subtype) {0:ss_bck_e4_series_coachf_yeardep; 1:ss_bck_e4_series_coachf_yel; 2:ss_bck_e4_series_coachf_pnk; 3:ss_bck_e4_series_coachf_2cc; }
+		
+		switch(FEAT_TRAINS, SELF, sw_e4_series_coachf_bck_stack, [ 
+			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+				0: ss_bck_e4_series_coachf_yel;       	// Base for Front
+				1: ss_bck_e4_series_coachf_mask;		// Mask for Front
+			}
+
+		switch(FEAT_TRAINS, SELF, sw_e4_series_coachf_bck_longsprite, PrevPartSame() ) { 1: sw_e4_series_coachf_bck_stack; dummy_sprites; }
+
+		switch (FEAT_TRAINS, SELF, sw_e4_series_coachf, position_in_consist % 3 ) {				
+            0: sw_e4_series_coachf_frt_longsprite;
+            1: sw_e4_series_coachf_mid_stack;
+            2: sw_e4_series_coachf_bck_longsprite;
+        }
+
+    // Backwards
+
+        // Front
+		switch(FEAT_TRAINS, SELF, ss_frt_e4_series_coachb_yeardep, build_year) {0..2014: ss_frt_e4_series_coachb_yel; ss_frt_e4_series_coachb_pnk; }
+        switch(FEAT_TRAINS, PARENT, ss_frt_e4_series_coachb_mask, cargo_subtype) {0:ss_frt_e4_series_coachb_yeardep; 1:ss_frt_e4_series_coachb_yel; 2:ss_frt_e4_series_coachb_pnk; 3:ss_frt_e4_series_coachb_2cc; }
+		
+		switch(FEAT_TRAINS, SELF, sw_e4_series_coachb_frt_stack, [ 
+			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+				0: ss_frt_e4_series_coachb_yel;       	// Base for Front
+				1: ss_frt_e4_series_coachb_mask;		// Mask for Front
+			}
+
+		switch(FEAT_TRAINS, SELF, sw_e4_series_coachb_frt_longsprite, PrevPartSame() ) { 1: sw_e4_series_coachb_frt_stack; dummy_sprites; }
+
+		// Mid
+		switch(FEAT_TRAINS, SELF, ss_mid_e4_series_coachb_yeardep, build_year) {0..2014: ss_mid_e4_series_coachb_yel; ss_mid_e4_series_coachb_pnk; }
+        switch(FEAT_TRAINS, PARENT, ss_mid_e4_series_coachb_mask, cargo_subtype) {0:ss_mid_e4_series_coachb_yeardep; 1:ss_mid_e4_series_coachb_yel; 2:ss_mid_e4_series_coachb_pnk; 3:ss_mid_e4_series_coachb_2cc; }
+		
+        switch(FEAT_TRAINS, SELF, ss_std_e4_series_coachb_yeardep, build_year) {0..2014: ss_std_e4_series_coachb_yel; ss_std_e4_series_coachb_pnk; }
+        switch(FEAT_TRAINS, PARENT, ss_std_e4_series_coachb_mask, cargo_subtype) {0:ss_std_e4_series_coachb_yeardep; 1:ss_std_e4_series_coachb_yel; 2:ss_std_e4_series_coachb_pnk; 3:ss_std_e4_series_coachb_2cc; }
+			
+		switch(FEAT_TRAINS, SELF, sw_e4_series_coachb_mid_longsprite, HideLongSprite() ) { 0: ss_std_e4_series_coachb_yel; }
+		switch(FEAT_TRAINS, SELF, sw_e4_series_coachb_std_longsprite, HideLongSprite() ) { 0: ss_std_e4_series_coachb_mask; }
+
+		switch(FEAT_TRAINS, SELF, sw_e4_series_coachb_mid_stack, [ 
+			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+				0: ss_mid_e4_series_coachb_yel;       	// Base for Mid
+				1: ss_mid_e4_series_coachb_mask;		// Mask for Mid
+				2: sw_e4_series_coachb_mid_longsprite;	// Long Sprite for Corners and Hills
+				3: sw_e4_series_coachb_std_longsprite;
+			}
+
+		// Back
+		switch(FEAT_TRAINS, SELF, ss_bck_e4_series_coachb_yeardep, build_year) {0..2014: ss_bck_e4_series_coachb_yel; ss_bck_e4_series_coachb_pnk; }
+        switch(FEAT_TRAINS, PARENT, ss_bck_e4_series_coachb_mask, cargo_subtype) {0:ss_bck_e4_series_coachb_yeardep; 1:ss_bck_e4_series_coachb_yel; 2:ss_bck_e4_series_coachb_pnk; 3:ss_bck_e4_series_coachb_2cc; }
+		
+		switch(FEAT_TRAINS, SELF, sw_e4_series_coachb_bck_stack, [ 
+			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+				0: ss_bck_e4_series_coachb_yel;       	// Base for Front
+				1: ss_bck_e4_series_coachb_mask;		// Mask for Front
+			}
+
+		switch(FEAT_TRAINS, SELF, sw_e4_series_coachb_bck_longsprite, NextPartSame() ) { 1: sw_e4_series_coachb_bck_stack; dummy_sprites; }
+
+		switch (FEAT_TRAINS, SELF, sw_e4_series_coachb, position_in_consist_from_end % 3 ) {				
+            0: sw_e4_series_coachb_frt_longsprite;
+            1: sw_e4_series_coachb_mid_stack;
+            2: sw_e4_series_coachb_bck_longsprite;
+        }
+# 1 "src/trains/e4_series/e4_series.pnml" 2
+# 1 "src/trains/e4_series/e4_series_panto.pnml" 1
+
+
+/* panto */
+
+// Sprites
+
+	// Base
+
+	// 10/8
+	spriteset(ss_std_e4_series_pantof_yel, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_yellow.png") {tmpl_10_std(1,101)}
+	spriteset(ss_std_e4_series_pantob_yel, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_yellow.png") {tmpl_10_rev(1,101)}
+
+	// Front
+	spriteset(ss_frt_e4_series_pantof_yel, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_yellow.png") {tmpl_frt_std(1,101)}
+	spriteset(ss_frt_e4_series_pantob_yel, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_yellow.png") {tmpl_frt_rev(1,101)}
+	// Mid
+	spriteset(ss_mid_e4_series_pantof_yel, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_yellow.png") {tmpl_mid_std(1,101)}
+	spriteset(ss_mid_e4_series_pantob_yel, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_yellow.png") {tmpl_mid_rev(1,101)}
+	// Back
+	spriteset(ss_bck_e4_series_pantof_yel, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_yellow.png") {tmpl_bck_std(1,101)}
+	spriteset(ss_bck_e4_series_pantob_yel, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_yellow.png") {tmpl_bck_rev(1,101)}
+
+    // Refurb
+
+	// 10/8
+	spriteset(ss_std_e4_series_pantof_pnk, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_pink.png") {tmpl_10_std(1,101)}
+	spriteset(ss_std_e4_series_pantob_pnk, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_pink.png") {tmpl_10_rev(1,101)}
+
+	// Front
+	spriteset(ss_frt_e4_series_pantof_pnk, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_pink.png") {tmpl_frt_std(1,101)}
+	spriteset(ss_frt_e4_series_pantob_pnk, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_pink.png") {tmpl_frt_rev(1,101)}
+	// Mid
+	spriteset(ss_mid_e4_series_pantof_pnk, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_pink.png") {tmpl_mid_std(1,101)}
+	spriteset(ss_mid_e4_series_pantob_pnk, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_pink.png") {tmpl_mid_rev(1,101)}
+	// Back
+	spriteset(ss_bck_e4_series_pantof_pnk, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_pink.png") {tmpl_bck_std(1,101)}
+	spriteset(ss_bck_e4_series_pantob_pnk, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_series_pink.png") {tmpl_bck_rev(1,101)}
+
+	// 2cc Mask
+
+	// 10/8
+	spriteset(ss_std_e4_series_pantof_2cc, "src/trains/e4_series/gfx/e4_series_2cc.png") {tmpl_10_std(1,101)}
+	spriteset(ss_std_e4_series_pantob_2cc, "src/trains/e4_series/gfx/e4_series_2cc.png") {tmpl_10_rev(1,101)}
+
+	// Front
+	spriteset(ss_frt_e4_series_pantof_2cc, "src/trains/e4_series/gfx/e4_series_2cc.png") {tmpl_frt_std(1,101)}
+	spriteset(ss_frt_e4_series_pantob_2cc, "src/trains/e4_series/gfx/e4_series_2cc.png") {tmpl_frt_rev(1,101)}
+	// Mid
+	spriteset(ss_mid_e4_series_pantof_2cc, "src/trains/e4_series/gfx/e4_series_2cc.png") {tmpl_mid_std(1,101)}
+	spriteset(ss_mid_e4_series_pantob_2cc, "src/trains/e4_series/gfx/e4_series_2cc.png") {tmpl_mid_rev(1,101)}
+	// Back
+	spriteset(ss_bck_e4_series_pantof_2cc, "src/trains/e4_series/gfx/e4_series_2cc.png") {tmpl_bck_std(1,101)}
+	spriteset(ss_bck_e4_series_pantob_2cc, "src/trains/e4_series/gfx/e4_series_2cc.png") {tmpl_bck_rev(1,101)}
+
+// Sprite Selection
+
+    // Forwards
+
+		// Front
+		switch(FEAT_TRAINS, SELF, ss_frt_e4_series_pantof_yeardep, build_year) {0..2014: ss_frt_e4_series_pantof_yel; ss_frt_e4_series_pantof_pnk; }
+        switch(FEAT_TRAINS, PARENT, ss_frt_e4_series_pantof_mask, cargo_subtype) {0:ss_frt_e4_series_pantof_yeardep; 1:ss_frt_e4_series_pantof_yel; 2:ss_frt_e4_series_pantof_pnk; 3:ss_frt_e4_series_pantof_2cc; }
+		
+		switch(FEAT_TRAINS, SELF, sw_e4_series_pantof_frt_stack, [ 
+			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+				0: ss_frt_e4_series_pantof_yel;       	// Base for Front
+				1: ss_frt_e4_series_pantof_mask;		// Mask for Front
+			}
+
+		switch(FEAT_TRAINS, SELF, sw_e4_series_pantof_frt_longsprite, NextPartSame() ) { 1: sw_e4_series_pantof_frt_stack; dummy_sprites; }
+
+		// Mid
+		switch(FEAT_TRAINS, SELF, ss_mid_e4_series_pantof_yeardep, build_year) {0..2014: ss_mid_e4_series_pantof_yel; ss_mid_e4_series_pantof_pnk; }
+        switch(FEAT_TRAINS, PARENT, ss_mid_e4_series_pantof_mask, cargo_subtype) {0:ss_mid_e4_series_pantof_yeardep; 1:ss_mid_e4_series_pantof_yel; 2:ss_mid_e4_series_pantof_pnk; 3:ss_mid_e4_series_pantof_2cc; }
+		
+        switch(FEAT_TRAINS, SELF, ss_std_e4_series_pantof_yeardep, build_year) {0..2014: ss_std_e4_series_pantof_yel; ss_std_e4_series_pantof_pnk; }
+        switch(FEAT_TRAINS, PARENT, ss_std_e4_series_pantof_mask, cargo_subtype) {0:ss_std_e4_series_pantof_yeardep; 1:ss_std_e4_series_pantof_yel; 2:ss_std_e4_series_pantof_pnk; 3:ss_std_e4_series_pantof_2cc; }
+			
+		switch(FEAT_TRAINS, SELF, sw_e4_series_pantof_mid_longsprite, HideLongSprite()) { 0: ss_std_e4_series_pantof_yel; }
+		switch(FEAT_TRAINS, SELF, sw_e4_series_pantof_std_longsprite, HideLongSprite()) { 0: ss_std_e4_series_pantof_mask; }
+
+		switch(FEAT_TRAINS, SELF, sw_e4_series_pantof_mid_stack, [ 
+			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+				0: ss_mid_e4_series_pantof_yel;       	// Base for Mid
+				1: ss_mid_e4_series_pantof_mask;		// Mask for Mid
+				2: sw_e4_series_pantof_mid_longsprite;	// Long Sprite for Corners and Hills
+				3: sw_e4_series_pantof_std_longsprite;
+                // Pantos
+                4: panto_midsprite_e1_f;
+                5: panto_longsprite_e1_f;
+			}
+
+		// Back
+		switch(FEAT_TRAINS, SELF, ss_bck_e4_series_pantof_yeardep, build_year) {0..2014: ss_bck_e4_series_pantof_yel; ss_bck_e4_series_pantof_pnk; }
+        switch(FEAT_TRAINS, PARENT, ss_bck_e4_series_pantof_mask, cargo_subtype) {0:ss_bck_e4_series_pantof_yeardep; 1:ss_bck_e4_series_pantof_yel; 2:ss_bck_e4_series_pantof_pnk; 3:ss_bck_e4_series_pantof_2cc; }
+		
+		switch(FEAT_TRAINS, SELF, sw_e4_series_pantof_bck_stack, [ 
+			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+				0: ss_bck_e4_series_pantof_yel;       	// Base for Front
+				1: ss_bck_e4_series_pantof_mask;		// Mask for Front
+			}
+
+		switch(FEAT_TRAINS, SELF, sw_e4_series_pantof_bck_longsprite, PrevPartSame() ) { 1: sw_e4_series_pantof_bck_stack; dummy_sprites; }
+
+		switch (FEAT_TRAINS, SELF, sw_e4_series_pantof, position_in_consist % 3 ) {				
+            0: sw_e4_series_pantof_frt_longsprite;
+            1: sw_e4_series_pantof_mid_stack;
+            2: sw_e4_series_pantof_bck_longsprite;
+        }
+
+    // Backwards
+
+        // Front
+		switch(FEAT_TRAINS, SELF, ss_frt_e4_series_pantob_yeardep, build_year) {0..2014: ss_frt_e4_series_pantob_yel; ss_frt_e4_series_pantob_pnk; }
+        switch(FEAT_TRAINS, PARENT, ss_frt_e4_series_pantob_mask, cargo_subtype) {0:ss_frt_e4_series_pantob_yeardep; 1:ss_frt_e4_series_pantob_yel; 2:ss_frt_e4_series_pantob_pnk; 3:ss_frt_e4_series_pantob_2cc; }
+		
+		switch(FEAT_TRAINS, SELF, sw_e4_series_pantob_frt_stack, [ 
+			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+				0: ss_frt_e4_series_pantob_yel;       	// Base for Front
+				1: ss_frt_e4_series_pantob_mask;		// Mask for Front
+			}
+
+		switch(FEAT_TRAINS, SELF, sw_e4_series_pantob_frt_longsprite, PrevPartSame() ) { 1: sw_e4_series_pantob_frt_stack; dummy_sprites; }
+
+		// Mid
+		switch(FEAT_TRAINS, SELF, ss_mid_e4_series_pantob_yeardep, build_year) {0..2014: ss_mid_e4_series_pantob_yel; ss_mid_e4_series_pantob_pnk; }
+        switch(FEAT_TRAINS, PARENT, ss_mid_e4_series_pantob_mask, cargo_subtype) {0:ss_mid_e4_series_pantob_yeardep; 1:ss_mid_e4_series_pantob_yel; 2:ss_mid_e4_series_pantob_pnk; 3:ss_mid_e4_series_pantob_2cc; }
+		
+        switch(FEAT_TRAINS, SELF, ss_std_e4_series_pantob_yeardep, build_year) {0..2014: ss_std_e4_series_pantob_yel; ss_std_e4_series_pantob_pnk; }
+        switch(FEAT_TRAINS, PARENT, ss_std_e4_series_pantob_mask, cargo_subtype) {0:ss_std_e4_series_pantob_yeardep; 1:ss_std_e4_series_pantob_yel; 2:ss_std_e4_series_pantob_pnk; 3:ss_std_e4_series_pantob_2cc; }
+			
+		switch(FEAT_TRAINS, SELF, sw_e4_series_pantob_mid_longsprite, HideLongSprite() ) { 0: ss_std_e4_series_pantob_yel; }
+		switch(FEAT_TRAINS, SELF, sw_e4_series_pantob_std_longsprite, HideLongSprite() ) { 0: ss_std_e4_series_pantob_mask; }
+
+		switch(FEAT_TRAINS, SELF, sw_e4_series_pantob_mid_stack, [ 
+			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+				0: ss_mid_e4_series_pantob_yel;       	// Base for Mid
+				1: ss_mid_e4_series_pantob_mask;		// Mask for Mid
+				2: sw_e4_series_pantob_mid_longsprite;	// Long Sprite for Corners and Hills
+				3: sw_e4_series_pantob_std_longsprite;
+                // Pantos
+                4: panto_midsprite_e1_b;
+                5: panto_longsprite_e1_b;
+			}
+
+		// Back
+		switch(FEAT_TRAINS, SELF, ss_bck_e4_series_pantob_yeardep, build_year) {0..2014: ss_bck_e4_series_pantob_yel; ss_bck_e4_series_pantob_pnk; }
+        switch(FEAT_TRAINS, PARENT, ss_bck_e4_series_pantob_mask, cargo_subtype) {0:ss_bck_e4_series_pantob_yeardep; 1:ss_bck_e4_series_pantob_yel; 2:ss_bck_e4_series_pantob_pnk; 3:ss_bck_e4_series_pantob_2cc; }
+		
+		switch(FEAT_TRAINS, SELF, sw_e4_series_pantob_bck_stack, [ 
+			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+				0: ss_bck_e4_series_pantob_yel;       	// Base for Front
+				1: ss_bck_e4_series_pantob_mask;		// Mask for Front
+			}
+
+		switch(FEAT_TRAINS, SELF, sw_e4_series_pantob_bck_longsprite, NextPartSame() ) { 1: sw_e4_series_pantob_bck_stack; dummy_sprites; }
+
+		switch (FEAT_TRAINS, SELF, sw_e4_series_pantob, position_in_consist_from_end % 3 ) {				
+            0: sw_e4_series_pantob_frt_longsprite;
+            1: sw_e4_series_pantob_mid_stack;
+            2: sw_e4_series_pantob_bck_longsprite;
+        }
+# 1 "src/trains/e4_series/e4_series.pnml" 2
+# 1 "src/trains/e4_series/e4_series_formations.pnml" 1
+
+
+/* Panto in middle */
+
+    switch (FEAT_TRAINS, SELF, sw_e4_series_forwards_panto_in_middle, CarNumberFromEnd() - CarNumber() ) {				
+            0..1:  sw_e4_series_pantof;
+            sw_e4_series_coachf;  				
+        }
+
+    switch (FEAT_TRAINS, SELF, sw_e4_series_backwards_panto_in_middle, CarNumber() - CarNumberFromEnd() ) {				
+            0..1:  sw_e4_series_pantob;
+            sw_e4_series_coachb;  				
+        }    
+
+/* Long */
+
+    switch (FEAT_TRAINS, SELF, sw_e4_series_forwards_long, CarNumber() == 3 || CarNumberFromEnd()  == 4 ) {				
+            0:  sw_e4_series_coachf;
+            sw_e4_series_pantof;				
+        }
+
+    switch (FEAT_TRAINS, SELF, sw_e4_series_backwards_long, CarNumberFromEnd() == 3 || CarNumber()  == 4 ) {				
+            0:  sw_e4_series_coachb;
+            sw_e4_series_pantob;				
+        }
+
+/* Repeating 8 */
+
+    switch (FEAT_TRAINS, SELF, sw_e4_series_forwards_multi, CarNumber() % 8 ) {				
+            1:  sw_e4_series_cab01f;
+            4:  sw_e4_series_pantof; 
+            6:  sw_e4_series_pantof;
+            0:  sw_e4_series_cab02f;
+            sw_e4_series_coachf;			
+        }
+
+    switch (FEAT_TRAINS, SELF, sw_e4_series_backwards_multi, CarNumber() % 8 ) {				
+            1:  sw_e4_series_cab01b;
+            4:  sw_e4_series_pantob; 
+            6:  sw_e4_series_pantob;
+            0:  sw_e4_series_cab02b;
+            sw_e4_series_coachb;			
+        }
+
+/* Length Checks */
+
+    switch (FEAT_TRAINS, SELF, sw_e4_series_forwards, NumberCarsInConsist() ) {				
+            0..7:   sw_e4_series_forwards_panto_in_middle;  
+            16:     sw_e4_series_forwards_multi;
+            24:     sw_e4_series_forwards_multi;  
+            sw_e4_series_forwards_long;				
+        }
+
+    switch (FEAT_TRAINS, SELF, sw_e4_series_backwards, NumberCarsInConsist() ) {				
+            0..7:   sw_e4_series_backwards_panto_in_middle;  
+            16:     sw_e4_series_backwards_multi;
+            24:     sw_e4_series_backwards_multi;  
+            sw_e4_series_backwards_long;				
+        }
+
+/* Forwards or Backwards */
+    switch (FEAT_TRAINS, PARENT, sw_e4_series_midcars, vehicle_is_reversed) {				
+            0:  sw_e4_series_forwards;
+            sw_e4_series_backwards;				
+        }
+
+/* Cab selection */
+
+/* Find the cabs */
+
+    switch (FEAT_TRAINS, PARENT, sw_e4_series_rear, vehicle_is_reversed) {				
+            1: sw_e4_series_cab01b;
+            sw_e4_series_cab02f;
+        }
+
+    switch (FEAT_TRAINS, PARENT, sw_e4_series_lead, vehicle_is_reversed) {				
+            1: sw_e4_series_cab02b;
+            sw_e4_series_cab01f;
+        }
+
+    switch (FEAT_TRAINS, SELF, sw_e4_series_cabs, position_in_consist) {				
+            0..2: sw_e4_series_lead;
+            sw_e4_series_rear;
+        }
+    
+    switch (FEAT_TRAINS, SELF, sw_e4_series_graphics, IsCab() ) {				
+            1:  sw_e4_series_cabs;
+            sw_e4_series_midcars;	
+        }
+# 1 "src/trains/e4_series/e4_series.pnml" 2
+# 1 "src/trains/e4_series/e4_series_item.pnml" 1
 
 switch (FEAT_TRAINS, SELF, sw_e4_series_articulated_part, extra_callback_info1) {
 		1 .. 2: return series_e4;									
 		return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
-	}
-
-/*---Coupling Switch---*/
-switch(FEAT_TRAINS, SELF, sw_e4_series_attach_vehid, [vehicle_type_id == mu_car_full] ) {
- 0: return string(ONLY_ADD_MUCAR);
-}
-
-/*---Length Check---*/
-switch (FEAT_TRAINS, SELF, sw_e4_series_stop_start, [num_vehs_in_consist < 12]) {				
-		1:  return string(STR_LENGTH_ERROR); 				
-		return CB_RESULT_NO_TEXT; 
 	}
 
 item(FEAT_TRAINS, series_e4) {
@@ -17393,7 +17632,7 @@ item(FEAT_TRAINS, series_e4) {
 		/* Menu */
         name: 							string(STR_NAME_E4_SERIES);
 		sprite_id:                      SPRITE_ID_NEW_TRAIN; 		// required to enable new graphics
-        misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_2CC);
+        misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK);
         running_cost_base:              RUNNING_COST_ELECTRIC;
 		engine_class:                   ENGINE_CLASS_ELECTRIC;
         /* Availability */
@@ -17422,13 +17661,13 @@ item(FEAT_TRAINS, series_e4) {
 		/* Menu */
         additional_text:                string(STR_DESC_E4_SERIES);
         cargo_subtype_text:             sw_e4_series_subtype_text;
-		can_attach_wagon:				sw_e4_series_attach_vehid;
-		start_stop:						sw_e4_series_stop_start;
+		can_attach_wagon:				sw_attach_mu_car_full;
+		start_stop:						sw_stop_start_full_length_4;
 		purchase_weight:                54;
         purchase_power:                 563 * 4;
         /* Graphics */
         default:                        sw_e4_series_graphics;
-		purchase:                       sw_e4_series_year_dep_purchase;
+		purchase:                       sw_e4_series_purchase;
 		articulated_part:               sw_e4_series_articulated_part;
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
         /* Stats */

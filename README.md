@@ -44,7 +44,7 @@ This is the sister set to 🚂[JP+ Engines & Wagons](https://github.com/EmperorJ
 |![E1 Series](/src/purchase/e1_series.png)| E1 Series | 1994 | 2012 | 240 | 58t
 |![E2 Series](/src/purchase/e2_series.png)| E2 Series | 1997 | N/A | 275 | 46t
 |![E3 Series](/src/purchase/e3_series.png)| E3 Series | 1997 | N/A | 275 | 43t
-|![E4 Series](/src/trains/e4_series/12/purchase_yellow.png)| E4 Series | 1997 | N/A^ | 240 | 54t |
+|![E4 Series](/src/purchase/e4_series.png)| E4 Series | 1997 | N/A^ | 240 | 54t |
 |![E5 Series](/src/trains/e5_series/12/purchase.png)| E5 Series | 2011 | N/A | 321 | 45t
 |![E6 Series](/src/purchase/e6_series.png)| E6 Series | 2013| N/A | 321 | 42t
 |![E7 Series](/src/trains/e7_series/12/purchase.png)| E7/W7 Series | 2014 | N/A | 275 | 45t
