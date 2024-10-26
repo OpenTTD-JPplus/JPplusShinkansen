@@ -32,6 +32,17 @@
 	spriteset(panto_midsprite_500_f, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/500_series/gfx/500_series_pantos.png") {tmpl_mid_std(1,101)}
 	spriteset(panto_midsprite_500_b, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/500_series/gfx/500_series_pantos.png") {tmpl_mid_rev(1,101)}
 
+// 200 Series
+
+	spriteset(ss_std_200_series_pantof_ptg, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/gfx/200_series_pantos.png") {tmpl_10_std(1,101)}
+	spriteset(ss_std_200_series_pantob_ptg, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/gfx/200_series_pantos.png") {tmpl_10_rev(1,101)}
+
+	switch(FEAT_TRAINS, SELF, panto_longsprite_200_f, HideLongSprite() ) { 0: ss_std_200_series_pantof_ptg; }
+	switch(FEAT_TRAINS, SELF, panto_longsprite_200_b, HideLongSprite() ) { 0: ss_std_200_series_pantob_ptg; }
+
+	spriteset(panto_midsprite_200_f, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/gfx/200_series_pantos.png") {tmpl_mid_std(1,101)}
+	spriteset(panto_midsprite_200_b, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/gfx/200_series_pantos.png") {tmpl_mid_rev(1,101)}
+
 // E1 Series
 
 	spriteset(ss_std_e1_series_pantof_ptg, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e1_series/gfx/e1_series_pantos.png") {tmpl_10_std(1,101)}
@@ -55,13 +66,13 @@
 	spriteset(panto_midsprite_e2_f, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e2_series/gfx/e2_series_pantos.png") {tmpl_mid_std(1,101)}
 	spriteset(panto_midsprite_e2_b, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e2_series/gfx/e2_series_pantos.png") {tmpl_mid_rev(1,101)}
 
-// 200 Series
+// E5 Series
 
-	spriteset(ss_std_200_series_pantof_ptg, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/gfx/200_series_pantos.png") {tmpl_10_std(1,101)}
-	spriteset(ss_std_200_series_pantob_ptg, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/gfx/200_series_pantos.png") {tmpl_10_rev(1,101)}
+	spriteset(ss_std_e5_series_pantof_ptg, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e5_series/gfx/e5_series_pantos.png") {tmpl_10_std(1,101)}
+	spriteset(ss_std_e5_series_pantob_ptg, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e5_series/gfx/e5_series_pantos.png") {tmpl_10_rev(1,101)}
 
-	switch(FEAT_TRAINS, SELF, panto_longsprite_200_f, HideLongSprite() ) { 0: ss_std_200_series_pantof_ptg; }
-	switch(FEAT_TRAINS, SELF, panto_longsprite_200_b, HideLongSprite() ) { 0: ss_std_200_series_pantob_ptg; }
+	switch(FEAT_TRAINS, SELF, panto_longsprite_e5_f, HideLongSprite() ) { 0: ss_std_e5_series_pantof_ptg; }
+	switch(FEAT_TRAINS, SELF, panto_longsprite_e5_b, HideLongSprite() ) { 0: ss_std_e5_series_pantob_ptg; }
 
-	spriteset(panto_midsprite_200_f, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/gfx/200_series_pantos.png") {tmpl_mid_std(1,101)}
-	spriteset(panto_midsprite_200_b, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/gfx/200_series_pantos.png") {tmpl_mid_rev(1,101)}
+	spriteset(panto_midsprite_e5_f, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e5_series/gfx/e5_series_pantos.png") {tmpl_mid_std(1,101)}
+	spriteset(panto_midsprite_e5_b, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e5_series/gfx/e5_series_pantos.png") {tmpl_mid_rev(1,101)}
