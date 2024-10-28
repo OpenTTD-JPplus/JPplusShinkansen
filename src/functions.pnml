@@ -48,23 +48,12 @@ if (param_basecapacity == 2) {
 
 /* LENGTHS */
 
-// Standard 2-8-2 Length
-    switch (FEAT_TRAINS, SELF, sw_length_2_8_2, position_in_articulated_veh % 3) {
-        1: return 8;
-        return 2;
-    }
-
 // Standard 1-8-1 Length
     switch (FEAT_TRAINS, SELF, sw_length_1_8_1, position_in_articulated_veh % 3) {
         1: return 8;
         return 1;
     }
-
-switch (FEAT_TRAINS, SELF, sw_param_length, param_spritelength) {
-        1: sw_length_1_8_1;		    // Length 10
-        sw_length_2_8_2;			// Length 12
-    }
-
+    
 // Return 1 if a cab
     switch(FEAT_TRAINS, SELF, IsCab, 
             position_in_consist == 0 || 

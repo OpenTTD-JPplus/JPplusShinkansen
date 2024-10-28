@@ -930,23 +930,12 @@ if (param_basecapacity == 2) {
 
 /* LENGTHS */
 
-// Standard 2-8-2 Length
-    switch (FEAT_TRAINS, SELF, sw_length_2_8_2, position_in_articulated_veh % 3) {
-        1: return 8;
-        return 2;
-    }
-
 // Standard 1-8-1 Length
     switch (FEAT_TRAINS, SELF, sw_length_1_8_1, position_in_articulated_veh % 3) {
         1: return 8;
         return 1;
     }
-
-switch (FEAT_TRAINS, SELF, sw_param_length, param_spritelength) {
-        1: sw_length_1_8_1;		    // Length 10
-        sw_length_2_8_2;			// Length 12
-    }
-
+    
 // Return 1 if a cab
     switch(FEAT_TRAINS, SELF, IsCab, 
             position_in_consist == 0 || 
@@ -1220,7 +1209,7 @@ item(FEAT_TRAINS, mu_car_full) {
         purchase:                       sw_buy_mucar_full;
         additional_text:			    return string(MUCAR_FULL_DESC);
         articulated_part:               sw_mucar_full_articulated_part;
-        length:                         sw_param_length; 
+        length:                         sw_length_1_8_1; 
         cargo_capacity:                 0;
     }
 }
@@ -1295,7 +1284,7 @@ item(FEAT_TRAINS, mu_car_maglev) {
         purchase:                       sw_buy_mucar_maglev;
         additional_text:			    return string(MUCAR_MAGLEV_DESC);
         articulated_part:               sw_mucar_maglev_articulated_part;
-        length:                         sw_param_length; 
+        length:                         sw_length_1_8_1; 
         cargo_capacity:                 0;
     }
 }
@@ -1371,7 +1360,7 @@ item(FEAT_TRAINS, mu_car_mail) {
         purchase:                       sw_buy_mucar_mail;
         additional_text:			    return string(MUCAR_MAIL_DESC);
         articulated_part:               sw_mucar_mail_articulated_part;
-        length:                         sw_param_length;  
+        length:                         sw_length_1_8_1;  
     }
 }
 }
@@ -2555,7 +2544,7 @@ item(FEAT_TRAINS, series_0) {
 		articulated_part:               sw_0_series_articulated_part;
         visual_effect_and_powered:      sw_visual_effect_and_powered;
 		/* Stats */
-        length:                        	sw_param_length;
+        length:                        	sw_length_1_8_1;
         speed:							sw_0_series_speed;
 		weight:                         NumberCarsInConsist() * 61;
         power:                          NumberCarsInConsist() * 248 * 4;	// 185 kW
@@ -2574,7 +2563,7 @@ item(FEAT_TRAINS, series_0) {
         cargo_age_period:				param_decay_express;
         loading_speed:					28 * CapacityFactor() / param_loading_2D;
 		articulated_part:				sw_mucar_full_articulated_part;
-		length:							sw_param_length;
+		length:							sw_length_1_8_1;
 		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
 		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
         //running_cost_factor:            sw_0_series_running_costs;
@@ -2910,7 +2899,7 @@ item(FEAT_TRAINS, series_922) {
 		articulated_part:               sw_922_series_articulated_part;
         visual_effect_and_powered:      sw_visual_effect_and_powered;
 		/* Stats */
-        length:                        	sw_param_length;
+        length:                        	sw_length_1_8_1;
         speed:							sw_922_series_speed;
 		weight:                         NumberCarsInConsist() * 61;
         power:                          NumberCarsInConsist() * 248 * 4;	// 185 kW
@@ -2929,7 +2918,7 @@ item(FEAT_TRAINS, series_922) {
         cargo_age_period:				param_decay_express;
         loading_speed:					25;
 		articulated_part:				sw_mucar_full_articulated_part;
-		length:							sw_param_length;
+		length:							sw_length_1_8_1;
         running_cost_factor:            0;
       }
 }}
@@ -2982,7 +2971,7 @@ item(FEAT_TRAINS, series_922) {
 		articulated_part:               sw_922_series_articulated_part;
         visual_effect_and_powered:      sw_visual_effect_and_powered;
 		/* Stats */
-        length:                        	sw_param_length;
+        length:                        	sw_length_1_8_1;
         speed:							sw_922_series_speed;
 		weight:                         NumberCarsInConsist() * 61;
         power:                          NumberCarsInConsist() * 248 * 4;	// 185 kW
@@ -3001,7 +2990,7 @@ item(FEAT_TRAINS, series_922) {
         cargo_age_period:				param_decay_express;
         loading_speed:					40 * CapacityFactor() / param_loading_2D;
 		articulated_part:				sw_mucar_full_articulated_part;
-		length:							sw_param_length;
+		length:							sw_length_1_8_1;
       }
 }}
 
@@ -3054,7 +3043,7 @@ item(FEAT_TRAINS, series_922) {
 		articulated_part:               sw_922_series_articulated_part;
         visual_effect_and_powered:      sw_visual_effect_and_powered;
 		/* Stats */
-        length:                        	sw_param_length;
+        length:                        	sw_length_1_8_1;
         speed:							sw_922_series_speed;
 		weight:                         NumberCarsInConsist() * 61;
         power:                          NumberCarsInConsist() * 248 * 4;	// 185 kW
@@ -3073,7 +3062,7 @@ item(FEAT_TRAINS, series_922) {
         cargo_age_period:				param_decay_express;
         loading_speed:					28 * CapacityFactor() / param_loading_2D;
 		articulated_part:				sw_mucar_full_articulated_part;
-		length:							sw_param_length;
+		length:							sw_length_1_8_1;
       }
 }}
 # 1 "JPplusShinkansen.pnml" 4
@@ -4957,7 +4946,7 @@ item(FEAT_TRAINS, series_n700) {
 		articulated_part:               sw_n700_series_articulated_part;
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
         /* Stats */
-        length:                         sw_param_length;
+        length:                         sw_length_1_8_1;
         weight:                         NumberCarsInConsist() * 44;
         power:                         	max (( NumberCarsInConsist() - 2 ) , 0 )* 409 * 4;
 		cargo_capacity:                 28 * CapacityFactor();															
@@ -4974,7 +4963,7 @@ item(FEAT_TRAINS, series_n700) {
         cargo_age_period:				param_decay_express;
         loading_speed:                  28 * CapacityFactor() / param_loading_2D;
 		articulated_part:				sw_mucar_full_articulated_part;
-		length:							sw_param_length;
+		length:							sw_length_1_8_1;
 		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
 		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
         //running_cost_factor:            sw_n700_series_running_costs;
@@ -5032,7 +5021,7 @@ item(FEAT_TRAINS, series_n700a) {
 		articulated_part:               sw_n700a_series_articulated_part;
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
         /* Stats */
-        length:                         sw_param_length;
+        length:                         sw_length_1_8_1;
         weight:                         NumberCarsInConsist() * 44;
         power:                         	max (( NumberCarsInConsist() - 2 ) , 0 )* 409 * 4;
 		cargo_capacity:                 28 * CapacityFactor();															
@@ -5049,7 +5038,7 @@ item(FEAT_TRAINS, series_n700a) {
         cargo_age_period:				param_decay_express;
         loading_speed:                  28 * CapacityFactor() / param_loading_2D;
 		articulated_part:				sw_mucar_full_articulated_part;
-		length:							sw_param_length;
+		length:							sw_length_1_8_1;
 		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
 		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
         //running_cost_factor:            sw_n700a_series_running_costs;
@@ -5108,7 +5097,7 @@ item(FEAT_TRAINS, series_n700s) {
 		articulated_part:               sw_n700s_series_articulated_part;
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
         /* Stats */
-        length:                         sw_param_length;
+        length:                         sw_length_1_8_1;
         weight:                         NumberCarsInConsist() * 44;
         power:                         	max (( NumberCarsInConsist() - 2 ) , 0 )* 409 * 4;
 		cargo_capacity:                 28 * CapacityFactor();															
@@ -5125,7 +5114,7 @@ item(FEAT_TRAINS, series_n700s) {
         cargo_age_period:				param_decay_express;
         loading_speed:                  28 * CapacityFactor() / param_loading_2D;
 		articulated_part:				sw_mucar_full_articulated_part;
-		length:							sw_param_length;
+		length:							sw_length_1_8_1;
 		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
 		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
         //running_cost_factor:            sw_n700s_series_running_costs;
@@ -6690,7 +6679,7 @@ item(FEAT_TRAINS, series_700) {
 		articulated_part:               sw_700_series_articulated_part;
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
         /* Stats */
-        length:                         sw_param_length;
+        length:                         sw_length_1_8_1;
         weight:                         NumberCarsInConsist() * 44;
         power:                          max ( NumberCarsInConsist() - 2 , 0 ) * 369 * 4;	// 275 kW
 		cargo_capacity:                 28 * CapacityFactor();															
@@ -6708,7 +6697,7 @@ item(FEAT_TRAINS, series_700) {
         cargo_age_period:				param_decay_express;
         loading_speed:					28 * CapacityFactor() / param_loading_2D;
 		articulated_part:				sw_mucar_full_articulated_part;
-		length:							sw_param_length;
+		length:							sw_length_1_8_1;
 		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
 		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
         //running_cost_factor:            sw_700_series_running_costs;
@@ -6776,7 +6765,7 @@ item(FEAT_TRAINS, series_700) {
 			articulated_part:               sw_923_series_articulated_part;
 			visual_effect_and_powered:      sw_visual_effect_and_powered;
 			/* Stats */
-			length:                         sw_param_length;
+			length:                         sw_length_1_8_1;
 			power:							max ( NumberCarsInConsist() - 2 , 0 ) * 369 * 4;
 			weight:							NumberCarsInConsist() * 44;
 			//speed:						285 km/h;
@@ -6794,7 +6783,7 @@ item(FEAT_TRAINS, series_700) {
 			cargo_age_period:				param_decay_express;
 			loading_speed:                  25;
 			articulated_part:				sw_mucar_full_articulated_part;
-			length:							sw_param_length;
+			length:							sw_length_1_8_1;
 			running_cost_factor:            0;
 		}
 	}}
@@ -6846,7 +6835,7 @@ item(FEAT_TRAINS, series_700) {
 			articulated_part:               sw_923_series_articulated_part;
 			visual_effect_and_powered:      sw_visual_effect_and_powered;
 			/* Stats */
-			length:                         sw_param_length;
+			length:                         sw_length_1_8_1;
 			power:							max ( NumberCarsInConsist() - 2 , 0 ) * 369 * 4;
 			weight:							NumberCarsInConsist() * 44;
 			//speed:						240 km/h;
@@ -6863,7 +6852,7 @@ item(FEAT_TRAINS, series_700) {
 			cargo_age_period:				param_decay_express;
 			loading_speed:                  40 * CapacityFactor() / param_loading_2D;
 			articulated_part:				sw_mucar_full_articulated_part;
-			length:							sw_param_length;		
+			length:							sw_length_1_8_1;		
 		}
 	}}
 
@@ -6915,7 +6904,7 @@ item(FEAT_TRAINS, series_700) {
 			articulated_part:               sw_923_series_articulated_part;
 			visual_effect_and_powered:      sw_visual_effect_and_powered;
 			/* Stats */
-			length:                         sw_param_length;
+			length:                         sw_length_1_8_1;
 			power:							max ( NumberCarsInConsist() - 2 , 0 ) * 369 * 4;
 			weight:							NumberCarsInConsist() * 44;
 			//speed:						240 km/h;
@@ -6932,7 +6921,7 @@ item(FEAT_TRAINS, series_700) {
 			cargo_age_period:				param_decay_express;
 			loading_speed:                  26 * CapacityFactor() / param_loading_2D;
 			articulated_part:				sw_mucar_full_articulated_part;
-			length:							sw_param_length;
+			length:							sw_length_1_8_1;
 		}
 	}}
 # 1 "src/trains/700_series/700_series.pnml" 2
@@ -8666,7 +8655,7 @@ item(FEAT_TRAINS, series_500) {
 		articulated_part:               sw_500_series_articulated_part;
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
 		/* Stats */
-		length:                         sw_param_length;
+		length:                         sw_length_1_8_1;
 		weight:							NumberCarsInConsist() * 42;
 		power:							NumberCarsInConsist() * 382 * 4;	// 285 kW
 		cargo_capacity:                 28 * CapacityFactor();															
@@ -8684,7 +8673,7 @@ item(FEAT_TRAINS, series_500) {
         cargo_age_period:				param_decay_express;
         loading_speed:					28 * CapacityFactor() / param_loading_2D;
 		articulated_part:				sw_mucar_full_articulated_part;
-		length:							sw_param_length;
+		length:							sw_length_1_8_1;
 		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
 		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
         //running_cost_factor:            sw_500_series_running_costs;
@@ -10673,7 +10662,7 @@ item(FEAT_TRAINS, series_100) {
 		articulated_part:               sw_100_series_articulated_part;
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
         /* Stats */
-        length:                         sw_param_length;
+        length:                         sw_length_1_8_1;
         weight:                         NumberCarsInConsist() * 53;
         power:                          max (NumberCarsInConsist() - 2 ,0) * 308 * 4;	// 230 kW
         speed:							sw_100_series_speed;
@@ -10693,7 +10682,7 @@ item(FEAT_TRAINS, series_100) {
         cargo_age_period:				param_decay_express;
         loading_speed:					27 * CapacityFactor() / param_loading_2D;
 		articulated_part:				sw_mucar_full_articulated_part;
-		length:							sw_param_length;
+		length:							sw_length_1_8_1;
 		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
 		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
         //running_cost_factor:            sw_100_series_running_costs;
@@ -11401,7 +11390,7 @@ item(FEAT_TRAINS, series_800) {
 		articulated_part:               sw_800_series_articulated_part;
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
 		/* Stats */
-		length:                         sw_param_length;
+		length:                         sw_length_1_8_1;
         power:                          NumberCarsInConsist() * 375 * 4;	// (285 kW)
         weight:                         NumberCarsInConsist() * 44 ;
 		cargo_capacity:                 22 * CapacityFactor();															
@@ -11419,7 +11408,7 @@ item(FEAT_TRAINS, series_800) {
         cargo_age_period:				param_decay_express;
         loading_speed:                  22 * CapacityFactor() / param_loading_2D;
 		articulated_part:				sw_mucar_full_articulated_part;
-		length:							sw_param_length;
+		length:							sw_length_1_8_1;
 		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
 		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
         //running_cost_factor:            sw_800_series_running_costs;
@@ -11936,7 +11925,7 @@ item(FEAT_TRAINS, series_l0) {
 		articulated_part:               sw_l0_series_articulated_part;
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
         /* Stats */
-        length:                         sw_param_length;
+        length:                         sw_length_1_8_1;
         power:                          (( NumberCarsInConsist() / 2 ) + 2 ) * 400 * 4;	
         weight:                         NumberCarsInConsist() * 25;									// https://linear-chuo-shinkansen.jr-central.co.jp/about/design/
 		cargo_capacity:                 sw_l0_series_cargo_capacity();
@@ -11955,7 +11944,7 @@ item(FEAT_TRAINS, series_l0) {
         cargo_age_period:				param_decay_express;
         loading_speed:					28 * CapacityFactor() / param_loading_2D;
 		articulated_part:				sw_mucar_maglev_articulated_part;
-		length:							sw_param_length;
+		length:							sw_length_1_8_1;
 		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
 		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
         //running_cost_factor:            sw_l0_series_running_costs;
@@ -13100,7 +13089,7 @@ item(FEAT_TRAINS, series_200) {
 		articulated_part:               sw_200_series_original_articulated_part;
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
 		/* Stats */
-		length:                         sw_param_length;
+		length:                         sw_length_1_8_1;
         power:							NumberCarsInConsist() * 308 * 4 ;		// 230 kW
 		weight:							NumberCarsInConsist() * 58;
         //speed:							sw_200_series_speed;
@@ -13120,7 +13109,7 @@ item(FEAT_TRAINS, series_200) {
         cargo_age_period:				param_decay_express;
         loading_speed:                  26 * CapacityFactor() / param_loading_2D;
 		articulated_part:				sw_mucar_full_articulated_part;
-		length:							sw_param_length;
+		length:							sw_length_1_8_1;
 		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
 		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
         //running_cost_factor:            sw_200_series_running_costs;
@@ -13180,7 +13169,7 @@ item(FEAT_TRAINS, series_200_sharknose) {
 		articulated_part:               sw_200_series_sharknose_articulated_part;
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
 		/* Stats */
-		length:                         sw_param_length;
+		length:                         sw_length_1_8_1;
         power:							NumberCarsInConsist() * 308 * 4 ;		// 230 kW
 		weight:							NumberCarsInConsist() * 58;
         //speed:						240 km/h;
@@ -13200,7 +13189,7 @@ item(FEAT_TRAINS, series_200_sharknose) {
         cargo_age_period:				param_decay_express;
         loading_speed:                  26 * CapacityFactor() / param_loading_2D;
 		articulated_part:				sw_mucar_full_articulated_part;
-		length:							sw_param_length;
+		length:							sw_length_1_8_1;
 		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
 		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
         //running_cost_factor:            sw_200_series_sharknose_running_costs;
@@ -13259,7 +13248,7 @@ item(FEAT_TRAINS, series_200_275) {
 		articulated_part:               sw_200_series_original_275_articulated_part;
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
 		/* Stats */
-		length:                         sw_param_length;
+		length:                         sw_length_1_8_1;
         power:							NumberCarsInConsist() * 308 * 4 ;		// 230 kW
 		weight:							NumberCarsInConsist() * 58;
         //speed:							sw_200_series_speed;
@@ -13279,7 +13268,7 @@ item(FEAT_TRAINS, series_200_275) {
         cargo_age_period:				param_decay_express;
         loading_speed:                  26 * CapacityFactor() / param_loading_2D;
 		articulated_part:				sw_mucar_full_articulated_part;
-		length:							sw_param_length;
+		length:							sw_length_1_8_1;
 		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
 		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
         //running_cost_factor:            sw_200_series_running_costs;
@@ -14427,7 +14416,7 @@ item(FEAT_TRAINS, series_e1) {
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
         colour_mapping:                 return base_sprite_2cc + CB_RESULT_COLOUR_MAPPING_ADD_CC;
 		/* Stats */
-		length:                         sw_param_length;
+		length:                         sw_length_1_8_1;
 		power:							NumberCarsInConsist() / 2 * 550 * 4;	// 410 kW
 		weight:							NumberCarsInConsist() * 58;
 		cargo_capacity:                 34 * CapacityFactor();										// 1235 capacity / (12 cars * 3 parts) is approx 35						
@@ -14446,7 +14435,7 @@ item(FEAT_TRAINS, series_e1) {
         cargo_age_period:				param_decay_express;
         loading_speed:					34 * CapacityFactor() / param_loading_2D;
 		articulated_part:				sw_mucar_full_articulated_part;
-		length:							sw_param_length;
+		length:							sw_length_1_8_1;
 		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
 		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
         //running_cost_factor:            sw_e1_series_running_costs;
@@ -15791,7 +15780,7 @@ item(FEAT_TRAINS, series_e2) {
 		articulated_part:               sw_e2_series_articulated_part;
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
         /* Stats */
-        length:                         sw_param_length;
+        length:                         sw_length_1_8_1;
         power:                          max((NumberCarsInConsist() - 2 ),0) * 402 * 4;
         weight:                        	NumberCarsInConsist() * 46;
 		cargo_capacity:                 27 * CapacityFactor();										// 815 capacity / (10 cars * 3 parts) is approx 27						
@@ -15810,7 +15799,7 @@ item(FEAT_TRAINS, series_e2) {
         cargo_age_period:				param_decay_express;
         loading_speed:					27 * CapacityFactor() / param_loading_2D;
 		articulated_part:				sw_mucar_full_articulated_part;
-		length:							sw_param_length;
+		length:							sw_length_1_8_1;
 		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
 		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
         //running_cost_factor:            sw_e2_series_running_costs;
@@ -17697,7 +17686,7 @@ item(FEAT_TRAINS, series_e4) {
 		articulated_part:               sw_e4_series_articulated_part;
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
         /* Stats */
-        length:                         sw_param_length;
+        length:                         sw_length_1_8_1;
 		power:							NumberCarsInConsist() / 2 * 563 * 4;	// 420 kW = 563 hp
 		weight:							NumberCarsInConsist() * 54;
 		cargo_capacity:                 35 * CapacityFactor();										// 817 capacity / (8 cars * 3 parts) is approx 35						
@@ -17716,7 +17705,7 @@ item(FEAT_TRAINS, series_e4) {
         cargo_age_period:				param_decay_express;
         loading_speed:                  35 * CapacityFactor() / param_loading_2D;
 		articulated_part:				sw_mucar_full_articulated_part;
-		length:							sw_param_length;
+		length:							sw_length_1_8_1;
 		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
         //weight:						// Apply weight in graphics block to calculate Max T.E. correctly
         //running_cost_factor:            sw_e4_series_running_costs;
@@ -18527,7 +18516,7 @@ item(FEAT_TRAINS, series_e5) {
 		articulated_part:               sw_e5_series_articulated_part;	
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
 		/* Stats */
-		length:                         sw_param_length;
+		length:                         sw_length_1_8_1;
 		power:							max ((NumberCarsInConsist() - 2 ),0) * 402 * 4 ;
 		weight:							NumberCarsInConsist() * 45;
 		cargo_capacity:                 25 * CapacityFactor();										// 731 capacity / (10 cars * 3 parts) is approx 25						
@@ -19565,7 +19554,7 @@ item(FEAT_TRAINS, series_e7) {
 		articulated_part:               sw_e7_series_articulated_part;
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
         /* Stats */
-        length:                         sw_param_length;
+        length:                         sw_length_1_8_1;
         power:                          max ((NumberCarsInConsist() - 2 ),0) * 335 * 4;
         weight:                         NumberCarsInConsist() * 45;
 		cargo_capacity:                 26 * CapacityFactor();										// 934 capacity / (12 cars * 3 parts) is approx 26						
@@ -19584,7 +19573,7 @@ item(FEAT_TRAINS, series_e7) {
         cargo_age_period:				param_decay_express;
         loading_speed:                  26 * CapacityFactor() / param_loading_2D;
 		articulated_part:				sw_mucar_full_articulated_part;
-		length:							sw_param_length;
+		length:							sw_length_1_8_1;
 		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
 		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
         //running_cost_factor:            sw_e7_series_running_costs;

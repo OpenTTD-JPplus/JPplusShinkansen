@@ -118,7 +118,7 @@ item(FEAT_TRAINS, mu_car_full) {
         purchase:                       sw_buy_mucar_full;
         additional_text:			    return string(MUCAR_FULL_DESC);
         articulated_part:               sw_mucar_full_articulated_part;
-        length:                         sw_param_length; 
+        length:                         sw_length_1_8_1; 
         cargo_capacity:                 0;
     }
 }
@@ -193,7 +193,7 @@ item(FEAT_TRAINS, mu_car_maglev) {
         purchase:                       sw_buy_mucar_maglev;
         additional_text:			    return string(MUCAR_MAGLEV_DESC);
         articulated_part:               sw_mucar_maglev_articulated_part;
-        length:                         sw_param_length; 
+        length:                         sw_length_1_8_1; 
         cargo_capacity:                 0;
     }
 }
@@ -269,7 +269,7 @@ item(FEAT_TRAINS, mu_car_mail) {
         purchase:                       sw_buy_mucar_mail;
         additional_text:			    return string(MUCAR_MAIL_DESC);
         articulated_part:               sw_mucar_mail_articulated_part;
-        length:                         sw_param_length;  
+        length:                         sw_length_1_8_1;  
     }
 }
 }

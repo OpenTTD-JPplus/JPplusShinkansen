@@ -54,7 +54,7 @@ item(FEAT_TRAINS, series_100) {
 		articulated_part:               sw_100_series_articulated_part;
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
         /* Stats */
-        length:                         sw_param_length;
+        length:                         sw_length_1_8_1;
         weight:                         NumberCarsInConsist() * 53;
         power:                          max (NumberCarsInConsist() - 2 ,0) * 308 * 4;	// 230 kW
         speed:							sw_100_series_speed;
@@ -74,7 +74,7 @@ item(FEAT_TRAINS, series_100) {
         cargo_age_period:				param_decay_express;
         loading_speed:					27 * CapacityFactor() / param_loading_2D;
 		articulated_part:				sw_mucar_full_articulated_part;
-		length:							sw_param_length;
+		length:							sw_length_1_8_1;
 		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
 		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
         //running_cost_factor:            sw_100_series_running_costs;

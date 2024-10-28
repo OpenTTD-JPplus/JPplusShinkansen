@@ -48,7 +48,7 @@ item(FEAT_TRAINS, series_e4) {
 		articulated_part:               sw_e4_series_articulated_part;
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
         /* Stats */
-        length:                         sw_param_length;
+        length:                         sw_length_1_8_1;
 		power:							NumberCarsInConsist() / 2 * 563 * 4;	// 420 kW = 563 hp
 		weight:							NumberCarsInConsist() * 54;
 		cargo_capacity:                 35 * CapacityFactor();										// 817 capacity / (8 cars * 3 parts) is approx 35						
@@ -67,7 +67,7 @@ item(FEAT_TRAINS, series_e4) {
         cargo_age_period:				param_decay_express;
         loading_speed:                  35 * CapacityFactor() / param_loading_2D;
 		articulated_part:				sw_mucar_full_articulated_part;
-		length:							sw_param_length;
+		length:							sw_length_1_8_1;
 		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
         //weight:						// Apply weight in graphics block to calculate Max T.E. correctly
         //running_cost_factor:            sw_e4_series_running_costs;

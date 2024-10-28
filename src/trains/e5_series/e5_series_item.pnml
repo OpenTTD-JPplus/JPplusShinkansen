@@ -50,7 +50,7 @@ item(FEAT_TRAINS, series_e5) {
 		articulated_part:               sw_e5_series_articulated_part;	
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
 		/* Stats */
-		length:                         sw_param_length;
+		length:                         sw_length_1_8_1;
 		power:							max ((NumberCarsInConsist() - 2 ),0) * 402 * 4 ;
 		weight:							NumberCarsInConsist() * 45;
 		cargo_capacity:                 25 * CapacityFactor();										// 731 capacity / (10 cars * 3 parts) is approx 25						
