@@ -1,7 +1,4 @@
-/*---Coupling Switch---*/
-switch(FEAT_TRAINS, SELF, sw_e6_series_attach_vehid, [vehicle_type_id == series_e6 || vehicle_type_id == mu_car_ms]) {
- 0: return string(MU_UNIQUE);
-}
+
 /*---END OF SECTION---*/
 
 item(FEAT_TRAINS, series_e6, 2006) {
@@ -47,7 +44,7 @@ item(FEAT_TRAINS, series_e6, 2006) {
 		    purchase:                       sw_e6_series_purchase;
 		    additional_text:	              return string(STR_DESC_E6_SERIES);
         cargo_subtype_text:             sw_e6_series_subtype_text;
-        can_attach_wagon:			          sw_e6_series_attach_vehid;
+        can_attach_wagon:			          sw_attach_mu_car_ms;
         //start_stop:                   ;
         purchase_weight:                42 / 2;
         purchase_power:                 400 * 4;

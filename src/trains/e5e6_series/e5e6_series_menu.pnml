@@ -1,0 +1,17 @@
+/* SUBTYPES */	
+    
+    switch(FEAT_TRAINS, SELF, sw_e5e6_series_subtype_text, cargo_subtype) {
+		0: return string(LV_E5E6_SERIES_E5);
+		1: return string(LV_E5E6_SERIES_H5);
+        2: return string(LV_E5E6_SERIES_2CC);
+		return CB_RESULT_NO_TEXT;
+		}
+
+/* Purchase Menu */
+    spriteset (ss_e5e6_series_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e5e6_series/gfx/e5e6_series.png") {template_purchase(233, 1)}
+
+    switch(FEAT_TRAINS, SELF, sw_e5e6_series_purchase, [ 
+        STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+            0: logo_jreast; 
+            1: ss_e5e6_series_buy;
+        }

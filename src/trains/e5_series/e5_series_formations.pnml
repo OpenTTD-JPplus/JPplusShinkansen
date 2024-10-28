@@ -25,12 +25,12 @@
     
 /* Direction & Length Checks */    
     
-    switch (FEAT_TRAINS, SELF, sw_e5_series_backwards_length, num_vehs_in_consist < 30 ) {				
+    switch (FEAT_TRAINS, SELF, sw_e5_series_backwards_length, num_vehs_in_vehid_chain  < 30 ) {				
 			0:  sw_e5_series_backwards_length_large;
 			sw_e5_series_backwards_panto_in_middle;				
 		}
     
-    switch (FEAT_TRAINS, SELF, sw_e5_series_forwards_length, num_vehs_in_consist < 30 ) {				
+    switch (FEAT_TRAINS, SELF, sw_e5_series_forwards_length, num_vehs_in_vehid_chain  < 30 ) {				
 			0:  sw_e5_series_forwards_length_large;
 			sw_e5_series_forwards_panto_in_middle;				
 		}
@@ -54,7 +54,7 @@
             sw_e5_series_cab01f;
         }
 
-    switch (FEAT_TRAINS, SELF, sw_e5_series_cabs, position_in_consist) {				
+    switch (FEAT_TRAINS, SELF, sw_e5_series_cabs, position_in_vehid_chain ) {				
             0..2: sw_e5_series_lead;
             sw_e5_series_rear;
         }

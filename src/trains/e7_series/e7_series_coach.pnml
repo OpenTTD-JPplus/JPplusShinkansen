@@ -1,0 +1,129 @@
+
+/* coach */
+
+// Sprites
+
+	// Base
+
+	// 10/8
+	spriteset(ss_std_e7_series_coachf_irl, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e7_series/gfx/e7_series.png") {tmpl_10_std(1,101)}
+	spriteset(ss_std_e7_series_coachb_irl, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e7_series/gfx/e7_series.png") {tmpl_10_rev(1,101)}
+
+	// Front
+	spriteset(ss_frt_e7_series_coachf_irl, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e7_series/gfx/e7_series.png") {tmpl_frt_std(1,101)}
+	spriteset(ss_frt_e7_series_coachb_irl, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e7_series/gfx/e7_series.png") {tmpl_frt_rev(1,101)}
+	// Mid
+	spriteset(ss_mid_e7_series_coachf_irl, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e7_series/gfx/e7_series.png") {tmpl_mid_std(1,101)}
+	spriteset(ss_mid_e7_series_coachb_irl, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e7_series/gfx/e7_series.png") {tmpl_mid_rev(1,101)}
+	// Back
+	spriteset(ss_bck_e7_series_coachf_irl, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e7_series/gfx/e7_series.png") {tmpl_bck_std(1,101)}
+	spriteset(ss_bck_e7_series_coachb_irl, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e7_series/gfx/e7_series.png") {tmpl_bck_rev(1,101)}
+
+	// 2cc Mask
+
+	// 10/8
+	spriteset(ss_std_e7_series_coachf_2cc, "src/trains/e7_series/gfx/e7_series_2cc.png") {tmpl_10_std(1,101)}
+	spriteset(ss_std_e7_series_coachb_2cc, "src/trains/e7_series/gfx/e7_series_2cc.png") {tmpl_10_rev(1,101)}
+
+	// Front
+	spriteset(ss_frt_e7_series_coachf_2cc, "src/trains/e7_series/gfx/e7_series_2cc.png") {tmpl_frt_std(1,101)}
+	spriteset(ss_frt_e7_series_coachb_2cc, "src/trains/e7_series/gfx/e7_series_2cc.png") {tmpl_frt_rev(1,101)}
+	// Mid
+	spriteset(ss_mid_e7_series_coachf_2cc, "src/trains/e7_series/gfx/e7_series_2cc.png") {tmpl_mid_std(1,101)}
+	spriteset(ss_mid_e7_series_coachb_2cc, "src/trains/e7_series/gfx/e7_series_2cc.png") {tmpl_mid_rev(1,101)}
+	// Back
+	spriteset(ss_bck_e7_series_coachf_2cc, "src/trains/e7_series/gfx/e7_series_2cc.png") {tmpl_bck_std(1,101)}
+	spriteset(ss_bck_e7_series_coachb_2cc, "src/trains/e7_series/gfx/e7_series_2cc.png") {tmpl_bck_rev(1,101)}
+
+// Sprite Selection
+
+	// Forwards
+
+		// Front
+		switch(FEAT_TRAINS, PARENT, ss_frt_e7_series_coachf_mask, cargo_subtype) {2:ss_frt_e7_series_coachf_2cc; }
+		
+		switch(FEAT_TRAINS, SELF, sw_e7_series_coachf_frt_stack, [ 
+			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+				0: ss_frt_e7_series_coachf_irl;       	// Base for Front
+				1: ss_frt_e7_series_coachf_mask;		// Mask for Front
+			}
+
+		switch(FEAT_TRAINS, SELF, sw_e7_series_coachf_frt_longsprite, NextPartSame() ) { 1: sw_e7_series_coachf_frt_stack; dummy_sprites; }
+
+		// Mid
+		switch(FEAT_TRAINS, PARENT, ss_mid_e7_series_coachf_mask, cargo_subtype) {2:ss_mid_e7_series_coachf_2cc; }
+		switch(FEAT_TRAINS, PARENT, ss_std_e7_series_coachf_mask, cargo_subtype) {2:ss_std_e7_series_coachf_2cc; }
+		
+		switch(FEAT_TRAINS, SELF, sw_e7_series_coachf_mid_longsprite, HideLongSprite() ) { 0: ss_std_e7_series_coachf_irl; }
+		switch(FEAT_TRAINS, SELF, sw_e7_series_coachf_std_longsprite, HideLongSprite() ) { 0: ss_std_e7_series_coachf_mask; }
+
+		switch(FEAT_TRAINS, SELF, sw_e7_series_coachf_mid_stack, [ 
+			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+				0: ss_mid_e7_series_coachf_irl;       	// Base for Mid
+				1: ss_mid_e7_series_coachf_mask;		// Mask for Mid
+				2: sw_e7_series_coachf_mid_longsprite;	// Long Sprite for Corners and Hills
+				3: sw_e7_series_coachf_std_longsprite;
+			}
+
+		// Back
+		switch(FEAT_TRAINS, PARENT, ss_bck_e7_series_coachf_mask, cargo_subtype) {2:ss_bck_e7_series_coachf_2cc; }
+		
+		switch(FEAT_TRAINS, SELF, sw_e7_series_coachf_bck_stack, [ 
+			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+				0: ss_bck_e7_series_coachf_irl;       	// Base for Front
+				1: ss_bck_e7_series_coachf_mask;		// Mask for Front
+			}
+
+		switch(FEAT_TRAINS, SELF, sw_e7_series_coachf_bck_longsprite, PrevPartSame() ) { 1: sw_e7_series_coachf_bck_stack; dummy_sprites; }
+
+		switch (FEAT_TRAINS, SELF, sw_e7_series_coachf, position_in_consist % 3 ) {				
+            0: sw_e7_series_coachf_frt_longsprite;
+            1: sw_e7_series_coachf_mid_stack;
+            2: sw_e7_series_coachf_bck_longsprite;
+        }
+
+	// Backwards
+
+		// Front
+		switch(FEAT_TRAINS, PARENT, ss_frt_e7_series_coachb_mask, cargo_subtype) {2:ss_frt_e7_series_coachb_2cc; }
+		
+		switch(FEAT_TRAINS, SELF, sw_e7_series_coachb_frt_stack, [ 
+			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+				0: ss_frt_e7_series_coachb_irl;       	// Base for Front
+				1: ss_frt_e7_series_coachb_mask;		// Mask for Front
+			}
+
+		switch(FEAT_TRAINS, SELF, sw_e7_series_coachb_frt_longsprite, PrevPartSame() ) { 1: sw_e7_series_coachb_frt_stack; dummy_sprites; }
+
+		// Mid
+		switch(FEAT_TRAINS, PARENT, ss_mid_e7_series_coachb_mask, cargo_subtype) {2:ss_mid_e7_series_coachb_2cc; }
+		switch(FEAT_TRAINS, PARENT, ss_std_e7_series_coachb_mask, cargo_subtype) {2:ss_std_e7_series_coachb_2cc; }
+		
+		switch(FEAT_TRAINS, SELF, sw_e7_series_coachb_mid_longsprite, HideLongSprite() ) { 0: ss_std_e7_series_coachb_irl; }
+		switch(FEAT_TRAINS, SELF, sw_e7_series_coachb_std_longsprite, HideLongSprite() ) { 0: ss_std_e7_series_coachb_mask; }
+
+		switch(FEAT_TRAINS, SELF, sw_e7_series_coachb_mid_stack, [ 
+			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+				0: ss_mid_e7_series_coachb_irl;       	// Base for Mid
+				1: ss_mid_e7_series_coachb_mask;		// Mask for Mid
+				2: sw_e7_series_coachb_mid_longsprite;	// Long Sprite for Corners and Hills
+				3: sw_e7_series_coachb_std_longsprite;
+			}
+
+		// Back
+		switch(FEAT_TRAINS, PARENT, ss_bck_e7_series_coachb_mask, cargo_subtype) {2:ss_bck_e7_series_coachb_2cc; }
+		
+		switch(FEAT_TRAINS, SELF, sw_e7_series_coachb_bck_stack, [ 
+			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+				0: ss_bck_e7_series_coachb_irl;       	// Base for Front
+				1: ss_bck_e7_series_coachb_mask;		// Mask for Front
+			}
+
+		switch(FEAT_TRAINS, SELF, sw_e7_series_coachb_bck_longsprite, NextPartSame() ) { 1: sw_e7_series_coachb_bck_stack; dummy_sprites; }
+
+		switch (FEAT_TRAINS, SELF, sw_e7_series_coachb, position_in_consist_from_end % 3 ) {				
+            0: sw_e7_series_coachb_frt_longsprite;
+            1: sw_e7_series_coachb_mid_stack;
+            2: sw_e7_series_coachb_bck_longsprite;
+        }
+		

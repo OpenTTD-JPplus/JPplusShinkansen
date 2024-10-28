@@ -20,6 +20,7 @@ shinkansen = {
     "0_series"   : "0_series_irl",
     "e4_series"   : "e4_series_yellow",
     "e5_series"   : "e5_series_pink",
+    "e7_series"   : "e7_series",
 }
 
 area = (267, 1, 307, 16)
@@ -50,6 +51,12 @@ shinkansen = {
         "300_series" : 4,
         "300_series_2cc" : 4,
     },
+     "e2_series" : {
+        "e2_series_red" : 3,
+        "e2_series_pnk" : 3,
+        "e2_series_200" : 7,
+        "e2_series_2cc" : 3,
+    },
     "e4_series" : {
         "e4_series_yellow" : 3,
         "e4_series_pink" : 3,
@@ -59,6 +66,10 @@ shinkansen = {
         "e5_series_pink" : 3,
         "e5_series_purple" : 3,
         "e5_series_2cc" : 3,
+    },
+    "e7_series" : {
+        "e7_series" : 3,
+        "e7_series_2cc" : 3,
     },
 }
 

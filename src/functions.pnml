@@ -70,14 +70,14 @@ switch (FEAT_TRAINS, SELF, sw_param_length, param_spritelength) {
             position_in_consist == 0 || 
             position_in_consist == 1 || 
             position_in_consist == 2 || 
-            position_in_consist_from_end == 0 ||
-            position_in_consist_from_end == 1 ||
-            position_in_consist_from_end == 2
+            position_in_vehid_chain_from_end == 0 ||
+            position_in_vehid_chain_from_end == 1 ||
+            position_in_vehid_chain_from_end == 2
         ) {return;}
 
 // Return Car Number
-    switch(FEAT_TRAINS, SELF, CarNumber, ( position_in_consist + 3 ) / 3 ) {return;}
-    switch(FEAT_TRAINS, SELF, CarNumberFromEnd, ( position_in_consist_from_end + 3 ) / 3 ) {return;}
+    switch(FEAT_TRAINS, SELF, CarNumber, ( position_in_consist  + 3 ) / 3 ) {return;}
+    switch(FEAT_TRAINS, SELF, CarNumberFromEnd, ( position_in_vehid_chain_from_end + 3 ) / 3 ) {return;}
 
 // Min Length Check
     switch (FEAT_TRAINS, SELF, sw_stop_start_full_length_4, num_vehs_in_consist < 12) {				
@@ -87,6 +87,10 @@ switch (FEAT_TRAINS, SELF, sw_param_length, param_spritelength) {
 
 // Attach Mucar Full
     switch(FEAT_TRAINS, SELF, sw_attach_mu_car_full, [vehicle_type_id == mu_car_full]) {
+        0: return string(ONLY_ADD_MUCAR);
+    }
+
+    switch(FEAT_TRAINS, SELF, sw_attach_mu_car_ms, [vehicle_type_id == mu_car_ms]) {
         0: return string(ONLY_ADD_MUCAR);
     }
 

@@ -1,0 +1,65 @@
+
+ /* Panto in middle */
+
+    switch (FEAT_TRAINS, SELF, sw_e7_series_forwards_panto_in_middle, CarNumberFromEnd() - CarNumber() ) {				
+            0..1:  sw_e7_series_pantof;
+            sw_e7_series_coachf;  				
+        }
+
+    switch (FEAT_TRAINS, SELF, sw_e7_series_backwards_panto_in_middle, CarNumber() - CarNumberFromEnd() ) {				
+            0..1:  sw_e7_series_pantob;
+            sw_e7_series_coachb;  				
+        }       
+
+ /* Long */
+
+    switch (FEAT_TRAINS, SELF, sw_e7_series_forwards_length_large, CarNumber() == 3 || CarNumberFromEnd()  == 4 ) {				
+			1:  sw_e7_series_pantof; 
+            sw_e7_series_coachf;					
+		}       
+
+    switch (FEAT_TRAINS, SELF, sw_e7_series_backwards_length_large, CarNumberFromEnd() == 3 || CarNumber()  == 4 ) {				
+			1:  sw_e7_series_pantob; 
+            sw_e7_series_coachb;					
+		}    
+    
+/* Direction & Length Checks */    
+    
+    switch (FEAT_TRAINS, SELF, sw_e7_series_backwards_length, num_vehs_in_consist < 30 ) {				
+			0:  sw_e7_series_backwards_length_large;
+			sw_e7_series_backwards_panto_in_middle;				
+		}
+    
+    switch (FEAT_TRAINS, SELF, sw_e7_series_forwards_length, num_vehs_in_consist < 30 ) {				
+			0:  sw_e7_series_forwards_length_large;
+			sw_e7_series_forwards_panto_in_middle;				
+		}
+
+	switch (FEAT_TRAINS, PARENT, sw_e7_series_midcars, vehicle_is_reversed) {				
+			0:  sw_e7_series_forwards_length;
+			sw_e7_series_backwards_length;				
+		}
+
+/* Cab selection */
+
+/* Find the cabs */
+
+    switch (FEAT_TRAINS, PARENT, sw_e7_series_rear, vehicle_is_reversed) {				
+            1: sw_e7_series_cab01b;
+            sw_e7_series_cab02f;
+        }
+
+    switch (FEAT_TRAINS, PARENT, sw_e7_series_lead, vehicle_is_reversed) {				
+            1: sw_e7_series_cab02b;
+            sw_e7_series_cab01f;
+        }
+
+    switch (FEAT_TRAINS, SELF, sw_e7_series_cabs, position_in_consist) {				
+            0..2: sw_e7_series_lead;
+            sw_e7_series_rear;
+        }
+    
+    switch (FEAT_TRAINS, SELF, sw_e7_series_graphics, IsCab() ) {				
+            1:  sw_e7_series_cabs;
+            sw_e7_series_midcars;	
+        }

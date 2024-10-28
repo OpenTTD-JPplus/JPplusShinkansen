@@ -47,7 +47,7 @@ This is the sister set to 🚂[JP+ Engines & Wagons](https://github.com/EmperorJ
 |![E4 Series](/src/purchase/e4_series.png)| E4 Series | 1997 | N/A^ | 240 | 54t |
 |![E5 Series](/src/purchase/e5_series.png)| E5 Series | 2011 | N/A | 321 | 45t
 |![E6 Series](/src/purchase/e6_series.png)| E6 Series | 2013| N/A | 321 | 42t
-|![E7 Series](/src/trains/e7_series/12/purchase.png)| E7/W7 Series | 2014 | N/A | 275 | 45t
+|![E7 Series](/src/purchase/e7_series.png)| E7/W7 Series | 2014 | N/A | 275 | 45t
 |![E8 Series](/src/purchase/e8_series.png)| E8 Series | 2024 | N/A | 300 | 42t
 
 ~ 210 km/h until 1989, 240 km/h thereafter
