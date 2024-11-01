@@ -57,7 +57,7 @@
 	// Forwards
 
 		// Front
-        switch(FEAT_TRAINS, PARENT, ss_frt_200_series_pantof_2cc_mask, cargo_subtype) {1:ss_frt_200_series_pantof_sh2;  2:ss_frt_200_series_pantof_rfb;}
+        switch(FEAT_TRAINS, PARENT, ss_frt_200_series_pantof_2cc_mask, cargo_subtype) {1:ss_frt_200_series_pantof_sh2;  2:ss_frt_200_series_pantof_rfb; 4:ss_frt_200_series_pantof_sh2;  5:ss_frt_200_series_pantof_rfb;}
 		
 		switch(FEAT_TRAINS, SELF, sw_200_series_pantof_frt_stack, [ 
 			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
@@ -71,14 +71,14 @@
 
         // Mid Parts
             // 2cc Mask
-				switch(FEAT_TRAINS, PARENT, ss_mid_200_series_pantof_2cc_mask, cargo_subtype) {1:ss_mid_200_series_pantof_sh2; 2:ss_mid_200_series_pantof_rfb; }
+				switch(FEAT_TRAINS, PARENT, ss_mid_200_series_pantof_2cc_mask, cargo_subtype) {1:ss_mid_200_series_pantof_sh2; 2:ss_mid_200_series_pantof_rfb; 4:ss_mid_200_series_pantof_sh2; 5:ss_mid_200_series_pantof_rfb;}
 
         // Mid LongSprite
             // Base
                 switch(FEAT_TRAINS, SELF, longsprite_200_series_pantof_sha, HideLongSprite() ) { 0: ss_std_200_series_pantof_sha; }
 
             // Mask when 2cc
-                switch(FEAT_TRAINS, PARENT, sw_std_200_series_pantof_2cc, cargo_subtype) {1:ss_std_200_series_pantof_sh2; 2:ss_std_200_series_pantof_rfb; }
+                switch(FEAT_TRAINS, PARENT, sw_std_200_series_pantof_2cc, cargo_subtype) {1:ss_std_200_series_pantof_sh2; 2:ss_std_200_series_pantof_rfb; 4:ss_std_200_series_pantof_sh2; 5:ss_std_200_series_pantof_rfb; }
                 switch(FEAT_TRAINS, SELF, longsprite_200_series_pantof_2cc, HideLongSprite() ) { 0: sw_std_200_series_pantof_2cc; }
             
 
@@ -96,7 +96,7 @@
 			}
 
 		// Back
-        switch(FEAT_TRAINS, PARENT, ss_bck_200_series_pantof_2cc_mask, cargo_subtype) {1:ss_frt_200_series_pantof_sh2;  2:ss_frt_200_series_pantof_rfb;}
+        switch(FEAT_TRAINS, PARENT, ss_bck_200_series_pantof_2cc_mask, cargo_subtype) {1:ss_frt_200_series_pantof_sh2;  2:ss_frt_200_series_pantof_rfb; 4:ss_frt_200_series_pantof_sh2;  5:ss_frt_200_series_pantof_rfb;}
 
 		switch(FEAT_TRAINS, SELF, sw_200_series_pantof_bck_stack, [ 
 			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 

@@ -1,42 +1,26 @@
 
-switch (FEAT_TRAINS, SELF, sw_e5e6_series_irl_articulated_part_12, extra_callback_info1) {
-		1 .. 87: return series_e5e6_irl;									
+switch (FEAT_TRAINS, SELF, sw_200n400_series_articulated_part, extra_callback_info1) {
+		1 .. 42: return series_200400;									
 		return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
 	}
-
-switch (FEAT_TRAINS, SELF, sw_e5e6_series_irl_articulated_part_10, extra_callback_info1) {
-		1 .. 77: return series_e5e6_irl;									
-		return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
-	}
-
-switch (FEAT_TRAINS, SELF, sw_e5e6_series_irl_articulated_part, param_spritelength) {
-        1: sw_e5e6_series_irl_articulated_part_10;		    // Length 10
-        sw_e5e6_series_irl_articulated_part_12;				// Length 12
-    }
 
 /*---Coupling Switch---*/
-switch(FEAT_TRAINS, SELF, sw_e5e6_series_irl_attach_vehid, [vehicle_type_id == series_test_700]) {
+switch(FEAT_TRAINS, SELF, sw_200n400_series_irl_attach_vehid, [vehicle_type_id == series_test_700]) {
  		0: return string(COUPLE_CANT_JOIN);
 	}
-
-// Description
-switch (FEAT_TRAINS, SELF, sw_e5e6_series_irl_additional_text, param_spritelength) {
-        1: string(STR_DESC_E5E6_SERIES_IRL_10);		   	 	// Length 10
-        string(STR_DESC_E5E6_SERIES_IRL_12);				// Length 12
-    }
-
-item(FEAT_TRAINS, series_e5e6_irl) {
+    
+item(FEAT_TRAINS, series_200400) {
 	property {
 		/* Menu */
-		name: 							string(STR_NAME_E5E6_SERIES);
+		name: 							string(STR_NAME_200n400_SERIES);
 		sprite_id:                      SPRITE_ID_NEW_TRAIN; 		// required to enable new graphics
 		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
 		running_cost_base:              RUNNING_COST_ELECTRIC;
 		engine_class:                   ENGINE_CLASS_ELECTRIC;
-		variant_group:					2005;
+		variant_group:					200;
 		/* Availability */
 		climates_available:             ALL_CLIMATES;
-		introduction_date:              date(2011,03,05); 
+		introduction_date:              date(1992,07,01); 
 		model_life:                     VEHICLE_NEVER_EXPIRES;		
 		vehicle_life:                   30;							// 
 		track_type:                     SHINKANSEN;
@@ -58,17 +42,17 @@ item(FEAT_TRAINS, series_e5e6_irl) {
 	}
 	graphics {
 		/* Menu */
-		additional_text:                sw_e5e6_series_irl_additional_text;
-		cargo_subtype_text:             sw_e5e6_series_subtype_text;
-		can_attach_wagon:				sw_e5e6_series_irl_attach_vehid;
-		//start_stop:						sw_e5e6_series_stop_start;
+		additional_text:                string(STR_DESC_200n400_SERIES_IRL);
+		cargo_subtype_text:             sw_200n400_series_subtype_text;
+		can_attach_wagon:				sw_200n400_series_irl_attach_vehid;
+		//start_stop:						sw_200n400_series_stop_start;
 		/* Graphics */
-		default:                        sw_e5e6_series_irl_graphics;
-		purchase:                       ss_buy_e5e6_series_pink_livery_12;
-		articulated_part:               sw_e5e6_series_irl_articulated_part;	
+		default:                        sw_200n400_series_graphics;
+		purchase:                       sw_200n400_series_purchase;
+		articulated_part:               sw_200n400_series_articulated_part;	
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
 		/* Stats */
-		length:                         2;
+		length:                         sw_200n400_series_length;
 		cargo_capacity:                 15 * CapacityFactor();
 		loading_speed:					15 * CapacityFactor() / param_loading_2D;
 		cargo_age_period:				param_decay_express;

@@ -1,0 +1,21 @@
+/* SUBTYPES */	
+    
+    switch(FEAT_TRAINS, SELF, sw_200n400_series_subtype_text, cargo_subtype) {
+		0: return string(LV_200RND400IRL);
+		1: return string(LV_200RN24002CC);
+        2: return string(LV_200RFB400IRL);
+        3: return string(LV_200RND400RFB);
+		4: return string(LV_200RN2400RF2);
+        5: return string(LV_200RFB400RFB);
+
+		return CB_RESULT_NO_TEXT;
+		}
+
+/* Purchase Menu */
+    spriteset (ss_200n400_series_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200&400_series/gfx/200&400_series.png") {template_purchase(233, 1)}
+
+    switch(FEAT_TRAINS, SELF, sw_200n400_series_purchase, [ 
+        STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+            0: logo_jreast; 
+            1: ss_200n400_series_buy;
+        }

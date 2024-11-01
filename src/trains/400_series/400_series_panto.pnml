@@ -14,11 +14,14 @@ spriteset(ss_mid_400_series_pantob_rf2, "src/trains/400_series/gfx/400_series_re
 
 // FORWARDS
 
+    switch(FEAT_TRAINS, PARENT, ss_mid_400_series_pantof_color_204, cargo_subtype) {1:ss_mid_400_series_pantof_2cc; 4:ss_mid_400_series_pantof_rf2;}
+    switch(FEAT_TRAINS, PARENT, ss_mid_400_series_pantof_shape_204, cargo_subtype) {3..5:ss_mid_400_series_pantof_rfb;}
+
     switch(FEAT_TRAINS, PARENT, ss_mid_400_series_pantof_color_400, cargo_subtype) {1:ss_mid_400_series_pantof_2cc; 3:ss_mid_400_series_pantof_rf2;}
     switch(FEAT_TRAINS, PARENT, ss_mid_400_series_pantof_shape_400, cargo_subtype) {2..3:ss_mid_400_series_pantof_rfb;}
 	
-    switch(FEAT_TRAINS, PARENT, ss_mid_400_series_pantof_color, vehicle_type_id) {400:ss_mid_400_series_pantof_color_400; }
-	switch(FEAT_TRAINS, PARENT, ss_mid_400_series_pantof_shape, vehicle_type_id) {400:ss_mid_400_series_pantof_shape_400; }
+    switch(FEAT_TRAINS, PARENT, ss_mid_400_series_pantof_color, vehicle_type_id) {400:ss_mid_400_series_pantof_color_400; 204:ss_mid_400_series_pantof_color_204;}
+	switch(FEAT_TRAINS, PARENT, ss_mid_400_series_pantof_shape, vehicle_type_id) {400:ss_mid_400_series_pantof_shape_400; 204:ss_mid_400_series_pantof_shape_204;}
 
     switch(FEAT_TRAINS, SELF, sw_400_series_pantof, [ 
 			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
