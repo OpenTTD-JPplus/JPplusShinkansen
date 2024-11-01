@@ -51,6 +51,13 @@ shinkansen = {
         "300_series" : 4,
         "300_series_2cc" : 4,
     },
+    "400_series" : {
+        "400_series" : 3,
+        "400_series_2cc" : 3,
+        "400_series_refurb" : 3,
+        "400_series_refurb_2cc" : 3,
+        "400_series_pantos" : 3,
+    },
      "e2_series" : {
         "e2_series_red" : 3,
         "e2_series_pnk" : 3,

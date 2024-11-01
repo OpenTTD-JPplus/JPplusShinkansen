@@ -1,0 +1,40 @@
+/* coach */
+
+spriteset(ss_mid_400_series_coachf_irl, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/400_series/gfx/400_series.png") {tmpl_mid_std(1,101)}
+spriteset(ss_mid_400_series_coachb_irl, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/400_series/gfx/400_series.png") {tmpl_mid_rev(1,101)}
+
+spriteset(ss_mid_400_series_coachf_2cc, "src/trains/400_series/gfx/400_series_2cc.png") {tmpl_mid_std(1,101)}
+spriteset(ss_mid_400_series_coachb_2cc, "src/trains/400_series/gfx/400_series_2cc.png") {tmpl_mid_rev(1,101)}
+
+spriteset(ss_mid_400_series_coachf_rfb, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/400_series/gfx/400_series_refurb.png") {tmpl_mid_std(1,101)}
+spriteset(ss_mid_400_series_coachb_rfb, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/400_series/gfx/400_series_refurb.png") {tmpl_mid_rev(1,101)}
+
+spriteset(ss_mid_400_series_coachf_rf2, "src/trains/400_series/gfx/400_series_refurb_2cc.png") {tmpl_mid_std(1,101)}
+spriteset(ss_mid_400_series_coachb_rf2, "src/trains/400_series/gfx/400_series_refurb_2cc.png") {tmpl_mid_rev(1,101)}
+
+// FORWARDS
+
+    switch(FEAT_TRAINS, PARENT, ss_mid_400_series_coachf_color_400, cargo_subtype) {1:ss_mid_400_series_coachf_2cc; 3:ss_mid_400_series_coachf_rf2;}
+    switch(FEAT_TRAINS, PARENT, ss_mid_400_series_coachf_shape_400, cargo_subtype) {2..3:ss_mid_400_series_coachf_rfb;}
+	
+    switch(FEAT_TRAINS, PARENT, ss_mid_400_series_coachf_color, vehicle_type_id) {400:ss_mid_400_series_coachf_color_400; }
+	switch(FEAT_TRAINS, PARENT, ss_mid_400_series_coachf_shape, vehicle_type_id) {400:ss_mid_400_series_coachf_shape_400; }
+
+    switch(FEAT_TRAINS, SELF, sw_400_series_coachf, [ 
+			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+				0: ss_mid_400_series_coachf_irl;       	// Base for Mid
+				1: ss_mid_400_series_coachf_shape;		// Mask for Mid
+                2: ss_mid_400_series_coachf_color;		// Mask for Mid
+			}
+
+// BACKWARDS
+
+    switch(FEAT_TRAINS, PARENT, ss_mid_400_series_coachb_color, cargo_subtype) {1:ss_mid_400_series_coachb_2cc; 3:ss_mid_400_series_coachb_rf2;}
+    switch(FEAT_TRAINS, PARENT, ss_mid_400_series_coachb_shape, cargo_subtype) {2..3:ss_mid_400_series_coachb_rfb;}
+
+    switch(FEAT_TRAINS, SELF, sw_400_series_coachb, [ 
+			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+				0: ss_mid_400_series_coachb_irl;       	// Base for Mid
+				1: ss_mid_400_series_coachb_shape;		// Mask for Mid
+                2: ss_mid_400_series_coachb_color;		// Mask for Mid
+			}
