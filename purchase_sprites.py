@@ -71,6 +71,11 @@ shinkansen = {
         "e7_series" : 3,
         "e7_series_2cc" : 3,
     },
+    "e8_series" : {
+        "e8_series" : 4,
+        "e8_series_2cc" : 4,
+        "e8_series_green" : 4,
+    },
 }
 
 for s in shinkansen:

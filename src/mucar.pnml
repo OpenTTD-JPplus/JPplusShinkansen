@@ -1,4 +1,3 @@
-// Begin mucar
 
 /* MINI-SHINKANSEN */
 
@@ -49,25 +48,11 @@ item(FEAT_TRAINS, mu_car_ms) {
 
 /* FULL SHINKANSEN */
 
-spriteset (ss_mucar_full_12_purchase,      "src/trains/dummy/mucarfullbuy.png") {template_purchase (0, 0)}
 spriteset (ss_mucar_full_10_purchase,      "src/trains/dummy/mucar10buy.png") {template_purchase (0, 0)}
-
-spriteset (ss_mucar_full_12,       	        "src/trains/dummy/mucar_full.png") {template_12_standard(1,1)}
 spriteset (ss_mucar_full_10,       	        "src/trains/dummy/mucar_10.png") {template_10_standard(1,1)}
 
-switch (FEAT_TRAINS, SELF, sw_buy_mucar_full, param_spritelength) {
-        1: ss_mucar_full_10_purchase;		// Length 10
-        ss_mucar_full_12_purchase;			// Length 12
-    }
-
-switch (FEAT_TRAINS, SELF, sw_graphics_mucar_full, param_spritelength) {
-        1: ss_mucar_full_10;		// Length 10
-        ss_mucar_full_12;			// Length 12
-    }
-
-
 switch (FEAT_TRAINS, SELF, sw_mucar_full_graphics, position_in_articulated_veh) {				
-		1:  sw_graphics_mucar_full; 				
+		1:  ss_mucar_full_10; 				
 		dummy_sprites;
 	}
 
@@ -115,7 +100,7 @@ item(FEAT_TRAINS, mu_car_full) {
      * Setting all callbacks is not needed, only define what is used */
     graphics {
 		default:                        sw_mucar_full_graphics;                     
-        purchase:                       sw_buy_mucar_full;
+        purchase:                       ss_mucar_full_10_purchase;
         additional_text:			    return string(MUCAR_FULL_DESC);
         articulated_part:               sw_mucar_full_articulated_part;
         length:                         sw_length_1_8_1; 
@@ -125,25 +110,11 @@ item(FEAT_TRAINS, mu_car_full) {
 
 // MAGLEV
 
-spriteset (ss_mucar_maglev_12_purchase,      "src/trains/dummy/mucar_maglev_12_buy.png") {template_purchase (0, 0)}
 spriteset (ss_mucar_maglev_10_purchase,      "src/trains/dummy/mucar_maglev_10_buy.png") {template_purchase (0, 0)}
-
-spriteset (ss_mucar_maglev_12,       	     "src/trains/dummy/mucar_maglev_12.png") {template_12_standard(1,1)}
 spriteset (ss_mucar_maglev_10,       	     "src/trains/dummy/mucar_maglev_10.png") {template_10_standard(1,1)}
 
-switch (FEAT_TRAINS, SELF, sw_buy_mucar_maglev, param_spritelength) {
-        1: ss_mucar_maglev_10_purchase;		// Length 10
-        ss_mucar_maglev_12_purchase;			// Length 12
-    }
-
-switch (FEAT_TRAINS, SELF, sw_graphics_mucar_maglev, param_spritelength) {
-        1: ss_mucar_maglev_10;		// Length 10
-        ss_mucar_maglev_12;			// Length 12
-    }
-
-
 switch (FEAT_TRAINS, SELF, sw_mucar_maglev_graphics, position_in_articulated_veh) {				
-		1:  sw_graphics_mucar_maglev; 				
+		1:  ss_mucar_maglev_10; 				
 		dummy_sprites;
 	}
 
@@ -190,7 +161,7 @@ item(FEAT_TRAINS, mu_car_maglev) {
      * Setting all callbacks is not needed, only define what is used */
     graphics {
 		default:                        sw_mucar_maglev_graphics;                     
-        purchase:                       sw_buy_mucar_maglev;
+        purchase:                       ss_mucar_maglev_10_purchase;
         additional_text:			    return string(MUCAR_MAGLEV_DESC);
         articulated_part:               sw_mucar_maglev_articulated_part;
         length:                         sw_length_1_8_1; 
@@ -199,25 +170,12 @@ item(FEAT_TRAINS, mu_car_maglev) {
 }
 
 
-spriteset (ss_mucar_mail_12_purchase,      "src/trains/dummy/mucarbuy_mail_12.png") {template_purchase (0, 0)}
 spriteset (ss_mucar_mail_10_purchase,      "src/trains/dummy/mucarbuy_mail_10.png") {template_purchase (0, 0)}
-
-spriteset (ss_mucar_mail_12,       	        "src/trains/dummy/mucar_mail_12.png") {template_12_standard(1,1)}
 spriteset (ss_mucar_mail_10,       	        "src/trains/dummy/mucar_mail_10.png") {template_10_standard(1,1)}
-
-switch (FEAT_TRAINS, SELF, sw_buy_mucar_mail, param_spritelength) {
-        1: ss_mucar_mail_10_purchase;		// Length 10
-        ss_mucar_mail_12_purchase;			// Length 12
-    }
-
-switch (FEAT_TRAINS, SELF, sw_graphics_mucar_mail, param_spritelength) {
-        1: ss_mucar_mail_10;		// Length 10
-        ss_mucar_mail_12;			// Length 12
-    }
 
 
 switch (FEAT_TRAINS, SELF, sw_mucar_mail_graphics, position_in_articulated_veh) {				
-		1:  sw_graphics_mucar_mail; 				
+		1:  ss_mucar_mail_10; 				
 		dummy_sprites;
 	}
 
@@ -266,12 +224,10 @@ item(FEAT_TRAINS, mu_car_mail) {
      * Setting all callbacks is not needed, only define what is used */
     graphics {
 		default:                        sw_mucar_mail_graphics;                     
-        purchase:                       sw_buy_mucar_mail;
+        purchase:                       ss_mucar_mail_10_purchase;
         additional_text:			    return string(MUCAR_MAIL_DESC);
         articulated_part:               sw_mucar_mail_articulated_part;
         length:                         sw_length_1_8_1;  
     }
 }
 }
-
-// End mucar
