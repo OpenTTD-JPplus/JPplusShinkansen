@@ -14,14 +14,17 @@ spriteset(ss_mid_400_series_cab01b_rf2, "src/trains/400_series/gfx/400_series_re
 
 // FORWARDS
 
+    switch(FEAT_TRAINS, PARENT, ss_mid_400_series_cab01f_color_2044, cargo_subtype) {3:ss_mid_400_series_cab01f_2cc; }
+    switch(FEAT_TRAINS, PARENT, ss_mid_400_series_cab01f_shape_2044, cargo_subtype) {4..5:ss_mid_400_series_cab01f_rfb;}
+
     switch(FEAT_TRAINS, PARENT, ss_mid_400_series_cab01f_color_204, cargo_subtype) {1:ss_mid_400_series_cab01f_2cc; 4:ss_mid_400_series_cab01f_rf2;}
     switch(FEAT_TRAINS, PARENT, ss_mid_400_series_cab01f_shape_204, cargo_subtype) {3..5:ss_mid_400_series_cab01f_rfb;}
 
     switch(FEAT_TRAINS, PARENT, ss_mid_400_series_cab01f_color_400, cargo_subtype) {1:ss_mid_400_series_cab01f_2cc; 3:ss_mid_400_series_cab01f_rf2;}
     switch(FEAT_TRAINS, PARENT, ss_mid_400_series_cab01f_shape_400, cargo_subtype) {2..3:ss_mid_400_series_cab01f_rfb;}
 	
-    switch(FEAT_TRAINS, PARENT, ss_mid_400_series_cab01f_color, vehicle_type_id) {400:ss_mid_400_series_cab01f_color_400; 204:ss_mid_400_series_cab01f_color_204;}
-	switch(FEAT_TRAINS, PARENT, ss_mid_400_series_cab01f_shape, vehicle_type_id) {400:ss_mid_400_series_cab01f_shape_400; 204:ss_mid_400_series_cab01f_shape_204;}
+    switch(FEAT_TRAINS, PARENT, ss_mid_400_series_cab01f_color, vehicle_type_id) {400:ss_mid_400_series_cab01f_color_400; 204:ss_mid_400_series_cab01f_color_204; 2044:ss_mid_400_series_cab01f_color_2044;}
+	switch(FEAT_TRAINS, PARENT, ss_mid_400_series_cab01f_shape, vehicle_type_id) {400:ss_mid_400_series_cab01f_shape_400; 204:ss_mid_400_series_cab01f_shape_204; 2044:ss_mid_400_series_cab01f_shape_2044;}
 
     switch(FEAT_TRAINS, SELF, sw_400_series_cab01f, [ 
 			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
