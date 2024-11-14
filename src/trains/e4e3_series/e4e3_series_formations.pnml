@@ -1,0 +1,33 @@
+
+
+switch (FEAT_TRAINS, SELF, sw_e5e6_series_graphics, position_in_consist ) {				
+		// E5
+        0..2:   sw_e5_series_cab01f;
+        3..5:   sw_e5_series_coachf;
+        6..8:   sw_e5_series_coachf;
+        9..11:  sw_e5_series_coachf;
+        12..14: sw_e5_series_coachf;
+        15..17: sw_e5_series_coachf;
+        18..20: sw_e5_series_coachf;
+        21..23: sw_e5_series_coachf;
+        24..26: sw_e5_series_coachf;
+        27:     sw_e5_series_cab02f_bck_longsprite;
+        28:     sw_e5_series_cab02f_mid_stack;
+        29:     sw_e5_series_cab02f_frt_longsprite;
+        // E6
+        30: sw_e6_series_cab01f;
+        31: sw_e6_series_pant1f;
+        32: sw_e6_series_coachf;
+        33: sw_e6_series_coachf;
+        34: sw_e6_series_coachf;
+        35: sw_e6_series_pant2f;
+		36: sw_e6_series_cab02f;
+
+	}
+
+switch (FEAT_TRAINS, SELF, sw_e5e6_series_length, position_in_consist ) {				
+		// E5
+        0..29: sw_length_1_8_1;
+        // E6
+        30..36: return 8;
+	}

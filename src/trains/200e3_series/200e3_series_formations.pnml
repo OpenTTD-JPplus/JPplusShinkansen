@@ -1,0 +1,35 @@
+
+
+switch (FEAT_TRAINS, SELF, sw_200e3_series_graphics, position_in_consist ) {				
+		// 200
+        0..2:   sw_200_series_cab01f;
+        3..5:   sw_200_series_pantof;
+        6..8:   sw_200_series_coachf;
+        9..11:  sw_200_series_pantof;
+        12..14: sw_200_series_coachf;
+        15..17: sw_200_series_pantof;
+        18..20: sw_200_series_coachf;
+        21..23: sw_200_series_pantof;
+        24..26: sw_200_series_coachf;
+        27..29: sw_200_series_pantof;
+        30..32: sw_200_series_coachf;
+        33:     sw_200_series_cab02f_bck_longsprite;
+        34:     sw_200_series_cab02f_mid_stack;
+        35:     sw_200_series_cab02f_frt_longsprite;
+        // E3
+        36: sw_400_series_cab01f;
+        37: sw_400_series_pantof;
+        38: sw_400_series_coachf;
+        39: sw_400_series_coachf;
+        40: sw_400_series_coachf;
+        41: sw_400_series_pantof;
+		42: sw_400_series_cab02f;
+
+	}
+
+switch (FEAT_TRAINS, SELF, sw_200e3_series_length, position_in_consist ) {				
+		// 200
+        0..35: sw_length_1_8_1;
+        // 400
+        36..42: return 8;
+	}

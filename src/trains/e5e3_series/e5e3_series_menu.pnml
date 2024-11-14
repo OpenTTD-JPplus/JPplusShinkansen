@@ -1,0 +1,23 @@
+/* SUBTYPES */	
+    
+    switch(FEAT_TRAINS, SELF, sw_e5e3_series_subtype_text, cargo_subtype) {
+		0: return string(STR_CONCAT_3, string(LV_E5_SERIES_E5),string(AND),string(LV_E3_SERIES_R));
+		1: return string(STR_CONCAT_3, string(LV_E5_SERIES_H5),string(AND),string(LV_E3_SERIES_R));
+        2: return string(STR_CONCAT_3, string(LV_E5_SERIES_2CC),string(AND),string(LV_E3_SERIES_R_2CC));
+        3: return string(STR_CONCAT_3, string(LV_E5_SERIES_E5),string(AND),string(LV_E3_SERIES_1000));
+		4: return string(STR_CONCAT_3, string(LV_E5_SERIES_H5),string(AND),string(LV_E3_SERIES_1000));
+        5: return string(STR_CONCAT_3, string(LV_E5_SERIES_2CC),string(AND),string(LV_E3_SERIES_1000_2CC));
+        6: return string(STR_CONCAT_3, string(LV_E5_SERIES_E5),string(AND),string(LV_E3_SERIES_2000));
+		7: return string(STR_CONCAT_3, string(LV_E5_SERIES_H5),string(AND),string(LV_E3_SERIES_2000));
+        8: return string(STR_CONCAT_3, string(LV_E5_SERIES_2CC),string(AND),string(LV_E3_SERIES_2000_2CC));
+		return CB_RESULT_NO_TEXT;
+		}
+
+/* Purchase Menu */
+    spriteset (ss_e5e3_series_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e5e3_series/gfx/e5e3_series.png") {template_purchase(233, 1)}
+
+    switch(FEAT_TRAINS, SELF, sw_e5e3_series_purchase, [ 
+        STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+            0: logo_jreast; 
+            1: ss_e5e3_series_buy;
+        }

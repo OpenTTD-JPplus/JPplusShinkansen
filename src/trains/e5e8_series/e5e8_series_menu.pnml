@@ -1,9 +1,9 @@
 /* SUBTYPES */	
     
     switch(FEAT_TRAINS, SELF, sw_e5e8_series_subtype_text, cargo_subtype) {
-		0: return string(LV_E5E8_SERIES_E5);
-		1: return string(LV_E5E8_SERIES_H5);
-        2: return string(LV_E5E8_SERIES_2CC);
+		0: return string(STR_CONCAT_3, string(LV_E5_SERIES_E5),string(AND),string(LV_E8_SERIES_ORIGINAL));
+		1: return string(STR_CONCAT_3, string(LV_E5_SERIES_H5),string(AND),string(LV_E8_SERIES_ORIGINAL));
+        2: return string(STR_CONCAT_3, string(LV_E5_SERIES_2CC),string(AND),string(LV_E8_SERIES_2CC));
 		return CB_RESULT_NO_TEXT;
 		}
 

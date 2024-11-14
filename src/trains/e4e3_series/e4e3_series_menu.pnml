@@ -1,0 +1,24 @@
+/* SUBTYPES */	
+    
+    switch(FEAT_TRAINS, SELF, sw_e4e3_series_subtype_text, cargo_subtype) {
+		0: return string(LV_YEAR_DEP_LIVERY);
+        1: return string(LV_E4E3_SERIES_PINK_R);
+		2: return string(LV_E4E3_SERIES_PURP_R);
+        3: return string(LV_E4E3_SERIES_2CC_R);
+        4: return string(LV_E4E3_SERIES_PINK_1000);
+		5: return string(LV_E4E3_SERIES_PURP_1000);
+        6: return string(LV_E4E3_SERIES_2CC_1000);
+        7: return string(LV_E4E3_SERIES_PINK_2000);
+		8: return string(LV_E4E3_SERIES_PURP_2000);
+        9: return string(LV_E4E3_SERIES_2CC_2000);
+		return CB_RESULT_NO_TEXT;
+		}
+
+/* Purchase Menu */
+    spriteset (ss_e4e3_series_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4e3_series/gfx/e4e3_series.png") {template_purchase(233, 1)}
+
+    switch(FEAT_TRAINS, SELF, sw_e4e3_series_purchase, [ 
+        STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+            0: logo_jreast; 
+            1: ss_e4e3_series_buy;
+        }

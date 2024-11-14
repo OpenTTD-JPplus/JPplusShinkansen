@@ -58,11 +58,20 @@ shinkansen = {
         "400_series_refurb_2cc" : 3,
         "400_series_pantos" : 3,
     },
-     "e2_series" : {
+    "e2_series" : {
         "e2_series_red" : 3,
         "e2_series_pnk" : 3,
         "e2_series_200" : 7,
         "e2_series_2cc" : 3,
+    },
+    "e3_series" : {
+        "e3_r" : 10,
+        "e3_r_2cc" : 10,
+        "e3_700" : 14,
+        "e3_1000" : 8,
+        "e3_1000_2cc" : 8,
+        "e3_2000" : 8,
+        "e3_2000_2cc" : 8,
     },
     "e4_series" : {
         "e4_series_yellow" : 3,

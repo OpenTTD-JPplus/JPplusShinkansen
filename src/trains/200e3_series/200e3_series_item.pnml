@@ -1,0 +1,63 @@
+
+switch (FEAT_TRAINS, SELF, sw_200e3_series_articulated_part, extra_callback_info1) {
+		1 .. 42: return series_200e3;									
+		return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+	}
+
+/*---Coupling Switch---*/
+switch(FEAT_TRAINS, SELF, sw_200e3_series_irl_attach_vehid, [vehicle_type_id == series_test_700]) {
+ 		0: return string(COUPLE_CANT_JOIN);
+	}
+    
+item(FEAT_TRAINS, series_200e3) {
+	property {
+		/* Menu */
+		name: 							string(STR_CONCAT_3, string(STR_NAME_200_SERIES),string(AND),string(STR_NAME_E3_SERIES));
+		sprite_id:                      SPRITE_ID_NEW_TRAIN; 		// required to enable new graphics
+		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
+		running_cost_base:              RUNNING_COST_ELECTRIC;
+		engine_class:                   ENGINE_CLASS_ELECTRIC;
+		variant_group:					200;
+		/* Availability */
+		climates_available:             ALL_CLIMATES;
+		introduction_date:              date(1992,07,01); 
+		model_life:                     VEHICLE_NEVER_EXPIRES;		
+		vehicle_life:                   30;							// 
+		track_type:                     SHINKANSEN;
+		/* Cargo */
+		reliability_decay:              5;
+		refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+		refit_cost:                     0;
+		default_cargo_type:             PASS;
+		ai_special_flag:                AI_FLAG_PASSENGER;
+		cargo_capacity:                 1;							// 
+		loading_speed:                  50;							
+		cargo_age_period:               278; 						// 1.5 times normal for this expensive long-distance train
+		/* Stats */
+		speed:                          321 km/h;					// Operational Top Speed
+		power:                          (8064 + 12864) hp;			// Agreed to https://en.wikipedia.org/wiki/E5_and_H5_Series_Shinkansen
+		weight:                         (453 + 306) tons;					// Agreed to https://en.wikipedia.org/wiki/E5_and_H5_Series_Shinkansen
+		tractive_effort_coefficient:    0.3;
+		air_drag_coefficient:			0;
+	}
+	graphics {
+		/* Menu */
+		additional_text:                string(STR_CONCAT_3, string(DESC_STD),string(JR_EAST),string(STR_NAME_200_SERIES),string(AND),string(STR_NAME_E3_SERIES),string(LIVERIES_MENU),string(LENGTH98));
+		cargo_subtype_text:             sw_200e3_series_subtype_text;
+		can_attach_wagon:				sw_200e3_series_irl_attach_vehid;
+		//start_stop:						sw_200e3_series_stop_start;
+		/* Graphics */
+		default:                        sw_200e3_series_graphics;
+		purchase:                       sw_200e3_series_purchase;
+		articulated_part:               sw_200e3_series_articulated_part;	
+		visual_effect_and_powered:      sw_visual_effect_and_powered;
+		/* Stats */
+		length:                         sw_200e3_series_length;
+		cargo_capacity:                 15 * CapacityFactor();
+		loading_speed:					15 * CapacityFactor() / param_loading_2D;
+		cargo_age_period:				param_decay_express;
+		cost_factor:                    144;
+		running_cost_factor:            (298 + 127 * 17 ) * RunningCostFactor();
+		purchase_running_cost_factor:   298 + 127 * 17;	
+	}
+}

@@ -6,9 +6,17 @@
 STR_GRF_NAME        :{TITLE} {VERSION}
 STR_GRF_DESC		:{WHITE}JP{RED}+{WHITE}Shinkansen{}{}JP{RED}+{WHITE}Shinkansen{BLACK} focuses on, you guessed it, Shinkansen! Trains require high speed rail tracks.{}Sister set to {WHITE}JP{RED}+{WHITE}MUs {BLACK}, {WHITE}JP{RED}+ {WHITE}Engines & Wagons {BLACK}and {WHITE}JP{RED}+ {WHITE}Major Private Companies{}{}{BLACK}{COPYRIGHT}JP+Shinkansen{}Licence: GPLv2{}{BLACK}{}Coded By{}{LTBLUE}KeepinItRail{}{}{BLACK}Sprites By{}{GREEN}KeepinItRail, Yozora, Azusa & Erato{}{}{BLACK}Translations By{}{GREEN}freeaim (Japanese){}Yozora (Russian){}CoconutKR (Korean){}{}{TINYFONT}{BLACK}Thanks To{}{ORANGE}Emperor Jake{}Tinny{}Saya{}Leon{}JapanSet3 Team{}{}{}{BLACK}{}
 
+STR_CONCAT_2	                    :{STRING} {STRING}
+STR_CONCAT_3	                    :{STRING} {STRING} {STRING}
+STR_CONCAT_4	                    :{STRING} {STRING} {STRING} {STRING}
+STR_CONCAT_5	                    :{STRING} {STRING} {STRING} {STRING} {STRING}
+STR_CONCAT_6	                    :{STRING} {STRING} {STRING} {STRING} {STRING} {STRING}
+STR_CONCAT_7	                    :{STRING} {STRING} {STRING} {STRING} {STRING} {STRING} {STRING}
+
 # Parameters
 STR_NO                              :No
 STR_YES                             :Yes
+AND                                 : {BLACK}&
 STR_PARAM_NORMAL                    :Normal
 STR_PARAM_VLOW                      :Very low
 STR_PARAM_LOW                       :Low
@@ -132,7 +140,7 @@ LV_N700_SERIES_N700A_2CC    : N700A Series {GOLD}2cc
 LV_N700_SERIES_N700S        : N700S Series
 LV_N700_SERIES_N700S_2CC    : N700S Series {GOLD}2cc
 LV_N700_SERIES_KYUSHU       : N700 Series {SILVER}Kyushu Livery
-LV_N700_SERIES_KAMOME       : N700S Series {RED}Kamome Livery    
+LV_N700_SERIES_KAMOME       : N700S Series {RED}Kamome Livery
 LV_N700_SERIES_KAMOME_2CC   : N700S Series {GOLD}Kamome 2cc
 
 # 800 Series Shinkansen
@@ -159,42 +167,32 @@ STR_DESC_200_SERIES_SHARK   :{BLACK}Gauge:{GOLD} Standard{}{BLACK}Usage: {SILVER
 STR_NAME_200_SERIES_275     :200 Series Shinkansen (Asahi)
 STR_DESC_200_SERIES_275     :{BLACK}Gauge:{GOLD} Standard{}{BLACK}Usage: {SILVER}Express Passengers{}{BLACK}Operators: {GREEN}JR East{}{BLACK}Liveries: {SILVER}Asahi {BLACK}(1990){}{BLACK}MU Car: {GOLD} JP+ Shinkansen Car
 
-LV_200_SERIES_ORIGINAL      : 200 Series {GREEN}Original Livery
-LV_200_SERIES_ORIGINAL_2CC  : 200 Series {GREEN}2cc
-LV_200_SERIES_REFURB        : 200 Series {BLUE}Refurbished Livery {GOLD}(240 km/h)
-
-# 200 & 400 Series Shinkansen
-STR_NAME_200n400_SERIES     :200 & 400 Series Shinkansen
-STR_DESC_200n400_SERIES_IRL :{BLACK}Gauge:{GOLD} Standard{}{BLACK}Usage: {SILVER}Express Passengers{}{BLACK}Operators: {GREEN}JR East{}{BLACK}Liveries: {GREEN}200 {BLACK} with {SILVER}400 {}{BLACK}Length(s): {GOLD} 11.0 tiles
-LV_200RND400IRL             : 200 & 400 Series
-LV_200RN24002CC             : 200 & 400 Series {GOLD}(2cc)
-LV_200RFB400IRL             : 200 (Refurb) & 400 Series
-LV_200RND400RFB             : 200 & 400 (Refurb) Series
-LV_200RN2400RF2             : 200 & 400 (Refurb) Series {GOLD}(2cc)
-LV_200RFB400RFB             : 200 (Refurb) & 400 (Refurb) Series
+LV_200_SERIES_ORIGINAL      : {BLACK}200 Series {GREEN}Original Livery
+LV_200_SERIES_ORIGINAL_2CC  : {BLACK}200 Series {GREEN}2cc
+LV_200_SERIES_REFURB        : {BLACK}200 Series {BLUE}Refurbished Livery {GOLD}(240 km/h)
 
 # 400 Series Shinkansen
 STR_NAME_400_SERIES         :400 Series Shinkansen
 STR_DESC_400_SERIES         :{BLACK}Gauge:{GOLD} Standard{}{BLACK}Usage: {SILVER}Express Passengers{}{BLACK}Operators: {GREEN}JR East{}{BLACK}Liveries: {SILVER}Original {BLACK}(1992){SILVER}Refurbished {BLACK}(2002){}{BLACK}MU Car: {GOLD} JP+ Mini-Shinkansen Car
-LV_400_SERIES_ORIGINAL      : 400 Series Original
-LV_400_SERIES_ORIGINAL_2CC  : 400 Series Original (2cc)
-LV_400_SERIES_REFURB        : 400 Series Refurbished
-LV_400_SERIES_REFURB_2CC    : 400 Series Refurbished (2cc)
+LV_400_SERIES_ORIGINAL      : {BLACK}400 Series Original
+LV_400_SERIES_ORIGINAL_2CC  : {BLACK}400 Series Original (2cc)
+LV_400_SERIES_REFURB        : {BLACK}400 Series Refurbished
+LV_400_SERIES_REFURB_2CC    : {BLACK}400 Series Refurbished (2cc)
 
 # E1 Series Shinkansen
 STR_NAME_E1_SERIES          :E1 Series Shinkansen (MAX)
 STR_DESC_E1_SERIES          :{BLACK}Gauge:{GOLD} Standard{}{BLACK}Usage: {SILVER}Express Passengers{}{BLACK}Operators: {GREEN}JR East{}{BLACK}Liveries: {SILVER}Original {BLACK}(1994), {BLUE}Refurb {BLACK}(2004){}{BLACK}MU Car: {GOLD} JP+ Shinkansen Car
-LV_E1_SERIES_ORIGINAL       : E1 Series {SILVER}Original Livery
-LV_E1_SERIES_REFURB         : E1 Series {BLUE}Refurbished Livery
-LV_E1_SERIES_2CC            : E1 Series {GOLD}2cc
+LV_E1_SERIES_ORIGINAL       : {BLACK}E1 Series {SILVER}Original Livery
+LV_E1_SERIES_REFURB         : {BLACK}E1 Series {BLUE}Refurbished Livery
+LV_E1_SERIES_2CC            : {BLACK}E1 Series {GOLD}2cc
 
 # E2 Series Shinkansen
 STR_NAME_E2_SERIES          :E2 Series Shinkansen
 STR_DESC_E2_SERIES          :{BLACK}Gauge:{GOLD} Standard{}{BLACK}Usage: {SILVER}Express Passengers{}{BLACK}Operators: {GREEN}JR East{}{BLACK}Liveries: {SILVER}8-car {BLACK}(1997), {SILVER}10-car {BLACK}(2002){}{BLACK}MU Car: {GOLD} JP+ Shinkansen Car
-LV_E2_SERIES_RED            : E2 Series {RED}Red Stripe
-LV_E2_SERIES_PINK           : E2 Series {CREAM}Magenta Stripe
-LV_E2_SERIES_200            : E2 Series {GREEN}200 Series Commerative Livery
-LV_E2_SERIES_2CC            : E2 Series {GOLD}(2cc)
+LV_E2_SERIES_RED            : {BLACK}E2 Series {RED}Red Stripe
+LV_E2_SERIES_PINK           : {BLACK}E2 Series {CREAM}Magenta Stripe
+LV_E2_SERIES_200            : {BLACK}E2 Series {GREEN}200 Series
+LV_E2_SERIES_2CC            : {BLACK}E2 Series {GOLD}(2cc)
 
 # E3 Series Shinkansen
 STR_NAME_E3_SERIES          :E3 Series Shinkansen
@@ -211,61 +209,42 @@ LV_E3_SERIES_700_GENBI      : E3-700 Series Genbi
 # E4 Series Shinkansen (MAX)
 STR_NAME_E4_SERIES          :E4 Series Shinkansen (MAX)
 STR_DESC_E4_SERIES          :{BLACK}Gauge:{GOLD} Standard{}{BLACK}Usage: {SILVER}Express Passengers{}{BLACK}Operators: {GREEN}JR East{}{BLACK}Liveries: {YELLOW}Yellow Strip {BLACK}, {CREAM}Pink Stripe {BLACK}& {GOLD}2cc{}{BLACK}MU Car: {GOLD} JP+ Shinkansen Car
-LV_E4_SERIES_YELLOW         : E4 Series MAX {YELLOW}(Yellow stripe)
-LV_E4_SERIES_PINK           : E4 Series MAX {CREAM}(Pink stripe)
-LV_E4_SERIES_2CC            : E4 Series MAX {GOLD}(2cc)
-
-# E4 & 400 Series Shinkansen 
-STR_NAME_E4n400_SERIES      :E4 & 400 Series Shinkansen
-STR_DESC_E4n400_SERIES      :{BLACK}Gauge:{GOLD} Standard{}{BLACK}Usage: {SILVER}Express Passengers{}{BLACK}Operators: {GREEN}JR East{}{BLACK}Liveries: {BLUE}E4 {BLACK} with {SILVER}400 Series {}{BLACK}Length(s): {GOLD} 8.5 tiles
-
-LV_E4n400_SERIES_YD         : E4 & 400 Series Year Dependent
-LV_E4n400_SERIES_YELLOW_IRL : E4 (Yellow) & 400 Series
-LV_E4n400_SERIES_PINK_IRL   : E4 (Pink) & 400 Series
-LV_E4n400_SERIES_2CCIRL     : E4 & 400 Series {GOLD}(2cc)
-LV_E4n400_SERIES_YELLOW_RFB : E4 (Yellow) & 400 (Refurb)  Series
-LV_E4n400_SERIES_PINK_RFB   : E4 (Pink) & 400 (Refurb) Series
+LV_E4_SERIES_YELLOW         : {BLACK}E4 Series MAX {YELLOW}(Yellow stripe)
+LV_E4_SERIES_PINK           : {BLACK}E4 Series MAX {CREAM}(Pink stripe)
+LV_E4_SERIES_2CC            : {BLACK}E4 Series MAX {GOLD}(2cc)
 
 # E5 Series Shinkansen
 STR_NAME_E5_SERIES          :E5 Series Shinkansen
 STR_DESC_E5_SERIES          :{BLACK}Gauge:{GOLD} Standard{}{BLACK}Usage: {SILVER}Express Passengers{}{BLACK}Operators: {GREEN}JR East{}{BLACK}Liveries: {GREEN}E5 {BLACK}(2011), {GREEN}H5 {BLACK}(2015){}{BLACK}MU Car: {GOLD} JP+ Shinkansen Car
 LV_E5_SERIES_E5             : {GREEN}E5 Series
 LV_E5_SERIES_H5             : {PURPLE}H5 Series
-LV_E5_SERIES_2CC            : {GOLD}E5 2cc
+LV_E5_SERIES_2CC            : {GREEN}E5 {GOLD}(2cc)
 
 # E6 Series Shinkansen
 STR_NAME_E6_SERIES          :E6 Series Shinkansen
 STR_DESC_E6_SERIES          :{BLACK}Gauge:{GOLD} Standard{}{BLACK}Usage: {SILVER}Express Passengers{}{BLACK}Operators: {GREEN}JR East{}{BLACK}Liveries: {RED}E6 {BLACK}(2013){}{BLACK}MU Car: {GOLD} JP+ Mini-Shinkansen Car
-LV_E6_SERIES_ORIGINAL       : E6 Series
-LV_E6_SERIES_2CC            : E6 Series {GOLD}(2cc)
-
-# E5 & E6 Series Shinkansen
-STR_NAME_E5E6_SERIES        :E5 & E6 Series Shinkansen
-STR_DESC_E5E6_SERIES_IRL_10 :{BLACK}Gauge:{GOLD} Standard{}{BLACK}Usage: {SILVER}Express Passengers{}{BLACK}Operators: {GREEN}JR East{}{BLACK}Liveries: {GREEN}E5 {BLACK} or {GREEN}H5 {BLACK} with {RED}E6 {}{BLACK}Length(s): {GOLD} 9.8 tiles
-STR_DESC_E5E6_SERIES_P2_10  :{BLACK}Gauge:{GOLD} Standard{}{BLACK}Usage: {SILVER}Express Passengers{}{BLACK}Operators: {GREEN}JR East{}{BLACK}Liveries: {GREEN}E5 {BLACK} or {GREEN}H5 {BLACK} with {RED}E6 {}{BLACK}Length(s): {GOLD} 12.0 tiles
-LV_E5E6_SERIES_E5           : E5 & E6 Series
-LV_E5E6_SERIES_H5           : H5 & E6 Series
-LV_E5E6_SERIES_2CC          : E5 & E6 Series {GOLD}(2cc)
-
-# E5 & E8 Series Shinkansen
-STR_NAME_E5E8_SERIES        :E5 & E8 Series Shinkansen
-STR_DESC_E5E8_SERIES_IRL    :{BLACK}Gauge:{GOLD} Standard{}{BLACK}Usage: {SILVER}Express Passengers{}{BLACK}Operators: {GREEN}JR East{}{BLACK}Liveries: {GREEN}E5 {BLACK} or {GREEN}H5 {BLACK} with {PURPLE}E8 {}{BLACK}Length(s): {GOLD} 9.8 tiles
-LV_E5E8_SERIES_E5           : E5 & E8 Series
-LV_E5E8_SERIES_H5           : H5 & E8 Series
-LV_E5E8_SERIES_2CC          : E5 & E8 Series {GOLD}(2cc)
+LV_E6_SERIES_ORIGINAL       : {RED}E6 Series
+LV_E6_SERIES_2CC            : {RED}E6 Series {GOLD}(2cc)
 
 # E7 Series Shinkansen
 STR_NAME_E7_SERIES          :E7 Series Shinkansen
 STR_DESC_E7_SERIES          :{BLACK}Gauge:{GOLD} Standard{}{BLACK}Usage: {SILVER}Express Passengers{}{BLACK}Operators: {GREEN}JR East {BLACK}& {BLUE}JR West {}{BLACK}Liveries: {BLUE}E7 {BLACK}(2014){BLUE}W7 {BLACK}(2014){}{BLACK}MU Car: {GOLD} JP+ Shinkansen Car
-LV_E7_SERIES_E7             : E7 Series
-LV_E7_SERIES_W7             : W7 Series
-LV_E7_SERIES_2CC            : E7 Series {GOLD}2cc
+LV_E7_SERIES_E7             : {BLACK}E7 Series
+LV_E7_SERIES_W7             : {BLACK}W7 Series
+LV_E7_SERIES_2CC            : {BLACK}E7 Series {GOLD}2cc
 
 # E8 Series Shinkansen
 STR_NAME_E8_SERIES          :E8 Series Shinkansen
 STR_DESC_E8_SERIES          :{BLACK}Gauge:{GOLD} Standard{}{BLACK}Usage: {SILVER}Express Passengers{}{BLACK}Operators: {GREEN}JR East{}{BLACK}Liveries: {PURPLE}E8 {BLACK}(2024){}{BLACK}MU Car: {GOLD} JP+ Mini-Shinkansen Car
-LV_E8_SERIES_ORIGINAL       : E8 Series Original
-LV_E8_SERIES_2CC            : E8 Series {GOLD}2cc
+LV_E8_SERIES_ORIGINAL       : {BLACK}E8 Series Original
+LV_E8_SERIES_2CC            : {BLACK}E8 Series {GOLD}2cc
 
 # Livery
-LV_YEAR_DEP_LIVERY          : Year Dependent Livery
+LV_YEAR_DEP_LIVERY          : {BLACK}Year Dependent Livery
+
+DESC_STD                    :{BLACK}Gauge:{GOLD} Standard{}{BLACK}Usage: {SILVER}Express Passengers{}{BLACK}Operators:
+JR_EAST                     :{GREEN} JR East{}{BLACK}Liveries: 
+JR_WEST                     :{GREEN} JR West{}{BLACK}Liveries: 
+
+LIVERIES_MENU               :{BLACK}See Cargo Subtype Menu
+LENGTH_98                   :{}{BLACK}Length: {GOLD} 9.8 tiles
