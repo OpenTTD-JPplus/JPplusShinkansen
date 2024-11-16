@@ -1055,6 +1055,7 @@ sort(FEAT_TRAINS, [
 2044,   // E4/400 Series Shinkansen
 2043,   // E4/E3 Series Shinkansen
 2005,   // E5 Series Shinkansen
+2053,   // E5/E3 Shinakansen
 2056,   // E5/E6 Shinakansen
 2058,   // E5/E8 Shinakansen
 2006,   // E6 Series Shinkansen
@@ -19811,7 +19812,136 @@ item(FEAT_TRAINS, series_e8) {
 # 1 "JPplusShinkansen.pnml" 4
 
 /*---COUPLED TRAINS---*/
-//#include "src/trains/e5e3_series/e5e3_series.pnml"
+# 1 "src/trains/e5e3_series/e5e3_series.pnml" 1
+
+# 1 "src/trains/e5e3_series/e5e3_series_menu.pnml" 1
+/* SUBTYPES */	
+    
+    switch(FEAT_TRAINS, SELF, sw_e5e3_series_subtype_text, cargo_subtype) {
+		0: return string(STR_CONCAT_3, string(LV_E5_SERIES_E5),string(AND),string(LV_E3_SERIES_R));
+		1: return string(STR_CONCAT_3, string(LV_E5_SERIES_H5),string(AND),string(LV_E3_SERIES_R));
+        2: return string(STR_CONCAT_3, string(LV_E5_SERIES_2CC),string(AND),string(LV_E3_SERIES_R_2CC));
+        3: return string(STR_CONCAT_3, string(LV_E5_SERIES_E5),string(AND),string(LV_E3_SERIES_1000));
+		4: return string(STR_CONCAT_3, string(LV_E5_SERIES_H5),string(AND),string(LV_E3_SERIES_1000));
+        5: return string(STR_CONCAT_3, string(LV_E5_SERIES_2CC),string(AND),string(LV_E3_SERIES_1000_2CC));
+        6: return string(STR_CONCAT_3, string(LV_E5_SERIES_E5),string(AND),string(LV_E3_SERIES_2000));
+		7: return string(STR_CONCAT_3, string(LV_E5_SERIES_H5),string(AND),string(LV_E3_SERIES_2000));
+        8: return string(STR_CONCAT_3, string(LV_E5_SERIES_2CC),string(AND),string(LV_E3_SERIES_2000_2CC));
+		return CB_RESULT_NO_TEXT;
+		}
+
+/* Purchase Menu */
+    spriteset (ss_e5e3_series_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e5e3_series/gfx/e5e3_series.png") {template_purchase(233, 1)}
+
+    switch(FEAT_TRAINS, SELF, sw_e5e3_series_purchase, [ 
+        STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+            0: logo_jreast; 
+            1: ss_e5e3_series_buy;
+        }
+# 1 "src/trains/e5e3_series/e5e3_series.pnml" 2
+# 1 "src/trains/e5e3_series/e5e3_series_formations.pnml" 1
+
+
+switch (FEAT_TRAINS, SELF, sw_e5e3_series_graphics, position_in_consist ) {				
+		// E5
+        0..2:   sw_e5_series_cab01f;
+        3..5:   sw_e5_series_coachf;
+        6..8:   sw_e5_series_pantof;
+        9..11:  sw_e5_series_coachf;
+        12..14: sw_e5_series_coachf;
+        15..17: sw_e5_series_coachf;
+        18..20: sw_e5_series_pantof;
+        21..23: sw_e5_series_coachf;
+        24..26: sw_e5_series_coachf;
+        27:     sw_e5_series_cab02f_bck_longsprite;
+        28:     sw_e5_series_cab02f_mid_stack;
+        29:     sw_e5_series_cab02f_frt_longsprite;
+        // E3
+        30: sw_e3_series_cab01f;
+        31: sw_e3_series_clogof;
+        32: sw_e3_series_coachf;
+        33: sw_e3_series_pantof;
+        34: sw_e3_series_coraif;
+        35: sw_e3_series_pantof;
+		36: sw_e3_series_cab02f;
+
+	}
+
+switch (FEAT_TRAINS, SELF, sw_e5e3_series_length, position_in_consist ) {				
+		// E5
+        0..29: sw_length_1_8_1;
+        // E3
+        30..36: return 8;
+	}
+# 1 "src/trains/e5e3_series/e5e3_series.pnml" 2
+# 1 "src/trains/e5e3_series/e5e3_series_item.pnml" 1
+
+
+
+switch (FEAT_TRAINS, SELF, sw_e5e3_series_articulated_part, extra_callback_info1) {
+		1 .. 36: return series_e5e3;									
+		return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+	}
+
+/*---Coupling Switch---*/
+switch(FEAT_TRAINS, SELF, sw_e5e3_series_irl_attach_vehid, [vehicle_type_id == series_test_700]) {
+ 		0: return string(COUPLE_CANT_JOIN);
+	}
+    
+item(FEAT_TRAINS, series_e5e3) {
+	property {
+		/* Menu */
+		name: 							string(STR_CONCAT_3, string(STR_NAME_E5_SERIES),string(AND),string(STR_NAME_E3_SERIES));
+		sprite_id:                      SPRITE_ID_NEW_TRAIN; 		// required to enable new graphics
+		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
+		running_cost_base:              RUNNING_COST_ELECTRIC;
+		engine_class:                   ENGINE_CLASS_ELECTRIC;
+		variant_group:					2005;
+		/* Availability */
+		climates_available:             ALL_CLIMATES;
+		introduction_date:              date(2011,03,05); 
+		model_life:                     VEHICLE_NEVER_EXPIRES;		
+		vehicle_life:                   30;							
+		track_type:                     SHINKANSEN;
+		/* Cargo */
+		reliability_decay:              5;
+		refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+		refit_cost:                     0;
+		default_cargo_type:             PASS;
+		ai_special_flag:                AI_FLAG_PASSENGER;
+		cargo_capacity:                 1;							
+		loading_speed:                  50;							
+		cargo_age_period:               278; 						// 1.5 times normal for this expensive long-distance train
+		/* Stats */
+		speed:                          275 km/h;					// Operational Top Speed
+		power:                          (8046 + 12864) hp;			
+		weight:                         (453 + 301) tons;			
+		tractive_effort_coefficient:    0.3;
+		air_drag_coefficient:			0;
+	}
+	graphics {
+		/* Menu */
+		additional_text:                string(STR_CONCAT_3, string(DESC_STD),string(JR_EAST),string(STR_NAME_E5_SERIES),string(AND),string(STR_NAME_E3_SERIES),string(LIVERIES_MENU),string(LENGTH98));
+		cargo_subtype_text:             sw_e5e3_series_subtype_text;
+		can_attach_wagon:				sw_e5e3_series_irl_attach_vehid;
+		//start_stop:						sw_e5e3_series_stop_start;
+		/* Graphics */
+		default:                        sw_e5e3_series_graphics;
+		purchase:                       sw_e5e3_series_purchase;
+		articulated_part:               sw_e5e3_series_articulated_part;	
+		visual_effect_and_powered:      sw_visual_effect_and_powered;
+		/* Stats */
+		length:                         sw_e5e3_series_length;
+		cargo_capacity:                 15 * CapacityFactor();
+		loading_speed:					15 * CapacityFactor() / param_loading_2D;
+		cargo_age_period:				param_decay_express;
+		cost_factor:                    144;
+		running_cost_factor:            (((298 + 127) * 10 ) + ((445 + 120) * 7 )) * RunningCostFactor();
+		purchase_running_cost_factor:   ((298 + 127) * 10 ) + ((445 + 120) * 7 );	
+	}
+}
+# 1 "src/trains/e5e3_series/e5e3_series.pnml" 2
+# 1 "JPplusShinkansen.pnml" 4
 # 1 "src/trains/e5e6_series/e5e6_series.pnml" 1
 
 # 1 "src/trains/e5e6_series/e5e6_series_menu.pnml" 1
