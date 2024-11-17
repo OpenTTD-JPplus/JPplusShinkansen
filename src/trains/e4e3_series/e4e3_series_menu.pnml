@@ -2,15 +2,15 @@
     
     switch(FEAT_TRAINS, SELF, sw_e4e3_series_subtype_text, cargo_subtype) {
 		0: return string(LV_YEAR_DEP_LIVERY);
-        1: return string(LV_E4E3_SERIES_PINK_R);
-		2: return string(LV_E4E3_SERIES_PURP_R);
-        3: return string(LV_E4E3_SERIES_2CC_R);
-        4: return string(LV_E4E3_SERIES_PINK_1000);
-		5: return string(LV_E4E3_SERIES_PURP_1000);
-        6: return string(LV_E4E3_SERIES_2CC_1000);
-        7: return string(LV_E4E3_SERIES_PINK_2000);
-		8: return string(LV_E4E3_SERIES_PURP_2000);
-        9: return string(LV_E4E3_SERIES_2CC_2000);
+        1: return string(STR_CONCAT_3, string(LV_E4_SERIES_YELLOW),string(AND),string(LV_E3_SERIES_R));
+		2: return string(STR_CONCAT_3, string(LV_E4_SERIES_PINK),string(AND),string(LV_E3_SERIES_R));
+        3: return string(STR_CONCAT_3, string(LV_E4_SERIES_2CC),string(AND),string(LV_E3_SERIES_R));
+        4: return string(STR_CONCAT_3, string(LV_E4_SERIES_YELLOW),string(AND),string(LV_E3_SERIES_1000));
+		5: return string(STR_CONCAT_3, string(LV_E4_SERIES_PINK),string(AND),string(LV_E3_SERIES_1000));
+        6: return string(STR_CONCAT_3, string(LV_E4_SERIES_2CC),string(AND),string(LV_E3_SERIES_1000));
+        7: return string(STR_CONCAT_3, string(LV_E4_SERIES_YELLOW),string(AND),string(LV_E3_SERIES_2000));
+		8: return string(STR_CONCAT_3, string(LV_E4_SERIES_PINK),string(AND),string(LV_E3_SERIES_2000));
+        9: return string(STR_CONCAT_3, string(LV_E4_SERIES_2CC),string(AND),string(LV_E3_SERIES_2000));
 		return CB_RESULT_NO_TEXT;
 		}
 

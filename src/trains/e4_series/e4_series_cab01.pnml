@@ -57,9 +57,8 @@
 
 		// Front
 		switch(FEAT_TRAINS, SELF, ss_frt_e4_series_cab01f_yeardep, build_year) {2014..9999: ss_frt_e4_series_cab01f_pnk; }
-        switch(FEAT_TRAINS, PARENT, ss_frt_e4_series_cab01f_2004, cargo_subtype) {0:ss_frt_e4_series_cab01f_yeardep; 1:ss_frt_e4_series_cab01f_yel; 2:ss_frt_e4_series_cab01f_pnk; 3:ss_frt_e4_series_cab01f_2cc; 4:ss_frt_e4_series_cab01f_yel; 5:ss_frt_e4_series_cab01f_pnk;  }
-		
-		switch(FEAT_TRAINS, PARENT, ss_frt_e4_series_cab01f_mask, vehicle_type_id) {2004:ss_frt_e4_series_cab01f_2004; 2044:ss_frt_e4_series_cab01f_2004; }
+		switch(FEAT_TRAINS, PARENT, ss_frt_e4_series_cab01f_cycle, cargo_subtype % 3) {2:ss_frt_e4_series_cab01f_pnk; 0:ss_frt_e4_series_cab01f_2cc; }
+        switch(FEAT_TRAINS, PARENT, ss_frt_e4_series_cab01f_mask, cargo_subtype) {0:ss_frt_e4_series_cab01f_yeardep; ss_frt_e4_series_cab01f_cycle; }
 
 		switch(FEAT_TRAINS, SELF, sw_e4_series_cab01f_frt_stack, [ 
 			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
@@ -71,14 +70,12 @@
 
 		// Mid
 		switch(FEAT_TRAINS, SELF, ss_mid_e4_series_cab01f_yeardep, build_year) {2014..9999: ss_mid_e4_series_cab01f_pnk; }
-        switch(FEAT_TRAINS, PARENT, ss_mid_e4_series_cab01f_2004, cargo_subtype) {0:ss_mid_e4_series_cab01f_yeardep; 1:ss_mid_e4_series_cab01f_yel; 2:ss_mid_e4_series_cab01f_pnk; 3:ss_mid_e4_series_cab01f_2cc; 4:ss_mid_e4_series_cab01f_yel; 5:ss_mid_e4_series_cab01f_pnk;  }
-		
-		switch(FEAT_TRAINS, PARENT, ss_mid_e4_series_cab01f_mask, vehicle_type_id) {2004:ss_mid_e4_series_cab01f_2004; 2044:ss_mid_e4_series_cab01f_2004; }
+		switch(FEAT_TRAINS, PARENT, ss_mid_e4_series_cab01f_cycle, cargo_subtype % 3) {2:ss_mid_e4_series_cab01f_pnk; 0:ss_mid_e4_series_cab01f_2cc; }
+        switch(FEAT_TRAINS, PARENT, ss_mid_e4_series_cab01f_mask, cargo_subtype) {0:ss_mid_e4_series_cab01f_yeardep; ss_mid_e4_series_cab01f_cycle; }
 		
         switch(FEAT_TRAINS, SELF, ss_std_e4_series_cab01f_yeardep, build_year) {2014..9999: ss_std_e4_series_cab01f_pnk; }
-        switch(FEAT_TRAINS, PARENT, ss_std_e4_series_cab01f_2004, cargo_subtype) {0:ss_std_e4_series_cab01f_yeardep; 1:ss_std_e4_series_cab01f_yel; 2:ss_std_e4_series_cab01f_pnk; 3:ss_std_e4_series_cab01f_2cc; 4:ss_std_e4_series_cab01f_yel; 5:ss_std_e4_series_cab01f_pnk;  }
-		
-		switch(FEAT_TRAINS, PARENT, ss_std_e4_series_cab01f_mask, vehicle_type_id) {2004:ss_std_e4_series_cab01f_2004; 2044:ss_std_e4_series_cab01f_2004; }
+		switch(FEAT_TRAINS, PARENT, ss_std_e4_series_cab01f_cycle, cargo_subtype % 3) {2:ss_std_e4_series_cab01f_pnk; 0:ss_std_e4_series_cab01f_2cc; }
+        switch(FEAT_TRAINS, PARENT, ss_std_e4_series_cab01f_mask, cargo_subtype) {0:ss_std_e4_series_cab01f_yeardep; ss_std_e4_series_cab01f_cycle; }
 
 		switch(FEAT_TRAINS, SELF, sw_e4_series_cab01f_mid_longsprite, HideLongSprite()) { 0: ss_std_e4_series_cab01f_yel; }
 		switch(FEAT_TRAINS, SELF, sw_e4_series_cab01f_std_longsprite, HideLongSprite()) { 0: ss_std_e4_series_cab01f_mask; }
@@ -93,9 +90,8 @@
 
 		// Back
 		switch(FEAT_TRAINS, SELF, ss_bck_e4_series_cab01f_yeardep, build_year) {2014..9999: ss_bck_e4_series_cab01f_pnk; }
-        switch(FEAT_TRAINS, PARENT, ss_bck_e4_series_cab01f_2004, cargo_subtype) {0:ss_bck_e4_series_cab01f_yeardep; 1:ss_bck_e4_series_cab01f_yel; 2:ss_bck_e4_series_cab01f_pnk; 3:ss_bck_e4_series_cab01f_2cc; 4:ss_bck_e4_series_cab01f_yel; 5:ss_bck_e4_series_cab01f_pnk;  }
-		
-		switch(FEAT_TRAINS, PARENT, ss_bck_e4_series_cab01f_mask, vehicle_type_id) {2004:ss_bck_e4_series_cab01f_2004; 2044:ss_bck_e4_series_cab01f_2004; }
+		switch(FEAT_TRAINS, PARENT, ss_bck_e4_series_cab01f_cycle, cargo_subtype % 3) {2:ss_bck_e4_series_cab01f_pnk; 0:ss_bck_e4_series_cab01f_2cc; }
+        switch(FEAT_TRAINS, PARENT, ss_bck_e4_series_cab01f_mask, cargo_subtype) {0:ss_bck_e4_series_cab01f_yeardep; ss_bck_e4_series_cab01f_cycle; }
 
 		switch(FEAT_TRAINS, SELF, sw_e4_series_cab01f_bck_stack, [ 
 			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
@@ -114,9 +110,10 @@
     // Backwards
 
         // Front
-		switch(FEAT_TRAINS, SELF, ss_frt_e4_series_cab01b_yeardep, build_year) {0..2014: ss_frt_e4_series_cab01b_yel; ss_frt_e4_series_cab01b_pnk; }
-        switch(FEAT_TRAINS, PARENT, ss_frt_e4_series_cab01b_mask, cargo_subtype) {0:ss_frt_e4_series_cab01b_yeardep; 1:ss_frt_e4_series_cab01b_yel; 2:ss_frt_e4_series_cab01b_pnk; 3:ss_frt_e4_series_cab01b_2cc; }
-		
+		switch(FEAT_TRAINS, SELF, ss_frt_e4_series_cab01b_yeardep, build_year) {2014..9999: ss_frt_e4_series_cab01b_pnk; }
+		switch(FEAT_TRAINS, PARENT, ss_frt_e4_series_cab01b_cycle, cargo_subtype % 3) {2:ss_frt_e4_series_cab01b_pnk; 0:ss_frt_e4_series_cab01b_2cc; }
+        switch(FEAT_TRAINS, PARENT, ss_frt_e4_series_cab01b_mask, cargo_subtype) {0:ss_frt_e4_series_cab01b_yeardep; ss_frt_e4_series_cab01b_cycle; }
+
 		switch(FEAT_TRAINS, SELF, sw_e4_series_cab01b_frt_stack, [ 
 			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
 				0: ss_frt_e4_series_cab01b_yel;       	// Base for Front
@@ -126,11 +123,13 @@
 		switch(FEAT_TRAINS, SELF, sw_e4_series_cab01b_frt_longsprite, PrevPartSame() ) { 1: sw_e4_series_cab01b_frt_stack; dummy_sprites; }
 
 		// Mid
-		switch(FEAT_TRAINS, SELF, ss_mid_e4_series_cab01b_yeardep, build_year) {0..2014: ss_mid_e4_series_cab01b_yel; ss_mid_e4_series_cab01b_pnk; }
-        switch(FEAT_TRAINS, PARENT, ss_mid_e4_series_cab01b_mask, cargo_subtype) {0:ss_mid_e4_series_cab01b_yeardep; 1:ss_mid_e4_series_cab01b_yel; 2:ss_mid_e4_series_cab01b_pnk; 3:ss_mid_e4_series_cab01b_2cc; }
+		switch(FEAT_TRAINS, SELF, ss_mid_e4_series_cab01b_yeardep, build_year) {2014..9999: ss_mid_e4_series_cab01b_pnk; }
+		switch(FEAT_TRAINS, PARENT, ss_mid_e4_series_cab01b_cycle, cargo_subtype % 3) {2:ss_mid_e4_series_cab01b_pnk; 0:ss_mid_e4_series_cab01b_2cc; }
+        switch(FEAT_TRAINS, PARENT, ss_mid_e4_series_cab01b_mask, cargo_subtype) {0:ss_mid_e4_series_cab01b_yeardep; ss_mid_e4_series_cab01b_cycle; }
 		
-        switch(FEAT_TRAINS, SELF, ss_std_e4_series_cab01b_yeardep, build_year) {0..2014: ss_std_e4_series_cab01b_yel; ss_std_e4_series_cab01b_pnk; }
-        switch(FEAT_TRAINS, PARENT, ss_std_e4_series_cab01b_mask, cargo_subtype) {0:ss_std_e4_series_cab01b_yeardep; 1:ss_std_e4_series_cab01b_yel; 2:ss_std_e4_series_cab01b_pnk; 3:ss_std_e4_series_cab01b_2cc; }
+        switch(FEAT_TRAINS, SELF, ss_std_e4_series_cab01b_yeardep, build_year) {2014..9999: ss_std_e4_series_cab01b_pnk; }
+		switch(FEAT_TRAINS, PARENT, ss_std_e4_series_cab01b_cycle, cargo_subtype % 3) {2:ss_std_e4_series_cab01b_pnk; 0:ss_std_e4_series_cab01b_2cc; }
+        switch(FEAT_TRAINS, PARENT, ss_std_e4_series_cab01b_mask, cargo_subtype) {0:ss_std_e4_series_cab01b_yeardep; ss_std_e4_series_cab01b_cycle; }
 			
 		switch(FEAT_TRAINS, SELF, sw_e4_series_cab01b_mid_longsprite, HideLongSprite() ) { 0: ss_std_e4_series_cab01b_yel; }
 		switch(FEAT_TRAINS, SELF, sw_e4_series_cab01b_std_longsprite, HideLongSprite() ) { 0: ss_std_e4_series_cab01b_mask; }
@@ -144,9 +143,10 @@
 			}
 
 		// Back
-		switch(FEAT_TRAINS, SELF, ss_bck_e4_series_cab01b_yeardep, build_year) {0..2014: ss_bck_e4_series_cab01b_yel; ss_bck_e4_series_cab01b_pnk; }
-        switch(FEAT_TRAINS, PARENT, ss_bck_e4_series_cab01b_mask, cargo_subtype) {0:ss_bck_e4_series_cab01b_yeardep; 1:ss_bck_e4_series_cab01b_yel; 2:ss_bck_e4_series_cab01b_pnk; 3:ss_bck_e4_series_cab01b_2cc; }
-		
+		switch(FEAT_TRAINS, SELF, ss_bck_e4_series_cab01b_yeardep, build_year) {2014..9999: ss_bck_e4_series_cab01b_pnk; }
+		switch(FEAT_TRAINS, PARENT, ss_bck_e4_series_cab01b_cycle, cargo_subtype % 3) {2:ss_bck_e4_series_cab01b_pnk; 0:ss_bck_e4_series_cab01b_2cc; }
+        switch(FEAT_TRAINS, PARENT, ss_bck_e4_series_cab01b_mask, cargo_subtype) {0:ss_bck_e4_series_cab01b_yeardep; ss_bck_e4_series_cab01b_cycle; }
+
 		switch(FEAT_TRAINS, SELF, sw_e4_series_cab01b_bck_stack, [ 
 			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
 				0: ss_bck_e4_series_cab01b_yel;       	// Base for Front

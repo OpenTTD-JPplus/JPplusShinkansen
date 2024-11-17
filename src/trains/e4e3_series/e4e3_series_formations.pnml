@@ -1,33 +1,37 @@
 
+switch(FEAT_TRAINS, SELF, sw_e3_series_e4e3_clogocheck_yeardep, build_year) {0..1998:sw_e3_series_clog2f; sw_e3_series_clogof;}
 
-switch (FEAT_TRAINS, SELF, sw_e5e6_series_graphics, position_in_consist ) {				
-		// E5
-        0..2:   sw_e5_series_cab01f;
-        3..5:   sw_e5_series_coachf;
-        6..8:   sw_e5_series_coachf;
-        9..11:  sw_e5_series_coachf;
-        12..14: sw_e5_series_coachf;
-        15..17: sw_e5_series_coachf;
-        18..20: sw_e5_series_coachf;
-        21..23: sw_e5_series_coachf;
-        24..26: sw_e5_series_coachf;
-        27:     sw_e5_series_cab02f_bck_longsprite;
-        28:     sw_e5_series_cab02f_mid_stack;
-        29:     sw_e5_series_cab02f_frt_longsprite;
-        // E6
-        30: sw_e6_series_cab01f;
-        31: sw_e6_series_pant1f;
-        32: sw_e6_series_coachf;
-        33: sw_e6_series_coachf;
-        34: sw_e6_series_coachf;
-        35: sw_e6_series_pant2f;
-		36: sw_e6_series_cab02f;
-
+switch (FEAT_TRAINS, PARENT, sw_e3_series_e4e3_clogocheck, cargo_subtype ) {				
+        0: sw_e3_series_e4e3_clogocheck_yeardep;     
+        1..3: sw_e3_series_clog2f;
+        sw_e3_series_clogof;
 	}
 
-switch (FEAT_TRAINS, SELF, sw_e5e6_series_length, position_in_consist ) {				
-		// E5
-        0..29: sw_length_1_8_1;
-        // E6
-        30..36: return 8;
+switch (FEAT_TRAINS, SELF, sw_e4e3_series_graphics, position_in_consist ) {				
+		// E4
+        0..2:   sw_e4_series_cab01f;
+        3..5:   sw_e4_series_coachf;
+        6..8:   sw_e4_series_coachf;
+        9..11:  sw_e4_series_pantof;
+        12..14: sw_e4_series_coachf;
+        15..17: sw_e4_series_pantof;
+        18..20: sw_e4_series_coachf;
+        21:     sw_e4_series_cab02f_bck_longsprite;
+        22:     sw_e4_series_cab02f_mid_stack;
+        23:     sw_e4_series_cab02f_frt_longsprite;
+        // E3
+        24: sw_e3_series_cab01f;
+        25: sw_e3_series_e4e3_clogocheck;
+        26: sw_e3_series_coachf;
+        27: sw_e3_series_pantof;
+        28: sw_e3_series_coraif;
+        29: sw_e3_series_pantof;
+		30: sw_e3_series_cab02f;
+	}
+
+switch (FEAT_TRAINS, SELF, sw_e4e3_series_length, position_in_consist ) {				
+		// E4
+        0..23: sw_length_1_8_1;
+        // E3
+        24..30: return 8;
 	}

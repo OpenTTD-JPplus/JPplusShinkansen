@@ -2,7 +2,7 @@
 
 
 switch (FEAT_TRAINS, SELF, sw_e4e3_series_articulated_part, extra_callback_info1) {
-		1 .. 36: return series_e4e3;									
+		1 .. 30: return series_e4e3;									
 		return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
 	}
 
@@ -19,7 +19,7 @@ item(FEAT_TRAINS, series_e4e3) {
 		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
 		running_cost_base:              RUNNING_COST_ELECTRIC;
 		engine_class:                   ENGINE_CLASS_ELECTRIC;
-		variant_group:					2005;
+		variant_group:					2004;
 		/* Availability */
 		climates_available:             ALL_CLIMATES;
 		introduction_date:              date(2011,03,05); 
