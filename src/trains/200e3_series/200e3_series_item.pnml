@@ -20,7 +20,7 @@ item(FEAT_TRAINS, series_200e3) {
 		variant_group:					200;
 		/* Availability */
 		climates_available:             ALL_CLIMATES;
-		introduction_date:              date(1992,07,01); 
+		introduction_date:              date(1997,03,22); 
 		model_life:                     VEHICLE_NEVER_EXPIRES;		
 		vehicle_life:                   30;							// 
 		track_type:                     SHINKANSEN;
@@ -34,9 +34,9 @@ item(FEAT_TRAINS, series_200e3) {
 		loading_speed:                  50;							
 		cargo_age_period:               278; 						// 1.5 times normal for this expensive long-distance train
 		/* Stats */
-		speed:                          321 km/h;					// Operational Top Speed
-		power:                          (8064 + 12864) hp;			// Agreed to https://en.wikipedia.org/wiki/E5_and_H5_Series_Shinkansen
-		weight:                         (453 + 306) tons;					// Agreed to https://en.wikipedia.org/wiki/E5_and_H5_Series_Shinkansen
+		speed:                          240 km/h;				
+		power:                          (8064 + 12864) hp;			
+		weight:                         (453 + 306) tons;			
 		tractive_effort_coefficient:    0.3;
 		air_drag_coefficient:			0;
 	}
@@ -57,7 +57,7 @@ item(FEAT_TRAINS, series_200e3) {
 		loading_speed:					15 * CapacityFactor() / param_loading_2D;
 		cargo_age_period:				param_decay_express;
 		cost_factor:                    144;
-		running_cost_factor:            (298 + 127 * 17 ) * RunningCostFactor();
-		purchase_running_cost_factor:   298 + 127 * 17;	
+		running_cost_factor:            ((300 + 130 * 12 ) + (445 + 120 * 7 )) * RunningCostFactor();
+		purchase_running_cost_factor:   (300 + 130 * 12 ) + (445 + 120 * 7 );	
 	}
 }

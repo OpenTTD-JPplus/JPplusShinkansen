@@ -36,15 +36,15 @@ item(FEAT_TRAINS, series_e4400) {
 		loading_speed:                  50;							
 		cargo_age_period:               278; 						// 1.5 times normal for this expensive long-distance train
 		/* Stats */
-		speed:                          321 km/h;					// Operational Top Speed
-		power:                          (8064 + 12864) hp;			// Agreed to https://en.wikipedia.org/wiki/E5_and_H5_Series_Shinkansen
-		weight:                         (453 + 306) tons;					// Agreed to https://en.wikipedia.org/wiki/E5_and_H5_Series_Shinkansen
+		speed:                          240 km/h;					// Operational Top Speed
+		power:                          (9012 + 6759) hp;			
+		weight:                         (428 + 294) tons;			
 		tractive_effort_coefficient:    0.3;
 		air_drag_coefficient:			0;
 	}
 	graphics {
 		/* Menu */
-		additional_text:                string(STR_CONCAT_3, string(DESC_STD),string(JR_EAST),string(STR_NAME_E4_SERIES),string(AND),string(STR_NAME_400_SERIES),string(LIVERIES_MENU),string(LENGTH98));
+		additional_text:                string(STR_CONCAT_3, string(DESC_STD),string(JR_EAST),string(STR_NAME_E4_SERIES),string(AND),string(STR_NAME_400_SERIES),string(LIVERIES_MENU),string(LENGTH85));
 		cargo_subtype_text:             sw_e4n400_series_subtype_text;
 		can_attach_wagon:				sw_e4n400_series_irl_attach_vehid;
 		//start_stop:						sw_e4n400_series_stop_start;
@@ -59,7 +59,7 @@ item(FEAT_TRAINS, series_e4400) {
 		loading_speed:					15 * CapacityFactor() / param_loading_2D;
 		cargo_age_period:				param_decay_express;
 		cost_factor:                    144;
-		running_cost_factor:            (298 + 127 * 17 ) * RunningCostFactor();
-		purchase_running_cost_factor:   298 + 127 * 17;	
+		running_cost_factor:            ((295 + 120 * 8 ) + (445 + 125 * 7 )) * RunningCostFactor();
+		purchase_running_cost_factor:   (295 + 120 * 8 ) + (445 + 125 * 7 );	
 	}
 }

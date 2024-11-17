@@ -15860,8 +15860,8 @@ spriteset(ss_mid_e3_series_cab01b_700, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/
     switch(FEAT_TRAINS, SELF, sw_e3_series_cab01f_yeardep, build_year) {0..1998:ss_mid_e3_series_cab01f_rrr; 1999..2007:ss_mid_e3_series_cab01f_1kk; ss_mid_e3_series_cab01f_2kk;}
 
     // 200 Series
-    switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_cab01f_color_204, cargo_subtype) {1:ss_mid_e3_series_cab01f_r2c; 4:ss_mid_e3_series_cab01f_1k2; 7:ss_mid_e3_series_cab01f_2k2;}
-    switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_cab01f_shape_204, cargo_subtype) {0..2:ss_mid_e3_series_cab01f_rrr; 3..5:ss_mid_e3_series_cab01f_1kk; 6..8:ss_mid_e3_series_cab01f_2kk;}
+    switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_cab01f_color_203, cargo_subtype) {1:ss_mid_e3_series_cab01f_r2c; 4:ss_mid_e3_series_cab01f_1k2; 7:ss_mid_e3_series_cab01f_2k2;}
+    switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_cab01f_shape_203, cargo_subtype) {0..2:ss_mid_e3_series_cab01f_rrr; 3..5:ss_mid_e3_series_cab01f_1kk; 6..8:ss_mid_e3_series_cab01f_2kk;}
     
     // E2 Series
     switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_cab01f_color_2023, cargo_subtype) {3:ss_mid_e3_series_cab01f_r2c; 6:ss_mid_e3_series_cab01f_1k2; 9:ss_mid_e3_series_cab01f_2k2;}
@@ -15879,8 +15879,8 @@ spriteset(ss_mid_e3_series_cab01b_700, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/
     switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_cab01f_color_2003, cargo_subtype) {2:ss_mid_e3_series_cab01f_r2c; 4:ss_mid_e3_series_cab01f_1k2; 6:ss_mid_e3_series_cab01f_2k2;}
     switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_cab01f_shape_2003, cargo_subtype) {0:sw_e3_series_cab01f_yeardep; 1..2:ss_mid_e3_series_cab01f_rrr; 3..4:ss_mid_e3_series_cab01f_1kk; 5..6:ss_mid_e3_series_cab01f_2kk; 7:ss_mid_e3_series_cab01f_700;}
 	
-    switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_cab01f_color, vehicle_type_id) {2003:ss_mid_e3_series_cab01f_color_2003; 2053:ss_mid_e3_series_cab01f_color_2053; 2043:ss_mid_e3_series_cab01f_color_2043; 2023:ss_mid_e3_series_cab01f_color_2023; 204:ss_mid_e3_series_cab01f_color_204;}
-	switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_cab01f_shape, vehicle_type_id) {2003:ss_mid_e3_series_cab01f_shape_2003; 2053:ss_mid_e3_series_cab01f_shape_2053; 2043:ss_mid_e3_series_cab01f_shape_2043; 2023:ss_mid_e3_series_cab01f_shape_2023; 204:ss_mid_e3_series_cab01f_shape_204;}
+    switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_cab01f_color, vehicle_type_id) {2003:ss_mid_e3_series_cab01f_color_2003; 2053:ss_mid_e3_series_cab01f_color_2053; 2043:ss_mid_e3_series_cab01f_color_2043; 2023:ss_mid_e3_series_cab01f_color_2023; 203:ss_mid_e3_series_cab01f_color_203;}
+	switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_cab01f_shape, vehicle_type_id) {2003:ss_mid_e3_series_cab01f_shape_2003; 2053:ss_mid_e3_series_cab01f_shape_2053; 2043:ss_mid_e3_series_cab01f_shape_2043; 2023:ss_mid_e3_series_cab01f_shape_2023; 203:ss_mid_e3_series_cab01f_shape_203;}
 
     switch(FEAT_TRAINS, SELF, sw_e3_series_cab01f, [ 
 			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
@@ -15929,8 +15929,8 @@ spriteset(ss_mid_e3_series_cab02b_700, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/
     switch(FEAT_TRAINS, SELF, sw_e3_series_cab02f_yeardep, build_year) {0..1998:ss_mid_e3_series_cab02f_rrr; 1999..2007:ss_mid_e3_series_cab02f_1kk; ss_mid_e3_series_cab02f_2kk;}
 
     // 200 Series
-    switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_cab02f_color_204, cargo_subtype) {1:ss_mid_e3_series_cab02f_r2c; 4:ss_mid_e3_series_cab02f_1k2; 7:ss_mid_e3_series_cab02f_2k2;}
-    switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_cab02f_shape_204, cargo_subtype) {0..2:ss_mid_e3_series_cab02f_rrr; 3..5:ss_mid_e3_series_cab02f_1kk; 6..8:ss_mid_e3_series_cab02f_2kk;}
+    switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_cab02f_color_203, cargo_subtype) {1:ss_mid_e3_series_cab02f_r2c; 4:ss_mid_e3_series_cab02f_1k2; 7:ss_mid_e3_series_cab02f_2k2;}
+    switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_cab02f_shape_203, cargo_subtype) {0..2:ss_mid_e3_series_cab02f_rrr; 3..5:ss_mid_e3_series_cab02f_1kk; 6..8:ss_mid_e3_series_cab02f_2kk;}
     
     // E2 Series
     switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_cab02f_color_2023, cargo_subtype) {3:ss_mid_e3_series_cab02f_r2c; 6:ss_mid_e3_series_cab02f_1k2; 9:ss_mid_e3_series_cab02f_2k2;}
@@ -15948,8 +15948,8 @@ spriteset(ss_mid_e3_series_cab02b_700, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/
     switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_cab02f_color_2003, cargo_subtype) {2:ss_mid_e3_series_cab02f_r2c; 4:ss_mid_e3_series_cab02f_1k2; 6:ss_mid_e3_series_cab02f_2k2;}
     switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_cab02f_shape_2003, cargo_subtype) {0:sw_e3_series_cab02f_yeardep; 1..2:ss_mid_e3_series_cab02f_rrr; 3..4:ss_mid_e3_series_cab02f_1kk; 5..6:ss_mid_e3_series_cab02f_2kk; 7:ss_mid_e3_series_cab02f_700;}
 	
-    switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_cab02f_color, vehicle_type_id) {2003:ss_mid_e3_series_cab02f_color_2003; 2053:ss_mid_e3_series_cab02f_color_2053; 2043:ss_mid_e3_series_cab02f_color_2043; 2023:ss_mid_e3_series_cab02f_color_2023; 204:ss_mid_e3_series_cab02f_color_204;}
-	switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_cab02f_shape, vehicle_type_id) {2003:ss_mid_e3_series_cab02f_shape_2003; 2053:ss_mid_e3_series_cab02f_shape_2053; 2043:ss_mid_e3_series_cab02f_shape_2043; 2023:ss_mid_e3_series_cab02f_shape_2023; 204:ss_mid_e3_series_cab02f_shape_204;}
+    switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_cab02f_color, vehicle_type_id) {2003:ss_mid_e3_series_cab02f_color_2003; 2053:ss_mid_e3_series_cab02f_color_2053; 2043:ss_mid_e3_series_cab02f_color_2043; 2023:ss_mid_e3_series_cab02f_color_2023; 203:ss_mid_e3_series_cab02f_color_203;}
+	switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_cab02f_shape, vehicle_type_id) {2003:ss_mid_e3_series_cab02f_shape_2003; 2053:ss_mid_e3_series_cab02f_shape_2053; 2043:ss_mid_e3_series_cab02f_shape_2043; 2023:ss_mid_e3_series_cab02f_shape_2023; 203:ss_mid_e3_series_cab02f_shape_203;}
 
     switch(FEAT_TRAINS, SELF, sw_e3_series_cab02f, [ 
 			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
@@ -15998,8 +15998,8 @@ spriteset(ss_mid_e3_series_clogob_700, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/
     switch(FEAT_TRAINS, SELF, sw_e3_series_clogof_yeardep, build_year) {0..1998:ss_mid_e3_series_clogof_rrr; 1999..2007:ss_mid_e3_series_clogof_1kk; ss_mid_e3_series_clogof_2kk;}
 
     // 200 Series
-    switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_clogof_color_204, cargo_subtype) {1:ss_mid_e3_series_clogof_r2c; 4:ss_mid_e3_series_clogof_1k2; 7:ss_mid_e3_series_clogof_2k2;}
-    switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_clogof_shape_204, cargo_subtype) {0..2:ss_mid_e3_series_clogof_rrr; 3..5:ss_mid_e3_series_clogof_1kk; 6..8:ss_mid_e3_series_clogof_2kk;}
+    switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_clogof_color_203, cargo_subtype) {1:ss_mid_e3_series_clogof_r2c; 4:ss_mid_e3_series_clogof_1k2; 7:ss_mid_e3_series_clogof_2k2;}
+    switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_clogof_shape_203, cargo_subtype) {0..2:ss_mid_e3_series_clogof_rrr; 3..5:ss_mid_e3_series_clogof_1kk; 6..8:ss_mid_e3_series_clogof_2kk;}
     
     // E2 Series
     switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_clogof_color_2023, cargo_subtype) {3:ss_mid_e3_series_clogof_r2c; 6:ss_mid_e3_series_clogof_1k2; 9:ss_mid_e3_series_clogof_2k2;}
@@ -16017,8 +16017,8 @@ spriteset(ss_mid_e3_series_clogob_700, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/
     switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_clogof_color_2003, cargo_subtype) {2:ss_mid_e3_series_clogof_r2c; 4:ss_mid_e3_series_clogof_1k2; 6:ss_mid_e3_series_clogof_2k2;}
     switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_clogof_shape_2003, cargo_subtype) {0:sw_e3_series_clogof_yeardep; 1..2:ss_mid_e3_series_clogof_rrr; 3..4:ss_mid_e3_series_clogof_1kk; 5..6:ss_mid_e3_series_clogof_2kk; 7:ss_mid_e3_series_clogof_700;}
 	
-    switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_clogof_color, vehicle_type_id) {2003:ss_mid_e3_series_clogof_color_2003; 2053:ss_mid_e3_series_clogof_color_2053; 2043:ss_mid_e3_series_clogof_color_2043; 2023:ss_mid_e3_series_clogof_color_2023; 204:ss_mid_e3_series_clogof_color_204;}
-	switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_clogof_shape, vehicle_type_id) {2003:ss_mid_e3_series_clogof_shape_2003; 2053:ss_mid_e3_series_clogof_shape_2053; 2043:ss_mid_e3_series_clogof_shape_2043; 2023:ss_mid_e3_series_clogof_shape_2023; 204:ss_mid_e3_series_clogof_shape_204;}
+    switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_clogof_color, vehicle_type_id) {2003:ss_mid_e3_series_clogof_color_2003; 2053:ss_mid_e3_series_clogof_color_2053; 2043:ss_mid_e3_series_clogof_color_2043; 2023:ss_mid_e3_series_clogof_color_2023; 203:ss_mid_e3_series_clogof_color_203;}
+	switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_clogof_shape, vehicle_type_id) {2003:ss_mid_e3_series_clogof_shape_2003; 2053:ss_mid_e3_series_clogof_shape_2053; 2043:ss_mid_e3_series_clogof_shape_2043; 2023:ss_mid_e3_series_clogof_shape_2023; 203:ss_mid_e3_series_clogof_shape_203;}
 
     switch(FEAT_TRAINS, SELF, sw_e3_series_clogof, [ 
 			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
@@ -16067,8 +16067,8 @@ spriteset(ss_mid_e3_series_coachb_700, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/
     switch(FEAT_TRAINS, SELF, sw_e3_series_coachf_yeardep, build_year) {0..1998:ss_mid_e3_series_coachf_rrr; 1999..2007:ss_mid_e3_series_coachf_1kk; ss_mid_e3_series_coachf_2kk;}
 
     // 200 Series
-    switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_coachf_color_204, cargo_subtype) {1:ss_mid_e3_series_coachf_r2c; 4:ss_mid_e3_series_coachf_1k2; 7:ss_mid_e3_series_coachf_2k2;}
-    switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_coachf_shape_204, cargo_subtype) {0..2:ss_mid_e3_series_coachf_rrr; 3..5:ss_mid_e3_series_coachf_1kk; 6..8:ss_mid_e3_series_coachf_2kk;}
+    switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_coachf_color_203, cargo_subtype) {1:ss_mid_e3_series_coachf_r2c; 4:ss_mid_e3_series_coachf_1k2; 7:ss_mid_e3_series_coachf_2k2;}
+    switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_coachf_shape_203, cargo_subtype) {0..2:ss_mid_e3_series_coachf_rrr; 3..5:ss_mid_e3_series_coachf_1kk; 6..8:ss_mid_e3_series_coachf_2kk;}
     
     // E2 Series
     switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_coachf_color_2023, cargo_subtype) {3:ss_mid_e3_series_coachf_r2c; 6:ss_mid_e3_series_coachf_1k2; 9:ss_mid_e3_series_coachf_2k2;}
@@ -16086,8 +16086,8 @@ spriteset(ss_mid_e3_series_coachb_700, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/
     switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_coachf_color_2003, cargo_subtype) {2:ss_mid_e3_series_coachf_r2c; 4:ss_mid_e3_series_coachf_1k2; 6:ss_mid_e3_series_coachf_2k2;}
     switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_coachf_shape_2003, cargo_subtype) {0:sw_e3_series_coachf_yeardep; 1..2:ss_mid_e3_series_coachf_rrr; 3..4:ss_mid_e3_series_coachf_1kk; 5..6:ss_mid_e3_series_coachf_2kk; 7:ss_mid_e3_series_coachf_700;}
 	
-    switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_coachf_color, vehicle_type_id) {2003:ss_mid_e3_series_coachf_color_2003; 2053:ss_mid_e3_series_coachf_color_2053; 2043:ss_mid_e3_series_coachf_color_2043; 2023:ss_mid_e3_series_coachf_color_2023; 204:ss_mid_e3_series_coachf_color_204;}
-	switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_coachf_shape, vehicle_type_id) {2003:ss_mid_e3_series_coachf_shape_2003; 2053:ss_mid_e3_series_coachf_shape_2053; 2043:ss_mid_e3_series_coachf_shape_2043; 2023:ss_mid_e3_series_coachf_shape_2023; 204:ss_mid_e3_series_coachf_shape_204;}
+    switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_coachf_color, vehicle_type_id) {2003:ss_mid_e3_series_coachf_color_2003; 2053:ss_mid_e3_series_coachf_color_2053; 2043:ss_mid_e3_series_coachf_color_2043; 2023:ss_mid_e3_series_coachf_color_2023; 203:ss_mid_e3_series_coachf_color_203;}
+	switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_coachf_shape, vehicle_type_id) {2003:ss_mid_e3_series_coachf_shape_2003; 2053:ss_mid_e3_series_coachf_shape_2053; 2043:ss_mid_e3_series_coachf_shape_2043; 2023:ss_mid_e3_series_coachf_shape_2023; 203:ss_mid_e3_series_coachf_shape_203;}
 
     switch(FEAT_TRAINS, SELF, sw_e3_series_coachf, [ 
 			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
@@ -16136,8 +16136,8 @@ spriteset(ss_mid_e3_series_coraib_700, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/
     switch(FEAT_TRAINS, SELF, sw_e3_series_coraif_yeardep, build_year) {0..1998:ss_mid_e3_series_coraif_rrr; 1999..2007:ss_mid_e3_series_coraif_1kk; ss_mid_e3_series_coraif_2kk;}
 
     // 200 Series
-    switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_coraif_color_204, cargo_subtype) {1:ss_mid_e3_series_coraif_r2c; 4:ss_mid_e3_series_coraif_1k2; 7:ss_mid_e3_series_coraif_2k2;}
-    switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_coraif_shape_204, cargo_subtype) {0..2:ss_mid_e3_series_coraif_rrr; 3..5:ss_mid_e3_series_coraif_1kk; 6..8:ss_mid_e3_series_coraif_2kk;}
+    switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_coraif_color_203, cargo_subtype) {1:ss_mid_e3_series_coraif_r2c; 4:ss_mid_e3_series_coraif_1k2; 7:ss_mid_e3_series_coraif_2k2;}
+    switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_coraif_shape_203, cargo_subtype) {0..2:ss_mid_e3_series_coraif_rrr; 3..5:ss_mid_e3_series_coraif_1kk; 6..8:ss_mid_e3_series_coraif_2kk;}
     
     // E2 Series
     switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_coraif_color_2023, cargo_subtype) {3:ss_mid_e3_series_coraif_r2c; 6:ss_mid_e3_series_coraif_1k2; 9:ss_mid_e3_series_coraif_2k2;}
@@ -16155,8 +16155,8 @@ spriteset(ss_mid_e3_series_coraib_700, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/
     switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_coraif_color_2003, cargo_subtype) {2:ss_mid_e3_series_coraif_r2c; 4:ss_mid_e3_series_coraif_1k2; 6:ss_mid_e3_series_coraif_2k2;}
     switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_coraif_shape_2003, cargo_subtype) {0:sw_e3_series_coraif_yeardep; 1..2:ss_mid_e3_series_coraif_rrr; 3..4:ss_mid_e3_series_coraif_1kk; 5..6:ss_mid_e3_series_coraif_2kk; 7:ss_mid_e3_series_coraif_700;}
 	
-    switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_coraif_color, vehicle_type_id) {2003:ss_mid_e3_series_coraif_color_2003; 2053:ss_mid_e3_series_coraif_color_2053; 2043:ss_mid_e3_series_coraif_color_2043; 2023:ss_mid_e3_series_coraif_color_2023; 204:ss_mid_e3_series_coraif_color_204;}
-	switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_coraif_shape, vehicle_type_id) {2003:ss_mid_e3_series_coraif_shape_2003; 2053:ss_mid_e3_series_coraif_shape_2053; 2043:ss_mid_e3_series_coraif_shape_2043; 2023:ss_mid_e3_series_coraif_shape_2023; 204:ss_mid_e3_series_coraif_shape_204;}
+    switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_coraif_color, vehicle_type_id) {2003:ss_mid_e3_series_coraif_color_2003; 2053:ss_mid_e3_series_coraif_color_2053; 2043:ss_mid_e3_series_coraif_color_2043; 2023:ss_mid_e3_series_coraif_color_2023; 203:ss_mid_e3_series_coraif_color_203;}
+	switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_coraif_shape, vehicle_type_id) {2003:ss_mid_e3_series_coraif_shape_2003; 2053:ss_mid_e3_series_coraif_shape_2053; 2043:ss_mid_e3_series_coraif_shape_2043; 2023:ss_mid_e3_series_coraif_shape_2023; 203:ss_mid_e3_series_coraif_shape_203;}
 
     switch(FEAT_TRAINS, SELF, sw_e3_series_coraif, [ 
 			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
@@ -16205,8 +16205,8 @@ spriteset(ss_mid_e3_series_pantob_700, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/
     switch(FEAT_TRAINS, SELF, sw_e3_series_pantof_yeardep, build_year) {0..1998:ss_mid_e3_series_pantof_rrr; 1999..2007:ss_mid_e3_series_pantof_1kk; ss_mid_e3_series_pantof_2kk;}
 
     // 200 Series
-    switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_pantof_color_204, cargo_subtype) {1:ss_mid_e3_series_pantof_r2c; 4:ss_mid_e3_series_pantof_1k2; 7:ss_mid_e3_series_pantof_2k2;}
-    switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_pantof_shape_204, cargo_subtype) {0..2:ss_mid_e3_series_pantof_rrr; 3..5:ss_mid_e3_series_pantof_1kk; 6..8:ss_mid_e3_series_pantof_2kk;}
+    switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_pantof_color_203, cargo_subtype) {1:ss_mid_e3_series_pantof_r2c; 4:ss_mid_e3_series_pantof_1k2; 7:ss_mid_e3_series_pantof_2k2;}
+    switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_pantof_shape_203, cargo_subtype) {0..2:ss_mid_e3_series_pantof_rrr; 3..5:ss_mid_e3_series_pantof_1kk; 6..8:ss_mid_e3_series_pantof_2kk;}
     
     // E2 Series
     switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_pantof_color_2023, cargo_subtype) {3:ss_mid_e3_series_pantof_r2c; 6:ss_mid_e3_series_pantof_1k2; 9:ss_mid_e3_series_pantof_2k2;}
@@ -16224,8 +16224,8 @@ spriteset(ss_mid_e3_series_pantob_700, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/
     switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_pantof_color_2003, cargo_subtype) {2:ss_mid_e3_series_pantof_r2c; 4:ss_mid_e3_series_pantof_1k2; 6:ss_mid_e3_series_pantof_2k2;}
     switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_pantof_shape_2003, cargo_subtype) {0:sw_e3_series_pantof_yeardep; 1..2:ss_mid_e3_series_pantof_rrr; 3..4:ss_mid_e3_series_pantof_1kk; 5..6:ss_mid_e3_series_pantof_2kk; 7:ss_mid_e3_series_pantof_700;}
 	
-    switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_pantof_color, vehicle_type_id) {2003:ss_mid_e3_series_pantof_color_2003; 2053:ss_mid_e3_series_pantof_color_2053; 2043:ss_mid_e3_series_pantof_color_2043; 2023:ss_mid_e3_series_pantof_color_2023; 204:ss_mid_e3_series_pantof_color_204;}
-	switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_pantof_shape, vehicle_type_id) {2003:ss_mid_e3_series_pantof_shape_2003; 2053:ss_mid_e3_series_pantof_shape_2053; 2043:ss_mid_e3_series_pantof_shape_2043; 2023:ss_mid_e3_series_pantof_shape_2023; 204:ss_mid_e3_series_pantof_shape_204;}
+    switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_pantof_color, vehicle_type_id) {2003:ss_mid_e3_series_pantof_color_2003; 2053:ss_mid_e3_series_pantof_color_2053; 2043:ss_mid_e3_series_pantof_color_2043; 2023:ss_mid_e3_series_pantof_color_2023; 203:ss_mid_e3_series_pantof_color_203;}
+	switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_pantof_shape, vehicle_type_id) {2003:ss_mid_e3_series_pantof_shape_2003; 2053:ss_mid_e3_series_pantof_shape_2053; 2043:ss_mid_e3_series_pantof_shape_2043; 2023:ss_mid_e3_series_pantof_shape_2023; 203:ss_mid_e3_series_pantof_shape_203;}
 
     switch(FEAT_TRAINS, SELF, sw_e3_series_pantof, [ 
 			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
@@ -16273,8 +16273,8 @@ spriteset(ss_mid_e3_series_pantob_700, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/
         //switch(FEAT_TRAINS, SELF, sw_e3_series_clog2f_yeardep, build_year) {0..1998:ss_mid_e3_series_clog2f_rrr; 1999..2007:ss_mid_e3_series_clog2f_1kk; ss_mid_e3_series_clog2f_2kk;}
 
         // 200 Series
-        switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_clog2f_color_204, cargo_subtype) {1:ss_mid_e3_series_clog2f_r2c; }
-        switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_clog2f_shape_204, cargo_subtype) {0..2:ss_mid_e3_series_clog2f_rrr; }
+        switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_clog2f_color_203, cargo_subtype) {1:ss_mid_e3_series_clog2f_r2c; }
+        switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_clog2f_shape_203, cargo_subtype) {0..2:ss_mid_e3_series_clog2f_rrr; }
         
         // E2 Series
         switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_clog2f_color_2023, cargo_subtype) {3:ss_mid_e3_series_clog2f_r2c;}
@@ -16292,8 +16292,8 @@ spriteset(ss_mid_e3_series_pantob_700, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/
         switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_clog2f_color_2003, cargo_subtype) {2:ss_mid_e3_series_clog2f_r2c; }
         switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_clog2f_shape_2003, cargo_subtype) {0..2:ss_mid_e3_series_clog2f_rrr; }
         
-        switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_clog2f_color, vehicle_type_id) {2003:ss_mid_e3_series_clog2f_color_2003; 2053:ss_mid_e3_series_clog2f_color_2053; 2043:ss_mid_e3_series_clog2f_color_2043; 2023:ss_mid_e3_series_clog2f_color_2023; 204:ss_mid_e3_series_clog2f_color_204;}
-        switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_clog2f_shape, vehicle_type_id) {2003:ss_mid_e3_series_clog2f_shape_2003; 2053:ss_mid_e3_series_clog2f_shape_2053; 2043:ss_mid_e3_series_clog2f_shape_2043; 2023:ss_mid_e3_series_clog2f_shape_2023; 204:ss_mid_e3_series_clog2f_shape_204;}
+        switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_clog2f_color, vehicle_type_id) {2003:ss_mid_e3_series_clog2f_color_2003; 2053:ss_mid_e3_series_clog2f_color_2053; 2043:ss_mid_e3_series_clog2f_color_2043; 2023:ss_mid_e3_series_clog2f_color_2023; 203:ss_mid_e3_series_clog2f_color_203;}
+        switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_clog2f_shape, vehicle_type_id) {2003:ss_mid_e3_series_clog2f_shape_2003; 2053:ss_mid_e3_series_clog2f_shape_2053; 2043:ss_mid_e3_series_clog2f_shape_2043; 2023:ss_mid_e3_series_clog2f_shape_2023; 203:ss_mid_e3_series_clog2f_shape_203;}
 
         switch(FEAT_TRAINS, SELF, sw_e3_series_clog2f, [ 
                 STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
@@ -16306,8 +16306,8 @@ spriteset(ss_mid_e3_series_pantob_700, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/
         //switch(FEAT_TRAINS, SELF, sw_e3_series_c2raif_yeardep, build_year) {0..1998:ss_mid_e3_series_c2raif_rrr; 1999..2007:ss_mid_e3_series_c2raif_1kk; ss_mid_e3_series_c2raif_2kk;}
 
         // 200 Series
-        switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_c2raif_color_204, cargo_subtype) {1:ss_mid_e3_series_c2raif_r2c; }
-        switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_c2raif_shape_204, cargo_subtype) {0..2:ss_mid_e3_series_c2raif_rrr; }
+        switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_c2raif_color_203, cargo_subtype) {1:ss_mid_e3_series_c2raif_r2c; }
+        switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_c2raif_shape_203, cargo_subtype) {0..2:ss_mid_e3_series_c2raif_rrr; }
         
         // E2 Series
         switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_c2raif_color_2023, cargo_subtype) {3:ss_mid_e3_series_c2raif_r2c;}
@@ -16325,8 +16325,8 @@ spriteset(ss_mid_e3_series_pantob_700, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/
         switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_c2raif_color_2003, cargo_subtype) {2:ss_mid_e3_series_c2raif_r2c; }
         switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_c2raif_shape_2003, cargo_subtype) {0..2:ss_mid_e3_series_c2raif_rrr;}
         
-        switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_c2raif_color, vehicle_type_id) {2003:ss_mid_e3_series_c2raif_color_2003; 2053:ss_mid_e3_series_c2raif_color_2053; 2043:ss_mid_e3_series_c2raif_color_2043; 2023:ss_mid_e3_series_c2raif_color_2023; 204:ss_mid_e3_series_c2raif_color_204;}
-        switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_c2raif_shape, vehicle_type_id) {2003:ss_mid_e3_series_c2raif_shape_2003; 2053:ss_mid_e3_series_c2raif_shape_2053; 2043:ss_mid_e3_series_c2raif_shape_2043; 2023:ss_mid_e3_series_c2raif_shape_2023; 204:ss_mid_e3_series_c2raif_shape_204;}
+        switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_c2raif_color, vehicle_type_id) {2003:ss_mid_e3_series_c2raif_color_2003; 2053:ss_mid_e3_series_c2raif_color_2053; 2043:ss_mid_e3_series_c2raif_color_2043; 2023:ss_mid_e3_series_c2raif_color_2023; 203:ss_mid_e3_series_c2raif_color_203;}
+        switch(FEAT_TRAINS, PARENT, ss_mid_e3_series_c2raif_shape, vehicle_type_id) {2003:ss_mid_e3_series_c2raif_shape_2003; 2053:ss_mid_e3_series_c2raif_shape_2053; 2043:ss_mid_e3_series_c2raif_shape_2043; 2023:ss_mid_e3_series_c2raif_shape_2023; 203:ss_mid_e3_series_c2raif_shape_203;}
 
         switch(FEAT_TRAINS, SELF, sw_e3_series_c2raif, [ 
                 STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
@@ -19936,8 +19936,8 @@ item(FEAT_TRAINS, series_e5e3) {
 		loading_speed:					15 * CapacityFactor() / param_loading_2D;
 		cargo_age_period:				param_decay_express;
 		cost_factor:                    144;
-		running_cost_factor:            (((298 + 127) * 10 ) + ((445 + 120) * 7 )) * RunningCostFactor();
-		purchase_running_cost_factor:   ((298 + 127) * 10 ) + ((445 + 120) * 7 );	
+		running_cost_factor:            ((298 + 127 * 10 ) + (445 + 120 * 7 )) * RunningCostFactor();
+		purchase_running_cost_factor:   (298 + 127 * 10 ) + (445 + 120 * 7 );	
 	}
 }
 # 1 "src/trains/e5e3_series/e5e3_series.pnml" 2
@@ -20023,7 +20023,7 @@ item(FEAT_TRAINS, series_e5e6) {
 		variant_group:					2005;
 		/* Availability */
 		climates_available:             ALL_CLIMATES;
-		introduction_date:              date(2011,03,05); 
+		introduction_date:              date(2013,03,16); 
 		model_life:                     VEHICLE_NEVER_EXPIRES;		
 		vehicle_life:                   30;							// 
 		track_type:                     SHINKANSEN;
@@ -20331,7 +20331,140 @@ item(FEAT_TRAINS, series_200400) {
 }
 # 1 "src/trains/200&400_series/200&400_series.pnml" 2
 # 1 "JPplusShinkansen.pnml" 4
-//#include "src/trains/200e3_series/200e3_series.pnml"
+# 1 "src/trains/200e3_series/200e3_series.pnml" 1
+
+# 1 "src/trains/200e3_series/200e3_series_menu.pnml" 1
+/* SUBTYPES */	
+    
+    switch(FEAT_TRAINS, SELF, sw_200e3_series_subtype_text, cargo_subtype) {
+		0: return string(STR_CONCAT_3, string(LV_200_SERIES_ORIGINAL),string(AND),string(LV_E3_SERIES_R));
+		1: return string(STR_CONCAT_3, string(LV_200_SERIES_ORIGINAL_2CC),string(AND),string(LV_E3_SERIES_R_2CC));
+        2: return string(STR_CONCAT_3, string(LV_200_SERIES_REFURB),string(AND),string(LV_E3_SERIES_R));
+        3: return string(STR_CONCAT_3, string(LV_200_SERIES_ORIGINAL),string(AND),string(LV_E3_SERIES_1000));
+		4: return string(STR_CONCAT_3, string(LV_200_SERIES_ORIGINAL_2CC),string(AND),string(LV_E3_SERIES_1000_2CC));
+        5: return string(STR_CONCAT_3, string(LV_200_SERIES_REFURB),string(AND),string(LV_E3_SERIES_1000));
+        6: return string(STR_CONCAT_3, string(LV_200_SERIES_ORIGINAL),string(AND),string(LV_E3_SERIES_2000));
+		7: return string(STR_CONCAT_3, string(LV_200_SERIES_ORIGINAL_2CC),string(AND),string(LV_E3_SERIES_2000_2CC));
+        8: return string(STR_CONCAT_3, string(LV_200_SERIES_REFURB),string(AND),string(LV_E3_SERIES_2000));
+		return CB_RESULT_NO_TEXT;
+		}
+
+/* Purchase Menu */
+    spriteset (ss_200e3_series_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200e3_series/gfx/200e3_series.png") {template_purchase(233, 1)}
+
+    switch(FEAT_TRAINS, SELF, sw_200e3_series_purchase, [ 
+        STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+            0: logo_jreast; 
+            1: ss_200e3_series_buy;
+        }
+# 1 "src/trains/200e3_series/200e3_series.pnml" 2
+# 1 "src/trains/200e3_series/200e3_series_formations.pnml" 1
+
+switch (FEAT_TRAINS, PARENT, sw_e3_series_200e3_clogocheck, cargo_subtype ) {				
+        0..2: sw_e3_series_clog2f;
+        sw_e3_series_clogof;
+	}
+
+switch (FEAT_TRAINS, SELF, sw_200e3_series_graphics, position_in_consist ) {				
+		// 200
+        0..2:   sw_200_series_cab01f;
+        3..5:   sw_200_series_pantof;
+        6..8:   sw_200_series_coachf;
+        9..11:  sw_200_series_pantof;
+        12..14: sw_200_series_coachf;
+        15..17: sw_200_series_pantof;
+        18..20: sw_200_series_coachf;
+        21..23: sw_200_series_pantof;
+        24..26: sw_200_series_coachf;
+        27..29: sw_200_series_pantof;
+        30..32: sw_200_series_coachf;
+        33:     sw_200_series_cab02f_bck_longsprite;
+        34:     sw_200_series_cab02f_mid_stack;
+        35:     sw_200_series_cab02f_frt_longsprite;
+        // E3
+        36: sw_e3_series_cab01f;
+        37: sw_e3_series_200e3_clogocheck;
+        38: sw_e3_series_coachf;
+        39: sw_e3_series_pantof;
+        40: sw_e3_series_coraif;
+        41: sw_e3_series_pantof;
+		42: sw_e3_series_cab02f;
+
+	}
+
+switch (FEAT_TRAINS, SELF, sw_200e3_series_length, position_in_consist ) {				
+		// 200
+        0..35: sw_length_1_8_1;
+        // 400
+        36..42: return 8;
+	}
+# 1 "src/trains/200e3_series/200e3_series.pnml" 2
+# 1 "src/trains/200e3_series/200e3_series_item.pnml" 1
+
+switch (FEAT_TRAINS, SELF, sw_200e3_series_articulated_part, extra_callback_info1) {
+		1 .. 42: return series_200e3;									
+		return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+	}
+
+/*---Coupling Switch---*/
+switch(FEAT_TRAINS, SELF, sw_200e3_series_irl_attach_vehid, [vehicle_type_id == series_test_700]) {
+ 		0: return string(COUPLE_CANT_JOIN);
+	}
+    
+item(FEAT_TRAINS, series_200e3) {
+	property {
+		/* Menu */
+		name: 							string(STR_CONCAT_3, string(STR_NAME_200_SERIES),string(AND),string(STR_NAME_E3_SERIES));
+		sprite_id:                      SPRITE_ID_NEW_TRAIN; 		// required to enable new graphics
+		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
+		running_cost_base:              RUNNING_COST_ELECTRIC;
+		engine_class:                   ENGINE_CLASS_ELECTRIC;
+		variant_group:					200;
+		/* Availability */
+		climates_available:             ALL_CLIMATES;
+		introduction_date:              date(1997,03,22); 
+		model_life:                     VEHICLE_NEVER_EXPIRES;		
+		vehicle_life:                   30;							// 
+		track_type:                     SHINKANSEN;
+		/* Cargo */
+		reliability_decay:              5;
+		refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+		refit_cost:                     0;
+		default_cargo_type:             PASS;
+		ai_special_flag:                AI_FLAG_PASSENGER;
+		cargo_capacity:                 1;							// 
+		loading_speed:                  50;							
+		cargo_age_period:               278; 						// 1.5 times normal for this expensive long-distance train
+		/* Stats */
+		speed:                          240 km/h;				
+		power:                          (8064 + 12864) hp;			
+		weight:                         (453 + 306) tons;			
+		tractive_effort_coefficient:    0.3;
+		air_drag_coefficient:			0;
+	}
+	graphics {
+		/* Menu */
+		additional_text:                string(STR_CONCAT_3, string(DESC_STD),string(JR_EAST),string(STR_NAME_200_SERIES),string(AND),string(STR_NAME_E3_SERIES),string(LIVERIES_MENU),string(LENGTH98));
+		cargo_subtype_text:             sw_200e3_series_subtype_text;
+		can_attach_wagon:				sw_200e3_series_irl_attach_vehid;
+		//start_stop:						sw_200e3_series_stop_start;
+		/* Graphics */
+		default:                        sw_200e3_series_graphics;
+		purchase:                       sw_200e3_series_purchase;
+		articulated_part:               sw_200e3_series_articulated_part;	
+		visual_effect_and_powered:      sw_visual_effect_and_powered;
+		/* Stats */
+		length:                         sw_200e3_series_length;
+		cargo_capacity:                 15 * CapacityFactor();
+		loading_speed:					15 * CapacityFactor() / param_loading_2D;
+		cargo_age_period:				param_decay_express;
+		cost_factor:                    144;
+		running_cost_factor:            ((300 + 130 * 12 ) + (445 + 120 * 7 )) * RunningCostFactor();
+		purchase_running_cost_factor:   (300 + 130 * 12 ) + (445 + 120 * 7 );	
+	}
+}
+# 1 "src/trains/200e3_series/200e3_series.pnml" 2
+# 1 "JPplusShinkansen.pnml" 4
 
 # 1 "src/trains/e4&400_series/e4&400_series.pnml" 1
 
@@ -20429,15 +20562,15 @@ item(FEAT_TRAINS, series_e4400) {
 		loading_speed:                  50;							
 		cargo_age_period:               278; 						// 1.5 times normal for this expensive long-distance train
 		/* Stats */
-		speed:                          321 km/h;					// Operational Top Speed
-		power:                          (8064 + 12864) hp;			// Agreed to https://en.wikipedia.org/wiki/E5_and_H5_Series_Shinkansen
-		weight:                         (453 + 306) tons;					// Agreed to https://en.wikipedia.org/wiki/E5_and_H5_Series_Shinkansen
+		speed:                          240 km/h;					// Operational Top Speed
+		power:                          (9012 + 6759) hp;			
+		weight:                         (428 + 294) tons;			
 		tractive_effort_coefficient:    0.3;
 		air_drag_coefficient:			0;
 	}
 	graphics {
 		/* Menu */
-		additional_text:                string(STR_CONCAT_3, string(DESC_STD),string(JR_EAST),string(STR_NAME_E4_SERIES),string(AND),string(STR_NAME_400_SERIES),string(LIVERIES_MENU),string(LENGTH98));
+		additional_text:                string(STR_CONCAT_3, string(DESC_STD),string(JR_EAST),string(STR_NAME_E4_SERIES),string(AND),string(STR_NAME_400_SERIES),string(LIVERIES_MENU),string(LENGTH85));
 		cargo_subtype_text:             sw_e4n400_series_subtype_text;
 		can_attach_wagon:				sw_e4n400_series_irl_attach_vehid;
 		//start_stop:						sw_e4n400_series_stop_start;
@@ -20452,8 +20585,8 @@ item(FEAT_TRAINS, series_e4400) {
 		loading_speed:					15 * CapacityFactor() / param_loading_2D;
 		cargo_age_period:				param_decay_express;
 		cost_factor:                    144;
-		running_cost_factor:            (298 + 127 * 17 ) * RunningCostFactor();
-		purchase_running_cost_factor:   298 + 127 * 17;	
+		running_cost_factor:            ((295 + 120 * 8 ) + (445 + 125 * 7 )) * RunningCostFactor();
+		purchase_running_cost_factor:   (295 + 120 * 8 ) + (445 + 125 * 7 );	
 	}
 }
 # 1 "src/trains/e4&400_series/e4&400_series.pnml" 2
