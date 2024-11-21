@@ -5,15 +5,16 @@ Welcome to 🇯🇵🚅 **JP+Shinkansen!** 🚅🇯🇵
 This is the sister set to 🚂[JP+ Engines & Wagons](https://github.com/EmperorJake/JPengines)🚂 , 🚆[JP+ Multiple Units](https://github.com/Tintinfan/JPplusSet)🚆 and 🚇[JP+ Major Private](https://github.com/Yozora3/JPplusPrivate)🚇, adding the world's first High Speed Rail Network's iconic trains.
 
 ## Credits
-**Coding:** KeepinItRail\
+**Coding:** KeepinItRail, Yozora\
 **Graphics:** KeepinItRail, Yozora, Azusa & Erato\
 **Translations:** freeaim (Japanese), CoconutKR (Korean), WenSim (Chinese), Yozora (Russian)\
 **Thanks to:** The JapanSet Team, Tinny, Emperor Jake, Saya
 
 ## Features
 
-* Long Sprites for 'full Shinkansen' - choose different liveries via the Cargo Subtype Menu
+* Long (10/8) Sprites for 'Full Shinkansen' - choose different liveries via the Cargo Subtype Menu
 * Normal (8/8) Length Sprites for Mini-Shinkansen
+* 'Coupled' Shinkansen (Full + Mini) - choose via variants of Full length Shinkansen
 * Real World Stats were possible (or approximations when not known)
 * Parameters for;
     * Disabling JapanSet Shinkansen
@@ -66,7 +67,7 @@ Using `bash` is suggested, but powershell also works.
 
 This GRF could be built on multiple platforms; however, if you are on Windows, please change the end of line sequence from `CRLF` to `LF`. You could only change `JPPlusShinkansen.nml` without changing the other files, and it would still work.
 
-## Useful Sources
+## Useful Resources
 
 https://en.wikipedia.org/wiki/Shinkansen\
 http://kakeyama.image.coocan.jp/tec.htm

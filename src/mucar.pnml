@@ -1,8 +1,14 @@
 
 /* MINI-SHINKANSEN */
 
-spriteset (set_mu_car_mini_purchase,    "src/trains/dummy/mucarbuy.png") 	{template_purchase (0, 0)}
-spriteset (set_mu_car_base,       	"src/trains/dummy/mucar.png")     	{template_8_standard(1,1)}
+spriteset(ss_mucar_mini_buy,            "src/trains/mucar/gfx/mucar.png") {template_purchase(233, 51)}
+spriteset(set_mu_car_base,              "src/trains/mucar/gfx/mucar.png") {tmpl_mid_std(1,51)}
+
+switch(FEAT_TRAINS, SELF, sw_mucar_mini_purchase, [ 
+        STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+            0: logo_jppsks; 
+            1: ss_mucar_mini_buy;
+        }
 
 item(FEAT_TRAINS, mu_car_ms) {
     /* Define properties first, make sure to set all of them */
@@ -40,7 +46,7 @@ item(FEAT_TRAINS, mu_car_ms) {
     /* Define graphics and callbacks
      * Setting all callbacks is not needed, only define what is used */
     graphics {
-	    purchase:                     set_mu_car_mini_purchase;
+	    purchase:                     sw_mucar_mini_purchase;
         additional_text:			  return string(MUCAR_MINI_DESC);
         set_mu_car_base;
     }
@@ -48,8 +54,14 @@ item(FEAT_TRAINS, mu_car_ms) {
 
 /* FULL SHINKANSEN */
 
-spriteset (ss_mucar_full_10_purchase,      "src/trains/dummy/mucar10buy.png") {template_purchase (0, 0)}
-spriteset (ss_mucar_full_10,       	        "src/trains/dummy/mucar_10.png") {template_10_standard(1,1)}
+spriteset(ss_mucar_full_buy,            "src/trains/mucar/gfx/mucar.png") {template_purchase(233, 1)}
+spriteset(ss_mucar_full_10,             "src/trains/mucar/gfx/mucar.png") {tmpl_10_std(1,1)}
+
+switch(FEAT_TRAINS, SELF, sw_mucar_full_purchase, [ 
+        STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+            0: logo_jppsks; 
+            1: ss_mucar_full_buy;
+        }
 
 switch (FEAT_TRAINS, SELF, sw_mucar_full_graphics, position_in_articulated_veh) {				
 		1:  ss_mucar_full_10; 				
@@ -100,7 +112,7 @@ item(FEAT_TRAINS, mu_car_full) {
      * Setting all callbacks is not needed, only define what is used */
     graphics {
 		default:                        sw_mucar_full_graphics;                     
-        purchase:                       ss_mucar_full_10_purchase;
+        purchase:                       sw_mucar_full_purchase;
         additional_text:			    return string(MUCAR_FULL_DESC);
         articulated_part:               sw_mucar_full_articulated_part;
         length:                         sw_length_1_8_1; 
@@ -110,8 +122,14 @@ item(FEAT_TRAINS, mu_car_full) {
 
 // MAGLEV
 
-spriteset (ss_mucar_maglev_10_purchase,      "src/trains/dummy/mucar_maglev_10_buy.png") {template_purchase (0, 0)}
-spriteset (ss_mucar_maglev_10,       	     "src/trains/dummy/mucar_maglev_10.png") {template_10_standard(1,1)}
+spriteset(ss_mucar_maglev_buy,          "src/trains/mucar/gfx/mucar.png") {template_purchase(233, 101)}
+spriteset(ss_mucar_maglev_10,           "src/trains/mucar/gfx/mucar.png") {tmpl_10_std(1,101)}
+
+switch(FEAT_TRAINS, SELF, sw_mucar_maglev_purchase, [ 
+        STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+            0: logo_jppsks; 
+            1: ss_mucar_maglev_buy;
+        }
 
 switch (FEAT_TRAINS, SELF, sw_mucar_maglev_graphics, position_in_articulated_veh) {				
 		1:  ss_mucar_maglev_10; 				
@@ -161,7 +179,7 @@ item(FEAT_TRAINS, mu_car_maglev) {
      * Setting all callbacks is not needed, only define what is used */
     graphics {
 		default:                        sw_mucar_maglev_graphics;                     
-        purchase:                       ss_mucar_maglev_10_purchase;
+        purchase:                       sw_mucar_maglev_purchase;
         additional_text:			    return string(MUCAR_MAGLEV_DESC);
         articulated_part:               sw_mucar_maglev_articulated_part;
         length:                         sw_length_1_8_1; 
@@ -169,10 +187,16 @@ item(FEAT_TRAINS, mu_car_maglev) {
     }
 }
 
+// MAIL
 
-spriteset (ss_mucar_mail_10_purchase,      "src/trains/dummy/mucarbuy_mail_10.png") {template_purchase (0, 0)}
-spriteset (ss_mucar_mail_10,       	        "src/trains/dummy/mucar_mail_10.png") {template_10_standard(1,1)}
+spriteset(ss_mucar_mail_buy,            "src/trains/mucar/gfx/mucar.png") {template_purchase(233, 151)}
+spriteset(ss_mucar_mail_10,            "src/trains/mucar/gfx/mucar.png") {tmpl_10_std(1,151)}
 
+switch(FEAT_TRAINS, SELF, sw_mucar_mail_purchase, [ 
+        STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+            0: logo_jppsks; 
+            1: ss_mucar_mail_buy;
+        }
 
 switch (FEAT_TRAINS, SELF, sw_mucar_mail_graphics, position_in_articulated_veh) {				
 		1:  ss_mucar_mail_10; 				
@@ -224,7 +248,7 @@ item(FEAT_TRAINS, mu_car_mail) {
      * Setting all callbacks is not needed, only define what is used */
     graphics {
 		default:                        sw_mucar_mail_graphics;                     
-        purchase:                       ss_mucar_mail_10_purchase;
+        purchase:                       sw_mucar_mail_purchase;
         additional_text:			    return string(MUCAR_MAIL_DESC);
         articulated_part:               sw_mucar_mail_articulated_part;
         length:                         sw_length_1_8_1;  

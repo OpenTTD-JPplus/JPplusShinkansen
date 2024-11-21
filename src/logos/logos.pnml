@@ -22,3 +22,7 @@ switch(FEAT_TRAINS, SELF, logo_jrkyushu, param_hide_logo) {1:sprite_logo_jrkyush
 // JNR
 spriteset (sprite_logo_jnr, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/logos/jnr.png") { template_purchase(0,0) }
 switch(FEAT_TRAINS, SELF, logo_jnr, param_hide_logo) {1:sprite_logo_jnr;}
+
+// JP+ SHS for Mucars
+spriteset (sprite_logo_jppsks, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/logos/jppsks.png") { template_purchase(0,0) }
+switch(FEAT_TRAINS, SELF, logo_jppsks, param_hide_logo) {1:sprite_logo_jppsks;}
