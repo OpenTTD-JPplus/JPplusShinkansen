@@ -1,4 +1,8 @@
 
+switch (FEAT_TRAINS, PARENT, sw_e3_series_e5e3_clogocheck, cargo_subtype ) {				
+        0..2: sw_e3_series_clog2f;
+        sw_e3_series_clogof;
+	}
 
 switch (FEAT_TRAINS, SELF, sw_e5e3_series_graphics, position_in_consist ) {				
 		// E5
@@ -16,7 +20,7 @@ switch (FEAT_TRAINS, SELF, sw_e5e3_series_graphics, position_in_consist ) {
         29:     sw_e5_series_cab02f_frt_longsprite;
         // E3
         30: sw_e3_series_cab01f;
-        31: sw_e3_series_clogof;
+        31: sw_e3_series_e5e3_clogocheck;
         32: sw_e3_series_coachf;
         33: sw_e3_series_pantof;
         34: sw_e3_series_coraif;
