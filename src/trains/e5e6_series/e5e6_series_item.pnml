@@ -32,7 +32,7 @@ item(FEAT_TRAINS, series_e5e6) {
 		refit_cost:                     0;
 		default_cargo_type:             PASS;
 		ai_special_flag:                AI_FLAG_PASSENGER;
-		cargo_capacity:                 1;							// 
+		cargo_capacity:                 1;							// 731 + 338;
 		loading_speed:                  50;							
 		cargo_age_period:               278; 						// 1.5 times normal for this expensive long-distance train
 		/* Stats */
@@ -55,7 +55,7 @@ item(FEAT_TRAINS, series_e5e6) {
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
 		/* Stats */
 		length:                         sw_e5e6_series_length;
-		cargo_capacity:                 15 * CapacityFactor();
+		cargo_capacity:                 (731 + 338)/36 * CapacityFactor();
 		loading_speed:					15 * CapacityFactor() / param_loading_2D;
 		cargo_age_period:				param_decay_express;
 		cost_factor:                    144;

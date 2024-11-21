@@ -59,7 +59,7 @@ item(FEAT_TRAINS, series_e4e3) {
 		loading_speed:					15 * CapacityFactor() / param_loading_2D;
 		cargo_age_period:				param_decay_express;
 		cost_factor:                    144;
-		running_cost_factor:            (298 + 127 * 17 ) * RunningCostFactor();
-		purchase_running_cost_factor:   298 + 127 * 17;	
+		running_cost_factor:            ((295 + 120 * 8 ) + (445 + 120 * 7 )) * RunningCostFactor();
+		purchase_running_cost_factor:   (295 + 120 * 8 ) + (445 + 120 * 7 );	
 	}
 }
