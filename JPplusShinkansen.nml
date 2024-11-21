@@ -484,11 +484,11 @@ if (param_basecapacity == 2) {
 
 // Attach Mucar Full
     switch(FEAT_TRAINS, SELF, sw_attach_mu_car_full, [vehicle_type_id == mu_car_full]) {
-        0: return string(ONLY_ADD_MUCAR);
+        0: return string(ONLY_ADD_MUCAR_FULL);
     }
 
     switch(FEAT_TRAINS, SELF, sw_attach_mu_car_ms, [vehicle_type_id == mu_car_ms]) {
-        0: return string(ONLY_ADD_MUCAR);
+        0: return string(ONLY_ADD_MUCAR_MINI);
     }
 
     switch(FEAT_TRAINS, SELF, sw_attach_mu_car_mail, [vehicle_type_id == mu_car_mail]) {
