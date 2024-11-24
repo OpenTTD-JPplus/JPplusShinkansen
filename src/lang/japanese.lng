@@ -16,6 +16,7 @@ STR_CONCAT_7	                    :{STRING} {STRING} {STRING} {STRING} {STRING} {
 # Parameters
 STR_NO                              :いいえ
 STR_YES                             :はい
+AND                                 :{BLACK}と
 STR_PARAM_NORMAL                    :普通
 STR_PARAM_VLOW                      :とても低い
 STR_PARAM_LOW                       :低い
@@ -37,6 +38,9 @@ STR_PARAM_1_50                      :ロングスプライト調整済み (1.5�
 STR_PARAM_DOUBLE                    :ダブル (2倍)
 STR_PARAM_1_25                      :ロングスプライト調整済み (1.25倍)
 
+# Hide Logos
+STR_PARAM_HIDE_LOGO                 :Show Logos in the purchase menu
+
 STR_PARAM_NAME_DRYELLOW             :ドクターイエローの役割
 STR_PARAM_DESC_DRYELLOW             :ドクターイエローの使用方法を選択します。軌道試験列車（貨物は積みません）、郵便列車、旅客列車からお選びください。
 
@@ -47,17 +51,21 @@ STR_PARAM_PASSENGERS                :旅客列車
 # Error Messages
 GRF_OTTDVER                 : この NewGRF を実行するために必要な OpenTTD バージョンを下回っています。 OpenTTD のバージョンを更新してください。
 STR_LENGTH_ERROR            : 新幹線車両を追加してください!MU車両 (ワゴンメニュー) を追加して、少なくとも4両セットにしてください。
+COUPLE_CANT_JOIN            : Can't attach to a coupled Shinkansen!  
 
 # Mucar
 MU_UNIQUE                   : MU車両または同じデザインの他の車両のみ連結可能です。
 ONLY_ADD_MUCAR              : MU車両のみ連結可能です。
+ONLY_ADD_MUCAR_MINI         : Attach JP+ Mini-Shinkansen Cars only
+ONLY_ADD_MUCAR_FULL         : Attach JP+ Shinkansen Cars only
 MUCAR_MINI                  :JP+ ミニ新幹線車両 {WHITE}(MU){BLACK}
 MUCAR_FULL                  :JP+ 新幹線車両 {WHITE}(MU){BLACK}
 MUCAR_MAIL                  :JP+ 新幹線郵便車両 {WHITE}(MU){BLACK}
+MUCAR_MAGLEV                :JP+ Shinkansen Maglev Car {WHITE}(MU){BLACK}
 MUCAR_MINI_DESC             :{BLACK}互換性: {GOLD}400系、E3系、E6系とE8系　新幹線{}{BLUE}ミニ新幹線の編成内の{GREEN}動力車と付随車{BLUE}を表すために使用されます。
 MUCAR_FULL_DESC             :{BLACK}互換性: {GOLD}すべてのフル規格新幹線{}{BLUE}新幹線の編成内の{GREEN}動力車と付随車{BLUE}を表すために使用されます。
 MUCAR_MAIL_DESC             :{BLACK}互換性: {GOLD}ドクターイエロー{}{BLUE}ドクターイエローの編成内の{GREEN}郵便車{BLUE}を表すために使用されます。
-
+MUCAR_MAGLEV_DESC           :{BLACK}Compatibility: {GOLD}MagLev Shinkansen
 
 # ########################
 # Not JR東日本 
@@ -70,6 +78,7 @@ LV_0_SERIES_ORIGINAL        : 0系 {BLUE}オリジナル塗装
 LV_0_SERIES_KODAMA          : 0系 {GREEN}フレッシュグリーン塗装
 LV_0_SERIES_ORIGINAL_2CC    : 0系 {BLUE}2CC
 LV_0_SERIES_NOSE            : 0系 {BLUE}オリジナル塗装 {YELLOW}光前頭
+LV_0_SERIES_NOSE_2CC        : 0系 {BLUE}2CC {YELLOW}光前頭
 
 STR_NAME_922_SERIES         :922系新幹線 - {YELLOW}ドクターイエロー
 STR_DESC_922_SERIES         :{BLACK}軌間:{GOLD} 標準軌{}{BLACK}用途: {SILVER}急行{}{BLACK}事業者: {ORANGE}JR東海 {BLACK}& {BLUE}JR西日本{}{BLACK}塗装: {YELLOW}ドクターイエロー{}{BLACK}MU車両: {GOLD} JP+ 新幹線車両
@@ -152,6 +161,9 @@ STR_NAME_200_SERIES         :200系新幹線
 STR_DESC_200_SERIES         :{BLACK}軌間:{GOLD} 標準軌{}{BLACK}用途: {SILVER}急行{}{BLACK}事業者: {GREEN}JR東日本{}{BLACK}塗装: {SILVER}オリジナル {BLACK}(1982){SILVER}リニューアル {BLACK}(1992){}{BLACK}MU車両: {GOLD} JP+ 新幹線車両
 STR_NAME_200_SERIES_SHARK   :200系新幹線 - 'シャークノーズ'
 STR_DESC_200_SERIES_SHARK   :{BLACK}軌間:{GOLD} 標準軌{}{BLACK}用途: {SILVER}急行{}{BLACK}事業者: {GREEN}JR東日本{}{BLACK}塗装: {SILVER}シャークノーズ {BLACK}(1990){}{BLACK}MU車両: {GOLD} JP+ 新幹線車両
+STR_NAME_200_SERIES_275     :200系新幹線 (Asahi)
+STR_DESC_200_SERIES_275     ::{BLACK}軌間:{GOLD} 標準軌{}{BLACK}用途: {SILVER}急行{}{BLACK}事業者: {GREEN}JR東日本{}{BLACK}塗装: {SILVER}Asahi {BLACK}(1990){}{BLACK}MU車両: {GOLD} JP+ 新幹線車両
+
 
 LV_200_SERIES_ORIGINAL      : 200系 {GREEN}オリジナル塗装
 LV_200_SERIES_ORIGINAL_2CC  : 200系{GREEN}2CC
@@ -231,3 +243,8 @@ LV_YEAR_DEP_LIVERY          : Year Dependent Livery
 DESC_STD                    :{BLACK}軌間:{GOLD} 標準軌{}{BLACK}用途: {SILVER}急行{}{BLACK}事業者:
 JR_EAST                     :{GREEN} JR東日本{}{BLACK}塗装:
 JR_WEST                     :{GREEN} JR西日本{}{BLACK}塗装:
+
+LIVERIES_MENU               :{BLACK}See Cargo Subtype Menu
+LENGTH_110                  :{}{BLACK}Length: {GOLD} 11.0 tiles
+LENGTH_98                   :{}{BLACK}Length: {GOLD} 9.8 tiles
+LENGTH_85                   :{}{BLACK}Length: {GOLD} 8.5 tiles
