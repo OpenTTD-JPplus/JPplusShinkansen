@@ -14,9 +14,17 @@
 STR_GRF_NAME        :JP+ 新干线 {VERSION}
 STR_GRF_DESC        :{WHITE}JP{RED}+{WHITE} 新干线{}{}JP{RED}+{WHITE}新干线{BLACK}专门做的就是，您应该已经门儿清了，新干线！本包中的列车需要高速铁道。{}本包是{WHITE}JP{RED}+{WHITE} 动车组（{WHITE}JP{RED}+{WHITE} MUs）{BLACK}、{WHITE}JP{RED}+ {WHITE}机车与车厢{BLACK}与{WHITE}JP{RED}+ {WHITE}主要私铁（{WHITE}JP{RED}+{WHITE} Major Private Companies）{BLACK}的姊妹拓展包。{}{}{BLACK}{COPYRIGHT}JP+ 新干线{}许可证：GPLv2{}{BLACK}{}程序：{}{LTBLUE}KeepinItRail{}{}{BLACK}图像：{}{GREEN}KeepinItRail, Yozora, Azusa, Erato{}{}{BLACK}翻译：{}{GREEN}freeaim (Japanese){}Yozora (Russian){}CoconutKR (Korean){}{}{TINYFONT}{BLACK}特别感谢：{}{ORANGE}Emperor Jake{}Tinny{}Saya{}Leon{}JapanSet3 Team{}{}{}{BLACK}{}
 
+STR_CONCAT_2	                    :{STRING} {STRING}
+STR_CONCAT_3	                    :{STRING} {STRING} {STRING}
+STR_CONCAT_4	                    :{STRING} {STRING} {STRING} {STRING}
+STR_CONCAT_5	                    :{STRING} {STRING} {STRING} {STRING} {STRING}
+STR_CONCAT_6	                    :{STRING} {STRING} {STRING} {STRING} {STRING} {STRING}
+STR_CONCAT_7	                    :{STRING} {STRING} {STRING} {STRING} {STRING} {STRING} {STRING}
+
 # Parameters
 STR_NO                              :否
 STR_YES                             :是
+AND                                 : {BLACK}&
 STR_PARAM_NORMAL                    :普通
 STR_PARAM_VLOW                      :非常低
 STR_PARAM_LOW                       :低
@@ -38,11 +46,8 @@ STR_PARAM_1_50                      :长图像优化（1.5x）
 STR_PARAM_DOUBLE                    :双倍（2x）
 STR_PARAM_1_25                      :长图像优化（1.25x）
 
-STR_PARAM_NAME_TRACKS               :启用内置新干线轨道
-STR_PARAM_DESC_TRACKS               :移除 JapanSet Tracks 的新干线轨道并启用本包内置的新干线轨道。
-
-STR_PARAM_NAME_FENCES               :禁用新干线轨道栅栏
-STR_PARAM_DESC_FENCES               :控制当启用内置新干线轨道时，是否显示轨道栅栏。请注意，此参数仅在启用内置新干线轨道时有效。
+# Hide Logos
+STR_PARAM_HIDE_LOGO                 :Show Logos in the purchase menu
 
 STR_PARAM_NAME_DRYELLOW             :{PUSH_COLOUR}{YELLOW}黄医生{POP_COLOUR}作用
 STR_PARAM_DESC_DRYELLOW             :选择如何使用“黄医生”。
@@ -59,6 +64,8 @@ COUPLE_CANT_JOIN            :不能添加到重联新干线！
 # Mucar
 MU_UNIQUE                   :你只能添加新干线车厢或重联新干线列车
 ONLY_ADD_MUCAR              :你只能添加新干线车厢
+ONLY_ADD_MUCAR_MINI         : Attach JP+ Mini-Shinkansen Cars only
+ONLY_ADD_MUCAR_FULL         : Attach JP+ Shinkansen Cars only
 MUCAR_MINI                  :JP+ 迷你新干线车厢{WHITE}（动车组）{BLACK}
 MUCAR_FULL                  :JP+ 新干线车厢{WHITE}（动车组）{BLACK}
 MUCAR_MAIL                  :JP+ 新干线邮车{WHITE}（动车组）{BLACK}
@@ -79,6 +86,7 @@ LV_0_SERIES_ORIGINAL        : 0 系{BLUE}原色涂装
 LV_0_SERIES_KODAMA          : 0 系{GREEN}回声号（こだま）涂装
 LV_0_SERIES_ORIGINAL_2CC    : 0 系{BLUE}公司颜色
 LV_0_SERIES_NOSE            : 0 系{BLUE}原色涂装{YELLOW}，带发光车头
+LV_0_SERIES_NOSE_2CC        : 0 系{BLUE}公司颜色 {YELLOW}，带发光车头
 
 STR_NAME_922_SERIES         :922 系新干线 - {YELLOW}黄医生
 STR_DESC_922_SERIES         :{BLACK}轨距：{GOLD}标准{}{BLACK}用途：{SILVER}快速旅客{}{BLACK}铁道会社：{ORANGE}JR东海{BLACK}与{BLUE}JR西日本{}{BLACK}涂装：{YELLOW}黄医生{}{BLACK}动车组车厢：{GOLD}JP+ 新干线车厢
@@ -237,3 +245,13 @@ LV_E8_SERIES_2CC            : E8 系{GOLD}公司颜色
 
 # Livery
 LV_YEAR_DEP_LIVERY          : 随年份变化
+
+DESC_STD                    :{BLACK}轨距：{GOLD}标准{}{BLACK}用途：{SILVER}快速旅客{}{BLACK}铁道会社：
+JR_EAST                     :{GREEN} JR东日本{}{BLACK}涂装：
+JR_WEST                     :{GREEN} JR西日本{}{BLACK}涂装：
+
+LIVERIES_MENU               :{BLACK}See Cargo Subtype Menu
+LENGTH_110                  :{}{BLACK}Length: {GOLD} 11.0 tiles
+LENGTH_98                   :{}{BLACK}Length: {GOLD} 9.8 tiles
+LENGTH_85                   :{}{BLACK}Length: {GOLD} 8.5 tiles
+

@@ -6,6 +6,13 @@
 STR_GRF_NAME        :{TITLE} {VERSION}
 STR_GRF_DESC		:{WHITE}JP{RED}+{WHITE}Shinkansen{}{}JP{RED}+{WHITE}Shinkansen{BLACK} focuses on, you guessed it, Shinkansen! Trains require high speed rail tracks.{}Sister set to {WHITE}JP{RED}+{WHITE}MUs {BLACK}, {WHITE}JP{RED}+ {WHITE}Engines & Wagons {BLACK}and {WHITE}JP{RED}+ {WHITE}Major Private Companies{}{}{BLACK}{COPYRIGHT}JP+Shinkansen{}Licence: GPLv2{}{BLACK}{}Coded By{}{LTBLUE}KeepinItRail{}{}{BLACK}Sprites By{}{GREEN}KeepinItRail, Yozora & Azusa{}{}{BLACK}Translations By{}{GREEN}freeaim (Japanese){}Yozora (Russian){}{TINYFONT}{BLACK}Thanks To{}{ORANGE}Emperor Jake{}Tinny{}Saya{}Erato{}Leon{}JapanSet3 Team{}{}{}{BLACK}{}
 
+STR_CONCAT_2	                    :{STRING} {STRING}
+STR_CONCAT_3	                    :{STRING} {STRING} {STRING}
+STR_CONCAT_4	                    :{STRING} {STRING} {STRING} {STRING}
+STR_CONCAT_5	                    :{STRING} {STRING} {STRING} {STRING} {STRING}
+STR_CONCAT_6	                    :{STRING} {STRING} {STRING} {STRING} {STRING} {STRING}
+STR_CONCAT_7	                    :{STRING} {STRING} {STRING} {STRING} {STRING} {STRING} {STRING}
+
 # Parameters
 STR_NO                              :いいえ
 STR_YES                             :はい
@@ -29,12 +36,6 @@ STR_PARAM_REAL                      :現実世界の容量 (1倍)
 STR_PARAM_1_50                      :ロングスプライト調整済み (1.5倍)
 STR_PARAM_DOUBLE                    :ダブル (2倍)
 STR_PARAM_1_25                      :ロングスプライト調整済み (1.25倍)
-
-STR_PARAM_NAME_TRACKS               :置換用の新幹線線路を有効にする
-STR_PARAM_DESC_TRACKS               :上記パラメータで JapanSet3 新幹線を無効にすると、これによりJapanSet 線路から新幹線線路が削除されます。 このパラメータは、「置換用」の新幹線線路を有効にします。
-
-STR_PARAM_NAME_FENCES               :置換用の新幹線線路のフェンスを無効にする
-STR_PARAM_DESC_FENCES               :置き換えられた新幹線の線路にフェンスを表示するかどうかを選択します。 「置換用」の新幹線線路にのみ影響し、他の線路や線路セットには影響しません。
 
 STR_PARAM_NAME_DRYELLOW             :ドクターイエローの役割
 STR_PARAM_DESC_DRYELLOW             :ドクターイエローの使用方法を選択します。軌道試験列車（貨物は積みません）、郵便列車、旅客列車からお選びください。
@@ -226,3 +227,7 @@ LV_E8_SERIES_2CC            : E8系 {GOLD}2cc
 
 # Livery
 LV_YEAR_DEP_LIVERY          : Year Dependent Livery
+
+DESC_STD                    :{BLACK}軌間:{GOLD} 標準軌{}{BLACK}用途: {SILVER}急行{}{BLACK}事業者:
+JR_EAST                     :{GREEN} JR東日本{}{BLACK}塗装:
+JR_WEST                     :{GREEN} JR西日本{}{BLACK}塗装:

@@ -6,6 +6,13 @@
 STR_GRF_NAME        :{TITLE} {VERSION}
 STR_GRF_DESC		:{WHITE}JP{RED}+{WHITE}신칸센{}{}JP{RED}+{WHITE}신칸센{BLACK}은 짐작하셨겠지만, 신칸센에 초점을 맞췄습니다! 신칸센는 고속 선로가 필요합니다. {}자매 세트로는 {WHITE}JP{RED}+{WHITE}MUs {BLACK}, {WHITE}JP{RED}+ {WHITE}Engines & Wagons {BLACK}and {WHITE}JP{RED}+ {WHITE}Major Private Companies{}{}{BLACK}{COPYRIGHT}JP+신칸센{}라이선스: GPLv2{}{BLACK}{}Coded By{}{LTBLUE}KeepinItRail{}{}{BLACK}Sprites By{}{GREEN}KeepinItRail, Yozora, Azusa & Erato{}{}{BLACK}Translations By{}{GREEN}freeaim (Japanese){}Yozora (Russian){}CoconutKR(Korean){}{}{TINYFONT}{BLACK}Thanks To{}{ORANGE}Emperor Jake{}Tinny{}Saya{}Leon{}JapanSet3 Team{}{}{}{BLACK}{}
 
+STR_CONCAT_2	                    :{STRING} {STRING}
+STR_CONCAT_3	                    :{STRING} {STRING} {STRING}
+STR_CONCAT_4	                    :{STRING} {STRING} {STRING} {STRING}
+STR_CONCAT_5	                    :{STRING} {STRING} {STRING} {STRING} {STRING}
+STR_CONCAT_6	                    :{STRING} {STRING} {STRING} {STRING} {STRING} {STRING}
+STR_CONCAT_7	                    :{STRING} {STRING} {STRING} {STRING} {STRING} {STRING} {STRING}
+
 # Parameters
 STR_NO                              :아니오
 STR_YES                             :예
@@ -29,12 +36,6 @@ STR_PARAM_REAL                      :실제 세계 수송량 (1배)
 STR_PARAM_1_50                      :긴 스프라이트 조정 (1.5배)
 STR_PARAM_DOUBLE                    :더블 (2배)
 STR_PARAM_1_25                      :긴 스프라이트 조정 (1.25배)
-
-STR_PARAM_NAME_TRACKS               :대체 신칸센 선로 활성화
-STR_PARAM_DESC_TRACKS               :JapanSet3 신칸센이 위 매개변수에 의해 비활성화되면 JapanSet 트랙에서 신칸센 트랙이 제거됩니다. 이 매개변수는 대체 신칸센 선로를 활성화합니다.
-
-STR_PARAM_NAME_FENCES               :대체 신칸센 선로 울타리 비활성화
-STR_PARAM_DESC_FENCES               :대체 신칸센 선로에 울타리를 표시할지 여부를 선택합니다. 대체 신칸센 선로에만 영향을 미치며 다른 선로나 선로 세트에는 영향을 미치지 않습니다.
 
 STR_PARAM_NAME_DRYELLOW             :닥터 옐로우 역할 조정
 STR_PARAM_DESC_DRYELLOW             :닥터 옐로우의 역할을 선택합니다. 선로 검측 열차(화물없음), 우편열차, 여객열차 중 하나를 선택할수 있습니다.
@@ -225,3 +226,7 @@ LV_E8_SERIES_2CC            : E8계 {GOLD}회사 색상 도색
 
 # Livery
 LV_YEAR_DEP_LIVERY          : 연도 기반 도색
+
+DESC_STD                    :{BLACK}궤간:{GOLD} 표준궤{}{BLACK}용도: {SILVER}특급 여객{}{BLACK}운용사:
+JR_EAST                     :{GREEN} JR 동일본{}{BLACK}도색:
+JR_WEST                     :{GREEN} JR 서일본{}{BLACK}도색:

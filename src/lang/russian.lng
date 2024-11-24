@@ -6,6 +6,13 @@
 STR_GRF_NAME        :{TITLE} {VERSION}
 STR_GRF_DESC		:{WHITE}JP{RED}+{WHITE}Shinkansen{}{}JP{RED}+{WHITE}Shinkansen{BLACK} добавляет, как вы правильно поняли, Синкансены! Для использования необходимы высокоскоростные рельсы.{}Моды побратимы: {WHITE}JP{RED}+{WHITE}MUs {BLACK}, {WHITE}JP{RED}+ {WHITE}Engines & Wagons {BLACK}и {WHITE}JP{RED}+ {WHITE}Major Private Companies{}{}{BLACK}{COPYRIGHT}JP+Shinkansen{}Licence: GPLv2{}{BLACK}{}Код:{}{LTBLUE}KeepinItRail{}{}{BLACK}Спрайты:{}{GREEN}KeepinItRail, Yozora & Azusa{}{}{BLACK}Перевод:{}{GREEN}freeaim (Японский){}Yozora (Русский){}{}{TINYFONT}{BLACK}Благодарность:{}{ORANGE}Emperor Jake{}Tinny{}Saya{}Erato{}Leon{}JapanSet3 Team{}{}{}{BLACK}{}
 
+STR_CONCAT_2	                    :{STRING} {STRING}
+STR_CONCAT_3	                    :{STRING} {STRING} {STRING}
+STR_CONCAT_4	                    :{STRING} {STRING} {STRING} {STRING}
+STR_CONCAT_5	                    :{STRING} {STRING} {STRING} {STRING} {STRING}
+STR_CONCAT_6	                    :{STRING} {STRING} {STRING} {STRING} {STRING} {STRING}
+STR_CONCAT_7	                    :{STRING} {STRING} {STRING} {STRING} {STRING} {STRING} {STRING}
+
 # Parameters
 STR_NO                              :Нет
 STR_YES                             :Да
@@ -29,12 +36,6 @@ STR_PARAM_REAL                      :Реальная вместимость (1x
 STR_PARAM_1_50                      :Увеличенная для длинных спрайтов (1.5x)
 STR_PARAM_DOUBLE                    :Удвоенная (2x)
 STR_PARAM_1_25                      :Увеличенная для длинных спрайтов (1.25x)
-
-STR_PARAM_NAME_TRACKS               :Включить замену Синкансен путей
-STR_PARAM_DESC_TRACKS               :При отлючении JapanSet3 Синкансенов, исчезают JapanSet Синкансен пути. Этот параметр включает "замену" для Cинкансен путей. 
-
-STR_PARAM_NAME_FENCES               :Отключить заборы у "заменённых" Синкансен путей
-STR_PARAM_DESC_FENCES               :Отключить забор Синкансен путей. Касается только "заменённых" путей из этого мода.
 
 STR_PARAM_NAME_DRYELLOW             :Использование "Dr Yellow"
 STR_PARAM_DESC_DRYELLOW             :Выберите как "Dr Yellow" будет использоваться в игре. Диагностический (Не имеет функционала в игре), почтовый или пассажирский поезд.
@@ -69,6 +70,7 @@ LV_0_SERIES_ORIGINAL        : 0 Серия {BLUE}Оригинальная Рас
 LV_0_SERIES_KODAMA          : 0 Серия {GREEN}Раскраска "Kodama"
 LV_0_SERIES_NOSE            : 0 Серия {BLUE}Оригинальная Раскраска {YELLOW}с/ подсвеченным носом
 LV_0_SERIES_ORIGINAL_2CC    : 0 Серия {BLUE}2CC
+LV_0_SERIES_NOSE_2CC        : 0 Серия {BLUE}2CC {YELLOW}с/ подсвеченным носом
 
 STR_NAME_922_SERIES         :Синкансен 922 Серии - {YELLOW}Doctor Yellow
 STR_DESC_922_SERIES         :{BLACK}Колея:{GOLD} Стандартная{}{BLACK}Использование: {SILVER}Экспресс Пассажиры{}{BLACK}Операторы: {ORANGE}JR Central {BLACK}& {BLUE}JR West{}{BLACK}Раскраски: {YELLOW}Doctor Yellow{}{BLACK}MU Вагон: {GOLD} JP+ Shinkansen Car
@@ -226,3 +228,5 @@ LV_E8_SERIES_2CC            : E8 Серия {GOLD}2cc
 
 # Livery
 LV_YEAR_DEP_LIVERY          : Хронологическая раскраска
+
+DESC_STD                    :{BLACK}Колея:{GOLD} Стандартная{}{BLACK}Использование: {SILVER}Экспресс Пассажиры{}{BLACK}Операторы:

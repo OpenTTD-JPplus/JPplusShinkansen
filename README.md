@@ -12,7 +12,7 @@ This is the sister set to 🚂[JP+ Engines & Wagons](https://github.com/EmperorJ
 
 ## Features
 
-* Long (10/8) Sprites for 'Full Shinkansen' - choose different liveries via the Cargo Subtype Menu
+* Long (10/8) Length Sprites for 'Full Shinkansen' - choose different liveries via the Cargo Subtype Menu
 * Normal (8/8) Length Sprites for Mini-Shinkansen
 * 'Coupled' Shinkansen (Full + Mini) - choose via variants of Full length Shinkansen
 * Real World Stats were possible (or approximations when not known)
