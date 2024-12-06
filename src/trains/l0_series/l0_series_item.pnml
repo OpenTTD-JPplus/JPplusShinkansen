@@ -58,7 +58,7 @@ item(FEAT_TRAINS, series_l0) {
         default:                        sw_l0_series_graphics;
 		purchase:                       sw_l0_series_purchase;
 		articulated_part:               sw_l0_series_articulated_part;
-		visual_effect_and_powered:      sw_visual_effect_and_powered;
+		visual_effect_and_powered:      visual_effect_and_powered(VISUAL_EFFECT_DISABLE,0,ENABLE_WAGON_POWER);
         /* Stats */
         length:                         sw_length_1_8_1;
         power:                          (( NumberCarsInConsist() / 2 ) + 2 ) * 400 * 4;	

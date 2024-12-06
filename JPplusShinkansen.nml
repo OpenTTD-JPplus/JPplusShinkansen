@@ -7,7 +7,7 @@ grf {
 	grfid: 					"KR03";
 	name: 					string(STR_GRF_NAME);
 	desc:					string(STR_GRF_DESC);
-	version:				60;	// v0.6.0
+	version:				61;	// v0.6.1
 	min_compatible_version: 60;	// v0.6.0
 		// Hide logo
 		param 3 {
@@ -11455,7 +11455,7 @@ item(FEAT_TRAINS, series_l0) {
         default:                        sw_l0_series_graphics;
 		purchase:                       sw_l0_series_purchase;
 		articulated_part:               sw_l0_series_articulated_part;
-		visual_effect_and_powered:      sw_visual_effect_and_powered;
+		visual_effect_and_powered:      visual_effect_and_powered(VISUAL_EFFECT_DISABLE,0,ENABLE_WAGON_POWER);
         /* Stats */
         length:                         sw_length_1_8_1;
         power:                          (( NumberCarsInConsist() / 2 ) + 2 ) * 400 * 4;	
