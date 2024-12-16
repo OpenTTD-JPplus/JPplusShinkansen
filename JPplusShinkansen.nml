@@ -660,260 +660,261 @@ switch(FEAT_TRAINS, SELF, logo_jppsks, param_hide_logo) {1:sprite_logo_jppsks;}
 
 /* MINI-SHINKANSEN */
 
-spriteset(ss_mucar_mini_buy,            "src/trains/mucar/gfx/mucar.png") {template_purchase(233, 51)}
-spriteset(set_mu_car_base,              "src/trains/mucar/gfx/mucar.png") {tmpl_mid_std(1,51)}
+    spriteset(ss_mucar_mini_buy,            "src/trains/mucar/gfx/mucar.png") {template_purchase(233, 51)}
+    spriteset(set_mu_car_base,              "src/trains/mucar/gfx/mucar.png") {tmpl_mid_std(1,51)}
 
-switch(FEAT_TRAINS, SELF, sw_mucar_mini_purchase, [ 
-        STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
-            0: logo_jppsks; 
-            1: ss_mucar_mini_buy;
+    switch(FEAT_TRAINS, SELF, sw_mucar_mini_purchase, [ 
+            STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+                0: logo_jppsks; 
+                1: ss_mucar_mini_buy;
+            }
+
+    item(FEAT_TRAINS, mu_car_ms) {
+        /* Define properties first, make sure to set all of them */
+        property {
+            name:                         string(MUCAR_MINI);
+            misc_flags:                   bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK);
+            introduction_date:            date(1800,1,1);
+            climates_available:           ALL_CLIMATES;
+            model_life:                   VEHICLE_NEVER_EXPIRES;
+            vehicle_life:                 60;
+            loading_speed:                0;
+            cost_factor:                  189;
+            running_cost_factor:          6;
+            speed:                        0 km/h;
+            power:                        0 hp;
+            cargo_capacity:               1;
+            weight:                       0 ton;
+            tractive_effort_coefficient:  0.3;
+            air_drag_coefficient:         0;
+            reliability_decay:            20;
+            refittable_cargo_classes:     bitmask(CC_PASSENGERS);
+            cargo_age_period:             185;
+            refit_cost:                   0;
+            track_type:                   MINI_SHINKANSEN;
+            ai_special_flag:              AI_FLAG_PASSENGER;
+            running_cost_base:            RUNNING_COST_ELECTRIC;
+            engine_class:                 ENGINE_CLASS_ELECTRIC;
+            visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+            sprite_id:                    SPRITE_ID_NEW_TRAIN;
+            dual_headed:                  0;
+            length:                       8;
+            extra_power_per_wagon:        0;
+            bitmask_vehicle_info:         0;
         }
-
-item(FEAT_TRAINS, mu_car_ms) {
-    /* Define properties first, make sure to set all of them */
-    property {
-        name:                         string(MUCAR_MINI);
-        misc_flags:                   bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK);
-        introduction_date:            date(1800,1,1);
-        climates_available:           ALL_CLIMATES;
-        model_life:                   VEHICLE_NEVER_EXPIRES;
-        vehicle_life:                 60;
-        loading_speed:                0;
-        cost_factor:                  189;
-        running_cost_factor:          6;
-        speed:                        0 km/h;
-        power:                        0 hp;
-        cargo_capacity:               1;
-        weight:                       0 ton;
-        tractive_effort_coefficient:  0.3;
-        air_drag_coefficient:         0;
-        reliability_decay:            20;
-        refittable_cargo_classes:     bitmask(CC_PASSENGERS);
-        cargo_age_period:             185;
-        refit_cost:                   0;
-        track_type:                   MINI_SHINKANSEN;
-        ai_special_flag:              AI_FLAG_PASSENGER;
-        running_cost_base:            RUNNING_COST_ELECTRIC;
-        engine_class:                 ENGINE_CLASS_ELECTRIC;
-        visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
-        sprite_id:                    SPRITE_ID_NEW_TRAIN;
-        dual_headed:                  0;
-        length:                       8;
-        extra_power_per_wagon:        0;
-        bitmask_vehicle_info:         0;
+        /* Define graphics and callbacks
+        * Setting all callbacks is not needed, only define what is used */
+        graphics {
+            purchase:                     sw_mucar_mini_purchase;
+            additional_text:			  return string(MUCAR_MINI_DESC);
+            set_mu_car_base;
+        }
     }
-    /* Define graphics and callbacks
-     * Setting all callbacks is not needed, only define what is used */
-    graphics {
-	    purchase:                     sw_mucar_mini_purchase;
-        additional_text:			  return string(MUCAR_MINI_DESC);
-        set_mu_car_base;
-    }
-}
 
 /* FULL SHINKANSEN */
 
-spriteset(ss_mucar_full_buy,            "src/trains/mucar/gfx/mucar.png") {template_purchase(233, 1)}
-spriteset(ss_mucar_full_10,             "src/trains/mucar/gfx/mucar.png") {tmpl_10_std(1,1)}
+    spriteset(ss_mucar_full_buy,            "src/trains/mucar/gfx/mucar.png") {template_purchase(233, 1)}
+    spriteset(ss_mucar_full_10,             "src/trains/mucar/gfx/mucar.png") {tmpl_10_std(1,1)}
 
-switch(FEAT_TRAINS, SELF, sw_mucar_full_purchase, [ 
-        STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
-            0: logo_jppsks; 
-            1: ss_mucar_full_buy;
+    switch(FEAT_TRAINS, SELF, sw_mucar_full_purchase, [ 
+            STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+                0: logo_jppsks; 
+                1: ss_mucar_full_buy;
+            }
+
+    switch (FEAT_TRAINS, SELF, sw_mucar_full_graphics, position_in_articulated_veh) {				
+            1:  ss_mucar_full_10; 				
+            dummy_sprites;
         }
 
-switch (FEAT_TRAINS, SELF, sw_mucar_full_graphics, position_in_articulated_veh) {				
-		1:  ss_mucar_full_10; 				
-		dummy_sprites;
-	}
-
-/* --- Articulated part callback  --- */
-switch(FEAT_TRAINS, SELF, sw_mucar_full_articulated_part, extra_callback_info1) {
-	1: return mu_car_full;
-    2: return mu_car_full;
-    return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
-}
-
-item(FEAT_TRAINS, mu_car_full) {
-    /* Define properties first, make sure to set all of them */
-    property {
-        name:                           string(MUCAR_FULL);
-        misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK);
-        introduction_date:              date(1800,1,1);
-        climates_available:             ALL_CLIMATES;
-        model_life:                     VEHICLE_NEVER_EXPIRES;
-        vehicle_life:                   60;
-        loading_speed:                  0;
-        cost_factor:                    189;
-        running_cost_factor:            18;
-        speed:                          0 km/h;
-        power:                          0 hp;
-        cargo_capacity:                 1;
-        weight:                         0 ton;
-        tractive_effort_coefficient:    0.3;
-        air_drag_coefficient:           0;
-        reliability_decay:              20;
-        refittable_cargo_classes:       bitmask(CC_PASSENGERS);
-        cargo_age_period:               185;
-        refit_cost:                     0;
-        track_type:                     SHINKANSEN;
-        ai_special_flag:                AI_FLAG_PASSENGER;
-        running_cost_base:              RUNNING_COST_ELECTRIC;
-        engine_class:                   ENGINE_CLASS_ELECTRIC;
-        visual_effect_and_powered:      visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
-        sprite_id:                      SPRITE_ID_NEW_TRAIN;
-        dual_headed:                    0;
-        //length:                       8;
-        extra_power_per_wagon:          0;
-        bitmask_vehicle_info:           0;
+    /* --- Articulated part callback  --- */
+    switch(FEAT_TRAINS, SELF, sw_mucar_full_articulated_part, extra_callback_info1) {
+        1: return mu_car_full;
+        2: return mu_car_full;
+        return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
     }
-    /* Define graphics and callbacks
-     * Setting all callbacks is not needed, only define what is used */
-    graphics {
-		default:                        sw_mucar_full_graphics;                     
-        purchase:                       sw_mucar_full_purchase;
-        additional_text:			    return string(MUCAR_FULL_DESC);
-        articulated_part:               sw_mucar_full_articulated_part;
-        length:                         sw_length_1_8_1; 
-        cargo_capacity:                 0;
+
+    item(FEAT_TRAINS, mu_car_full) {
+        /* Define properties first, make sure to set all of them */
+        property {
+            name:                           string(MUCAR_FULL);
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK);
+            introduction_date:              date(1800,1,1);
+            climates_available:             ALL_CLIMATES;
+            model_life:                     VEHICLE_NEVER_EXPIRES;
+            vehicle_life:                   60;
+            loading_speed:                  0;
+            cost_factor:                    189;
+            running_cost_factor:            18;
+            speed:                          0 km/h;
+            power:                          0 hp;
+            cargo_capacity:                 1;
+            weight:                         0 ton;
+            tractive_effort_coefficient:    0.3;
+            air_drag_coefficient:           0;
+            reliability_decay:              20;
+            refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+            cargo_age_period:               185;
+            refit_cost:                     0;
+            track_type:                     SHINKANSEN;
+            ai_special_flag:                AI_FLAG_PASSENGER;
+            running_cost_base:              RUNNING_COST_ELECTRIC;
+            engine_class:                   ENGINE_CLASS_ELECTRIC;
+            visual_effect_and_powered:      visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+            sprite_id:                      SPRITE_ID_NEW_TRAIN;
+            dual_headed:                    0;
+            //length:                       8;
+            extra_power_per_wagon:          0;
+            bitmask_vehicle_info:           0;
+        }
+        /* Define graphics and callbacks
+        * Setting all callbacks is not needed, only define what is used */
+        graphics {
+            default:                        sw_mucar_full_graphics;                     
+            purchase:                       sw_mucar_full_purchase;
+            additional_text:			    return string(MUCAR_FULL_DESC);
+            articulated_part:               sw_mucar_full_articulated_part;
+            length:                         sw_length_1_8_1; 
+            cargo_capacity:                 0;
+        }
     }
-}
 
 // MAGLEV
 
-spriteset(ss_mucar_maglev_buy,          "src/trains/mucar/gfx/mucar.png") {template_purchase(233, 101)}
-spriteset(ss_mucar_maglev_10,           "src/trains/mucar/gfx/mucar.png") {tmpl_10_std(1,101)}
+    spriteset(ss_mucar_maglev_buy,          "src/trains/mucar/gfx/mucar.png") {template_purchase(233, 101)}
+    spriteset(ss_mucar_maglev_10,           "src/trains/mucar/gfx/mucar.png") {tmpl_10_std(1,101)}
 
-switch(FEAT_TRAINS, SELF, sw_mucar_maglev_purchase, [ 
-        STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
-            0: logo_jppsks; 
-            1: ss_mucar_maglev_buy;
+    switch(FEAT_TRAINS, SELF, sw_mucar_maglev_purchase, [ 
+            STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+                0: logo_jppsks; 
+                1: ss_mucar_maglev_buy;
+            }
+
+    switch (FEAT_TRAINS, SELF, sw_mucar_maglev_graphics, position_in_articulated_veh) {				
+            1:  ss_mucar_maglev_10; 				
+            dummy_sprites;
         }
 
-switch (FEAT_TRAINS, SELF, sw_mucar_maglev_graphics, position_in_articulated_veh) {				
-		1:  ss_mucar_maglev_10; 				
-		dummy_sprites;
-	}
-
-/* --- Articulated part callback  --- */
-switch(FEAT_TRAINS, SELF, sw_mucar_maglev_articulated_part, extra_callback_info1) {
-	1: return mu_car_maglev;
-    2: return mu_car_maglev;
-    return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
-}
-
-item(FEAT_TRAINS, mu_car_maglev) {
-    /* Define properties first, make sure to set all of them */
-    property {
-        name:                           string(MUCAR_MAGLEV);
-        introduction_date:              date(2027,1,1);
-        climates_available:             ALL_CLIMATES;
-        model_life:                     VEHICLE_NEVER_EXPIRES;
-        vehicle_life:                   60;
-        loading_speed:                  0;
-        cost_factor:                    189;
-        running_cost_factor:            18;
-        speed:                          0 km/h;
-        power:                          0 hp;
-        cargo_capacity:                 1;
-        weight:                         0 ton;
-        tractive_effort_coefficient:    0.3;
-        air_drag_coefficient:           0;
-        reliability_decay:              20;
-        refittable_cargo_classes:       bitmask(CC_PASSENGERS);
-        cargo_age_period:               185;
-        refit_cost:                     0;
-        track_type:                     SC_MAGLEV;
-        ai_special_flag:                AI_FLAG_PASSENGER;
-        running_cost_base:              RUNNING_COST_ELECTRIC;
-        engine_class:                   ENGINE_CLASS_ELECTRIC;
-        visual_effect_and_powered:      visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
-        sprite_id:                      SPRITE_ID_NEW_TRAIN;
-        dual_headed:                    0;
-        //length:                       8;
-        extra_power_per_wagon:          0;
-        bitmask_vehicle_info:           0;
+    /* --- Articulated part callback  --- */
+    switch(FEAT_TRAINS, SELF, sw_mucar_maglev_articulated_part, extra_callback_info1) {
+        1: return mu_car_maglev;
+        2: return mu_car_maglev;
+        return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
     }
-    /* Define graphics and callbacks
-     * Setting all callbacks is not needed, only define what is used */
-    graphics {
-		default:                        sw_mucar_maglev_graphics;                     
-        purchase:                       sw_mucar_maglev_purchase;
-        additional_text:			    return string(MUCAR_MAGLEV_DESC);
-        articulated_part:               sw_mucar_maglev_articulated_part;
-        length:                         sw_length_1_8_1; 
-        cargo_capacity:                 0;
+
+    item(FEAT_TRAINS, mu_car_maglev) {
+        /* Define properties first, make sure to set all of them */
+        property {
+            name:                           string(MUCAR_MAGLEV);
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK);
+            introduction_date:              date(2027,1,1);
+            climates_available:             ALL_CLIMATES;
+            model_life:                     VEHICLE_NEVER_EXPIRES;
+            vehicle_life:                   60;
+            loading_speed:                  0;
+            cost_factor:                    189;
+            running_cost_factor:            18;
+            speed:                          0 km/h;
+            power:                          0 hp;
+            cargo_capacity:                 1;
+            weight:                         0 ton;
+            tractive_effort_coefficient:    0.3;
+            air_drag_coefficient:           0;
+            reliability_decay:              20;
+            refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+            cargo_age_period:               185;
+            refit_cost:                     0;
+            track_type:                     SC_MAGLEV;
+            ai_special_flag:                AI_FLAG_PASSENGER;
+            running_cost_base:              RUNNING_COST_ELECTRIC;
+            engine_class:                   ENGINE_CLASS_ELECTRIC;
+            visual_effect_and_powered:      visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+            sprite_id:                      SPRITE_ID_NEW_TRAIN;
+            dual_headed:                    0;
+            //length:                       8;
+            extra_power_per_wagon:          0;
+            bitmask_vehicle_info:           0;
+        }
+        /* Define graphics and callbacks
+        * Setting all callbacks is not needed, only define what is used */
+        graphics {
+            default:                        sw_mucar_maglev_graphics;                     
+            purchase:                       sw_mucar_maglev_purchase;
+            additional_text:			    return string(MUCAR_MAGLEV_DESC);
+            articulated_part:               sw_mucar_maglev_articulated_part;
+            length:                         sw_length_1_8_1; 
+            cargo_capacity:                 0;
+        }
     }
-}
 
 // MAIL
 
-spriteset(ss_mucar_mail_buy,            "src/trains/mucar/gfx/mucar.png") {template_purchase(233, 151)}
-spriteset(ss_mucar_mail_10,            "src/trains/mucar/gfx/mucar.png") {tmpl_10_std(1,151)}
+    spriteset(ss_mucar_mail_buy,            "src/trains/mucar/gfx/mucar.png") {template_purchase(233, 151)}
+    spriteset(ss_mucar_mail_10,            "src/trains/mucar/gfx/mucar.png") {tmpl_10_std(1,151)}
 
-switch(FEAT_TRAINS, SELF, sw_mucar_mail_purchase, [ 
-        STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
-            0: logo_jppsks; 
-            1: ss_mucar_mail_buy;
+    switch(FEAT_TRAINS, SELF, sw_mucar_mail_purchase, [ 
+            STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+                0: logo_jppsks; 
+                1: ss_mucar_mail_buy;
+            }
+
+    switch (FEAT_TRAINS, SELF, sw_mucar_mail_graphics, position_in_articulated_veh) {				
+            1:  ss_mucar_mail_10; 				
+            dummy_sprites;
         }
 
-switch (FEAT_TRAINS, SELF, sw_mucar_mail_graphics, position_in_articulated_veh) {				
-		1:  ss_mucar_mail_10; 				
-		dummy_sprites;
-	}
-
-/* --- Articulated part callback  --- */
-switch(FEAT_TRAINS, SELF, sw_mucar_mail_articulated_part, extra_callback_info1) {
-	1: return mu_car_mail;
-    2: return mu_car_mail;
-    return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
-}
-
-if (param_dryellow == 1) {
-
-item(FEAT_TRAINS, mu_car_mail) {
-    /* Define properties first, make sure to set all of them */
-    property {
-        name:                         string(MUCAR_MAIL);
-        introduction_date:            date(1800,1,1);
-        climates_available:           ALL_CLIMATES;
-        model_life:                   VEHICLE_NEVER_EXPIRES;
-        vehicle_life:                 60;
-        loading_speed:                0;
-        cost_factor:                  189;
-        running_cost_factor:          18;
-        speed:                        0 km/h;
-        power:                        0 hp;
-        cargo_capacity:               1;
-        weight:                       0 ton;
-        tractive_effort_coefficient:  0.3;
-        air_drag_coefficient:         0;
-        reliability_decay:            20;
-        refittable_cargo_classes:     bitmask(CC_MAIL);
-        cargo_age_period:             185;
-        refit_cost:                   0;
-        track_type:                   SHINKANSEN;
-        ai_special_flag:              AI_FLAG_PASSENGER;
-        running_cost_base:            RUNNING_COST_ELECTRIC;
-        engine_class:                 ENGINE_CLASS_ELECTRIC;
-        visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
-        sprite_id:                    SPRITE_ID_NEW_TRAIN;
-        dual_headed:                  0;
-        //length:                       8;
-        extra_power_per_wagon:        0;
-        bitmask_vehicle_info:         0;
+    /* --- Articulated part callback  --- */
+    switch(FEAT_TRAINS, SELF, sw_mucar_mail_articulated_part, extra_callback_info1) {
+        1: return mu_car_mail;
+        2: return mu_car_mail;
+        return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
     }
-    /* Define graphics and callbacks
-     * Setting all callbacks is not needed, only define what is used */
-    graphics {
-		default:                        sw_mucar_mail_graphics;                     
-        purchase:                       sw_mucar_mail_purchase;
-        additional_text:			    return string(MUCAR_MAIL_DESC);
-        articulated_part:               sw_mucar_mail_articulated_part;
-        length:                         sw_length_1_8_1;  
+
+    if (param_dryellow == 1) {
+
+    item(FEAT_TRAINS, mu_car_mail) {
+        /* Define properties first, make sure to set all of them */
+        property {
+            name:                         string(MUCAR_MAIL);
+            introduction_date:            date(1800,1,1);
+            climates_available:           ALL_CLIMATES;
+            model_life:                   VEHICLE_NEVER_EXPIRES;
+            vehicle_life:                 60;
+            loading_speed:                0;
+            cost_factor:                  189;
+            running_cost_factor:          18;
+            speed:                        0 km/h;
+            power:                        0 hp;
+            cargo_capacity:               1;
+            weight:                       0 ton;
+            tractive_effort_coefficient:  0.3;
+            air_drag_coefficient:         0;
+            reliability_decay:            20;
+            refittable_cargo_classes:     bitmask(CC_MAIL);
+            cargo_age_period:             185;
+            refit_cost:                   0;
+            track_type:                   SHINKANSEN;
+            ai_special_flag:              AI_FLAG_PASSENGER;
+            running_cost_base:            RUNNING_COST_ELECTRIC;
+            engine_class:                 ENGINE_CLASS_ELECTRIC;
+            visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
+            sprite_id:                    SPRITE_ID_NEW_TRAIN;
+            dual_headed:                  0;
+            //length:                       8;
+            extra_power_per_wagon:        0;
+            bitmask_vehicle_info:         0;
+        }
+        /* Define graphics and callbacks
+        * Setting all callbacks is not needed, only define what is used */
+        graphics {
+            default:                        sw_mucar_mail_graphics;                     
+            purchase:                       sw_mucar_mail_purchase;
+            additional_text:			    return string(MUCAR_MAIL_DESC);
+            articulated_part:               sw_mucar_mail_articulated_part;
+            length:                         sw_length_1_8_1;  
+        }
     }
-}
-}
+    }
 # 1 "JPplusShinkansen.pnml" 4
 
 // Pantos
