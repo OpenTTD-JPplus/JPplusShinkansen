@@ -728,7 +728,7 @@ switch(FEAT_TRAINS, SELF, logo_jppsks, param_hide_logo) {1:sprite_logo_jppsks;}
         }
 
     /* --- Articulated part callback  --- */
-    switch(FEAT_TRAINS, SELF, sw_mucar_full_articulated_part, extra_callback_info1) {
+    switch(FEAT_TRAINS, SELF, sw_mucar_full_articulated_part, getbits(extra_callback_info1, 0, 8)) {
         1: return mu_car_full;
         2: return mu_car_full;
         return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
@@ -796,7 +796,7 @@ switch(FEAT_TRAINS, SELF, logo_jppsks, param_hide_logo) {1:sprite_logo_jppsks;}
         }
 
     /* --- Articulated part callback  --- */
-    switch(FEAT_TRAINS, SELF, sw_mucar_maglev_articulated_part, extra_callback_info1) {
+    switch(FEAT_TRAINS, SELF, sw_mucar_maglev_articulated_part, getbits(extra_callback_info1, 0, 8)) {
         1: return mu_car_maglev;
         2: return mu_car_maglev;
         return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
@@ -864,7 +864,7 @@ switch(FEAT_TRAINS, SELF, logo_jppsks, param_hide_logo) {1:sprite_logo_jppsks;}
         }
 
     /* --- Articulated part callback  --- */
-    switch(FEAT_TRAINS, SELF, sw_mucar_mail_articulated_part, extra_callback_info1) {
+    switch(FEAT_TRAINS, SELF, sw_mucar_mail_articulated_part, getbits(extra_callback_info1, 0, 8)) {
         1: return mu_car_mail;
         2: return mu_car_mail;
         return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
