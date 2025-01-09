@@ -19532,7 +19532,7 @@ switch(FEAT_TRAINS, SELF, sw_e5e3_series_irl_attach_vehid, [vehicle_type_id == s
 item(FEAT_TRAINS, series_e5e3) {
 	property {
 		/* Menu */
-		name: 							string(STR_CONCAT_3, string(STR_NAME_E5_SERIES),string(AND),string(STR_NAME_E3_SERIES));
+		name: 							string(STR_NAME_E5_E3_SERIES);
 		sprite_id:                      SPRITE_ID_NEW_TRAIN; 		// required to enable new graphics
 		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
 		running_cost_base:              RUNNING_COST_ELECTRIC;
@@ -19656,7 +19656,7 @@ switch(FEAT_TRAINS, SELF, sw_e5e6_series_irl_attach_vehid, [vehicle_type_id == s
 item(FEAT_TRAINS, series_e5e6) {
 	property {
 		/* Menu */
-		name: 							string(STR_CONCAT_3, string(STR_NAME_E5_SERIES),string(AND),string(STR_NAME_E6_SERIES));
+		name: 							string(STR_NAME_E5_E6_SERIES);
 		sprite_id:                      SPRITE_ID_NEW_TRAIN; 		// required to enable new graphics
 		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
 		running_cost_base:              RUNNING_COST_ELECTRIC;
@@ -19779,7 +19779,7 @@ switch(FEAT_TRAINS, SELF, sw_e5e8_series_irl_attach_vehid, [vehicle_type_id == s
 item(FEAT_TRAINS, series_e5e8) {
 	property {
 		/* Menu */
-		name: 							string(STR_CONCAT_3, string(STR_NAME_E5_SERIES),string(AND),string(STR_NAME_E8_SERIES));
+		name: 							string(STR_NAME_E5_E8_SERIES);
 		sprite_id:                      SPRITE_ID_NEW_TRAIN; 		// required to enable new graphics
 		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
 		running_cost_base:              RUNNING_COST_ELECTRIC;
@@ -19921,7 +19921,7 @@ switch(FEAT_TRAINS, SELF, sw_200n400_series_irl_attach_vehid, [vehicle_type_id =
 item(FEAT_TRAINS, series_200400) {
 	property {
 		/* Menu */
-		name: 							string(STR_CONCAT_3, string(STR_NAME_200_SERIES),string(AND),string(STR_NAME_400_SERIES));
+		name: 							string(STR_NAME_200_400_SERIES);
 		sprite_id:                      SPRITE_ID_NEW_TRAIN; 		// required to enable new graphics
 		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
 		running_cost_base:              RUNNING_COST_ELECTRIC;
@@ -20055,7 +20055,7 @@ switch(FEAT_TRAINS, SELF, sw_200e3_series_irl_attach_vehid, [vehicle_type_id == 
 item(FEAT_TRAINS, series_200e3) {
 	property {
 		/* Menu */
-		name: 							string(STR_CONCAT_3, string(STR_NAME_200_SERIES),string(AND),string(STR_NAME_E3_SERIES));
+		name: 							string(STR_NAME_200_E3_SERIES);
 		sprite_id:                      SPRITE_ID_NEW_TRAIN; 		// required to enable new graphics
 		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
 		running_cost_base:              RUNNING_COST_ELECTRIC;
@@ -20181,7 +20181,7 @@ switch(FEAT_TRAINS, SELF, sw_e4n400_series_irl_attach_vehid, [vehicle_type_id ==
 item(FEAT_TRAINS, series_e4400) {
 	property {
 		/* Menu */
-		name: 							string(STR_CONCAT_3, string(STR_NAME_E4_SERIES),string(AND),string(STR_NAME_400_SERIES));
+		name: 							string(STR_NAME_E4_400_SERIES);
 		sprite_id:                      SPRITE_ID_NEW_TRAIN; 		// required to enable new graphics
 		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
 		running_cost_base:              RUNNING_COST_ELECTRIC;
@@ -20316,7 +20316,7 @@ switch(FEAT_TRAINS, SELF, sw_e4e3_series_irl_attach_vehid, [vehicle_type_id == s
 item(FEAT_TRAINS, series_e4e3) {
 	property {
 		/* Menu */
-		name: 							string(STR_CONCAT_3, string(STR_NAME_E4_SERIES),string(AND),string(STR_NAME_E3_SERIES));
+		name: 							string(STR_NAME_E4_E3_SERIES);
 		sprite_id:                      SPRITE_ID_NEW_TRAIN; 		// required to enable new graphics
 		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
 		running_cost_base:              RUNNING_COST_ELECTRIC;
@@ -20453,7 +20453,7 @@ switch(FEAT_TRAINS, SELF, sw_e2e3_series_irl_attach_vehid, [vehicle_type_id == s
 item(FEAT_TRAINS, series_e2e3) {
 	property {
 		/* Menu */
-		name: 							string(STR_CONCAT_3, string(STR_NAME_E2_SERIES),string(AND),string(STR_NAME_E3_SERIES));
+		name: 							string(STR_NAME_E2_E3_SERIES);
 		sprite_id:                      SPRITE_ID_NEW_TRAIN; 		// required to enable new graphics
 		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
 		running_cost_base:              RUNNING_COST_ELECTRIC;

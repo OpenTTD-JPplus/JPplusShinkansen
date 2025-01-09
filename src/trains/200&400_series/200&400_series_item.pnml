@@ -12,7 +12,7 @@ switch(FEAT_TRAINS, SELF, sw_200n400_series_irl_attach_vehid, [vehicle_type_id =
 item(FEAT_TRAINS, series_200400) {
 	property {
 		/* Menu */
-		name: 							string(STR_CONCAT_3, string(STR_NAME_200_SERIES),string(AND),string(STR_NAME_400_SERIES));
+		name: 							string(STR_NAME_200_400_SERIES);
 		sprite_id:                      SPRITE_ID_NEW_TRAIN; 		// required to enable new graphics
 		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
 		running_cost_base:              RUNNING_COST_ELECTRIC;
