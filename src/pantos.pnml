@@ -96,3 +96,14 @@
 
 	spriteset(panto_midsprite_e8_f, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e8_series/gfx/e8_series_pantos.png") {tmpl_mid_std(1,101)}
 	spriteset(panto_midsprite_e8_b, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e8_series/gfx/e8_series_pantos.png") {tmpl_mid_rev(1,101)}
+
+// E510Series
+
+	spriteset(ss_std_e10_series_pantof_ptg, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e10_series/gfx/e10_series_pantos.png") {tmpl_10_std(1,101)}
+	spriteset(ss_std_e10_series_pantob_ptg, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e10_series/gfx/e10_series_pantos.png") {tmpl_10_rev(1,101)}
+
+	switch(FEAT_TRAINS, SELF, panto_longsprite_e10_f, HideLongSprite() ) { 0: ss_std_e10_series_pantof_ptg; }
+	switch(FEAT_TRAINS, SELF, panto_longsprite_e10_b, HideLongSprite() ) { 0: ss_std_e10_series_pantob_ptg; }
+
+	spriteset(panto_midsprite_e10_f, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e10_series/gfx/e10_series_pantos.png") {tmpl_mid_std(1,101)}
+	spriteset(panto_midsprite_e10_b, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e10_series/gfx/e10_series_pantos.png") {tmpl_mid_rev(1,101)}
