@@ -50,6 +50,7 @@ This is the sister set to 🚂[JP+ Engines & Wagons](https://github.com/EmperorJ
 |![E6 Series](/src/purchase/e6_series.png)| E6 Series | 2013| N/A | 321 | 42t
 |![E7 Series](/src/purchase/e7_series.png)| E7/W7 Series | 2014 | N/A | 275 | 45t
 |![E8 Series](/src/purchase/e8_series.png)| E8 Series | 2024 | N/A | 300 | 42t
+|![E10 Series](/src/purchase/e10_series.png)| E10 Series | 2027 | N/A | 321 | 45t
 
 ~ 210 km/h until 1989, 240 km/h thereafter
 ^ Technically out of service from 2021, but I like it, so it won't expire. Viva the E4! 😉
