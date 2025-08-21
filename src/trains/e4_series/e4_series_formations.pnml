@@ -34,7 +34,7 @@
             sw_e4_series_coachf;			
         }
 
-    switch (FEAT_TRAINS, SELF, sw_e4_series_backwards_multi, CarNumber() % 8 ) {				
+    switch (FEAT_TRAINS, SELF, sw_e4_series_backwards_multi, CarNumberFromEnd() % 8 ) {				
             1:  sw_e4_series_cab01b;
             4:  sw_e4_series_pantob; 
             6:  sw_e4_series_pantob;

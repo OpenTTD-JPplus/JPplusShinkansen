@@ -7,7 +7,7 @@ grf {
 	grfid: 					"KR03";
 	name: 					string(STR_GRF_NAME);
 	desc:					string(STR_GRF_DESC);
-	version:				62;	// v0.6.2
+	version:				63;	// v0.6.3
 	min_compatible_version: 62;	// v0.6.2
 		// Hide logo
 		param 3 {
@@ -6221,8 +6221,8 @@ item(FEAT_TRAINS, series_700) {
 		loading_speed:					28 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
 		cargo_age_period:				param_decay_express;
 		cost_factor:                    134;
-		running_cost_factor:            (310 + 48 * NumberCarsInConsist() ) * RunningCostFactor();
-		purchase_running_cost_factor:   310 + 48 * NumberCarsInConsist();
+		running_cost_factor:            (310 + 124 * NumberCarsInConsist() ) * RunningCostFactor();
+		purchase_running_cost_factor:   310 + 124 * NumberCarsInConsist();
 	}
 	/*Multiple Unit Car*/
 	
@@ -8197,8 +8197,8 @@ item(FEAT_TRAINS, series_500) {
 		loading_speed:					28 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
 		cargo_age_period:				param_decay_express;
 		cost_factor:                    145;
-		running_cost_factor:            (303 + 127 * NumberCarsInConsist() ) * RunningCostFactor();
-		purchase_running_cost_factor:   303 + 127 * NumberCarsInConsist();	
+		running_cost_factor:            (310 + 130 * NumberCarsInConsist() ) * RunningCostFactor();
+		purchase_running_cost_factor:   310 + 130 * NumberCarsInConsist();	
 	}
 	/*Multiple Unit Car*/
 	
@@ -17110,7 +17110,7 @@ item(FEAT_TRAINS, series_e3) {
             sw_e4_series_coachf;			
         }
 
-    switch (FEAT_TRAINS, SELF, sw_e4_series_backwards_multi, CarNumber() % 8 ) {				
+    switch (FEAT_TRAINS, SELF, sw_e4_series_backwards_multi, CarNumberFromEnd() % 8 ) {				
             1:  sw_e4_series_cab01b;
             4:  sw_e4_series_pantob; 
             6:  sw_e4_series_pantob;
@@ -20727,8 +20727,8 @@ item(FEAT_TRAINS, series_200400) {
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
 		/* Stats */
 		length:                         sw_200n400_series_length;
-		cargo_capacity:                 15 * CapacityFactor();
-		loading_speed:					15 * CapacityFactor() / param_loading_2D;
+		cargo_capacity:                 31 * CapacityFactor();						// (936 + ~400) / 43 is approx 38
+		loading_speed:					31 * CapacityFactor() / param_loading_2D;
 		cargo_age_period:				param_decay_express;
 		cost_factor:                    144;
 		running_cost_factor:            ((300 + 130 * 12 ) + (445 + 125 * 7 )) * RunningCostFactor();
@@ -20860,9 +20860,9 @@ item(FEAT_TRAINS, series_200e3) {
 		articulated_part:               sw_200e3_series_articulated_part;	
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
 		/* Stats */
-		length:                         sw_200e3_series_length;
-		cargo_capacity:                 15 * CapacityFactor();
-		loading_speed:					15 * CapacityFactor() / param_loading_2D;
+		length:                         sw_200e3_series_length;						
+		cargo_capacity:                 31 * CapacityFactor();
+		loading_speed:					31 * CapacityFactor() / param_loading_2D;
 		cargo_age_period:				param_decay_express;
 		cost_factor:                    144;
 		running_cost_factor:            ((300 + 130 * 12 ) + (445 + 120 * 7 )) * RunningCostFactor();
@@ -20987,8 +20987,8 @@ item(FEAT_TRAINS, series_e4400) {
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
 		/* Stats */
 		length:                         sw_e4n400_series_length;
-		cargo_capacity:                 15 * CapacityFactor();
-		loading_speed:					15 * CapacityFactor() / param_loading_2D;
+		cargo_capacity:                 39 * CapacityFactor();						// (817 + ~400) / 31 is approx 39
+		loading_speed:					39 * CapacityFactor() / param_loading_2D;	// (817 + ~400) / 31 is approx 39
 		cargo_age_period:				param_decay_express;
 		cost_factor:                    144;
 		running_cost_factor:            ((295 + 120 * 8 ) + (445 + 125 * 7 )) * RunningCostFactor();
@@ -21103,9 +21103,9 @@ item(FEAT_TRAINS, series_e4e3) {
 		loading_speed:                  50;							
 		cargo_age_period:               278; 						// 1.5 times normal for this expensive long-distance train
 		/* Stats */
-		speed:                          321 km/h;					// Operational Top Speed
-		power:                          (8064 + 12864) hp;			// Agreed to https://en.wikipedia.org/wiki/E5_and_H5_Series_Shinkansen
-		weight:                         (453 + 306) tons;					// Agreed to https://en.wikipedia.org/wiki/E5_and_H5_Series_Shinkansen
+		speed:                          240 km/h;					// Top speed of E4
+		power:                          (8064 + 12864) hp;
+		weight:                         (453 + 306) tons;
 		tractive_effort_coefficient:    0.3;
 		air_drag_coefficient:			0;
 	}
@@ -21122,8 +21122,8 @@ item(FEAT_TRAINS, series_e4e3) {
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
 		/* Stats */
 		length:                         sw_e4e3_series_length;
-		cargo_capacity:                 15 * CapacityFactor();
-		loading_speed:					15 * CapacityFactor() / param_loading_2D;
+		cargo_capacity:                 39 * CapacityFactor();						// (817 + ~400) / 31 is approx 39
+		loading_speed:					39 * CapacityFactor() / param_loading_2D;
 		cargo_age_period:				param_decay_express;
 		cost_factor:                    144;
 		running_cost_factor:            ((295 + 120 * 8 ) + (445 + 120 * 7 )) * RunningCostFactor();
@@ -21259,8 +21259,8 @@ item(FEAT_TRAINS, series_e2e3) {
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
 		/* Stats */
 		length:                         sw_e2e3_series_length;
-		cargo_capacity:                 15 * CapacityFactor();
-		loading_speed:					15 * CapacityFactor() / param_loading_2D;
+		cargo_capacity:                 33 * CapacityFactor();
+		loading_speed:					33 * CapacityFactor() / param_loading_2D;
 		cargo_age_period:				param_decay_express;
 		cost_factor:                    144;
 		running_cost_factor:            ((290 + 120 * 8 ) + (445 + 120 * 7 )) * RunningCostFactor();

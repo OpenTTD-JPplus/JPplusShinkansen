@@ -52,9 +52,9 @@ item(FEAT_TRAINS, series_200e3) {
 		articulated_part:               sw_200e3_series_articulated_part;	
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
 		/* Stats */
-		length:                         sw_200e3_series_length;
-		cargo_capacity:                 15 * CapacityFactor();
-		loading_speed:					15 * CapacityFactor() / param_loading_2D;
+		length:                         sw_200e3_series_length;						
+		cargo_capacity:                 31 * CapacityFactor();
+		loading_speed:					31 * CapacityFactor() / param_loading_2D;
 		cargo_age_period:				param_decay_express;
 		cost_factor:                    144;
 		running_cost_factor:            ((300 + 130 * 12 ) + (445 + 120 * 7 )) * RunningCostFactor();
