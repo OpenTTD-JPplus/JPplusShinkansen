@@ -683,6 +683,7 @@ switch(FEAT_TRAINS, SELF, logo_jppsks, param_hide_logo) {1:sprite_logo_jppsks;}
             cargo_age_period:             185;
             refit_cost:                   0;
             track_type:                   MINI_SHINKANSEN;
+            extra_flags:                  bitmask(4);
             ai_special_flag:              AI_FLAG_PASSENGER;
             running_cost_base:            RUNNING_COST_ELECTRIC;
             engine_class:                 ENGINE_CLASS_ELECTRIC;
@@ -748,6 +749,7 @@ switch(FEAT_TRAINS, SELF, logo_jppsks, param_hide_logo) {1:sprite_logo_jppsks;}
             cargo_age_period:               185;
             refit_cost:                     0;
             track_type:                     SHINKANSEN;
+            extra_flags:                    bitmask(4);
             ai_special_flag:                AI_FLAG_PASSENGER;
             running_cost_base:              RUNNING_COST_ELECTRIC;
             engine_class:                   ENGINE_CLASS_ELECTRIC;
@@ -816,6 +818,7 @@ switch(FEAT_TRAINS, SELF, logo_jppsks, param_hide_logo) {1:sprite_logo_jppsks;}
             cargo_age_period:               185;
             refit_cost:                     0;
             track_type:                     SC_MAGLEV;
+            extra_flags:                    bitmask(4);
             ai_special_flag:                AI_FLAG_PASSENGER;
             running_cost_base:              RUNNING_COST_ELECTRIC;
             engine_class:                   ENGINE_CLASS_ELECTRIC;
@@ -885,6 +888,7 @@ switch(FEAT_TRAINS, SELF, logo_jppsks, param_hide_logo) {1:sprite_logo_jppsks;}
             cargo_age_period:             185;
             refit_cost:                   0;
             track_type:                   SHINKANSEN;
+            extra_flags:                  bitmask(4);
             ai_special_flag:              AI_FLAG_PASSENGER;
             running_cost_base:            RUNNING_COST_ELECTRIC;
             engine_class:                 ENGINE_CLASS_ELECTRIC;
