@@ -1,0 +1,21 @@
+
+/* Q Formation 4-car (Hakata shuttle): cab01 + panto + coach + cab02 = 4 cars, 12 positions */
+
+switch (FEAT_TRAINS, SELF, sw_0_series_Q4_forwards, position_in_consist) {
+	0..2:	sw_0_series_cab01f;
+	3..5:	sw_0_series_pantof;
+	6..8:	sw_0_series_coachf;
+	9..11:	sw_0_series_cab02f;
+}
+
+switch (FEAT_TRAINS, SELF, sw_0_series_Q4_backwards, position_in_consist) {
+	0..2:	sw_0_series_cab02b;
+	3..5:	sw_0_series_coachb;
+	6..8:	sw_0_series_pantob;
+	9..11:	sw_0_series_cab01b;
+}
+
+switch (FEAT_TRAINS, PARENT, sw_0_series_Q4_graphics, vehicle_is_reversed) {
+	0:	sw_0_series_Q4_forwards;
+	sw_0_series_Q4_backwards;
+}

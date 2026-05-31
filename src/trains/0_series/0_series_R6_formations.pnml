@@ -1,0 +1,25 @@
+
+/* R Formation 6-car: cab01 + panto + coach + panto + coach + cab02 = 6 cars, 18 positions */
+
+switch (FEAT_TRAINS, SELF, sw_0_series_R6_forwards, position_in_consist) {
+	0..2:	sw_0_series_cab01f;
+	3..5:	sw_0_series_pantof;
+	6..8:	sw_0_series_coachf;
+	9..11:	sw_0_series_pantof;
+	12..14:	sw_0_series_coachf;
+	15..17:	sw_0_series_cab02f;
+}
+
+switch (FEAT_TRAINS, SELF, sw_0_series_R6_backwards, position_in_consist) {
+	0..2:	sw_0_series_cab02b;
+	3..5:	sw_0_series_coachb;
+	6..8:	sw_0_series_pantob;
+	9..11:	sw_0_series_coachb;
+	12..14:	sw_0_series_pantob;
+	15..17:	sw_0_series_cab01b;
+}
+
+switch (FEAT_TRAINS, PARENT, sw_0_series_R6_graphics, vehicle_is_reversed) {
+	0:	sw_0_series_R6_forwards;
+	sw_0_series_R6_backwards;
+}
