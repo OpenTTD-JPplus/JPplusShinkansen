@@ -1,0 +1,63 @@
+
+switch (FEAT_TRAINS, SELF, sw_0_series_Q4_articulated_part, extra_callback_info1) {
+	1 .. 11: return series_0_Q4;
+	return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+
+item(FEAT_TRAINS, series_0_Q4) {
+	property {
+		/* Menu */
+		name:                           string(STR_NAME_0_SERIES_Q4);
+		sprite_id:                      SPRITE_ID_NEW_TRAIN;
+		misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK);
+		running_cost_base:              RUNNING_COST_ELECTRIC;
+		engine_class:                   ENGINE_CLASS_ELECTRIC;
+		variant_group:                  123;
+		extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW);
+		/* Availability */
+		climates_available:             ALL_CLIMATES;
+		introduction_date:              date(1997,03,01);
+		model_life:                     5;
+		vehicle_life:                   30;
+		track_type:                     SHINKANSEN;
+		/* Cargo */
+		reliability_decay:              5;
+		refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+		refit_cost:                     0;
+		default_cargo_type:             PASS;
+		ai_special_flag:                AI_FLAG_PASSENGER;
+		cargo_capacity:                 1;
+		loading_speed:                  50;
+		cargo_age_period:               278;
+		/* Stats */
+		speed:                          211 km/h;
+		power:                          3968 kW;
+		weight:                         244 ton;
+		tractive_effort_coefficient:    0.3;
+		air_drag_coefficient:           0;
+	}
+	graphics {
+		/* Menu */
+		additional_text:                string(STR_DESC_0_SERIES_Q4);
+		cargo_subtype_text:             sw_0_series_year_dep_subtype_text;
+		can_attach_wagon:               string(CANT_COUPLE_CONSIST);
+		purchase_weight:                244;
+		purchase_power:                 4 * 248 * 4;
+		/* Graphics */
+		default:                        sw_0_series_Q4_graphics;
+		purchase:                       sw_0_series_purchase;
+		articulated_part:               sw_0_series_Q4_articulated_part;
+		visual_effect_and_powered:      sw_visual_effect_and_powered;
+		/* Stats */
+		length:                         sw_length_1_8_1;
+		speed:                          sw_0_series_speed;
+		weight:                         NumberCarsInConsist() * 61;
+		power:                          NumberCarsInConsist() * 248 * 4;
+		cargo_capacity:                 20 * CapacityFactor();
+		loading_speed:                  20 * CapacityFactor() / param_loading_2D;
+		cargo_age_period:               param_decay_express;
+		cost_factor:                    170;
+		running_cost_factor:            802 * RunningCostFactor() + 54;
+		purchase_running_cost_factor:   856;
+	}
+}
