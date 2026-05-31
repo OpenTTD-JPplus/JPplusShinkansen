@@ -70,10 +70,57 @@
         }
 
 /* Forwards or Backwards */
-    switch (FEAT_TRAINS, PARENT, sw_n700_series_midcars, vehicle_is_reversed) {				
+    switch (FEAT_TRAINS, PARENT, sw_n700_series_midcars_revcheck, vehicle_is_reversed) {				
             0:  sw_n700_series_forwards;
             sw_n700_series_backwards;				
         }
+
+/* Rainbow Special Case */
+    
+    // Forwards
+        
+        switch (FEAT_TRAINS, SELF, sw_n700_series_rainbow_forwards_antepenultimates, CarNumber()  == 3 ) {				
+                1:  sw_n700_series_clogof;
+                sw_n700_series_coachf;				
+            }
+
+        switch (FEAT_TRAINS, SELF, sw_n700_series_rainbow_forwards_penultimates, CarNumber()  == 2 ) {				
+                1:  sw_n700_series_plogof;
+                sw_n700_series_pantof;				
+            }
+        
+        switch (FEAT_TRAINS, SELF, sw_n700_series_rainbow_forwards, CarNumberFromEnd() == 2 || CarNumber()  == 2 ) {				
+                1:  sw_n700_series_rainbow_forwards_penultimates;
+                sw_n700_series_rainbow_forwards_antepenultimates;
+            }
+
+    // Backwards
+
+        switch (FEAT_TRAINS, SELF, sw_n700_series_rainbow_backwards_antepenultimates, CarNumberFromEnd()  == 3 ) {				
+                1:  sw_n700_series_clogob;
+                sw_n700_series_coachb;				
+            }
+
+        switch (FEAT_TRAINS, SELF, sw_n700_series_rainbow_backwards_penultimates, CarNumberFromEnd()  == 2 ) {				
+                1:  sw_n700_series_plogob;
+                sw_n700_series_pantob;				
+            }
+
+        switch (FEAT_TRAINS, SELF, sw_n700_series_rainbow_backwards, CarNumberFromEnd() == 2 || CarNumber()  == 2 ) {				
+                1:  sw_n700_series_rainbow_backwards_penultimates;
+                sw_n700_series_rainbow_backwards_antepenultimates;
+            }
+        switch (FEAT_TRAINS, PARENT, sw_n700_series_midcars_rainbow_revcheck, vehicle_is_reversed) {				
+                0:  sw_n700_series_rainbow_forwards;
+                sw_n700_series_rainbow_backwards;				
+            }
+
+
+    switch (FEAT_TRAINS, PARENT, sw_n700_series_midcars, cargo_subtype ) {				
+        3:  sw_n700_series_midcars_rainbow_revcheck;	
+        default:sw_n700_series_midcars_revcheck;
+    }
+
 
 /* Kamome Special Case */
 
@@ -101,7 +148,6 @@
 
 
     // Backwards
-
         switch (FEAT_TRAINS, SELF, sw_n700s_series_kamome_backwards_pick_panto, CarNumberFromEnd() == 2 ) {				
                 1:  sw_n700s_series_pantob;	
                 sw_n700s_series_pantof;		
@@ -127,10 +173,13 @@
                 0:  sw_n700s_series_kamome_forwards;
                 sw_n700s_series_kamome_backwards;				
             }
-                
+
+
+/* Midcar selection */
+
         switch (FEAT_TRAINS, PARENT, sw_n700s_series_midcars, cargo_subtype ) {				
                 0..1:  sw_n700_series_midcars;	
-                sw_n700s_series_kamome_midcars;	
+                2:  sw_n700s_series_kamome_midcars;
             }
 
 /* Cab selection */

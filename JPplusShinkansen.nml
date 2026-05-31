@@ -2611,6 +2611,7 @@ item(FEAT_TRAINS, series_922) {
         0: return string(LV_N700_SERIES_N700);          	// N700
         1: return string(LV_N700_SERIES_N700_2CC);          // 2cc
         2: return string(LV_N700_SERIES_KYUSHU);          	// Kyushu
+        3: return string(LV_N700_SERIES_RAINBOW);           // Rainbow
         return CB_RESULT_NO_TEXT;
         }
 
@@ -2717,13 +2718,28 @@ item(FEAT_TRAINS, series_922) {
 	spriteset(ss_bck_n700_series_cab01f_kyu, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700_kyushu.png") {tmpl_bck_std(1,1)}
 	spriteset(ss_bck_n700_series_cab01b_kyu, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700_kyushu.png") {tmpl_bck_rev(1,51)}
 
+	// Rainbow Mask
+	
+	// 10/8
+	spriteset(ss_std_n700_series_cab01f_rbw, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700_rainbow.png") {tmpl_10_std(1,1)}
+	spriteset(ss_std_n700_series_cab01b_rbw, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700_rainbow.png") {tmpl_10_rev(1,51)}
+
+	// Front
+	spriteset(ss_frt_n700_series_cab01f_rbw, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700_rainbow.png") {tmpl_frt_std(1,1)}
+	spriteset(ss_frt_n700_series_cab01b_rbw, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700_rainbow.png") {tmpl_frt_rev(1,51)}
+	// Mid
+	spriteset(ss_mid_n700_series_cab01f_rbw, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700_rainbow.png") {tmpl_mid_std(1,1)}
+	spriteset(ss_mid_n700_series_cab01b_rbw, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700_rainbow.png") {tmpl_mid_rev(1,51)}
+	// Back
+	spriteset(ss_bck_n700_series_cab01f_rbw, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700_rainbow.png") {tmpl_bck_std(1,1)}
+	spriteset(ss_bck_n700_series_cab01b_rbw, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700_rainbow.png") {tmpl_bck_rev(1,51)}
 
 // Sprite Selection
 
 	// Forwards
 
 		// Front
-		switch(FEAT_TRAINS, PARENT, ss_frt_n700_series_cab01f_mask, cargo_subtype) {1:ss_frt_n700_series_cab01f_2cc; 2:ss_frt_n700_series_cab01f_kyu;}
+		switch(FEAT_TRAINS, PARENT, ss_frt_n700_series_cab01f_mask, cargo_subtype) {1:ss_frt_n700_series_cab01f_2cc; 2:ss_frt_n700_series_cab01f_kyu; 3:ss_frt_n700_series_cab01f_rbw;}
 		
 		switch(FEAT_TRAINS, SELF, sw_n700_series_cab01f_frt_stack, [ 
 			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
@@ -2734,8 +2750,8 @@ item(FEAT_TRAINS, series_922) {
 		switch(FEAT_TRAINS, SELF, sw_n700_series_cab01f_frt_longsprite, NextPartSame() ) { 1: sw_n700_series_cab01f_frt_stack; dummy_sprites; }
 
 		// Mid
-		switch(FEAT_TRAINS, PARENT, ss_mid_n700_series_cab01f_mask, cargo_subtype) {1:ss_mid_n700_series_cab01f_2cc; 2:ss_mid_n700_series_cab01f_kyu;}
-		switch(FEAT_TRAINS, PARENT, ss_std_n700_series_cab01f_mask, cargo_subtype) {1:ss_std_n700_series_cab01f_2cc; 2:ss_std_n700_series_cab01f_kyu;}
+		switch(FEAT_TRAINS, PARENT, ss_mid_n700_series_cab01f_mask, cargo_subtype) {1:ss_mid_n700_series_cab01f_2cc; 2:ss_mid_n700_series_cab01f_kyu; 3:ss_mid_n700_series_cab01f_rbw;}
+		switch(FEAT_TRAINS, PARENT, ss_std_n700_series_cab01f_mask, cargo_subtype) {1:ss_std_n700_series_cab01f_2cc; 2:ss_std_n700_series_cab01f_kyu; 3:ss_std_n700_series_cab01f_rbw;}
 		
 		switch(FEAT_TRAINS, SELF, sw_n700_series_cab01f_mid_longsprite, HideLongSprite() ) { 0: ss_std_n700_series_cab01f_irl; }
 
@@ -2750,7 +2766,7 @@ item(FEAT_TRAINS, series_922) {
 			}
 
 		// Back
-		switch(FEAT_TRAINS, PARENT, ss_bck_n700_series_cab01f_mask, cargo_subtype) {1:ss_bck_n700_series_cab01f_2cc; 2:ss_bck_n700_series_cab01f_kyu; }
+		switch(FEAT_TRAINS, PARENT, ss_bck_n700_series_cab01f_mask, cargo_subtype) {1:ss_bck_n700_series_cab01f_2cc; 2:ss_bck_n700_series_cab01f_kyu; 3:ss_bck_n700_series_cab01f_rbw;}
 		
 		switch(FEAT_TRAINS, SELF, sw_n700_series_cab01f_bck_stack, [ 
 			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
@@ -2769,7 +2785,7 @@ item(FEAT_TRAINS, series_922) {
 	// Backwards
 
 		// Front
-		switch(FEAT_TRAINS, PARENT, ss_frt_n700_series_cab01b_mask, cargo_subtype) {1:ss_frt_n700_series_cab01b_2cc; 2:ss_frt_n700_series_cab01b_kyu; }
+		switch(FEAT_TRAINS, PARENT, ss_frt_n700_series_cab01b_mask, cargo_subtype) {1:ss_frt_n700_series_cab01b_2cc; 2:ss_frt_n700_series_cab01b_kyu; 3:ss_frt_n700_series_cab01b_rbw;}
 		
 		switch(FEAT_TRAINS, SELF, sw_n700_series_cab01b_frt_stack, [ 
 			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
@@ -2780,8 +2796,8 @@ item(FEAT_TRAINS, series_922) {
 		switch(FEAT_TRAINS, SELF, sw_n700_series_cab01b_frt_longsprite, PrevPartSame() ) { 1: sw_n700_series_cab01b_frt_stack;dummy_sprites; }
 
 		// Mid
-		switch(FEAT_TRAINS, PARENT, ss_mid_n700_series_cab01b_mask, cargo_subtype) {1:ss_mid_n700_series_cab01b_2cc; 2:ss_mid_n700_series_cab01b_kyu; }
-		switch(FEAT_TRAINS, PARENT, ss_std_n700_series_cab01b_mask, cargo_subtype) {1:ss_std_n700_series_cab01b_2cc; 2:ss_std_n700_series_cab01b_kyu; }
+		switch(FEAT_TRAINS, PARENT, ss_mid_n700_series_cab01b_mask, cargo_subtype) {1:ss_mid_n700_series_cab01b_2cc; 2:ss_mid_n700_series_cab01b_kyu; 3:ss_mid_n700_series_cab01b_rbw;}
+		switch(FEAT_TRAINS, PARENT, ss_std_n700_series_cab01b_mask, cargo_subtype) {1:ss_std_n700_series_cab01b_2cc; 2:ss_std_n700_series_cab01b_kyu; 3:ss_std_n700_series_cab01b_rbw;}
 		
 		switch(FEAT_TRAINS, SELF, sw_n700_series_cab01b_mid_longsprite, HideLongSprite() ) { 0: ss_std_n700_series_cab01b_irl; }
 
@@ -2796,7 +2812,7 @@ item(FEAT_TRAINS, series_922) {
 			}
 
 		// Back
-		switch(FEAT_TRAINS, PARENT, ss_bck_n700_series_cab01b_mask, cargo_subtype) {1:ss_bck_n700_series_cab01b_2cc; 2:ss_bck_n700_series_cab01b_kyu;}
+		switch(FEAT_TRAINS, PARENT, ss_bck_n700_series_cab01b_mask, cargo_subtype) {1:ss_bck_n700_series_cab01b_2cc; 2:ss_bck_n700_series_cab01b_kyu; 3:ss_bck_n700_series_cab01b_rbw;}
 		
 		switch(FEAT_TRAINS, SELF, sw_n700_series_cab01b_bck_stack, [ 
 			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
@@ -2867,13 +2883,29 @@ item(FEAT_TRAINS, series_922) {
 	spriteset(ss_bck_n700_series_cab02f_kyu, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700_kyushu.png") {tmpl_cab_bck_std(1,51)}
 	spriteset(ss_bck_n700_series_cab02b_kyu, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700_kyushu.png") {tmpl_cab_bck_rev(1,1)}
 
+	// Rainbow Mask
+
+	// 10/8
+	spriteset(ss_std_n700_series_cab02f_rbw, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700_rainbow.png") {tmpl_10_cab_std(1,51)}
+	spriteset(ss_std_n700_series_cab02b_rbw, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700_rainbow.png") {tmpl_10_cab_rev(1,1)}
+	
+	// Front
+	spriteset(ss_frt_n700_series_cab02f_rbw, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700_rainbow.png") {tmpl_cab_frt_std(1,51)}
+	spriteset(ss_frt_n700_series_cab02b_rbw, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700_rainbow.png") {tmpl_cab_frt_rev(1,1)}
+	// Mid
+	spriteset(ss_mid_n700_series_cab02f_rbw, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700_rainbow.png") {tmpl_cab_mid_std(1,51)}
+	spriteset(ss_mid_n700_series_cab02b_rbw, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700_rainbow.png") {tmpl_cab_mid_rev(1,1)}
+	// Back
+	spriteset(ss_bck_n700_series_cab02f_rbw, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700_rainbow.png") {tmpl_cab_bck_std(1,51)}
+	spriteset(ss_bck_n700_series_cab02b_rbw, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700_rainbow.png") {tmpl_cab_bck_rev(1,1)}
+
 
 // Sprite Selection
 
 	// Forwards
 
 		// Front
-		switch(FEAT_TRAINS, PARENT, ss_frt_n700_series_cab02f_mask, cargo_subtype) {1:ss_frt_n700_series_cab02f_2cc; 2:ss_frt_n700_series_cab02f_kyu;}
+		switch(FEAT_TRAINS, PARENT, ss_frt_n700_series_cab02f_mask, cargo_subtype) {1:ss_frt_n700_series_cab02f_2cc; 2:ss_frt_n700_series_cab02f_kyu; 3:ss_frt_n700_series_cab02f_rbw;}
 		
 		switch(FEAT_TRAINS, SELF, sw_n700_series_cab02f_frt_stack, [ 
 			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
@@ -2884,8 +2916,8 @@ item(FEAT_TRAINS, series_922) {
 		switch(FEAT_TRAINS, SELF, sw_n700_series_cab02f_frt_longsprite, PrevPartSame() ) { 1: sw_n700_series_cab02f_frt_stack; dummy_sprites; }
 
 		// Mid
-		switch(FEAT_TRAINS, PARENT, ss_mid_n700_series_cab02f_mask, cargo_subtype) {1:ss_mid_n700_series_cab02f_2cc; 2:ss_mid_n700_series_cab02f_kyu;}
-		switch(FEAT_TRAINS, PARENT, ss_std_n700_series_cab02f_mask, cargo_subtype) {1:ss_std_n700_series_cab02f_2cc; 2:ss_std_n700_series_cab02f_kyu;}
+		switch(FEAT_TRAINS, PARENT, ss_mid_n700_series_cab02f_mask, cargo_subtype) {1:ss_mid_n700_series_cab02f_2cc; 2:ss_mid_n700_series_cab02f_kyu; 3:ss_mid_n700_series_cab02f_rbw;}
+		switch(FEAT_TRAINS, PARENT, ss_std_n700_series_cab02f_mask, cargo_subtype) {1:ss_std_n700_series_cab02f_2cc; 2:ss_std_n700_series_cab02f_kyu; 3:ss_std_n700_series_cab02f_rbw;}
 		
 		switch(FEAT_TRAINS, SELF, sw_n700_series_cab02f_mid_longsprite, HideLongSprite() ) { 0: ss_std_n700_series_cab02f_irl; }
 		switch(FEAT_TRAINS, SELF, sw_n700_series_cab02f_std_longsprite, HideLongSprite() ) { 0: ss_std_n700_series_cab02f_mask; }
@@ -2899,7 +2931,7 @@ item(FEAT_TRAINS, series_922) {
 			}
 
 		// Back
-		switch(FEAT_TRAINS, PARENT, ss_bck_n700_series_cab02f_mask, cargo_subtype) {1:ss_bck_n700_series_cab02f_2cc; 2:ss_bck_n700_series_cab02f_kyu; }
+		switch(FEAT_TRAINS, PARENT, ss_bck_n700_series_cab02f_mask, cargo_subtype) {1:ss_bck_n700_series_cab02f_2cc; 2:ss_bck_n700_series_cab02f_kyu; 3:ss_bck_n700_series_cab02f_rbw;}
 		
 		switch(FEAT_TRAINS, SELF, sw_n700_series_cab02f_bck_stack, [ 
 			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
@@ -2918,7 +2950,7 @@ item(FEAT_TRAINS, series_922) {
 	// Backwards
 
 		// Front
-		switch(FEAT_TRAINS, PARENT, ss_frt_n700_series_cab02b_mask, cargo_subtype) {1:ss_frt_n700_series_cab02b_2cc; 2:ss_frt_n700_series_cab02b_kyu; }
+		switch(FEAT_TRAINS, PARENT, ss_frt_n700_series_cab02b_mask, cargo_subtype) {1:ss_frt_n700_series_cab02b_2cc; 2:ss_frt_n700_series_cab02b_kyu; 3:ss_frt_n700_series_cab02b_rbw; }
 		
 		switch(FEAT_TRAINS, SELF, sw_n700_series_cab02b_frt_stack, [ 
 			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
@@ -2929,8 +2961,8 @@ item(FEAT_TRAINS, series_922) {
 		switch(FEAT_TRAINS, SELF, sw_n700_series_cab02b_frt_longsprite, NextPartSame() ) { 1: sw_n700_series_cab02b_frt_stack; dummy_sprites; }
 
 		// Mid
-		switch(FEAT_TRAINS, PARENT, ss_mid_n700_series_cab02b_mask, cargo_subtype) {1:ss_mid_n700_series_cab02b_2cc; 2:ss_mid_n700_series_cab02b_kyu; }
-		switch(FEAT_TRAINS, PARENT, ss_std_n700_series_cab02b_mask, cargo_subtype) {1:ss_std_n700_series_cab02b_2cc; 2:ss_std_n700_series_cab02b_kyu; }
+		switch(FEAT_TRAINS, PARENT, ss_mid_n700_series_cab02b_mask, cargo_subtype) {1:ss_mid_n700_series_cab02b_2cc; 2:ss_mid_n700_series_cab02b_kyu; 3:ss_mid_n700_series_cab02b_rbw; }
+		switch(FEAT_TRAINS, PARENT, ss_std_n700_series_cab02b_mask, cargo_subtype) {1:ss_std_n700_series_cab02b_2cc; 2:ss_std_n700_series_cab02b_kyu; 3:ss_std_n700_series_cab02b_rbw; }
 		
 		switch(FEAT_TRAINS, SELF, sw_n700_series_cab02b_mid_longsprite, HideLongSprite() ) { 0: ss_std_n700_series_cab02b_irl; }
 		switch(FEAT_TRAINS, SELF, sw_n700_series_cab02b_std_longsprite, HideLongSprite() ) { 0: ss_std_n700_series_cab02b_mask;}
@@ -2944,7 +2976,7 @@ item(FEAT_TRAINS, series_922) {
 			}
 
 		// Back
-		switch(FEAT_TRAINS, PARENT, ss_bck_n700_series_cab02b_mask, cargo_subtype) {1:ss_bck_n700_series_cab02b_2cc; 2:ss_bck_n700_series_cab02b_kyu;}
+		switch(FEAT_TRAINS, PARENT, ss_bck_n700_series_cab02b_mask, cargo_subtype) {1:ss_bck_n700_series_cab02b_2cc; 2:ss_bck_n700_series_cab02b_kyu; 3:ss_bck_n700_series_cab02b_rbw;}
 		
 		switch(FEAT_TRAINS, SELF, sw_n700_series_cab02b_bck_stack, [ 
 			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
@@ -2970,18 +3002,18 @@ item(FEAT_TRAINS, series_922) {
 	// Base
 
 	// 10/8
-	spriteset(ss_std_n700_series_coachf_irl, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700.png") {tmpl_10_std(1,101)}
-	spriteset(ss_std_n700_series_coachb_irl, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700.png") {tmpl_10_rev(1,101)}
+	spriteset(ss_std_n700_series_coachf_irl, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700.png") {tmpl_10_std(1,151)}
+	spriteset(ss_std_n700_series_coachb_irl, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700.png") {tmpl_10_rev(1,151)}
 
 	// Front
-	spriteset(ss_frt_n700_series_coachf_irl, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700.png") {tmpl_frt_std(1,101)}
-	spriteset(ss_frt_n700_series_coachb_irl, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700.png") {tmpl_frt_rev(1,101)}
+	spriteset(ss_frt_n700_series_coachf_irl, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700.png") {tmpl_frt_std(1,151)}
+	spriteset(ss_frt_n700_series_coachb_irl, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700.png") {tmpl_frt_rev(1,151)}
 	// Mid
-	spriteset(ss_mid_n700_series_coachf_irl, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700.png") {tmpl_mid_std(1,101)}
-	spriteset(ss_mid_n700_series_coachb_irl, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700.png") {tmpl_mid_rev(1,101)}
+	spriteset(ss_mid_n700_series_coachf_irl, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700.png") {tmpl_mid_std(1,151)}
+	spriteset(ss_mid_n700_series_coachb_irl, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700.png") {tmpl_mid_rev(1,151)}
 	// Back
-	spriteset(ss_bck_n700_series_coachf_irl, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700.png") {tmpl_bck_std(1,101)}
-	spriteset(ss_bck_n700_series_coachb_irl, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700.png") {tmpl_bck_rev(1,101)}
+	spriteset(ss_bck_n700_series_coachf_irl, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700.png") {tmpl_bck_std(1,151)}
+	spriteset(ss_bck_n700_series_coachb_irl, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700.png") {tmpl_bck_rev(1,151)}
 
 	// 2cc Mask
 
@@ -3015,13 +3047,28 @@ item(FEAT_TRAINS, series_922) {
 	spriteset(ss_bck_n700_series_coachf_kyu, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700_kyushu.png") {tmpl_bck_std(1,101)}
 	spriteset(ss_bck_n700_series_coachb_kyu, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700_kyushu.png") {tmpl_bck_rev(1,101)}
 
+	// Rainbow Mask
+
+	// 10/8
+	spriteset(ss_std_n700_series_coachf_rbw, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700_rainbow.png") {tmpl_10_std(1,251)}
+	spriteset(ss_std_n700_series_coachb_rbw, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700_rainbow.png") {tmpl_10_rev(1,251)}
+
+	// Front
+	spriteset(ss_frt_n700_series_coachf_rbw, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700_rainbow.png") {tmpl_frt_std(1,251)}
+	spriteset(ss_frt_n700_series_coachb_rbw, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700_rainbow.png") {tmpl_frt_rev(1,251)}
+	// Mid
+	spriteset(ss_mid_n700_series_coachf_rbw, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700_rainbow.png") {tmpl_mid_std(1,251)}
+	spriteset(ss_mid_n700_series_coachb_rbw, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700_rainbow.png") {tmpl_mid_rev(1,251)}
+	// Back
+	spriteset(ss_bck_n700_series_coachf_rbw, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700_rainbow.png") {tmpl_bck_std(1,251)}
+	spriteset(ss_bck_n700_series_coachb_rbw, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700_rainbow.png") {tmpl_bck_rev(1,251)}
 
 // Sprite Selection
 
 	// Forwards
 
 		// Front
-		switch(FEAT_TRAINS, PARENT, ss_frt_n700_series_coachf_mask, cargo_subtype) {1:ss_frt_n700_series_coachf_2cc; 2:ss_frt_n700_series_coachf_kyu;}
+		switch(FEAT_TRAINS, PARENT, ss_frt_n700_series_coachf_mask, cargo_subtype) {1:ss_frt_n700_series_coachf_2cc; 2:ss_frt_n700_series_coachf_kyu; 3:ss_frt_n700_series_coachf_rbw;}
 		
 		switch(FEAT_TRAINS, SELF, sw_n700_series_coachf_frt_stack, [ 
 			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
@@ -3032,8 +3079,8 @@ item(FEAT_TRAINS, series_922) {
 		switch(FEAT_TRAINS, SELF, sw_n700_series_coachf_frt_longsprite, NextPartSame() ) { 1: sw_n700_series_coachf_frt_stack; dummy_sprites; }
 
 		// Mid
-		switch(FEAT_TRAINS, PARENT, ss_mid_n700_series_coachf_mask, cargo_subtype) {1:ss_mid_n700_series_coachf_2cc; 2:ss_mid_n700_series_coachf_kyu;}
-		switch(FEAT_TRAINS, PARENT, ss_std_n700_series_coachf_mask, cargo_subtype) {1:ss_std_n700_series_coachf_2cc; 2:ss_std_n700_series_coachf_kyu;}
+		switch(FEAT_TRAINS, PARENT, ss_mid_n700_series_coachf_mask, cargo_subtype) {1:ss_mid_n700_series_coachf_2cc; 2:ss_mid_n700_series_coachf_kyu; 3:ss_mid_n700_series_coachf_rbw;}
+		switch(FEAT_TRAINS, PARENT, ss_std_n700_series_coachf_mask, cargo_subtype) {1:ss_std_n700_series_coachf_2cc; 2:ss_std_n700_series_coachf_kyu; 3:ss_std_n700_series_coachf_rbw;}
 		
 		switch(FEAT_TRAINS, SELF, sw_n700_series_coachf_mid_longsprite, HideLongSprite() ) { 0: ss_std_n700_series_coachf_irl; }
 
@@ -3048,7 +3095,7 @@ item(FEAT_TRAINS, series_922) {
 			}
 
 		// Back
-		switch(FEAT_TRAINS, PARENT, ss_bck_n700_series_coachf_mask, cargo_subtype) {1:ss_bck_n700_series_coachf_2cc; 2:ss_bck_n700_series_coachf_kyu; }
+		switch(FEAT_TRAINS, PARENT, ss_bck_n700_series_coachf_mask, cargo_subtype) {1:ss_bck_n700_series_coachf_2cc; 2:ss_bck_n700_series_coachf_kyu; 3:ss_bck_n700_series_coachf_rbw;}
 		
 		switch(FEAT_TRAINS, SELF, sw_n700_series_coachf_bck_stack, [ 
 			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
@@ -3067,7 +3114,7 @@ item(FEAT_TRAINS, series_922) {
 	// Backwards
 
 		// Front
-		switch(FEAT_TRAINS, PARENT, ss_frt_n700_series_coachb_mask, cargo_subtype) {1:ss_frt_n700_series_coachb_2cc; 2:ss_frt_n700_series_coachb_kyu; }
+		switch(FEAT_TRAINS, PARENT, ss_frt_n700_series_coachb_mask, cargo_subtype) {1:ss_frt_n700_series_coachb_2cc; 2:ss_frt_n700_series_coachb_kyu; 3:ss_frt_n700_series_coachb_rbw;}
 		
 		switch(FEAT_TRAINS, SELF, sw_n700_series_coachb_frt_stack, [ 
 			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
@@ -3078,8 +3125,8 @@ item(FEAT_TRAINS, series_922) {
 		switch(FEAT_TRAINS, SELF, sw_n700_series_coachb_frt_longsprite, PrevPartSame() ) { 1: sw_n700_series_coachb_frt_stack;dummy_sprites; }
 
 		// Mid
-		switch(FEAT_TRAINS, PARENT, ss_mid_n700_series_coachb_mask, cargo_subtype) {1:ss_mid_n700_series_coachb_2cc; 2:ss_mid_n700_series_coachb_kyu; }
-		switch(FEAT_TRAINS, PARENT, ss_std_n700_series_coachb_mask, cargo_subtype) {1:ss_std_n700_series_coachb_2cc; 2:ss_std_n700_series_coachb_kyu; }
+		switch(FEAT_TRAINS, PARENT, ss_mid_n700_series_coachb_mask, cargo_subtype) {1:ss_mid_n700_series_coachb_2cc; 2:ss_mid_n700_series_coachb_kyu; 3:ss_mid_n700_series_coachb_rbw;}
+		switch(FEAT_TRAINS, PARENT, ss_std_n700_series_coachb_mask, cargo_subtype) {1:ss_std_n700_series_coachb_2cc; 2:ss_std_n700_series_coachb_kyu; 3:ss_std_n700_series_coachb_rbw;}
 		
 		switch(FEAT_TRAINS, SELF, sw_n700_series_coachb_mid_longsprite, HideLongSprite() ) { 0: ss_std_n700_series_coachb_irl; }
 
@@ -3094,7 +3141,7 @@ item(FEAT_TRAINS, series_922) {
 			}
 
 		// Back
-		switch(FEAT_TRAINS, PARENT, ss_bck_n700_series_coachb_mask, cargo_subtype) {1:ss_bck_n700_series_coachb_2cc; 2:ss_bck_n700_series_coachb_kyu;}
+		switch(FEAT_TRAINS, PARENT, ss_bck_n700_series_coachb_mask, cargo_subtype) {1:ss_bck_n700_series_coachb_2cc; 2:ss_bck_n700_series_coachb_kyu; 3:ss_bck_n700_series_coachb_rbw;}
 		
 		switch(FEAT_TRAINS, SELF, sw_n700_series_coachb_bck_stack, [ 
 			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
@@ -3166,13 +3213,28 @@ item(FEAT_TRAINS, series_922) {
 	spriteset(ss_bck_n700_series_pantof_kyu, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700_kyushu.png") {tmpl_bck_std(1,101)}
 	spriteset(ss_bck_n700_series_pantob_kyu, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700_kyushu.png") {tmpl_bck_rev(1,101)}
 
+	// Rainbow Mask
+
+	// 10/8
+	spriteset(ss_std_n700_series_pantof_rbw, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700_rainbow.png") {tmpl_10_std(1,201)}
+	spriteset(ss_std_n700_series_pantob_rbw, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700_rainbow.png") {tmpl_10_rev(1,201)}
+
+	// Front
+	spriteset(ss_frt_n700_series_pantof_rbw, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700_rainbow.png") {tmpl_frt_std(1,201)}
+	spriteset(ss_frt_n700_series_pantob_rbw, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700_rainbow.png") {tmpl_frt_rev(1,201)}
+	// Mid
+	spriteset(ss_mid_n700_series_pantof_rbw, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700_rainbow.png") {tmpl_mid_std(1,201)}
+	spriteset(ss_mid_n700_series_pantob_rbw, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700_rainbow.png") {tmpl_mid_rev(1,201)}
+	// Back
+	spriteset(ss_bck_n700_series_pantof_rbw, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700_rainbow.png") {tmpl_bck_std(1,201)}
+	spriteset(ss_bck_n700_series_pantob_rbw, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700_rainbow.png") {tmpl_bck_rev(1,201)}
 
 // Sprite Selection
 
 	// Forwards
 
 		// Front
-		switch(FEAT_TRAINS, PARENT, ss_frt_n700_series_pantof_mask, cargo_subtype) {1:ss_frt_n700_series_pantof_2cc; 2:ss_frt_n700_series_pantof_kyu;}
+		switch(FEAT_TRAINS, PARENT, ss_frt_n700_series_pantof_mask, cargo_subtype) {1:ss_frt_n700_series_pantof_2cc; 2:ss_frt_n700_series_pantof_kyu; 3:ss_frt_n700_series_pantof_rbw;}
 		
 		switch(FEAT_TRAINS, SELF, sw_n700_series_pantof_frt_stack, [ 
 			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
@@ -3183,8 +3245,8 @@ item(FEAT_TRAINS, series_922) {
 		switch(FEAT_TRAINS, SELF, sw_n700_series_pantof_frt_longsprite, NextPartSame() ) { 1: sw_n700_series_pantof_frt_stack; dummy_sprites; }
 
 		// Mid
-		switch(FEAT_TRAINS, PARENT, ss_mid_n700_series_pantof_mask, cargo_subtype) {1:ss_mid_n700_series_pantof_2cc; 2:ss_mid_n700_series_pantof_kyu;}
-		switch(FEAT_TRAINS, PARENT, ss_std_n700_series_pantof_mask, cargo_subtype) {1:ss_std_n700_series_pantof_2cc; 2:ss_std_n700_series_pantof_kyu;}
+		switch(FEAT_TRAINS, PARENT, ss_mid_n700_series_pantof_mask, cargo_subtype) {1:ss_mid_n700_series_pantof_2cc; 2:ss_mid_n700_series_pantof_kyu; 3:ss_mid_n700_series_pantof_rbw;}
+		switch(FEAT_TRAINS, PARENT, ss_std_n700_series_pantof_mask, cargo_subtype) {1:ss_std_n700_series_pantof_2cc; 2:ss_std_n700_series_pantof_kyu; 3:ss_std_n700_series_pantof_rbw;}
 		
 		switch(FEAT_TRAINS, SELF, sw_n700_series_pantof_mid_longsprite, HideLongSprite() ) { 0: ss_std_n700_series_pantof_irl; }
 		switch(FEAT_TRAINS, SELF, sw_n700_series_pantof_std_longsprite, HideLongSprite() ) { 0: ss_std_n700_series_pantof_mask; }
@@ -3193,14 +3255,12 @@ item(FEAT_TRAINS, series_922) {
 			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
 				0: ss_mid_n700_series_pantof_irl;       	// Base for Mid
 				1: ss_mid_n700_series_pantof_mask;		    // Mask for Mid
-				2: panto_midsprite_n700_f;		    		// Panto for Mid
-				3: sw_n700_series_pantof_mid_longsprite;	// Long Sprite
-				4: sw_n700_series_pantof_std_longsprite;	// Long Sprite Mask
-				5: panto_longsprite_n700_f;					// Panto for Long Sprite
+				2: sw_n700_series_pantof_mid_longsprite;	// Long Sprite
+				3: sw_n700_series_pantof_std_longsprite;	// Long Sprite Mask
 			}
 
 		// Back
-		switch(FEAT_TRAINS, PARENT, ss_bck_n700_series_pantof_mask, cargo_subtype) {1:ss_bck_n700_series_pantof_2cc; 2:ss_bck_n700_series_pantof_kyu; }
+		switch(FEAT_TRAINS, PARENT, ss_bck_n700_series_pantof_mask, cargo_subtype) {1:ss_bck_n700_series_pantof_2cc; 2:ss_bck_n700_series_pantof_kyu; 3:ss_bck_n700_series_pantof_rbw;}
 		
 		switch(FEAT_TRAINS, SELF, sw_n700_series_pantof_bck_stack, [ 
 			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
@@ -3219,7 +3279,7 @@ item(FEAT_TRAINS, series_922) {
 	// Backwards
 
 		// Front
-		switch(FEAT_TRAINS, PARENT, ss_frt_n700_series_pantob_mask, cargo_subtype) {1:ss_frt_n700_series_pantob_2cc; 2:ss_frt_n700_series_pantob_kyu; }
+		switch(FEAT_TRAINS, PARENT, ss_frt_n700_series_pantob_mask, cargo_subtype) {1:ss_frt_n700_series_pantob_2cc; 2:ss_frt_n700_series_pantob_kyu; 3:ss_frt_n700_series_pantob_rbw;}
 		
 		switch(FEAT_TRAINS, SELF, sw_n700_series_pantob_frt_stack, [ 
 			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
@@ -3230,8 +3290,8 @@ item(FEAT_TRAINS, series_922) {
 		switch(FEAT_TRAINS, SELF, sw_n700_series_pantob_frt_longsprite, PrevPartSame()  ) { 1: sw_n700_series_pantob_frt_stack; dummy_sprites; }
 
 		// Mid
-		switch(FEAT_TRAINS, PARENT, ss_mid_n700_series_pantob_mask, cargo_subtype) {1:ss_mid_n700_series_pantob_2cc; 2:ss_mid_n700_series_pantob_kyu; }
-		switch(FEAT_TRAINS, PARENT, ss_std_n700_series_pantob_mask, cargo_subtype) {1:ss_std_n700_series_pantob_2cc; 2:ss_std_n700_series_pantob_kyu; }
+		switch(FEAT_TRAINS, PARENT, ss_mid_n700_series_pantob_mask, cargo_subtype) {1:ss_mid_n700_series_pantob_2cc; 2:ss_mid_n700_series_pantob_kyu; 3:ss_mid_n700_series_pantob_rbw;}
+		switch(FEAT_TRAINS, PARENT, ss_std_n700_series_pantob_mask, cargo_subtype) {1:ss_std_n700_series_pantob_2cc; 2:ss_std_n700_series_pantob_kyu; 3:ss_std_n700_series_pantob_rbw;}
 		
 		switch(FEAT_TRAINS, SELF, sw_n700_series_pantob_mid_longsprite, HideLongSprite() ) { 0: ss_std_n700_series_pantob_irl; }
 		switch(FEAT_TRAINS, SELF, sw_n700_series_pantob_std_longsprite, HideLongSprite() ) { 0: ss_std_n700_series_pantob_mask; }
@@ -3240,14 +3300,12 @@ item(FEAT_TRAINS, series_922) {
 			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
 				0: ss_mid_n700_series_pantob_irl;       	// Base for Mid
 				1: ss_mid_n700_series_pantob_mask;		    // Mask for Mid
-				2: panto_midsprite_n700_b;		    		// Panto for Mid
-				3: sw_n700_series_pantob_mid_longsprite;	// Long Sprite
-				4: sw_n700_series_pantob_std_longsprite;	// Long Sprite Mask
-				5: panto_longsprite_n700_b;					// Panto for Long Sprite
+				2: sw_n700_series_pantob_mid_longsprite;	// Long Sprite
+				3: sw_n700_series_pantob_std_longsprite;	// Long Sprite Mask
 			}
 
 		// Back
-		switch(FEAT_TRAINS, PARENT, ss_bck_n700_series_pantob_mask, cargo_subtype) {1:ss_bck_n700_series_pantob_2cc; 2:ss_bck_n700_series_pantob_kyu;}
+		switch(FEAT_TRAINS, PARENT, ss_bck_n700_series_pantob_mask, cargo_subtype) {1:ss_bck_n700_series_pantob_2cc; 2:ss_bck_n700_series_pantob_kyu; 3:ss_bck_n700_series_pantob_rbw;}
 		
 		switch(FEAT_TRAINS, SELF, sw_n700_series_pantob_bck_stack, [ 
 			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
@@ -3262,6 +3320,274 @@ item(FEAT_TRAINS, series_922) {
             1: sw_n700_series_pantob_mid_stack;
             2: sw_n700_series_pantob_bck_longsprite;
         }
+		
+# 1 "src/trains/n700_series/n700_series.pnml" 2
+# 1 "src/trains/n700_series/n700_series_plogo.pnml" 1
+
+/* plogo */
+
+// Sprites
+
+	// Base
+
+	// 10/8
+	spriteset(ss_std_n700_series_plogof_irl, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700.png") {tmpl_10_std(1,101)}
+	spriteset(ss_std_n700_series_plogob_irl, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700.png") {tmpl_10_rev(1,101)}
+
+	// Front
+	spriteset(ss_frt_n700_series_plogof_irl, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700.png") {tmpl_frt_std(1,101)}
+	spriteset(ss_frt_n700_series_plogob_irl, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700.png") {tmpl_frt_rev(1,101)}
+	// Mid
+	spriteset(ss_mid_n700_series_plogof_irl, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700.png") {tmpl_mid_std(1,101)}
+	spriteset(ss_mid_n700_series_plogob_irl, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700.png") {tmpl_mid_rev(1,101)}
+	// Back
+	spriteset(ss_bck_n700_series_plogof_irl, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700.png") {tmpl_bck_std(1,101)}
+	spriteset(ss_bck_n700_series_plogob_irl, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700.png") {tmpl_bck_rev(1,101)}
+
+	// Rainbow Mask
+
+	// 10/8
+	spriteset(ss_std_n700_series_plogof_rbw, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700_rainbow.png") {tmpl_10_std(1,101)}
+	spriteset(ss_std_n700_series_plogob_rbw, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700_rainbow.png") {tmpl_10_rev(1,101)}
+
+	// Front
+	spriteset(ss_frt_n700_series_plogof_rbw, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700_rainbow.png") {tmpl_frt_std(1,101)}
+	spriteset(ss_frt_n700_series_plogob_rbw, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700_rainbow.png") {tmpl_frt_rev(1,101)}
+	// Mid
+	spriteset(ss_mid_n700_series_plogof_rbw, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700_rainbow.png") {tmpl_mid_std(1,101)}
+	spriteset(ss_mid_n700_series_plogob_rbw, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700_rainbow.png") {tmpl_mid_rev(1,101)}
+	// Back
+	spriteset(ss_bck_n700_series_plogof_rbw, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700_rainbow.png") {tmpl_bck_std(1,101)}
+	spriteset(ss_bck_n700_series_plogob_rbw, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700_rainbow.png") {tmpl_bck_rev(1,101)}
+
+// Sprite Selection
+
+	// Forwards
+
+		// Front
+		switch(FEAT_TRAINS, PARENT, ss_frt_n700_series_plogof_mask, cargo_subtype) {3:ss_frt_n700_series_plogof_rbw;}
+		
+		switch(FEAT_TRAINS, SELF, sw_n700_series_plogof_frt_stack, [ 
+			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+				0: ss_frt_n700_series_plogof_irl;       	// Base for Front
+				1: ss_frt_n700_series_plogof_mask;		// Mask for Front
+			}
+
+		switch(FEAT_TRAINS, SELF, sw_n700_series_plogof_frt_longsprite, NextPartSame() ) { 1: sw_n700_series_plogof_frt_stack; dummy_sprites; }
+
+		// Mid
+		switch(FEAT_TRAINS, PARENT, ss_mid_n700_series_plogof_mask, cargo_subtype) {3:ss_mid_n700_series_plogof_rbw;}
+		switch(FEAT_TRAINS, PARENT, ss_std_n700_series_plogof_mask, cargo_subtype) {3:ss_std_n700_series_plogof_rbw;}
+		
+		switch(FEAT_TRAINS, SELF, sw_n700_series_plogof_mid_longsprite, HideLongSprite() ) { 0: ss_std_n700_series_plogof_irl; }
+
+		switch(FEAT_TRAINS, SELF, sw_n700_series_plogof_std_longsprite, HideLongSprite() ) { 0: ss_std_n700_series_plogof_mask; }
+
+		switch(FEAT_TRAINS, SELF, sw_n700_series_plogof_mid_stack, [ 
+			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+				0: ss_mid_n700_series_plogof_irl;       	// Base for Mid
+				1: ss_mid_n700_series_plogof_mask;		    // Mask for Mid
+				2: sw_n700_series_plogof_mid_longsprite;	// Long Sprite for Corners and Hills
+				3: sw_n700_series_plogof_std_longsprite;
+			}
+
+		// Back
+		switch(FEAT_TRAINS, PARENT, ss_bck_n700_series_plogof_mask, cargo_subtype) {3:ss_bck_n700_series_plogof_rbw;}
+		
+		switch(FEAT_TRAINS, SELF, sw_n700_series_plogof_bck_stack, [ 
+			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+				0: ss_bck_n700_series_plogof_irl;       	// Base for Front
+				1: ss_bck_n700_series_plogof_mask;		    // Mask for Front
+			}
+
+		switch(FEAT_TRAINS, SELF, sw_n700_series_plogof_bck_longsprite, PrevPartSame() ) { 1: sw_n700_series_plogof_bck_stack; dummy_sprites; }
+
+		switch (FEAT_TRAINS, SELF, sw_n700_series_plogof, position_in_consist % 3 ) {				
+            0: sw_n700_series_plogof_frt_longsprite;
+            1: sw_n700_series_plogof_mid_stack;
+            2: sw_n700_series_plogof_bck_longsprite;
+        }
+
+	// Backwards
+
+		// Front
+		switch(FEAT_TRAINS, PARENT, ss_frt_n700_series_plogob_mask, cargo_subtype) {3:ss_frt_n700_series_plogob_rbw;}
+		
+		switch(FEAT_TRAINS, SELF, sw_n700_series_plogob_frt_stack, [ 
+			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+				0: ss_frt_n700_series_plogob_irl;       	// Base for Front
+				1: ss_frt_n700_series_plogob_mask;		    // Mask for Front
+			}
+
+		switch(FEAT_TRAINS, SELF, sw_n700_series_plogob_frt_longsprite, PrevPartSame() ) { 1: sw_n700_series_plogob_frt_stack;dummy_sprites; }
+
+		// Mid
+		switch(FEAT_TRAINS, PARENT, ss_mid_n700_series_plogob_mask, cargo_subtype) {3:ss_mid_n700_series_plogob_rbw;}
+		switch(FEAT_TRAINS, PARENT, ss_std_n700_series_plogob_mask, cargo_subtype) {3:ss_std_n700_series_plogob_rbw;}
+		
+		switch(FEAT_TRAINS, SELF, sw_n700_series_plogob_mid_longsprite, HideLongSprite() ) { 0: ss_std_n700_series_plogob_irl; }
+
+		switch(FEAT_TRAINS, SELF, sw_n700_series_plogob_std_longsprite, HideLongSprite() ) { 0: ss_std_n700_series_plogob_mask; }
+
+		switch(FEAT_TRAINS, SELF, sw_n700_series_plogob_mid_stack, [ 
+			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+				0: ss_mid_n700_series_plogob_irl;       	// Base for Mid
+				1: ss_mid_n700_series_plogob_mask;		    // Mask for Mid
+				2: sw_n700_series_plogob_mid_longsprite;	// Long Sprite for Corners and Hills
+				3: sw_n700_series_plogob_std_longsprite;
+			}
+
+		// Back
+		switch(FEAT_TRAINS, PARENT, ss_bck_n700_series_plogob_mask, cargo_subtype) {3:ss_bck_n700_series_plogob_rbw;}
+		
+		switch(FEAT_TRAINS, SELF, sw_n700_series_plogob_bck_stack, [ 
+			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+				0: ss_bck_n700_series_plogob_irl;       	// Base for Front
+				1: ss_bck_n700_series_plogob_mask;			// Mask for Front
+			}
+
+		switch(FEAT_TRAINS, SELF, sw_n700_series_plogob_bck_longsprite, NextPartSame() ) { 1: sw_n700_series_plogob_bck_stack; dummy_sprites; }
+
+		switch (FEAT_TRAINS, SELF, sw_n700_series_plogob, position_in_consist_from_end % 3 ) {				
+            0: sw_n700_series_plogob_frt_longsprite;
+            1: sw_n700_series_plogob_mid_stack;
+            2: sw_n700_series_plogob_bck_longsprite;
+        }
+		
+		
+# 1 "src/trains/n700_series/n700_series.pnml" 2
+# 1 "src/trains/n700_series/n700_series_clogo.pnml" 1
+
+/* clogo */
+
+// Sprites
+
+	// Base
+
+	// 10/8
+	spriteset(ss_std_n700_series_clogof_irl, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700.png") {tmpl_10_std(1,151)}
+	spriteset(ss_std_n700_series_clogob_irl, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700.png") {tmpl_10_rev(1,151)}
+
+	// Front
+	spriteset(ss_frt_n700_series_clogof_irl, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700.png") {tmpl_frt_std(1,151)}
+	spriteset(ss_frt_n700_series_clogob_irl, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700.png") {tmpl_frt_rev(1,151)}
+	// Mid
+	spriteset(ss_mid_n700_series_clogof_irl, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700.png") {tmpl_mid_std(1,151)}
+	spriteset(ss_mid_n700_series_clogob_irl, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700.png") {tmpl_mid_rev(1,151)}
+	// Back
+	spriteset(ss_bck_n700_series_clogof_irl, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700.png") {tmpl_bck_std(1,151)}
+	spriteset(ss_bck_n700_series_clogob_irl, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700.png") {tmpl_bck_rev(1,151)}
+
+	// Rainbow Mask
+
+	// 10/8
+	spriteset(ss_std_n700_series_clogof_rbw, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700_rainbow.png") {tmpl_10_std(1,151)}
+	spriteset(ss_std_n700_series_clogob_rbw, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700_rainbow.png") {tmpl_10_rev(1,151)}
+
+	// Front
+	spriteset(ss_frt_n700_series_clogof_rbw, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700_rainbow.png") {tmpl_frt_std(1,151)}
+	spriteset(ss_frt_n700_series_clogob_rbw, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700_rainbow.png") {tmpl_frt_rev(1,151)}
+	// Mid
+	spriteset(ss_mid_n700_series_clogof_rbw, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700_rainbow.png") {tmpl_mid_std(1,151)}
+	spriteset(ss_mid_n700_series_clogob_rbw, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700_rainbow.png") {tmpl_mid_rev(1,151)}
+	// Back
+	spriteset(ss_bck_n700_series_clogof_rbw, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700_rainbow.png") {tmpl_bck_std(1,151)}
+	spriteset(ss_bck_n700_series_clogob_rbw, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/n700_series/gfx/n700_rainbow.png") {tmpl_bck_rev(1,151)}
+
+// Sprite Selection
+
+	// Forwards
+
+		// Front
+		switch(FEAT_TRAINS, PARENT, ss_frt_n700_series_clogof_mask, cargo_subtype) {3:ss_frt_n700_series_clogof_rbw;}
+		
+		switch(FEAT_TRAINS, SELF, sw_n700_series_clogof_frt_stack, [ 
+			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+				0: ss_frt_n700_series_clogof_irl;       	// Base for Front
+				1: ss_frt_n700_series_clogof_mask;		// Mask for Front
+			}
+
+		switch(FEAT_TRAINS, SELF, sw_n700_series_clogof_frt_longsprite, NextPartSame() ) { 1: sw_n700_series_clogof_frt_stack; dummy_sprites; }
+
+		// Mid
+		switch(FEAT_TRAINS, PARENT, ss_mid_n700_series_clogof_mask, cargo_subtype) {3:ss_mid_n700_series_clogof_rbw;}
+		switch(FEAT_TRAINS, PARENT, ss_std_n700_series_clogof_mask, cargo_subtype) {3:ss_std_n700_series_clogof_rbw;}
+		
+		switch(FEAT_TRAINS, SELF, sw_n700_series_clogof_mid_longsprite, HideLongSprite() ) { 0: ss_std_n700_series_clogof_irl; }
+
+		switch(FEAT_TRAINS, SELF, sw_n700_series_clogof_std_longsprite, HideLongSprite() ) { 0: ss_std_n700_series_clogof_mask; }
+
+		switch(FEAT_TRAINS, SELF, sw_n700_series_clogof_mid_stack, [ 
+			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+				0: ss_mid_n700_series_clogof_irl;       	// Base for Mid
+				1: ss_mid_n700_series_clogof_mask;		    // Mask for Mid
+				2: sw_n700_series_clogof_mid_longsprite;	// Long Sprite for Corners and Hills
+				3: sw_n700_series_clogof_std_longsprite;
+			}
+
+		// Back
+		switch(FEAT_TRAINS, PARENT, ss_bck_n700_series_clogof_mask, cargo_subtype) {3:ss_bck_n700_series_clogof_rbw;}
+		
+		switch(FEAT_TRAINS, SELF, sw_n700_series_clogof_bck_stack, [ 
+			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+				0: ss_bck_n700_series_clogof_irl;       	// Base for Front
+				1: ss_bck_n700_series_clogof_mask;		    // Mask for Front
+			}
+
+		switch(FEAT_TRAINS, SELF, sw_n700_series_clogof_bck_longsprite, PrevPartSame() ) { 1: sw_n700_series_clogof_bck_stack; dummy_sprites; }
+
+		switch (FEAT_TRAINS, SELF, sw_n700_series_clogof, position_in_consist % 3 ) {				
+            0: sw_n700_series_clogof_frt_longsprite;
+            1: sw_n700_series_clogof_mid_stack;
+            2: sw_n700_series_clogof_bck_longsprite;
+        }
+
+	// Backwards
+
+		// Front
+		switch(FEAT_TRAINS, PARENT, ss_frt_n700_series_clogob_mask, cargo_subtype) {3:ss_frt_n700_series_clogob_rbw;}
+		
+		switch(FEAT_TRAINS, SELF, sw_n700_series_clogob_frt_stack, [ 
+			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+				0: ss_frt_n700_series_clogob_irl;       	// Base for Front
+				1: ss_frt_n700_series_clogob_mask;		    // Mask for Front
+			}
+
+		switch(FEAT_TRAINS, SELF, sw_n700_series_clogob_frt_longsprite, PrevPartSame() ) { 1: sw_n700_series_clogob_frt_stack;dummy_sprites; }
+
+		// Mid
+		switch(FEAT_TRAINS, PARENT, ss_mid_n700_series_clogob_mask, cargo_subtype) {3:ss_mid_n700_series_clogob_rbw;}
+		switch(FEAT_TRAINS, PARENT, ss_std_n700_series_clogob_mask, cargo_subtype) {3:ss_std_n700_series_clogob_rbw;}
+		
+		switch(FEAT_TRAINS, SELF, sw_n700_series_clogob_mid_longsprite, HideLongSprite() ) { 0: ss_std_n700_series_clogob_irl; }
+
+		switch(FEAT_TRAINS, SELF, sw_n700_series_clogob_std_longsprite, HideLongSprite() ) { 0: ss_std_n700_series_clogob_mask; }
+
+		switch(FEAT_TRAINS, SELF, sw_n700_series_clogob_mid_stack, [ 
+			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+				0: ss_mid_n700_series_clogob_irl;       	// Base for Mid
+				1: ss_mid_n700_series_clogob_mask;		    // Mask for Mid
+				2: sw_n700_series_clogob_mid_longsprite;	// Long Sprite for Corners and Hills
+				3: sw_n700_series_clogob_std_longsprite;
+			}
+
+		// Back
+		switch(FEAT_TRAINS, PARENT, ss_bck_n700_series_clogob_mask, cargo_subtype) {3:ss_bck_n700_series_clogob_rbw;}
+		
+		switch(FEAT_TRAINS, SELF, sw_n700_series_clogob_bck_stack, [ 
+			STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
+				0: ss_bck_n700_series_clogob_irl;       	// Base for Front
+				1: ss_bck_n700_series_clogob_mask;			// Mask for Front
+			}
+
+		switch(FEAT_TRAINS, SELF, sw_n700_series_clogob_bck_longsprite, NextPartSame() ) { 1: sw_n700_series_clogob_bck_stack; dummy_sprites; }
+
+		switch (FEAT_TRAINS, SELF, sw_n700_series_clogob, position_in_consist_from_end % 3 ) {				
+            0: sw_n700_series_clogob_frt_longsprite;
+            1: sw_n700_series_clogob_mid_stack;
+            2: sw_n700_series_clogob_bck_longsprite;
+        }
+		
 		
 # 1 "src/trains/n700_series/n700_series.pnml" 2
 # 1 "src/trains/n700_series/n700a_series_cab01.pnml" 1
@@ -4298,10 +4624,57 @@ item(FEAT_TRAINS, series_922) {
         }
 
 /* Forwards or Backwards */
-    switch (FEAT_TRAINS, PARENT, sw_n700_series_midcars, vehicle_is_reversed) {				
+    switch (FEAT_TRAINS, PARENT, sw_n700_series_midcars_revcheck, vehicle_is_reversed) {				
             0:  sw_n700_series_forwards;
             sw_n700_series_backwards;				
         }
+
+/* Rainbow Special Case */
+    
+    // Forwards
+        
+        switch (FEAT_TRAINS, SELF, sw_n700_series_rainbow_forwards_antepenultimates, CarNumber()  == 3 ) {				
+                1:  sw_n700_series_clogof;
+                sw_n700_series_coachf;				
+            }
+
+        switch (FEAT_TRAINS, SELF, sw_n700_series_rainbow_forwards_penultimates, CarNumber()  == 2 ) {				
+                1:  sw_n700_series_plogof;
+                sw_n700_series_pantof;				
+            }
+        
+        switch (FEAT_TRAINS, SELF, sw_n700_series_rainbow_forwards, CarNumberFromEnd() == 2 || CarNumber()  == 2 ) {				
+                1:  sw_n700_series_rainbow_forwards_penultimates;
+                sw_n700_series_rainbow_forwards_antepenultimates;
+            }
+
+    // Backwards
+
+        switch (FEAT_TRAINS, SELF, sw_n700_series_rainbow_backwards_antepenultimates, CarNumberFromEnd()  == 3 ) {				
+                1:  sw_n700_series_clogob;
+                sw_n700_series_coachb;				
+            }
+
+        switch (FEAT_TRAINS, SELF, sw_n700_series_rainbow_backwards_penultimates, CarNumberFromEnd()  == 2 ) {				
+                1:  sw_n700_series_plogob;
+                sw_n700_series_pantob;				
+            }
+
+        switch (FEAT_TRAINS, SELF, sw_n700_series_rainbow_backwards, CarNumberFromEnd() == 2 || CarNumber()  == 2 ) {				
+                1:  sw_n700_series_rainbow_backwards_penultimates;
+                sw_n700_series_rainbow_backwards_antepenultimates;
+            }
+        switch (FEAT_TRAINS, PARENT, sw_n700_series_midcars_rainbow_revcheck, vehicle_is_reversed) {				
+                0:  sw_n700_series_rainbow_forwards;
+                sw_n700_series_rainbow_backwards;				
+            }
+
+
+    switch (FEAT_TRAINS, PARENT, sw_n700_series_midcars, cargo_subtype ) {				
+        3:  sw_n700_series_midcars_rainbow_revcheck;	
+        default:sw_n700_series_midcars_revcheck;
+    }
+
 
 /* Kamome Special Case */
 
@@ -4329,7 +4702,6 @@ item(FEAT_TRAINS, series_922) {
 
 
     // Backwards
-
         switch (FEAT_TRAINS, SELF, sw_n700s_series_kamome_backwards_pick_panto, CarNumberFromEnd() == 2 ) {				
                 1:  sw_n700s_series_pantob;	
                 sw_n700s_series_pantof;		
@@ -4355,10 +4727,13 @@ item(FEAT_TRAINS, series_922) {
                 0:  sw_n700s_series_kamome_forwards;
                 sw_n700s_series_kamome_backwards;				
             }
-                
+
+
+/* Midcar selection */
+
         switch (FEAT_TRAINS, PARENT, sw_n700s_series_midcars, cargo_subtype ) {				
                 0..1:  sw_n700_series_midcars;	
-                sw_n700s_series_kamome_midcars;	
+                2:  sw_n700s_series_kamome_midcars;
             }
 
 /* Cab selection */
