@@ -512,6 +512,14 @@ item(FEAT_TRAINS, mu_car_full, 1112) {}
 item(FEAT_TRAINS, mu_car_mail, 1113) {}
 
 item(FEAT_TRAINS, series_0, 123) {}
+item(FEAT_TRAINS, series_0_H12, 130) {}
+item(FEAT_TRAINS, series_0_H16, 131) {}
+item(FEAT_TRAINS, series_0_K16, 132) {}
+item(FEAT_TRAINS, series_0_NH, 133) {}
+item(FEAT_TRAINS, series_0_YK, 134) {}
+item(FEAT_TRAINS, series_0_SK, 135) {}
+item(FEAT_TRAINS, series_0_R6, 136) {}
+item(FEAT_TRAINS, series_0_Q4, 137) {}
 item(FEAT_TRAINS, series_922, 922) {}
 item(FEAT_TRAINS, series_100, 124) {}
 // 200 Series Shinkansen
@@ -560,6 +568,14 @@ sort(FEAT_TRAINS, [
 /* Not JR East */
 125,    // L0 Series Shinkansen
 123,    // 0 Series Shinkansen
+130,    // 0 Series H Formation (12-car)
+131,    // 0 Series H Formation (16-car)
+132,    // 0 Series K Formation (16-car)
+133,    // 0 Series NH Formation (16-car)
+134,    // 0 Series YK Formation (16-car)
+135,    // 0 Series SK Formation (12-car)
+136,    // 0 Series R Formation (6-car)
+137,    // 0 Series Q Formation (4-car)
 922,    // 922 Series Shinkansen
 124,    // 100 Series Shinkansen
 300,    // 300 Series Shinkansen
@@ -2107,6 +2123,843 @@ item(FEAT_TRAINS, series_0) {
 		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
         //running_cost_factor:            sw_0_series_running_costs;
       }
+}
+# 1 "src/trains/0_series/0_series.pnml" 2
+# 1 "src/trains/0_series/0_series_H12_formations.pnml" 1
+
+/* H Formation 12-car: cab01 + (panto,coach)×5 + cab02 = 12 cars, 36 positions */
+
+switch (FEAT_TRAINS, SELF, sw_0_series_H12_forwards, position_in_consist) {
+	0..2:	sw_0_series_cab01f;
+	3..5:	sw_0_series_pantof;
+	6..8:	sw_0_series_coachf;
+	9..11:	sw_0_series_pantof;
+	12..14:	sw_0_series_coachf;
+	15..17:	sw_0_series_pantof;
+	18..20:	sw_0_series_coachf;
+	21..23:	sw_0_series_pantof;
+	24..26:	sw_0_series_coachf;
+	27..29:	sw_0_series_pantof;
+	30..32:	sw_0_series_coachf;
+	33..35:	sw_0_series_cab02f;
+}
+
+switch (FEAT_TRAINS, SELF, sw_0_series_H12_backwards, position_in_consist) {
+	0..2:	sw_0_series_cab01b;
+	3..5:	sw_0_series_coachb;
+	6..8:	sw_0_series_pantob;
+	9..11:	sw_0_series_coachb;
+	12..14:	sw_0_series_pantob;
+	15..17:	sw_0_series_coachb;
+	18..20:	sw_0_series_pantob;
+	21..23:	sw_0_series_coachb;
+	24..26:	sw_0_series_pantob;
+	27..29:	sw_0_series_coachb;
+	30..32:	sw_0_series_pantob;
+	33..35:	sw_0_series_cab02b;
+}
+
+switch (FEAT_TRAINS, PARENT, sw_0_series_H12_graphics, vehicle_is_reversed) {
+	0:	sw_0_series_H12_forwards;
+	sw_0_series_H12_backwards;
+}
+# 1 "src/trains/0_series/0_series.pnml" 2
+# 1 "src/trains/0_series/0_series_H12_item.pnml" 1
+
+
+switch (FEAT_TRAINS, SELF, sw_0_series_H12_articulated_part, extra_callback_info1) {
+	1 .. 35: return series_0_H12;
+	return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+
+item(FEAT_TRAINS, series_0_H12) {
+	property {
+		/* Menu */
+		name:                           string(STR_NAME_0_SERIES_H12);
+		sprite_id:                      SPRITE_ID_NEW_TRAIN;
+		misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK);
+		running_cost_base:              RUNNING_COST_ELECTRIC;
+		engine_class:                   ENGINE_CLASS_ELECTRIC;
+		variant_group:                  123;
+		extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW);
+		/* Availability */
+		climates_available:             ALL_CLIMATES;
+		introduction_date:              date(1964,10,01);
+		model_life:                     6;
+		vehicle_life:                   30;
+		track_type:                     SHINKANSEN;
+		/* Cargo */
+		reliability_decay:              5;
+		refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+		refit_cost:                     0;
+		default_cargo_type:             PASS;
+		ai_special_flag:                AI_FLAG_PASSENGER;
+		cargo_capacity:                 1;
+		loading_speed:                  50;
+		cargo_age_period:               278;
+		/* Stats */
+		speed:                          211 km/h;
+		power:                          3968 kW;
+		weight:                         244 ton;
+		tractive_effort_coefficient:    0.3;
+		air_drag_coefficient:           0;
+	}
+	graphics {
+		/* Menu */
+		additional_text:                string(STR_DESC_0_SERIES_H12);
+		cargo_subtype_text:             sw_0_series_year_dep_subtype_text;
+		can_attach_wagon:               string(CANT_COUPLE_CONSIST);
+		purchase_weight:                244;
+		purchase_power:                 4 * 248 * 4;
+		/* Graphics */
+		default:                        sw_0_series_H12_graphics;
+		purchase:                       sw_0_series_purchase;
+		articulated_part:               sw_0_series_H12_articulated_part;
+		visual_effect_and_powered:      sw_visual_effect_and_powered;
+		/* Stats */
+		length:                         sw_length_1_8_1;
+		speed:                          sw_0_series_speed;
+		weight:                         NumberCarsInConsist() * 61;
+		power:                          NumberCarsInConsist() * 248 * 4;
+		cargo_capacity:                 33 * CapacityFactor();
+		loading_speed:                  33 * CapacityFactor() / param_loading_2D;
+		cargo_age_period:               param_decay_express;
+		cost_factor:                    170;
+		running_cost_factor:            1798 * RunningCostFactor() + 200;
+		purchase_running_cost_factor:   1998;
+	}
+}
+# 1 "src/trains/0_series/0_series.pnml" 2
+# 1 "src/trains/0_series/0_series_H16_formations.pnml" 1
+
+/* H Formation 16-car: cab01 + (panto,coach)×7 + cab02 = 16 cars, 48 positions */
+
+switch (FEAT_TRAINS, SELF, sw_0_series_H16_forwards, position_in_consist) {
+	0..2:	sw_0_series_cab01f;
+	3..5:	sw_0_series_pantof;
+	6..8:	sw_0_series_coachf;
+	9..11:	sw_0_series_pantof;
+	12..14:	sw_0_series_coachf;
+	15..17:	sw_0_series_pantof;
+	18..20:	sw_0_series_coachf;
+	21..23:	sw_0_series_pantof;
+	24..26:	sw_0_series_coachf;
+	27..29:	sw_0_series_pantof;
+	30..32:	sw_0_series_coachf;
+	33..35:	sw_0_series_pantof;
+	36..38:	sw_0_series_coachf;
+	39..41:	sw_0_series_pantof;
+	42..44:	sw_0_series_coachf;
+	45..47:	sw_0_series_cab02f;
+}
+
+switch (FEAT_TRAINS, SELF, sw_0_series_H16_backwards, position_in_consist) {
+	0..2:	sw_0_series_cab02b;
+	3..5:	sw_0_series_coachb;
+	6..8:	sw_0_series_pantob;
+	9..11:	sw_0_series_coachb;
+	12..14:	sw_0_series_pantob;
+	15..17:	sw_0_series_coachb;
+	18..20:	sw_0_series_pantob;
+	21..23:	sw_0_series_coachb;
+	24..26:	sw_0_series_pantob;
+	27..29:	sw_0_series_coachb;
+	30..32:	sw_0_series_pantob;
+	33..35:	sw_0_series_coachb;
+	36..38:	sw_0_series_pantob;
+	39..41:	sw_0_series_coachb;
+	42..44:	sw_0_series_pantob;
+	45..47:	sw_0_series_cab01b;
+}
+
+switch (FEAT_TRAINS, PARENT, sw_0_series_H16_graphics, vehicle_is_reversed) {
+	0:	sw_0_series_H16_forwards;
+	sw_0_series_H16_backwards;
+}
+# 1 "src/trains/0_series/0_series.pnml" 2
+# 1 "src/trains/0_series/0_series_H16_item.pnml" 1
+
+switch (FEAT_TRAINS, SELF, sw_0_series_H16_articulated_part, extra_callback_info1) {
+	1 .. 47: return series_0_H16;
+	return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+
+item(FEAT_TRAINS, series_0_H16) {
+	property {
+		/* Menu */
+		name:                           string(STR_NAME_0_SERIES_H16);
+		sprite_id:                      SPRITE_ID_NEW_TRAIN;
+		misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK);
+		running_cost_base:              RUNNING_COST_ELECTRIC;
+		engine_class:                   ENGINE_CLASS_ELECTRIC;
+		variant_group:                  123;
+		extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW);
+		/* Availability */
+		climates_available:             ALL_CLIMATES;
+		introduction_date:              date(1970,01,01);
+		model_life:                     10;
+		vehicle_life:                   30;
+		track_type:                     SHINKANSEN;
+		/* Cargo */
+		reliability_decay:              5;
+		refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+		refit_cost:                     0;
+		default_cargo_type:             PASS;
+		ai_special_flag:                AI_FLAG_PASSENGER;
+		cargo_capacity:                 1;
+		loading_speed:                  50;
+		cargo_age_period:               278;
+		/* Stats */
+		speed:                          211 km/h;
+		power:                          3968 kW;
+		weight:                         244 ton;
+		tractive_effort_coefficient:    0.3;
+		air_drag_coefficient:           0;
+	}
+	graphics {
+		/* Menu */
+		additional_text:                string(STR_DESC_0_SERIES_H16);
+		cargo_subtype_text:             sw_0_series_year_dep_subtype_text;
+		can_attach_wagon:               string(CANT_COUPLE_CONSIST);
+		purchase_weight:                244;
+		purchase_power:                 4 * 248 * 4;
+		/* Graphics */
+		default:                        sw_0_series_H16_graphics;
+		purchase:                       sw_0_series_purchase;
+		articulated_part:               sw_0_series_H16_articulated_part;
+		visual_effect_and_powered:      sw_visual_effect_and_powered;
+		/* Stats */
+		length:                         sw_length_1_8_1;
+		speed:                          sw_0_series_speed;
+		weight:                         NumberCarsInConsist() * 61;
+		power:                          NumberCarsInConsist() * 248 * 4;
+		cargo_capacity:                 28 * CapacityFactor();
+		loading_speed:                  28 * CapacityFactor() / param_loading_2D;
+		cargo_age_period:               param_decay_express;
+		cost_factor:                    170;
+		running_cost_factor:            2299 * RunningCostFactor() + 270;
+		purchase_running_cost_factor:   2569;
+	}
+}
+# 1 "src/trains/0_series/0_series.pnml" 2
+# 1 "src/trains/0_series/0_series_K16_formations.pnml" 1
+
+/* K Formation 16-car: cab01 + (panto,coach)×7 + cab02 = 16 cars, 48 positions */
+
+switch (FEAT_TRAINS, SELF, sw_0_series_K16_forwards, position_in_consist) {
+	0..2:	sw_0_series_cab01f;
+	3..5:	sw_0_series_pantof;
+	6..8:	sw_0_series_coachf;
+	9..11:	sw_0_series_pantof;
+	12..14:	sw_0_series_coachf;
+	15..17:	sw_0_series_pantof;
+	18..20:	sw_0_series_coachf;
+	21..23:	sw_0_series_pantof;
+	24..26:	sw_0_series_coachf;
+	27..29:	sw_0_series_pantof;
+	30..32:	sw_0_series_coachf;
+	33..35:	sw_0_series_pantof;
+	36..38:	sw_0_series_coachf;
+	39..41:	sw_0_series_pantof;
+	42..44:	sw_0_series_coachf;
+	45..47:	sw_0_series_cab02f;
+}
+
+switch (FEAT_TRAINS, SELF, sw_0_series_K16_backwards, position_in_consist) {
+	0..2:	sw_0_series_cab02b;
+	3..5:	sw_0_series_coachb;
+	6..8:	sw_0_series_pantob;
+	9..11:	sw_0_series_coachb;
+	12..14:	sw_0_series_pantob;
+	15..17:	sw_0_series_coachb;
+	18..20:	sw_0_series_pantob;
+	21..23:	sw_0_series_coachb;
+	24..26:	sw_0_series_pantob;
+	27..29:	sw_0_series_coachb;
+	30..32:	sw_0_series_pantob;
+	33..35:	sw_0_series_coachb;
+	36..38:	sw_0_series_pantob;
+	39..41:	sw_0_series_coachb;
+	42..44:	sw_0_series_pantob;
+	45..47:	sw_0_series_cab01b;
+}
+
+switch (FEAT_TRAINS, PARENT, sw_0_series_K16_graphics, vehicle_is_reversed) {
+	0:	sw_0_series_K16_forwards;
+	sw_0_series_K16_backwards;
+}
+# 1 "src/trains/0_series/0_series.pnml" 2
+# 1 "src/trains/0_series/0_series_K16_item.pnml" 1
+
+switch (FEAT_TRAINS, SELF, sw_0_series_K16_articulated_part, extra_callback_info1) {
+	1 .. 47: return series_0_K16;
+	return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+
+item(FEAT_TRAINS, series_0_K16) {
+	property {
+		/* Menu */
+		name:                           string(STR_NAME_0_SERIES_K16);
+		sprite_id:                      SPRITE_ID_NEW_TRAIN;
+		misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK);
+		running_cost_base:              RUNNING_COST_ELECTRIC;
+		engine_class:                   ENGINE_CLASS_ELECTRIC;
+		variant_group:                  123;
+		extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW);
+		/* Availability */
+		climates_available:             ALL_CLIMATES;
+		introduction_date:              date(1972,01,01);
+		model_life:                     10;
+		vehicle_life:                   30;
+		track_type:                     SHINKANSEN;
+		/* Cargo */
+		reliability_decay:              5;
+		refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+		refit_cost:                     0;
+		default_cargo_type:             PASS;
+		ai_special_flag:                AI_FLAG_PASSENGER;
+		cargo_capacity:                 1;
+		loading_speed:                  50;
+		cargo_age_period:               278;
+		/* Stats */
+		speed:                          211 km/h;
+		power:                          3968 kW;
+		weight:                         244 ton;
+		tractive_effort_coefficient:    0.3;
+		air_drag_coefficient:           0;
+	}
+	graphics {
+		/* Menu */
+		additional_text:                string(STR_DESC_0_SERIES_K16);
+		cargo_subtype_text:             sw_0_series_year_dep_subtype_text;
+		can_attach_wagon:               string(CANT_COUPLE_CONSIST);
+		purchase_weight:                244;
+		purchase_power:                 4 * 248 * 4;
+		/* Graphics */
+		default:                        sw_0_series_K16_graphics;
+		purchase:                       sw_0_series_purchase;
+		articulated_part:               sw_0_series_K16_articulated_part;
+		visual_effect_and_powered:      sw_visual_effect_and_powered;
+		/* Stats */
+		length:                         sw_length_1_8_1;
+		speed:                          sw_0_series_speed;
+		weight:                         NumberCarsInConsist() * 61;
+		power:                          NumberCarsInConsist() * 248 * 4;
+		cargo_capacity:                 27 * CapacityFactor();
+		loading_speed:                  27 * CapacityFactor() / param_loading_2D;
+		cargo_age_period:               param_decay_express;
+		cost_factor:                    170;
+		running_cost_factor:            2299 * RunningCostFactor() + 270;
+		purchase_running_cost_factor:   2569;
+	}
+}
+# 1 "src/trains/0_series/0_series.pnml" 2
+# 1 "src/trains/0_series/0_series_NH_formations.pnml" 1
+
+/* NH Formation 16-car (-1000 subseries): cab01 + (panto,coach)×7 + cab02 = 16 cars, 48 positions */
+
+switch (FEAT_TRAINS, SELF, sw_0_series_NH_forwards, position_in_consist) {
+	0..2:	sw_0_series_cab01f;
+	3..5:	sw_0_series_pantof;
+	6..8:	sw_0_series_coachf;
+	9..11:	sw_0_series_pantof;
+	12..14:	sw_0_series_coachf;
+	15..17:	sw_0_series_pantof;
+	18..20:	sw_0_series_coachf;
+	21..23:	sw_0_series_pantof;
+	24..26:	sw_0_series_coachf;
+	27..29:	sw_0_series_pantof;
+	30..32:	sw_0_series_coachf;
+	33..35:	sw_0_series_pantof;
+	36..38:	sw_0_series_coachf;
+	39..41:	sw_0_series_pantof;
+	42..44:	sw_0_series_coachf;
+	45..47:	sw_0_series_cab02f;
+}
+
+switch (FEAT_TRAINS, SELF, sw_0_series_NH_backwards, position_in_consist) {
+	0..2:	sw_0_series_cab02b;
+	3..5:	sw_0_series_coachb;
+	6..8:	sw_0_series_pantob;
+	9..11:	sw_0_series_coachb;
+	12..14:	sw_0_series_pantob;
+	15..17:	sw_0_series_coachb;
+	18..20:	sw_0_series_pantob;
+	21..23:	sw_0_series_coachb;
+	24..26:	sw_0_series_pantob;
+	27..29:	sw_0_series_coachb;
+	30..32:	sw_0_series_pantob;
+	33..35:	sw_0_series_coachb;
+	36..38:	sw_0_series_pantob;
+	39..41:	sw_0_series_coachb;
+	42..44:	sw_0_series_pantob;
+	45..47:	sw_0_series_cab01b;
+}
+
+switch (FEAT_TRAINS, PARENT, sw_0_series_NH_graphics, vehicle_is_reversed) {
+	0:	sw_0_series_NH_forwards;
+	sw_0_series_NH_backwards;
+}
+# 1 "src/trains/0_series/0_series.pnml" 2
+# 1 "src/trains/0_series/0_series_NH_item.pnml" 1
+
+switch (FEAT_TRAINS, SELF, sw_0_series_NH_articulated_part, extra_callback_info1) {
+	1 .. 47: return series_0_NH;
+	return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+
+item(FEAT_TRAINS, series_0_NH) {
+	property {
+		/* Menu */
+		name:                           string(STR_NAME_0_SERIES_NH);
+		sprite_id:                      SPRITE_ID_NEW_TRAIN;
+		misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK);
+		running_cost_base:              RUNNING_COST_ELECTRIC;
+		engine_class:                   ENGINE_CLASS_ELECTRIC;
+		variant_group:                  123;
+		extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW);
+		/* Availability */
+		climates_available:             ALL_CLIMATES;
+		introduction_date:              date(1977,01,01);
+		model_life:                     10;
+		vehicle_life:                   30;
+		track_type:                     SHINKANSEN;
+		/* Cargo */
+		reliability_decay:              5;
+		refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+		refit_cost:                     0;
+		default_cargo_type:             PASS;
+		ai_special_flag:                AI_FLAG_PASSENGER;
+		cargo_capacity:                 1;
+		loading_speed:                  50;
+		cargo_age_period:               278;
+		/* Stats */
+		speed:                          211 km/h;
+		power:                          3968 kW;
+		weight:                         244 ton;
+		tractive_effort_coefficient:    0.3;
+		air_drag_coefficient:           0;
+	}
+	graphics {
+		/* Menu */
+		additional_text:                string(STR_DESC_0_SERIES_NH);
+		cargo_subtype_text:             sw_0_series_year_dep_subtype_text;
+		can_attach_wagon:               string(CANT_COUPLE_CONSIST);
+		purchase_weight:                244;
+		purchase_power:                 4 * 248 * 4;
+		/* Graphics */
+		default:                        sw_0_series_NH_graphics;
+		purchase:                       sw_0_series_purchase;
+		articulated_part:               sw_0_series_NH_articulated_part;
+		visual_effect_and_powered:      sw_visual_effect_and_powered;
+		/* Stats */
+		length:                         sw_length_1_8_1;
+		speed:                          sw_0_series_speed;
+		weight:                         NumberCarsInConsist() * 61;
+		power:                          NumberCarsInConsist() * 248 * 4;
+		cargo_capacity:                 28 * CapacityFactor();
+		loading_speed:                  28 * CapacityFactor() / param_loading_2D;
+		cargo_age_period:               param_decay_express;
+		cost_factor:                    170;
+		running_cost_factor:            2299 * RunningCostFactor() + 270;
+		purchase_running_cost_factor:   2569;
+	}
+}
+# 1 "src/trains/0_series/0_series.pnml" 2
+# 1 "src/trains/0_series/0_series_YK_formations.pnml" 1
+
+/* YK Formation 16-car (JR Central; 2+2 seating): cab01 + (panto,coach)×7 + cab02 = 16 cars, 48 positions */
+
+switch (FEAT_TRAINS, SELF, sw_0_series_YK_forwards, position_in_consist) {
+	0..2:	sw_0_series_cab01f;
+	3..5:	sw_0_series_pantof;
+	6..8:	sw_0_series_coachf;
+	9..11:	sw_0_series_pantof;
+	12..14:	sw_0_series_coachf;
+	15..17:	sw_0_series_pantof;
+	18..20:	sw_0_series_coachf;
+	21..23:	sw_0_series_pantof;
+	24..26:	sw_0_series_coachf;
+	27..29:	sw_0_series_pantof;
+	30..32:	sw_0_series_coachf;
+	33..35:	sw_0_series_pantof;
+	36..38:	sw_0_series_coachf;
+	39..41:	sw_0_series_pantof;
+	42..44:	sw_0_series_coachf;
+	45..47:	sw_0_series_cab02f;
+}
+
+switch (FEAT_TRAINS, SELF, sw_0_series_YK_backwards, position_in_consist) {
+	0..2:	sw_0_series_cab02b;
+	3..5:	sw_0_series_coachb;
+	6..8:	sw_0_series_pantob;
+	9..11:	sw_0_series_coachb;
+	12..14:	sw_0_series_pantob;
+	15..17:	sw_0_series_coachb;
+	18..20:	sw_0_series_pantob;
+	21..23:	sw_0_series_coachb;
+	24..26:	sw_0_series_pantob;
+	27..29:	sw_0_series_coachb;
+	30..32:	sw_0_series_pantob;
+	33..35:	sw_0_series_coachb;
+	36..38:	sw_0_series_pantob;
+	39..41:	sw_0_series_coachb;
+	42..44:	sw_0_series_pantob;
+	45..47:	sw_0_series_cab01b;
+}
+
+switch (FEAT_TRAINS, PARENT, sw_0_series_YK_graphics, vehicle_is_reversed) {
+	0:	sw_0_series_YK_forwards;
+	sw_0_series_YK_backwards;
+}
+# 1 "src/trains/0_series/0_series.pnml" 2
+# 1 "src/trains/0_series/0_series_YK_item.pnml" 1
+
+switch (FEAT_TRAINS, SELF, sw_0_series_YK_articulated_part, extra_callback_info1) {
+	1 .. 47: return series_0_YK;
+	return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+
+item(FEAT_TRAINS, series_0_YK) {
+	property {
+		/* Menu */
+		name:                           string(STR_NAME_0_SERIES_YK);
+		sprite_id:                      SPRITE_ID_NEW_TRAIN;
+		misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK);
+		running_cost_base:              RUNNING_COST_ELECTRIC;
+		engine_class:                   ENGINE_CLASS_ELECTRIC;
+		variant_group:                  123;
+		extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW);
+		/* Availability */
+		climates_available:             ALL_CLIMATES;
+		introduction_date:              date(1987,01,01);
+		model_life:                     10;
+		vehicle_life:                   30;
+		track_type:                     SHINKANSEN;
+		/* Cargo */
+		reliability_decay:              5;
+		refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+		refit_cost:                     0;
+		default_cargo_type:             PASS;
+		ai_special_flag:                AI_FLAG_PASSENGER;
+		cargo_capacity:                 1;
+		loading_speed:                  50;
+		cargo_age_period:               278;
+		/* Stats */
+		speed:                          211 km/h;
+		power:                          3968 kW;
+		weight:                         244 ton;
+		tractive_effort_coefficient:    0.3;
+		air_drag_coefficient:           0;
+	}
+	graphics {
+		/* Menu */
+		additional_text:                string(STR_DESC_0_SERIES_YK);
+		cargo_subtype_text:             sw_0_series_year_dep_subtype_text;
+		can_attach_wagon:               string(CANT_COUPLE_CONSIST);
+		purchase_weight:                244;
+		purchase_power:                 4 * 248 * 4;
+		/* Graphics */
+		default:                        sw_0_series_YK_graphics;
+		purchase:                       sw_0_series_purchase;
+		articulated_part:               sw_0_series_YK_articulated_part;
+		visual_effect_and_powered:      sw_visual_effect_and_powered;
+		/* Stats */
+		length:                         sw_length_1_8_1;
+		speed:                          sw_0_series_speed;
+		weight:                         NumberCarsInConsist() * 61;
+		power:                          NumberCarsInConsist() * 248 * 4;
+		cargo_capacity:                 25 * CapacityFactor();
+		loading_speed:                  25 * CapacityFactor() / param_loading_2D;
+		cargo_age_period:               param_decay_express;
+		cost_factor:                    170;
+		running_cost_factor:            2299 * RunningCostFactor() + 270;
+		purchase_running_cost_factor:   2569;
+	}
+}
+# 1 "src/trains/0_series/0_series.pnml" 2
+# 1 "src/trains/0_series/0_series_SK_formations.pnml" 1
+
+/* SK Formation 12-car (JR West San'yo; all 2+2 seating): cab01 + (panto,coach)×5 + cab02 = 12 cars, 36 positions */
+
+switch (FEAT_TRAINS, SELF, sw_0_series_SK_forwards, position_in_consist) {
+	0..2:	sw_0_series_cab01f;
+	3..5:	sw_0_series_pantof;
+	6..8:	sw_0_series_coachf;
+	9..11:	sw_0_series_pantof;
+	12..14:	sw_0_series_coachf;
+	15..17:	sw_0_series_pantof;
+	18..20:	sw_0_series_coachf;
+	21..23:	sw_0_series_pantof;
+	24..26:	sw_0_series_coachf;
+	27..29:	sw_0_series_pantof;
+	30..32:	sw_0_series_coachf;
+	33..35:	sw_0_series_cab02f;
+}
+
+switch (FEAT_TRAINS, SELF, sw_0_series_SK_backwards, position_in_consist) {
+	0..2:	sw_0_series_cab02b;
+	3..5:	sw_0_series_coachb;
+	6..8:	sw_0_series_pantob;
+	9..11:	sw_0_series_coachb;
+	12..14:	sw_0_series_pantob;
+	15..17:	sw_0_series_coachb;
+	18..20:	sw_0_series_pantob;
+	21..23:	sw_0_series_coachb;
+	24..26:	sw_0_series_pantob;
+	27..29:	sw_0_series_coachb;
+	30..32:	sw_0_series_pantob;
+	33..35:	sw_0_series_cab01b;
+}
+
+switch (FEAT_TRAINS, PARENT, sw_0_series_SK_graphics, vehicle_is_reversed) {
+	0:	sw_0_series_SK_forwards;
+	sw_0_series_SK_backwards;
+}
+# 1 "src/trains/0_series/0_series.pnml" 2
+# 1 "src/trains/0_series/0_series_SK_item.pnml" 1
+
+switch (FEAT_TRAINS, SELF, sw_0_series_SK_articulated_part, extra_callback_info1) {
+	1 .. 35: return series_0_SK;
+	return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+
+item(FEAT_TRAINS, series_0_SK) {
+	property {
+		/* Menu */
+		name:                           string(STR_NAME_0_SERIES_SK);
+		sprite_id:                      SPRITE_ID_NEW_TRAIN;
+		misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK);
+		running_cost_base:              RUNNING_COST_ELECTRIC;
+		engine_class:                   ENGINE_CLASS_ELECTRIC;
+		variant_group:                  123;
+		extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW);
+		/* Availability */
+		climates_available:             ALL_CLIMATES;
+		introduction_date:              date(1987,01,01);
+		model_life:                     10;
+		vehicle_life:                   30;
+		track_type:                     SHINKANSEN;
+		/* Cargo */
+		reliability_decay:              5;
+		refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+		refit_cost:                     0;
+		default_cargo_type:             PASS;
+		ai_special_flag:                AI_FLAG_PASSENGER;
+		cargo_capacity:                 1;
+		loading_speed:                  50;
+		cargo_age_period:               278;
+		/* Stats */
+		speed:                          211 km/h;
+		power:                          3968 kW;
+		weight:                         244 ton;
+		tractive_effort_coefficient:    0.3;
+		air_drag_coefficient:           0;
+	}
+	graphics {
+		/* Menu */
+		additional_text:                string(STR_DESC_0_SERIES_SK);
+		cargo_subtype_text:             sw_0_series_year_dep_subtype_text;
+		can_attach_wagon:               string(CANT_COUPLE_CONSIST);
+		purchase_weight:                244;
+		purchase_power:                 4 * 248 * 4;
+		/* Graphics */
+		default:                        sw_0_series_SK_graphics;
+		purchase:                       sw_0_series_purchase;
+		articulated_part:               sw_0_series_SK_articulated_part;
+		visual_effect_and_powered:      sw_visual_effect_and_powered;
+		/* Stats */
+		length:                         sw_length_1_8_1;
+		speed:                          sw_0_series_speed;
+		weight:                         NumberCarsInConsist() * 61;
+		power:                          NumberCarsInConsist() * 248 * 4;
+		cargo_capacity:                 24 * CapacityFactor();
+		loading_speed:                  24 * CapacityFactor() / param_loading_2D;
+		cargo_age_period:               param_decay_express;
+		cost_factor:                    170;
+		running_cost_factor:            1798 * RunningCostFactor() + 200;
+		purchase_running_cost_factor:   1998;
+	}
+}
+# 1 "src/trains/0_series/0_series.pnml" 2
+# 1 "src/trains/0_series/0_series_R6_formations.pnml" 1
+
+/* R Formation 6-car: cab01 + panto + coach + panto + coach + cab02 = 6 cars, 18 positions */
+
+switch (FEAT_TRAINS, SELF, sw_0_series_R6_forwards, position_in_consist) {
+	0..2:	sw_0_series_cab01f;
+	3..5:	sw_0_series_pantof;
+	6..8:	sw_0_series_coachf;
+	9..11:	sw_0_series_pantof;
+	12..14:	sw_0_series_coachf;
+	15..17:	sw_0_series_cab02f;
+}
+
+switch (FEAT_TRAINS, SELF, sw_0_series_R6_backwards, position_in_consist) {
+	0..2:	sw_0_series_cab02b;
+	3..5:	sw_0_series_coachb;
+	6..8:	sw_0_series_pantob;
+	9..11:	sw_0_series_coachb;
+	12..14:	sw_0_series_pantob;
+	15..17:	sw_0_series_cab01b;
+}
+
+switch (FEAT_TRAINS, PARENT, sw_0_series_R6_graphics, vehicle_is_reversed) {
+	0:	sw_0_series_R6_forwards;
+	sw_0_series_R6_backwards;
+}
+# 1 "src/trains/0_series/0_series.pnml" 2
+# 1 "src/trains/0_series/0_series_R6_item.pnml" 1
+
+switch (FEAT_TRAINS, SELF, sw_0_series_R6_articulated_part, extra_callback_info1) {
+	1 .. 17: return series_0_R6;
+	return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+
+item(FEAT_TRAINS, series_0_R6) {
+	property {
+		/* Menu */
+		name:                           string(STR_NAME_0_SERIES_R6);
+		sprite_id:                      SPRITE_ID_NEW_TRAIN;
+		misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK);
+		running_cost_base:              RUNNING_COST_ELECTRIC;
+		engine_class:                   ENGINE_CLASS_ELECTRIC;
+		variant_group:                  123;
+		extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW);
+		/* Availability */
+		climates_available:             ALL_CLIMATES;
+		introduction_date:              date(1985,06,01);
+		model_life:                     20;
+		vehicle_life:                   30;
+		track_type:                     SHINKANSEN;
+		/* Cargo */
+		reliability_decay:              5;
+		refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+		refit_cost:                     0;
+		default_cargo_type:             PASS;
+		ai_special_flag:                AI_FLAG_PASSENGER;
+		cargo_capacity:                 1;
+		loading_speed:                  50;
+		cargo_age_period:               278;
+		/* Stats */
+		speed:                          211 km/h;
+		power:                          3968 kW;
+		weight:                         244 ton;
+		tractive_effort_coefficient:    0.3;
+		air_drag_coefficient:           0;
+	}
+	graphics {
+		/* Menu */
+		additional_text:                string(STR_DESC_0_SERIES_R6);
+		cargo_subtype_text:             sw_0_series_year_dep_subtype_text;
+		can_attach_wagon:               string(CANT_COUPLE_CONSIST);
+		purchase_weight:                244;
+		purchase_power:                 4 * 248 * 4;
+		/* Graphics */
+		default:                        sw_0_series_R6_graphics;
+		purchase:                       sw_0_series_purchase;
+		articulated_part:               sw_0_series_R6_articulated_part;
+		visual_effect_and_powered:      sw_visual_effect_and_powered;
+		/* Stats */
+		length:                         sw_length_1_8_1;
+		speed:                          sw_0_series_speed;
+		weight:                         NumberCarsInConsist() * 61;
+		power:                          NumberCarsInConsist() * 248 * 4;
+		cargo_capacity:                 22 * CapacityFactor();
+		loading_speed:                  22 * CapacityFactor() / param_loading_2D;
+		cargo_age_period:               param_decay_express;
+		cost_factor:                    170;
+		running_cost_factor:            1051 * RunningCostFactor() + 90;
+		purchase_running_cost_factor:   1142;
+	}
+}
+# 1 "src/trains/0_series/0_series.pnml" 2
+# 1 "src/trains/0_series/0_series_Q4_formations.pnml" 1
+
+/* Q Formation 4-car (Hakata shuttle): cab01 + panto + coach + cab02 = 4 cars, 12 positions */
+
+switch (FEAT_TRAINS, SELF, sw_0_series_Q4_forwards, position_in_consist) {
+	0..2:	sw_0_series_cab01f;
+	3..5:	sw_0_series_pantof;
+	6..8:	sw_0_series_coachf;
+	9..11:	sw_0_series_cab02f;
+}
+
+switch (FEAT_TRAINS, SELF, sw_0_series_Q4_backwards, position_in_consist) {
+	0..2:	sw_0_series_cab02b;
+	3..5:	sw_0_series_coachb;
+	6..8:	sw_0_series_pantob;
+	9..11:	sw_0_series_cab01b;
+}
+
+switch (FEAT_TRAINS, PARENT, sw_0_series_Q4_graphics, vehicle_is_reversed) {
+	0:	sw_0_series_Q4_forwards;
+	sw_0_series_Q4_backwards;
+}
+# 1 "src/trains/0_series/0_series.pnml" 2
+# 1 "src/trains/0_series/0_series_Q4_item.pnml" 1
+
+switch (FEAT_TRAINS, SELF, sw_0_series_Q4_articulated_part, extra_callback_info1) {
+	1 .. 11: return series_0_Q4;
+	return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+
+item(FEAT_TRAINS, series_0_Q4) {
+	property {
+		/* Menu */
+		name:                           string(STR_NAME_0_SERIES_Q4);
+		sprite_id:                      SPRITE_ID_NEW_TRAIN;
+		misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK);
+		running_cost_base:              RUNNING_COST_ELECTRIC;
+		engine_class:                   ENGINE_CLASS_ELECTRIC;
+		variant_group:                  123;
+		extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW);
+		/* Availability */
+		climates_available:             ALL_CLIMATES;
+		introduction_date:              date(1997,03,01);
+		model_life:                     5;
+		vehicle_life:                   30;
+		track_type:                     SHINKANSEN;
+		/* Cargo */
+		reliability_decay:              5;
+		refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+		refit_cost:                     0;
+		default_cargo_type:             PASS;
+		ai_special_flag:                AI_FLAG_PASSENGER;
+		cargo_capacity:                 1;
+		loading_speed:                  50;
+		cargo_age_period:               278;
+		/* Stats */
+		speed:                          211 km/h;
+		power:                          3968 kW;
+		weight:                         244 ton;
+		tractive_effort_coefficient:    0.3;
+		air_drag_coefficient:           0;
+	}
+	graphics {
+		/* Menu */
+		additional_text:                string(STR_DESC_0_SERIES_Q4);
+		cargo_subtype_text:             sw_0_series_year_dep_subtype_text;
+		can_attach_wagon:               string(CANT_COUPLE_CONSIST);
+		purchase_weight:                244;
+		purchase_power:                 4 * 248 * 4;
+		/* Graphics */
+		default:                        sw_0_series_Q4_graphics;
+		purchase:                       sw_0_series_purchase;
+		articulated_part:               sw_0_series_Q4_articulated_part;
+		visual_effect_and_powered:      sw_visual_effect_and_powered;
+		/* Stats */
+		length:                         sw_length_1_8_1;
+		speed:                          sw_0_series_speed;
+		weight:                         NumberCarsInConsist() * 61;
+		power:                          NumberCarsInConsist() * 248 * 4;
+		cargo_capacity:                 20 * CapacityFactor();
+		loading_speed:                  20 * CapacityFactor() / param_loading_2D;
+		cargo_age_period:               param_decay_express;
+		cost_factor:                    170;
+		running_cost_factor:            802 * RunningCostFactor() + 54;
+		purchase_running_cost_factor:   856;
+	}
 }
 # 1 "src/trains/0_series/0_series.pnml" 2
 # 1 "JPplusShinkansen.pnml" 4
