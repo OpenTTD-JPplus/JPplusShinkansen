@@ -253,3 +253,61 @@ template tmpl_cab_bck_rev(x, y) {
     [ x+200,	y,		4,		16,		-16,		-12]
     [ x+231, 	y+35,	8,		14,		-6,		    -12]
 }
+
+/* NEW TEMPLATES */
+
+template tmpl_10(r) {
+    //left_x, upper_y, width, height, offset_x, offset_y
+	//							more negative to shift left
+	//											more negative to shift up
+    [ 1,		r*50-49,		8,		30,		-3,		    -14]
+    [ 18,		r*50-49,		26,		26,		-18,		-15]
+    [ 45,		r*50-49,		40,		16,		-28,		-12]
+    [ 86, 	    r*50-49,		26,		26,		-12,		-18]
+    [ 121,	    r*50-49,		8,		30,		-3,			-20]
+    [ 138,	    r*50-49,		26,		26,		-14,		-17]
+    [ 165,	    r*50-49,		40,		16,		-20,		-12]
+    [ 206,	    r*50-49,		26,		26,		-10,		-17]
+}
+
+template tmpl_frt(r) {
+    //left_x, upper_y, width, height, offset_x, offset_y
+	//							more negative to shift left
+	//											more negative to shift up
+    [ 1,		r*50-49,	    8,		12,		-3,			-12]
+    [ 44,		r*50-49+27,	    8,		14,		-2,		    -11]
+    [ 81,		r*50-49,		4,		16,		4,		    -12]
+    [ 112, 	    r*50-49+35,	    8,		14,		4,		    -7]
+    [ 121,	    r*50-49+18,	    8,		12,		-3,			-4]
+    [ 130,	    r*50-49+35,	    8,		14,		-12,		-6]
+    [ 165,	    r*50-49,		4,		16,		-16,		-12]
+    [ 198,	    r*50-49+27,	    8,		14,		-6,		    -12]
+}
+
+template tmpl_mid(r) {
+    //left_x, upper_y, width, height, offset_x, offset_y
+	//							more negative to shift left
+	//											more negative to shift up
+    [ 1,		r*50-49+2,	    8,		26,		-3,			-12]
+    [ 20,		r*50-49+27,	    22,		22,		-16,		-12]
+    [ 49,		r*50-49,	    32,		16,		-24,		-12]
+    [ 88, 	    r*50-49+27,	    22,		22,		-10,		-15]
+    [ 121,	    r*50-49+2,	    8,		26,		-3,			-18]
+    [ 140,	    r*50-49+27,	    22,		22,		-12,		-14]
+    [ 169,	    r*50-49,	    32,		16,		-16,		-12]
+    [ 208,	    r*50-49+27,	    22,		22,		-6,		    -13]
+}
+
+template tmpl_bck(r) {
+    //left_x, upper_y, width, height, offset_x, offset_y
+	//							more negative to shift left
+	//											more negative to shift up
+    [ 1,		r*50-49+18,	    8,		12,		-3,			-12]
+    [ 10,		r*50-49+35,	    8,		14,		-2,		    -11]
+    [ 45,		r*50-49,	    4,		16,		4,		    -12]
+    [ 78, 	    r*50-49+27,	    8,		14,		4,		    -7]
+    [ 121,	    r*50-49,	    8,		12,		-3,			-4]
+    [ 164,	    r*50-49+27,	    8,		14,		-12,		-6]
+    [ 201,	    r*50-49,	    4,		16,		-16,		-12]
+    [ 232,	    r*50-49+35,	    8,		14,		-6,	        -12]
+}
