@@ -8,10 +8,10 @@
  /* Repeating */
 
 	switch (FEAT_TRAINS, SELF, sw_e4_series_repeating, CarNumberFromEnd() % 8 ) {
-		1:  sw_e4_series_cab001;
+		1:  sw_e4_series_cab002;
 		4:  sw_e4_series_panto1;
 		6:  sw_e4_series_panto1;
-		0:  sw_e4_series_cab002;
+		0:  sw_e4_series_cab001;
 		default: sw_e4_series_coach1;
 	}
 

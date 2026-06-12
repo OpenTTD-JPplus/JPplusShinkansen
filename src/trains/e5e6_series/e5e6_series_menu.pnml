@@ -3,7 +3,6 @@
     switch(FEAT_TRAINS, SELF, sw_e5e6_series_subtype_text, cargo_subtype) {
 		0: return string(STR_CONCAT_3, string(LV_E5_SERIES_E5),string(AND),string(LV_E6_SERIES_ORIGINAL));
 		1: return string(STR_CONCAT_3, string(LV_E5_SERIES_H5),string(AND),string(LV_E6_SERIES_ORIGINAL));
-        2: return string(STR_CONCAT_3, string(LV_E5_SERIES_2CC),string(AND),string(LV_E6_SERIES_2CC));
 		return CB_RESULT_NO_TEXT;
 		}
 
