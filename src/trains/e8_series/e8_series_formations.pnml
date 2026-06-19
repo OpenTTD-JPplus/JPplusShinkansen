@@ -1,70 +1,40 @@
+ /* Panto in middle */
 
-/* Midcars */
-    // Backwards
-        // Penultipantos
-        switch (FEAT_TRAINS, SELF, sw_e8_series_pantos_large_backwards, position_in_consist_from_end ) {
-                1:  sw_e8_series_pant1b;
-                sw_e8_series_pant2b;				
-            }
-        switch (FEAT_TRAINS, SELF, sw_e8_series_backwards_length_large, (position_in_consist == 1) || (position_in_consist_from_end == 1 )) {				
-                1:  sw_e8_series_pantos_large_backwards;
-                sw_e8_series_coachb;			
-            }
-        // Panto in Middle
-        switch (FEAT_TRAINS, SELF, sw_e8_series_backwards_length_small, (position_in_consist == position_in_consist_from_end ) || (position_in_consist - 1 == position_in_consist_from_end) ) {				
-                0:  sw_e8_series_coachb;
-                sw_e8_series_pant1b;				
-            }
-	switch (FEAT_TRAINS, SELF, sw_e8_series_backwards_length, num_vehs_in_consist < 7 ) {				
-			0:  sw_e8_series_backwards_length_large;
-			sw_e8_series_backwards_length_small;				
-		}
-	// Forwards
-        // Penultipantos
-        switch (FEAT_TRAINS, SELF, sw_e8_series_pantos_large_forwards, position_in_consist ) {				
-                1:  sw_e8_series_pant1f;
-                sw_e8_series_pant2f;				
-            }
+	switch (FEAT_TRAINS, SELF, sw_e8_series_panto_in_middle, position_in_vehid_chain_from_end - position_in_vehid_chain ) {
+		1..2:  sw_e8_series_panto1;
+		sw_e8_series_coach1;
+	}
 
-        switch (FEAT_TRAINS, SELF, sw_e8_series_forwards_length_large, (position_in_consist == 1) || (position_in_consist_from_end == 1 )) {				
-                1:  sw_e8_series_pantos_large_forwards;
-                sw_e8_series_coachf;		
-            }
-        // Panto in Middle
-        switch (FEAT_TRAINS, SELF, sw_e8_series_forwards_length_small, (position_in_consist == position_in_consist_from_end ) || (position_in_consist - 1 == position_in_consist_from_end) ) {				
-                0:  sw_e8_series_coachf;
-                sw_e8_series_pant1f;				
-            }
-	switch (FEAT_TRAINS, SELF, sw_e8_series_forwards_length, num_vehs_in_consist < 7 ) {				
-			0:  sw_e8_series_forwards_length_large;
-			sw_e8_series_forwards_length_small;				
-		}
+ /* Penultimate Pantos Dual */
 
-	switch (FEAT_TRAINS, PARENT, sw_e8_series_midcars, vehicle_is_reversed) {				
-			0:  sw_e8_series_forwards_length;
-			sw_e8_series_backwards_length;				
-		}
+	switch (FEAT_TRAINS, SELF, sw_e8_series_penultimate_pantos, position_in_vehid_chain_from_end ) {
+		1:  sw_e8_series_panto2;
+		sw_e8_series_panto1;
+	}
+
+	switch (FEAT_TRAINS, SELF, sw_e8_series_penultimate_pantos_dual, position_in_vehid_chain == 0 || position_in_vehid_chain_from_end == 1 ) {
+		1:  sw_e8_series_penultimate_pantos;
+		sw_e8_series_coach1;
+	}
+
+/* Midcar selection */
+
+	switch (FEAT_TRAINS, SELF, sw_e8_series_midcars, num_vehs_in_vehid_chain + 1 ) {
+		0..6: sw_e8_series_panto_in_middle;
+		default: sw_e8_series_penultimate_pantos_dual;
+	}
 
 /* Cab selection */
-    // Rear cab
-    switch (FEAT_TRAINS, PARENT, sw_e8_series_rear, vehicle_is_reversed) {				
-            1:  sw_e8_series_cab01b;                   // cab01	
-            sw_e8_series_cab02f;                       // cab02
-        }
-
-    // Lead cab
-    switch (FEAT_TRAINS, PARENT, sw_e8_series_lead, vehicle_is_reversed) {				
-            1:  sw_e8_series_cab02b;                   // cab02
-            sw_e8_series_cab01f;                       // cab01	
-        }
 
 /* Find the cabs */
-    switch (FEAT_TRAINS, SELF, sw_e8_series_lead_or_rear, position_in_consist) {				
-            0:  sw_e8_series_lead;
-            sw_e8_series_rear;				
-        }
-    
-    switch (FEAT_TRAINS, SELF, sw_e8_series_graphics, position_in_consist == 0 || position_in_consist_from_end == 0 ) {				
-            1:  sw_e8_series_lead_or_rear;
-            sw_e8_series_midcars;				
-        }
+
+	switch (FEAT_TRAINS, SELF, sw_e8_series_mucars, position_in_vehid_chain_from_end == 0  ) {
+		1:  sw_e8_series_cab002;
+		sw_e8_series_midcars;
+	}
+
+	switch (FEAT_TRAINS, SELF, sw_e8_series_graphics, vehicle_type_id == series_e8 ) {
+		1:  sw_e8_series_cab001;
+		sw_e8_series_mucars;
+	}
+

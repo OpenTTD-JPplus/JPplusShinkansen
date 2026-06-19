@@ -5,6 +5,16 @@
 			return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
 		}
 
+    switch(FEAT_TRAINS, SELF, sw_attach_e5_series, [
+			vehicle_type_id == mu_car_full || 
+			vehicle_type_id == series_e6 ||
+			vehicle_type_id == series_e8 ||
+			vehicle_type_id == mu_car_ms
+		] ) {
+        	0: return string(ONLY_ADD_MUCAR_FULL);
+    	}
+
+
 
 item(FEAT_TRAINS, series_e5) {
 	property {
@@ -40,7 +50,7 @@ item(FEAT_TRAINS, series_e5) {
 		/* Menu */
 		additional_text:                string(STR_DESC_E5_SERIES);
 		cargo_subtype_text:             sw_e5_series_subtype_text;
-		can_attach_wagon:				sw_attach_mu_car_full;
+		can_attach_wagon:				sw_attach_e5_series;
 		start_stop:						sw_stop_start_full_length_4;
 		purchase_weight:                45;
         purchase_power:                 402 * 4;

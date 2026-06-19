@@ -1,34 +1,55 @@
 
-switch (FEAT_TRAINS, PARENT, sw_e3_series_e5e3_clogocheck, cargo_subtype ) {				
-        0..2: sw_e3_series_clog2f;
-        sw_e3_series_clogof;
+switch (FEAT_TRAINS, SELF, sw_e5e3_series_r_graphics, position_in_consist ) {				
+		// E5
+        0..2:   sw_e5e3_series_cab001;
+        3..5:   sw_e5e3_series_coach1;
+        6..8:   sw_e5e3_series_panto1;
+        9..11:  sw_e5e3_series_coach1;
+        12..14: sw_e5e3_series_coach1;
+        15..17: sw_e5e3_series_coach1;
+        18..20: sw_e5e3_series_panto1;
+        21..23: sw_e5e3_series_coach1;
+        24..26: sw_e5e3_series_coach1;
+        27..29: sw_e5e3_series_cab002;
+        // E3
+        30: sw_e5e3_series_cab003;
+        31: sw_e5e3_series_panto4;
+        32: sw_e5e3_series_coachd;
+        33: sw_e5e3_series_coachf;
+        34: sw_e5e3_series_panto3;
+        35: sw_e5e3_series_cab004;
 	}
 
-switch (FEAT_TRAINS, SELF, sw_e5e3_series_graphics, position_in_consist ) {				
+switch (FEAT_TRAINS, SELF, sw_e5e3_series_1k2k_graphics, position_in_consist ) {				
 		// E5
-        0..2:   sw_e5_series_cab001;
-        3..5:   sw_e5_series_coach1;
-        6..8:   sw_e5_series_panto1;
-        9..11:  sw_e5_series_coach1;
-        12..14: sw_e5_series_coach1;
-        15..17: sw_e5_series_coach1;
-        18..20: sw_e5_series_panto1;
-        21..23: sw_e5_series_coach1;
-        24..26: sw_e5_series_coach1;
-        27..29: sw_e5_series_cab002;
+        0..2:   sw_e5e3_series_cab001;
+        3..5:   sw_e5e3_series_coach1;
+        6..8:   sw_e5e3_series_panto1;
+        9..11:  sw_e5e3_series_coach1;
+        12..14: sw_e5e3_series_coach1;
+        15..17: sw_e5e3_series_coach1;
+        18..20: sw_e5e3_series_panto1;
+        21..23: sw_e5e3_series_coach1;
+        24..26: sw_e5e3_series_coach1;
+        27..29: sw_e5e3_series_cab002;
         // E3
-        30: sw_e3_series_cab01f;
-        31: sw_e3_series_e5e3_clogocheck;
-        32: sw_e3_series_coachf;
-        33: sw_e3_series_pantof;
-        34: sw_e3_series_coraif;
-        35: sw_e3_series_pantof;
-		36: sw_e3_series_cab02f;
+        30: sw_e5e3_series_cab003;
+        31: sw_e5e3_series_clogo1;
+        32: sw_e5e3_series_coach3;
+        33: sw_e5e3_series_panto3;
+        34: sw_e5e3_series_coachf;
+        35: sw_e5e3_series_panto3;
+		36: sw_e5e3_series_cab004;
+	}
+
+switch (FEAT_TRAINS, PARENT, sw_e5e3_series_graphics, cargo_subtype ) {				
+        0..2: sw_e5e3_series_r_graphics;
+        sw_e5e3_series_1k2k_graphics;
 	}
 
 switch (FEAT_TRAINS, SELF, sw_e5e3_series_length, position_in_consist ) {				
 		// E5
         0..29: sw_length_1_8_1;
         // E3
-        30..36: return 8;
+        return 8;
 	}

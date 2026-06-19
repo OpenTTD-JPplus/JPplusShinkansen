@@ -1,0 +1,13 @@
+ /* Panto in middle */
+
+	switch (FEAT_TRAINS, SELF, sw_e4e3_series_panto_in_middle, CarNumberFromEnd() - CarNumber() ) {
+		0..1:  dummy_sprites;
+		dummy_sprites;
+	}
+
+/* Midcar selection */
+
+	switch (FEAT_TRAINS, SELF, sw_e4e3_series_midcars, NumberCarsInConsist() ) {
+		0..9: sw_e4e3_series_panto_in_middle;
+		default: sw_e4e3_series_panto_in_middle;
+	}

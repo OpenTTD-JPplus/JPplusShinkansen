@@ -1,25 +1,25 @@
  /* Panto in middle */
 
-	switch (FEAT_TRAINS, SELF, sw_e6_series_panto_in_middle, position_in_consist_from_end - position_in_consist ) {
-		0..1:  sw_e6_series_panto1;
+	switch (FEAT_TRAINS, SELF, sw_e6_series_panto_in_middle, position_in_vehid_chain_from_end - position_in_vehid_chain ) {
+		1..2:  sw_e6_series_panto1;
 		sw_e6_series_coach1;
 	}
 
  /* Penultimate Pantos Dual */
 
-	switch (FEAT_TRAINS, SELF, sw_e6_series_penultimate_pantos, position_in_consist ) {
-		1:  sw_e6_series_panto1;
-		sw_e6_series_panto2;
+	switch (FEAT_TRAINS, SELF, sw_e6_series_penultimate_pantos, position_in_vehid_chain_from_end ) {
+		1:  sw_e6_series_panto2;
+		sw_e6_series_panto1;
 	}
 
-	switch (FEAT_TRAINS, SELF, sw_e6_series_penultimate_pantos_dual, position_in_consist == 1 || position_in_consist_from_end == 1 ) {
+	switch (FEAT_TRAINS, SELF, sw_e6_series_penultimate_pantos_dual, position_in_vehid_chain == 0 || position_in_vehid_chain_from_end == 1 ) {
 		1:  sw_e6_series_penultimate_pantos;
 		sw_e6_series_coach1;
 	}
 
 /* Midcar selection */
 
-	switch (FEAT_TRAINS, SELF, sw_e6_series_midcars, num_vehs_in_consist ) {
+	switch (FEAT_TRAINS, SELF, sw_e6_series_midcars, num_vehs_in_vehid_chain + 1 ) {
 		0..6: sw_e6_series_panto_in_middle;
 		default: sw_e6_series_penultimate_pantos_dual;
 	}
@@ -28,12 +28,12 @@
 
 /* Find the cabs */
 
-	switch (FEAT_TRAINS, SELF, sw_e6_series_cabs, position_in_consist) {
-		0: sw_e6_series_cab001;
-		sw_e6_series_cab002;
+	switch (FEAT_TRAINS, SELF, sw_e6_series_mucars, position_in_vehid_chain_from_end == 0  ) {
+		1:  sw_e6_series_cab002;
+		sw_e6_series_midcars;
 	}
 
-	switch (FEAT_TRAINS, SELF, sw_e6_series_graphics, position_in_consist == 0 || position_in_consist_from_end == 0 ) {
-		1:  sw_e6_series_cabs;
-		sw_e6_series_midcars;
+	switch (FEAT_TRAINS, SELF, sw_e6_series_graphics, vehicle_type_id == series_e6 ) {
+		1:  sw_e6_series_cab001;
+		sw_e6_series_mucars;
 	}
