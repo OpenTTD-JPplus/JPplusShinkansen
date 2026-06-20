@@ -1,0 +1,49 @@
+// TOREIYU
+  // Toreiyu other cars
+          switch (FEAT_TRAINS, SELF, sw_e3_series_toreiyu_combo, position_in_vehid_chain - position_in_vehid_chain_from_end ) {				
+          -5: sw_e3_series_700_panto4;
+          -4: sw_e3_series_700_panto4;
+          -3: sw_e3_series_700_coachf;
+          -2: sw_e3_series_700_coachf;
+          -1:  sw_e3_series_700_coachd;
+          0:  sw_e3_series_700_coachb;
+          1:  sw_e3_series_700_coachb; 
+          2:  sw_e3_series_700_coach2;  
+          3:  sw_e3_series_700_coach2;  
+          sw_e3_series_700_coach1;			
+        }
+
+  // Toreiyu 2nd car
+    switch (FEAT_TRAINS, SELF, sw_e3_series_toreiyu_2ndcar, num_vehs_in_vehid_chain == 5 || num_vehs_in_vehid_chain == 6  ) {				
+        1:  sw_e3_series_700_panto1;     
+        sw_e3_series_700_clogo1;			
+      }
+
+    switch (FEAT_TRAINS, SELF, sw_e3_series_toreiyu_2ndcar_from_end, num_vehs_in_vehid_chain == 5 || num_vehs_in_vehid_chain == 6  ) {				
+        1:  sw_e3_series_700_panto2;     
+        sw_e3_series_700_panto3;			
+      }  
+
+    switch (FEAT_TRAINS, SELF, sw_e3_series_toreiyu_penultimate, position_in_vehid_chain == 0 ) {				
+        1:  sw_e3_series_toreiyu_2ndcar;     
+        sw_e3_series_toreiyu_2ndcar_from_end;			
+      }
+
+    switch (FEAT_TRAINS, SELF, sw_e3_series_toreiyu_penultimate_carcheck, position_in_vehid_chain == 0 || position_in_vehid_chain_from_end == 1 ) {				
+        1:  sw_e3_series_toreiyu_penultimate;     
+        sw_e3_series_toreiyu_combo;			
+      }
+
+/* Cab selection */
+
+/* Find the cabs */
+
+	switch (FEAT_TRAINS, SELF, sw_e3_series_700_mucars, position_in_vehid_chain_from_end == 0  ) {
+		1:  sw_e3_series_700_cab002;
+		sw_e3_series_toreiyu_penultimate_carcheck;
+	}
+
+	switch (FEAT_TRAINS, SELF, sw_e3_series_700_graphics, vehicle_type_id == series_e3_700 ) {
+		1:  sw_e3_series_700_cab001;
+		sw_e3_series_700_mucars;
+	}

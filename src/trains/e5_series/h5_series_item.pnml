@@ -8,7 +8,11 @@
     switch(FEAT_TRAINS, SELF, sw_attach_h5_series, [
 			vehicle_type_id == mu_car_full || 
 			vehicle_type_id == series_e6 ||
-			vehicle_type_id == series_e8 || 
+			vehicle_type_id == series_e8 ||
+			vehicle_type_id == series_e3_r ||
+			vehicle_type_id == series_e3_1000 ||
+			vehicle_type_id == series_e3_2000 ||
+			vehicle_type_id == series_e3_700 ||
 			vehicle_type_id == mu_car_ms
 		] ) {
         	0: return string(ONLY_ADD_MUCAR_FULL);
@@ -25,7 +29,7 @@ item(FEAT_TRAINS, series_h5) {
         variant_group:                  2005;
 		/* Availability */
 		climates_available:             ALL_CLIMATES;
-		introduction_date:              date(2011,03,05); 
+		introduction_date:              date(2016,03,26); 
 		model_life:                     VEHICLE_NEVER_EXPIRES;		
 		vehicle_life:                   30;							// 
 		track_type:                     SHINKANSEN;

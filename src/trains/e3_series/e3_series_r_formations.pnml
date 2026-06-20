@@ -1,0 +1,43 @@
+// R
+  // R Other cars
+    switch (FEAT_TRAINS, SELF, sw_e3_series_r_combo, position_in_vehid_chain ) {				
+        1:  sw_e3_series_r_coachd;
+        2:  sw_e3_series_r_coachf;    
+        sw_e3_series_r_coach1;			
+      }
+  // 5 car long consists
+    switch (FEAT_TRAINS, SELF, sw_e3_series_r_5carcheck, num_vehs_in_vehid_chain == 4 ) {				
+        1:  sw_e3_series_r_coach1;     
+        sw_e3_series_r_combo;			
+      }
+
+  // R 2nd car
+    switch (FEAT_TRAINS, SELF, sw_e3_series_r_2ndcar, num_vehs_in_vehid_chain == 3 || num_vehs_in_vehid_chain == 4  ) {				
+        1:  sw_e3_series_r_clogo1;     
+        sw_e3_series_r_panto2;			
+      }
+
+    switch (FEAT_TRAINS, SELF, sw_e3_series_r_penultimate, position_in_vehid_chain == 0 ) {				
+        1:  sw_e3_series_r_2ndcar;     
+        sw_e3_series_r_panto1;			
+      }
+
+    switch (FEAT_TRAINS, SELF, sw_e3_series_r_penultimate_carcheck, position_in_vehid_chain == 0 || position_in_vehid_chain_from_end == 1 ) {				
+        1:  sw_e3_series_r_penultimate;     
+        sw_e3_series_r_5carcheck;			
+      }
+
+/* Cab selection */
+
+/* Find the cabs */
+
+	switch (FEAT_TRAINS, SELF, sw_e3_series_r_mucars, position_in_vehid_chain_from_end == 0  ) {
+		1:  sw_e3_series_r_cab002;
+		//sw_e3_series_r_midcars;
+		sw_e3_series_r_penultimate_carcheck;
+	}
+
+	switch (FEAT_TRAINS, SELF, sw_e3_series_r_graphics, vehicle_type_id == series_e3_r ) {
+		1:  sw_e3_series_r_cab001;
+		sw_e3_series_r_mucars;
+	}

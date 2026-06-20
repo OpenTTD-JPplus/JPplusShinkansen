@@ -1,3 +1,4 @@
+
 /* Subtypes */
 
 	switch(FEAT_TRAINS, SELF, sw_e8_series_subtype_text, cargo_subtype) {
@@ -7,7 +8,7 @@
 		}
 
 /* Purchase Menu */
-    spriteset (ss_e8_series_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e8_series/gfx/e8_series.png") {template_purchase(233, 1)}
+    spriteset (ss_e8_series_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e8_series/gfx/e8_irl.png") {template_purchase(233, 1)}
 
     switch(FEAT_TRAINS, SELF, sw_e8_series_purchase, [ 
         STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
