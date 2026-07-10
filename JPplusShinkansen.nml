@@ -142,6 +142,17 @@ template template_purchase (x, y) {
 		[]
 }
 
+template tmpl_purchase (x, y) {
+		[]
+	 	[]
+	 	[]
+	 	[]
+	 	[]
+	 	[]
+    	[x, y, 41, 15, -28, -10]
+		[]
+}
+
 /* EMU Templates */
 
 template tmpl_10_std(x, y) {
@@ -452,6 +463,26 @@ railtypetable {
 	SC_MAGLEV: [LCAI, LCAE, MGLV],
 }
 # 1 "JPplusShinkansen.pnml" 4
+# 1 "src/badgetable.pnml" 1
+
+badgetable {
+  "company/keisei",
+  
+  "company/jgr",
+  "company/jnr",
+  "company/jnrjrwestjrcentral",
+  "company/jreast",
+  "company/jrwestjrcentral",
+  "company/jrwest",
+  "company/jrcentral",
+  "company/jrkyushu",
+  "company/jrhokkaido",
+  "company/jrshikoku",
+  "company/jrfreight",
+
+  "line/sapporo_namboku"
+}
+# 1 "JPplusShinkansen.pnml" 4
 # 1 "src/functions.pnml" 1
 
 switch (FEAT_TRAINS, PARENT, func_is_reversed, vehicle_is_reversed) {return;}
@@ -701,14 +732,6 @@ switch(FEAT_TRAINS, SELF, logo_jrwestcentral, param_hide_logo) {1:sprite_logo_jr
 // JR West
 spriteset (sprite_logo_jrwest, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/logos/jrwest.png") { template_purchase(0,0) }
 switch(FEAT_TRAINS, SELF, logo_jrwest, param_hide_logo) {1:sprite_logo_jrwest;}
-
-// JR East
-spriteset (sprite_logo_jreast, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/logos/jreast.png") { template_purchase(0,0) }
-switch(FEAT_TRAINS, SELF, logo_jreast, param_hide_logo) {1:sprite_logo_jreast;}
-
-// JR Kyushu
-spriteset (sprite_logo_jrkyushu, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/logos/jrkyushu.png") { template_purchase(0,0) }
-switch(FEAT_TRAINS, SELF, logo_jrkyushu, param_hide_logo) {1:sprite_logo_jrkyushu;}
 
 // JNR
 spriteset (sprite_logo_jnr, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/logos/jnr.png") { template_purchase(0,0) }
@@ -1145,61 +1168,6 @@ if (grf_order_behind("JD\A1\E1") == 0) {
 /*---NON-JR EAST TRAINS---*/
 # 1 "src/trains/0_series/0_series.pnml" 1
 
-# 1 "src/trains/0_series/0_series_menu.pnml" 1
-
-/* SUBTYPES */
-
-    // From 1964 to 2002
-    switch(FEAT_TRAINS, SELF, sw_0_series_1964_subtype_text, cargo_subtype) {
-        0: return string(LV_YEAR_DEP_LIVERY);
-	    1: return string(LV_0_SERIES_ORIGINAL);
-        2: return string(LV_0_SERIES_NOSE);
-        3: return string(LV_0_SERIES_ORIGINAL_2CC);
-        4: return string(LV_0_SERIES_NOSE_2CC);
-        return CB_RESULT_NO_TEXT;
-        }
-
-    // Note - there is a purchase sprite change in 1987 (JNR -> JR)
-    
-    // From 2002 onwards - introduction of Kodama Livery
-    switch(FEAT_TRAINS, SELF, sw_0_series_2002_subtype_text, cargo_subtype) {
-        0: return string(LV_YEAR_DEP_LIVERY);
-	    1: return string(LV_0_SERIES_ORIGINAL);
-        2: return string(LV_0_SERIES_NOSE);
-        3: return string(LV_0_SERIES_ORIGINAL_2CC);
-        4: return string(LV_0_SERIES_NOSE_2CC);
-        5: return string(LV_0_SERIES_KODAMA);
-        return CB_RESULT_NO_TEXT;
-        }
-    
-    // Cargo Subtype List
-    switch(FEAT_TRAINS, SELF, sw_0_series_year_dep_subtype_text, current_year) {
-        0..2001: sw_0_series_1964_subtype_text;
-        sw_0_series_2002_subtype_text;
-    }
-
-/* Purchase Menu */
-
-    spriteset (ss_0_series_irl_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/0_series/gfx/0_series_irl.png") {template_purchase(233, 1)}
-    spriteset (ss_922_series_irl_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/0_series/gfx/922_series.png") {template_purchase(233, 1)}
-
-    switch(FEAT_TRAINS, SELF, logo_0_series_year_dep, current_year) {
-			0..1986: logo_jnr;                  // JNR (Original Livery)
-			logo_jrwestcentral;                 // JR Central & West (Kodama Livery)
-		}
-
-    switch(FEAT_TRAINS, SELF, sw_0_series_purchase, [ 
-        STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
-            0: logo_0_series_year_dep; 
-            1: ss_0_series_irl_buy;
-        }
-
-    switch(FEAT_TRAINS, SELF, sw_922_series_purchase, [ 
-        STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
-            0: logo_0_series_year_dep; 
-            1: ss_922_series_irl_buy;
-        }
-# 1 "src/trains/0_series/0_series.pnml" 2
 # 1 "src/trains/0_series/0_series_cab01.pnml" 1
 
 /* cab01 */
@@ -2101,6 +2069,38 @@ if (grf_order_behind("JD\A1\E1") == 0) {
 # 1 "src/trains/0_series/0_series.pnml" 2
 # 1 "src/trains/0_series/0_series_item.pnml" 1
 
+/* SUBTYPES */
+
+    // From 1964 to 2002
+    switch(FEAT_TRAINS, SELF, sw_0_series_1964_subtype_text, cargo_subtype) {
+        0: return string(LV_YEAR_DEP_LIVERY);
+	    1: return string(LV_0_SERIES_ORIGINAL);
+        2: return string(LV_0_SERIES_NOSE);
+        3: return string(LV_0_SERIES_ORIGINAL_2CC);
+        4: return string(LV_0_SERIES_NOSE_2CC);
+        return CB_RESULT_NO_TEXT;
+        }
+
+    // Note - there is a purchase sprite change in 1987 (JNR -> JR)
+    
+    // From 2002 onwards - introduction of Kodama Livery
+    switch(FEAT_TRAINS, SELF, sw_0_series_2002_subtype_text, cargo_subtype) {
+        0: return string(LV_YEAR_DEP_LIVERY);
+	    1: return string(LV_0_SERIES_ORIGINAL);
+        2: return string(LV_0_SERIES_NOSE);
+        3: return string(LV_0_SERIES_ORIGINAL_2CC);
+        4: return string(LV_0_SERIES_NOSE_2CC);
+        5: return string(LV_0_SERIES_KODAMA);
+        return CB_RESULT_NO_TEXT;
+        }
+    
+    // Cargo Subtype List
+    switch(FEAT_TRAINS, SELF, sw_0_series_year_dep_subtype_text, current_year) {
+        0..2001: sw_0_series_1964_subtype_text;
+        sw_0_series_2002_subtype_text;
+    }
+
+
 switch (FEAT_TRAINS, SELF, sw_0_series_articulated_part, extra_callback_info1) {
 		1 .. 2: return series_0;									
 		return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
@@ -2112,6 +2112,9 @@ switch (FEAT_TRAINS, SELF, sw_0_series_articulated_part, extra_callback_info1) {
 	    return 220;                                 // After 1986, Speed = 220 km/h
     }
 
+/* PURCHASE */
+    spriteset (ss_0_series_irl_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/0_series/gfx/0_series_irl.png") {tmpl_purchase(267, 1)}
+
 item(FEAT_TRAINS, series_0) {
 	property {
 		/* Menu */
@@ -2120,6 +2123,7 @@ item(FEAT_TRAINS, series_0) {
         misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK);
 		running_cost_base:              RUNNING_COST_ELECTRIC;
 		engine_class:                   ENGINE_CLASS_ELECTRIC;
+        badges:                         ["company/jnrjrwestjrcentral"];
         /* Availability */
 		climates_available:             ALL_CLIMATES;
 		introduction_date:              date(1964,10,01);           // Date of launch
@@ -2152,7 +2156,7 @@ item(FEAT_TRAINS, series_0) {
         purchase_power:                 248 * 4;
         /* Graphics */
         default:                        sw_0_series_graphics;
-		purchase:                       sw_0_series_purchase;
+		purchase:                       ss_0_series_irl_buy;
 		articulated_part:               sw_0_series_articulated_part;
         visual_effect_and_powered:      sw_visual_effect_and_powered;
 		/* Stats */
@@ -2463,6 +2467,8 @@ switch (FEAT_TRAINS, PARENT, sw_922_series_running_cost_factor, param_dryellow )
 	    return 220;                                 // After 1986, Speed = 220 km/h
     }
 
+    spriteset (ss_922_series_irl_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/0_series/gfx/922_series.png") {tmpl_purchase(267, 1)}
+
 if (param_dryellow == 0) { // GIMMICK
 
 item(FEAT_TRAINS, series_922) {
@@ -2473,6 +2479,7 @@ item(FEAT_TRAINS, series_922) {
         misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
 		running_cost_base:              RUNNING_COST_ELECTRIC;
 		engine_class:                   ENGINE_CLASS_ELECTRIC;
+		badges:							["company/jnrjrwestjrcentral"];	
         variant_group:					123;
         /* Availability */
 		climates_available:             ALL_CLIMATES;
@@ -2507,7 +2514,7 @@ item(FEAT_TRAINS, series_922) {
         purchase_power:                 248 * 4;
         /* Graphics */
         default:                        sw_922_series_graphics;
-		purchase:                       sw_922_series_purchase;
+		purchase:                       ss_922_series_irl_buy;
 		articulated_part:               sw_922_series_articulated_part;
         visual_effect_and_powered:      sw_visual_effect_and_powered;
 		/* Stats */
@@ -2546,6 +2553,7 @@ item(FEAT_TRAINS, series_922) {
         misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
 		running_cost_base:              RUNNING_COST_ELECTRIC;
 		engine_class:                   ENGINE_CLASS_ELECTRIC;
+		badges:							["company/jnrjrwestjrcentral"];	
         variant_group:					123;
         /* Availability */
 		climates_available:             ALL_CLIMATES;
@@ -2579,7 +2587,7 @@ item(FEAT_TRAINS, series_922) {
         purchase_power:                 248 * 4;
         /* Graphics */
         default:                        sw_922_series_graphics;
-		purchase:                       sw_922_series_purchase;
+		purchase:                       ss_922_series_irl_buy;
 		articulated_part:               sw_922_series_articulated_part;
         visual_effect_and_powered:      sw_visual_effect_and_powered;
 		/* Stats */
@@ -2617,6 +2625,7 @@ item(FEAT_TRAINS, series_922) {
         misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
 		running_cost_base:              RUNNING_COST_ELECTRIC;
 		engine_class:                   ENGINE_CLASS_ELECTRIC;
+		badges:							["company/jnrjrwestjrcentral"];
         variant_group:					123;
         /* Availability */
 		climates_available:             ALL_CLIMATES;
@@ -2651,7 +2660,7 @@ item(FEAT_TRAINS, series_922) {
         purchase_power:                 248 * 4;
         /* Graphics */
         default:                        sw_922_series_graphics;
-		purchase:                       sw_922_series_purchase;
+		purchase:                       ss_922_series_irl_buy;
 		articulated_part:               sw_922_series_articulated_part;
         visual_effect_and_powered:      sw_visual_effect_and_powered;
 		/* Stats */
@@ -10679,24 +10688,6 @@ item(FEAT_TRAINS, series_100) {
 # 1 "JPplusShinkansen.pnml" 4
 # 1 "src/trains/800_series/800_series.pnml" 1
 
-# 1 "src/trains/800_series/800_series_menu.pnml" 1
-/* Subtypes */
-
-	switch(FEAT_TRAINS, SELF, sw_800_series_subtype_text, cargo_subtype) {
-		0: return string(LV_800_SERIES);                            
-		1: return string(LV_800_SERIES_2CC); 
-		return CB_RESULT_NO_TEXT;
-		}
-
-/* Purchase Menu */
-    spriteset (ss_800_series_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/800_series/gfx/800_series.png") {template_purchase(233, 1)}
-
-    switch(FEAT_TRAINS, SELF, sw_800_series_purchase, [ 
-        STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
-            0: logo_jrkyushu; 
-            1: ss_800_series_buy;
-        }
-# 1 "src/trains/800_series/800_series.pnml" 2
 # 1 "src/trains/800_series/800_series_cab01.pnml" 1
 
 /* cab01 */
@@ -11316,6 +11307,16 @@ item(FEAT_TRAINS, series_100) {
         }
 # 1 "src/trains/800_series/800_series.pnml" 2
 # 1 "src/trains/800_series/800_series_item.pnml" 1
+/* Subtypes */
+
+	switch(FEAT_TRAINS, SELF, sw_800_series_subtype_text, cargo_subtype) {
+		0: return string(LV_800_SERIES);                            
+		1: return string(LV_800_SERIES_2CC); 
+		return CB_RESULT_NO_TEXT;
+		}
+
+/* Purchase Menu */
+    spriteset (ss_800_series_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/800_series/gfx/800_series.png") {tmpl_purchase(267, 1)}
 
 switch (FEAT_TRAINS, SELF, sw_800_series_articulated_part, extra_callback_info1) {
 		1 .. 2: return series_800;									
@@ -11341,6 +11342,7 @@ item(FEAT_TRAINS, series_800) {
 		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
 		running_cost_base:              RUNNING_COST_ELECTRIC;
 		engine_class:                   ENGINE_CLASS_ELECTRIC;
+		badges: 						["company/jrkyushu"];
 		/* Availability */
 		climates_available:             ALL_CLIMATES;
 		introduction_date:              date(2004,03,13);
@@ -11373,7 +11375,7 @@ item(FEAT_TRAINS, series_800) {
         purchase_power:                 375 * 4;
 		/* Graphics */
 		default:                        sw_800_series_graphics;
-		purchase:                       sw_800_series_purchase;
+		purchase:                       ss_800_series_buy;
 		articulated_part:               sw_800_series_articulated_part;
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
 		/* Stats */
@@ -11417,7 +11419,7 @@ item(FEAT_TRAINS, series_800) {
 
 
 /* Purchase Menu */
-    spriteset (ss_l0_series_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/l0_series/gfx/l0_series.png") {template_purchase(233, 1)}
+    spriteset (ss_l0_series_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/l0_series/gfx/l0_series.png") {tmpl_purchase(267, 1)}
 
     switch(FEAT_TRAINS, SELF, sw_l0_series_purchase, [ 
         STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
@@ -11876,6 +11878,7 @@ item(FEAT_TRAINS, series_l0) {
         misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
         running_cost_base:              RUNNING_COST_ELECTRIC;
 		engine_class:                   ENGINE_CLASS_ELECTRIC;
+		badges: 						["company/jrcentral"];
         /* Availability */
         climates_available:             ALL_CLIMATES;
 		introduction_date:              date(2027,01,01);
@@ -11943,54 +11946,6 @@ item(FEAT_TRAINS, series_l0) {
 /*---JR EAST TRAINS---*/
 # 1 "src/trains/200_series/200_series.pnml" 1
 
-# 1 "src/trains/200_series/200_series_menu.pnml" 1
-
-/* SUBTYPES */
-
-    // Roundnose
-    switch(FEAT_TRAINS, SELF, sw_200_series_roundnose_subtype_text, cargo_subtype) {
-	    0: return string(LV_200_SERIES_ORIGINAL);       // Roundnose
-        1: return string(LV_200_SERIES_ORIGINAL_2CC);   // Roundnose 2cc
-        2: return string(LV_200_SERIES_REFURB);         // Refurb
-        return CB_RESULT_NO_TEXT;
-        }
-
-    // Sharknose
-    switch(FEAT_TRAINS, SELF, sw_200_series_sharknose_subtype_text, cargo_subtype) {
-        0: return string(LV_200_SERIES_ORIGINAL);       // Sharknose
-        1: return string(LV_200_SERIES_ORIGINAL_2CC);   // Sharknose 2cc
-        return CB_RESULT_NO_TEXT;
-        }
-
-    // 275
-    switch(FEAT_TRAINS, SELF, sw_200_series_275_subtype_text, cargo_subtype) {
-        0: return string(LV_200_SERIES_ORIGINAL);       // 275
-        1: return string(LV_200_SERIES_ORIGINAL_2CC);   // 275 2cc
-        return CB_RESULT_NO_TEXT;
-        }
-
-
-/* PURCHASE */
-
-    // Sharknose
-        spriteset (ss_200_series_sharknose_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/gfx/200_series_sharknose.png") {template_purchase(233, 1)}
-
-        switch(FEAT_TRAINS, SELF, sw_200_series_sharknose_purchase, [ 
-            STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
-                0: logo_jreast; 
-                1: ss_200_series_sharknose_buy;
-            }
-    
-    // Roundnose
-        spriteset (ss_200_series_roundnose_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/gfx/200_series_roundnose.png") {template_purchase(233, 1)}
-
-        switch(FEAT_TRAINS, SELF, sw_200_series_roundnose_purchase, [ 
-            STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
-                0: logo_jreast; 
-                1: ss_200_series_sharknose_buy;
-                2: ss_200_series_roundnose_buy;
-            }
-# 1 "src/trains/200_series/200_series.pnml" 2
 # 1 "src/trains/200_series/200_series_cab01.pnml" 1
 
 /* cab01 */
@@ -13027,10 +12982,45 @@ item(FEAT_TRAINS, series_l0) {
 # 1 "src/trains/200_series/200_series.pnml" 2
 # 1 "src/trains/200_series/200_series_item.pnml" 1
 
-switch (FEAT_TRAINS, SELF, sw_200_series_original_articulated_part, extra_callback_info1) {
-		1 .. 2: return series_200;									
-		return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
-	}
+
+/* SUBTYPES */
+
+    // Roundnose
+    switch(FEAT_TRAINS, SELF, sw_200_series_roundnose_subtype_text, cargo_subtype) {
+	    0: return string(LV_200_SERIES_ORIGINAL);       // Roundnose
+        1: return string(LV_200_SERIES_ORIGINAL_2CC);   // Roundnose 2cc
+        2: return string(LV_200_SERIES_REFURB);         // Refurb
+        return CB_RESULT_NO_TEXT;
+        }
+
+    // Sharknose
+    switch(FEAT_TRAINS, SELF, sw_200_series_sharknose_subtype_text, cargo_subtype) {
+        0: return string(LV_200_SERIES_ORIGINAL);       // Sharknose
+        1: return string(LV_200_SERIES_ORIGINAL_2CC);   // Sharknose 2cc
+        return CB_RESULT_NO_TEXT;
+        }
+
+    // 275
+    switch(FEAT_TRAINS, SELF, sw_200_series_275_subtype_text, cargo_subtype) {
+        0: return string(LV_200_SERIES_ORIGINAL);       // 275
+        1: return string(LV_200_SERIES_ORIGINAL_2CC);   // 275 2cc
+        return CB_RESULT_NO_TEXT;
+        }
+
+
+/* PURCHASE */
+
+    // Sharknose
+        spriteset (ss_200_series_sharknose_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/gfx/200_series_sharknose.png") {tmpl_purchase(267, 1)}
+    
+    // Roundnose
+        spriteset (ss_200_series_roundnose_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/gfx/200_series_roundnose.png") {tmpl_purchase(267, 1)}
+
+// Articulated
+	switch (FEAT_TRAINS, SELF, sw_200_series_original_articulated_part, extra_callback_info1) {
+			1 .. 2: return series_200;									
+			return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+		}
 
 item(FEAT_TRAINS, series_200) {
 	property {
@@ -13040,6 +13030,7 @@ item(FEAT_TRAINS, series_200) {
 		misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
 		running_cost_base:              RUNNING_COST_ELECTRIC;
 		engine_class:                   ENGINE_CLASS_ELECTRIC;
+		badges: 						["company/jreast"];
 		/* Availability */
 		climates_available:             ALL_CLIMATES;
 		introduction_date:              date(1982,06,23);           // Date of launch
@@ -13072,7 +13063,7 @@ item(FEAT_TRAINS, series_200) {
         purchase_power:                 308 * 4;
 		/* Graphics */
 		default:                        sw_200_series_graphics;
-		purchase:                      	sw_200_series_roundnose_purchase;
+		purchase:                      	ss_200_series_roundnose_buy;
 		articulated_part:               sw_200_series_original_articulated_part;
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
 		/* Stats */
@@ -13117,6 +13108,7 @@ item(FEAT_TRAINS, series_200_sharknose) {
 		misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
 		running_cost_base:              RUNNING_COST_ELECTRIC;
 		engine_class:                   ENGINE_CLASS_ELECTRIC;
+		badges: 						["company/jreast"];
 		variant_group:					series_200;
 		/* Availability */
 		climates_available:             ALL_CLIMATES;
@@ -13151,7 +13143,7 @@ item(FEAT_TRAINS, series_200_sharknose) {
         purchase_power:                 308 * 4;
 		/* Graphics */
 		default:                        sw_200_series_graphics;
-		purchase:                       sw_200_series_sharknose_purchase;
+		purchase:                       ss_200_series_sharknose_buy;
 		articulated_part:               sw_200_series_sharknose_articulated_part;
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
 		/* Stats */
@@ -13195,6 +13187,7 @@ item(FEAT_TRAINS, series_200_275) {
 		misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
 		running_cost_base:              RUNNING_COST_ELECTRIC;
 		engine_class:                   ENGINE_CLASS_ELECTRIC;
+		badges: 						["company/jreast"];
 		variant_group:					200;
 		/* Availability */
 		climates_available:             ALL_CLIMATES;
@@ -13228,7 +13221,7 @@ item(FEAT_TRAINS, series_200_275) {
         purchase_power:                 308 * 4;
 		/* Graphics */
 		default:                        sw_200_series_graphics;
-		purchase:                       sw_200_series_roundnose_purchase;
+		purchase:                       ss_200_series_roundnose_buy;
 		articulated_part:               sw_200_series_original_275_articulated_part;
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
 		/* Stats */
@@ -13262,25 +13255,6 @@ item(FEAT_TRAINS, series_200_275) {
 # 1 "JPplusShinkansen.pnml" 4
 # 1 "src/trains/400_series/400_series.pnml" 1
 
-# 1 "src/trains/400_series/400_series_menu.pnml" 1
-
-/* SUBTYPES */
-  switch(FEAT_TRAINS, SELF, sw_400_series_subtypetext, cargo_subtype) {
-    0 : string(LV_400_SERIES_ORIGINAL);
-    1 : string(LV_400_SERIES_ORIGINAL_2CC);
-    2 : string(LV_400_SERIES_REFURB);
-    3 : string(LV_400_SERIES_REFURB_2CC);
-  }
-
-/* Purchase Menu */
-    spriteset (ss_400_series_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/400_series/gfx/400_series.png") {template_purchase(233, 1)}
-
-    switch(FEAT_TRAINS, SELF, sw_400_series_purchase, [ 
-        STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
-            0: logo_jreast; 
-            1: ss_400_series_buy;
-        }
-# 1 "src/trains/400_series/400_series.pnml" 2
 # 1 "src/trains/400_series/400_series_cab01.pnml" 1
 /* cab01 */
 
@@ -13543,6 +13517,17 @@ spriteset(ss_mid_400_series_pantob_rf2, "src/trains/400_series/gfx/400_series_re
 # 1 "src/trains/400_series/400_series.pnml" 2
 # 1 "src/trains/400_series/400_series_item.pnml" 1
 
+/* SUBTYPES */
+  switch(FEAT_TRAINS, SELF, sw_400_series_subtypetext, cargo_subtype) {
+    0 : string(LV_400_SERIES_ORIGINAL);
+    1 : string(LV_400_SERIES_ORIGINAL_2CC);
+    2 : string(LV_400_SERIES_REFURB);
+    3 : string(LV_400_SERIES_REFURB_2CC);
+  }
+
+/* Purchase Menu */
+    spriteset (ss_400_series_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/400_series/gfx/400_series.png") {tmpl_purchase(267, 1)}
+
 /*---Coupling Switch---*/
     switch(FEAT_TRAINS, SELF, sw_400_series_attach_vehid, [vehicle_type_id == series_400 || vehicle_type_id == mu_car_ms]) {
         0: return string(MU_UNIQUE);
@@ -13575,6 +13560,7 @@ item(FEAT_TRAINS, series_400) {
         ai_engine_rank:                 0;
         running_cost_base:              RUNNING_COST_ELECTRIC;
         engine_class:                   ENGINE_CLASS_ELECTRIC;
+        badges: 						["company/jreast"];
         visual_effect_and_powered:      visual_effect_and_powered(VISUAL_EFFECT_ELECTRIC, 4, ENABLE_WAGON_POWER);
         tractive_effort_coefficient:    0.3;
         air_drag_coefficient:           0;
@@ -13584,7 +13570,7 @@ item(FEAT_TRAINS, series_400) {
     /*Graphics and Callbacks*/
       graphics {
         default:                        sw_400_series_graphics;
-	    purchase:                       sw_400_series_purchase;
+	    purchase:                       ss_400_series_buy;
 		additional_text:	            return string(STR_DESC_400_SERIES);
         cargo_subtype_text:             sw_400_series_subtypetext;
         can_attach_wagon:			    sw_400_series_attach_vehid;
@@ -13615,24 +13601,6 @@ item(FEAT_TRAINS, series_400) {
 # 1 "JPplusShinkansen.pnml" 4
 # 1 "src/trains/e1_series/e1_series.pnml" 1
 
-# 1 "src/trains/e1_series/e1_series_original_menu.pnml" 1
-/* Subtypes */
-
-	switch(FEAT_TRAINS, SELF, sw_e1_series_original_subtype_text, cargo_subtype) {
-        0: return string(LV_E1_SERIES_ORIGINAL);
-        1: return string(LV_E1_SERIES_2CC);
-		return CB_RESULT_NO_TEXT;
-		}
-
-/* Purchase Menu */
-    spriteset (ss_e1_series_original_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e1_series/gfx/e1_original.png") {template_purchase(233, 1)}
- 
-    switch(FEAT_TRAINS, SELF, sw_e1_series_original_purchase, [ 
-        STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
-            0: logo_jreast; 
-            1: ss_e1_series_original_buy;
-        }
-# 1 "src/trains/e1_series/e1_series.pnml" 2
 # 1 "src/trains/e1_series/e1_series_original_cars.pnml" 1
 
 /* cab001 */
@@ -13958,6 +13926,17 @@ item(FEAT_TRAINS, series_400) {
 # 1 "src/trains/e1_series/e1_series.pnml" 2
 # 1 "src/trains/e1_series/e1_series_original_item.pnml" 1
 
+/* Subtypes */
+
+	switch(FEAT_TRAINS, SELF, sw_e1_series_original_subtype_text, cargo_subtype) {
+        0: return string(LV_E1_SERIES_ORIGINAL);
+        1: return string(LV_E1_SERIES_2CC);
+		return CB_RESULT_NO_TEXT;
+		}
+
+/* Purchase Menu */
+    spriteset (ss_e1_series_original_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e1_series/gfx/e1_original.png") {tmpl_purchase(267, 1)}
+
 switch (FEAT_TRAINS, SELF, sw_e1_series_original_articulated_part, extra_callback_info1) {
 		1 .. 2: return series_e1_original;									
 		return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
@@ -13971,6 +13950,7 @@ item(FEAT_TRAINS, series_e1_original) {
 		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
 		running_cost_base:              RUNNING_COST_ELECTRIC;
 		engine_class:                   ENGINE_CLASS_ELECTRIC;
+		badges: 						["company/jreast"];
 		/* Availability */
 		climates_available:             ALL_CLIMATES;
 		introduction_date:              date(1994,07,15);
@@ -14003,7 +13983,7 @@ item(FEAT_TRAINS, series_e1_original) {
         purchase_power:                 550 * 4;
 		/* Graphics */
 		default:                        sw_e1_series_original_graphics;
-		purchase:                       sw_e1_series_original_purchase;
+		purchase:                       ss_e1_series_original_buy;
 		articulated_part:               sw_e1_series_original_articulated_part;
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
 		/* Stats */
@@ -14034,24 +14014,6 @@ item(FEAT_TRAINS, series_e1_original) {
 }
 # 1 "src/trains/e1_series/e1_series.pnml" 2
 
-# 1 "src/trains/e1_series/e1_series_refurb_menu.pnml" 1
-/* Subtypes */
-
-	switch(FEAT_TRAINS, SELF, sw_e1_series_refurb_subtype_text, cargo_subtype) {
-        0: return string(LV_E1_SERIES_REFURB);
-        1: return string(LV_E1_SERIES_2CC);
-		return CB_RESULT_NO_TEXT;
-		}
-
-/* Purchase Menu */
-    spriteset (ss_e1_series_refurb_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e1_series/gfx/e1_refurb.png") {template_purchase(233, 1)}
- 
-    switch(FEAT_TRAINS, SELF, sw_e1_series_refurb_purchase, [ 
-        STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
-            0: logo_jreast; 
-            1: ss_e1_series_refurb_buy;
-        }
-# 1 "src/trains/e1_series/e1_series.pnml" 2
 # 1 "src/trains/e1_series/e1_series_refurb_cars.pnml" 1
 
 /* cab001 */
@@ -14377,6 +14339,17 @@ item(FEAT_TRAINS, series_e1_original) {
 # 1 "src/trains/e1_series/e1_series.pnml" 2
 # 1 "src/trains/e1_series/e1_series_refurb_item.pnml" 1
 
+/* Subtypes */
+
+	switch(FEAT_TRAINS, SELF, sw_e1_series_refurb_subtype_text, cargo_subtype) {
+        0: return string(LV_E1_SERIES_REFURB);
+        1: return string(LV_E1_SERIES_2CC);
+		return CB_RESULT_NO_TEXT;
+		}
+
+/* Purchase Menu */
+    spriteset (ss_e1_series_refurb_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e1_series/gfx/e1_refurb.png") {tmpl_purchase(267, 1)}
+
 switch (FEAT_TRAINS, SELF, sw_e1_series_refurb_articulated_part, extra_callback_info1) {
 		1 .. 2: return series_e1_refurb;									
 		return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
@@ -14390,6 +14363,7 @@ item(FEAT_TRAINS, series_e1_refurb) {
 		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
 		running_cost_base:              RUNNING_COST_ELECTRIC;
 		engine_class:                   ENGINE_CLASS_ELECTRIC;
+		badges: 						["company/jreast"];
         variant_group:                  2001;
 		/* Availability */
 		climates_available:             ALL_CLIMATES;
@@ -14423,7 +14397,7 @@ item(FEAT_TRAINS, series_e1_refurb) {
         purchase_power:                 550 * 4;
 		/* Graphics */
 		default:                        sw_e1_series_refurb_graphics;
-		purchase:                       sw_e1_series_refurb_purchase;
+		purchase:                       ss_e1_series_refurb_buy;
 		articulated_part:               sw_e1_series_refurb_articulated_part;
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
 		/* Stats */
@@ -14456,26 +14430,6 @@ item(FEAT_TRAINS, series_e1_refurb) {
 # 1 "JPplusShinkansen.pnml" 4
 # 1 "src/trains/e2_series/e2_series.pnml" 1
 
-# 1 "src/trains/e2_series/e2_series_red_menu.pnml" 1
-
-/* SUBTYPES */
-
-    switch(FEAT_TRAINS, SELF, sw_e2_series_red_subtype_text, cargo_subtype) {
-        0: return string(LV_E2_SERIES_RED);
-        1: return string(LV_E2_SERIES_2CC);
-        return CB_RESULT_NO_TEXT;
-        }
-
-/* Purchase Menu */
-
-    spriteset (ss_e2_series_red_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e2_series/gfx/e2_red.png") {template_purchase(233, 1)}
-
-    switch(FEAT_TRAINS, SELF, sw_e2_series_red_purchase, [ 
-        STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
-            0: logo_jreast; 
-            1: ss_e2_series_red_buy;
-        }
-# 1 "src/trains/e2_series/e2_series.pnml" 2
 # 1 "src/trains/e2_series/e2_series_red_cars.pnml" 1
 
 /* cab001 */
@@ -14809,6 +14763,18 @@ item(FEAT_TRAINS, series_e1_refurb) {
 # 1 "src/trains/e2_series/e2_series.pnml" 2
 # 1 "src/trains/e2_series/e2_series_red_item.pnml" 1
 
+/* SUBTYPES */
+
+    switch(FEAT_TRAINS, SELF, sw_e2_series_red_subtype_text, cargo_subtype) {
+        0: return string(LV_E2_SERIES_RED);
+        1: return string(LV_E2_SERIES_2CC);
+        return CB_RESULT_NO_TEXT;
+        }
+
+/* Purchase Menu */
+
+    spriteset (ss_e2_series_red_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e2_series/gfx/e2_red.png") {tmpl_purchase(267, 1)}
+
 // Articulation
 	switch (FEAT_TRAINS, SELF, sw_e2_series_red_articulated_part, extra_callback_info1) {
 			1 .. 2: return series_e2_red;									
@@ -14836,6 +14802,7 @@ item(FEAT_TRAINS, series_e2_red) {
 		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
 		running_cost_base:              RUNNING_COST_ELECTRIC;
 		engine_class:                   ENGINE_CLASS_ELECTRIC;
+		badges: 						["company/jreast"];
         /* Availability */
         climates_available:             ALL_CLIMATES;
 		introduction_date:              date(1997,03,22);
@@ -14868,7 +14835,7 @@ item(FEAT_TRAINS, series_e2_red) {
         purchase_power:                 402 * 4;
 		/* Graphics */
         default:                        sw_e2_series_red_graphics;
-		purchase:                       sw_e2_series_red_purchase;
+		purchase:                       ss_e2_series_red_buy;
 		articulated_part:               sw_e2_series_red_articulated_part;
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
         /* Stats */
@@ -14899,26 +14866,6 @@ item(FEAT_TRAINS, series_e2_red) {
 }
 # 1 "src/trains/e2_series/e2_series.pnml" 2
 
-# 1 "src/trains/e2_series/e2_series_pink_menu.pnml" 1
-
-/* SUBTYPES */
-
-    switch(FEAT_TRAINS, SELF, sw_e2_series_pink_subtype_text, cargo_subtype) {
-        0: return string(LV_E2_SERIES_PINK);
-        1: return string(LV_E2_SERIES_2CC);
-        return CB_RESULT_NO_TEXT;
-        }
-
-/* Purchase Menu */
-
-    spriteset (ss_e2_series_pink_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e2_series/gfx/e2_pink.png") {template_purchase(233, 1)}
-
-    switch(FEAT_TRAINS, SELF, sw_e2_series_pink_purchase, [ 
-        STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
-            0: logo_jreast; 
-            1: ss_e2_series_pink_buy;
-        }
-# 1 "src/trains/e2_series/e2_series.pnml" 2
 # 1 "src/trains/e2_series/e2_series_pink_cars.pnml" 1
 
 /* cab001 */
@@ -15252,6 +15199,18 @@ item(FEAT_TRAINS, series_e2_red) {
 # 1 "src/trains/e2_series/e2_series.pnml" 2
 # 1 "src/trains/e2_series/e2_series_pink_item.pnml" 1
 
+/* SUBTYPES */
+
+    switch(FEAT_TRAINS, SELF, sw_e2_series_pink_subtype_text, cargo_subtype) {
+        0: return string(LV_E2_SERIES_PINK);
+        1: return string(LV_E2_SERIES_2CC);
+        return CB_RESULT_NO_TEXT;
+        }
+
+/* Purchase Menu */
+
+    spriteset (ss_e2_series_pink_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e2_series/gfx/e2_pink.png") {tmpl_purchase(267, 1)}
+
 // Articulation
 	switch (FEAT_TRAINS, SELF, sw_e2_series_pink_articulated_part, extra_callback_info1) {
 			1 .. 2: return series_e2_pink;									
@@ -15279,6 +15238,7 @@ item(FEAT_TRAINS, series_e2_pink) {
 		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
 		running_cost_base:              RUNNING_COST_ELECTRIC;
 		engine_class:                   ENGINE_CLASS_ELECTRIC;
+		badges: 						["company/jreast"];
         variant_group:					1552;
         /* Availability */
         climates_available:             ALL_CLIMATES;
@@ -15312,7 +15272,7 @@ item(FEAT_TRAINS, series_e2_pink) {
         purchase_power:                 402 * 4;
 		/* Graphics */
         default:                        sw_e2_series_pink_graphics;
-		purchase:                       sw_e2_series_pink_purchase;
+		purchase:                       ss_e2_series_pink_buy;
 		articulated_part:               sw_e2_series_pink_articulated_part;
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
         /* Stats */
@@ -15343,26 +15303,6 @@ item(FEAT_TRAINS, series_e2_pink) {
 }
 # 1 "src/trains/e2_series/e2_series.pnml" 2
 
-# 1 "src/trains/e2_series/e2_series_200_menu.pnml" 1
-
-/* SUBTYPES */
-
-    switch(FEAT_TRAINS, SELF, sw_e2_series_200_subtype_text, cargo_subtype) {
-        0: return string(LV_E2_SERIES_200);
-        1: return string(LV_E2_SERIES_2CC);
-        return CB_RESULT_NO_TEXT;
-        }
-
-/* Purchase Menu */
-
-    spriteset (ss_e2_series_200_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e2_series/gfx/e2_200.png") {template_purchase(233, 1)}
-
-    switch(FEAT_TRAINS, SELF, sw_e2_series_200_purchase, [ 
-        STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
-            0: logo_jreast; 
-            1: ss_e2_series_200_buy;
-        }
-# 1 "src/trains/e2_series/e2_series.pnml" 2
 # 1 "src/trains/e2_series/e2_series_200_cars.pnml" 1
 
 /* cab001 */
@@ -15888,6 +15828,18 @@ item(FEAT_TRAINS, series_e2_pink) {
 # 1 "src/trains/e2_series/e2_series.pnml" 2
 # 1 "src/trains/e2_series/e2_series_200_item.pnml" 1
 
+/* SUBTYPES */
+
+    switch(FEAT_TRAINS, SELF, sw_e2_series_200_subtype_text, cargo_subtype) {
+        0: return string(LV_E2_SERIES_200);
+        1: return string(LV_E2_SERIES_2CC);
+        return CB_RESULT_NO_TEXT;
+        }
+
+/* Purchase Menu */
+
+    spriteset (ss_e2_series_200_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e2_series/gfx/e2_200.png") {tmpl_purchase(267, 1)}
+
 // Articulation
 	switch (FEAT_TRAINS, SELF, sw_e2_series_200_articulated_part, extra_callback_info1) {
 			1 .. 2: return series_e2_200;									
@@ -15922,6 +15874,7 @@ item(FEAT_TRAINS, series_e2_200) {
 		model_life:                     VEHICLE_NEVER_EXPIRES;		//
 		vehicle_life:                   30;							// 
 		track_type:                     SHINKANSEN;
+		badges: 						["company/jreast"];
         /* Cargo */
         reliability_decay:              5;
 		refittable_cargo_classes:       bitmask(CC_PASSENGERS);
@@ -15948,7 +15901,7 @@ item(FEAT_TRAINS, series_e2_200) {
         purchase_power:                 402 * 4;
 		/* Graphics */
         default:                        sw_e2_series_200_graphics;
-		purchase:                       sw_e2_series_200_purchase;
+		purchase:                       ss_e2_series_200_buy;
 		articulated_part:               sw_e2_series_200_articulated_part;
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
         /* Stats */
@@ -15981,25 +15934,6 @@ item(FEAT_TRAINS, series_e2_200) {
 # 1 "JPplusShinkansen.pnml" 4
 # 1 "src/trains/e3_series/e3_series.pnml" 1
 
-# 1 "src/trains/e3_series/e3_series_r_menu.pnml" 1
-
-/* Subtypes */
-
-	switch(FEAT_TRAINS, SELF, sw_e3_series_r_subtype_text, cargo_subtype) {
-		0: return string(LV_E3_SERIES_R);                     
-		1: return string(LV_E3_SERIES_R_2CC);                      
-		return CB_RESULT_NO_TEXT;
-		}
-
-/* Purchase Menu */
-    spriteset (ss_e3_series_r_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/gfx/e3_r.png") {template_purchase(233, 1)}
-
-    switch(FEAT_TRAINS, SELF, sw_e3_series_r_purchase, [ 
-        STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
-            0: logo_jreast; 
-            1: ss_e3_series_r_buy;
-        }
-# 1 "src/trains/e3_series/e3_series.pnml" 2
 # 1 "src/trains/e3_series/e3_series_r_cars.pnml" 1
 
 /* cab001 */
@@ -16173,6 +16107,18 @@ item(FEAT_TRAINS, series_e2_200) {
 	}
 # 1 "src/trains/e3_series/e3_series.pnml" 2
 # 1 "src/trains/e3_series/e3_series_r_item.pnml" 1
+
+/* Subtypes */
+
+	switch(FEAT_TRAINS, SELF, sw_e3_series_r_subtype_text, cargo_subtype) {
+		0: return string(LV_E3_SERIES_R);                     
+		1: return string(LV_E3_SERIES_R_2CC);                      
+		return CB_RESULT_NO_TEXT;
+		}
+
+/* Purchase Menu */
+    spriteset (ss_e3_series_r_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/gfx/e3_r.png") {tmpl_purchase(267, 1)}
+
 /*---Coupling Switch---*/
 switch(FEAT_TRAINS, SELF, sw_e3_series_r_attach_vehid, [vehicle_type_id == series_e3_r || vehicle_type_id == mu_car_ms]) {
  0: return string(MU_UNIQUE);
@@ -16205,6 +16151,7 @@ item(FEAT_TRAINS, series_e3_r) {
         ai_engine_rank:                 0;
         running_cost_base:              RUNNING_COST_ELECTRIC;
         engine_class:                   ENGINE_CLASS_ELECTRIC;
+        badges: 						            ["company/jreast"];
         visual_effect_and_powered:      visual_effect_and_powered(VISUAL_EFFECT_ELECTRIC, 4, ENABLE_WAGON_POWER);
         tractive_effort_coefficient:    0.3;
         air_drag_coefficient:           0;
@@ -16214,7 +16161,7 @@ item(FEAT_TRAINS, series_e3_r) {
     /*Graphics and Callbacks*/
       graphics {
         default:                        sw_e3_series_r_graphics;
-	      purchase:                       sw_e3_series_r_purchase;
+	      purchase:                       ss_e3_series_r_buy;
 		    additional_text:	              return string(STR_DESC_E3_SERIES_R);
         cargo_subtype_text:             sw_e3_series_r_subtype_text;
         can_attach_wagon:			          sw_e3_series_r_attach_vehid;
@@ -16243,25 +16190,6 @@ item(FEAT_TRAINS, series_e3_r) {
 }
 # 1 "src/trains/e3_series/e3_series.pnml" 2
 
-# 1 "src/trains/e3_series/e3_series_1000_menu.pnml" 1
-
-/* Subtypes */
-
-	switch(FEAT_TRAINS, SELF, sw_e3_series_1000_subtype_text, cargo_subtype) {
-		0: return string(LV_E3_SERIES_1000);                     
-		1: return string(LV_E3_SERIES_1000_2CC);                      
-		return CB_RESULT_NO_TEXT;
-		}
-
-/* Purchase Menu */
-    spriteset (ss_e3_series_1000_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/gfx/e3_1000.png") {template_purchase(233, 1)}
-
-    switch(FEAT_TRAINS, SELF, sw_e3_series_1000_purchase, [ 
-        STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
-            0: logo_jreast; 
-            1: ss_e3_series_1000_buy;
-        }
-# 1 "src/trains/e3_series/e3_series.pnml" 2
 # 1 "src/trains/e3_series/e3_series_1000_cars.pnml" 1
 
 /* cab001 */
@@ -16406,6 +16334,18 @@ item(FEAT_TRAINS, series_e3_r) {
 	}
 # 1 "src/trains/e3_series/e3_series.pnml" 2
 # 1 "src/trains/e3_series/e3_series_1000_item.pnml" 1
+
+/* Subtypes */
+
+	switch(FEAT_TRAINS, SELF, sw_e3_series_1000_subtype_text, cargo_subtype) {
+		0: return string(LV_E3_SERIES_1000);                     
+		1: return string(LV_E3_SERIES_1000_2CC);                      
+		return CB_RESULT_NO_TEXT;
+		}
+
+/* Purchase Menu */
+    spriteset (ss_e3_series_1000_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/gfx/e3_1000.png") {tmpl_purchase(267, 1)}
+
 /*---Coupling Switch---*/
 switch(FEAT_TRAINS, SELF, sw_e3_series_1000_attach_vehid, [vehicle_type_id == series_e3_1000 || vehicle_type_id == mu_car_ms]) {
  0: return string(MU_UNIQUE);
@@ -16439,6 +16379,7 @@ item(FEAT_TRAINS, series_e3_1000) {
         ai_engine_rank:                 0;
         running_cost_base:              RUNNING_COST_ELECTRIC;
         engine_class:                   ENGINE_CLASS_ELECTRIC;
+        badges: 						["company/jreast"];
         visual_effect_and_powered:      visual_effect_and_powered(VISUAL_EFFECT_ELECTRIC, 4, ENABLE_WAGON_POWER);
         tractive_effort_coefficient:    0.3;
         air_drag_coefficient:           0;
@@ -16448,7 +16389,7 @@ item(FEAT_TRAINS, series_e3_1000) {
     /*Graphics and Callbacks*/
       graphics {
         default:                        sw_e3_series_1000_graphics;
-	    purchase:                       sw_e3_series_1000_purchase;
+	    purchase:                       ss_e3_series_1000_buy;
 		additional_text:	            return string(STR_DESC_E3_SERIES_1000);
         cargo_subtype_text:             sw_e3_series_1000_subtype_text;
         can_attach_wagon:			    sw_e3_series_1000_attach_vehid;
@@ -16477,25 +16418,6 @@ item(FEAT_TRAINS, series_e3_1000) {
 }
 # 1 "src/trains/e3_series/e3_series.pnml" 2
 
-# 1 "src/trains/e3_series/e3_series_2000_menu.pnml" 1
-
-/* Subtypes */
-
-	switch(FEAT_TRAINS, SELF, sw_e3_series_2000_subtype_text, cargo_subtype) {
-		0: return string(LV_E3_SERIES_2000);                     
-		1: return string(LV_E3_SERIES_2000_2CC);                      
-		return CB_RESULT_NO_TEXT;
-		}
-
-/* Purchase Menu */
-    spriteset (ss_e3_series_2000_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/gfx/e3_2000.png") {template_purchase(233, 1)}
-
-    switch(FEAT_TRAINS, SELF, sw_e3_series_2000_purchase, [ 
-        STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
-            0: logo_jreast; 
-            1: ss_e3_series_2000_buy;
-        }
-# 1 "src/trains/e3_series/e3_series.pnml" 2
 # 1 "src/trains/e3_series/e3_series_2000_cars.pnml" 1
 
 /* cab001 */
@@ -16640,6 +16562,18 @@ item(FEAT_TRAINS, series_e3_1000) {
 	}
 # 1 "src/trains/e3_series/e3_series.pnml" 2
 # 1 "src/trains/e3_series/e3_series_2000_item.pnml" 1
+
+/* Subtypes */
+
+	switch(FEAT_TRAINS, SELF, sw_e3_series_2000_subtype_text, cargo_subtype) {
+		0: return string(LV_E3_SERIES_2000);                     
+		1: return string(LV_E3_SERIES_2000_2CC);                      
+		return CB_RESULT_NO_TEXT;
+		}
+
+/* Purchase Menu */
+    spriteset (ss_e3_series_2000_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/gfx/e3_2000.png") {tmpl_purchase(267, 1)}
+
 /*---Coupling Switch---*/
 switch(FEAT_TRAINS, SELF, sw_e3_series_2000_attach_vehid, [vehicle_type_id == series_e3_2000 || vehicle_type_id == mu_car_ms]) {
  0: return string(MU_UNIQUE);
@@ -16673,6 +16607,7 @@ item(FEAT_TRAINS, series_e3_2000) {
         ai_engine_rank:                 0;
         running_cost_base:              RUNNING_COST_ELECTRIC;
         engine_class:                   ENGINE_CLASS_ELECTRIC;
+        badges: 						["company/jreast"];
         visual_effect_and_powered:      visual_effect_and_powered(VISUAL_EFFECT_ELECTRIC, 4, ENABLE_WAGON_POWER);
         tractive_effort_coefficient:    0.3;
         air_drag_coefficient:           0;
@@ -16682,7 +16617,7 @@ item(FEAT_TRAINS, series_e3_2000) {
     /*Graphics and Callbacks*/
       graphics {
         default:                        sw_e3_series_2000_graphics;
-	    purchase:                       sw_e3_series_2000_purchase;
+	    purchase:                       ss_e3_series_2000_buy;
 		additional_text:	            return string(STR_DESC_E3_SERIES_2000);
         cargo_subtype_text:             sw_e3_series_2000_subtype_text;
         can_attach_wagon:			    sw_e3_series_2000_attach_vehid;
@@ -16711,25 +16646,6 @@ item(FEAT_TRAINS, series_e3_2000) {
 }
 # 1 "src/trains/e3_series/e3_series.pnml" 2
 
-# 1 "src/trains/e3_series/e3_series_700_menu.pnml" 1
-
-/* Subtypes */
-
-	switch(FEAT_TRAINS, SELF, sw_e3_series_700_subtype_text, cargo_subtype) {
-		0: return string(LV_E3_SERIES_700);                     
-		1: return string(LV_E3_SERIES_700_2CC);                      
-		return CB_RESULT_NO_TEXT;
-		}
-
-/* Purchase Menu */
-    spriteset (ss_e3_series_700_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/gfx/e3_700.png") {template_purchase(233, 1)}
-
-    switch(FEAT_TRAINS, SELF, sw_e3_series_700_purchase, [ 
-        STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
-            0: logo_jreast; 
-            1: ss_e3_series_700_buy;
-        }
-# 1 "src/trains/e3_series/e3_series.pnml" 2
 # 1 "src/trains/e3_series/e3_series_700_cars.pnml" 1
 
 /* cab001 */
@@ -16965,6 +16881,18 @@ item(FEAT_TRAINS, series_e3_2000) {
 	}
 # 1 "src/trains/e3_series/e3_series.pnml" 2
 # 1 "src/trains/e3_series/e3_series_700_item.pnml" 1
+
+/* Subtypes */
+
+	switch(FEAT_TRAINS, SELF, sw_e3_series_700_subtype_text, cargo_subtype) {
+		0: return string(LV_E3_SERIES_700);                     
+		1: return string(LV_E3_SERIES_700_2CC);                      
+		return CB_RESULT_NO_TEXT;
+		}
+
+/* Purchase Menu */
+    spriteset (ss_e3_series_700_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/gfx/e3_700.png") {tmpl_purchase(267, 1)}
+
 /*---Coupling Switch---*/
 switch(FEAT_TRAINS, SELF, sw_e3_series_700_attach_vehid, [vehicle_type_id == series_e3_700 || vehicle_type_id == mu_car_ms]) {
  0: return string(MU_UNIQUE);
@@ -16998,6 +16926,7 @@ item(FEAT_TRAINS, series_e3_700) {
         ai_engine_rank:                 0;
         running_cost_base:              RUNNING_COST_ELECTRIC;
         engine_class:                   ENGINE_CLASS_ELECTRIC;
+        badges: 						["company/jreast"];
         visual_effect_and_powered:      visual_effect_and_powered(VISUAL_EFFECT_ELECTRIC, 4, ENABLE_WAGON_POWER);
         tractive_effort_coefficient:    0.3;
         air_drag_coefficient:           0;
@@ -17007,7 +16936,7 @@ item(FEAT_TRAINS, series_e3_700) {
     /*Graphics and Callbacks*/
       graphics {
         default:                        sw_e3_series_700_graphics;
-	    purchase:                       sw_e3_series_700_purchase;
+	    purchase:                       ss_e3_series_700_buy;
 		additional_text:	            return string(STR_DESC_E3_SERIES_700);
         cargo_subtype_text:             sw_e3_series_700_subtype_text;
         can_attach_wagon:			    sw_e3_series_700_attach_vehid;
@@ -17038,26 +16967,6 @@ item(FEAT_TRAINS, series_e3_700) {
 # 1 "JPplusShinkansen.pnml" 4
 # 1 "src/trains/e4_series/e4_series.pnml" 1
 
-# 1 "src/trains/e4_series/e4_series_yellow_menu.pnml" 1
-
-/* SUBTYPES */ 
-
-	switch(FEAT_TRAINS, SELF, sw_e4_series_yellow_subtype_text, cargo_subtype) {
-		0: return string(LV_E4_SERIES_YELLOW);
-        1: return string(LV_E4_SERIES_2CC);
-		return CB_RESULT_NO_TEXT;
-		}
-
-/* Purchase Menu */
-
-    spriteset (ss_e4_series_yel_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_yellow.png") {template_purchase(233, 1)}
-    
-    switch(FEAT_TRAINS, SELF, sw_e4_series_yellow_purchase, [ 
-        STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
-            0: logo_jreast;
-            1: ss_e4_series_yel_buy;
-        }
-# 1 "src/trains/e4_series/e4_series.pnml" 2
 # 1 "src/trains/e4_series/e4_series_yellow_cars.pnml" 1
 
 /* cab001 */
@@ -17405,6 +17314,18 @@ item(FEAT_TRAINS, series_e3_700) {
 # 1 "src/trains/e4_series/e4_series.pnml" 2
 # 1 "src/trains/e4_series/e4_series_yellow_item.pnml" 1
 
+/* SUBTYPES */ 
+
+	switch(FEAT_TRAINS, SELF, sw_e4_series_yellow_subtype_text, cargo_subtype) {
+		0: return string(LV_E4_SERIES_YELLOW);
+        1: return string(LV_E4_SERIES_2CC);
+		return CB_RESULT_NO_TEXT;
+		}
+
+/* Purchase Menu */
+
+    spriteset (ss_e4_series_yel_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_yellow.png") {tmpl_purchase(267, 1)}
+
     switch(FEAT_TRAINS, SELF, sw_attach_e4_series_yellow, [
 			vehicle_type_id == mu_car_full || 
 			vehicle_type_id == series_e3_r ||
@@ -17429,6 +17350,7 @@ item(FEAT_TRAINS, series_e4_yellow) {
         misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK);
         running_cost_base:              RUNNING_COST_ELECTRIC;
 		engine_class:                   ENGINE_CLASS_ELECTRIC;
+		badges: 						["company/jreast"];
         /* Availability */
         climates_available:             ALL_CLIMATES;
 		introduction_date:              date(1997,12,20);
@@ -17461,7 +17383,7 @@ item(FEAT_TRAINS, series_e4_yellow) {
         purchase_power:                 563 * 4;
         /* Graphics */
         default:                        sw_e4_series_yellow_graphics;
-		purchase:                       sw_e4_series_yellow_purchase;
+		purchase:                       ss_e4_series_yel_buy;
 		articulated_part:               sw_e4_series_yellow_articulated_part;
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
         /* Stats */
@@ -17492,26 +17414,6 @@ item(FEAT_TRAINS, series_e4_yellow) {
 }
 # 1 "src/trains/e4_series/e4_series.pnml" 2
 
-# 1 "src/trains/e4_series/e4_series_pink_menu.pnml" 1
-
-/* SUBTYPES */ 
-
-	switch(FEAT_TRAINS, SELF, sw_e4_series_pink_subtype_text, cargo_subtype) {
-		0: return string(LV_E4_SERIES_PINK);
-        1: return string(LV_E4_SERIES_2CC);
-		return CB_RESULT_NO_TEXT;
-		}
-
-/* Purchase Menu */
-
-    spriteset (ss_e4_series_pnk_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_pink.png") {template_purchase(233, 1)}
-    
-    switch(FEAT_TRAINS, SELF, sw_e4_series_pink_purchase, [ 
-        STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
-            0: logo_jreast;
-            1: ss_e4_series_pnk_buy;
-        }
-# 1 "src/trains/e4_series/e4_series.pnml" 2
 # 1 "src/trains/e4_series/e4_series_pink_cars.pnml" 1
 
 /* cab001 */
@@ -17859,6 +17761,18 @@ item(FEAT_TRAINS, series_e4_yellow) {
 # 1 "src/trains/e4_series/e4_series.pnml" 2
 # 1 "src/trains/e4_series/e4_series_pink_item.pnml" 1
 
+/* SUBTYPES */ 
+
+	switch(FEAT_TRAINS, SELF, sw_e4_series_pink_subtype_text, cargo_subtype) {
+		0: return string(LV_E4_SERIES_PINK);
+        1: return string(LV_E4_SERIES_2CC);
+		return CB_RESULT_NO_TEXT;
+		}
+
+/* Purchase Menu */
+
+    spriteset (ss_e4_series_pnk_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_pink.png") {tmpl_purchase(267, 1)}
+
     switch(FEAT_TRAINS, SELF, sw_attach_e4_series_pink, [
 			vehicle_type_id == mu_car_full || 
 			vehicle_type_id == series_e3_r ||
@@ -17883,6 +17797,7 @@ item(FEAT_TRAINS, series_e4_pink) {
         misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK);
         running_cost_base:              RUNNING_COST_ELECTRIC;
 		engine_class:                   ENGINE_CLASS_ELECTRIC;
+		badges: 						["company/jreast"];
 		variant_group:					2004;		
         /* Availability */
         climates_available:             ALL_CLIMATES;
@@ -17916,7 +17831,7 @@ item(FEAT_TRAINS, series_e4_pink) {
         purchase_power:                 563 * 4;
         /* Graphics */
         default:                        sw_e4_series_pink_graphics;
-		purchase:                       sw_e4_series_pink_purchase;
+		purchase:                       ss_e4_series_pnk_buy;
 		articulated_part:               sw_e4_series_pink_articulated_part;
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
         /* Stats */
@@ -17949,24 +17864,6 @@ item(FEAT_TRAINS, series_e4_pink) {
 # 1 "JPplusShinkansen.pnml" 4
 # 1 "src/trains/e5_series/e5_series.pnml" 1
 
-# 1 "src/trains/e5_series/e5_series_menu.pnml" 1
-
-/* SUBTYPES */ 
-	switch(FEAT_TRAINS, SELF, sw_e5_series_subtype_text, cargo_subtype) {
-		0: return string(LV_E5_SERIES);
-		1: return string(LV_E5_SERIES_2CC);
-		return CB_RESULT_NO_TEXT;
-		}
-
-/* Purchase Menu */
-    spriteset (ss_e5_series_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e5_series/gfx/e5_pink.png") {template_purchase(233, 1)}
-
-    switch(FEAT_TRAINS, SELF, sw_e5_series_purchase, [ 
-        STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
-            0: logo_jreast; 
-            1: ss_e5_series_buy;
-        }
-# 1 "src/trains/e5_series/e5_series.pnml" 2
 # 1 "src/trains/e5_series/e5_series_cars.pnml" 1
 
 /* cab001 */
@@ -18308,6 +18205,17 @@ item(FEAT_TRAINS, series_e4_pink) {
 # 1 "src/trains/e5_series/e5_series.pnml" 2
 # 1 "src/trains/e5_series/e5_series_item.pnml" 1
 
+
+/* Purchase Menu */
+    spriteset (ss_e5_series_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e5_series/gfx/e5_pink.png") {tmpl_purchase(267, 1)}
+
+/* Subtypes */ 
+	switch(FEAT_TRAINS, SELF, sw_e5_series_subtype_text, cargo_subtype) {
+		0: return string(LV_E5_SERIES);
+		1: return string(LV_E5_SERIES_2CC);
+		return CB_RESULT_NO_TEXT;
+		}
+
 /*---Articulation---*/
 	switch (FEAT_TRAINS, SELF, sw_e5_series_articulated_part, extra_callback_info1) {
 			1 .. 2: return series_e5;									
@@ -18337,6 +18245,7 @@ item(FEAT_TRAINS, series_e5) {
 		misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK);
 		running_cost_base:              RUNNING_COST_ELECTRIC;
 		engine_class:                   ENGINE_CLASS_ELECTRIC;
+		badges: 						["company/jreast"];
 		/* Availability */
 		climates_available:             ALL_CLIMATES;
 		introduction_date:              date(2011,03,05); 
@@ -18369,7 +18278,7 @@ item(FEAT_TRAINS, series_e5) {
         purchase_power:                 402 * 4;
 		/* Graphics */
 		default:                        sw_e5_series_graphics;
-		purchase:                       sw_e5_series_purchase;
+		purchase:                       ss_e5_series_buy;
 		articulated_part:               sw_e5_series_articulated_part;	
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
 		/* Stats */
@@ -18399,24 +18308,7 @@ item(FEAT_TRAINS, series_e5) {
       }
 }
 # 1 "src/trains/e5_series/e5_series.pnml" 2
-# 1 "src/trains/e5_series/h5_series_menu.pnml" 1
 
-/* SUBTYPES */ 
-	switch(FEAT_TRAINS, SELF, sw_h5_series_subtype_text, cargo_subtype) {
-		0: return string(LV_H5_SERIES);
-		1: return string(LV_H5_SERIES_2CC);
-		return CB_RESULT_NO_TEXT;
-		}
-
-/* Purchase Menu */
-    spriteset (ss_h5_series_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e5_series/gfx/e5_purple.png") {template_purchase(233, 1)}
-
-    switch(FEAT_TRAINS, SELF, sw_h5_series_purchase, [ 
-        STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
-            0: logo_jreast; 
-            1: ss_h5_series_buy;
-        }
-# 1 "src/trains/e5_series/e5_series.pnml" 2
 # 1 "src/trains/e5_series/h5_series_cars.pnml" 1
 
 /* cab001 */
@@ -18758,6 +18650,17 @@ item(FEAT_TRAINS, series_e5) {
 # 1 "src/trains/e5_series/e5_series.pnml" 2
 # 1 "src/trains/e5_series/h5_series_item.pnml" 1
 
+
+/* SUBTYPES */ 
+	switch(FEAT_TRAINS, SELF, sw_h5_series_subtype_text, cargo_subtype) {
+		0: return string(LV_H5_SERIES);
+		1: return string(LV_H5_SERIES_2CC);
+		return CB_RESULT_NO_TEXT;
+		}
+
+/* Purchase Menu */
+    spriteset (ss_h5_series_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e5_series/gfx/e5_purple.png") {tmpl_purchase(267, 1)}
+
 /*---Articulation---*/
 	switch (FEAT_TRAINS, SELF, sw_h5_series_articulated_part, extra_callback_info1) {
 			1 .. 2: return series_h5;									
@@ -18785,6 +18688,7 @@ item(FEAT_TRAINS, series_h5) {
 		misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK);
 		running_cost_base:              RUNNING_COST_ELECTRIC;
 		engine_class:                   ENGINE_CLASS_ELECTRIC;
+		badges: 						["company/jrhokkaido"];
         variant_group:                  2005;
 		/* Availability */
 		climates_available:             ALL_CLIMATES;
@@ -18818,7 +18722,7 @@ item(FEAT_TRAINS, series_h5) {
         purchase_power:                 402 * 4;
 		/* Graphics */
 		default:                        sw_h5_series_graphics;
-		purchase:                       sw_h5_series_purchase;
+		purchase:                       ss_h5_series_buy;
 		articulated_part:               sw_h5_series_articulated_part;	
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
 		/* Stats */
@@ -18851,25 +18755,6 @@ item(FEAT_TRAINS, series_h5) {
 # 1 "JPplusShinkansen.pnml" 4
 # 1 "src/trains/e6_series/e6_series.pnml" 1
 
-# 1 "src/trains/e6_series/e6_series_menu.pnml" 1
-
-/* Subtypes */
-
-	switch(FEAT_TRAINS, SELF, sw_e6_series_subtype_text, cargo_subtype) {
-		0: return string(LV_E6_SERIES_ORIGINAL);                     
-		1: return string(LV_E6_SERIES_2CC);                      
-		return CB_RESULT_NO_TEXT;
-		}
-
-/* Purchase Menu */
-    spriteset (ss_e6_series_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e6_series/gfx/e6_series.png") {template_purchase(233, 1)}
-
-    switch(FEAT_TRAINS, SELF, sw_e6_series_purchase, [ 
-        STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
-            0: logo_jreast; 
-            1: ss_e6_series_buy;
-        }
-# 1 "src/trains/e6_series/e6_series.pnml" 2
 # 1 "src/trains/e6_series/e6_series_cars.pnml" 1
 
 /* cab001 */
@@ -18955,11 +18840,6 @@ item(FEAT_TRAINS, series_h5) {
 			1: sw_mid_e6_series_panto2_mask;
 		}
 # 1 "src/trains/e6_series/e6_series.pnml" 2
-//#include "src/trains/e6_series/e6_series_cab01.pnml"
-//#include "src/trains/e6_series/e6_series_cab02.pnml"
-//#include "src/trains/e6_series/e6_series_coach.pnml"
-//#include "src/trains/e6_series/e6_series_pant1.pnml"
-//#include "src/trains/e6_series/e6_series_pant2.pnml"
 # 1 "src/trains/e6_series/e6_series_formations.pnml" 1
  /* Panto in middle */
 
@@ -19003,7 +18883,16 @@ item(FEAT_TRAINS, series_h5) {
 # 1 "src/trains/e6_series/e6_series.pnml" 2
 # 1 "src/trains/e6_series/e6_series_item.pnml" 1
 
-/*---END OF SECTION---*/
+/* Subtypes */
+
+	switch(FEAT_TRAINS, SELF, sw_e6_series_subtype_text, cargo_subtype) {
+		0: return string(LV_E6_SERIES_ORIGINAL);                     
+		1: return string(LV_E6_SERIES_2CC);                      
+		return CB_RESULT_NO_TEXT;
+		}
+
+/* Purchase Menu */
+    spriteset (ss_e6_series_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e6_series/gfx/e6_series.png") {tmpl_purchase(267, 1)}
 
 item(FEAT_TRAINS, series_e6, 2006) {
     property {
@@ -19035,6 +18924,7 @@ item(FEAT_TRAINS, series_e6, 2006) {
 
         running_cost_base:              RUNNING_COST_ELECTRIC;
         engine_class:                   ENGINE_CLASS_ELECTRIC;
+        badges:                         ["company/jreast"];
         visual_effect_and_powered:      visual_effect_and_powered(VISUAL_EFFECT_ELECTRIC, 4, ENABLE_WAGON_POWER);
 
         tractive_effort_coefficient:    0.3;
@@ -19045,7 +18935,7 @@ item(FEAT_TRAINS, series_e6, 2006) {
     /*Graphics and Callbacks*/
       graphics {
         default:                        sw_e6_series_graphics;
-		    purchase:                       sw_e6_series_purchase;
+		    purchase:                       ss_e6_series_buy;
 		    additional_text:	              return string(STR_DESC_E6_SERIES);
         cargo_subtype_text:             sw_e6_series_subtype_text;
         can_attach_wagon:			          sw_attach_mu_car_ms;
@@ -19077,24 +18967,6 @@ item(FEAT_TRAINS, series_e6, 2006) {
 # 1 "JPplusShinkansen.pnml" 4
 # 1 "src/trains/e7_series/e7_series.pnml" 1
 
-# 1 "src/trains/e7_series/e7_series_menu.pnml" 1
-/* SUBTYPES */
-
-    switch(FEAT_TRAINS, SELF, sw_e7_series_subtype_text, cargo_subtype) {
-        0: return string(LV_E7_SERIES_E7);
-        1: return string(LV_E7_SERIES_2CC);
-        return CB_RESULT_NO_TEXT;
-        }
-
-/* Purchase Menu */
-    spriteset (ss_e7_series_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e7_series/gfx/e7_series.png") {template_purchase(233, 1)}
-
-    switch(FEAT_TRAINS, SELF, sw_e7_series_purchase, [ 
-        STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
-            0: logo_jreast; 
-            1: ss_e7_series_buy;
-        }
-# 1 "src/trains/e7_series/e7_series.pnml" 2
 # 1 "src/trains/e7_series/e7_series_cars.pnml" 1
 
 /* cab001 */
@@ -19420,6 +19292,17 @@ item(FEAT_TRAINS, series_e6, 2006) {
 # 1 "src/trains/e7_series/e7_series.pnml" 2
 # 1 "src/trains/e7_series/e7_series_item.pnml" 1
 
+/* SUBTYPES */
+
+    switch(FEAT_TRAINS, SELF, sw_e7_series_subtype_text, cargo_subtype) {
+        0: return string(LV_E7_SERIES_E7);
+        1: return string(LV_E7_SERIES_2CC);
+        return CB_RESULT_NO_TEXT;
+        }
+
+/* Purchase Menu */
+    spriteset (ss_e7_series_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e7_series/gfx/e7_series.png") {tmpl_purchase(267, 1)}
+	
 	switch (FEAT_TRAINS, SELF, sw_e7_series_articulated_part, extra_callback_info1) {
 			1 .. 2: return series_e7;									
 			return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
@@ -19434,6 +19317,7 @@ item(FEAT_TRAINS, series_e7) {
 		misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK);
 		running_cost_base:              RUNNING_COST_ELECTRIC;
 		engine_class:                   ENGINE_CLASS_ELECTRIC;
+		badges: 						["company/jreast"];
         /* Availability */
         climates_available:             ALL_CLIMATES;
 		introduction_date:              date(2014,03,15);
@@ -19466,7 +19350,7 @@ item(FEAT_TRAINS, series_e7) {
         purchase_power:                 335 * 4;
         /* Graphics */
         default:                        sw_e7_series_graphics;
-		purchase:                       sw_e7_series_purchase;
+		purchase:                       ss_e7_series_buy;
 		articulated_part:               sw_e7_series_articulated_part;
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
         /* Stats */
@@ -19499,25 +19383,6 @@ item(FEAT_TRAINS, series_e7) {
 # 1 "JPplusShinkansen.pnml" 4
 # 1 "src/trains/e8_series/e8_series.pnml" 1
 
-# 1 "src/trains/e8_series/e8_series_menu.pnml" 1
-
-/* Subtypes */
-
-	switch(FEAT_TRAINS, SELF, sw_e8_series_subtype_text, cargo_subtype) {
-		0: return string(LV_E8_SERIES_ORIGINAL);                     
-		1: return string(LV_E8_SERIES_2CC);                      
-		return CB_RESULT_NO_TEXT;
-		}
-
-/* Purchase Menu */
-    spriteset (ss_e8_series_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e8_series/gfx/e8_irl.png") {template_purchase(233, 1)}
-
-    switch(FEAT_TRAINS, SELF, sw_e8_series_purchase, [ 
-        STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
-            0: logo_jreast; 
-            1: ss_e8_series_buy;
-        }
-# 1 "src/trains/e8_series/e8_series.pnml" 2
 # 1 "src/trains/e8_series/e8_series_cars.pnml" 1
 
 /* cab001 */
@@ -19646,6 +19511,16 @@ item(FEAT_TRAINS, series_e7) {
 # 1 "src/trains/e8_series/e8_series.pnml" 2
 # 1 "src/trains/e8_series/e8_series_item.pnml" 1
 
+/* Subtypes */
+
+	switch(FEAT_TRAINS, SELF, sw_e8_series_subtype_text, cargo_subtype) {
+		0: return string(LV_E8_SERIES_ORIGINAL);                     
+		1: return string(LV_E8_SERIES_2CC);                      
+		return CB_RESULT_NO_TEXT;
+		}
+
+/* Purchase Menu */
+    spriteset (ss_e8_series_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e8_series/gfx/e8_irl.png") {tmpl_purchase(267, 1)}
 
 switch(FEAT_TRAINS, SELF, sw_e8_series_attach_vehid, [vehicle_type_id == series_e8 || vehicle_type_id == mu_car_ms]) {
  0: return string(MU_UNIQUE);
@@ -19678,6 +19553,7 @@ item(FEAT_TRAINS, series_e8) {
         ai_engine_rank:                 0;
         running_cost_base:              RUNNING_COST_ELECTRIC;
         engine_class:                   ENGINE_CLASS_ELECTRIC;
+        badges: 						            ["company/jreast"];
         visual_effect_and_powered:      visual_effect_and_powered(VISUAL_EFFECT_ELECTRIC, 4, ENABLE_WAGON_POWER);
         tractive_effort_coefficient:    0.3;
         air_drag_coefficient:           0;
@@ -19687,7 +19563,7 @@ item(FEAT_TRAINS, series_e8) {
     /*Graphics and Callbacks*/
       graphics {
         default:                        sw_e8_series_graphics;
-	      purchase:                       sw_e8_series_purchase;
+	      purchase:                       ss_e8_series_buy;
 		    additional_text:	              return string(STR_DESC_E8_SERIES);
         cargo_subtype_text:             sw_e8_series_subtype_text;
         cargo_age_period:				        param_decay_express;
@@ -19719,24 +19595,6 @@ item(FEAT_TRAINS, series_e8) {
 # 1 "JPplusShinkansen.pnml" 4
 # 1 "src/trains/e10_series/e10_series.pnml" 1
 
-# 1 "src/trains/e10_series/e10_series_menu.pnml" 1
-
-/* SUBTYPES */ 
-	switch(FEAT_TRAINS, SELF, sw_e10_series_subtype_text, cargo_subtype) {
-		0: return string(LV_E10_SERIES);
-		1: return string(LV_E10_SERIES_2CC);
-		return CB_RESULT_NO_TEXT;
-		}
-
-/* Purchase Menu */
-    spriteset (ss_e10_series_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e10_series/gfx/e10_series_irl.png") {template_purchase(233, 1)}
-
-    switch(FEAT_TRAINS, SELF, sw_e10_series_purchase, [ 
-        STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
-            0: logo_jreast; 
-            1: ss_e10_series_buy;
-        }
-# 1 "src/trains/e10_series/e10_series.pnml" 2
 # 1 "src/trains/e10_series/e10_series_cars.pnml" 1
 
 /* cab001 */
@@ -20062,12 +19920,21 @@ item(FEAT_TRAINS, series_e8) {
 # 1 "src/trains/e10_series/e10_series.pnml" 2
 # 1 "src/trains/e10_series/e10_series_item.pnml" 1
 
+/* SUBTYPES */ 
+	switch(FEAT_TRAINS, SELF, sw_e10_series_subtype_text, cargo_subtype) {
+		0: return string(LV_E10_SERIES);
+		1: return string(LV_E10_SERIES_2CC);
+		return CB_RESULT_NO_TEXT;
+		}
+
+/* Purchase Menu */
+    spriteset (ss_e10_series_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e10_series/gfx/e10_series_irl.png") {tmpl_purchase(267, 1)}
+
 /*---Articulation---*/
 	switch (FEAT_TRAINS, SELF, sw_e10_series_articulated_part, extra_callback_info1) {
 			1 .. 2: return series_e10;									
 			return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
 		}
-
 
 item(FEAT_TRAINS, series_e10) {
 	property {
@@ -20077,6 +19944,7 @@ item(FEAT_TRAINS, series_e10) {
 		misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK);
 		running_cost_base:              RUNNING_COST_ELECTRIC;
 		engine_class:                   ENGINE_CLASS_ELECTRIC;
+		badges: 						["company/jreast"];
 		/* Availability */
 		climates_available:             ALL_CLIMATES;
 		introduction_date:              date(2027,01,01); 
@@ -20109,7 +19977,7 @@ item(FEAT_TRAINS, series_e10) {
         purchase_power:                 402 * 4;
 		/* Graphics */
 		default:                        sw_e10_series_graphics;
-		purchase:                       sw_e10_series_purchase;
+		purchase:                       ss_e10_series_buy;
 		articulated_part:               sw_e10_series_articulated_part;	
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
 		/* Stats */

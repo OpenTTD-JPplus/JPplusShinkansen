@@ -1,4 +1,15 @@
 
+
+/* Purchase Menu */
+    spriteset (ss_e5_series_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e5_series/gfx/e5_pink.png") {tmpl_purchase(267, 1)}
+
+/* Subtypes */ 
+	switch(FEAT_TRAINS, SELF, sw_e5_series_subtype_text, cargo_subtype) {
+		0: return string(LV_E5_SERIES);
+		1: return string(LV_E5_SERIES_2CC);
+		return CB_RESULT_NO_TEXT;
+		}
+
 /*---Articulation---*/
 	switch (FEAT_TRAINS, SELF, sw_e5_series_articulated_part, extra_callback_info1) {
 			1 .. 2: return series_e5;									
@@ -28,6 +39,7 @@ item(FEAT_TRAINS, series_e5) {
 		misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK);
 		running_cost_base:              RUNNING_COST_ELECTRIC;
 		engine_class:                   ENGINE_CLASS_ELECTRIC;
+		badges: 						["company/jreast"];
 		/* Availability */
 		climates_available:             ALL_CLIMATES;
 		introduction_date:              date(2011,03,05); 
@@ -60,7 +72,7 @@ item(FEAT_TRAINS, series_e5) {
         purchase_power:                 402 * 4;
 		/* Graphics */
 		default:                        sw_e5_series_graphics;
-		purchase:                       sw_e5_series_purchase;
+		purchase:                       ss_e5_series_buy;
 		articulated_part:               sw_e5_series_articulated_part;	
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
 		/* Stats */

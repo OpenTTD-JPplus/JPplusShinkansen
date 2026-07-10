@@ -1,5 +1,14 @@
 
-/*---END OF SECTION---*/
+/* Subtypes */
+
+	switch(FEAT_TRAINS, SELF, sw_e6_series_subtype_text, cargo_subtype) {
+		0: return string(LV_E6_SERIES_ORIGINAL);                     
+		1: return string(LV_E6_SERIES_2CC);                      
+		return CB_RESULT_NO_TEXT;
+		}
+
+/* Purchase Menu */
+    spriteset (ss_e6_series_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e6_series/gfx/e6_series.png") {tmpl_purchase(267, 1)}
 
 item(FEAT_TRAINS, series_e6, 2006) {
     property {
@@ -31,6 +40,7 @@ item(FEAT_TRAINS, series_e6, 2006) {
 
         running_cost_base:              RUNNING_COST_ELECTRIC;
         engine_class:                   ENGINE_CLASS_ELECTRIC;
+        badges:                         ["company/jreast"];
         visual_effect_and_powered:      visual_effect_and_powered(VISUAL_EFFECT_ELECTRIC, 4, ENABLE_WAGON_POWER);
 
         tractive_effort_coefficient:    0.3;
@@ -41,7 +51,7 @@ item(FEAT_TRAINS, series_e6, 2006) {
     /*Graphics and Callbacks*/
       graphics {
         default:                        sw_e6_series_graphics;
-		    purchase:                       sw_e6_series_purchase;
+		    purchase:                       ss_e6_series_buy;
 		    additional_text:	              return string(STR_DESC_E6_SERIES);
         cargo_subtype_text:             sw_e6_series_subtype_text;
         can_attach_wagon:			          sw_attach_mu_car_ms;

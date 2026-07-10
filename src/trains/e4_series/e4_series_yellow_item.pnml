@@ -1,4 +1,16 @@
 
+/* SUBTYPES */ 
+
+	switch(FEAT_TRAINS, SELF, sw_e4_series_yellow_subtype_text, cargo_subtype) {
+		0: return string(LV_E4_SERIES_YELLOW);
+        1: return string(LV_E4_SERIES_2CC);
+		return CB_RESULT_NO_TEXT;
+		}
+
+/* Purchase Menu */
+
+    spriteset (ss_e4_series_yel_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_yellow.png") {tmpl_purchase(267, 1)}
+
     switch(FEAT_TRAINS, SELF, sw_attach_e4_series_yellow, [
 			vehicle_type_id == mu_car_full || 
 			vehicle_type_id == series_e3_r ||
@@ -23,6 +35,7 @@ item(FEAT_TRAINS, series_e4_yellow) {
         misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK);
         running_cost_base:              RUNNING_COST_ELECTRIC;
 		engine_class:                   ENGINE_CLASS_ELECTRIC;
+		badges: 						["company/jreast"];
         /* Availability */
         climates_available:             ALL_CLIMATES;
 		introduction_date:              date(1997,12,20);
@@ -55,7 +68,7 @@ item(FEAT_TRAINS, series_e4_yellow) {
         purchase_power:                 563 * 4;
         /* Graphics */
         default:                        sw_e4_series_yellow_graphics;
-		purchase:                       sw_e4_series_yellow_purchase;
+		purchase:                       ss_e4_series_yel_buy;
 		articulated_part:               sw_e4_series_yellow_articulated_part;
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
         /* Stats */

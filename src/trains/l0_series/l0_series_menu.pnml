@@ -9,7 +9,7 @@
 
 
 /* Purchase Menu */
-    spriteset (ss_l0_series_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/l0_series/gfx/l0_series.png") {template_purchase(233, 1)}
+    spriteset (ss_l0_series_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/l0_series/gfx/l0_series.png") {tmpl_purchase(267, 1)}
 
     switch(FEAT_TRAINS, SELF, sw_l0_series_purchase, [ 
         STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 

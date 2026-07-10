@@ -27,7 +27,7 @@
 /* PURCHASE */
 
     // Sharknose
-        spriteset (ss_200_series_sharknose_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/gfx/200_series_sharknose.png") {template_purchase(233, 1)}
+        spriteset (ss_200_series_sharknose_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/gfx/200_series_sharknose.png") {tmpl_purchase(267, 1)}
 
         switch(FEAT_TRAINS, SELF, sw_200_series_sharknose_purchase, [ 
             STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
@@ -36,7 +36,7 @@
             }
     
     // Roundnose
-        spriteset (ss_200_series_roundnose_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/gfx/200_series_roundnose.png") {template_purchase(233, 1)}
+        spriteset (ss_200_series_roundnose_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/gfx/200_series_roundnose.png") {tmpl_purchase(267, 1)}
 
         switch(FEAT_TRAINS, SELF, sw_200_series_roundnose_purchase, [ 
             STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 

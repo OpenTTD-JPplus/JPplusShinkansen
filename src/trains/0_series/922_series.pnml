@@ -277,6 +277,8 @@ switch (FEAT_TRAINS, PARENT, sw_922_series_running_cost_factor, param_dryellow )
 	    return 220;                                 // After 1986, Speed = 220 km/h
     }
 
+    spriteset (ss_922_series_irl_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/0_series/gfx/922_series.png") {tmpl_purchase(267, 1)}
+
 if (param_dryellow == 0) { // GIMMICK
 
 item(FEAT_TRAINS, series_922) {
@@ -287,6 +289,7 @@ item(FEAT_TRAINS, series_922) {
         misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
 		running_cost_base:              RUNNING_COST_ELECTRIC;
 		engine_class:                   ENGINE_CLASS_ELECTRIC;
+		badges:							["company/jnrjrwestjrcentral"];	
         variant_group:					123;
         /* Availability */
 		climates_available:             ALL_CLIMATES;
@@ -321,7 +324,7 @@ item(FEAT_TRAINS, series_922) {
         purchase_power:                 248 * 4;
         /* Graphics */
         default:                        sw_922_series_graphics;
-		purchase:                       sw_922_series_purchase;
+		purchase:                       ss_922_series_irl_buy;
 		articulated_part:               sw_922_series_articulated_part;
         visual_effect_and_powered:      sw_visual_effect_and_powered;
 		/* Stats */
@@ -360,6 +363,7 @@ item(FEAT_TRAINS, series_922) {
         misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
 		running_cost_base:              RUNNING_COST_ELECTRIC;
 		engine_class:                   ENGINE_CLASS_ELECTRIC;
+		badges:							["company/jnrjrwestjrcentral"];	
         variant_group:					123;
         /* Availability */
 		climates_available:             ALL_CLIMATES;
@@ -393,7 +397,7 @@ item(FEAT_TRAINS, series_922) {
         purchase_power:                 248 * 4;
         /* Graphics */
         default:                        sw_922_series_graphics;
-		purchase:                       sw_922_series_purchase;
+		purchase:                       ss_922_series_irl_buy;
 		articulated_part:               sw_922_series_articulated_part;
         visual_effect_and_powered:      sw_visual_effect_and_powered;
 		/* Stats */
@@ -431,6 +435,7 @@ item(FEAT_TRAINS, series_922) {
         misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
 		running_cost_base:              RUNNING_COST_ELECTRIC;
 		engine_class:                   ENGINE_CLASS_ELECTRIC;
+		badges:							["company/jnrjrwestjrcentral"];
         variant_group:					123;
         /* Availability */
 		climates_available:             ALL_CLIMATES;
@@ -465,7 +470,7 @@ item(FEAT_TRAINS, series_922) {
         purchase_power:                 248 * 4;
         /* Graphics */
         default:                        sw_922_series_graphics;
-		purchase:                       sw_922_series_purchase;
+		purchase:                       ss_922_series_irl_buy;
 		articulated_part:               sw_922_series_articulated_part;
         visual_effect_and_powered:      sw_visual_effect_and_powered;
 		/* Stats */

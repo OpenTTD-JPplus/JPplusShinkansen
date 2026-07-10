@@ -1,8 +1,43 @@
 
-switch (FEAT_TRAINS, SELF, sw_200_series_original_articulated_part, extra_callback_info1) {
-		1 .. 2: return series_200;									
-		return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
-	}
+
+/* SUBTYPES */
+
+    // Roundnose
+    switch(FEAT_TRAINS, SELF, sw_200_series_roundnose_subtype_text, cargo_subtype) {
+	    0: return string(LV_200_SERIES_ORIGINAL);       // Roundnose
+        1: return string(LV_200_SERIES_ORIGINAL_2CC);   // Roundnose 2cc
+        2: return string(LV_200_SERIES_REFURB);         // Refurb
+        return CB_RESULT_NO_TEXT;
+        }
+
+    // Sharknose
+    switch(FEAT_TRAINS, SELF, sw_200_series_sharknose_subtype_text, cargo_subtype) {
+        0: return string(LV_200_SERIES_ORIGINAL);       // Sharknose
+        1: return string(LV_200_SERIES_ORIGINAL_2CC);   // Sharknose 2cc
+        return CB_RESULT_NO_TEXT;
+        }
+
+    // 275
+    switch(FEAT_TRAINS, SELF, sw_200_series_275_subtype_text, cargo_subtype) {
+        0: return string(LV_200_SERIES_ORIGINAL);       // 275
+        1: return string(LV_200_SERIES_ORIGINAL_2CC);   // 275 2cc
+        return CB_RESULT_NO_TEXT;
+        }
+
+
+/* PURCHASE */
+
+    // Sharknose
+        spriteset (ss_200_series_sharknose_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/gfx/200_series_sharknose.png") {tmpl_purchase(267, 1)}
+    
+    // Roundnose
+        spriteset (ss_200_series_roundnose_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/gfx/200_series_roundnose.png") {tmpl_purchase(267, 1)}
+
+// Articulated
+	switch (FEAT_TRAINS, SELF, sw_200_series_original_articulated_part, extra_callback_info1) {
+			1 .. 2: return series_200;									
+			return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+		}
 
 item(FEAT_TRAINS, series_200) {
 	property {
@@ -12,6 +47,7 @@ item(FEAT_TRAINS, series_200) {
 		misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
 		running_cost_base:              RUNNING_COST_ELECTRIC;
 		engine_class:                   ENGINE_CLASS_ELECTRIC;
+		badges: 						["company/jreast"];
 		/* Availability */
 		climates_available:             ALL_CLIMATES;
 		introduction_date:              date(1982,06,23);           // Date of launch
@@ -44,7 +80,7 @@ item(FEAT_TRAINS, series_200) {
         purchase_power:                 308 * 4;
 		/* Graphics */
 		default:                        sw_200_series_graphics;
-		purchase:                      	sw_200_series_roundnose_purchase;
+		purchase:                      	ss_200_series_roundnose_buy;
 		articulated_part:               sw_200_series_original_articulated_part;
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
 		/* Stats */
@@ -89,6 +125,7 @@ item(FEAT_TRAINS, series_200_sharknose) {
 		misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
 		running_cost_base:              RUNNING_COST_ELECTRIC;
 		engine_class:                   ENGINE_CLASS_ELECTRIC;
+		badges: 						["company/jreast"];
 		variant_group:					series_200;
 		/* Availability */
 		climates_available:             ALL_CLIMATES;
@@ -123,7 +160,7 @@ item(FEAT_TRAINS, series_200_sharknose) {
         purchase_power:                 308 * 4;
 		/* Graphics */
 		default:                        sw_200_series_graphics;
-		purchase:                       sw_200_series_sharknose_purchase;
+		purchase:                       ss_200_series_sharknose_buy;
 		articulated_part:               sw_200_series_sharknose_articulated_part;
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
 		/* Stats */
@@ -167,6 +204,7 @@ item(FEAT_TRAINS, series_200_275) {
 		misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
 		running_cost_base:              RUNNING_COST_ELECTRIC;
 		engine_class:                   ENGINE_CLASS_ELECTRIC;
+		badges: 						["company/jreast"];
 		variant_group:					200;
 		/* Availability */
 		climates_available:             ALL_CLIMATES;
@@ -200,7 +238,7 @@ item(FEAT_TRAINS, series_200_275) {
         purchase_power:                 308 * 4;
 		/* Graphics */
 		default:                        sw_200_series_graphics;
-		purchase:                       sw_200_series_roundnose_purchase;
+		purchase:                       ss_200_series_roundnose_buy;
 		articulated_part:               sw_200_series_original_275_articulated_part;
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
 		/* Stats */

@@ -1,4 +1,16 @@
 
+/* SUBTYPES */
+
+    switch(FEAT_TRAINS, SELF, sw_e2_series_200_subtype_text, cargo_subtype) {
+        0: return string(LV_E2_SERIES_200);
+        1: return string(LV_E2_SERIES_2CC);
+        return CB_RESULT_NO_TEXT;
+        }
+
+/* Purchase Menu */
+
+    spriteset (ss_e2_series_200_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e2_series/gfx/e2_200.png") {tmpl_purchase(267, 1)}
+
 // Articulation
 	switch (FEAT_TRAINS, SELF, sw_e2_series_200_articulated_part, extra_callback_info1) {
 			1 .. 2: return series_e2_200;									
@@ -33,6 +45,7 @@ item(FEAT_TRAINS, series_e2_200) {
 		model_life:                     VEHICLE_NEVER_EXPIRES;		//
 		vehicle_life:                   30;							// 
 		track_type:                     SHINKANSEN;
+		badges: 						["company/jreast"];
         /* Cargo */
         reliability_decay:              5;
 		refittable_cargo_classes:       bitmask(CC_PASSENGERS);
@@ -59,7 +72,7 @@ item(FEAT_TRAINS, series_e2_200) {
         purchase_power:                 402 * 4;
 		/* Graphics */
         default:                        sw_e2_series_200_graphics;
-		purchase:                       sw_e2_series_200_purchase;
+		purchase:                       ss_e2_series_200_buy;
 		articulated_part:               sw_e2_series_200_articulated_part;
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
         /* Stats */

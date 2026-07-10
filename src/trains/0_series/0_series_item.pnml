@@ -1,4 +1,36 @@
 
+/* SUBTYPES */
+
+    // From 1964 to 2002
+    switch(FEAT_TRAINS, SELF, sw_0_series_1964_subtype_text, cargo_subtype) {
+        0: return string(LV_YEAR_DEP_LIVERY);
+	    1: return string(LV_0_SERIES_ORIGINAL);
+        2: return string(LV_0_SERIES_NOSE);
+        3: return string(LV_0_SERIES_ORIGINAL_2CC);
+        4: return string(LV_0_SERIES_NOSE_2CC);
+        return CB_RESULT_NO_TEXT;
+        }
+
+    // Note - there is a purchase sprite change in 1987 (JNR -> JR)
+    
+    // From 2002 onwards - introduction of Kodama Livery
+    switch(FEAT_TRAINS, SELF, sw_0_series_2002_subtype_text, cargo_subtype) {
+        0: return string(LV_YEAR_DEP_LIVERY);
+	    1: return string(LV_0_SERIES_ORIGINAL);
+        2: return string(LV_0_SERIES_NOSE);
+        3: return string(LV_0_SERIES_ORIGINAL_2CC);
+        4: return string(LV_0_SERIES_NOSE_2CC);
+        5: return string(LV_0_SERIES_KODAMA);
+        return CB_RESULT_NO_TEXT;
+        }
+    
+    // Cargo Subtype List
+    switch(FEAT_TRAINS, SELF, sw_0_series_year_dep_subtype_text, current_year) {
+        0..2001: sw_0_series_1964_subtype_text;
+        sw_0_series_2002_subtype_text;
+    }
+
+
 switch (FEAT_TRAINS, SELF, sw_0_series_articulated_part, extra_callback_info1) {
 		1 .. 2: return series_0;									
 		return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
@@ -10,6 +42,9 @@ switch (FEAT_TRAINS, SELF, sw_0_series_articulated_part, extra_callback_info1) {
 	    return 220;                                 // After 1986, Speed = 220 km/h
     }
 
+/* PURCHASE */
+    spriteset (ss_0_series_irl_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/0_series/gfx/0_series_irl.png") {tmpl_purchase(267, 1)}
+
 item(FEAT_TRAINS, series_0) {
 	property {
 		/* Menu */
@@ -18,6 +53,7 @@ item(FEAT_TRAINS, series_0) {
         misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK);
 		running_cost_base:              RUNNING_COST_ELECTRIC;
 		engine_class:                   ENGINE_CLASS_ELECTRIC;
+        badges:                         ["company/jnrjrwestjrcentral"];
         /* Availability */
 		climates_available:             ALL_CLIMATES;
 		introduction_date:              date(1964,10,01);           // Date of launch
@@ -50,7 +86,7 @@ item(FEAT_TRAINS, series_0) {
         purchase_power:                 248 * 4;
         /* Graphics */
         default:                        sw_0_series_graphics;
-		purchase:                       sw_0_series_purchase;
+		purchase:                       ss_0_series_irl_buy;
 		articulated_part:               sw_0_series_articulated_part;
         visual_effect_and_powered:      sw_visual_effect_and_powered;
 		/* Stats */
