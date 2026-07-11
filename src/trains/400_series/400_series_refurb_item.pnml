@@ -1,24 +1,22 @@
 
 /* SUBTYPES */
-  switch(FEAT_TRAINS, SELF, sw_400_series_subtypetext, cargo_subtype) {
-    0 : string(LV_400_SERIES_ORIGINAL);
-    1 : string(LV_400_SERIES_ORIGINAL_2CC);
-    2 : string(LV_400_SERIES_REFURB);
-    3 : string(LV_400_SERIES_REFURB_2CC);
+  switch(FEAT_TRAINS, SELF, sw_400_series_refurb_subtypetext, cargo_subtype) {
+    0 : string(LV_400_SERIES_REFURB);
+    1 : string(LV_400_SERIES_REFURB_2CC);
   }
 
 /* Purchase Menu */
-    spriteset (ss_400_series_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/400_series/gfx/400_series.png") {tmpl_purchase(267, 1)}
+    spriteset (ss_400_series_refurb_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/400_series/gfx/400_refurb.png") {tmpl_purchase(267, 1)}
 
 /*---Coupling Switch---*/
-    switch(FEAT_TRAINS, SELF, sw_400_series_attach_vehid, [vehicle_type_id == series_400 || vehicle_type_id == mu_car_ms]) {
+    switch(FEAT_TRAINS, SELF, sw_400_series_refurb_attach_vehid, [vehicle_type_id == series_400_series_refurb || vehicle_type_id == mu_car_ms]) {
         0: return string(MU_UNIQUE);
     }
 /*---END OF SECTION---*/
 
-item(FEAT_TRAINS, series_400) {
+item(FEAT_TRAINS, series_400_series_refurb ) {
     property {
-        name:                           string(STR_NAME_400_SERIES);
+        name:                           string(STR_NAME_400_SERIES_REFURB);
         introduction_date:              date(1992,07,01);
         model_life:                     28;                             // In service until 2010,04,18
         vehicle_life:                   38;
@@ -42,7 +40,8 @@ item(FEAT_TRAINS, series_400) {
         ai_engine_rank:                 0;
         running_cost_base:              RUNNING_COST_ELECTRIC;
         engine_class:                   ENGINE_CLASS_ELECTRIC;
-        badges: 						["company/jreast"];
+        variant_group:                  400;
+        badges: 						["company/jreast","railgauge/standard","flag/jp","role/express_passenger"];
         visual_effect_and_powered:      visual_effect_and_powered(VISUAL_EFFECT_ELECTRIC, 4, ENABLE_WAGON_POWER);
         tractive_effort_coefficient:    0.3;
         air_drag_coefficient:           0;
@@ -51,11 +50,11 @@ item(FEAT_TRAINS, series_400) {
     }
     /*Graphics and Callbacks*/
       graphics {
-        default:                        sw_400_series_graphics;
-	    purchase:                       ss_400_series_buy;
+        default:                        sw_400_series_refurb_graphics;
+	    purchase:                       ss_400_series_refurb_buy;
 		additional_text:	            return string(STR_DESC_400_SERIES);
-        cargo_subtype_text:             sw_400_series_subtypetext;
-        can_attach_wagon:			    sw_400_series_attach_vehid;
+        cargo_subtype_text:             sw_400_series_refurb_subtypetext;
+        can_attach_wagon:			    sw_400_series_refurb_attach_vehid;
         //start_stop:                   ;
         purchase_weight:                42 / 2;
         purchase_power:                 282 * 4;
@@ -69,11 +68,11 @@ item(FEAT_TRAINS, series_400) {
     }
     /*Multiple Unit Car*/
       livery_override(mu_car_ms){
-        default:                        sw_400_series_graphics;
+        default:                        sw_400_series_refurb_graphics;
         cargo_capacity:                 57 * CapacityFactor();	
         cargo_age_period:				param_decay_express;
         loading_speed:                  57 * CapacityFactor() / param_loading_1D;
-        cargo_subtype_text:             sw_400_series_subtypetext;
+        cargo_subtype_text:             sw_400_series_refurb_subtypetext;
         //power:                          4 * 280;
         //weight:                         42;
         //running_cost_factor:            120;

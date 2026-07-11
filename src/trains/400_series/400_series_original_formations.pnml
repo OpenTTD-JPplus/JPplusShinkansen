@@ -1,0 +1,34 @@
+ /* Panto in middle */
+
+	switch (FEAT_TRAINS, SELF, sw_400_series_original_panto_in_middle, position_in_vehid_chain_from_end - position_in_vehid_chain ) {
+		1..2:  sw_400_series_original_panto1;
+		sw_400_series_original_coach1;
+	}
+
+ /* Long Panto Fixed */
+
+	switch (FEAT_TRAINS, SELF, sw_400_series_original_long_panto_fixed, position_in_vehid_chain == 3 || position_in_vehid_chain_from_end == 3 ) {
+		1:  sw_400_series_original_panto1;
+		sw_400_series_original_coach1;
+	}
+
+/* Midcar selection */
+
+	switch (FEAT_TRAINS, SELF, sw_400_series_original_midcars, num_vehs_in_vehid_chain + 1 ) {
+		0..6: sw_400_series_original_panto_in_middle;
+		default: sw_400_series_original_long_panto_fixed;
+	}
+
+/* Cab selection */
+
+/* Find the cabs */
+
+	switch (FEAT_TRAINS, SELF, sw_400_series_original_mucars, position_in_vehid_chain_from_end == 0  ) {
+		1:  sw_400_series_original_cab002;
+		sw_400_series_original_midcars;
+	}
+
+	switch (FEAT_TRAINS, SELF, sw_400_series_original_graphics, vehicle_type_id == series_400_series_original ) {
+		1:  sw_400_series_original_cab001;
+		sw_400_series_original_mucars;
+	}
