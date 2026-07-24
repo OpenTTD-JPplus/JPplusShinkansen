@@ -1,7 +1,7 @@
 
 
 /* Purchase Menu */
-    spriteset (ss_e5_series_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e5_series/gfx/e5_pink.png") {tmpl_purchase(267, 1)}
+    spriteset (ss_e5_series_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e5_series/gfx/e5_pink.png") {tmpl_buy(1)}
 
 /* Subtypes */ 
 	switch(FEAT_TRAINS, SELF, sw_e5_series_subtype_text, cargo_subtype) {

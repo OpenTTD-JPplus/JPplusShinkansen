@@ -8,7 +8,7 @@
 		}
 
 /* Purchase Menu */
-    spriteset (ss_e3_series_2000_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/gfx/e3_2000.png") {tmpl_purchase(267, 1)}
+    spriteset (ss_e3_series_2000_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/gfx/e3_2000.png") {tmpl_buy(1)}
 
 /*---Coupling Switch---*/
 switch(FEAT_TRAINS, SELF, sw_e3_series_2000_attach_vehid, [vehicle_type_id == series_e3_2000 || vehicle_type_id == mu_car_ms]) {

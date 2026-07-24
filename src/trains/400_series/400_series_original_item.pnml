@@ -6,7 +6,7 @@
   }
 
 /* Purchase Menu */
-    spriteset (ss_400_series_original_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/400_series/gfx/400_original.png") {tmpl_purchase(267, 1)}
+    spriteset (ss_400_series_original_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/400_series/gfx/400_original.png") {tmpl_buy(1)}
 
 /*---Coupling Switch---*/
     switch(FEAT_TRAINS, SELF, sw_400_series_original_attach_vehid, [vehicle_type_id == series_400_series_original || vehicle_type_id == mu_car_ms]) {

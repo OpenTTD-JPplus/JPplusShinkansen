@@ -13,6 +13,7 @@ item(FEAT_TRAINS, series_700) {
 		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
 		running_cost_base:              RUNNING_COST_ELECTRIC;
 		engine_class:                   ENGINE_CLASS_ELECTRIC;
+		badges: 						["company/jrwestjrcentral","railgauge/standard","flag/jp","role/express_passenger"];
 		/* Availability */
         climates_available:             ALL_CLIMATES;
 		introduction_date:              date(1999,03,13);
@@ -99,6 +100,7 @@ item(FEAT_TRAINS, series_700) {
 			misc_flags:                      bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
 			running_cost_base:              RUNNING_COST_ELECTRIC;
 			engine_class:                   ENGINE_CLASS_ELECTRIC;
+			badges: 						["company/jrwestjrcentral","railgauge/standard","flag/jp","role/utility"];
 			variant_group:					700;
 			/* Availability */
 			climates_available:             ALL_CLIMATES;
@@ -169,6 +171,7 @@ item(FEAT_TRAINS, series_700) {
 			misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
 			running_cost_base:              RUNNING_COST_ELECTRIC;
 			engine_class:                   ENGINE_CLASS_ELECTRIC;
+			badges: 						["company/jrwestjrcentral","railgauge/standard","flag/jp","role/mail"];
 			variant_group:					700;
 			/* Availability */
 			climates_available:             ALL_CLIMATES;
@@ -237,6 +240,7 @@ item(FEAT_TRAINS, series_700) {
 			misc_flags:                      bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
 			running_cost_base:              RUNNING_COST_ELECTRIC;
 			engine_class:                   ENGINE_CLASS_ELECTRIC;
+			badges: 						["company/jrwestjrcentral","railgauge/standard","flag/jp","role/express_passenger"];
 			variant_group:					700;
 			/* Availability */
 			climates_available:             ALL_CLIMATES;

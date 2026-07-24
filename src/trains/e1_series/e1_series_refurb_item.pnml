@@ -8,7 +8,7 @@
 		}
 
 /* Purchase Menu */
-    spriteset (ss_e1_series_refurb_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e1_series/gfx/e1_refurb.png") {tmpl_purchase(267, 1)}
+    spriteset (ss_e1_series_refurb_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e1_series/gfx/e1_refurb.png") {tmpl_buy(1)}
 
 switch (FEAT_TRAINS, SELF, sw_e1_series_refurb_articulated_part, extra_callback_info1) {
 		1 .. 2: return series_e1_refurb;									

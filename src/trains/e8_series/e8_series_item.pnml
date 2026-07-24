@@ -8,7 +8,7 @@
 		}
 
 /* Purchase Menu */
-    spriteset (ss_e8_series_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e8_series/gfx/e8_irl.png") {tmpl_purchase(267, 1)}
+    spriteset (ss_e8_series_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e8_series/gfx/e8_irl.png") {tmpl_buy(1)}
 
 switch(FEAT_TRAINS, SELF, sw_e8_series_attach_vehid, [vehicle_type_id == series_e8 || vehicle_type_id == mu_car_ms]) {
  0: return string(MU_UNIQUE);

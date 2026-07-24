@@ -9,7 +9,7 @@
 		}
 
 /* Purchase Menu */
-    spriteset (ss_500_series_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/500_series/gfx/500_series.png") {template_purchase(233, 1)}
+    spriteset (ss_500_series_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/500_series/gfx/500_series.png") {tmpl_purchase(267, 1)}
 
     switch(FEAT_TRAINS, SELF, sw_500_series_purchase, [ 
         STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 

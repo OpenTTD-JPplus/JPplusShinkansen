@@ -1,0 +1,41 @@
+ /* Panto in middle */
+
+	switch (FEAT_TRAINS, SELF, sw_200_series_shark_panto_in_middle, CarNumberFromEnd() - CarNumber() ) {
+		0..1:  sw_200_series_shark_panto1;
+		sw_200_series_shark_coach1;
+	}
+
+ /* Repeating */
+
+	switch (FEAT_TRAINS, SELF, sw_200_series_shark_repeating, CarNumber() % 16 ) {
+		2:  sw_200_series_shark_panto1;
+		4:  sw_200_series_shark_panto1;
+		6:  sw_200_series_shark_panto1;
+		8:  sw_200_series_shark_panto1;
+		9:  sw_200_series_shark_coach2;
+		10:  sw_200_series_shark_coach2;
+		12:  sw_200_series_shark_panto1;
+		14:  sw_200_series_shark_panto1;
+		default: sw_200_series_shark_coach1;
+	}
+
+/* Midcar selection */
+
+	switch (FEAT_TRAINS, SELF, sw_200_series_shark_midcars, NumberCarsInConsist() ) {
+		0..9: sw_200_series_shark_panto_in_middle;
+		default: sw_200_series_shark_repeating;
+	}
+
+/* Cab selection */
+
+/* Find the cabs */
+
+	switch (FEAT_TRAINS, SELF, sw_200_series_shark_cabs, position_in_consist) {
+		0..2: sw_200_series_shark_cab001;
+		sw_200_series_shark_cab002;
+	}
+
+	switch (FEAT_TRAINS, SELF, sw_200_series_shark_graphics, IsCab() ) {
+		1:  sw_200_series_shark_cabs;
+		sw_200_series_shark_midcars;
+	}

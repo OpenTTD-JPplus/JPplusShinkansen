@@ -10,7 +10,7 @@
 
 /* PURCHASE */
 
-    spriteset (ss_700_series_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/gfx/700_series.png") {template_purchase(233, 1)}
+    spriteset (ss_700_series_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/gfx/700_series.png") {tmpl_purchase(267, 1)}
 
     switch(FEAT_TRAINS, SELF, sw_700_series_purchase, [ 
         STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
@@ -20,7 +20,7 @@
 
 /* DR YELLOW PURCHASE */
 
-    spriteset (ss_923_series_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/gfx/923_series.png") {template_purchase(233, 1)}
+    spriteset (ss_923_series_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/gfx/923_series.png") {tmpl_purchase(267, 1)}
 
     switch(FEAT_TRAINS, SELF, sw_923_series_purchase, [ 
         STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 

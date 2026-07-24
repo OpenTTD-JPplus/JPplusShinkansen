@@ -1,4 +1,15 @@
 
+/* Subtypes */
+
+	switch(FEAT_TRAINS, SELF, sw_300_series_subtype_text, cargo_subtype) {
+		0: return string(LV_300_SERIES);                            
+		1: return string(LV_300_SERIES_2CC); 
+		return CB_RESULT_NO_TEXT;
+		}
+
+/* Purchase Menu */
+    spriteset (ss_300_series_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/300_series/gfx/300_series.png") {tmpl_buy(1)}
+
 switch (FEAT_TRAINS, SELF, sw_300_series_articulated_part, extra_callback_info1) {
 		1 .. 2: return series_300;									
 		return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
@@ -12,6 +23,7 @@ item(FEAT_TRAINS, series_300) {
         misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
         running_cost_base:              RUNNING_COST_ELECTRIC;
 		engine_class:                   ENGINE_CLASS_ELECTRIC;
+		badges: 						["company/jrwestjrcentral","railgauge/standard","flag/jp","role/express_passenger"];
         /* Availability */
         climates_available:             ALL_CLIMATES;
 		introduction_date:              date(1992,03,01);
@@ -44,7 +56,7 @@ item(FEAT_TRAINS, series_300) {
         purchase_power:                 402 * 4;
         /* Graphics */
         default:                        sw_300_series_graphics;
-		purchase:                       sw_300_series_purchase;
+		purchase:                       ss_300_series_buy;
 		articulated_part:               sw_300_series_articulated_part;
 		visual_effect_and_powered:      sw_visual_effect_and_powered;
         /* Stats */

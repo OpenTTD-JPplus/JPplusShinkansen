@@ -1,0 +1,34 @@
+ /* Panto in middle */
+
+	switch (FEAT_TRAINS, SELF, sw_200_series_round_panto_in_middle, CarNumberFromEnd() - CarNumber() ) {
+		0..1:  sw_200_series_round_panto1;
+		sw_200_series_round_coach1;
+	}
+
+ /* Even Car Pantos */
+
+	switch (FEAT_TRAINS, SELF, sw_200_series_round_even_car_pantos, EvenCarPantos() ) {
+		1:  sw_200_series_round_panto1;
+		sw_200_series_round_coach1;
+	}
+
+/* Midcar selection */
+
+	switch (FEAT_TRAINS, SELF, sw_200_series_round_midcars, NumberCarsInConsist() ) {
+		0..4: sw_200_series_round_panto_in_middle;
+		default: sw_200_series_round_even_car_pantos;
+	}
+
+/* Cab selection */
+
+/* Find the cabs */
+
+	switch (FEAT_TRAINS, SELF, sw_200_series_round_cabs, position_in_consist) {
+		0..2: sw_200_series_round_cab001;
+		sw_200_series_round_cab002;
+	}
+
+	switch (FEAT_TRAINS, SELF, sw_200_series_round_graphics, IsCab() ) {
+		1:  sw_200_series_round_cabs;
+		sw_200_series_round_midcars;
+	}

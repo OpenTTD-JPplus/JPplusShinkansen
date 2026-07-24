@@ -13,6 +13,7 @@ item(FEAT_TRAINS, series_500) {
 		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
 		running_cost_base:              RUNNING_COST_ELECTRIC;
 		engine_class:                   ENGINE_CLASS_ELECTRIC;
+		badges: 						["company/jrwestjrcentral","railgauge/standard","flag/jp","role/express_passenger"];
 		/* Availability */
 		climates_available:             ALL_CLIMATES;
 		introduction_date:              date(1997,03,01);

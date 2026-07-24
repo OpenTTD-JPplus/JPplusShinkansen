@@ -9,7 +9,7 @@
 
 /* Purchase Menu */
 
-    spriteset (ss_e4_series_pnk_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_pink.png") {tmpl_purchase(267, 1)}
+    spriteset (ss_e4_series_pnk_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_pink.png") {tmpl_buy(1)}
 
     switch(FEAT_TRAINS, SELF, sw_attach_e4_series_pink, [
 			vehicle_type_id == mu_car_full || 

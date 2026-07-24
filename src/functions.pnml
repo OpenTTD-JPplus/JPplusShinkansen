@@ -102,4 +102,5 @@ if (param_basecapacity == 2) {
 // Pantos on Evens
     switch(FEAT_TRAINS, SELF, PantoOnCabEvenConsist, num_vehs_in_consist % 2 == 0 ) {return;}
     switch(FEAT_TRAINS, SELF, EvenCarForward, CarNumber() % 2 == 0 ) {return;}
+    switch(FEAT_TRAINS, SELF, EvenCarPantos, CarNumber() % 2 == 0 ) {return;}
     switch(FEAT_TRAINS, SELF, EvenCarBackward, CarNumberFromEnd() % 2 == 0 ) {return;}
