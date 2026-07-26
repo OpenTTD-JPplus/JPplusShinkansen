@@ -1,0 +1,52 @@
+ /* Panto in middle */
+
+	switch (FEAT_TRAINS, SELF, sw_500_series_blue_panto_in_middle, CarNumberFromEnd() - CarNumber() ) {
+		0..1:  sw_500_series_blue_panto1;
+		sw_500_series_blue_coach1;
+	}
+
+ /* Penultimate Pantos Dual */
+
+	switch (FEAT_TRAINS, SELF, sw_500_series_blue_penultimate_pantos, CarNumber() ) {
+		2:  sw_500_series_blue_panto1;
+		sw_500_series_blue_panto2;
+	}
+
+	switch (FEAT_TRAINS, SELF, sw_500_series_blue_penultimate_pantos_dual, CarNumber() == 2 || CarNumberFromEnd() == 2 ) {
+		1:  sw_500_series_blue_penultimate_pantos;
+		sw_500_series_blue_coach1;
+	}
+
+ /* Long Panto Fixed */
+
+	switch (FEAT_TRAINS, SELF, sw_500_series_blue_long_panto_fixed_pantos, CarNumber() == 5 ) {
+		1:  sw_500_series_blue_panto1;
+		sw_500_series_blue_panto2;
+	}
+
+	switch (FEAT_TRAINS, SELF, sw_500_series_blue_long_panto_fixed, CarNumber() == 5 || CarNumberFromEnd() == 4 ) {
+		1:  sw_500_series_blue_long_panto_fixed_pantos;
+		sw_500_series_blue_coach1;
+	}
+
+/* Midcar selection */
+
+	switch (FEAT_TRAINS, SELF, sw_500_series_blue_midcars, NumberCarsInConsist() ) {
+		0..6: sw_500_series_blue_panto_in_middle;
+		7..15: sw_500_series_blue_penultimate_pantos_dual;
+		default: sw_500_series_blue_long_panto_fixed;
+	}
+
+/* Cab selection */
+
+/* Find the cabs */
+
+	switch (FEAT_TRAINS, SELF, sw_500_series_blue_cabs, position_in_consist) {
+		0..2: sw_500_series_blue_cab001;
+		sw_500_series_blue_cab002;
+	}
+
+	switch (FEAT_TRAINS, SELF, sw_500_series_blue_graphics, IsCab() ) {
+		1:  sw_500_series_blue_cabs;
+		sw_500_series_blue_midcars;
+	}

@@ -1,0 +1,53 @@
+
+ /* CarNumberFromEnd() */
+
+	switch (FEAT_TRAINS, SELF, sw_500_series_eva_carnumberfromend, CarNumberFromEnd() ) {
+		2:  sw_500_series_eva_panto7;
+		3:  sw_500_series_eva_coach6;
+		4:  sw_500_series_eva_coach5;
+		5:  sw_500_series_eva_coach4;
+		7:  sw_500_series_eva_panto2;
+		default: sw_500_series_eva_coach3;
+	}
+
+ /* Penultimate Pantos Dual */
+
+	switch (FEAT_TRAINS, SELF, sw_500_series_eva_penultimate_pantos_dual_repeating, ( CarNumberFromEnd() - 2 ) % 4 ) {
+		1:  sw_500_series_eva_coach6;
+		2:  sw_500_series_eva_coach5;
+		3:  sw_500_series_eva_coach4;
+		default: sw_500_series_eva_coach3;
+	}
+
+ /* Penultimate Pantos Dual */
+
+	switch (FEAT_TRAINS, SELF, sw_500_series_eva_penultimate_pantos, CarNumber() ) {
+		2:  sw_500_series_eva_panto2;
+		sw_500_series_eva_panto7;
+	}
+
+	switch (FEAT_TRAINS, SELF, sw_500_series_eva_penultimate_pantos_dual, CarNumber() == 2 || CarNumberFromEnd() == 2 ) {
+		1:  sw_500_series_eva_penultimate_pantos;
+		sw_500_series_eva_penultimate_pantos_dual_repeating;
+	}
+
+/* Midcar selection */
+
+	switch (FEAT_TRAINS, SELF, sw_500_series_eva_midcars, NumberCarsInConsist() ) {
+		0..9: sw_500_series_eva_carnumberfromend;
+		default: sw_500_series_eva_penultimate_pantos_dual;
+	}
+
+/* Cab selection */
+
+/* Find the cabs */
+
+	switch (FEAT_TRAINS, SELF, sw_500_series_eva_cabs, position_in_consist) {
+		0..2: sw_500_series_eva_cab001;
+		sw_500_series_eva_cab002;
+	}
+
+	switch (FEAT_TRAINS, SELF, sw_500_series_eva_graphics, IsCab() ) {
+		1:  sw_500_series_eva_cabs;
+		sw_500_series_eva_midcars;
+	}

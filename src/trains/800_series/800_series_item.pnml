@@ -7,7 +7,7 @@
 		}
 
 /* Purchase Menu */
-    spriteset (ss_800_series_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/800_series/gfx/800_series.png") {tmpl_purchase(267, 1)}
+    spriteset (ss_800_series_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/800_series/gfx/800.png") {tmpl_buy(1)}
 
 switch (FEAT_TRAINS, SELF, sw_800_series_articulated_part, extra_callback_info1) {
 		1 .. 2: return series_800;									
@@ -33,7 +33,7 @@ item(FEAT_TRAINS, series_800) {
 		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
 		running_cost_base:              RUNNING_COST_ELECTRIC;
 		engine_class:                   ENGINE_CLASS_ELECTRIC;
-		badges: 						["company/jrkyushu","railgauge/standard","flag/jp","role/express_passenger"];
+		badges: 						["company/jrkyushu","railgauge/standard","flag/jp","role/express_passenger","livery/irl","livery/2cc"];
 		/* Availability */
 		climates_available:             ALL_CLIMATES;
 		introduction_date:              date(2004,03,13);

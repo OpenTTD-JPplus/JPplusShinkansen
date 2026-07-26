@@ -1,4 +1,17 @@
 
+/* Subtypes */
+
+	switch(FEAT_TRAINS, SELF, sw_l0_series_subtype_text, cargo_subtype) {
+		0: return string(LV_L0_SERIES);                            // Sharknose
+		1: return string(LV_L0_SERIES_2CC);                        // Sharknose 2cc
+		return CB_RESULT_NO_TEXT;
+		}
+
+
+/* Purchase Menu */
+    spriteset (ss_l0_series_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/l0_series/gfx/l0_irl.png") {tmpl_buy(1)}
+
+
 switch (FEAT_TRAINS, SELF, sw_l0_series_articulated_part, extra_callback_info1) {
 		1 .. 2: return series_l0;									
 		return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
@@ -24,7 +37,7 @@ item(FEAT_TRAINS, series_l0) {
         misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
         running_cost_base:              RUNNING_COST_ELECTRIC;
 		engine_class:                   ENGINE_CLASS_ELECTRIC;
-		badges: 						["company/jrcentral"];
+		badges: 						["company/jrcentral","railgauge/maglev","role/express_passenger","livery/irl","livery/2cc"];
         /* Availability */
         climates_available:             ALL_CLIMATES;
 		introduction_date:              date(2027,01,01);
@@ -57,7 +70,7 @@ item(FEAT_TRAINS, series_l0) {
         purchase_power:                 800 * 4;
         /* Graphics */
         default:                        sw_l0_series_graphics;
-		purchase:                       sw_l0_series_purchase;
+		purchase:                       ss_l0_series_buy;
 		articulated_part:               sw_l0_series_articulated_part;
 		visual_effect_and_powered:      visual_effect_and_powered(VISUAL_EFFECT_DISABLE,0,ENABLE_WAGON_POWER);
         /* Stats */
