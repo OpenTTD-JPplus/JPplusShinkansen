@@ -34,7 +34,7 @@
 /* Midcar selection */
 
 	switch (FEAT_TRAINS, SELF, sw_500_series_hk_midcars, NumberCarsInConsist() ) {
-		0..9: sw_500_series_hk_carnumberfromend;
+		0..7: sw_500_series_hk_carnumberfromend;
 		default: sw_500_series_hk_penultimate_pantos_dual;
 	}
 
