@@ -104,3 +104,9 @@ if (param_basecapacity == 2) {
     switch(FEAT_TRAINS, SELF, EvenCarForward, CarNumber() % 2 == 0 ) {return;}
     switch(FEAT_TRAINS, SELF, EvenCarPantos, CarNumber() % 2 == 0 ) {return;}
     switch(FEAT_TRAINS, SELF, EvenCarBackward, CarNumberFromEnd() % 2 == 0 ) {return;}
+
+    switch(FEAT_TRAINS, SELF, subtype_text_irl_2cc, cargo_subtype) {
+		0: return string(LV_ORIGINAL);          // Original
+		1: return string(LV_2CC);      // 2cc
+		return CB_RESULT_NO_TEXT;
+		}

@@ -4,10 +4,13 @@
 item(FEAT_TRAINS, mu_car_ms, 1111) {}
 item(FEAT_TRAINS, mu_car_full, 1112) {}
 item(FEAT_TRAINS, mu_car_mail, 1113) {}
-
+// O series Shinkansen
 item(FEAT_TRAINS, series_0, 123) {}
 item(FEAT_TRAINS, series_922, 922) {}
-item(FEAT_TRAINS, series_100, 124) {}
+// 100 Series Shinkansen
+item(FEAT_TRAINS, series_100_x, 124) {}
+item(FEAT_TRAINS, series_100_v, 125) {}
+item(FEAT_TRAINS, series_100_kodama, 126) {}
 // 200 Series Shinkansen
 item(FEAT_TRAINS, series_200_round, 200) {}
 item(FEAT_TRAINS, series_200_shark, 201) {}
@@ -64,7 +67,9 @@ sort(FEAT_TRAINS, [
 125,    // L0 Series Shinkansen
 123,    // 0 Series Shinkansen
 922,    // 922 Series Shinkansen
-124,    // 100 Series Shinkansen
+124,    // 100 Series Shinkansen (X)
+125,    // 100 Series Shinkansen (V)
+126,    // 100 Series Shinkansen (Kodama)
 300,    // 300 Series Shinkansen
 500,    // 500 Series Shinkansen
 502,    // 500 Series Shinkansen (Evangelion)

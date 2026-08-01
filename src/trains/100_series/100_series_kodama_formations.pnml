@@ -1,0 +1,21 @@
+
+ /* Even Car Pantos */
+
+	switch (FEAT_TRAINS, SELF, sw_100_series_kodama_midcars, EvenCarPantos() ) {
+		1:  sw_100_series_kodama_panto1;
+		sw_100_series_kodama_coach1;
+	}
+
+/* Cab selection */
+
+/* Find the cabs */
+
+	switch (FEAT_TRAINS, SELF, sw_100_series_kodama_cabs, position_in_consist) {
+		0..2: sw_100_series_kodama_cab001;
+		sw_100_series_kodama_cab002;
+	}
+
+	switch (FEAT_TRAINS, SELF, sw_100_series_kodama_graphics, IsCab() ) {
+		1:  sw_100_series_kodama_cabs;
+		sw_100_series_kodama_midcars;
+	}

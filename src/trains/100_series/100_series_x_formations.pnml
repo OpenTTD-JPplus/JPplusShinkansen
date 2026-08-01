@@ -1,0 +1,21 @@
+
+ /* Even Car Pantos */
+
+	switch (FEAT_TRAINS, SELF, sw_100_series_x_midcars, EvenCarPantos() ) {
+		1:  sw_100_series_x_panto1;
+		sw_100_series_x_coach1;
+	}
+
+/* Cab selection */
+
+/* Find the cabs */
+
+	switch (FEAT_TRAINS, SELF, sw_100_series_x_cabs, position_in_consist) {
+		0..2: sw_100_series_x_cab001;
+		sw_100_series_x_cab002;
+	}
+
+	switch (FEAT_TRAINS, SELF, sw_100_series_x_graphics, IsCab() ) {
+		1:  sw_100_series_x_cabs;
+		sw_100_series_x_midcars;
+	}
