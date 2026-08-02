@@ -5,7 +5,8 @@ item(FEAT_TRAINS, mu_car_ms, 1111) {}
 item(FEAT_TRAINS, mu_car_full, 1112) {}
 item(FEAT_TRAINS, mu_car_mail, 1113) {}
 // O series Shinkansen
-item(FEAT_TRAINS, series_0, 123) {}
+item(FEAT_TRAINS, series_0_original, 121) {}
+item(FEAT_TRAINS, series_0_kodama, 122) {}
 item(FEAT_TRAINS, series_922, 922) {}
 // 100 Series Shinkansen
 item(FEAT_TRAINS, series_100_x, 124) {}
@@ -65,7 +66,8 @@ sort(FEAT_TRAINS, [
 
 /* Not JR East */
 125,    // L0 Series Shinkansen
-123,    // 0 Series Shinkansen
+121,    // 0 Series Shinkansen (Original)
+122,    // 0 Series Shinkansen (Kodama)
 922,    // 922 Series Shinkansen
 124,    // 100 Series Shinkansen (X)
 125,    // 100 Series Shinkansen (V)

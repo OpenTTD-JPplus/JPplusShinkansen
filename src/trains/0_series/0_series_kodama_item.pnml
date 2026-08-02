@@ -1,0 +1,77 @@
+switch (FEAT_TRAINS, SELF, sw_0_series_kodama_articulated_part, extra_callback_info1) {
+		1 .. 2: return series_0_kodama;
+		return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+	}
+
+/* PURCHASE */
+    spriteset (ss_0_series_kodama_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/0_series/gfx/0_kodama.png") {tmpl_buy(1)}
+
+item(FEAT_TRAINS, series_0_kodama) {
+	property {
+		/* Menu */
+        name: 							string(STR_NAME_0_SERIES_KODAMA);
+        sprite_id:                      SPRITE_ID_NEW_TRAIN; 		// required to enable new graphics
+        misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK);
+		running_cost_base:              RUNNING_COST_ELECTRIC;
+		engine_class:                   ENGINE_CLASS_ELECTRIC;
+        badges: 						["company/jnrjrwestjrcentral","railgauge/standard","flag/jp","role/express_passenger","livery/irl","livery/2cc","attach/jpplusshinkansenfull"];
+        variant_group:				   	121;
+        /* Availability */
+		climates_available:             ALL_CLIMATES;
+		introduction_date:              date(1964,10,01);           // Date of launch
+		model_life:                     1987 - 1964;		        // Constructed until 1986, in service to 2008
+		vehicle_life:                   30;							// Same as JapanSet
+        track_type:                     SHINKANSEN;
+		/* Cargo */
+        reliability_decay:              5;
+		refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+		refit_cost:                     0;
+		default_cargo_type:             PASS;
+        ai_special_flag:                AI_FLAG_PASSENGER;
+		cargo_capacity:                 1;							// 
+		loading_speed:                  50;                         // Changed by callback						
+		cargo_age_period:               278; 						// Default 185 x 1.5
+		/* Stats */
+        speed:                          220 km/h;                   // Changed by callback
+        power:                          8050 kW;	                // Changed by callback				
+		weight:                         1464 ton;                   // Changed by callback					
+		tractive_effort_coefficient:    0.3;                        // Standard
+		air_drag_coefficient:			0;
+	}
+	graphics {
+		/* Menu */
+        cargo_subtype_text:             subtype_text_irl_2cc;
+		can_attach_wagon:				sw_attach_mu_car_full;
+		start_stop:						sw_stop_start_full_length_4;
+        purchase_weight:                61;
+        purchase_power:                 248 * 4;
+        /* Graphics */
+        default:                        sw_0_series_kodama_graphics;
+		purchase:                       ss_0_series_kodama_buy;
+		articulated_part:               sw_0_series_kodama_articulated_part;
+        visual_effect_and_powered:      sw_visual_effect_and_powered;
+		/* Stats */
+        length:                        	sw_length_1_8_1;
+		weight:                         NumberCarsInConsist() * 61;
+        power:                          NumberCarsInConsist() * 248 * 4;	// 185 kW
+        cargo_capacity:                 28 * CapacityFactor();															
+		loading_speed:					28 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
+		cargo_age_period:				param_decay_express;
+        cost_factor:                    125;
+		running_cost_factor:            (300 + 125 * NumberCarsInConsist() ) * RunningCostFactor();
+		purchase_running_cost_factor:   300 + 125 * NumberCarsInConsist();
+	}
+	/*Multiple Unit Car*/
+	
+      livery_override(mu_car_full){
+        default:                        sw_0_series_kodama_graphics;
+        cargo_capacity:                 28 * CapacityFactor();
+        cargo_age_period:				param_decay_express;
+        loading_speed:					28 * CapacityFactor() / param_loading_2D;
+		articulated_part:				sw_mucar_full_articulated_part;
+		length:							sw_length_1_8_1;
+		//power:						// Apply power in graphics block to calculate power based on number of motorised cars correctly
+		//weight:						// Apply weight to graphics block to calculate Max T.E. correctly
+        //running_cost_factor:            sw_0_series_running_costs;
+      }
+}

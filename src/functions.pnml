@@ -100,10 +100,8 @@ if (param_basecapacity == 2) {
     switch(FEAT_TRAINS, SELF, PrevPartSame, other_veh_curv_info(-1) == 0 && other_veh_z_offset(-1) == 0 && other_veh_z_offset(-2) == 0 ) {return;}
 
 // Pantos on Evens
-    switch(FEAT_TRAINS, SELF, PantoOnCabEvenConsist, num_vehs_in_consist % 2 == 0 ) {return;}
     switch(FEAT_TRAINS, SELF, EvenCarForward, CarNumber() % 2 == 0 ) {return;}
     switch(FEAT_TRAINS, SELF, EvenCarPantos, CarNumber() % 2 == 0 ) {return;}
-    switch(FEAT_TRAINS, SELF, EvenCarBackward, CarNumberFromEnd() % 2 == 0 ) {return;}
 
     switch(FEAT_TRAINS, SELF, subtype_text_irl_2cc, cargo_subtype) {
 		0: return string(LV_ORIGINAL);          // Original

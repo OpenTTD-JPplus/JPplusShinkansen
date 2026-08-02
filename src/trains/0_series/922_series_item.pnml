@@ -1,0 +1,234 @@
+switch (FEAT_TRAINS, SELF, sw_922_series_articulated_part, extra_callback_info1) {
+		1 .. 2: return series_922;									
+		return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+	}
+
+/*---Running Cost Factor---*/
+switch (FEAT_TRAINS, PARENT, sw_922_series_running_cost_factor, param_dryellow ) {				
+		1: (150 + 60 * NumberCarsInConsist() ) * RunningCostFactor();		// Mail
+		2: (300 + 125 * NumberCarsInConsist() ) * RunningCostFactor();		// Passengers
+		return 0;			
+	}
+
+/* SPEED */
+    switch (FEAT_TRAINS, SELF, sw_922_series_speed, current_year) {
+	    0..1986: return 210;                        // Until 1986, Speed = 210 km/h
+	    return 220;                                 // After 1986, Speed = 220 km/h
+    }
+
+    spriteset (ss_922_series_irl_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/0_series/gfx/922_irl.png") {tmpl_buy(1)}
+
+if (param_dryellow == 0) { // GIMMICK
+
+item(FEAT_TRAINS, series_922) {
+	property {
+		/* Menu */
+        name: 							string(STR_NAME_922_SERIES);
+        sprite_id:                      SPRITE_ID_NEW_TRAIN; 		// required to enable new graphics
+        misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
+		running_cost_base:              RUNNING_COST_ELECTRIC;
+		engine_class:                   ENGINE_CLASS_ELECTRIC;
+		badges: 						["company/jnrjrwestjrcentral","railgauge/standard","flag/jp","role/utility","livery/irl","livery/2cc","attach/jpplusshinkansenfull"];
+        variant_group:					121;
+        /* Availability */
+		climates_available:             ALL_CLIMATES;
+		introduction_date:              date(1964,10,01);           // Date of launch
+		model_life:                     1987 - 1964;		        // Constructed until 1986, in service to 2008
+		vehicle_life:                   30;							// Same as JapanSet
+        track_type:                     SHINKANSEN;
+        extra_flags:					bitmask(VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW);
+		/* Cargo */
+        reliability_decay:              5;
+		refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+		refit_cost:                     0;
+		default_cargo_type:             PASS;
+        ai_special_flag:                AI_FLAG_PASSENGER;
+		cargo_capacity:                 1;							// 
+		loading_speed:                  50;                         // Changed by callback						
+		cargo_age_period:               278; 						// Default 185 x 1.5
+		/* Stats */
+        speed:                          211 km/h;                   // Changed by callback
+        power:                          8050 kW;	                // Changed by callback				
+		weight:                         1464 ton;                   // Changed by callback					
+		tractive_effort_coefficient:    0.3;                        // Standard
+		air_drag_coefficient:			0;
+	}
+	graphics {
+		/* Menu */
+        cargo_subtype_text:             subtype_text_irl_2cc;
+		can_attach_wagon:				sw_attach_mu_car_full;
+		start_stop:						sw_stop_start_full_length_4;
+        purchase_weight:                61;
+        purchase_power:                 248 * 4;
+        /* Graphics */
+        default:                        sw_922_series_graphics;
+		purchase:                       ss_922_series_irl_buy;
+		articulated_part:               sw_922_series_articulated_part;
+        visual_effect_and_powered:      sw_visual_effect_and_powered;
+		/* Stats */
+        length:                        	sw_length_1_8_1;
+        speed:							sw_922_series_speed;
+		weight:                         NumberCarsInConsist() * 61;
+        power:                          NumberCarsInConsist() * 248 * 4;	// 185 kW
+        cargo_capacity:                 28 * CapacityFactor();															
+		loading_speed:					28 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
+		cargo_age_period:				param_decay_express;
+        cost_factor:                    125;
+		running_cost_factor:            0;
+		purchase_running_cost_factor:   0;
+	}
+	/*Multiple Unit Car*/
+	
+      livery_override(mu_car_full){
+        default:                        sw_922_series_graphics;
+        cargo_capacity:                 0;
+        cargo_age_period:				param_decay_express;
+        loading_speed:					25;
+		articulated_part:				sw_mucar_full_articulated_part;
+		length:							sw_length_1_8_1;
+        running_cost_factor:            0;
+      }
+}}
+
+// MAIL
+if (param_dryellow == 1) {
+
+item(FEAT_TRAINS, series_922) {
+	property {
+		/* Menu */
+        name: 							string(STR_NAME_922_SERIES);
+        sprite_id:                      SPRITE_ID_NEW_TRAIN; 		// required to enable new graphics
+        misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
+		running_cost_base:              RUNNING_COST_ELECTRIC;
+		engine_class:                   ENGINE_CLASS_ELECTRIC;
+		badges: 						["company/jnrjrwestjrcentral","railgauge/standard","flag/jp","role/mail","livery/irl","livery/2cc","attach/jpplusshinkansenfull"];
+        variant_group:					121;
+        /* Availability */
+		climates_available:             ALL_CLIMATES;
+		introduction_date:              date(1964,10,01);           // Date of launch
+		model_life:                     1987 - 1964;		        // Constructed until 1986, in service to 2008
+		vehicle_life:                   30;							// Same as JapanSet
+        track_type:                     SHINKANSEN;
+        extra_flags:					bitmask(VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW);
+		/* Cargo */
+        reliability_decay:              5;
+		refittable_cargo_classes:       bitmask(CC_MAIL);
+		refit_cost:                     0;
+		default_cargo_type:             MAIL;
+		cargo_capacity:                 1;							// 
+		loading_speed:                  50;                         // Changed by callback						
+		cargo_age_period:               278; 						// Default 185 x 1.5
+		/* Stats */
+        speed:                          211 km/h;                   // Changed by callback
+        power:                          8050 kW;	                // Changed by callback				
+		weight:                         1464 ton;                   // Changed by callback					
+		tractive_effort_coefficient:    0.3;                        // Standard
+		air_drag_coefficient:			0;
+	}
+	graphics {
+		/* Menu */
+        cargo_subtype_text:             subtype_text_irl_2cc;
+		can_attach_wagon:				sw_attach_mu_car_full;
+		start_stop:						sw_stop_start_full_length_4;
+        purchase_weight:                61;
+        purchase_power:                 248 * 4;
+        /* Graphics */
+        default:                        sw_922_series_graphics;
+		purchase:                       ss_922_series_irl_buy;
+		articulated_part:               sw_922_series_articulated_part;
+        visual_effect_and_powered:      sw_visual_effect_and_powered;
+		/* Stats */
+        length:                        	sw_length_1_8_1;
+        speed:							sw_922_series_speed;
+		weight:                         NumberCarsInConsist() * 61;
+        power:                          NumberCarsInConsist() * 248 * 4;	// 185 kW
+        cargo_capacity:                 28 * CapacityFactor();															
+		loading_speed:					28 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
+		cargo_age_period:				param_decay_express;
+        cost_factor:                    125;
+		running_cost_factor:            sw_922_series_running_cost_factor;
+		purchase_running_cost_factor:   300 + 125 * NumberCarsInConsist();
+	}
+	/*Multiple Unit Car*/
+	
+      livery_override(mu_car_full){
+        default:                        sw_922_series_graphics;
+        cargo_capacity:                 40 * CapacityFactor();
+        cargo_age_period:				param_decay_express;
+        loading_speed:					40 * CapacityFactor() / param_loading_2D;
+		articulated_part:				sw_mucar_full_articulated_part;
+		length:							sw_length_1_8_1;
+      }
+}}
+
+// PASSENGERS
+if (param_dryellow == 2)  {
+
+item(FEAT_TRAINS, series_922) {
+	property {
+		/* Menu */
+        name: 							string(STR_NAME_922_SERIES);
+        sprite_id:                      SPRITE_ID_NEW_TRAIN; 		// required to enable new graphics
+        misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
+		running_cost_base:              RUNNING_COST_ELECTRIC;
+		engine_class:                   ENGINE_CLASS_ELECTRIC;
+		badges: 						["company/jnrjrwestjrcentral","railgauge/standard","flag/jp","role/express_passenger","livery/irl","livery/2cc","attach/jpplusshinkansenfull"];
+        variant_group:					121;
+        /* Availability */
+		climates_available:             ALL_CLIMATES;
+		introduction_date:              date(1964,10,01);           // Date of launch
+		model_life:                     1987 - 1964;		        // Constructed until 1986, in service to 2008
+		vehicle_life:                   30;							// Same as JapanSet
+        track_type:                     SHINKANSEN;
+        extra_flags:					bitmask(VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW);
+		/* Cargo */
+        reliability_decay:              5;
+		refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+		refit_cost:                     0;
+		default_cargo_type:             PASS;
+        ai_special_flag:                AI_FLAG_PASSENGER;
+		cargo_capacity:                 1;							// 
+		loading_speed:                  50;                         // Changed by callback						
+		cargo_age_period:               278; 						// Default 185 x 1.5
+		/* Stats */
+        speed:                          211 km/h;                   // Changed by callback
+        power:                          8050 kW;	                // Changed by callback				
+		weight:                         1464 ton;                   // Changed by callback					
+		tractive_effort_coefficient:    0.3;                        // Standard
+		air_drag_coefficient:			0;
+	}
+	graphics {
+		/* Menu */
+        cargo_subtype_text:             subtype_text_irl_2cc;
+		can_attach_wagon:				sw_attach_mu_car_full;
+		start_stop:						sw_stop_start_full_length_4;
+        purchase_weight:                61;
+        purchase_power:                 248 * 4;
+        /* Graphics */
+        default:                        sw_922_series_graphics;
+		purchase:                       ss_922_series_irl_buy;
+		articulated_part:               sw_922_series_articulated_part;
+        visual_effect_and_powered:      sw_visual_effect_and_powered;
+		/* Stats */
+        length:                        	sw_length_1_8_1;
+        speed:							sw_922_series_speed;
+		weight:                         NumberCarsInConsist() * 61;
+        power:                          NumberCarsInConsist() * 248 * 4;	// 185 kW
+        cargo_capacity:                 28 * CapacityFactor();															
+		loading_speed:					28 * CapacityFactor() / param_loading_2D;					// Capacity divided by door loading factor
+		cargo_age_period:				param_decay_express;
+        cost_factor:                    125;
+		running_cost_factor:            sw_922_series_running_cost_factor;
+		purchase_running_cost_factor:   300 + 125 * NumberCarsInConsist();
+	}
+	/*Multiple Unit Car*/
+	
+      livery_override(mu_car_full){
+        default:                        sw_922_series_graphics;
+        cargo_capacity:                 28 * CapacityFactor();
+        cargo_age_period:				param_decay_express;
+        loading_speed:					28 * CapacityFactor() / param_loading_2D;
+		articulated_part:				sw_mucar_full_articulated_part;
+		length:							sw_length_1_8_1;
+      }
+}}

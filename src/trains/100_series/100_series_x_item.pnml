@@ -15,7 +15,7 @@ item(FEAT_TRAINS, series_100_x) {
         misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
 		running_cost_base:              RUNNING_COST_ELECTRIC;
 		engine_class:                   ENGINE_CLASS_ELECTRIC;
-		badges: 						["company/jnrjrwestjrcentral","railgauge/standard","flag/jp","role/express_passenger","livery/irl","livery/2cc"];
+		badges: 						["company/jnrjrwestjrcentral","railgauge/standard","flag/jp","role/express_passenger","livery/irl","livery/2cc","attach/jpplusshinkansenfull"];
         /* Availability */
         climates_available:             ALL_CLIMATES;
 		introduction_date:              date(1985,10,01);           // Date of launch
@@ -40,7 +40,6 @@ item(FEAT_TRAINS, series_100_x) {
 	}
 	graphics {
 		/* Menu */
-        additional_text:                string(STR_DESC_100_SERIES);
         cargo_subtype_text:             subtype_text_irl_2cc;
 		can_attach_wagon:				sw_attach_mu_car_full;
 		start_stop:						sw_stop_start_full_length_4;
