@@ -1,13 +1,4 @@
 
-/* Subtypes */
-
-	switch(FEAT_TRAINS, SELF, sw_l0_series_subtype_text, cargo_subtype) {
-		0: return string(LV_L0_SERIES);                            // Sharknose
-		1: return string(LV_L0_SERIES_2CC);                        // Sharknose 2cc
-		return CB_RESULT_NO_TEXT;
-		}
-
-
 /* Purchase Menu */
     spriteset (ss_l0_series_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/l0_series/gfx/l0_irl.png") {tmpl_buy(1)}
 
@@ -37,7 +28,7 @@ item(FEAT_TRAINS, series_l0) {
         misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
         running_cost_base:              RUNNING_COST_ELECTRIC;
 		engine_class:                   ENGINE_CLASS_ELECTRIC;
-		badges: 						["company/jrcentral","railgauge/maglev","role/express_passenger","livery/irl","livery/2cc"];
+		badges: 						["company/jrcentral","railgauge/maglev","role/express_passenger","livery/irl","livery/2cc","attach/jpplusshinkansenmaglev"];
         /* Availability */
         climates_available:             ALL_CLIMATES;
 		introduction_date:              date(2027,01,01);
@@ -62,8 +53,7 @@ item(FEAT_TRAINS, series_l0) {
 	}
 	graphics {
 		/* Menu */
-        additional_text:                string(STR_DESC_L0_SERIES);
-        cargo_subtype_text:             sw_l0_series_subtype_text;
+        cargo_subtype_text:             subtype_text_irl_2cc;
 		can_attach_wagon:				sw_attach_mu_car_maglev;
 		start_stop:						sw_stop_start_full_length_4;
 		purchase_weight:                25;

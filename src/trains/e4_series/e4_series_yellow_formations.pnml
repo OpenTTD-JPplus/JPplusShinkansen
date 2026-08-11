@@ -15,8 +15,6 @@
 		default: sw_e4_series_yellow_coach1;
 	}
 
- /* Repeating */
-
 	switch (FEAT_TRAINS, SELF, sw_e4_series_yellow_repeating_2, CarNumberFromEnd() % 8 ) {
 		1:  sw_e4_series_yellow_cab001;
 		4:  sw_e4_series_yellow_panto1;

@@ -1,12 +1,4 @@
 
-/* SUBTYPES */
-
-    switch(FEAT_TRAINS, SELF, sw_e2_series_red_subtype_text, cargo_subtype) {
-        0: return string(LV_E2_SERIES_RED);
-        1: return string(LV_E2_SERIES_2CC);
-        return CB_RESULT_NO_TEXT;
-        }
-
 /* Purchase Menu */
 
     spriteset (ss_e2_series_red_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e2_series/gfx/e2_red.png") {tmpl_buy(1)}
@@ -38,7 +30,7 @@ item(FEAT_TRAINS, series_e2_red) {
 		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
 		running_cost_base:              RUNNING_COST_ELECTRIC;
 		engine_class:                   ENGINE_CLASS_ELECTRIC;
-		badges: 						["company/jreast"];
+		badges: 						["company/jreast","railgauge/standard","role/express_passenger","livery/irl","livery/2cc","attach/jpplusshinkansenfull"];
         /* Availability */
         climates_available:             ALL_CLIMATES;
 		introduction_date:              date(1997,03,22);
@@ -63,8 +55,7 @@ item(FEAT_TRAINS, series_e2_red) {
 	}
 	graphics {
 		/* Menu */
-        additional_text:                string(STR_DESC_E2_SERIES_RED);
-		cargo_subtype_text:				sw_e2_series_red_subtype_text;
+		cargo_subtype_text:             subtype_text_irl_2cc;
         can_attach_wagon:				sw_attach_e2_series_red;
 		start_stop:						sw_stop_start_full_length_4;
         purchase_weight:                46;

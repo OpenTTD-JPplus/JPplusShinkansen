@@ -1,12 +1,4 @@
 
-/* Subtypes */
-
-	switch(FEAT_TRAINS, SELF, sw_e3_series_r_subtype_text, cargo_subtype) {
-		0: return string(LV_E3_SERIES_R);                     
-		1: return string(LV_E3_SERIES_R_2CC);                      
-		return CB_RESULT_NO_TEXT;
-		}
-
 /* Purchase Menu */
     spriteset (ss_e3_series_r_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e3_series/gfx/e3_r.png") {tmpl_buy(1)}
 
@@ -42,7 +34,7 @@ item(FEAT_TRAINS, series_e3_r) {
         ai_engine_rank:                 0;
         running_cost_base:              RUNNING_COST_ELECTRIC;
         engine_class:                   ENGINE_CLASS_ELECTRIC;
-        badges: 						            ["company/jreast"];
+        badges: 						            ["company/jreast","railgauge/standard","role/express_passenger","livery/irl","livery/2cc","attach/jpplusshinkansenmini"];
         visual_effect_and_powered:      visual_effect_and_powered(VISUAL_EFFECT_ELECTRIC, 4, ENABLE_WAGON_POWER);
         tractive_effort_coefficient:    0.3;
         air_drag_coefficient:           0;
@@ -53,8 +45,7 @@ item(FEAT_TRAINS, series_e3_r) {
       graphics {
         default:                        sw_e3_series_r_graphics;
 	      purchase:                       ss_e3_series_r_buy;
-		    additional_text:	              return string(STR_DESC_E3_SERIES_R);
-        cargo_subtype_text:             sw_e3_series_r_subtype_text;
+        cargo_subtype_text:             subtype_text_irl_2cc;
         can_attach_wagon:			          sw_e3_series_r_attach_vehid;
         //start_stop:                   ;
         purchase_weight:                43 / 2;

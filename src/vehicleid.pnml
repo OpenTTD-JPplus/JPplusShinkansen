@@ -26,13 +26,18 @@ item(FEAT_TRAINS, series_400_series_refurb, 401) {}
 item(FEAT_TRAINS, series_500_blue, 500) {}
 item(FEAT_TRAINS, series_500_hk, 501) {}
 item(FEAT_TRAINS, series_500_eva, 502) {}
+// 700 Series Shinkansen
 item(FEAT_TRAINS, series_700_original, 700) {}
+item(FEAT_TRAINS, series_700_hikari, 701) {}
 item(FEAT_TRAINS, series_923, 923) {}
 // N700 Series Shinkansen
-item(FEAT_TRAINS, series_n700, 707) {}
-item(FEAT_TRAINS, series_n700a, 708) {}
-item(FEAT_TRAINS, series_n700s, 709) {}
-item(FEAT_TRAINS, series_n700_kyushu, 778) {}
+item(FEAT_TRAINS, series_n700_original, 707) {}
+item(FEAT_TRAINS, series_n700_kyushu, 708) {}
+item(FEAT_TRAINS, series_n700_rainbow, 709) {}
+item(FEAT_TRAINS, series_n700_sanyo, 710) {}
+item(FEAT_TRAINS, series_n700a, 717) {}
+item(FEAT_TRAINS, series_n700s, 727) {}
+item(FEAT_TRAINS, series_n700s_kamome, 728) {}
 
 item(FEAT_TRAINS, series_800, 800) {}
 item(FEAT_TRAINS, series_e1_original, 2001) {}
@@ -50,14 +55,16 @@ item(FEAT_TRAINS, series_e3_700, 2033) {}
 item(FEAT_TRAINS, series_e4_yellow, 2004) {}
 item(FEAT_TRAINS, series_e4_pink, 2014) {}
 // E5 Series Shinkansen
-item(FEAT_TRAINS, series_e5, 2005) {}
-item(FEAT_TRAINS, series_h5, 2105) {} 
+item(FEAT_TRAINS, series_e5, 50) {}
+item(FEAT_TRAINS, series_h5, 2105) {}
+// E6 Series Shinkansen
 item(FEAT_TRAINS, series_e6, 2006) {}
 item(FEAT_TRAINS, series_e7, 2007) {}
 item(FEAT_TRAINS, series_e8, 2008) {}
 item(FEAT_TRAINS, series_e10, 2010) {}
 
-item(FEAT_TRAINS, series_l0, 125) {}
+// L0 Series Shinkansen
+item(FEAT_TRAINS, series_l0, 1000) {}
 
 item(FEAT_TRAINS, series_test_700, 707) {}
 
@@ -65,7 +72,7 @@ item(FEAT_TRAINS, series_test_700, 707) {}
 sort(FEAT_TRAINS, [
 
 /* Not JR East */
-125,    // L0 Series Shinkansen
+1000,    // L0 Series Shinkansen
 121,    // 0 Series Shinkansen (Original)
 122,    // 0 Series Shinkansen (Kodama)
 922,    // 922 Series Shinkansen
@@ -77,10 +84,15 @@ sort(FEAT_TRAINS, [
 502,    // 500 Series Shinkansen (Evangelion)
 501,    // 500 Series Shinkansen (Hello Kitty)
 700,    // 700 Series Shinkansen
+701,    // 700 Series Shinkansen (Hikari)
 923,    // 923 Series Shinkansen
 707,    // N700 Series Shinkansen
-708,    // N700A Series Shinkansen
-709,    // N700S Series Shinkansen
+708,    // N700 Series Shinkansen (Kyushu)
+709,    // N700 Series Shinkansen (Rainbow)
+710,    // N700 Series Shinkansen (Sanyo)
+717,    // N700A Series Shinkansen
+727,    // N700S Series Shinkansen
+728,    // N700S Series Shinkansen (Kamome)
 800,    // 800 Series Shinkansen
 
 /* JR East */
@@ -100,7 +112,7 @@ sort(FEAT_TRAINS, [
 2033,   // E3 Series 700 Shinkansen
 2004,   // E4 Series Shinkansen (Max) Yellow Stripe
 2014,   // E4 Series Shinkansen (Max) Pink Stripe
-2005,   // E5 Series Shinkansen
+50,   // E5 Series Shinkansen
 2105,   // H5 Series Shinkansen
 2006,   // E6 Series Shinkansen
 2007,   // E7/W7 Series Shinkansen

@@ -1,10 +1,4 @@
 
-/* SUBTYPES */
-  switch(FEAT_TRAINS, SELF, sw_400_series_original_subtypetext, cargo_subtype) {
-    0 : string(LV_400_SERIES_ORIGINAL);
-    1 : string(LV_400_SERIES_ORIGINAL_2CC);
-  }
-
 /* Purchase Menu */
     spriteset (ss_400_series_original_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/400_series/gfx/400_original.png") {tmpl_buy(1)}
 
@@ -40,7 +34,7 @@ item(FEAT_TRAINS, series_400_series_original ) {
         ai_engine_rank:                 0;
         running_cost_base:              RUNNING_COST_ELECTRIC;
         engine_class:                   ENGINE_CLASS_ELECTRIC;
-        badges: 						["company/jreast","railgauge/standard","flag/jp","role/express_passenger"];
+        badges: 						["company/jreast","railgauge/standard","flag/jp","role/express_passenger", "livery/irl","livery/2cc","attach/jpplusshinkansenmini"];
         visual_effect_and_powered:      visual_effect_and_powered(VISUAL_EFFECT_ELECTRIC, 4, ENABLE_WAGON_POWER);
         tractive_effort_coefficient:    0.3;
         air_drag_coefficient:           0;
@@ -50,10 +44,9 @@ item(FEAT_TRAINS, series_400_series_original ) {
     /*Graphics and Callbacks*/
       graphics {
         default:                        sw_400_series_original_graphics;
-	    purchase:                       ss_400_series_original_buy;
-		additional_text:	            return string(STR_DESC_400_SERIES);
-        cargo_subtype_text:             sw_400_series_original_subtypetext;
-        can_attach_wagon:			    sw_400_series_original_attach_vehid;
+	      purchase:                       ss_400_series_original_buy;
+        cargo_subtype_text:             subtype_text_irl_2cc;
+        can_attach_wagon:			          sw_400_series_original_attach_vehid;
         //start_stop:                   ;
         purchase_weight:                42 / 2;
         purchase_power:                 282 * 4;
@@ -71,7 +64,7 @@ item(FEAT_TRAINS, series_400_series_original ) {
         cargo_capacity:                 57 * CapacityFactor();	
         cargo_age_period:				param_decay_express;
         loading_speed:                  57 * CapacityFactor() / param_loading_1D;
-        cargo_subtype_text:             sw_400_series_original_subtypetext;
+        //cargo_subtype_text:             sw_400_series_original_subtypetext;
         //power:                          4 * 280;
         //weight:                         42;
         //running_cost_factor:            120;

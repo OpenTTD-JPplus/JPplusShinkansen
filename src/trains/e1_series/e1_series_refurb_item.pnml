@@ -1,12 +1,4 @@
 
-/* Subtypes */
-
-	switch(FEAT_TRAINS, SELF, sw_e1_series_refurb_subtype_text, cargo_subtype) {
-        0: return string(LV_E1_SERIES_REFURB);
-        1: return string(LV_E1_SERIES_2CC);
-		return CB_RESULT_NO_TEXT;
-		}
-
 /* Purchase Menu */
     spriteset (ss_e1_series_refurb_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e1_series/gfx/e1_refurb.png") {tmpl_buy(1)}
 
@@ -18,12 +10,12 @@ switch (FEAT_TRAINS, SELF, sw_e1_series_refurb_articulated_part, extra_callback_
 item(FEAT_TRAINS, series_e1_refurb) {
 	property {
 		/* Menu */
-		name: 							string(STR_NAME_E1_SERIES);
+		name: 							string(STR_NAME_E1_SERIES_REFURB);
 		sprite_id:                      SPRITE_ID_NEW_TRAIN; 		// required to enable new graphics
 		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
 		running_cost_base:              RUNNING_COST_ELECTRIC;
 		engine_class:                   ENGINE_CLASS_ELECTRIC;
-		badges: 						["company/jreast"];
+		badges: 						["company/jreast","railgauge/standard","role/express_passenger","livery/irl","livery/2cc","attach/jpplusshinkansenfull"];
         variant_group:                  2001;
 		/* Availability */
 		climates_available:             ALL_CLIMATES;
@@ -49,8 +41,7 @@ item(FEAT_TRAINS, series_e1_refurb) {
 	}
 	graphics {
 		/* Menu */
-		additional_text:                string(STR_DESC_E1_SERIES);
-		cargo_subtype_text:				sw_e1_series_refurb_subtype_text;
+		cargo_subtype_text:             subtype_text_irl_2cc;
 		can_attach_wagon:				sw_attach_mu_car_full;
 		start_stop:						sw_stop_start_full_length_4;
 		purchase_weight:                58;

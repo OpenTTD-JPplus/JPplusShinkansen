@@ -1,12 +1,4 @@
 
-/* SUBTYPES */
-
-    switch(FEAT_TRAINS, SELF, sw_700_series_hikari_subtype_text, cargo_subtype) {
-	    0: return string(LV_700_SERIES_ORIGINAL);
-        1: return string(LV_700_SERIES_ORIGINAL_2CC);
-        return CB_RESULT_NO_TEXT;
-        }
-
 /* PURCHASE */
 
     spriteset (ss_700_series_hikari_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/gfx/700_hikari.png") {tmpl_buy(1)}
@@ -25,7 +17,7 @@ item(FEAT_TRAINS, series_700_hikari) {
 		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
 		running_cost_base:              RUNNING_COST_ELECTRIC;
 		engine_class:                   ENGINE_CLASS_ELECTRIC;
-		badges: 						["company/jrwestjrcentral","railgauge/standard","flag/jp","role/express_passenger"];
+		badges: 						["company/jrwestjrcentral","railgauge/standard","flag/jp","role/express_passenger","livery/irl","livery/2cc","attach/jpplusshinkansenfull"];
 		variant_group:				    700;
         /* Availability */
         climates_available:             ALL_CLIMATES;
@@ -51,8 +43,7 @@ item(FEAT_TRAINS, series_700_hikari) {
 	}
 	graphics {
 		/* Menu */
-        additional_text:                string(STR_DESC_700_SERIES_HIKARI);
-		cargo_subtype_text:             sw_700_series_hikari_subtype_text;
+		cargo_subtype_text:             subtype_text_irl_2cc;
         can_attach_wagon:				sw_attach_mu_car_full;
 		start_stop:						sw_stop_start_full_length_4;
 		purchase_weight:                44;

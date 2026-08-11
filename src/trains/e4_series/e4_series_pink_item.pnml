@@ -1,12 +1,4 @@
 
-/* SUBTYPES */ 
-
-	switch(FEAT_TRAINS, SELF, sw_e4_series_pink_subtype_text, cargo_subtype) {
-		0: return string(LV_E4_SERIES_PINK);
-        1: return string(LV_E4_SERIES_2CC);
-		return CB_RESULT_NO_TEXT;
-		}
-
 /* Purchase Menu */
 
     spriteset (ss_e4_series_pnk_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/e4_series/gfx/e4_pink.png") {tmpl_buy(1)}
@@ -35,11 +27,11 @@ item(FEAT_TRAINS, series_e4_pink) {
         misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK);
         running_cost_base:              RUNNING_COST_ELECTRIC;
 		engine_class:                   ENGINE_CLASS_ELECTRIC;
-		badges: 						["company/jreast"];
+		badges: 						["company/jreast","railgauge/standard","role/express_passenger","livery/irl","livery/2cc","attach/jpplusshinkansenfull"];
 		variant_group:					2004;		
         /* Availability */
         climates_available:             ALL_CLIMATES;
-		introduction_date:              date(1997,12,20);
+		introduction_date:              date(2014,04,01);
 		model_life:                     VEHICLE_NEVER_EXPIRES;		//
 		vehicle_life:                   30;							// 
 		track_type:                     SHINKANSEN;
@@ -61,8 +53,7 @@ item(FEAT_TRAINS, series_e4_pink) {
 	}
 	graphics {
 		/* Menu */
-        additional_text:                string(STR_DESC_E4_SERIES_PINK);
-        cargo_subtype_text:             sw_e4_series_pink_subtype_text;
+        cargo_subtype_text:             subtype_text_irl_2cc;
 		can_attach_wagon:				sw_attach_e4_series_pink;
 		start_stop:						sw_stop_start_full_length_4;
 		purchase_weight:                54;

@@ -1,14 +1,5 @@
 /* DR YELLOW 923 SERIES */
 
-    /* SUBTYPES */
-
-    switch(FEAT_TRAINS, SELF, sw_923_series_subtype_text, cargo_subtype) {
-	    0: return string(LV_923_SERIES_ORIGINAL);
-        1: return string(LV_923_SERIES_ORIGINAL_2CC);
-        return CB_RESULT_NO_TEXT;
-        }
-
-
      spriteset (ss_923_series_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/700_series/gfx/923_irl.png") {tmpl_buy(1)}
 
 	switch (FEAT_TRAINS, SELF, sw_923_series_articulated_part, extra_callback_info1) {
@@ -34,7 +25,7 @@
 			misc_flags:                      bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
 			running_cost_base:              RUNNING_COST_ELECTRIC;
 			engine_class:                   ENGINE_CLASS_ELECTRIC;
-			badges: 						["company/jrwestjrcentral","railgauge/standard","flag/jp","role/utility"];
+			badges: 						["company/jrwestjrcentral","railgauge/standard","flag/jp","role/utility","attach/jpplusshinkansenfull"];
 			variant_group:					700;
 			/* Availability */
 			climates_available:             ALL_CLIMATES;
@@ -59,8 +50,7 @@
 		}
 		graphics {
 			/* Menu */
-			additional_text:                string(STR_DESC_923_SERIES_GIMMICK);
-			cargo_subtype_text:             sw_923_series_subtype_text;
+			cargo_subtype_text:             subtype_text_irl_2cc;
 			can_attach_wagon:				sw_attach_mu_car_full;
 			start_stop:						sw_stop_start_full_length_4;
 			purchase_weight:                44;
@@ -105,7 +95,7 @@
 			misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
 			running_cost_base:              RUNNING_COST_ELECTRIC;
 			engine_class:                   ENGINE_CLASS_ELECTRIC;
-			badges: 						["company/jrwestjrcentral","railgauge/standard","flag/jp","role/mail"];
+			badges: 						["company/jrwestjrcentral","railgauge/standard","flag/jp","role/mail","attach/jpplusshinkansenmail"];
 			variant_group:					700;
 			/* Availability */
 			climates_available:             ALL_CLIMATES;
@@ -132,8 +122,7 @@
 		}
 		graphics {
 			/* Menu */
-			additional_text:                string(STR_DESC_923_SERIES_MAIL);
-			cargo_subtype_text:             sw_923_series_subtype_text;
+			cargo_subtype_text:             subtype_text_irl_2cc;
 			can_attach_wagon:				sw_attach_mu_car_mail;
 			start_stop:						sw_stop_start_full_length_4;
 			/* Graphics */
@@ -174,7 +163,7 @@
 			misc_flags:                      bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
 			running_cost_base:              RUNNING_COST_ELECTRIC;
 			engine_class:                   ENGINE_CLASS_ELECTRIC;
-			badges: 						["company/jrwestjrcentral","railgauge/standard","flag/jp","role/express_passenger"];
+			badges: 						["company/jrwestjrcentral","railgauge/standard","flag/jp","role/express_passenger","attach/jpplusshinkansenfull"];
 			variant_group:					700;
 			/* Availability */
 			climates_available:             ALL_CLIMATES;
@@ -202,8 +191,7 @@
 		}
 		graphics {
 			/* Menu */
-			additional_text:                string(STR_DESC_923_SERIES);
-			cargo_subtype_text:             sw_923_series_subtype_text;
+			cargo_subtype_text:             subtype_text_irl_2cc;
 			can_attach_wagon:				sw_attach_mu_car_full;
 			start_stop:						sw_stop_start_full_length_4;
 			/* Graphics */

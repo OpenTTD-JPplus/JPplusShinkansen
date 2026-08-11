@@ -1,12 +1,4 @@
 
-/* Subtypes*/
-
-	switch(FEAT_TRAINS, SELF, sw_500_series_blue_subtype_text, cargo_subtype) {
-		0: return string(LV_500_SERIES); 
-        1: return string(LV_500_SERIES_2CC);
-		return CB_RESULT_NO_TEXT;
-		}
-
 /* Purchase Menu */
     spriteset (ss_500_series_blue_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/500_series/gfx/500_irl.png") {tmpl_buy(1)}
 
@@ -24,7 +16,7 @@ item(FEAT_TRAINS, series_500_blue) {
 		misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
 		running_cost_base:              RUNNING_COST_ELECTRIC;
 		engine_class:                   ENGINE_CLASS_ELECTRIC;
-		badges: 						["company/jrwestjrcentral","railgauge/standard","flag/jp","role/express_passenger", "livery/irl","livery/2cc"];
+		badges: 						["company/jrwestjrcentral","railgauge/standard","flag/jp","role/express_passenger", "livery/irl","livery/2cc","attach/jpplusshinkansenfull"];
 		/* Availability */
 		climates_available:             ALL_CLIMATES;
 		introduction_date:              date(1997,03,01);
@@ -49,8 +41,7 @@ item(FEAT_TRAINS, series_500_blue) {
 	}
 	graphics {
 		/* Menu */
-		additional_text:                string(STR_DESC_500_SERIES);
-		cargo_subtype_text:             sw_500_series_blue_subtype_text;
+		cargo_subtype_text:             subtype_text_irl_2cc;
 		can_attach_wagon:				sw_attach_mu_car_full;
 		start_stop:						sw_stop_start_full_length_4;
 		purchase_weight:                42;

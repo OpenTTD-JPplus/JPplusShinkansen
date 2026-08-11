@@ -1,11 +1,4 @@
 
-// Sharknose
-    switch(FEAT_TRAINS, SELF, sw_200_series_sharknose_subtype_text, cargo_subtype) {
-        0: return string(LV_200_SERIES_ORIGINAL);       // Sharknose
-        1: return string(LV_200_SERIES_ORIGINAL_2CC);   // Sharknose 2cc
-        return CB_RESULT_NO_TEXT;
-        }
-
     spriteset (ss_200_series_shark_buy, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "src/trains/200_series/gfx/200_shark.png") {tmpl_buy(1)}
 
 switch (FEAT_TRAINS, SELF, sw_200_series_sharknose_articulated_part, extra_callback_info1) {
@@ -21,7 +14,7 @@ item(FEAT_TRAINS, series_200_shark) {
 		misc_flags:                     bitmask(TRAIN_FLAG_MU, TRAIN_FLAG_TILT, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
 		running_cost_base:              RUNNING_COST_ELECTRIC;
 		engine_class:                   ENGINE_CLASS_ELECTRIC;
-		badges: 						["company/jreast","railgauge/standard","flag/jp","role/express_passenger"];
+		badges: 						["company/jreast","railgauge/standard","flag/jp","role/express_passenger","livery/irl","livery/2cc","attach/jpplusshinkansenfull"];
 		variant_group:					200;
 		/* Availability */
 		climates_available:             ALL_CLIMATES;
@@ -48,8 +41,7 @@ item(FEAT_TRAINS, series_200_shark) {
 	}
 	graphics {
 		/* Menu */
-		additional_text:                string(STR_DESC_200_SERIES_SHARK);
-		cargo_subtype_text:				sw_200_series_sharknose_subtype_text;
+		cargo_subtype_text:             subtype_text_irl_2cc;
 		can_attach_wagon:				sw_attach_mu_car_full;
 		start_stop:						sw_stop_start_full_length_4;
 		purchase_weight:                58;

@@ -1,0 +1,64 @@
+ /* Panto in middle */
+
+	switch (FEAT_TRAINS, SELF, sw_n700s_series_kamome_panto_in_middle, CarNumberFromEnd() - CarNumber() ) {
+		0..1:  sw_n700s_series_kamome_panto2;
+		sw_n700s_series_kamome_coach1;
+	}
+
+ /* Penultimate Pantos Dual */
+
+	switch (FEAT_TRAINS, SELF, sw_n700s_series_kamome_penultimate_pantos, CarNumber() ) {
+		2:  sw_n700s_series_kamome_panto1;
+		sw_n700s_series_kamome_panto2;
+	}
+
+	switch (FEAT_TRAINS, SELF, sw_n700s_series_kamome_penultimate_pantos_dual, CarNumber() == 2 || CarNumberFromEnd() == 2 ) {
+		1:  sw_n700s_series_kamome_penultimate_pantos;
+		sw_n700s_series_kamome_coach1;
+	}
+
+ /* Long Panto Fixed */
+
+	switch (FEAT_TRAINS, SELF, sw_n700s_series_kamome_long_panto_fixed_pantos_carnumberfromend, CarNumberFromEnd() ) {
+		5:  sw_n700s_series_kamome_panto2;
+		default: sw_n700s_series_kamome_coach1;
+	}
+
+ /* Long Panto Fixed */
+
+	switch (FEAT_TRAINS, SELF, sw_n700s_series_kamome_long_panto_fixed_pantos_carnumber, CarNumber() ) {
+		5:  sw_n700s_series_kamome_panto1;
+		default: sw_n700s_series_kamome_coach1;
+	}
+
+	switch (FEAT_TRAINS, SELF, sw_n700s_series_kamome_long_panto_fixed_pantos, CarNumber() == 5 ) {
+		1:  sw_n700s_series_kamome_long_panto_fixed_pantos_carnumber;
+		sw_n700s_series_kamome_long_panto_fixed_pantos_carnumberfromend;
+	}
+
+	switch (FEAT_TRAINS, SELF, sw_n700s_series_kamome_long_panto_fixed, CarNumber() == 5 || CarNumberFromEnd() == 5 ) {
+		1:  sw_n700s_series_kamome_long_panto_fixed_pantos;
+		sw_n700s_series_kamome_coach1;
+	}
+
+/* Midcar selection */
+
+	switch (FEAT_TRAINS, SELF, sw_n700s_series_kamome_midcars, NumberCarsInConsist() ) {
+		0..6: sw_n700s_series_kamome_panto_in_middle;
+		7..13: sw_n700s_series_kamome_penultimate_pantos_dual;
+		default: sw_n700s_series_kamome_long_panto_fixed;
+	}
+
+/* Cab selection */
+
+/* Find the cabs */
+
+	switch (FEAT_TRAINS, SELF, sw_n700s_series_kamome_cabs, position_in_consist) {
+		0..2: sw_n700s_series_kamome_cab001;
+		sw_n700s_series_kamome_cab002;
+	}
+
+	switch (FEAT_TRAINS, SELF, sw_n700s_series_kamome_graphics, IsCab() ) {
+		1:  sw_n700s_series_kamome_cabs;
+		sw_n700s_series_kamome_midcars;
+	}
