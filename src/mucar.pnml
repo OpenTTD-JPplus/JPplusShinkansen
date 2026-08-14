@@ -1,14 +1,8 @@
 
 /* MINI-SHINKANSEN */
 
-    spriteset(ss_mucar_mini_buy,            "src/trains/mucar/gfx/mucar.png") {template_purchase(233, 51)}
-    spriteset(set_mu_car_base,              "src/trains/mucar/gfx/mucar.png") {tmpl_mid_std(1,51)}
-
-    switch(FEAT_TRAINS, SELF, sw_mucar_mini_purchase, [ 
-            STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
-                0: logo_jppsks; 
-                1: ss_mucar_mini_buy;
-            }
+    spriteset(ss_mucar_mini_buy,            "src/trains/mucar/gfx/mucar.png") {tmpl_buy(2)}
+    spriteset(set_mu_car_base,              "src/trains/mucar/gfx/mucar.png") {tmpl_mid(2)}
 
     item(FEAT_TRAINS, mu_car_ms) {
         /* Define properties first, make sure to set all of them */
@@ -18,6 +12,7 @@
             introduction_date:            date(1800,1,1);
             climates_available:           ALL_CLIMATES;
             model_life:                   VEHICLE_NEVER_EXPIRES;
+            badges:                       ["railgauge/standard","flag/jp","role/mucar","company/jpplusshinkansen"];
             vehicle_life:                 60;
             loading_speed:                0;
             cost_factor:                  189;
@@ -37,7 +32,6 @@
             ai_special_flag:              AI_FLAG_PASSENGER;
             running_cost_base:            RUNNING_COST_ELECTRIC;
             engine_class:                 ENGINE_CLASS_ELECTRIC;
-            badges:                       ["railgauge/standard","flag/jp","role/mucar"]; 
             visual_effect_and_powered:    visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
             sprite_id:                    SPRITE_ID_NEW_TRAIN;
             dual_headed:                  0;
@@ -48,22 +42,15 @@
         /* Define graphics and callbacks
         * Setting all callbacks is not needed, only define what is used */
         graphics {
-            purchase:                     sw_mucar_mini_purchase;
-            additional_text:			  return string(MUCAR_MINI_DESC);
+            purchase:                     ss_mucar_mini_buy;
             set_mu_car_base;
         }
     }
 
 /* FULL SHINKANSEN */
 
-    spriteset(ss_mucar_full_buy,            "src/trains/mucar/gfx/mucar.png") {template_purchase(233, 1)}
-    spriteset(ss_mucar_full_10,             "src/trains/mucar/gfx/mucar.png") {tmpl_10_std(1,1)}
-
-    switch(FEAT_TRAINS, SELF, sw_mucar_full_purchase, [ 
-            STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
-                0: logo_jppsks; 
-                1: ss_mucar_full_buy;
-            }
+    spriteset(ss_mucar_full_buy,            "src/trains/mucar/gfx/mucar.png") {tmpl_buy(1)}
+    spriteset(ss_mucar_full_10,             "src/trains/mucar/gfx/mucar.png") {tmpl_10(1)}
 
     switch (FEAT_TRAINS, SELF, sw_mucar_full_graphics, position_in_articulated_veh) {				
             1:  ss_mucar_full_10; 				
@@ -85,6 +72,7 @@
             introduction_date:              date(1800,1,1);
             climates_available:             ALL_CLIMATES;
             model_life:                     VEHICLE_NEVER_EXPIRES;
+            badges:                         ["railgauge/standard","flag/jp","role/mucar","company/jpplusshinkansen"];
             vehicle_life:                   60;
             loading_speed:                  0;
             cost_factor:                    189;
@@ -104,7 +92,6 @@
             ai_special_flag:                AI_FLAG_PASSENGER;
             running_cost_base:              RUNNING_COST_ELECTRIC;
             engine_class:                   ENGINE_CLASS_ELECTRIC;
-            badges:                         ["railgauge/standard","flag/jp","role/mucar"]; 
             visual_effect_and_powered:      visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
             sprite_id:                      SPRITE_ID_NEW_TRAIN;
             dual_headed:                    0;
@@ -116,8 +103,7 @@
         * Setting all callbacks is not needed, only define what is used */
         graphics {
             default:                        sw_mucar_full_graphics;                     
-            purchase:                       sw_mucar_full_purchase;
-            additional_text:			    return string(MUCAR_FULL_DESC);
+            purchase:                       ss_mucar_full_buy;
             articulated_part:               sw_mucar_full_articulated_part;
             length:                         sw_length_1_8_1; 
             cargo_capacity:                 0;
@@ -126,14 +112,8 @@
 
 // MAGLEV
 
-    spriteset(ss_mucar_maglev_buy,          "src/trains/mucar/gfx/mucar.png") {template_purchase(233, 101)}
-    spriteset(ss_mucar_maglev_10,           "src/trains/mucar/gfx/mucar.png") {tmpl_10_std(1,101)}
-
-    switch(FEAT_TRAINS, SELF, sw_mucar_maglev_purchase, [ 
-            STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
-                0: logo_jppsks; 
-                1: ss_mucar_maglev_buy;
-            }
+    spriteset(ss_mucar_maglev_buy,          "src/trains/mucar/gfx/mucar.png") {tmpl_buy(3)}
+    spriteset(ss_mucar_maglev_10,           "src/trains/mucar/gfx/mucar.png") {tmpl_10(3)}
 
     switch (FEAT_TRAINS, SELF, sw_mucar_maglev_graphics, position_in_articulated_veh) {				
             1:  ss_mucar_maglev_10; 				
@@ -155,6 +135,7 @@
             introduction_date:              date(2027,1,1);
             climates_available:             ALL_CLIMATES;
             model_life:                     VEHICLE_NEVER_EXPIRES;
+            badges:                         ["railgauge/maglev","flag/jp","role/mucar","company/jpplusshinkansen"];
             vehicle_life:                   60;
             loading_speed:                  0;
             cost_factor:                    189;
@@ -185,8 +166,7 @@
         * Setting all callbacks is not needed, only define what is used */
         graphics {
             default:                        sw_mucar_maglev_graphics;                     
-            purchase:                       sw_mucar_maglev_purchase;
-            additional_text:			    return string(MUCAR_MAGLEV_DESC);
+            purchase:                       ss_mucar_maglev_buy;
             articulated_part:               sw_mucar_maglev_articulated_part;
             length:                         sw_length_1_8_1; 
             cargo_capacity:                 0;
@@ -195,14 +175,8 @@
 
 // MAIL
 
-    spriteset(ss_mucar_mail_buy,            "src/trains/mucar/gfx/mucar.png") {template_purchase(233, 151)}
-    spriteset(ss_mucar_mail_10,            "src/trains/mucar/gfx/mucar.png") {tmpl_10_std(1,151)}
-
-    switch(FEAT_TRAINS, SELF, sw_mucar_mail_purchase, [ 
-            STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), getbits(extra_callback_info1, 8, 8) ]) { 
-                0: logo_jppsks; 
-                1: ss_mucar_mail_buy;
-            }
+    spriteset(ss_mucar_mail_buy,            "src/trains/mucar/gfx/mucar.png") {tmpl_buy(4)}
+    spriteset(ss_mucar_mail_10,             "src/trains/mucar/gfx/mucar.png") {tmpl_10(4)}
 
     switch (FEAT_TRAINS, SELF, sw_mucar_mail_graphics, position_in_articulated_veh) {				
             1:  ss_mucar_mail_10; 				
@@ -225,6 +199,7 @@
             introduction_date:            date(1800,1,1);
             climates_available:           ALL_CLIMATES;
             model_life:                   VEHICLE_NEVER_EXPIRES;
+            badges:                       ["railgauge/standard","flag/jp","role/mucar","role/mail","company/jpplusshinkansen"];
             vehicle_life:                 60;
             loading_speed:                0;
             cost_factor:                  189;
@@ -255,8 +230,7 @@
         * Setting all callbacks is not needed, only define what is used */
         graphics {
             default:                        sw_mucar_mail_graphics;                     
-            purchase:                       sw_mucar_mail_purchase;
-            additional_text:			    return string(MUCAR_MAIL_DESC);
+            purchase:                       ss_mucar_mail_buy;
             articulated_part:               sw_mucar_mail_articulated_part;
             length:                         sw_length_1_8_1;  
         }
